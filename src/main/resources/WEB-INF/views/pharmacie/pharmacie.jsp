@@ -1,127 +1,194 @@
-<%@ include file="../headersimplifie.jsp" %>
+<%@ include file="../header.jsp" %>
 
-<h1>Pharmacie</h1>
+<main class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+	<h1 class="page-header">Pharmacie</h1>
 
-<div id="partieCentrale">
-	<sf:form method="post" modelAttribute="produit">
+	<div class="row placeholders">
+		<div class="col-sm-5 col-md-4">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="Rechercher...">
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button">OK</button>
+				</span>
+			</div>
+		</div>
+		<div class="sm-1 col-md-1 col-md-offset-1">
+			<p data-placement="top" data-toggle="tooltip" title="add">
+				<button class="btn btn-primary btn-md" data-title="Add" data-toggle="modal" data-target="#add" >
+					<span class="glyphicon glyphicon-plus"> Ajouter</span>
+				</button>
+			</p>
 
-		<fieldset>
-			<legend>Ajouter un produit</legend>
-
-			<br/>
-
-			<table id="tableauCollecte">
-				<tr>
-					<th style=""white-space:nowrap;">Nom<br></th>
-					<th>Date de d&eacutelivrance<br></th>
-					<th>Fournisseur<br></th>
-					<th>Projet<br></th>
-					<th>Responsable<br></th>
-					<th>Qte entrante<br></th>
-					<th>Qte restante<br></th>
-					<th>N&deg; de lot<br></th>
-					<th>Date de p&eacuteremption<br></th>
-				</tr>
-				<tr>
-					<td><sf:input type="text" path="nom" size="10"/></td>
-					<td><sf:input type="date" path="date_delivrance" name="dateDelivrance" size="10"/></td>
-					<td><sf:input type="text" path="fournisseur" size="10"/></td>
-					<td><sf:input type="text" path="projet" size="10"/></td>
-					<td><sf:input type="text" path="responsable" size="10"/></td>
-					<td><sf:input type="number" path="qte_entrante" style="width:50px;"/></td>					
-					<td><sf:input type="number" path="qte_restante" style="width:50px;"/></td>	
-					<td><sf:input type="number" path="num_lot" style="width:50px;"/></td>
-					<td><sf:input type="date" path="date_peremption"/></td>
-				</tr>
-
+		</div>
+		<div class="col-md-12" style="padding:30px;">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<td>Nom</td>
+						<td>Date de d&eacutelivrance</td>
+						<td>Fournisseur</td>
+						<td>Projet</td>
+						<td>Responsable</td>
+						<td>Qte entrante</td>
+						<td>Qte restante</td>
+						<td>N&deg; de lot</td>
+						<td>Date de p&eacuteremption</td>
+						<td></td>
+                        <td></td>
+					</tr>
+				</thead>
+				<tbody>
+				<c:forEach items="${produitList}" var="produit">
+					<tr>
+						<td>${produit.nom}</td>
+						<td><fmt:formatDate pattern="dd-MM-yyyy" value="${produit.date_delivrance}" /><br></td>
+						<td>${produit.fournisseur}<br></td>
+						<td>${produit.projet}<br></td>
+						<td>${produit.responsable}<br></td>
+						<td>${produit.qte_entrante}<br></td>
+						<td>${produit.qte_restante}<br></td>
+						<td>${produit.num_lot}<br></td>
+						<td><fmt:formatDate pattern="dd-MM-yyyy" value="${produit.date_peremption}" /></td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-sm" id="btnedit" data-title="Modifier" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class="btn btn-danger btn-sm" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+					</tr>
+				</c:forEach>
+				</tbody>
 			</table>
-			<br/> <input type="submit" value="Valider" class="valider"/> <br/>
-		</fieldset>
-	</sf:form>
-</div>
-<h1>Consultation de la pharmacie</h1>
+			<nav aria-label="Page navigation table">
+				<ul class="pagination">
+					<li class="page-item">
+						<a class="page-link" href="#" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+							<span class="sr-only">Previous</span>
+						</a>
+					</li>
+					<li class="page-item"><a class="page-link" href="#">1</a></li>
+					<li class="page-item"><a class="page-link" href="#">2</a></li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+					<li class="page-item">
+						<a class="page-link" href="#" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+							<span class="sr-only">Next</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</main>
+			<!-- Modal add new product -->
+	<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+					<h4 class="modal-title custom_align" id="Heading">Ajouter un nouveau produit</h4>
+				</div>
 
-<div id="partieCentrale">
+				<div class="modal-body">
+					<div class="form-group">
+						<input class="form-control " type="text" placeholder="Nom du produit">
+					</div>
+					<div class="form-group">
+						<input class="form-control datepicker" type="text" placeholder="Date de d&#233livrance">
+					</div>
+					<div class="form-group">
+						<input class="form-control " type="text" placeholder="Fournisseur">
+					</div>
+					<div class="form-group">
+						<input class="form-control " type="text" placeholder="Projet">
+					</div>
+					<div class="form-group">
+						<input class="form-control " type="text" placeholder="Responsable">
+					</div>
+					<div class="form-group">
+						<input class="form-control " type="text" placeholder="Quantit&#233 entrante">
+					</div>
+					<div class="form-group">
+						<input class="form-control " type="text" placeholder="Quantit&#233 restante">
+					</div>
+					<div class="form-group">
+						<input class="form-control " type="text" placeholder="Num&#233ro du lot">
+					</div>
+					<div class="form-group">
+						<input class="form-control datepicker" type="text" placeholder="Date de p&#233remption">
+					</div>
+				</div>
 
-	<fieldset>
+				<div class="modal-footer ">
+					<button type="button" class="btn btn-success btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Ajouter</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
 
-		<legend>Les produits</legend>
+			<!-- Modal edit product -->
+    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                    <h4 class="modal-title custom_align" id="Heading">Modifier le produit</h4>
+                </div>
 
-		<table id="tableauPharmacie">
-			<tr>
-				<td>Nom</td>
-				<td>Date de d&eacutelivrance<br></td>
-				<td>Fournisseur<br></td>
-				<td>Projet<br></td>
-				<td>Responsable<br></td>
-				<td>Qte entrante<br></td>
-				<td>Qte restante<br></td>
-				<td>N&deg; de lot<br></td>
-				<td>Date de p&eacuteremption<br></td>
-				<td>Modifier<br></td>
-			</tr>
-			<c:forEach items="${produitList}" var="produit">
-				<tr>
-					<th>${produit.nom}</th>
-					<th>${produit.date_delivrance}<br></th>
-					<th>${produit.fournisseur}<br></th>
-					<th>${produit.projet}<br></th>
-					<th>${produit.responsable}<br></th>
-					<th>${produit.qte_entrante}<br></th>
-					<th>${produit.qte_restante}<br></th>
-					<th>${produit.num_lot}<br></th>
-					<th>${produit.date_peremption}<br></th>
-					<th><a href="pharmacie/${produit.id}">Modifier</a></th>
-				</tr>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input class="form-control " type="text" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control " type="text" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="2" class="form-control" placeholder=""></textarea>
+                    </div>
+                </div>
 
-			</c:forEach>
-		</table>
-	</fieldset>
-</div>
+                <div class="modal-footer ">
+                    <button type="button" class="btn btn-success btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Modifier</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
 
-<script lang="text/javascript">
+			<!-- Modal delete product -->
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                    <h4 class="modal-title custom_align" id="Heading">Supprimer cette entr&#233e</h4>
+                </div>
 
-	/* function ajoutLigne()
-	{
-		var tableauCollecte = document.getElementById("tableauCollecte");
-		var length = tableauCollecte.rows.length - 1;
-		var ligne = tableauCollecte.insertRow(-1);
+                <div class="modal-body">
+                    <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Voulez vous vraiment supprimer cette entr&#233e ?</div>
+                </div>
 
-		var cellule = ligne.insertCell(-1);
-		var input = document.createElement("input");
-		input.setAttribute("id", "tableauCollecteList" + length + ".race_Ovaires");
-		input.setAttribute("name", "tableauCollecteList[" + length + "].race_Ovaires");
-		input.setAttribute("type", "number");
-		cellule.appendChild(input);
+                <div class="modal-footer ">
+                    <button type="button" class="btn btn-danger" ><span class="glyphicon glyphicon-ok-sign"></span> Oui</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Non</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
 
-		cellule = ligne.insertCell(-1);
-		input = document.createElement("input");
-		input.setAttribute("id", "tableauCollecteList" + length + ".nbFemelleOuPool");
-		input.setAttribute("name", "tableauCollecteList[" + length + "].nbFemelleOuPool");
-		input.setAttribute("type", "text");
-		cellule.appendChild(input);
+<%@ include file="../footer.jsp" %>
 
-		cellule = ligne.insertCell(-1);
-		input = document.createElement("input");
-		input.setAttribute("id", "tableauCollecteList" + length + ".nombre_Ovaires");
-		input.setAttribute("name", "tableauCollecteList[" + length + "].nombre_Ovaires");
-		input.setAttribute("type", "number");
-		cellule.appendChild(input);
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="../static/js/datepicker-fr.js"></script>
+<script>
+    $.datepicker.setDefaults( $.datepicker.regional[ "fr" ] );
 
-		cellule = ligne.insertCell(-1);
-		input = document.createElement("input");
-		input.setAttribute("id", "tableauCollecteList" + length + ".nombre_Ovocytes");
-		input.setAttribute("name", "tableauCollecteList[" + length + "].nombre_Ovocytes");
-		input.setAttribute("type", "number");
-		cellule.appendChild(input);
-
-		cellule = ligne.insertCell(-1);
-		input = document.createElement("input");
-		input.setAttribute("id", "tableauCollecteList" + length + ".taux_Collecte");
-		input.setAttribute("name", "tableauCollecteList[" + length + "].taux_Collecte");
-		input.setAttribute("type", "number");
-		cellule.appendChild(input);
-	} */
+    $( function() {
+        $( ".datepicker" ).each(function() {
+            $( this ).datepicker();
+        });
+    } );
 </script>
-
-<%@ include file="../footersimplifie.jsp" %>

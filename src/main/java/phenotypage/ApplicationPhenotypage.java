@@ -8,6 +8,5 @@ public class ApplicationPhenotypage
 {
 	public static void main(String[] args) {
 		SpringApplication.run(ApplicationPhenotypage.class, args);
-		System.out.println("Le git fonctionne");
 	}
 }

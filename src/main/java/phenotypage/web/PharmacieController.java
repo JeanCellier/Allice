@@ -12,6 +12,7 @@ import phenotypage.model.pharmacie.produit.Produit;
 import phenotypage.model.pharmacie.produit.ProduitService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/pharmacie")
