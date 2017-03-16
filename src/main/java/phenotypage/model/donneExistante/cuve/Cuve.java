@@ -24,6 +24,7 @@ public class Cuve
 	@Column
 	private String designation;
 
+	// TODO remove
 	@OneToMany(mappedBy = "cuve")
 	private List<TableauDetail> tableauDetailList;
 	
