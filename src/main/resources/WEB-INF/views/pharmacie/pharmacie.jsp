@@ -15,7 +15,7 @@
 		<div class="sm-1 col-md-1 col-md-offset-1">
 			<p data-placement="top" data-toggle="tooltip" title="add">
 				<button class="btn btn-primary btn-md" data-title="Add" data-toggle="modal" data-target="#add" >
-					<span class="glyphicon glyphicon-plus"> Ajouter</span>
+					<span class="fa fa-plus"> Ajouter</span>
 				</button>
 			</p>
 
@@ -49,8 +49,8 @@
 						<td>${produit.qte_restante}<br></td>
 						<td>${produit.num_lot}<br></td>
 						<td><fmt:formatDate pattern="dd-MM-yyyy" value="${produit.date_peremption}" /></td>
-                        <td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-sm" id="btnedit" data-title="Modifier" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                        <td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class="btn btn-danger btn-sm" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md" id="btnedit" data-title="Modifier" data-toggle="modal" data-target="#edit" ><span class="fa fa-pencil"></span></button></p></td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class="btn btn-danger btn-md" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="fa fa-trash"></span></button></p></td>
 					</tr>
 				</c:forEach>
 				</tbody>
@@ -82,7 +82,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
 					<h4 class="modal-title custom_align" id="Heading">Ajouter un nouveau produit</h4>
 				</div>
 
@@ -117,7 +117,7 @@
 				</div>
 
 				<div class="modal-footer ">
-					<button type="button" class="btn btn-success btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Ajouter</button>
+					<button type="button" class="btn btn-success btn-lg" style="width: 100%;"><span class="fa fa-check"></span> Ajouter</button>
 				</div>
 			</div>
 			<!-- /.modal-content -->
@@ -130,7 +130,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
                     <h4 class="modal-title custom_align" id="Heading">Modifier le produit</h4>
                 </div>
 
@@ -147,7 +147,7 @@
                 </div>
 
                 <div class="modal-footer ">
-                    <button type="button" class="btn btn-success btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Modifier</button>
+                    <button type="button" class="btn btn-success btn-lg" style="width: 100%;"><span class="fa fa-check"></span> Modifier</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -160,17 +160,17 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
                     <h4 class="modal-title custom_align" id="Heading">Supprimer cette entr&#233e</h4>
                 </div>
 
                 <div class="modal-body">
-                    <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Voulez vous vraiment supprimer cette entr&#233e ?</div>
+                    <div class="alert alert-danger"><span class="fa fa-warning-sign"></span> Voulez vous vraiment supprimer cette entr&#233e ?</div>
                 </div>
 
                 <div class="modal-footer ">
-                    <button type="button" class="btn btn-danger" ><span class="glyphicon glyphicon-ok-sign"></span> Oui</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Non</button>
+                    <button type="button" class="btn btn-danger" ><span class="fa fa-check"></span> Oui</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="fa fa-remove"></span> Non</button>
                 </div>
             </div>
             <!-- /.modal-content -->
