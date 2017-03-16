@@ -1,5 +1,6 @@
 require 'bootstrap-sass'
 require 'compass/import-once/activate'
+require 'font-awesome-sass'
 # Require any additional compass plugins here.
 
 
@@ -11,10 +12,8 @@ images_dir = "src/main/resources/static/bootstrap/images"
 javascripts_dir = "src/main/resources/static/bootstrap/javascripts"
 
 relative_assets = true
-fonts_dir = "src/main/resources/static/bootstrap/fonts/"
+fonts_dir = "src/main/resources/static/bootstrap/fonts/font-awesome-sass/assets/fonts/font-awesome/"
 
-# config.rb:
-require 'font-awesome-sass'
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed
 

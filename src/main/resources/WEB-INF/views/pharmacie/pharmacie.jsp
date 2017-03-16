@@ -1,6 +1,6 @@
 <%@ include file="../header.jsp" %>
 
-<main class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+<main class="col-md-10">
 	<h1 class="page-header">Pharmacie</h1>
 
 	<div class="row placeholders">
