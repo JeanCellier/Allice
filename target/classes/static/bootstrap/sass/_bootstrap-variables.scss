@@ -15,7 +15,7 @@
 // $gray-light:             lighten($gray-base, 46.7%) // #777
 // $gray-lighter:           lighten($gray-base, 93.5%) // #eee
 
- $brand-primary:            #f9f9f9;
+$brand-primary:            #f9f9f9;
 $green-primary:             #068b70;
 // $brand-primary:         darken(#428bca, 6.5%) // #337ab7
 // $brand-success:         #5cb85c
@@ -108,10 +108,9 @@ $green-primary:             #068b70;
 // $border-radius-small:       3px
 
 //** Global color for active items (e.g., navs or dropdowns).
- $component-active-color:    $brand-primary;
 // $component-active-color:    #fff
 //** Global background color for active items (e.g., navs or dropdowns).
-// $component-active-bg:       $brand-primary;
+ $component-active-bg:       $green-primary;
 
 //** Width of the `border` for generating carets that indicate dropdowns.
 // $caret-width-base:          4px
@@ -231,6 +230,7 @@ $green-primary:             #068b70;
 
 //** Background for the dropdown menu.
 // $dropdown-bg:                    #fff
+$dropdown-bg:  lighten($green-primary, 5%);
 //** Dropdown menu `border-color`.
 // $dropdown-border:                rgba(0,0,0,.15)
 //** Dropdown menu `border-color` **for IE8**.
@@ -240,13 +240,17 @@ $green-primary:             #068b70;
 
 //** Dropdown link text color.
 // $dropdown-link-color:            $gray-dark
+$dropdown-link-color:            darken($brand-primary, 10%);
 //** Hover color for dropdown links.
+
+$dropdown-link-hover-color:      darken($brand-primary, 5%);
 // $dropdown-link-hover-color:      darken($gray-dark, 5%)
+$dropdown-link-hover-bg:         darken($green-primary, 5%);
 //** Hover background for dropdown links.
 // $dropdown-link-hover-bg:         #f5f5f5
 
 //** Active dropdown menu item text color.
-// $dropdown-link-active-color:     $component-active-color
+// $dropdown-link-active-color:     $component-active-color.
 //** Active dropdown menu item background color.
 // $dropdown-link-active-bg:        $component-active-bg
 
@@ -358,7 +362,7 @@ $green-primary:             #068b70;
 // $navbar-collapse-max-height:       340px
 
 // $navbar-default-color:             #777
-// $navbar-default-bg:                #068b70
+ $navbar-default-bg:                $green-primary;
 // $navbar-default-border:            darken($navbar-default-bg, 6.5%);
 
 // Navbar links
@@ -411,7 +415,7 @@ $green-primary:             #068b70;
 
 //=== Shared nav styles
 // $nav-link-padding:                          10px 15px
- $nav-link-hover-bg:                         #046E58;
+ $nav-link-hover-bg:                         darken($green-primary, 5%);//#046E58;
 // $nav-link-hover-bg:                         $gray-lighter
 
 // $nav-disabled-link-color:                   $gray-light
@@ -443,9 +447,14 @@ $pagination-color:                     $green-primary;
 // $pagination-border:                    #ddd
 
 // $pagination-hover-color:               $link-hover-color
+$pagination-hover-color:               $brand-primary;
+$pagination-hover-bg:                  $green-primary;
 // $pagination-hover-bg:                  $gray-lighter
 // $pagination-hover-border:              #ddd
 
+ $pagination-active-color:              $green-primary;
+ $pagination-active-bg:                 darken($brand-primary, 10%);
+$pagination-active-border:             darken($brand-primary, 40%);
 // $pagination-active-color:              #fff
 // $pagination-active-bg:                 $brand-primary
 // $pagination-active-border:             $brand-primary
@@ -839,3 +848,9 @@ $pagination-color:                     $green-primary;
 // $dl-horizontal-breakpoint:    $grid-float-breakpoint
 //** Horizontal line color.
 // $hr-border:                   $gray-lighter
+
+/** Custom Sass */
+.sidebar{
+ height: 100vh;
+ font-weight: bold;
+}

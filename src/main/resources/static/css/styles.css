@@ -1,8 +1,9 @@
 @charset "UTF-8";
 /** Custom Sass */
-/* line 848, ../bootstrap/sass/_bootstrap-variables.scss */
+/* line 853, ../bootstrap/sass/_bootstrap-variables.scss */
 .sidebar {
   height: 100vh;
+  font-weight: bold;
 }
 
 /*!
@@ -373,8 +374,8 @@ th {
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url(../bootstrap/fonts/font-awesome-sass/assets/fonts/font-awesome/bootstrap/glyphicons-halflings-regular.eot);
-  src: url(../bootstrap/fonts/font-awesome-sass/assets/fonts/font-awesome/bootstrap/glyphicons-halflings-regular.eot?#iefix) format("embedded-opentype"), url(../bootstrap/fonts/font-awesome-sass/assets/fonts/font-awesome/bootstrap/glyphicons-halflings-regular.woff2) format("woff2"), url(../bootstrap/fonts/font-awesome-sass/assets/fonts/font-awesome/bootstrap/glyphicons-halflings-regular.woff) format("woff"), url(../bootstrap/fonts/font-awesome-sass/assets/fonts/font-awesome/bootstrap/glyphicons-halflings-regular.ttf) format("truetype"), url(../bootstrap/fonts/font-awesome-sass/assets/fonts/font-awesome/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format("svg");
+  src: url(../bootstrap/fonts/bootstrap/glyphicons-halflings-regular.eot?1469446982);
+  src: url(../bootstrap/fonts/bootstrap/glyphicons-halflings-regular.eot?&1469446982#iefix) format("embedded-opentype"), url(../bootstrap/fonts/bootstrap/glyphicons-halflings-regular.woff2?1469446982) format("woff2"), url(../bootstrap/fonts/bootstrap/glyphicons-halflings-regular.woff?1469446982) format("woff"), url(../bootstrap/fonts/bootstrap/glyphicons-halflings-regular.ttf?1469446982) format("truetype"), url(../bootstrap/fonts/bootstrap/glyphicons-halflings-regular.svg?1469446982#glyphicons_halflingsregular) format("svg");
 }
 /* line 24, ../../../../../../../../../../.gem/ruby/2.4.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_glyphicons.scss */
 .glyphicon {
@@ -6316,8 +6317,8 @@ tbody.collapse.in {
 .pagination > li > span:hover,
 .pagination > li > span:focus {
   z-index: 2;
-  color: lightgray;
-  background-color: #eeeeee;
+  color: #f9f9f9;
+  background-color: #068b70;
   border-color: #ddd;
 }
 /* line 52, ../../../../../../../../../../.gem/ruby/2.4.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_pagination.scss */
@@ -6326,9 +6327,9 @@ tbody.collapse.in {
 .pagination > .active > span:hover,
 .pagination > .active > span:focus {
   z-index: 3;
-  color: #fff;
-  background-color: #f9f9f9;
-  border-color: #f9f9f9;
+  color: #068b70;
+  background-color: #e0e0e0;
+  border-color: #939393;
   cursor: default;
 }
 /* line 64, ../../../../../../../../../../.gem/ruby/2.4.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_pagination.scss */
@@ -6417,7 +6418,7 @@ tbody.collapse.in {
 .pager li > a:hover,
 .pager li > a:focus {
   text-decoration: none;
-  background-color: #eeeeee;
+  background-color: #068b70;
 }
 /* line 31, ../../../../../../../../../../.gem/ruby/2.4.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_pager.scss */
 .pager .next > a,
@@ -8802,8 +8803,8 @@ button.close {
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url(../bootstrap/fonts/font-awesome-sass/assets/fonts/font-awesome/font-awesome/fontawesome-webfont.eot?v=4.7.0&1489659120);
-  src: url(../bootstrap/fonts/font-awesome-sass/assets/fonts/font-awesome/font-awesome/fontawesome-webfont.eot?v=4.7.0&1489659120#iefix) format("embedded-opentype"), url(../bootstrap/fonts/font-awesome-sass/assets/fonts/font-awesome/font-awesome/fontawesome-webfont.woff2?v=4.7.0&1489659120) format("woff2"), url(../bootstrap/fonts/font-awesome-sass/assets/fonts/font-awesome/font-awesome/fontawesome-webfont.woff?v=4.7.0&1489659120) format("woff"), url(../bootstrap/fonts/font-awesome-sass/assets/fonts/font-awesome/font-awesome/fontawesome-webfont.ttf?v=4.7.0&1489659120) format("truetype"), url(../bootstrap/fonts/font-awesome-sass/assets/fonts/font-awesome/font-awesome/fontawesome-webfont.svg?v=4.7.0&1489665349#fontawesomeregular) format("svg");
+  src: url(../bootstrap/fonts/font-awesome/fontawesome-webfont.eot?v=4.7.0&1489659120);
+  src: url(../bootstrap/fonts/font-awesome/fontawesome-webfont.eot?v=4.7.0&1489659120#iefix) format("embedded-opentype"), url(../bootstrap/fonts/font-awesome/fontawesome-webfont.woff2?v=4.7.0&1489659120) format("woff2"), url(../bootstrap/fonts/font-awesome/fontawesome-webfont.woff?v=4.7.0&1489659120) format("woff"), url(../bootstrap/fonts/font-awesome/fontawesome-webfont.ttf?v=4.7.0&1489659120) format("truetype"), url(../bootstrap/fonts/font-awesome/fontawesome-webfont.svg?v=4.7.0&1489665349#fontawesomeregular) format("svg");
   font-weight: normal;
   font-style: normal;
 }

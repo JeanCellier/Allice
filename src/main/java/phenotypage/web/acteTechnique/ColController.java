@@ -23,7 +23,6 @@ import phenotypage.model.donneExistante.sanitaire.SanitaireService;
 import phenotypage.model.donneExistante.stade.StadeService;
 import phenotypage.model.fiche.ficheCol.FicheCol;
 import phenotypage.model.fiche.ficheCol.FicheColService;
-import phenotypage.model.fiche.ficheOpu.FicheOpu;
 import phenotypage.model.fiches.traitement.header.Header;
 import phenotypage.model.fiches.traitement.header.HeaderService;
 import phenotypage.model.invitro.collecte.resultat.Resultat;
@@ -274,7 +273,7 @@ public class ColController
 		for (int index = 0; index < traitementDonneuse.getTableau_pharmacie().size(); index++)
 		{
 			traitementDonneuse.getTableau_pharmacie().get(index).setTraitement_donneuse(traitementDonneuse);
-			traitementDonneuse.getTableau_pharmacie().get(index).getProduit().setQte_restante(traitementDonneuse.getTableau_pharmacie().get(index).getProduit().getQte_restante() - traitementDonneuse.getTableau_pharmacie().get(index).getQuantite());
+			traitementDonneuse.getTableau_pharmacie().get(index).getProduit().setQteRestante(traitementDonneuse.getTableau_pharmacie().get(index).getProduit().getQteRestante() - traitementDonneuse.getTableau_pharmacie().get(index).getQuantite());
 			produitService.updateProduit(traitementDonneuse.getTableau_pharmacie().get(index).getProduit());
 			tableau_pharmacieService.addTableau_Pharmacie(traitementDonneuse.getTableau_pharmacie().get(index));
 		}

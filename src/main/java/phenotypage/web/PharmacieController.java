@@ -3,25 +3,20 @@ package phenotypage.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import phenotypage.model.pharmacie.PharmacieService;
+import org.springframework.web.bind.annotation.*;
+import phenotypage.model.JsonResponse.JsonResponse;
 import phenotypage.model.pharmacie.produit.Produit;
 import phenotypage.model.pharmacie.produit.ProduitService;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Optional;
 
-import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 @RequestMapping("/pharmacie")
 public class PharmacieController
 {
-
-	@Autowired
-	private PharmacieService pharmacieService;
-	
 	@Autowired
 	private ProduitService produitService;
 	
@@ -33,47 +28,117 @@ public class PharmacieController
 		return "pharmacie/pharmacie";
 	}
 
-	@RequestMapping(value = "/pharmacie", method = RequestMethod.POST)
-	public String pharmacie(@Valid Produit produit, Errors errors, Model model)
-	{
-		/*if (errors.hasErrors())
-		{
-			model.addAttribute("produit", produitService.newProduit());
-			return "pharmacie/pharmacie";
-		}*/
-		produitService.addProduit(produit);
-		return "redirect:/pharmacie/pharmacie";
-	}
-	
-	@RequestMapping(value = "/pharmacie/{id}", method = RequestMethod.GET)
-	public String pharmacieID(@PathVariable Long id, Model model)
-	{
-		Produit prod = produitService.findProduitById(id);
-		model.addAttribute("produitList", produitService.findAllProduit());
-		model.addAttribute("produit", prod);
-		return "pharmacie/pharmacie";
-	}
-	
-	@RequestMapping(value = "/pharmacie/{id}", method = RequestMethod.POST)
-	public String pharmacieID(@PathVariable Long id, @Valid Produit produit, Errors errors, Model model)
-	{
-		/*if (errors.hasErrors())
-		{
-			model.addAttribute("produit", produitService.newProduit());
-			return "pharmacie/pharmacie";
-		}*/
-		produit.setId(id);
-		produitService.addProduit(produit);
+	@ResponseBody
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public JsonResponse add(@RequestParam("nom") String nom, @RequestParam("dateDelivrance") String dateDeliv,
+					 @RequestParam("fournisseur") String fournisseur, @RequestParam("projet") String projet,
+					 @RequestParam("responsable") String respo, @RequestParam("qteEntrante") String qteEntrante,
+					 @RequestParam("numLot") String numLot, @RequestParam("datePeremption") String datePeremp){
 
-		return "redirect:/pharmacie/pharmacie";
+		JsonResponse response = new JsonResponse();
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+
+		try {
+			Date dateDel = formatter.parse(dateDeliv);
+			Date datePer = formatter.parse(datePeremp);
+
+			try {
+				Float qteEntr = Float.parseFloat(qteEntrante);
+
+				if(dateDel.after(datePer)){
+					response.setSucces(false);
+					response.setMessage("La date de péremption est inférieure à la date de délivrance");
+				}else if(qteEntr <= 0){
+					response.setSucces(false);
+					response.setMessage("La quantité entrante ne peut être inférieure ou égale à 0");
+				}else{
+					Produit produit = produitService.createProduit(nom, dateDel, fournisseur, projet, respo, qteEntr, numLot, datePer);
+
+					response.setSucces(true);
+					response.setMessage("Ajout effectué");
+					response.setObjet(produit);
+				}
+			}catch (NumberFormatException e){
+				response.setSucces(false);
+				response.setMessage("La quantité entrante n'est pas un chiffre valide");
+			}
+		} catch (ParseException e) {
+			response.setSucces(false);
+			response.setMessage("Une ou plusieurs dates sont invalides");
+		}
+
+		return response;
 	}
-	
-	@RequestMapping(value = "/consultation", method = RequestMethod.GET)
-	public String consultation(Model model)
-	{
-		model.addAttribute("produit", produitService.newProduit());
-		model.addAttribute("produitList", produitService.findAllProduit());
-		return "pharmacie/consultation";
+
+	@ResponseBody
+	@RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
+	public JsonResponse delete(@PathVariable("id") long id){
+		JsonResponse response = new JsonResponse();
+		Optional<Produit> produit = produitService.findOne(id);
+
+		if(produit.isPresent()){
+			response.setSucces(true);
+			response.setObjet(produit.get());
+		}else{
+			response.setSucces(false);
+			response.setMessage("Une erreur s\'est produite");
+		}
+
+		return response;
 	}
-	
+
+	@ResponseBody
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+	public JsonResponse edit(@PathVariable("id")  Produit produit, @RequestParam("nom") String nom,
+							 @RequestParam("dateDelivrance") String dateDeliv, @RequestParam("fournisseur") String fournisseur,
+							 @RequestParam("projet") String projet, @RequestParam("responsable") String respo,
+							 @RequestParam("qteEntrante") String qteEntrante, @RequestParam("qteRestante") String qteRestante,
+							 @RequestParam("numLot") String numLot, @RequestParam("datePeremption") String datePeremp){
+		JsonResponse response = new JsonResponse();
+
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+
+		try {
+			Date dateDel = formatter.parse(dateDeliv);
+			Date datePer = formatter.parse(datePeremp);
+
+			try {
+				Float qteEntr = Float.parseFloat(qteEntrante);
+				Float qteRest = Float.parseFloat(qteRestante);
+
+				if(dateDel.after(datePer)){
+					response.setSucces(false);
+					response.setMessage("La date de péremption est inférieure à la date de délivrance");
+				}else if(qteEntr <= 0 || qteRest < 0){
+					response.setSucces(false);
+					response.setMessage("La quantité entrante ne peut être inférieure ou égale à 0");
+				}else{
+					produitService.update(produit, nom, dateDel, fournisseur, projet, respo, qteEntr, qteRest, numLot, datePer);
+					response.setSucces(true);
+					response.setMessage("Produit modifié");
+					response.setObjet(produit);
+				}
+			}catch (NumberFormatException e){
+				response.setSucces(false);
+				response.setMessage("La quantité entrante n'est pas un chiffre valide");
+			}
+		} catch (ParseException e) {
+			response.setSucces(false);
+			response.setMessage("Une ou plusieurs dates sont invalides");
+		}
+
+		return response;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public JsonResponse delete(@PathVariable("id")  Produit produit){
+		JsonResponse response = new JsonResponse();
+		produitService.delete(produit);
+		response.setSucces(true);
+		response.setMessage("Produit supprimé");
+		return response;
+	}
+
+
 }

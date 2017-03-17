@@ -336,7 +336,7 @@ public class OpuController
 
 		for (int index = 0; index < traitement_donneuse.getTableau_pharmacie().size(); index++)
 		{
-			traitement_donneuse.getTableau_pharmacie().get(index).getProduit().setQte_restante(traitement_donneuse.getTableau_pharmacie().get(index).getProduit().getQte_restante() - traitement_donneuse.getTableau_pharmacie().get(index).getQuantite());
+			traitement_donneuse.getTableau_pharmacie().get(index).getProduit().setQteRestante(traitement_donneuse.getTableau_pharmacie().get(index).getProduit().getQteRestante() - traitement_donneuse.getTableau_pharmacie().get(index).getQuantite());
 			produitService.updateProduit(traitement_donneuse.getTableau_pharmacie().get(index).getProduit());
 			tableau_pharmacieService.addTableau_Pharmacie(traitement_donneuse.getTableau_pharmacie().get(index));
 		}

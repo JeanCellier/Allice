@@ -18,9 +18,16 @@ public class ProduitPopulator
 	@PostConstruct
 	void init()
 	{
-		produitService.createProduit("1", Calendar.getInstance().getTime(), "1", "1", "1", 5, 5, "1", Calendar.getInstance().getTime(), "1");
-		produitService.createProduit("2", Calendar.getInstance().getTime(), "1", "1", "1", 5, 5, "1", Calendar.getInstance().getTime(), "1");
-		produitService.createProduit("3", Calendar.getInstance().getTime(), "1", "1", "1", 5, 5, "1", Calendar.getInstance().getTime(), "1");
-		produitService.createProduit("4", Calendar.getInstance().getTime(), "1", "1", "1", 5, 5, "1", Calendar.getInstance().getTime(), "1");
+		/*Produit produit = new Produit();
+		produit.setNom("lol");
+		produit.setDateDelivrance(Calendar.getInstance().getTime());
+		produit.setFournisseur("xd");
+		produit.setProjet("peoeo");
+		produit.setResponsable("eeree");
+		produit.setQteEntrante(5);
+		produit.setNumLot("erere");
+		produit.setDatePeremption(Calendar.getInstance().getTime());
+
+		produitService.createProduit(produit);*/
 	}
 }

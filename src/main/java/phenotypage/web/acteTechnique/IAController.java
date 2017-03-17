@@ -14,7 +14,6 @@ import phenotypage.model.donneExistante.programme.ProgrammeService;
 import phenotypage.model.fiche.ficheCol.FicheColService;
 import phenotypage.model.fiche.ficheIa.FicheIa;
 import phenotypage.model.fiche.ficheIa.FicheIaService;
-import phenotypage.model.fiche.ficheOpu.FicheOpu;
 import phenotypage.model.fiches.traitement.header.Header;
 import phenotypage.model.fiches.traitement.header.HeaderService;
 import phenotypage.model.gestation.Gestation;
@@ -31,7 +30,6 @@ import phenotypage.model.traitementDonneuse.tableauPharmacie.Tableau_PharmacieSe
 import phenotypage.model.vache.Vache;
 import phenotypage.model.vache.VacheService;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -299,7 +297,7 @@ public class IAController
 
 		for (int index = 0; index < traitementDonneuse.getTableau_pharmacie().size(); index++)
 		{
-			traitementDonneuse.getTableau_pharmacie().get(index).getProduit().setQte_restante(traitementDonneuse.getTableau_pharmacie().get(index).getProduit().getQte_restante() - traitementDonneuse.getTableau_pharmacie().get(index).getQuantite());
+			traitementDonneuse.getTableau_pharmacie().get(index).getProduit().setQteRestante(traitementDonneuse.getTableau_pharmacie().get(index).getProduit().getQteRestante() - traitementDonneuse.getTableau_pharmacie().get(index).getQuantite());
 			produitService.updateProduit(traitementDonneuse.getTableau_pharmacie().get(index).getProduit());
 			tableau_pharmacieService.addTableau_Pharmacie(traitementDonneuse.getTableau_pharmacie().get(index));
 		}

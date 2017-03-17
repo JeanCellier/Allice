@@ -447,9 +447,14 @@ $pagination-color:                     $green-primary;
 // $pagination-border:                    #ddd
 
 // $pagination-hover-color:               $link-hover-color
+$pagination-hover-color:               $brand-primary;
+$pagination-hover-bg:                  $green-primary;
 // $pagination-hover-bg:                  $gray-lighter
 // $pagination-hover-border:              #ddd
 
+ $pagination-active-color:              $green-primary;
+ $pagination-active-bg:                 darken($brand-primary, 10%);
+$pagination-active-border:             darken($brand-primary, 40%);
 // $pagination-active-color:              #fff
 // $pagination-active-bg:                 $brand-primary
 // $pagination-active-border:             $brand-primary
@@ -847,4 +852,5 @@ $pagination-color:                     $green-primary;
 /** Custom Sass */
 .sidebar{
  height: 100vh;
+ font-weight: bold;
 }
