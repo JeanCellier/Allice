@@ -62,19 +62,19 @@
 				<div class="modal-body">
 					<form id="addForm" action="./add" method="POST">
 							<div class="form-group">
-								<input class="form-control " name="nom" required type="text" placeholder="Nom du produit">
+								<input class="form-control nom" name="nom" required type="text" placeholder="Nom du produit">
 							</div>
 							<div class="form-group">
 								<input class="form-control datepicker" name="dateDelivrance" type="text" placeholder="Date de d&#233livrance">
 							</div>
 							<div class="form-group">
-								<input class="form-control " name="fournisseur" type="text" placeholder="Fournisseur">
+								<input class="form-control fournisseur" name="fournisseur" type="text" placeholder="Fournisseur">
 							</div>
 							<div class="form-group">
-								<input class="form-control " name="projet" type="text" placeholder="Projet">
+								<input class="form-control projet" name="projet" type="text" placeholder="Projet">
 							</div>
 							<div class="form-group">
-								<input class="form-control " name="responsable" type="text" placeholder="Responsable">
+								<input class="form-control responsable" name="responsable" type="text" placeholder="Responsable">
 							</div>
 							<div class="form-group">
 								<input class="form-control " name="qteEntrante" type="text" placeholder="Quantit&#233 entrante">
@@ -109,19 +109,19 @@
                 <div class="modal-body">
 					<form id="editForm" action="./edit" method="POST">
 						<div class="form-group">
-							<input class="form-control " id="nom" name="nom" required type="text" placeholder="Nom du produit">
+							<input class="form-control nom" id="nom" name="nom" required type="text" placeholder="Nom du produit">
 						</div>
 						<div class="form-group">
 							<input class="form-control datepicker" name="dateDelivrance" type="text" placeholder="Date de d&#233livrance">
 						</div>
 						<div class="form-group">
-							<input class="form-control " name="fournisseur" type="text" placeholder="Fournisseur">
+							<input class="form-control fournisseur" name="fournisseur" type="text" placeholder="Fournisseur">
 						</div>
 						<div class="form-group">
-							<input class="form-control " name="projet" type="text" placeholder="Projet">
+							<input class="form-control projet" name="projet" type="text" placeholder="Projet">
 						</div>
 						<div class="form-group">
-							<input class="form-control " name="responsable" type="text" placeholder="Responsable">
+							<input class="form-control responsable" name="responsable" type="text" placeholder="Responsable">
 						</div>
 						<div class="form-group">
 							<input class="form-control " name="qteEntrante" type="text" placeholder="Quantit&#233 entrante">
@@ -176,7 +176,6 @@
 <script type="text/javascript" src="../static/js/datepicker-fr.js"></script>
 <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
-
 <link rel="stylesheet" type="text/css" media="all" href="../../static/css/datables.bootstrap.css"/>
 
 <script>
@@ -341,12 +340,29 @@
 				}
 			}
 		});
-    	});
+	});
 
-		/** supprimer alert après 5s */
-		window.setTimeout(function() {
-			$(".flash").fadeTo(500, 0).slideUp(500, function(){
-				$(this).remove();
-			});
-		}, 5000);
+	/** supprimer alert après 5s */
+	window.setTimeout(function() {
+		$(".flash").fadeTo(500, 0).slideUp(500, function(){
+			$(this).remove();
+		});
+	}, 5000);
+
+	/******************************* AUTOCOMPLETE ****************************/
+    $( ".nom" ).autocomplete({
+        source: '${pageContext. request. contextPath}/pharmacie/get/names'
+    });
+
+    $( ".fournisseur" ).autocomplete({
+        source: '${pageContext. request. contextPath}/pharmacie/get/fournisseurs'
+    });
+
+    $( ".projet" ).autocomplete({
+        source: '${pageContext. request. contextPath}/pharmacie/get/projets'
+    });
+
+    $( ".responsable" ).autocomplete({
+        source: '${pageContext. request. contextPath}/pharmacie/get/responsables'
+    });
 </script>

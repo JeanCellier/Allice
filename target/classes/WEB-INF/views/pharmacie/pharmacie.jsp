@@ -62,19 +62,19 @@
 				<div class="modal-body">
 					<form id="addForm" action="./add" method="POST">
 							<div class="form-group">
-								<input class="form-control " name="nom" required type="text" placeholder="Nom du produit">
+								<input class="form-control nom" name="nom" required type="text" placeholder="Nom du produit">
 							</div>
 							<div class="form-group">
 								<input class="form-control datepicker" name="dateDelivrance" type="text" placeholder="Date de d&#233livrance">
 							</div>
 							<div class="form-group">
-								<input class="form-control " name="fournisseur" type="text" placeholder="Fournisseur">
+								<input class="form-control fournisseur" name="fournisseur" type="text" placeholder="Fournisseur">
 							</div>
 							<div class="form-group">
-								<input class="form-control " name="projet" type="text" placeholder="Projet">
+								<input class="form-control projet" name="projet" type="text" placeholder="Projet">
 							</div>
 							<div class="form-group">
-								<input class="form-control " name="responsable" type="text" placeholder="Responsable">
+								<input class="form-control responsable" name="responsable" type="text" placeholder="Responsable">
 							</div>
 							<div class="form-group">
 								<input class="form-control " name="qteEntrante" type="text" placeholder="Quantit&#233 entrante">
@@ -109,19 +109,19 @@
                 <div class="modal-body">
 					<form id="editForm" action="./edit" method="POST">
 						<div class="form-group">
-							<input class="form-control " id="nom" name="nom" required type="text" placeholder="Nom du produit">
+							<input class="form-control nom" id="nom" name="nom" required type="text" placeholder="Nom du produit">
 						</div>
 						<div class="form-group">
 							<input class="form-control datepicker" name="dateDelivrance" type="text" placeholder="Date de d&#233livrance">
 						</div>
 						<div class="form-group">
-							<input class="form-control " name="fournisseur" type="text" placeholder="Fournisseur">
+							<input class="form-control fournisseur" name="fournisseur" type="text" placeholder="Fournisseur">
 						</div>
 						<div class="form-group">
-							<input class="form-control " name="projet" type="text" placeholder="Projet">
+							<input class="form-control projet" name="projet" type="text" placeholder="Projet">
 						</div>
 						<div class="form-group">
-							<input class="form-control " name="responsable" type="text" placeholder="Responsable">
+							<input class="form-control responsable" name="responsable" type="text" placeholder="Responsable">
 						</div>
 						<div class="form-group">
 							<input class="form-control " name="qteEntrante" type="text" placeholder="Quantit&#233 entrante">
@@ -161,7 +161,7 @@
 
 				<div class="modal-footer ">
 					<button type="button" id="confirmDelete" class="btn btn-danger" ><span class="fa fa-check"></span> Oui</button>
-					<button type="submit" class="btn btn-default" data-dismiss="modal"><span class="fa fa-remove"></span> Non</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal"><span class="fa fa-remove"></span> Non</button>
 				</div>
 			</div>
 			<!-- /.modal-content -->
@@ -176,10 +176,11 @@
 <script type="text/javascript" src="../static/js/datepicker-fr.js"></script>
 <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
-
 <link rel="stylesheet" type="text/css" media="all" href="../../static/css/datables.bootstrap.css"/>
 
 <script>
+    var currentrow; //la row courante à edit ou delete
+
 	/** function convertion des dates */
     function convertDate(inputFormat) {
         function pad(s) { return (s < 10) ? '0' + s : s; }
@@ -198,6 +199,7 @@
 
     /** function addRow */
     function addRow(result) {
+        //converti date bon format
         var datedelivrance = new Date(result.objet.dateDelivrance);
         var datePeremption = new Date(result.objet.datePeremption);
 
@@ -213,124 +215,154 @@
             "<td>" + result.objet.numLot + "</td>",
             "<td>" + convertDate(datePeremption) + "</td>",
 
-            '<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="' + result.objet.id + '" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>',
-            '<td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/+' + result.objet.id + '" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>'
+            '<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="'+ result.objet.id +'" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>',
+            '<td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/'+ result.objet.id + '" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>'
         ]).draw(false);
     }
 
-    $(document).ready(function() {
 
-        /** init la table */
-        $('#tableProduit').DataTable( {
-            "pagingType": "full_numbers",
-            "columnDefs": [
-                { "orderable": false, "targets": 9},
-				{ "orderable": false, "targets": 10 }
-            ],"language": {
-                "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json"
+	/** init la table */
+	$('#tableProduit').DataTable( {
+		"pagingType": "full_numbers",
+		"columnDefs": [
+			{ "orderable": false, "targets": 9},
+			{ "orderable": false, "targets": 10 }
+		],"language": {
+			"url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json"
+		}
+	});
+
+	/************************ AJOUT *************************/
+
+	/** Ajoute un nouveau produit */
+	$('#addForm').on('submit', function(e) {
+		e.preventDefault();
+
+		var $this = $(this);
+
+		$.ajax({
+			url: $this.attr('action'),
+			type: $this.attr('method'),
+			data: $this.serialize(),
+			success: function(result) {
+				if(result.succes == true){
+					$('input').val(''); //clear modal
+					$('#add').modal('toggle'); //ferme modal
+					$('#tableProduit').before('<div class="alert alert-success" role="alert">'+result.message+'</div>'); //afficher alert
+					addRow(result);
+				}else{
+					$('#addForm').before('<div class="alert alert-danger" role="alert">'+result.message+'</div>');
+				}
+			}
+		});
+	});
+
+    /************************ Modif *************************/
+
+	/** Attribue la ligne courante et rempli le modal */
+	$(document).on( 'click', ".btnEdit", function(){
+		id = $(this).data('id');
+		currentrow = $(this).closest('tr'); //get la row parent
+
+		$.ajax({
+			url: "./get/"+id,
+			method: 'GET',
+			success: function (result) {
+				if(result.succes == true) {
+					$('#edit')
+						.find('[name="nom"]').val(result.objet.nom).end()
+						.find('[name="dateDelivrance"]').val(convertDate(result.objet.dateDelivrance)).end()
+						.find('[name="fournisseur"]').val(result.objet.fournisseur).end()
+						.find('[name="projet"]').val(result.objet.projet).end()
+						.find('[name="responsable"]').val(result.objet.responsable).end()
+						.find('[name="qteEntrante"]').val(result.objet.qteEntrante).end()
+						.find('[name="qteRestante"]').val(result.objet.qteRestante).end()
+						.find('[name="numLot"]').val(result.objet.numLot).end()
+						.find('[name="datePeremption"]').val(convertDate(result.objet.datePeremption)).end();
+
+					$('#editForm').attr('action', "./edit/"+id);
+				}else{
+					$('#edit').modal('toggle'); //ferme modal
+					$('#tableProduit').before('<div class="alert alert-warning" role="alert">'+result.message+'</div>'); //afficher alert
+				}
+			}
+		});
+	});
+
+	/** Effectue les modifs si validation */
+    $('#editForm').on('submit', function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            url: $(this).attr('action'),//+"/"+id,
+            type: $(this).attr('method'),
+            data: $(this).serialize(),
+            success: function (result) {
+                if(result.succes == true){
+                    $('input').val('');
+                    $('#edit').modal('toggle');
+                    $('#tableProduit').before('<div class="alert alert-success" role="alert">'+result.message+'</div>');
+                    $('#tableProduit').DataTable().row(currentrow).remove().draw();
+                    addRow(result);
+                }else{
+                    $('#editForm').before('<div class="alert alert-warning" role="alert">'+result.message+'</div>');
+                }
             }
         });
+    });
 
-        /** Ajoute un nouveau produit */
-        $('#addForm').on('submit', function(e) {
-            e.preventDefault();
+    /************************ SUPPRIMER *************************/
 
-            var $this = $(this);
+	/** Attribut la ligne courante et l'url de delete */
+	$(document).on('click', '.btnDelete', function(e){ //au clic sur le bouton supprimer
+		e.preventDefault();
 
-			$.ajax({
-				url: $this.attr('action'),
-				type: $this.attr('method'),
-				data: $this.serialize(),
-				success: function(result) {
-					if(result.succes == true){
-                        $('input').val(''); //clear modal
-                        $('#add').modal('toggle'); //ferme modal
-                        $('#tableProduit').before('<div class="alert alert-success" role="alert">'+result.message+'</div>'); //afficher alert
-                        addRow(result);
-					}else{
-                        $('#addForm').before('<div class="alert alert-danger" role="alert">'+result.message+'</div>');
-					}
+		currentrow = $(this).closest('tr'); //get la row parent
+
+		$('#delete').on('shown.bs.modal', function(e) {
+			$(this).find('#confirmDelete').attr('href', $(e.relatedTarget).data('href')); //attribut l'url de delete
+		});
+	});
+
+	/** Si click sur confirm => supprime la row et l'entrée */
+	$(document).on('click', '#confirmDelete', function(e){
+		$.ajax({
+			url: $(this).attr('href'),
+			type: $(this).attr('method'),
+			success: function (result) {
+				if(result.succes == true){
+					$('#delete').modal('toggle'); //ferme modal
+					$('#tableProduit').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>'); //afficher alert
+					$('#tableProduit').DataTable().row(currentrow).remove().draw();
+				}else{
+					$('#delete').modal('toggle'); //ferme modal
+					$('#tableProduit').before('<div class="alert alert-warning" role="alert">'+result.message+'</div>'); //afficher alert
 				}
-			});
-        });
+			}
+		});
+	});
 
-        /** Modifie un produit */
-        $('.btnEdit').click(function(){
-            id = $(this).data('id');
-            row = $(this).closest('tr'); //get la row parent
+	/** supprimer alert après 5s */
+	window.setTimeout(function() {
+		$(".flash").fadeTo(500, 0).slideUp(500, function(){
+			$(this).remove();
+		});
+	}, 5000);
 
-            $.ajax({
-                url: "./get/"+id,
-                method: 'GET',
-                success: function (result) {
-                    if(result.succes == true) {
-                        $('#edit')
-                            .find('[name="nom"]').val(result.objet.nom).end()
-                            .find('[name="dateDelivrance"]').val(convertDate(result.objet.dateDelivrance)).end()
-                            .find('[name="fournisseur"]').val(result.objet.fournisseur).end()
-                            .find('[name="projet"]').val(result.objet.projet).end()
-                            .find('[name="responsable"]').val(result.objet.responsable).end()
-                            .find('[name="qteEntrante"]').val(result.objet.qteEntrante).end()
-                            .find('[name="qteRestante"]').val(result.objet.qteRestante).end()
-                            .find('[name="numLot"]').val(result.objet.numLot).end()
-                            .find('[name="datePeremption"]').val(convertDate(result.objet.datePeremption)).end()
-                    }else{
-                        $('#edit').modal('toggle'); //ferme modal
-                        $('#tableProduit').before('<div class="alert alert-warning" role="alert">'+result.message+'</div>'); //afficher alert
-					}
-                }
-            });
+	/******************************* AUTOCOMPLETE ****************************/
+    $( ".nom" ).autocomplete({
+        source: '${pageContext. request. contextPath}/pharmacie/get/names'
+    });
 
-			$('#editForm').on('submit', function(e) {
-				e.preventDefault();
+    $( ".fournisseur" ).autocomplete({
+        source: '${pageContext. request. contextPath}/pharmacie/get/fournisseurs'
+    });
 
-				$.ajax({
-					url: $(this).attr('action')+"/"+id,
-					type: $(this).attr('method'),
-					data: $(this).serialize(),
-					success: function (result) {
-						if(result.succes == true){
-							$('input').val('');
-							$('#edit').modal('toggle');
-							$('#tableProduit').before('<div class="alert alert-success" role="alert">'+result.message+'</div>');
-							$('#tableProduit').DataTable().row(row).remove().draw();
-							addRow(result);
-						}else{
-							$('#editForm').before('<div class="alert alert-warning" role="alert">'+result.message+'</div>');
-						}
-					}
-				});
-			});
-        });
+    $( ".projet" ).autocomplete({
+        source: '${pageContext. request. contextPath}/pharmacie/get/projets'
+    });
 
-
-        /** Supprime un produit */
-
-        $('.btnDelete').click(function(){ //au clic sur le bouton supprimer
-            var row = $(this).closest('tr'); //get la row parent
-
-            $('#delete').on('show.bs.modal', function(e) {
-
-                $(this).find('#confirmDelete').attr('href', $(e.relatedTarget).data('href')); //attribut l'url de delete
-
-                $('#confirmDelete').click(function(){ //si click sur ok => delete
-                    $.ajax({
-                        url: $(this).attr('href'),
-                        type: $(this).attr('method'),
-                        success: function (result) {
-                            if(result.succes == true){
-                                $('#delete').modal('toggle'); //ferme modal
-                                $('#tableProduit').before('<div class="alert alert-success" role="alert">'+result.message+'</div>'); //afficher alert
-                                $('#tableProduit').DataTable().row(row).remove().draw();
-                            }else{
-                                $('#delete').modal('toggle'); //ferme modal
-                                $('#tableProduit').before('<div class="alert alert-warning" role="alert">'+result.message+'</div>'); //afficher alert
-                            }
-                        }
-                    });
-                })
-            });
-		})
-
+    $( ".responsable" ).autocomplete({
+        source: '${pageContext. request. contextPath}/pharmacie/get/responsables'
     });
 </script>

@@ -10,6 +10,7 @@ import phenotypage.model.pharmacie.produit.ProduitService;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -19,15 +20,16 @@ public class PharmacieController
 {
 	@Autowired
 	private ProduitService produitService;
-	
+
+	/** ACCUEIL PHARMACIE **/
 	@RequestMapping(value = "/pharmacie", method = RequestMethod.GET)
 	public String pharmacie(Model model)
 	{
 		model.addAttribute("produitList", produitService.findAllProduit());
-		model.addAttribute("produit", produitService.newProduit());
 		return "pharmacie/pharmacie";
 	}
 
+	/** ADD **/
 	@ResponseBody
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public JsonResponse add(@RequestParam("nom") String nom, @RequestParam("dateDelivrance") String dateDeliv,
@@ -70,6 +72,7 @@ public class PharmacieController
 		return response;
 	}
 
+	/** GET ONE */
 	@ResponseBody
 	@RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
 	public JsonResponse delete(@PathVariable("id") long id){
@@ -87,6 +90,7 @@ public class PharmacieController
 		return response;
 	}
 
+	/** EDIT **/
 	@ResponseBody
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
 	public JsonResponse edit(@PathVariable("id")  Produit produit, @RequestParam("nom") String nom,
@@ -130,6 +134,7 @@ public class PharmacieController
 		return response;
 	}
 
+	/** DELETE **/
 	@ResponseBody
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public JsonResponse delete(@PathVariable("id")  Produit produit){
@@ -140,5 +145,28 @@ public class PharmacieController
 		return response;
 	}
 
+	/** AUTOCOMPLETE **/
+	@ResponseBody
+	@RequestMapping(value="/get/names", method = RequestMethod.GET)
+	public List<String> getNames(@RequestParam("term") String tag){
+		return produitService.findDistinctNames(tag);
+	}
 
+	@ResponseBody
+	@RequestMapping(value="/get/fournisseurs", method = RequestMethod.GET)
+	public List<String> getFournisseurs(@RequestParam("term") String tag){
+		return produitService.findDistinctFournisseurs(tag);
+	}
+
+	@ResponseBody
+	@RequestMapping(value="/get/projets", method = RequestMethod.GET)
+	public List<String> getProjets(@RequestParam("term") String tag){
+		return produitService.findDistinctProjets(tag);
+	}
+
+	@ResponseBody
+	@RequestMapping(value="/get/responsables", method = RequestMethod.GET)
+	public List<String> getResponsables(@RequestParam("term") String tag){
+		return produitService.findDistinctResponsables(tag);
+	}
 }

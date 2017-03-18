@@ -11,23 +11,23 @@ public interface ProduitService
 {
 	Produit createProduit(String nom, Date dateDel, String fournisseur, String projet, String respo, float qteEntr, String numLot, Date datePer);
 
-	Produit save(Produit produit);
-
-	List<Produit> findAllProduit();
-
-	Produit findProduitByNom(String nom);
+	void update(Produit produit, String nom, Date dateDeliv, String fournisseur, String projet, String respo, float qteEntrante, float qteRestante, String numLot, Date datePeremp);
 
 	void updateProduit(Produit produit);
 
-	Produit newProduit();
+	Produit save(Produit produit);
 
-	Produit findProduitById(Long id);
+	void delete(Produit produit);
 
-	List<Produit> findAllByOrderByDateDelivranceDesc();
-
-    void delete(Produit produit);
+	List<Produit> findAllProduit();
 
 	Optional<Produit> findOne(long id);
 
-	void update(Produit produit, String nom, Date dateDeliv, String fournisseur, String projet, String respo, float qteEntrante, float qteRestante, String numLot, Date datePeremp);
+	List<String> findDistinctNames(String tag);
+
+	List<String> findDistinctFournisseurs(String tag);
+
+	List<String> findDistinctProjets(String tag);
+
+	List<String> findDistinctResponsables(String tag);
 }
