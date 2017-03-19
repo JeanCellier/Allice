@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c1b2266e-e014-46c0-a873-aa645bb17deb" name="Default" comment="Ajout auto completion">
+    <list default="true" id="c1b2266e-e014-46c0-a873-aa645bb17deb" name="Default" comment="bug taille 100 % réglé">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sass-cache/1e064fa7b898df4d2e93697f097b4573bfb48b1b/_bootstrap-variables.scssc" afterPath="$PROJECT_DIR$/.sass-cache/1e064fa7b898df4d2e93697f097b4573bfb48b1b/_bootstrap-variables.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/web/PharmacieController.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/web/PharmacieController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/footer.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/footer.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/menu.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/menu.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/pharmacie/pharmacie.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/pharmacie/pharmacie.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/bootstrap/sass/_bootstrap-variables.scss" afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/sass/_bootstrap-variables.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/css/styles.css" afterPath="$PROJECT_DIR$/src/main/resources/static/css/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/WEB-INF/views/menu.jsp" afterPath="$PROJECT_DIR$/target/classes/WEB-INF/views/menu.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/WEB-INF/views/footer.jsp" afterPath="$PROJECT_DIR$/target/classes/WEB-INF/views/footer.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/WEB-INF/views/pharmacie/pharmacie.jsp" afterPath="$PROJECT_DIR$/target/classes/WEB-INF/views/pharmacie/pharmacie.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/bootstrap/sass/_bootstrap-variables.scss" afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/sass/_bootstrap-variables.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/css/styles.css" afterPath="$PROJECT_DIR$/target/classes/static/css/styles.css" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,21 +34,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_bootstrap-variables.scss" pinned="false" current-in-tab="false">
+      <file leaf-file-name="_bootstrap-variables.scss" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/bootstrap/sass/_bootstrap-variables.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15498">
-              <caret line="861" column="14" lean-forward="false" selection-start-line="861" selection-start-column="14" selection-end-line="861" selection-end-column="14" />
+            <state relative-caret-position="476">
+              <caret line="857" column="1" lean-forward="false" selection-start-line="857" selection-start-column="1" selection-end-line="857" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pharmacie.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pharmacie.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/pharmacie/pharmacie.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1711">
-              <caret line="255" column="28" lean-forward="false" selection-start-line="255" selection-start-column="28" selection-end-line="255" selection-end-column="28" />
+            <state relative-caret-position="215">
+              <caret line="232" column="24" lean-forward="false" selection-start-line="232" selection-start-column="24" selection-end-line="232" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -174,8 +169,8 @@
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/web/validators/pharmacie/ProduitValidator.java" />
         <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/footer.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/menu.jsp" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/bootstrap/sass/_bootstrap-variables.scss" />
         <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/pharmacie/pharmacie.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/bootstrap/sass/_bootstrap-variables.scss" />
       </list>
     </option>
   </component>
@@ -187,9 +182,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1920" />
+    <option name="y" value="27" />
     <option name="width" value="1920" />
-    <option name="height" value="1080" />
+    <option name="height" value="1053" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -206,6 +201,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -600,9 +597,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1060,7 +1055,8 @@
       <workItem from="1489889195904" duration="5314000" />
       <workItem from="1489925602547" duration="1363000" />
       <workItem from="1489931005922" duration="4768000" />
-      <workItem from="1489935902994" duration="299000" />
+      <workItem from="1489935902994" duration="1239000" />
+      <workItem from="1489942508108" duration="2200000" />
     </task>
     <task id="LOCAL-00001" summary="interface pharmacie">
       <created>1489611137333</created>
@@ -1139,14 +1135,21 @@
       <option name="project" value="LOCAL" />
       <updated>1489838384481</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="refonte menu = &gt; compatible smartphone&#10;bug auto close des alertes réglé">
+      <created>1489936260243</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1489936260243</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79159000" />
+    <option name="totallyTimeSpent" value="82299000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="0" width="1920" height="1080" extended-state="6" />
+    <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1167,7 +1170,7 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3092999" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30860215" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
@@ -1190,7 +1193,8 @@
     <MESSAGE value="new menu + dropdown" />
     <MESSAGE value="Clean projet&#10;Maj api spring / dépendance &#10;Cohabitation font-awesome &amp; glyphicon&#10;Module pharmacie 100 %&#10;Modification produitservice/impl&#10;Maj menu" />
     <MESSAGE value="Ajout auto completion" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout auto completion" />
+    <MESSAGE value="refonte menu = &gt; compatible smartphone&#10;bug auto close des alertes réglé" />
+    <option name="LAST_COMMIT_MESSAGE" value="refonte menu = &gt; compatible smartphone&#10;bug auto close des alertes réglé" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1502,14 +1506,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/bootstrap/sass/_bootstrap-variables.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15498">
-          <caret line="861" column="14" lean-forward="false" selection-start-line="861" selection-start-column="14" selection-end-line="861" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/styleCustom.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -1520,8 +1516,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/pharmacie/pharmacie.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1711">
-          <caret line="255" column="28" lean-forward="false" selection-start-line="255" selection-start-column="28" selection-end-line="255" selection-end-column="28" />
+        <state relative-caret-position="215">
+          <caret line="232" column="24" lean-forward="false" selection-start-line="232" selection-start-column="24" selection-end-line="232" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/bootstrap/sass/_bootstrap-variables.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="857" column="1" lean-forward="false" selection-start-line="857" selection-start-column="1" selection-end-line="857" selection-end-column="1" />
           <folding />
         </state>
       </provider>

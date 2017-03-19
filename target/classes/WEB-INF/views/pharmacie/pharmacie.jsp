@@ -253,6 +253,7 @@
 				}else{
 					$('#addForm').before('<div class="alert alert-danger flash" role="alert">'+result.message+'</div>');
 				}
+                autoclose();
 			}
 		});
 	});
@@ -284,6 +285,7 @@
 				}else{
 					$('#edit').modal('toggle'); //ferme modal
 					$('#tableProduit').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>'); //afficher alert
+                    autoclose();
 				}
 			}
 		});
@@ -307,6 +309,7 @@
                 }else{
                     $('#editForm').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>');
                 }
+                autoclose();
             }
         });
     });
@@ -332,23 +335,22 @@
 			success: function (result) {
 				if(result.succes == true){
 					$('#delete').modal('toggle'); //ferme modal
-					var alert = '<div class="alert alert-success flash" role="alert">'+result.message+'</div>';
-						$('#tableProduit').before(alert); //afficher alert
+						$('#tableProduit').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>'); //afficher alert
 					$('#tableProduit').DataTable().row(currentrow).remove().draw();
-                    autoclose(alert);
 				}else{
 					$('#delete').modal('toggle'); //ferme modal
 					$('#tableProduit').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>'); //afficher alert
 
 				}
+                autoclose();
 			}
 		});
 	});
 
 	/** supprimer alert après 5s */
-	function autoclose(alert){
+	function autoclose(){
 		window.setTimeout(function() {
-			alert.fadeTo(500, 0).slideUp(500, function(){
+			$(".flash").fadeTo(500, 0).slideUp(500, function(){
                 $(this).remove();
 			});
 		}, 5000);
@@ -371,4 +373,8 @@
     $( ".responsable" ).autocomplete({
         source: '${pageContext. request. contextPath}/pharmacie/get/responsables'
     });
+
+    $('#tableProduit').on( 'length.dt', function ( e, settings, len ) {
+        $('#tableProduit').height($(document).height());
+    } );
 </script>

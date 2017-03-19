@@ -229,7 +229,8 @@
 			{ "orderable": false, "targets": 10 }
 		],"language": {
 			"url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json"
-		}
+		},
+        "pageLength": 25
 	});
 
 	/************************ AJOUT *************************/
@@ -372,5 +373,9 @@
 
     $( ".responsable" ).autocomplete({
         source: '${pageContext. request. contextPath}/pharmacie/get/responsables'
+    });
+
+    $.when($('#tableProduit').on( 'change')).done(function() {
+        $('.sidebar').height($(document).height());
     });
 </script>

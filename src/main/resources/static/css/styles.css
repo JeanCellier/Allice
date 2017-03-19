@@ -5,12 +5,6 @@
   font-weight: bold;
 }
 
-@media (min-width: 768px) {
-  /* line 861, ../bootstrap/sass/_bootstrap-variables.scss */
-  .sidebar {
-    height: 100vh;
-  }
-}
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
