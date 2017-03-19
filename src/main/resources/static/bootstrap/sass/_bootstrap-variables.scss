@@ -380,6 +380,9 @@ $dropdown-link-hover-bg:         darken($green-primary, 5%);
 // $navbar-default-brand-hover-bg:            transparent
 
 // Navbar toggle
+$navbar-default-toggle-hover-bg:           darken($green-primary, 10%);
+$navbar-default-toggle-icon-bar-bg:        $brand-primary;
+$navbar-default-toggle-border-color:       darken($green-primary, 5%);
 // $navbar-default-toggle-hover-bg:           #ddd
 // $navbar-default-toggle-icon-bar-bg:        #888
 // $navbar-default-toggle-border-color:       #ddd
@@ -850,7 +853,12 @@ $pagination-active-border:             darken($brand-primary, 40%);
 // $hr-border:                   $gray-lighter
 
 /** Custom Sass */
-.sidebar{
- height: 100vh;
+.sidebar {
  font-weight: bold;
+}
+
+@media (min-width: 768px){
+ .sidebar {
+  height: 100vh;
+ }
 }

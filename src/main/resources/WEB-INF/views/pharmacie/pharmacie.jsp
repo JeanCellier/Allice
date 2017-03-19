@@ -1,10 +1,10 @@
 <%@ include file="../header.jsp" %>
 
-<main class="col-md-10">
+<main class="col-sm-9 col-md-10">
 	<h1 class="page-header">Pharmacie</h1>
 
 	<div class="row placeholders">
-		<div class="sm-1 col-md-1">
+		<div class="col-sm-1 col-md-1">
 			<p data-placement="top" data-toggle="tooltip" title="add"  style="padding-left:15px;padding-top:10px">
 				<button class="btn btn-primary btn-md" data-title="Add" data-toggle="modal" data-target="#add" >
 					<span class="fa fa-plus"> Ajouter</span>
@@ -12,7 +12,7 @@
 			</p>
 
 		</div>
-		<div class="col-md-12" id="contentPharmacie" style="padding:30px;">
+		<div class="col-sm-12 col-md-12" id="contentPharmacie" style="padding:30px;">
 			<table id="tableProduit" class="table table-hover">
 				<thead>
 					<tr>
@@ -248,11 +248,12 @@
 				if(result.succes == true){
 					$('input').val(''); //clear modal
 					$('#add').modal('toggle'); //ferme modal
-					$('#tableProduit').before('<div class="alert alert-success" role="alert">'+result.message+'</div>'); //afficher alert
+					$('#tableProduit').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>'); //afficher alert
 					addRow(result);
 				}else{
-					$('#addForm').before('<div class="alert alert-danger" role="alert">'+result.message+'</div>');
+					$('#addForm').before('<div class="alert alert-danger flash" role="alert">'+result.message+'</div>');
 				}
+                autoclose();
 			}
 		});
 	});
@@ -283,7 +284,8 @@
 					$('#editForm').attr('action', "./edit/"+id);
 				}else{
 					$('#edit').modal('toggle'); //ferme modal
-					$('#tableProduit').before('<div class="alert alert-warning" role="alert">'+result.message+'</div>'); //afficher alert
+					$('#tableProduit').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>'); //afficher alert
+                    autoclose();
 				}
 			}
 		});
@@ -301,12 +303,13 @@
                 if(result.succes == true){
                     $('input').val('');
                     $('#edit').modal('toggle');
-                    $('#tableProduit').before('<div class="alert alert-success" role="alert">'+result.message+'</div>');
+                    $('#tableProduit').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>');
                     $('#tableProduit').DataTable().row(currentrow).remove().draw();
                     addRow(result);
                 }else{
-                    $('#editForm').before('<div class="alert alert-warning" role="alert">'+result.message+'</div>');
+                    $('#editForm').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>');
                 }
+                autoclose();
             }
         });
     });
@@ -332,22 +335,27 @@
 			success: function (result) {
 				if(result.succes == true){
 					$('#delete').modal('toggle'); //ferme modal
-					$('#tableProduit').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>'); //afficher alert
+						$('#tableProduit').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>'); //afficher alert
 					$('#tableProduit').DataTable().row(currentrow).remove().draw();
 				}else{
 					$('#delete').modal('toggle'); //ferme modal
-					$('#tableProduit').before('<div class="alert alert-warning" role="alert">'+result.message+'</div>'); //afficher alert
+					$('#tableProduit').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>'); //afficher alert
+
 				}
+                autoclose();
 			}
 		});
 	});
 
 	/** supprimer alert après 5s */
-	window.setTimeout(function() {
-		$(".flash").fadeTo(500, 0).slideUp(500, function(){
-			$(this).remove();
-		});
-	}, 5000);
+	function autoclose(){
+		window.setTimeout(function() {
+			$(".flash").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove();
+			});
+		}, 5000);
+	}
+
 
 	/******************************* AUTOCOMPLETE ****************************/
     $( ".nom" ).autocomplete({

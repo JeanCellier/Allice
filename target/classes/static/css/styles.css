@@ -1,11 +1,16 @@
 @charset "UTF-8";
 /** Custom Sass */
-/* line 853, ../bootstrap/sass/_bootstrap-variables.scss */
+/* line 856, ../bootstrap/sass/_bootstrap-variables.scss */
 .sidebar {
-  height: 100vh;
   font-weight: bold;
 }
 
+@media (min-width: 768px) {
+  /* line 861, ../bootstrap/sass/_bootstrap-variables.scss */
+  .sidebar {
+    height: 100vh;
+  }
+}
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -6081,15 +6086,15 @@ tbody.collapse.in {
 }
 /* line 442, ../../../../../../../../../../.gem/ruby/2.4.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .navbar-toggle {
-  border-color: #ddd;
+  border-color: #05735c;
 }
 /* line 444, ../../../../../../../../../../.gem/ruby/2.4.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-  background-color: #ddd;
+  background-color: #045a49;
 }
 /* line 448, ../../../../../../../../../../.gem/ruby/2.4.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .navbar-toggle .icon-bar {
-  background-color: #888;
+  background-color: #f9f9f9;
 }
 /* line 453, ../../../../../../../../../../.gem/ruby/2.4.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-default .navbar-collapse,
