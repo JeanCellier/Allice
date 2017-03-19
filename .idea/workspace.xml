@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c1b2266e-e014-46c0-a873-aa645bb17deb" name="Default" comment="bug taille 100 % réglé">
+    <list default="true" id="c1b2266e-e014-46c0-a873-aa645bb17deb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sass-cache/1e064fa7b898df4d2e93697f097b4573bfb48b1b/_bootstrap-variables.scssc" afterPath="$PROJECT_DIR$/.sass-cache/1e064fa7b898df4d2e93697f097b4573bfb48b1b/_bootstrap-variables.scssc" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/pharmacie/pharmacie.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/pharmacie/pharmacie.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/bootstrap/sass/_bootstrap-variables.scss" afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/sass/_bootstrap-variables.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/css/styles.css" afterPath="$PROJECT_DIR$/src/main/resources/static/css/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/WEB-INF/views/footer.jsp" afterPath="$PROJECT_DIR$/target/classes/WEB-INF/views/footer.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/WEB-INF/views/pharmacie/pharmacie.jsp" afterPath="$PROJECT_DIR$/target/classes/WEB-INF/views/pharmacie/pharmacie.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,8 +33,8 @@
       <file leaf-file-name="_bootstrap-variables.scss" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/bootstrap/sass/_bootstrap-variables.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="857" column="1" lean-forward="false" selection-start-line="857" selection-start-column="1" selection-end-line="857" selection-end-column="1" />
+            <state relative-caret-position="517">
+              <caret line="863" column="1" lean-forward="false" selection-start-line="863" selection-start-column="1" selection-end-line="863" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -1056,7 +1052,7 @@
       <workItem from="1489925602547" duration="1363000" />
       <workItem from="1489931005922" duration="4768000" />
       <workItem from="1489935902994" duration="1239000" />
-      <workItem from="1489942508108" duration="2200000" />
+      <workItem from="1489942508108" duration="2295000" />
     </task>
     <task id="LOCAL-00001" summary="interface pharmacie">
       <created>1489611137333</created>
@@ -1142,11 +1138,18 @@
       <option name="project" value="LOCAL" />
       <updated>1489936260243</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="bug taille menu 100 % réglé">
+      <created>1489944737362</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1489944737362</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82299000" />
+    <option name="totallyTimeSpent" value="82394000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
@@ -1194,7 +1197,8 @@
     <MESSAGE value="Clean projet&#10;Maj api spring / dépendance &#10;Cohabitation font-awesome &amp; glyphicon&#10;Module pharmacie 100 %&#10;Modification produitservice/impl&#10;Maj menu" />
     <MESSAGE value="Ajout auto completion" />
     <MESSAGE value="refonte menu = &gt; compatible smartphone&#10;bug auto close des alertes réglé" />
-    <option name="LAST_COMMIT_MESSAGE" value="refonte menu = &gt; compatible smartphone&#10;bug auto close des alertes réglé" />
+    <MESSAGE value="bug taille menu 100 % réglé" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug taille menu 100 % réglé" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1524,8 +1528,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/bootstrap/sass/_bootstrap-variables.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="857" column="1" lean-forward="false" selection-start-line="857" selection-start-column="1" selection-end-line="857" selection-end-column="1" />
+        <state relative-caret-position="517">
+          <caret line="863" column="1" lean-forward="false" selection-start-line="863" selection-start-column="1" selection-end-line="863" selection-end-column="1" />
           <folding />
         </state>
       </provider>
