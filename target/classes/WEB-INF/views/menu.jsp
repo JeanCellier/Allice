@@ -6,7 +6,7 @@
             </div>
         </div>
 
-        <div class="row test">
+        <div class="row">
             <nav class="sidebar navbar-default col-xs-12 col-sm-3 col-md-2"  role="navigation" style="margin-top:20px;  margin-bottom: 0; padding-right:0; padding-left:0;">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar" aria-expanded="false">

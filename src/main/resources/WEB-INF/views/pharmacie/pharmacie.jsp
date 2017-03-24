@@ -376,6 +376,8 @@
     });
 
     $.when($('#tableProduit').on( 'change')).done(function() {
-        $('.sidebar').height($(document).height());
+        if($(window).width() > 768) {
+            $('.sidebar').height($(document).height());
+        }
     });
 </script>
