@@ -29,18 +29,6 @@
                         <li><a href="#">OVU</a></li>
                     </ul>
                 </li>
-                <!--<li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">ACTES TECHNIQUES
-                        <span class="caret"></span></a>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a href="#">OPA</a></li>
-                        <li><a href="#">OPU</a></li>
-                        <li><a href="#">OVU</a></li>
-                        <li><a href="#">OPA</a></li>
-                        <li><a href="#">OPU</a></li>
-                        <li><a href="#">OVU</a></li>
-                    </ul>
-                </li>-->
                 <li><a href="#">CUVES</a></li>
                 <li><a href="#">IMPORT/EXPORT</a></li>
                 <li><a href="#">PLANNING</a></li>
