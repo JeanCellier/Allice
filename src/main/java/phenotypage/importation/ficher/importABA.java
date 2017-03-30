@@ -258,7 +258,7 @@ public class importABA
 				Vache taureau = vacheService.findByNum_identification(nn);
 				if (taureau == null)
 				{
-					taureau = vacheService.createVache("", "", nn, 0, Integer.parseInt(race));
+					//taureau = vacheService.createVache("", "", nn, 0, Integer.parseInt(race));
 				}
 				tableauSemence.setTaureau(taureau);
 				tableauSemenceList.add(tableauSemence);

@@ -30,11 +30,11 @@
                 <c:forEach items="${vacheList}" var="vache">
                     <tr>
                         <td>${vache.proprietaire}</td>
-                        <td><fmt:formatDate pattern="dd/MM/yyyy" value="${vache.date_arrivee}" /><br></td>
                         <td>${vache.num_elevage}<br></td>
                         <td>${vache.num_identification}<br></td>
                         <td>${vache.num_travail}<br></td>
                         <td>${vache.race}<br></td>
+                        <td><fmt:formatDate pattern="dd/MM/yyyy" value="${vache.date_arrivee}" /><br></td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="<c:out value='${vache.id}' />" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/<c:out value='${vache.id}'/>" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                     </tr>
@@ -56,28 +56,22 @@
             <div class="modal-body">
                 <form id="addForm" action="./add" method="POST">
                     <div class="form-group">
-                        <input class="form-control nom" name="nom" required type="text" placeholder="Nom du produit">
+                        <input class="form-control nom" name="proprietaire" required type="text" placeholder="Propriétaire">
                     </div>
                     <div class="form-group">
-                        <input class="form-control datepicker" name="dateDelivrance" type="text" placeholder="Date de d&#233livrance">
+                        <input class="form-control" name="num_elevage" type="text" placeholder="Numéro d'élevage">
                     </div>
                     <div class="form-group">
-                        <input class="form-control fournisseur" name="fournisseur" type="text" placeholder="Fournisseur">
+                        <input class="form-control fournisseur" name="num_identification" type="text" placeholder="Numéro d'identification">
                     </div>
                     <div class="form-group">
-                        <input class="form-control projet" name="projet" type="text" placeholder="Projet">
+                        <input class="form-control projet" name="num_travail" type="text" placeholder="Numéro de travail">
                     </div>
                     <div class="form-group">
-                        <input class="form-control responsable" name="responsable" type="text" placeholder="Responsable">
+                        <input class="form-control responsable" name="race" type="text" placeholder="Race">
                     </div>
                     <div class="form-group">
-                        <input class="form-control " name="qteEntrante" type="text" placeholder="Quantit&#233 entrante">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control " name="numLot" type="text" placeholder="Num&#233ro du lot">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control datepicker" name="datePeremption" type="text" placeholder="Date de p&#233remption">
+                        <input class="form-control datepicker" name="date_arrivee" type="text" placeholder="Date d'arrivée">
                     </div>
             </div>
 
@@ -92,42 +86,33 @@
 </div>
 
 <!-- Modal edit product -->
-<!--<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+<<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
-                <h4 class="modal-title custom_align" id="Heading">Modifier le produit</h4>
+                <h4 class="modal-title custom_align" id="Heading">Modifier l'animal</h4>
             </div>
 
             <div class="modal-body">
                 <form id="editForm" action="./edit" method="POST">
                     <div class="form-group">
-                        <input class="form-control nom" id="nom" name="nom" required type="text" placeholder="Nom du produit">
+                        <input class="form-control nom" id="nom" name="proprietaire" required type="text" placeholder="Propriétaire">
                     </div>
                     <div class="form-group">
-                        <input class="form-control datepicker" name="dateDelivrance" type="text" placeholder="Date de d&#233livrance">
+                        <input class="form-control " name="num_elevage" type="text" placeholder="Numéro d'élevage">
                     </div>
                     <div class="form-group">
-                        <input class="form-control fournisseur" name="fournisseur" type="text" placeholder="Fournisseur">
+                        <input class="form-control fournisseur" name="num_identification" type="text" placeholder="Numéro d'identification">
                     </div>
                     <div class="form-group">
-                        <input class="form-control projet" name="projet" type="text" placeholder="Projet">
+                        <input class="form-control projet" name="num_travail" type="text" placeholder="Numéro de travail">
                     </div>
                     <div class="form-group">
-                        <input class="form-control responsable" name="responsable" type="text" placeholder="Responsable">
+                        <input class="form-control responsable" name="race" type="text" placeholder="Race">
                     </div>
                     <div class="form-group">
-                        <input class="form-control " name="qteEntrante" type="text" placeholder="Quantit&#233 entrante">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control " name="qteRestante" type="text" placeholder="Quantit&#233 restante">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control " name="numLot" type="text" placeholder="Num&#233ro du lot">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control datepicker" name="datePeremption" type="text" placeholder="Date de p&#233remption">
+                        <input class="form-control datepicker" name="date_arrivee" type="text" placeholder="Date d'arrivée">
                     </div>
 
                     <div class="modal-footer ">
@@ -137,19 +122,19 @@
             </div>
         </div>
     </div>
-</div>-->
+</div>
 
 <!-- Modal delete product -->
-<!--<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
-                <h4 class="modal-title custom_align" id="Heading">Supprimer cette entr&#233e</h4>
+                <h4 class="modal-title custom_align" id="Heading">Supprimer cet animal</h4>
             </div>
 
             <div class="modal-body">
-                <div class="alert alert-danger"><span class="fa fa-warning-sign"></span> Voulez vous vraiment supprimer cette entr&#233e ?</div>
+                <div class="alert alert-danger"><span class="fa fa-warning-sign"></span> Voulez vous vraiment supprimer cet animal ?</div>
             </div>
 
             <div class="modal-footer ">
@@ -158,7 +143,7 @@
             </div>
         </div>
     </div>
-</div>-->
+</div>
 
 <%@ include file="../footer.jsp" %>
 
@@ -169,7 +154,7 @@
 <script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" media="all" href="../../static/css/datables.bootstrap.css"/>
 
-<!--<script>
+<<script>
     var currentrow; //la row courante à edit ou delete
 
     /** function convertion des dates */
@@ -191,20 +176,16 @@
     /** function addRow */
     function addRow(result) {
         //converti date bon format
-        var datedelivrance = new Date(result.objet.dateDelivrance);
-        var datePeremption = new Date(result.objet.datePeremption);
+        var date_arrivee = new Date(result.objet.date_arrivee);
 
         /** ajoute une ligne à la table */
-        $('#tableProduit').DataTable().row.add([
-            "<td>" + result.objet.nom + "</td>",
-            "<td>" + convertDate(datedelivrance) + "</td>",
-            "<td>" + result.objet.fournisseur + "</td>",
-            "<td>" + result.objet.projet + "</td>",
-            "<td>" + result.objet.responsable + "</td>",
-            "<td>" + result.objet.qteEntrante + "</td>",
-            "<td>" + result.objet.qteRestante + "</td>",
-            "<td>" + result.objet.numLot + "</td>",
-            "<td>" + convertDate(datePeremption) + "</td>",
+        $('#tableAnimaux').DataTable().row.add([
+            "<td>" + result.objet.proprietaire + "</td>",
+            "<td>" + result.objet.num_elevage + "</td>",
+            "<td>" + result.objet.num_identification + "</td>",
+            "<td>" + result.objet.num_travail + "</td>",
+            "<td>" + result.objet.race + "</td>",
+            "<td>" + convertDate(date_arrivee) + "</td>",
 
             '<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="'+ result.objet.id +'" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>',
             '<td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/'+ result.objet.id + '" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>'
@@ -213,11 +194,11 @@
 
 
     /** init la table */
-    $('#tableProduit').DataTable( {
+    $('#tableAnimaux').DataTable( {
         "pagingType": "full_numbers",
         "columnDefs": [
-            { "orderable": false, "targets": 9},
-            { "orderable": false, "targets": 10 }
+            { "orderable": false, "targets": 6},
+            { "orderable": false, "targets": 7 }
         ],"language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json"
         },
@@ -226,7 +207,7 @@
 
     /************************ AJOUT *************************/
 
-    /** Ajoute un nouveau produit */
+    /** Ajoute un nouvel animal */
     $('#addForm').on('submit', function(e) {
         e.preventDefault();
 
@@ -240,7 +221,7 @@
                 if(result.succes == true){
                     $('input').val(''); //clear modal
                     $('#add').modal('toggle'); //ferme modal
-                    $('#tableProduit').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>'); //afficher alert
+                    $('#tableAnimaux').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>'); //afficher alert
                     addRow(result);
                 }else{
                     $('#addForm').before('<div class="alert alert-danger flash" role="alert">'+result.message+'</div>');
@@ -263,20 +244,18 @@
             success: function (result) {
                 if(result.succes == true) {
                     $('#edit')
-                        .find('[name="nom"]').val(result.objet.nom).end()
-                        .find('[name="dateDelivrance"]').val(convertDate(result.objet.dateDelivrance)).end()
-                        .find('[name="fournisseur"]').val(result.objet.fournisseur).end()
-                        .find('[name="projet"]').val(result.objet.projet).end()
-                        .find('[name="responsable"]').val(result.objet.responsable).end()
-                        .find('[name="qteEntrante"]').val(result.objet.qteEntrante).end()
-                        .find('[name="qteRestante"]').val(result.objet.qteRestante).end()
-                        .find('[name="numLot"]').val(result.objet.numLot).end()
-                        .find('[name="datePeremption"]').val(convertDate(result.objet.datePeremption)).end();
+                        .find('[name="proprietaire"]').val(result.objet.proprietaire).end()
+                        .find('[name="num_elevage"]').val(result.objet.num_elevage).end()
+                        .find('[name="num_identification"]').val(result.objet.num_identification).end()
+                        .find('[name="num_travail"]').val(result.objet.num_travail).end()
+                        .find('[name="race"]').val(result.objet.race).end()
+                        .find('[name="date_arrivee"]').val(convertDate(result.objet.date_arrivee)).end();
+
 
                     $('#editForm').attr('action', "./edit/"+id);
                 }else{
                     $('#edit').modal('toggle'); //ferme modal
-                    $('#tableProduit').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>'); //afficher alert
+                    $('#tableAnimaux').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>'); //afficher alert
                     autoclose();
                 }
             }
@@ -295,8 +274,8 @@
                 if(result.succes == true){
                     $('input').val('');
                     $('#edit').modal('toggle');
-                    $('#tableProduit').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>');
-                    $('#tableProduit').DataTable().row(currentrow).remove().draw();
+                    $('#tableAnimaux').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>');
+                    $('#tableAnimaux').DataTable().row(currentrow).remove().draw();
                     addRow(result);
                 }else{
                     $('#editForm').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>');
@@ -327,11 +306,11 @@
             success: function (result) {
                 if(result.succes == true){
                     $('#delete').modal('toggle'); //ferme modal
-                    $('#tableProduit').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>'); //afficher alert
-                    $('#tableProduit').DataTable().row(currentrow).remove().draw();
+                    $('#tableAnimaux').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>'); //afficher alert
+                    $('#tableAnimaux').DataTable().row(currentrow).remove().draw();
                 }else{
                     $('#delete').modal('toggle'); //ferme modal
-                    $('#tableProduit').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>'); //afficher alert
+                    $('#tableAnimaux').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>'); //afficher alert
 
                 }
                 autoclose();
@@ -350,25 +329,25 @@
 
 
     /******************************* AUTOCOMPLETE ****************************/
-    $( ".nom" ).autocomplete({
-        source: '${pageContext. request. contextPath}/pharmacie/get/names'
-    });
+    <%--$( ".nom" ).autocomplete({--%>
+        <%--source: '${pageContext. request. contextPath}/animaux/get/names'--%>
+    <%--});--%>
 
-    $( ".fournisseur" ).autocomplete({
-        source: '${pageContext. request. contextPath}/pharmacie/get/fournisseurs'
-    });
+    <%--$( ".fournisseur" ).autocomplete({--%>
+        <%--source: '${pageContext. request. contextPath}/animaux/get/fournisseurs'--%>
+    <%--});--%>
 
-    $( ".projet" ).autocomplete({
-        source: '${pageContext. request. contextPath}/pharmacie/get/projets'
-    });
+    <%--$( ".projet" ).autocomplete({--%>
+        <%--source: '${pageContext. request. contextPath}/animaux/get/projets'--%>
+    <%--});--%>
 
-    $( ".responsable" ).autocomplete({
-        source: '${pageContext. request. contextPath}/pharmacie/get/responsables'
-    });
+    <%--$( ".responsable" ).autocomplete({--%>
+        <%--source: '${pageContext. request. contextPath}/animaux/get/responsables'--%>
+    <%--});--%>
 
-    $.when($('#tableProduit').on( 'change')).done(function() {
+    $.when($('#tableAnimaux').on( 'change')).done(function() {
         if($(window).width() > 768) {
             $('.sidebar').height($(document).height());
         }
     });
-</script>-->
+</script>

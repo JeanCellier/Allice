@@ -2,8 +2,11 @@ package phenotypage.model.vache;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import phenotypage.model.pharmacie.produit.Produit;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author fabien
@@ -22,9 +25,9 @@ public class VacheServiceImpl implements VacheService
 	}
 
 	@Override
-	public Vache createVache(String proprietaire, String num_elevage, String num_identification, long num_travail, int race)
+	public Vache createVache(String proprietaire, String num_elevage, String num_identification, long num_travail, int race, Date date_arrivee)
 	{
-		return vacheRepository.save(new Vache(proprietaire, num_elevage, num_identification, num_travail, race));
+		return vacheRepository.save(new Vache(proprietaire, num_elevage, num_identification, num_travail, race, date_arrivee));
 	}
 
 	@Override
@@ -52,9 +55,19 @@ public class VacheServiceImpl implements VacheService
 	}
 
 	@Override
+	public Optional<Vache> findOne(long id) {
+		return Optional.ofNullable(vacheRepository.findOne(id));
+	}
+
+	@Override
 	public Vache addTaureau(Vache taureau)
 	{
 		taureau.setMale(true);
 		return addVache(taureau);
 	}
+
+	public void delete(Vache vache) {
+		vacheRepository.delete(vache);
+	}
+
 }

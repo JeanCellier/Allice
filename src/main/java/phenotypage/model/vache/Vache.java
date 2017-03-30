@@ -83,7 +83,7 @@ public class Vache implements Serializable
 	}
 
 
-	public Vache(String proprietaire, String num_elevage, String num_identification, long num_travail, int race)
+	public Vache(String proprietaire, String num_elevage, String num_identification, long num_travail, int race, Date date_arrivee)
 	{
 		super();
 		this.proprietaire = proprietaire;
@@ -91,6 +91,7 @@ public class Vache implements Serializable
 		this.num_identification = num_identification;
 		this.num_travail = num_travail;
 		this.race = race;
+		this.date_arrivee = date_arrivee;
 	}
 
 
