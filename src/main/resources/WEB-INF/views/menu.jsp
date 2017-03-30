@@ -19,7 +19,17 @@
             <ul class="nav nav-stacked">
                 <li><a href="#">ANIMAUX</a></li>
                 <li><a href="<s:url value='/pharmacie/pharmacie'/>">PHARMACIE</a></li>
-                <li class="dropdown">
+                <li><a href="#listFiche" data-toggle="collapse">ACTES TECHNIQUES</a>
+                    <ul id="listFiche" class="collapse nav" style="padding-left:40px;">
+                        <li><a href="#">OPA</a></li>
+                        <li><a href="#">OPU</a></li>
+                        <li><a href="#">OVU</a></li>
+                        <li><a href="#">OPA</a></li>
+                        <li><a href="#">OPU</a></li>
+                        <li><a href="#">OVU</a></li>
+                    </ul>
+                </li>
+                <!--<li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">ACTES TECHNIQUES
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu dropdown-menu-right">
@@ -30,7 +40,7 @@
                         <li><a href="#">OPU</a></li>
                         <li><a href="#">OVU</a></li>
                     </ul>
-                </li>
+                </li>-->
                 <li><a href="#">CUVES</a></li>
                 <li><a href="#">IMPORT/EXPORT</a></li>
                 <li><a href="#">PLANNING</a></li>
