@@ -12,6 +12,7 @@ import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 
@@ -36,6 +37,10 @@ public class Vache implements Serializable
 
 	@Column
 	private long num_travail;
+
+	@Temporal(TemporalType.DATE)
+	@Column
+	private Date date_arrivee;
 
 	@Column
 	private int race;
@@ -267,5 +272,13 @@ public class Vache implements Serializable
 	public void setEmbryonsTransferesList(List<EmbryonsTransferes> embryonsTransferesList)
 	{
 		this.embryonsTransferesList = embryonsTransferesList;
+	}
+
+	public Date getDate_arrivee() {
+		return date_arrivee;
+	}
+
+	public void setDate_arrivee(Date date_arrivee) {
+		this.date_arrivee = date_arrivee;
 	}
 }

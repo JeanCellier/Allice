@@ -17,7 +17,7 @@
             </div>
 
             <ul class="nav nav-stacked">
-                <li><a href="#">ANIMAUX</a></li>
+                <li><a href="<s:url value='/animaux/animaux'/>">ANIMAUX</a></li>
                 <li><a href="<s:url value='/pharmacie/pharmacie'/>">PHARMACIE</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">ACTES TECHNIQUES
