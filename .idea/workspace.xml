@@ -7,10 +7,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/vache/VacheService.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/vache/VacheService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/vache/VacheServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/vache/VacheServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/vache/Vache.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/vache/Vache.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/vache/VacheService.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/vache/VacheService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/vache/VacheServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/vache/VacheServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/web/VacheController.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/web/VacheController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -1055,7 +1051,7 @@
       <workItem from="1490381061290" duration="7619000" />
       <workItem from="1490860732937" duration="6811000" />
       <workItem from="1490872073550" duration="3583000" />
-      <workItem from="1491221145308" duration="23000" />
+      <workItem from="1491221145308" duration="83000" />
     </task>
     <task id="LOCAL-00001" summary="interface pharmacie">
       <created>1489611137333</created>
@@ -1169,11 +1165,18 @@
       <option name="project" value="LOCAL" />
       <updated>1490868758967</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="animaux Add+delete">
+      <created>1491221217848</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1491221217848</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101928000" />
+    <option name="totallyTimeSpent" value="101988000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1538,6 +1541,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="260" column="22" lean-forward="false" selection-start-line="260" selection-start-column="22" selection-end-line="260" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
