@@ -1051,7 +1051,7 @@
       <workItem from="1490381061290" duration="7619000" />
       <workItem from="1490860732937" duration="6811000" />
       <workItem from="1490872073550" duration="3583000" />
-      <workItem from="1491221145308" duration="83000" />
+      <workItem from="1491221145308" duration="133000" />
     </task>
     <task id="LOCAL-00001" summary="interface pharmacie">
       <created>1489611137333</created>
@@ -1172,11 +1172,18 @@
       <option name="project" value="LOCAL" />
       <updated>1491221217848</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="animaux Modif ( reste taureau à gérer)">
+      <created>1491221279900</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1491221279900</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101988000" />
+    <option name="totallyTimeSpent" value="102038000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1232,7 +1239,8 @@
     <MESSAGE value="bug taille menu 100 % réglé" />
     <MESSAGE value="mise en place IHM" />
     <MESSAGE value="animaux Add+delete" />
-    <option name="LAST_COMMIT_MESSAGE" value="animaux Add+delete" />
+    <MESSAGE value="animaux Modif ( reste taureau à gérer)" />
+    <option name="LAST_COMMIT_MESSAGE" value="animaux Modif ( reste taureau à gérer)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
