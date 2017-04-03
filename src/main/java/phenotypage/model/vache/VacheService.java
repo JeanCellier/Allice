@@ -17,7 +17,11 @@ public interface VacheService
 
 	Vache addVache(Vache vache);
 
+	Vache save(Vache vache);
+
 	Vache newVache();
+
+	void update(Vache vache, String proprietaire, String num_elevage, String num_identification, Long numeroTravail, int race, Date date_arrivee);
 
 	void delete(Vache vache);
 

@@ -92,6 +92,7 @@ public class Vache implements Serializable
 		this.num_travail = num_travail;
 		this.race = race;
 		this.date_arrivee = date_arrivee;
+
 	}
 
 

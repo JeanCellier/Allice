@@ -81,49 +81,34 @@ public class VacheController
     }
 
     /** EDIT **/
-//    @ResponseBody
-//    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-//    public JsonResponse edit(@PathVariable("id")  Produit produit, @RequestParam("nom") String nom,
-//                             @RequestParam("dateDelivrance") String dateDeliv, @RequestParam("fournisseur") String fournisseur,
-//                             @RequestParam("projet") String projet, @RequestParam("responsable") String respo,
-//                             @RequestParam("qteEntrante") String qteEntrante, @RequestParam("qteRestante") String qteRestante,
-//                             @RequestParam("numLot") String numLot, @RequestParam("datePeremption") String datePeremp){
-//        JsonResponse response = new JsonResponse();
-//
-//        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-//
-//        try {
-//            Date dateDel = formatter.parse(dateDeliv);
-//            Date datePer = formatter.parse(datePeremp);
-//
-//            try {
-//                Float qteEntr = Float.parseFloat(qteEntrante);
-//                Float qteRest = Float.parseFloat(qteRestante);
-//
-//                if(dateDel.after(datePer)){
-//                    response.setSucces(false);
-//                    response.setMessage("La date de péremption est inférieure à la date de délivrance");
-//                }else if(qteEntr <= 0 || qteRest < 0){
-//                    response.setSucces(false);
-//                    response.setMessage("La quantité entrante ne peut être inférieure ou égale à 0");
-//                }else{
-//                    produitService.update(produit, nom, dateDel, fournisseur, projet, respo, qteEntr, qteRest, numLot, datePer);
-//                    response.setSucces(true);
-//                    response.setMessage("Produit modifié");
-//                    response.setObjet(produit);
-//                }
-//            }catch (NumberFormatException e){
-//                response.setSucces(false);
-//                response.setMessage("La quantité entrante n'est pas un chiffre valide");
-//            }
-//        } catch (ParseException e) {
-//            response.setSucces(false);
-//            response.setMessage("Une ou plusieurs dates sont invalides");
-//        }
-//
-//        return response;
-//    }
-//
+    @ResponseBody
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+    public JsonResponse edit(@PathVariable("id")  Vache vache, @RequestParam("proprietaire") String proprietaire,
+                             @RequestParam("num_elevage") String num_elevage, @RequestParam("num_identification") String num_identification,
+                             @RequestParam("num_travail") String num_travail, @RequestParam("race") String race,
+                             @RequestParam("date_arrivee") String date_arrivee){
+        JsonResponse response = new JsonResponse();
+
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+
+        try {
+            Date dateArrivee = formatter.parse(date_arrivee);
+            Long numeroTravail = Long.parseLong(num_travail);
+            int raceInt = Integer.parseInt(race);
+
+                    vacheService.update(vache, proprietaire, num_elevage, num_identification, numeroTravail, raceInt, dateArrivee);
+                    response.setSucces(true);
+                    response.setMessage("Animal modifié");
+                    response.setObjet(vache);
+
+            }catch (NumberFormatException e){
+            }
+        catch (ParseException e) {
+        }
+
+        return response;
+    }
+
     /** DELETE **/
     @ResponseBody
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)

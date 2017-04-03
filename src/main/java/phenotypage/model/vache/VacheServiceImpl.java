@@ -66,8 +66,26 @@ public class VacheServiceImpl implements VacheService
 		return addVache(taureau);
 	}
 
+	@Override
+	public Vache save(Vache vache) {
+		return vacheRepository.save(vache);
+	}
+
+
+	@Override
 	public void delete(Vache vache) {
 		vacheRepository.delete(vache);
 	}
 
+	@Override
+	public void update(Vache vache, String proprietaire, String num_elevage, String num_identification, Long numeroTravail, int race, Date date_arrivee){
+		vache.setProprietaire(proprietaire);
+		vache.setNum_elevage(num_elevage);
+		vache.setNum_identification(num_identification);
+		vache.setNum_travail(numeroTravail);
+		vache.setRace(race);
+		vache.setDate_arrivee(date_arrivee);
+
+		save(vache);
+	}
 }
