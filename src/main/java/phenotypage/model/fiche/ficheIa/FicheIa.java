@@ -1,7 +1,6 @@
 package phenotypage.model.fiche.ficheIa;
 
-import org.hibernate.validator.constraints.NotEmpty;
-import phenotypage.model.fiche.ficheCol.FicheCol;
+import phenotypage.model.fiche.Fiche;
 import phenotypage.model.fiches.traitement.header.Header;
 import phenotypage.model.gestation.Gestation;
 import phenotypage.model.insemination.Insemination;
@@ -15,148 +14,101 @@ import javax.persistence.*;
  */
 
 @Entity
-public class FicheIa
-{
-	@Id
-	@GeneratedValue
-	private Long id;
+public class FicheIa extends Fiche {
+    @Column
+    private boolean snig;
 
-	@Column(unique = true)
-	@NotEmpty
-	private String nom;
+    @OneToOne
+    private Header header;
 
-	@Column
-	private boolean snig;
+    @ManyToOne
+    @JoinColumn(name = "id_Vache", referencedColumnName = "id")
+    private Vache vache;
 
-	@OneToOne
-	private Header header;
+    @OneToOne
+    private Insemination insemination;
 
-	@ManyToOne
-	@JoinColumn(name = "id_Vache", referencedColumnName = "id")
-	private Vache vache;
-	
-	@OneToOne
-	private Insemination insemination;
-	
-	@OneToOne
-	private Traitement_Donneuse traitement_donneuse;
-	
-	@OneToOne
-	private Gestation gestation;
+    @OneToOne
+    private Traitement_Donneuse traitement_donneuse;
 
-	@Column
-	private String remarque;
+    @OneToOne
+    private Gestation gestation;
 
-	public FicheIa()
-	{
-	}
+    @Column
+    private String remarque;
 
-	public FicheIa(String nom, Header header, Vache vache, Insemination insemination,
-	               Traitement_Donneuse traitement_donneuse, Gestation gestation)
-	{
-		super();
-		this.nom = nom;
-		this.header = header;
-		this.vache = vache;
-		this.insemination = insemination;
-		this.traitement_donneuse = traitement_donneuse;
-		this.gestation = gestation;
-	}
+    public FicheIa() {
+    }
 
-	public FicheIa(String nom)
-	{
-		this.nom = nom;
-	}
+    public FicheIa(String nom) {
+        super(nom);
+    }
 
-	public Long getId()
-	{
-		return id;
-	}
+    public FicheIa(String nom, Header header, Vache vache, Insemination insemination,
+                   Traitement_Donneuse traitement_donneuse, Gestation gestation) {
+        super(nom);
+        this.header = header;
+        this.vache = vache;
+        this.insemination = insemination;
+        this.traitement_donneuse = traitement_donneuse;
+        this.gestation = gestation;
+    }
 
-	public void setId(Long id)
-	{
-		this.id = id;
-	}
+    public Header getHeader() {
+        return header;
+    }
 
-	public String getNom()
-	{
-		return nom;
-	}
+    public void setHeader(Header header) {
+        this.header = header;
+    }
 
-	public void setNom(String nom)
-	{
-		this.nom = nom;
-	}
+    public Vache getVache() {
+        return vache;
+    }
 
-	public Header getHeader()
-	{
-		return header;
-	}
+    public void setVache(Vache vache) {
+        this.vache = vache;
+    }
 
-	public void setHeader(Header header)
-	{
-		this.header = header;
-	}
+    public Insemination getInsemination() {
+        return insemination;
+    }
 
-	public Vache getVache()
-	{
-		return vache;
-	}
+    public void setInsemination(Insemination insemination) {
+        this.insemination = insemination;
+    }
 
-	public void setVache(Vache vache)
-	{
-		this.vache = vache;
-	}
+    public Traitement_Donneuse getTraitement_donneuse() {
+        return traitement_donneuse;
+    }
 
-	public Insemination getInsemination()
-	{
-		return insemination;
-	}
+    public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse) {
+        this.traitement_donneuse = traitement_donneuse;
+    }
 
-	public void setInsemination(Insemination insemination)
-	{
-		this.insemination = insemination;
-	}
+    public Gestation getGestation() {
+        return gestation;
+    }
 
-	public Traitement_Donneuse getTraitement_donneuse()
-	{
-		return traitement_donneuse;
-	}
+    public void setGestation(Gestation gestation) {
+        this.gestation = gestation;
+    }
 
-	public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse)
-	{
-		this.traitement_donneuse = traitement_donneuse;
-	}
+    public String getRemarque() {
+        return remarque;
+    }
 
-	public Gestation getGestation()
-	{
-		return gestation;
-	}
+    public void setRemarque(String remarque) {
+        this.remarque = remarque;
+    }
 
-	public void setGestation(Gestation gestation)
-	{
-		this.gestation = gestation;
-	}
+    public boolean isSnig() {
+        return snig;
+    }
 
-	public String getRemarque()
-	{
-		return remarque;
-	}
-
-	public void setRemarque(String remarque)
-	{
-		this.remarque = remarque;
-	}
-
-	public boolean isSnig()
-	{
-		return snig;
-	}
-
-	public void setSnig(boolean snig)
-	{
-		this.snig = snig;
-	}
+    public void setSnig(boolean snig) {
+        this.snig = snig;
+    }
 }
 
 

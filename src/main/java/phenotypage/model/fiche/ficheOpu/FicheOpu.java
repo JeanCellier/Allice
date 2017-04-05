@@ -1,7 +1,7 @@
 package phenotypage.model.fiche.ficheOpu;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import phenotypage.model.cryoconservation.Cryoconservation;
+import phenotypage.model.fiche.Fiche;
 import phenotypage.model.fiches.traitement.header.Header;
 import phenotypage.model.imageEcho.Echo;
 import phenotypage.model.informationsPIV.Informations_PIV;
@@ -19,206 +19,151 @@ import javax.persistence.*;
  */
 
 @Entity
-public class FicheOpu
-{
-	@Id
-	@GeneratedValue
-	private Long id;
+public class FicheOpu extends Fiche {
+    @Column
+    private boolean snig;
 
-	@Column(unique = true)
-	@NotEmpty
-	private String nom;
+    @OneToOne
+    private Header header;
 
-	@Column
-	private boolean snig;
+    @ManyToOne
+    @JoinColumn(name = "id_Vache", referencedColumnName = "id")
+    private Vache vache;
 
-	@OneToOne
-	private Header header;
+    @OneToOne
+    private Traitement_Donneuse traitement_donneuse;
 
-	@ManyToOne
-	@JoinColumn(name = "id_Vache", referencedColumnName = "id")
-	private Vache vache;
-	
-	@OneToOne
-	private Traitement_Donneuse traitement_donneuse;
-	
-	@OneToOne
-	private Echo imageEcho;
-	
-	@OneToOne
-	private OvocytesCollectes ovocytesCollectes;
+    @OneToOne
+    private Echo imageEcho;
 
-	@OneToOne
-	private Informations_PIV informations_piv;
+    @OneToOne
+    private OvocytesCollectes ovocytesCollectes;
 
-	@OneToOne
-	private Collecte collecte;
+    @OneToOne
+    private Informations_PIV informations_piv;
 
-	@OneToOne
-	private Fecondation fecondation;
+    @OneToOne
+    private Collecte collecte;
 
-	@OneToOne
-	private Culture culture;
+    @OneToOne
+    private Fecondation fecondation;
 
-	@OneToOne
-	private Cryoconservation cryoconservation;
+    @OneToOne
+    private Culture culture;
 
-	public FicheOpu()
-	{
-	}
+    @OneToOne
+    private Cryoconservation cryoconservation;
 
-	public FicheOpu(String nom)
-	{
-		this.nom = nom;
-	}
+    public FicheOpu() {
+    }
 
-	public FicheOpu(String nom, Header header, Vache vache, Traitement_Donneuse traitement_donneuse, Echo imageEcho,
-	                OvocytesCollectes ovocytesCollectes, Informations_PIV informations_piv, Collecte collecte,
-	                Fecondation fecondation, Culture culture, Cryoconservation cryoconservation)
-	{
-		super();
-		this.nom = nom;
-		this.header = header;
-		this.vache = vache;
-		this.traitement_donneuse = traitement_donneuse;
-		this.imageEcho = imageEcho;
-		this.ovocytesCollectes = ovocytesCollectes;
-		this.informations_piv = informations_piv;
-		this.collecte = collecte;
-		this.fecondation = fecondation;
-		this.culture = culture;
-		this.cryoconservation = cryoconservation;
-	}
+    public FicheOpu(String nom) {
+        super(nom);
+    }
 
-	public Long getId()
-	{
-		return id;
-	}
+    public FicheOpu(String nom, Header header, Vache vache, Traitement_Donneuse traitement_donneuse, Echo imageEcho,
+                    OvocytesCollectes ovocytesCollectes, Informations_PIV informations_piv, Collecte collecte,
+                    Fecondation fecondation, Culture culture, Cryoconservation cryoconservation) {
+        super(nom);
+        this.header = header;
+        this.vache = vache;
+        this.traitement_donneuse = traitement_donneuse;
+        this.imageEcho = imageEcho;
+        this.ovocytesCollectes = ovocytesCollectes;
+        this.informations_piv = informations_piv;
+        this.collecte = collecte;
+        this.fecondation = fecondation;
+        this.culture = culture;
+        this.cryoconservation = cryoconservation;
+    }
 
-	public void setId(Long id)
-	{
-		this.id = id;
-	}
+    public Header getHeader() {
+        return header;
+    }
 
-	public String getNom()
-	{
-		return nom;
-	}
+    public void setHeader(Header header) {
+        this.header = header;
+    }
 
-	public void setNom(String nom)
-	{
-		this.nom = nom;
-	}
+    public Informations_PIV getInformations_piv() {
+        return informations_piv;
+    }
 
-	public Header getHeader()
-	{
-		return header;
-	}
+    public void setInformations_piv(Informations_PIV informations_piv) {
+        this.informations_piv = informations_piv;
+    }
 
-	public void setHeader(Header header)
-	{
-		this.header = header;
-	}
+    public Collecte getCollecte() {
+        return collecte;
+    }
 
-	public Informations_PIV getInformations_piv()
-	{
-		return informations_piv;
-	}
+    public void setCollecte(Collecte collecte) {
+        this.collecte = collecte;
+    }
 
-	public void setInformations_piv(Informations_PIV informations_piv)
-	{
-		this.informations_piv = informations_piv;
-	}
+    public Fecondation getFecondation() {
+        return fecondation;
+    }
 
-	public Collecte getCollecte()
-	{
-		return collecte;
-	}
+    public void setFecondation(Fecondation fecondation) {
+        this.fecondation = fecondation;
+    }
 
-	public void setCollecte(Collecte collecte)
-	{
-		this.collecte = collecte;
-	}
+    public Culture getCulture() {
+        return culture;
+    }
 
-	public Fecondation getFecondation()
-	{
-		return fecondation;
-	}
+    public void setCulture(Culture culture) {
+        this.culture = culture;
+    }
 
-	public void setFecondation(Fecondation fecondation)
-	{
-		this.fecondation = fecondation;
-	}
+    public Cryoconservation getCryoconservation() {
+        return cryoconservation;
+    }
 
-	public Culture getCulture()
-	{
-		return culture;
-	}
+    public void setCryoconservation(Cryoconservation cryoconservation) {
+        this.cryoconservation = cryoconservation;
+    }
 
-	public void setCulture(Culture culture)
-	{
-		this.culture = culture;
-	}
+    public OvocytesCollectes getOvocytesCollectes() {
+        return ovocytesCollectes;
+    }
 
-	public Cryoconservation getCryoconservation()
-	{
-		return cryoconservation;
-	}
+    public void setOvocytesCollectes(OvocytesCollectes ovocytesCollectes) {
+        this.ovocytesCollectes = ovocytesCollectes;
+    }
 
-	public void setCryoconservation(Cryoconservation cryoconservation)
-	{
-		this.cryoconservation = cryoconservation;
-	}
+    public Vache getVache() {
+        return vache;
+    }
 
-	public OvocytesCollectes getOvocytesCollectes()
-	{
-		return ovocytesCollectes;
-	}
+    public void setVache(Vache vache) {
+        this.vache = vache;
+    }
 
-	public void setOvocytesCollectes(OvocytesCollectes ovocytesCollectes)
-	{
-		this.ovocytesCollectes = ovocytesCollectes;
-	}
+    public Traitement_Donneuse getTraitement_donneuse() {
+        return traitement_donneuse;
+    }
 
-	public Vache getVache()
-	{
-		return vache;
-	}
+    public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse) {
+        this.traitement_donneuse = traitement_donneuse;
+    }
 
-	public void setVache(Vache vache)
-	{
-		this.vache = vache;
-	}
+    public Echo getImageEcho() {
+        return imageEcho;
+    }
 
-	public Traitement_Donneuse getTraitement_donneuse()
-	{
-		return traitement_donneuse;
-	}
+    public void setImageEcho(Echo imageEcho) {
+        this.imageEcho = imageEcho;
+    }
 
-	public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse)
-	{
-		this.traitement_donneuse = traitement_donneuse;
-	}
+    public boolean isSnig() {
+        return snig;
+    }
 
-	public Echo getImageEcho()
-	{
-		return imageEcho;
-	}
-
-	public void setImageEcho(Echo imageEcho)
-	{
-		this.imageEcho = imageEcho;
-	}
-
-	public boolean isSnig()
-	{
-		return snig;
-	}
-
-	public void setSnig(boolean snig)
-	{
-		this.snig = snig;
-	}
+    public void setSnig(boolean snig) {
+        this.snig = snig;
+    }
 }
 
 

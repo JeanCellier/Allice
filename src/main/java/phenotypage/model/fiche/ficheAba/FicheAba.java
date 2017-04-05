@@ -1,14 +1,16 @@
 package phenotypage.model.fiche.ficheAba;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import phenotypage.model.cryoconservation.Cryoconservation;
+import phenotypage.model.fiche.Fiche;
 import phenotypage.model.fiches.traitement.header.Header;
 import phenotypage.model.informationsPIV.Informations_PIV;
 import phenotypage.model.invitro.collecte.Collecte;
 import phenotypage.model.invitro.culture.Culture;
 import phenotypage.model.invitro.fecondation.Fecondation;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 /**
  * @author fabien
@@ -16,146 +18,99 @@ import javax.persistence.*;
 
 @Entity
 public class
-FicheAba
-{
-	@Id
-	@GeneratedValue
-	private Long id;
+FicheAba extends Fiche {
+    @Column
+    private boolean snig;
 
-	@Column(unique = true)
-	@NotEmpty
-	private String nom;
+    @OneToOne
+    private Header header;
 
-	@Column
-	private boolean snig;
+    @OneToOne
+    private Informations_PIV informations_piv;
 
-	@OneToOne
-	private Header header;
+    @OneToOne
+    private Collecte collecte;
 
-	@OneToOne
-	private Informations_PIV informations_piv;
+    @OneToOne
+    private Fecondation fecondation;
 
-	@OneToOne
-	private Collecte collecte;
+    @OneToOne
+    private Culture culture;
 
-	@OneToOne
-	private Fecondation fecondation;
+    @OneToOne
+    private Cryoconservation cryoconservation;
 
-	@OneToOne
-	private Culture culture;
+    public FicheAba() {
+    }
 
-	@OneToOne
-	private Cryoconservation cryoconservation;
+    public FicheAba(String nom) {
+        super(nom);
+    }
 
-	public FicheAba()
-	{
-	}
+    public FicheAba(Header header, Informations_PIV informations_piv, Collecte collecte, Fecondation fecondation, Culture culture, Cryoconservation cryoconservation) {
+        this.header = header;
+        this.informations_piv = informations_piv;
+        this.collecte = collecte;
+        this.fecondation = fecondation;
+        this.culture = culture;
+        this.cryoconservation = cryoconservation;
+    }
 
-	public FicheAba(String nom)
-	{
-		this.nom = nom;
-	}
+    public Header getHeader() {
+        return header;
+    }
 
-	public FicheAba(Header header, Informations_PIV informations_piv, Collecte collecte, Fecondation fecondation, Culture culture, Cryoconservation cryoconservation)
-	{
-		this.header = header;
-		this.informations_piv = informations_piv;
-		this.collecte = collecte;
-		this.fecondation = fecondation;
-		this.culture = culture;
-		this.cryoconservation = cryoconservation;
-	}
+    public void setHeader(Header header) {
+        this.header = header;
+    }
 
+    public Informations_PIV getInformations_piv() {
+        return informations_piv;
+    }
 
-	public Long getId()
-	{
-		return id;
-	}
+    public void setInformations_piv(Informations_PIV informations_piv) {
+        this.informations_piv = informations_piv;
+    }
 
-	public void setId(Long id)
-	{
-		this.id = id;
-	}
+    public Collecte getCollecte() {
+        return collecte;
+    }
 
-	public String getNom()
-	{
-		return nom;
-	}
+    public void setCollecte(Collecte collecte) {
+        this.collecte = collecte;
+    }
 
-	public void setNom(String nom)
-	{
-		this.nom = nom;
-	}
+    public Fecondation getFecondation() {
+        return fecondation;
+    }
 
-	public Header getHeader()
-	{
-		return header;
-	}
+    public void setFecondation(Fecondation fecondation) {
+        this.fecondation = fecondation;
+    }
 
-	public void setHeader(Header header)
-	{
-		this.header = header;
-	}
+    public Culture getCulture() {
+        return culture;
+    }
 
-	public Informations_PIV getInformations_piv()
-	{
-		return informations_piv;
-	}
+    public void setCulture(Culture culture) {
+        this.culture = culture;
+    }
 
-	public void setInformations_piv(Informations_PIV informations_piv)
-	{
-		this.informations_piv = informations_piv;
-	}
+    public Cryoconservation getCryoconservation() {
+        return cryoconservation;
+    }
 
-	public Collecte getCollecte()
-	{
-		return collecte;
-	}
+    public void setCryoconservation(Cryoconservation cryoconservation) {
+        this.cryoconservation = cryoconservation;
+    }
 
-	public void setCollecte(Collecte collecte)
-	{
-		this.collecte = collecte;
-	}
+    public boolean isSnig() {
+        return snig;
+    }
 
-	public Fecondation getFecondation()
-	{
-		return fecondation;
-	}
-
-	public void setFecondation(Fecondation fecondation)
-	{
-		this.fecondation = fecondation;
-	}
-
-	public Culture getCulture()
-	{
-		return culture;
-	}
-
-	public void setCulture(Culture culture)
-	{
-		this.culture = culture;
-	}
-
-	public Cryoconservation getCryoconservation()
-	{
-		return cryoconservation;
-	}
-
-	public void setCryoconservation(Cryoconservation cryoconservation)
-	{
-		this.cryoconservation = cryoconservation;
-	}
-
-	public boolean isSnig()
-	{
-		return snig;
-	}
-
-	public void setSnig(boolean snig)
-	{
-		this.snig = snig;
-	}
+    public void setSnig(boolean snig) {
+        this.snig = snig;
+    }
 }
 
 

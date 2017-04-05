@@ -1,7 +1,7 @@
 package phenotypage.model.fiche.ficheCol;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import phenotypage.model.cryoconservation.Cryoconservation;
+import phenotypage.model.fiche.Fiche;
 import phenotypage.model.fiches.traitement.header.Header;
 import phenotypage.model.insemination.Insemination;
 import phenotypage.model.invitro.collecte.resultat.Resultat;
@@ -16,148 +16,102 @@ import java.util.List;
  */
 
 @Entity
-public class FicheCol
-{
-	@Id
-	@GeneratedValue
-	private Long id;
+public class FicheCol extends Fiche {
 
-	@Column(unique = true)
-	@NotEmpty
-	private String nom;
+    @Column
+    private boolean snig;
 
-	@Column
-	private boolean snig;
+    @OneToOne
+    private Header header;
 
-	@OneToOne
-	private Header header;
+    @ManyToOne
+    @JoinColumn(name = "id_Vache", referencedColumnName = "id")
+    private Vache vache;
 
-	@ManyToOne
-	@JoinColumn(name = "id_Vache", referencedColumnName = "id")
-	private Vache vache;
+    @OneToOne
+    private Traitement_Donneuse traitement_donneuse;
 
-	@OneToOne
-	private Traitement_Donneuse traitement_donneuse;
+    @OneToOne
+    private Resultat resultat_collecte;
 
-	@OneToOne
-	private Resultat resultat_collecte;
+    @OneToOne
+    private Cryoconservation cryoconservation;
 
-	@OneToOne
-	private Cryoconservation cryoconservation;
+    @OneToMany(mappedBy = "ficheCol")
+    private List<Insemination> inseminationList;
 
-	@OneToMany(mappedBy = "ficheCol")
-	private List<Insemination> inseminationList;
+    public FicheCol() {
+    }
 
-	public FicheCol()
-	{
-	}
+    public FicheCol(String nom) {
+        super(nom);
+    }
 
-	public FicheCol(String nom)
-	{
-		this.nom = nom;
-	}
+    public FicheCol(String nom, Header header, Vache vache, Traitement_Donneuse traitement_donneuse,
+                    Resultat resultat_collecte, Cryoconservation cryoconservation) {
+        super(nom);
+        this.header = header;
+        this.vache = vache;
+        this.traitement_donneuse = traitement_donneuse;
+        this.resultat_collecte = resultat_collecte;
+        this.cryoconservation = cryoconservation;
+    }
 
-	public FicheCol(String nom, Header header, Vache vache, Traitement_Donneuse traitement_donneuse,
-	                Resultat resultat_collecte, Cryoconservation cryoconservation)
-	{
-		super();
-		this.nom = nom;
-		this.header = header;
-		this.vache = vache;
-		this.traitement_donneuse = traitement_donneuse;
-		this.resultat_collecte = resultat_collecte;
-		this.cryoconservation = cryoconservation;
-	}
+    public Header getHeader() {
+        return header;
+    }
 
-	public Long getId()
-	{
-		return id;
-	}
+    public void setHeader(Header header) {
+        this.header = header;
+    }
 
-	public void setId(Long id)
-	{
-		this.id = id;
-	}
+    public Vache getVache() {
+        return vache;
+    }
 
-	public String getNom()
-	{
-		return nom;
-	}
+    public void setVache(Vache vache) {
+        this.vache = vache;
+    }
 
-	public void setNom(String nom)
-	{
-		this.nom = nom;
-	}
+    public Traitement_Donneuse getTraitement_donneuse() {
+        return traitement_donneuse;
+    }
 
-	public Header getHeader()
-	{
-		return header;
-	}
+    public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse) {
+        this.traitement_donneuse = traitement_donneuse;
+    }
 
-	public void setHeader(Header header)
-	{
-		this.header = header;
-	}
+    public Resultat getResultat_collecte() {
+        return resultat_collecte;
+    }
 
-	public Vache getVache()
-	{
-		return vache;
-	}
+    public void setResultat_collecte(Resultat resultat_collecte) {
+        this.resultat_collecte = resultat_collecte;
+    }
 
-	public void setVache(Vache vache)
-	{
-		this.vache = vache;
-	}
+    public Cryoconservation getCryoconservation() {
+        return cryoconservation;
+    }
 
-	public Traitement_Donneuse getTraitement_donneuse()
-	{
-		return traitement_donneuse;
-	}
+    public void setCryoconservation(Cryoconservation cryoconservation) {
+        this.cryoconservation = cryoconservation;
+    }
 
-	public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse)
-	{
-		this.traitement_donneuse = traitement_donneuse;
-	}
+    public List<Insemination> getInseminationList() {
+        return inseminationList;
+    }
 
-	public Resultat getResultat_collecte()
-	{
-		return resultat_collecte;
-	}
+    public void setInseminationList(List<Insemination> inseminationList) {
+        this.inseminationList = inseminationList;
+    }
 
-	public void setResultat_collecte(Resultat resultat_collecte)
-	{
-		this.resultat_collecte = resultat_collecte;
-	}
+    public boolean isSnig() {
+        return snig;
+    }
 
-	public Cryoconservation getCryoconservation()
-	{
-		return cryoconservation;
-	}
-
-	public void setCryoconservation(Cryoconservation cryoconservation)
-	{
-		this.cryoconservation = cryoconservation;
-	}
-
-	public List<Insemination> getInseminationList()
-	{
-		return inseminationList;
-	}
-
-	public void setInseminationList(List<Insemination> inseminationList)
-	{
-		this.inseminationList = inseminationList;
-	}
-
-	public boolean isSnig()
-	{
-		return snig;
-	}
-
-	public void setSnig(boolean snig)
-	{
-		this.snig = snig;
-	}
+    public void setSnig(boolean snig) {
+        this.snig = snig;
+    }
 }
 
 

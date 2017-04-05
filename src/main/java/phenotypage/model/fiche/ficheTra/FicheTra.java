@@ -1,18 +1,10 @@
 package phenotypage.model.fiche.ficheTra;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 import phenotypage.model.corpsJaune.CorpsJaune;
-import phenotypage.model.cryoconservation.Cryoconservation;
 import phenotypage.model.embryonsTransferes.EmbryonsTransferes;
+import phenotypage.model.fiche.Fiche;
 import phenotypage.model.fiches.traitement.header.Header;
 import phenotypage.model.gestation.Gestation;
-import phenotypage.model.imageEcho.Echo;
-import phenotypage.model.informationsPIV.Informations_PIV;
-import phenotypage.model.invitro.collecte.Collecte;
-import phenotypage.model.invitro.culture.Culture;
-import phenotypage.model.invitro.fecondation.Fecondation;
-import phenotypage.model.ovocytesCollecte.OvocytesCollectes;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
 import phenotypage.model.vache.Vache;
 
@@ -23,151 +15,102 @@ import javax.persistence.*;
  */
 
 @Entity
-public class FicheTra
-{
-	@Id
-	@GeneratedValue
-	private Long id;
+public class FicheTra extends Fiche {
+    @Column
+    private boolean snig;
 
-	@Column(unique = true)
-	@NotEmpty
-	private String nom;
+    @OneToOne
+    private Header header;
 
-	@Column
-	private boolean snig;
+    @ManyToOne
+    @JoinColumn(name = "id_Vache", referencedColumnName = "id")
+    private Vache vache;
 
-	@OneToOne
-	private Header header;
+    @OneToOne
+    private Traitement_Donneuse traitement_donneuse;
 
-	@ManyToOne
-	@JoinColumn(name = "id_Vache", referencedColumnName = "id")
-	private Vache vache;
-	
-	@OneToOne
-	private Traitement_Donneuse traitement_donneuse;
-	
-	@OneToOne
-	private CorpsJaune corpsJaune;
-	
-	@OneToOne
-	private EmbryonsTransferes embryonsTransferes;
+    @OneToOne
+    private CorpsJaune corpsJaune;
 
-	@OneToOne
-	private Gestation gestation;
+    @OneToOne
+    private EmbryonsTransferes embryonsTransferes;
 
-	public FicheTra()
-	{
-	}
+    @OneToOne
+    private Gestation gestation;
 
-	public FicheTra(String nom)
-	{
-		this.nom = nom;
-	}
+    public FicheTra() {
+    }
 
-	public Long getId()
-	{
-		return id;
-	}
+    public FicheTra(String nom) {
+        super(nom);
+    }
 
-	public void setId(Long id)
-	{
-		this.id = id;
-	}
+    public FicheTra(String nom, Header header, Vache vache, Traitement_Donneuse traitement_donneuse,
+                    CorpsJaune corpsJaune, EmbryonsTransferes embryonsTransferes, Gestation gestation) {
+        super(nom);
+        this.header = header;
+        this.vache = vache;
+        this.traitement_donneuse = traitement_donneuse;
+        this.corpsJaune = corpsJaune;
+        this.embryonsTransferes = embryonsTransferes;
+        this.gestation = gestation;
+    }
 
-	public String getNom()
-	{
-		return nom;
-	}
+    public Header getHeader() {
+        return header;
+    }
 
-	public void setNom(String nom)
-	{
-		this.nom = nom;
-	}
+    public void setHeader(Header header) {
+        this.header = header;
+    }
 
-	public Header getHeader()
-	{
-		return header;
-	}
+    public Vache getVache() {
+        return vache;
+    }
 
-	public void setHeader(Header header)
-	{
-		this.header = header;
-	}
+    public void setVache(Vache vache) {
+        this.vache = vache;
+    }
 
-	public Vache getVache()
-	{
-		return vache;
-	}
+    public Traitement_Donneuse getTraitement_donneuse() {
+        return traitement_donneuse;
+    }
 
-	public void setVache(Vache vache)
-	{
-		this.vache = vache;
-	}
+    public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse) {
+        this.traitement_donneuse = traitement_donneuse;
+    }
 
-	public Traitement_Donneuse getTraitement_donneuse()
-	{
-		return traitement_donneuse;
-	}
+    public CorpsJaune getCorpsJaune() {
+        return corpsJaune;
+    }
 
-	public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse)
-	{
-		this.traitement_donneuse = traitement_donneuse;
-	}
+    public void setCorpsJaune(CorpsJaune corpsJaune) {
+        this.corpsJaune = corpsJaune;
+    }
 
-	public CorpsJaune getCorpsJaune()
-	{
-		return corpsJaune;
-	}
+    public EmbryonsTransferes getEmbryonsTransferes() {
+        return embryonsTransferes;
+    }
 
-	public void setCorpsJaune(CorpsJaune corpsJaune)
-	{
-		this.corpsJaune = corpsJaune;
-	}
+    public void setEmbryonsTransferes(EmbryonsTransferes embryonsTransferes) {
+        this.embryonsTransferes = embryonsTransferes;
+    }
 
-	public EmbryonsTransferes getEmbryonsTransferes()
-	{
-		return embryonsTransferes;
-	}
+    public Gestation getGestation() {
+        return gestation;
+    }
 
-	public void setEmbryonsTransferes(EmbryonsTransferes embryonsTransferes)
-	{
-		this.embryonsTransferes = embryonsTransferes;
-	}
+    public void setGestation(Gestation gestation) {
+        this.gestation = gestation;
+    }
 
-	public Gestation getGestation()
-	{
-		return gestation;
-	}
+    public boolean isSnig() {
+        return snig;
+    }
 
-	public void setGestation(Gestation gestation)
-	{
-		this.gestation = gestation;
-	}
-
-	public boolean isSnig()
-	{
-		return snig;
-	}
-
-	public void setSnig(boolean snig)
-	{
-		this.snig = snig;
-	}
-
-	public FicheTra(String nom, Header header, Vache vache, Traitement_Donneuse traitement_donneuse,
-	                CorpsJaune corpsJaune, EmbryonsTransferes embryonsTransferes, Gestation gestation)
-	{
-		super();
-		this.nom = nom;
-		this.header = header;
-		this.vache = vache;
-		this.traitement_donneuse = traitement_donneuse;
-		this.corpsJaune = corpsJaune;
-		this.embryonsTransferes = embryonsTransferes;
-		this.gestation = gestation;
-	}
-
-
+    public void setSnig(boolean snig) {
+        this.snig = snig;
+    }
 }
 
 
