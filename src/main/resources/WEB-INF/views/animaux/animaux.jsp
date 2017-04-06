@@ -16,12 +16,12 @@
             <table id="tableAnimaux" class="table table-hover">
                 <thead>
                 <tr>
-                    <td>Proprietaire</td>
-                    <td>Numéro élevage</td>
-                    <td>Numéro d'identification</td>
-                    <td>Numéro de travail</td>
+                    <td>Propri&#233taire</td>
+                    <td>Num&#233ro d'&#233levage</td>
+                    <td>Num&#233ro d'identification</td>
+                    <td>Num&#233ro de travail</td>
                     <td>Race</td>
-                    <td>Date d'arrivée</td>
+                    <td>Date d'arriv&#233e</td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -44,7 +44,7 @@
         </div>
     </div>
 </main>
-<!-- Modal add new vache -->
+<!-- Modal add new cow -->
 <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -56,22 +56,22 @@
             <div class="modal-body">
                 <form id="addForm" action="./add" method="POST">
                     <div class="form-group">
-                        <input class="form-control nom" name="proprietaire" required type="text" placeholder="Propriétaire">
+                        <input class="form-control nom" name="proprietaire" required type="text" placeholder="Propri&#233taire">
                     </div>
                     <div class="form-group">
-                        <input class="form-control" name="num_elevage" type="text" placeholder="Numéro d'élevage">
+                        <input class="form-control" name="num_elevage" type="text" placeholder="Num&#233ro d'&#233levage">
                     </div>
                     <div class="form-group">
-                        <input class="form-control fournisseur" name="num_identification" type="text" placeholder="Numéro d'identification">
+                        <input class="form-control fournisseur" name="num_identification" type="text" placeholder="Num&#233ro d'identification">
                     </div>
                     <div class="form-group">
-                        <input class="form-control projet" name="num_travail" type="text" placeholder="Numéro de travail">
+                        <input class="form-control projet" name="num_travail" type="text" placeholder="Num&#233ro de travail">
                     </div>
                     <div class="form-group">
                         <input class="form-control responsable" name="race" type="text" placeholder="Race">
                     </div>
                     <div class="form-group">
-                        <input class="form-control datepicker" name="date_arrivee" type="text" placeholder="Date d'arrivée">
+                        <input class="form-control datepicker" name="date_arrivee" type="text" placeholder="Date d'arriv&#233e">
                     </div>
             </div>
 
@@ -85,8 +85,8 @@
     <!-- /.modal-dialog -->
 </div>
 
-<!-- Modal edit product -->
-<<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+<!-- Modal edit animal -->
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -97,22 +97,22 @@
             <div class="modal-body">
                 <form id="editForm" action="./edit" method="POST">
                     <div class="form-group">
-                        <input class="form-control nom" id="nom" name="proprietaire" required type="text" placeholder="Propriétaire">
+                        <input class="form-control nom" id="nom" name="proprietaire" required type="text" placeholder="Propri&#233taire">
                     </div>
                     <div class="form-group">
-                        <input class="form-control " name="num_elevage" type="text" placeholder="Numéro d'élevage">
+                        <input class="form-control " name="num_elevage" type="text" placeholder="Num&#233ro d'&#233levage">
                     </div>
                     <div class="form-group">
-                        <input class="form-control fournisseur" name="num_identification" type="text" placeholder="Numéro d'identification">
+                        <input class="form-control fournisseur" name="num_identification" type="text" placeholder="Num&#233ro d'identification">
                     </div>
                     <div class="form-group">
-                        <input class="form-control projet" name="num_travail" type="text" placeholder="Numéro de travail">
+                        <input class="form-control projet" name="num_travail" type="text" placeholder="Num&#233ro de travail">
                     </div>
                     <div class="form-group">
                         <input class="form-control responsable" name="race" type="text" placeholder="Race">
                     </div>
                     <div class="form-group">
-                        <input class="form-control datepicker" name="date_arrivee" type="text" placeholder="Date d'arrivée">
+                        <input class="form-control datepicker" name="date_arrivee" type="text" placeholder="Date d'arriv&#233e">
                     </div>
 
                     <div class="modal-footer ">
@@ -124,7 +124,7 @@
     </div>
 </div>
 
-<!-- Modal delete product -->
+<!-- Modal delete animal -->
 <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -154,7 +154,7 @@
 <script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" media="all" href="../../static/css/datables.bootstrap.css"/>
 
-<<script>
+<script>
     var currentrow; //la row courante à edit ou delete
 
     /** function convertion des dates */
