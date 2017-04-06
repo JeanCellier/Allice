@@ -1,169 +1,212 @@
 package phenotypage.model.fiche.ficheOpu;
 
 import phenotypage.model.cryoconservation.Cryoconservation;
+import phenotypage.model.cryoconservation.TableauDetail;
+import phenotypage.model.donneesExistantes.operateur.Operateur;
 import phenotypage.model.fiche.Fiche;
-import phenotypage.model.fiches.traitement.header.Header;
 import phenotypage.model.imageEcho.Echo;
 import phenotypage.model.informationsPIV.Informations_PIV;
-import phenotypage.model.invitro.collecte.Collecte;
 import phenotypage.model.invitro.culture.Culture;
 import phenotypage.model.invitro.fecondation.Fecondation;
+import phenotypage.model.maturationInVitro.MaturationInVitro;
 import phenotypage.model.ovocytesCollecte.OvocytesCollectes;
+import phenotypage.model.tableauTraitement.TableauTraitement;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
+import phenotypage.model.typeOpu.TypeOpu;
 import phenotypage.model.vache.Vache;
-
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * @author fabien
  */
 
 @Entity
-public class FicheOpu extends Fiche {
-    @Column
-    private boolean snig;
+public class FicheOpu extends Fiche
+{
+	@Column
+	private String numeroAgrement;
 
-    @OneToOne
-    private Header header;
+	@Column
+	private String lieu;
 
-    @ManyToOne
-    @JoinColumn(name = "id_Vache", referencedColumnName = "id")
-    private Vache vache;
+	@ManyToOne
+	private Operateur operateur;
 
-    @OneToOne
-    private Traitement_Donneuse traitement_donneuse;
+	@ManyToOne
+	private TypeOpu typeOpu;
 
-    @OneToOne
-    private Echo imageEcho;
+	@ManyToOne
+	private Vache vache;
+	
+	@OneToOne
+	private Traitement_Donneuse traitement_donneuse;
+	
+	@OneToOne
+	private Echo imageEcho;
+	
+	@OneToOne
+	private OvocytesCollectes ovocytesCollectes;
 
-    @OneToOne
-    private OvocytesCollectes ovocytesCollectes;
+	@OneToOne
+	private Informations_PIV informations_piv;
 
-    @OneToOne
-    private Informations_PIV informations_piv;
+	@OneToOne
+	private MaturationInVitro maturationInVitro;
 
-    @OneToOne
-    private Collecte collecte;
+	@OneToOne
+	private Fecondation fecondation;
 
-    @OneToOne
-    private Fecondation fecondation;
+	@OneToOne
+	private Culture culture;
 
-    @OneToOne
-    private Culture culture;
+	@OneToOne
+	private Cryoconservation cryoconservation;
 
-    @OneToOne
-    private Cryoconservation cryoconservation;
+	@OneToMany
+	private List<TableauTraitement> tableauTraitements;
 
-    public FicheOpu() {
-    }
+	@OneToMany
+	private List<TableauDetail> tableauDetails;
 
-    public FicheOpu(String nom) {
-        super(nom);
-    }
+	public FicheOpu() { super(); }
 
-    public FicheOpu(String nom, Header header, Vache vache, Traitement_Donneuse traitement_donneuse, Echo imageEcho,
-                    OvocytesCollectes ovocytesCollectes, Informations_PIV informations_piv, Collecte collecte,
-                    Fecondation fecondation, Culture culture, Cryoconservation cryoconservation) {
-        super(nom);
-        this.header = header;
-        this.vache = vache;
-        this.traitement_donneuse = traitement_donneuse;
-        this.imageEcho = imageEcho;
-        this.ovocytesCollectes = ovocytesCollectes;
-        this.informations_piv = informations_piv;
-        this.collecte = collecte;
-        this.fecondation = fecondation;
-        this.culture = culture;
-        this.cryoconservation = cryoconservation;
-    }
+	public String getNumeroAgrement() {
+		return numeroAgrement;
+	}
 
-    public Header getHeader() {
-        return header;
-    }
+	public void setNumeroAgrement(String numeroAgrement) {
+		this.numeroAgrement = numeroAgrement;
+	}
 
-    public void setHeader(Header header) {
-        this.header = header;
-    }
+	public String getLieu() {
+		return lieu;
+	}
 
-    public Informations_PIV getInformations_piv() {
-        return informations_piv;
-    }
+	public void setLieu(String lieu) {
+		this.lieu = lieu;
+	}
 
-    public void setInformations_piv(Informations_PIV informations_piv) {
-        this.informations_piv = informations_piv;
-    }
+	public Operateur getOperateur() {
+		return operateur;
+	}
 
-    public Collecte getCollecte() {
-        return collecte;
-    }
+	public void setOperateur(Operateur operateur) {
+		this.operateur = operateur;
+	}
 
-    public void setCollecte(Collecte collecte) {
-        this.collecte = collecte;
-    }
+	public void setTypeOpu(TypeOpu typeOpu) {
+		this.typeOpu = typeOpu;
+	}
 
-    public Fecondation getFecondation() {
-        return fecondation;
-    }
+	public Informations_PIV getInformations_piv()
+	{
+		return informations_piv;
+	}
 
-    public void setFecondation(Fecondation fecondation) {
-        this.fecondation = fecondation;
-    }
+	public void setInformations_piv(Informations_PIV informations_piv)
+	{
+		this.informations_piv = informations_piv;
+	}
 
-    public Culture getCulture() {
-        return culture;
-    }
+	public MaturationInVitro getMaturationInVitro() {
+		return maturationInVitro;
+	}
 
-    public void setCulture(Culture culture) {
-        this.culture = culture;
-    }
+	public void setMaturationInVitro(MaturationInVitro maturationInVitro) {
+		this.maturationInVitro = maturationInVitro;
+	}
 
-    public Cryoconservation getCryoconservation() {
-        return cryoconservation;
-    }
+	public Fecondation getFecondation()
+	{
+		return fecondation;
+	}
 
-    public void setCryoconservation(Cryoconservation cryoconservation) {
-        this.cryoconservation = cryoconservation;
-    }
+	public void setFecondation(Fecondation fecondation)
+	{
+		this.fecondation = fecondation;
+	}
 
-    public OvocytesCollectes getOvocytesCollectes() {
-        return ovocytesCollectes;
-    }
+	public Culture getCulture()
+	{
+		return culture;
+	}
 
-    public void setOvocytesCollectes(OvocytesCollectes ovocytesCollectes) {
-        this.ovocytesCollectes = ovocytesCollectes;
-    }
+	public void setCulture(Culture culture)
+	{
+		this.culture = culture;
+	}
 
-    public Vache getVache() {
-        return vache;
-    }
+	public Cryoconservation getCryoconservation()
+	{
+		return cryoconservation;
+	}
 
-    public void setVache(Vache vache) {
-        this.vache = vache;
-    }
+	public void setCryoconservation(Cryoconservation cryoconservation)
+	{
+		this.cryoconservation = cryoconservation;
+	}
 
-    public Traitement_Donneuse getTraitement_donneuse() {
-        return traitement_donneuse;
-    }
+	public OvocytesCollectes getOvocytesCollectes()
+	{
+		return ovocytesCollectes;
+	}
 
-    public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse) {
-        this.traitement_donneuse = traitement_donneuse;
-    }
+	public void setOvocytesCollectes(OvocytesCollectes ovocytesCollectes)
+	{
+		this.ovocytesCollectes = ovocytesCollectes;
+	}
 
-    public Echo getImageEcho() {
-        return imageEcho;
-    }
+	public Vache getVache()
+	{
+		return vache;
+	}
 
-    public void setImageEcho(Echo imageEcho) {
-        this.imageEcho = imageEcho;
-    }
+	public void setVache(Vache vache)
+	{
+		this.vache = vache;
+	}
 
-    public boolean isSnig() {
-        return snig;
-    }
+	public Traitement_Donneuse getTraitement_donneuse()
+	{
+		return traitement_donneuse;
+	}
 
-    public void setSnig(boolean snig) {
-        this.snig = snig;
-    }
+	public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse) { this.traitement_donneuse = traitement_donneuse; }
+
+	public Echo getImageEcho()
+	{
+		return imageEcho;
+	}
+
+	public void setImageEcho(Echo imageEcho)
+	{
+		this.imageEcho = imageEcho;
+	}
+
+	public TypeOpu getTypeOpu() {
+		return typeOpu;
+	}
+
+	public void setTypeOpuList(TypeOpu typeOpu) {
+		this.typeOpu = typeOpu;
+	}
+
+	public List<TableauTraitement> getTableauTraitements() {
+		return tableauTraitements;
+	}
+
+	public void setTableauTraitements(List<TableauTraitement> tableauTraitements) {
+		this.tableauTraitements = tableauTraitements;
+	}
+
+	public List<TableauDetail> getTableauDetails() {
+		return tableauDetails;
+	}
+
+	public void setTableauDetails(List<TableauDetail> tableauDetails) {
+		this.tableauDetails = tableauDetails;
+	}
 }
 
 

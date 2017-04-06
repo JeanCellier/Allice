@@ -20,6 +20,4 @@ public interface FicheAbaService
 	FicheAba findByNom(String nom);
 
 	long countFicheAba();
-
-	List<FicheAba> findFicheAbaSNIG();
 }

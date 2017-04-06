@@ -12,7 +12,4 @@ import java.util.List;
 public interface FicheTraRepository extends JpaRepository<FicheTra, Long>
 {
 	FicheTra findByNom(String nom);
-
-	@Query("select f from FicheTra f where f.snig = true")
-	List<FicheTra> findFicheTraSNIG();
 }

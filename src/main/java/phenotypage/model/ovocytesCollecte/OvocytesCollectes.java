@@ -1,15 +1,11 @@
 package phenotypage.model.ovocytesCollecte;
 
-import phenotypage.model.fiche.ficheOpu.FicheOpu;
-import phenotypage.model.donneExistante.sanitaire.Sanitaire;
-
-import java.io.Serializable;
+import phenotypage.model.donneesExistantes.sanitaire.Sanitaire;
 import java.util.List;
-
 import javax.persistence.*;
 
 @Entity
-public class OvocytesCollectes implements Serializable
+public class OvocytesCollectes
 {
 	@Id
 	@GeneratedValue
@@ -19,27 +15,12 @@ public class OvocytesCollectes implements Serializable
 	private String remarques;
 
 	@ManyToOne
-	@JoinColumn(name = "idSanitaire", referencedColumnName = "id")
 	private Sanitaire sanitaire;
 
-	@OneToMany(mappedBy = "ovocytes_collectes", cascade = CascadeType.REMOVE)
+	@OneToMany
 	private List<TableauOvocytesCollectes> tableauOvocytes_collectesList;
 
-	@OneToOne
-	@JoinColumn(name = "idFicheOpu", referencedColumnName = "id", unique = true)
-	private FicheOpu ficheOpu;
-
-	public OvocytesCollectes()
-	{
-	}
-
-	public OvocytesCollectes(Long id, String remarques, Sanitaire sanitaire, List<TableauOvocytesCollectes> tableauOvocytes_collectesList)
-	{
-		this.id = id;
-		this.remarques = remarques;
-		this.sanitaire = sanitaire;
-		this.tableauOvocytes_collectesList = tableauOvocytes_collectesList;
-	}
+	public OvocytesCollectes() {}
 
 	public Long getId()
 	{
@@ -79,15 +60,5 @@ public class OvocytesCollectes implements Serializable
 	public void setTableauOvocytes_collectesList(List<TableauOvocytesCollectes> tableauOvocytes_collectesList)
 	{
 		this.tableauOvocytes_collectesList = tableauOvocytes_collectesList;
-	}
-
-	public FicheOpu getFicheOpu()
-	{
-		return ficheOpu;
-	}
-
-	public void setFicheOpu(FicheOpu ficheOpu)
-	{
-		this.ficheOpu = ficheOpu;
 	}
 }

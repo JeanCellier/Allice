@@ -25,7 +25,7 @@ FicheIaServiceImpl implements FicheIaService
 	@Override
 	public FicheIa createFichieIa(String nom)
 	{
-		return ficheIaRepository.save(new FicheIa(nom));
+		return ficheIaRepository.save(new FicheIa());
 	}
 
 	@Override
@@ -50,11 +50,5 @@ FicheIaServiceImpl implements FicheIaService
 	public long countFicheIa()
 	{
 		return ficheIaRepository.count();
-	}
-
-	@Override
-	public List<FicheIa> findFicheIaSNIG()
-	{
-		return ficheIaRepository.findFicheIaSNIG();
 	}
 }

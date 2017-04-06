@@ -4,36 +4,55 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 
-import phenotypage.model.fiche.ficheOpu.FicheOpu;
-
-import java.io.Serializable;
 
 /**
  * @author fabien
  */
 
 @Entity
-public class Echo implements Serializable
+public class Echo
 {
 	@Id
 	@GeneratedValue
 	private Long id;
 
 	@Column
-	private int nb_ovaire_denombre_droit;
+	private int nb_ovaire_denombre_droitInf8;
 	
 	@Column
-	private int nb_ovaire_aspire_droit;
+	private int nb_ovaire_aspire_droitInf8;
 	
 	@Column
-	private int nb_ovaire_denombre_gauche;
+	private int nb_ovaire_denombre_gaucheInf8;
 	
 	@Column
-	private int nb_ovaire_aspire_gauche;
-	
+	private int nb_ovaire_aspire_gaucheInf8;
+
+	@Column
+	private int nb_ovaire_denombre_droitSup8;
+
+	@Column
+	private int nb_ovaire_aspire_droitSup8;
+
+	@Column
+	private int nb_ovaire_denombre_gaucheSup8;
+
+	@Column
+	private int nb_ovaire_aspire_gaucheSup8;
+
+	@Column
+	private int nb_ovaire_denombre_droitSup15;
+
+	@Column
+	private int nb_ovaire_aspire_droitSup15;
+
+	@Column
+	private int nb_ovaire_denombre_gaucheSup15;
+
+	@Column
+	private int nb_ovaire_aspire_gaucheSup15;
+
 	@Column
 	private int nb_cocs;
 	
@@ -43,61 +62,102 @@ public class Echo implements Serializable
 	@Column
 	private String remarques;
 
-	@OneToOne
-	@JoinColumn(name = "idFicheOpu", referencedColumnName = "id", unique = true)
-	private FicheOpu ficheOpu;
+	public Echo() {}
 
-	public Echo(int nb_ovaire_denombre_droit, int nb_ovaire_aspire_droit, int nb_ovaire_denombre_gauche,
-			int nb_ovaire_aspire_gauche, int nb_cocs, float taux_collecte, String remarques)
-	{
-		super();
-		this.nb_ovaire_denombre_droit = nb_ovaire_denombre_droit;
-		this.nb_ovaire_aspire_droit = nb_ovaire_aspire_droit;
-		this.nb_ovaire_denombre_gauche = nb_ovaire_denombre_gauche;
-		this.nb_ovaire_aspire_gauche = nb_ovaire_aspire_gauche;
-		this.nb_cocs = nb_cocs;
-		this.taux_collecte = taux_collecte;
-		this.remarques = remarques;
+	public int getNb_ovaire_denombre_droitInf8() {
+		return nb_ovaire_denombre_droitInf8;
 	}
 
-	public int getNb_ovaire_denombre_droit()
-	{
-		return nb_ovaire_denombre_droit;
+	public void setNb_ovaire_denombre_droitInf8(int nb_ovaire_denombre_droitInf8) {
+		this.nb_ovaire_denombre_droitInf8 = nb_ovaire_denombre_droitInf8;
 	}
 
-	public void setNb_ovaire_denombre_droit(int nb_ovaire_denombre_droit)
-	{
-		this.nb_ovaire_denombre_droit = nb_ovaire_denombre_droit;
+	public int getNb_ovaire_aspire_droitInf8() {
+		return nb_ovaire_aspire_droitInf8;
 	}
 
-	public int getNb_ovaire_aspire_droit()
-	{
-		return nb_ovaire_aspire_droit;
+	public void setNb_ovaire_aspire_droitInf8(int nb_ovaire_aspire_droitInf8) {
+		this.nb_ovaire_aspire_droitInf8 = nb_ovaire_aspire_droitInf8;
 	}
 
-	public void setNb_ovaire_aspire_droit(int nb_ovaire_aspire_droit)
-	{
-		this.nb_ovaire_aspire_droit = nb_ovaire_aspire_droit;
+	public int getNb_ovaire_denombre_gaucheInf8() {
+		return nb_ovaire_denombre_gaucheInf8;
 	}
 
-	public int getNb_ovaire_denombre_gauche()
-	{
-		return nb_ovaire_denombre_gauche;
+	public void setNb_ovaire_denombre_gaucheInf8(int nb_ovaire_denombre_gaucheInf8) {
+		this.nb_ovaire_denombre_gaucheInf8 = nb_ovaire_denombre_gaucheInf8;
 	}
 
-	public void setNb_ovaire_denombre_gauche(int nb_ovaire_denombre_gauche)
-	{
-		this.nb_ovaire_denombre_gauche = nb_ovaire_denombre_gauche;
+	public int getNb_ovaire_aspire_gaucheInf8() {
+		return nb_ovaire_aspire_gaucheInf8;
 	}
 
-	public int getNb_ovaire_aspire_gauche()
-	{
-		return nb_ovaire_aspire_gauche;
+	public void setNb_ovaire_aspire_gaucheInf8(int nb_ovaire_aspire_gaucheInf8) {
+		this.nb_ovaire_aspire_gaucheInf8 = nb_ovaire_aspire_gaucheInf8;
 	}
 
-	public void setNb_ovaire_aspire_gauche(int nb_ovaire_aspire_gauche)
-	{
-		this.nb_ovaire_aspire_gauche = nb_ovaire_aspire_gauche;
+	public int getNb_ovaire_denombre_droitSup8() {
+		return nb_ovaire_denombre_droitSup8;
+	}
+
+	public void setNb_ovaire_denombre_droitSup8(int nb_ovaire_denombre_droitSup8) {
+		this.nb_ovaire_denombre_droitSup8 = nb_ovaire_denombre_droitSup8;
+	}
+
+	public int getNb_ovaire_aspire_droitSup8() {
+		return nb_ovaire_aspire_droitSup8;
+	}
+
+	public void setNb_ovaire_aspire_droitSup8(int nb_ovaire_aspire_droitSup8) {
+		this.nb_ovaire_aspire_droitSup8 = nb_ovaire_aspire_droitSup8;
+	}
+
+	public int getNb_ovaire_denombre_gaucheSup8() {
+		return nb_ovaire_denombre_gaucheSup8;
+	}
+
+	public void setNb_ovaire_denombre_gaucheSup8(int nb_ovaire_denombre_gaucheSup8) {
+		this.nb_ovaire_denombre_gaucheSup8 = nb_ovaire_denombre_gaucheSup8;
+	}
+
+	public int getNb_ovaire_aspire_gaucheSup8() {
+		return nb_ovaire_aspire_gaucheSup8;
+	}
+
+	public void setNb_ovaire_aspire_gaucheSup8(int nb_ovaire_aspire_gaucheSup8) {
+		this.nb_ovaire_aspire_gaucheSup8 = nb_ovaire_aspire_gaucheSup8;
+	}
+
+	public int getNb_ovaire_denombre_droitSup15() {
+		return nb_ovaire_denombre_droitSup15;
+	}
+
+	public void setNb_ovaire_denombre_droitSup15(int nb_ovaire_denombre_droitSup15) {
+		this.nb_ovaire_denombre_droitSup15 = nb_ovaire_denombre_droitSup15;
+	}
+
+	public int getNb_ovaire_aspire_droitSup15() {
+		return nb_ovaire_aspire_droitSup15;
+	}
+
+	public void setNb_ovaire_aspire_droitSup15(int nb_ovaire_aspire_droitSup15) {
+		this.nb_ovaire_aspire_droitSup15 = nb_ovaire_aspire_droitSup15;
+	}
+
+	public int getNb_ovaire_denombre_gaucheSup15() {
+		return nb_ovaire_denombre_gaucheSup15;
+	}
+
+	public void setNb_ovaire_denombre_gaucheSup15(int nb_ovaire_denombre_gaucheSup15) {
+		this.nb_ovaire_denombre_gaucheSup15 = nb_ovaire_denombre_gaucheSup15;
+	}
+
+	public int getNb_ovaire_aspire_gaucheSup15() {
+		return nb_ovaire_aspire_gaucheSup15;
+	}
+
+	public void setNb_ovaire_aspire_gaucheSup15(int nb_ovaire_aspire_gaucheSup15) {
+		this.nb_ovaire_aspire_gaucheSup15 = nb_ovaire_aspire_gaucheSup15;
 	}
 
 	public int getNb_cocs()
@@ -130,10 +190,6 @@ public class Echo implements Serializable
 		this.remarques = remarques;
 	}
 
-	public Echo()
-	{
-	}
-
 	public Long getId()
 	{
 		return id;
@@ -142,15 +198,5 @@ public class Echo implements Serializable
 	public void setId(Long id)
 	{
 		this.id = id;
-	}
-
-	public FicheOpu getFicheOpu()
-	{
-		return ficheOpu;
-	}
-
-	public void setFicheOpu(FicheOpu ficheOpu)
-	{
-		this.ficheOpu = ficheOpu;
 	}
 }

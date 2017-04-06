@@ -1,45 +1,62 @@
 package phenotypage.model.fiche;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import phenotypage.model.donneesExistantes.programme.Programme;
+import javax.persistence.*;
+import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-
-/**
- * Created by simoe on 05/04/2017.
- */
 @MappedSuperclass
-public abstract class Fiche {
-    @Id
-    @GeneratedValue
-    private Long id;
+public abstract class Fiche
+{
+	@Id
+	@GeneratedValue
+	private Long id;
 
-    @Column(unique = true)
-    @NotEmpty
-    private String nom;
+	@Column(unique = true)
+	@NotEmpty
+	private String nom;
 
-    public Fiche() {
-    }
+	@ManyToOne
+	private Programme programme;
 
-    public Fiche(String nom) {
-        this.nom = nom;
-    }
+	@Column
+	private Date dateHeureMinute;
 
-    public Long getId() {
-        return id;
-    }
+	public Fiche() {}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId()
+	{
+		return id;
+	}
 
-    public String getNom() {
-        return nom;
-    }
+	public void setId(Long id)
+	{
+		this.id = id;
+	}
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public Date getDateHeureMinute() {
+		return dateHeureMinute;
+	}
+
+	public void setDateHeureMinute(Date dateHeureMinute) {
+		this.dateHeureMinute = dateHeureMinute;
+	}
+
+	public Programme getProgramme()
+	{
+		return programme;
+	}
+
+	public void setProgramme(Programme programme)
+	{
+		this.programme = programme;
+	}
 }

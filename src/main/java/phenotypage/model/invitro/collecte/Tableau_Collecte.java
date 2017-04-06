@@ -1,19 +1,18 @@
 package phenotypage.model.invitro.collecte;
 
 import phenotypage.model.vache.Vache;
-
 import javax.persistence.*;
-import java.io.Serializable;
+import java.sql.Time;
 
 @Entity
-public class Tableau_Collecte implements Serializable
+public class Tableau_Collecte
 {
 	@Id
 	@GeneratedValue
 	private Long id;
 
 	@Column
-	private int race_Ovaires;
+	private String race_Ovaires;
 
 	@Column
 	private int nombre_Ovaires;
@@ -24,27 +23,25 @@ public class Tableau_Collecte implements Serializable
 	@Column
 	private float taux_Collecte;
 
-	@Column
+	@ManyToOne
 	private Vache vache;
+
+	@Column
+	private Time heureDebutMaturation;
+
+	@Column
+	private Time heureFiv;
 
 	@Column
 	private boolean pool;
 
-	@ManyToOne
-	@JoinColumn(name = "id_Collecte", referencedColumnName = "id")
-	private Collecte collecte;
+	@Column
+	private int nbOvocyte;
 
-	public Tableau_Collecte()
-	{
-	}
+	@Column
+	private String groupeExperimentauxMIV;
 
-	Tableau_Collecte(int race_Ovaires, int nombre_Ovaires, int nombre_Ovocytes)
-	{
-		this.race_Ovaires = race_Ovaires;
-		this.nombre_Ovaires = nombre_Ovaires;
-		this.nombre_Ovocytes = nombre_Ovocytes;
-		this.taux_Collecte = nombre_Ovaires / nombre_Ovocytes;
-	}
+	public Tableau_Collecte() {}
 
 	public Long getId()
 	{
@@ -56,12 +53,12 @@ public class Tableau_Collecte implements Serializable
 		this.id = id;
 	}
 
-	public int getRace_Ovaires()
+	public String getRace_Ovaires()
 	{
 		return race_Ovaires;
 	}
 
-	public void setRace_Ovaires(int race_Ovaires)
+	public void setRace_Ovaires(String race_Ovaires)
 	{
 		this.race_Ovaires = race_Ovaires;
 	}
@@ -96,16 +93,6 @@ public class Tableau_Collecte implements Serializable
 		this.taux_Collecte = taux_Collecte;
 	}
 
-	public Collecte getCollecte()
-	{
-		return collecte;
-	}
-
-	public void setCollecte(Collecte collecte)
-	{
-		this.collecte = collecte;
-	}
-
 	public Vache getVache()
 	{
 		return vache;
@@ -124,5 +111,37 @@ public class Tableau_Collecte implements Serializable
 	public void setPool(boolean pool)
 	{
 		this.pool = pool;
+	}
+
+	public Time getHeureDebutMaturation() {
+		return heureDebutMaturation;
+	}
+
+	public void setHeureDebutMaturation(Time heureDebutMaturation) {
+		this.heureDebutMaturation = heureDebutMaturation;
+	}
+
+	public Time getHeureFiv() {
+		return heureFiv;
+	}
+
+	public void setHeureFiv(Time heureFiv) {
+		this.heureFiv = heureFiv;
+	}
+
+	public int getNbOvocyte() {
+		return nbOvocyte;
+	}
+
+	public void setNbOvocyte(int nbOvocyte) {
+		this.nbOvocyte = nbOvocyte;
+	}
+
+	public String getGroupeExperimentauxMIV() {
+		return groupeExperimentauxMIV;
+	}
+
+	public void setGroupeExperimentauxMIV(String groupeExperimentauxMIV) {
+		this.groupeExperimentauxMIV = groupeExperimentauxMIV;
 	}
 }

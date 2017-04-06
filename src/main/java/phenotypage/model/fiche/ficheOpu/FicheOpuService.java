@@ -18,6 +18,4 @@ public interface FicheOpuService
 	FicheOpu findByNom(String nom);
 
 	long countFicheOpu();
-
-	List<FicheOpu> findFicheOpuSNIG();
 }

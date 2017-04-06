@@ -24,7 +24,7 @@ public class MethodeCongelationServiceImpl implements MethodeCongelationService
 	@Override
 	public MethodeCongelation createMethodeCongelation(String nom)
 	{
-		return methodeCongelationRepository.save(new MethodeCongelation(nom));
+		return methodeCongelationRepository.save(new MethodeCongelation());
 	}
 
 	@Override

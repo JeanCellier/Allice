@@ -1,116 +1,146 @@
 package phenotypage.model.fiche.ficheAba;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import phenotypage.model.cryoconservation.Cryoconservation;
+import phenotypage.model.cryoconservation.TableauDetail;
+import phenotypage.model.donneesExistantes.abattoir.Abattoir;
+import phenotypage.model.donneesExistantes.operateur.Operateur;
 import phenotypage.model.fiche.Fiche;
-import phenotypage.model.fiches.traitement.header.Header;
 import phenotypage.model.informationsPIV.Informations_PIV;
 import phenotypage.model.invitro.collecte.Collecte;
 import phenotypage.model.invitro.culture.Culture;
 import phenotypage.model.invitro.fecondation.Fecondation;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * @author fabien
  */
 
 @Entity
-public class
-FicheAba extends Fiche {
-    @Column
-    private boolean snig;
+public class FicheAba extends Fiche{
+	@Column
+	private String numeroAgrement;
 
-    @OneToOne
-    private Header header;
+	@ManyToOne
+	private Abattoir abattoir;
 
-    @OneToOne
-    private Informations_PIV informations_piv;
+	@ManyToOne
+	@JoinColumn
+	private Operateur operateur;
 
-    @OneToOne
-    private Collecte collecte;
+	@Column
+	private float temperatureArrivee;
 
-    @OneToOne
-    private Fecondation fecondation;
+	@OneToOne
+	private Informations_PIV informations_piv;
 
-    @OneToOne
-    private Culture culture;
+	@OneToOne
+	private Collecte collecte;
 
-    @OneToOne
-    private Cryoconservation cryoconservation;
+	@OneToOne
+	private Fecondation fecondation;
 
-    public FicheAba() {
-    }
+	@OneToOne
+	private Culture culture;
 
-    public FicheAba(String nom) {
-        super(nom);
-    }
+	@OneToOne
+	private Cryoconservation cryoconservation;
 
-    public FicheAba(Header header, Informations_PIV informations_piv, Collecte collecte, Fecondation fecondation, Culture culture, Cryoconservation cryoconservation) {
-        this.header = header;
-        this.informations_piv = informations_piv;
-        this.collecte = collecte;
-        this.fecondation = fecondation;
-        this.culture = culture;
-        this.cryoconservation = cryoconservation;
-    }
+	@OneToMany
+	private List<TableauDetail> tableauDetails;
 
-    public Header getHeader() {
-        return header;
-    }
+	public FicheAba() { super(); }
 
-    public void setHeader(Header header) {
-        this.header = header;
-    }
+	public String getNumeroAgrement() {
+		return numeroAgrement;
+	}
 
-    public Informations_PIV getInformations_piv() {
-        return informations_piv;
-    }
+	public void setNumeroAgrement(String numeroAgrement) {
+		this.numeroAgrement = numeroAgrement;
+	}
 
-    public void setInformations_piv(Informations_PIV informations_piv) {
-        this.informations_piv = informations_piv;
-    }
+	public Abattoir getAbattoir() {
+		return abattoir;
+	}
 
-    public Collecte getCollecte() {
-        return collecte;
-    }
+	public void setAbattoir(Abattoir abattoir) {
+		this.abattoir = abattoir;
+	}
 
-    public void setCollecte(Collecte collecte) {
-        this.collecte = collecte;
-    }
+	public Operateur getOperateur() {
+		return operateur;
+	}
 
-    public Fecondation getFecondation() {
-        return fecondation;
-    }
+	public void setOperateur(Operateur operateur) {
+		this.operateur = operateur;
+	}
 
-    public void setFecondation(Fecondation fecondation) {
-        this.fecondation = fecondation;
-    }
+	public float getTemperatureArrivee() {
+		return temperatureArrivee;
+	}
 
-    public Culture getCulture() {
-        return culture;
-    }
+	public void setTemperatureArrivee(float temperatureArrivee) {
+		this.temperatureArrivee = temperatureArrivee;
+	}
 
-    public void setCulture(Culture culture) {
-        this.culture = culture;
-    }
+	public Informations_PIV getInformations_piv()
+	{
+		return informations_piv;
+	}
 
-    public Cryoconservation getCryoconservation() {
-        return cryoconservation;
-    }
+	public void setInformations_piv(Informations_PIV informations_piv)
+	{
+		this.informations_piv = informations_piv;
+	}
 
-    public void setCryoconservation(Cryoconservation cryoconservation) {
-        this.cryoconservation = cryoconservation;
-    }
+	public Collecte getCollecte()
+	{
+		return collecte;
+	}
 
-    public boolean isSnig() {
-        return snig;
-    }
+	public void setCollecte(Collecte collecte)
+	{
+		this.collecte = collecte;
+	}
 
-    public void setSnig(boolean snig) {
-        this.snig = snig;
-    }
+	public Fecondation getFecondation()
+	{
+		return fecondation;
+	}
+
+	public void setFecondation(Fecondation fecondation)
+	{
+		this.fecondation = fecondation;
+	}
+
+	public Culture getCulture()
+	{
+		return culture;
+	}
+
+	public void setCulture(Culture culture)
+	{
+		this.culture = culture;
+	}
+
+	public Cryoconservation getCryoconservation()
+	{
+		return cryoconservation;
+	}
+
+	public void setCryoconservation(Cryoconservation cryoconservation)
+	{
+		this.cryoconservation = cryoconservation;
+	}
+
+	public List<TableauDetail> getTableauDetails() {
+		return tableauDetails;
+	}
+
+	public void setTableauDetails(List<TableauDetail> tableauDetails) {
+		this.tableauDetails = tableauDetails;
+	}
 }
 
 

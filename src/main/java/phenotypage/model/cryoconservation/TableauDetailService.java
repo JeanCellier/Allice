@@ -1,6 +1,6 @@
 package phenotypage.model.cryoconservation;
 
-import phenotypage.model.donneExistante.stade.Stade;
+import phenotypage.model.donneesExistantes.stade.Stade;
 
 import java.util.List;
 

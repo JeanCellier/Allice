@@ -1,25 +1,18 @@
 package phenotypage.model.corpsJaune;
 
-import phenotypage.model.donneExistante.qualite.Qualite;
-import phenotypage.model.fiche.ficheTra.FicheTra;
-
+import phenotypage.model.donneesExistantes.qualite.Qualite;
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
  * @author fabien
  */
 
 @Entity
-public class CorpsJaune implements Serializable
+public class CorpsJaune
 {
 	@Id
 	@GeneratedValue
 	private Long id;
-
-	@Column
-	private boolean palpation;
-	//else echographie
 	
 	@Column
 	private String mode_evaluation;
@@ -29,29 +22,13 @@ public class CorpsJaune implements Serializable
 	//Yes/No
 	
 	@Column
-	private boolean coteCorpsJaune;
-	//true cote droit//false cote gauche
-	
+	private char coteCorpsJaune;
+	//G = gauche; D = droit
+
 	@OneToOne
 	private Qualite qualite;
 
-	@OneToOne
-	@JoinColumn(name = "idFicheTra", referencedColumnName = "id", unique = true)
-	private FicheTra ficheTra;
-
-	public CorpsJaune()
-	{
-	}
-
-	public CorpsJaune(boolean palpation, String mode_evaluation, boolean imageEcho, boolean coteCorpsJaune, Qualite qualite)
-	{
-		super();
-		this.palpation = palpation;
-		this.mode_evaluation = mode_evaluation;
-		this.imageEcho = imageEcho;
-		this.coteCorpsJaune = coteCorpsJaune;
-		this.qualite = qualite;
-	}
+	public CorpsJaune() {}
 
 	public Long getId()
 	{
@@ -61,16 +38,6 @@ public class CorpsJaune implements Serializable
 	public void setId(Long id)
 	{
 		this.id = id;
-	}
-
-	public boolean isPalpation()
-	{
-		return palpation;
-	}
-
-	public void setPalpation(boolean palpation)
-	{
-		this.palpation = palpation;
 	}
 
 	public String getMode_evaluation()
@@ -93,15 +60,9 @@ public class CorpsJaune implements Serializable
 		this.imageEcho = imageEcho;
 	}
 
-	public boolean isCoteCorpsJaune()
-	{
-		return coteCorpsJaune;
-	}
+	public char getCoteCorpsJaune() { return coteCorpsJaune; }
 
-	public void setCoteCorpsJaune(boolean coteCorpsJaune)
-	{
-		this.coteCorpsJaune = coteCorpsJaune;
-	}
+	public void setCoteCorpsJaune(char coteCorpsJaune) { this.coteCorpsJaune = coteCorpsJaune;	}
 
 	public Qualite getQualite()
 	{
@@ -111,15 +72,5 @@ public class CorpsJaune implements Serializable
 	public void setQualite(Qualite qualite)
 	{
 		this.qualite = qualite;
-	}
-
-	public FicheTra getFicheTra()
-	{
-		return ficheTra;
-	}
-
-	public void setFicheTra(FicheTra ficheTra)
-	{
-		this.ficheTra = ficheTra;
 	}
 }

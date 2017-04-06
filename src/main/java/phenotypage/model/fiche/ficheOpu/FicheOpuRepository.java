@@ -12,7 +12,4 @@ import java.util.List;
 public interface FicheOpuRepository extends JpaRepository<FicheOpu, Long>
 {
 	FicheOpu findByNom(String nom);
-
-	@Query("select f from FicheOpu f where f.snig = true")
-	List<FicheOpu> findFicheOpuSNIG();
 }

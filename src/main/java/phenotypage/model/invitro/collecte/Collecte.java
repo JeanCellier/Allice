@@ -1,55 +1,27 @@
 package phenotypage.model.invitro.collecte;
 
-import org.springframework.format.annotation.DateTimeFormat;
-import phenotypage.model.fiche.ficheAba.FicheAba;
-import phenotypage.model.fiche.ficheOpu.FicheOpu;
-
-import java.io.Serializable;
-import java.util.Calendar;
+import java.sql.Time;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.*;
 
 @Entity
-public class Collecte implements Serializable
+public class Collecte
 {
 	@Id
 	@GeneratedValue
 	private Long id;
 
 	@Column
-	private int heure;
+	private Time heureCollecte;
 
 	@Column
-	private int minute;
+	private Date date;
 
-	@Column
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	private Calendar date;
-
-	@OneToMany(mappedBy = "collecte", cascade = CascadeType.REMOVE)
+	@OneToMany
 	private List<Tableau_Collecte> tableauCollecteList;
 
-	@OneToOne
-	@JoinColumn(name = "idFicheAba", referencedColumnName = "id", unique = true)
-	private FicheAba ficheAba;
-
-	@OneToOne
-	@JoinColumn(name = "idFicheOpu", referencedColumnName = "id", unique = true)
-	private FicheOpu ficheOpu;
-
-
-	public Collecte()
-	{
-		date = Calendar.getInstance();
-	}
-
-	public Collecte(Calendar date, List<Tableau_Collecte> tableauCollecteList)
-	{
-		this.date = date;
-		this.tableauCollecteList = tableauCollecteList;
-	}
+	public Collecte(){	}
 
 	public Long getId()
 	{
@@ -61,12 +33,12 @@ public class Collecte implements Serializable
 		this.id = id;
 	}
 
-	public Calendar getDate()
+	public Date getDate()
 	{
 		return date;
 	}
 
-	public void setDate(Calendar date)
+	public void setDate(Date date)
 	{
 		this.date = date;
 	}
@@ -76,48 +48,13 @@ public class Collecte implements Serializable
 		return tableauCollecteList;
 	}
 
-	public void setTableauCollecteList(List<Tableau_Collecte> tableauCollecteList)
-	{
-		this.tableauCollecteList = tableauCollecteList;
+	public void setTableauCollecteList(List<Tableau_Collecte> tableauCollecteList) { this.tableauCollecteList = tableauCollecteList; }
+
+	public Time getHeureCollecte() {
+		return heureCollecte;
 	}
 
-	public FicheAba getFicheAba()
-	{
-		return ficheAba;
-	}
-
-	public void setFicheAba(FicheAba ficheAba)
-	{
-		this.ficheAba = ficheAba;
-	}
-
-	public FicheOpu getFicheOpu()
-	{
-		return ficheOpu;
-	}
-
-	public void setFicheOpu(FicheOpu ficheOpu)
-	{
-		this.ficheOpu = ficheOpu;
-	}
-
-	public int getHeure()
-	{
-		return heure;
-	}
-
-	public void setHeure(int heure)
-	{
-		this.heure = heure;
-	}
-
-	public int getMinute()
-	{
-		return minute;
-	}
-
-	public void setMinute(int minute)
-	{
-		this.minute = minute;
+	public void setHeureCollecte(Time heureCollecte) {
+		this.heureCollecte = heureCollecte;
 	}
 }

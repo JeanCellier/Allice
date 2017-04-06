@@ -25,7 +25,7 @@ FicheTraServiceImpl implements FicheTraService
 	@Override
 	public FicheTra createFichieTra(String nom)
 	{
-		return ficheTraRepository.save(new FicheTra(nom));
+		return ficheTraRepository.save(new FicheTra());
 	}
 
 	@Override
@@ -50,11 +50,5 @@ FicheTraServiceImpl implements FicheTraService
 	public long countFicheTra()
 	{
 		return ficheTraRepository.count();
-	}
-
-	@Override
-	public List<FicheTra> findFicheTraSNIG()
-	{
-		return ficheTraRepository.findFicheTraSNIG();
 	}
 }

@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import phenotypage.model.fiche.Fiche;
 import phenotypage.model.fiche.ficheAba.FicheAba;
 import phenotypage.model.fiche.ficheAba.FicheAbaService;
-import phenotypage.model.fiche.ficheCarriere.FicheCarriere;
-import phenotypage.model.fiche.ficheCarriere.FicheCarriereService;
 import phenotypage.model.fiche.ficheCol.FicheCol;
 import phenotypage.model.fiche.ficheCol.FicheColService;
 import phenotypage.model.fiche.ficheIa.FicheIa;
@@ -43,9 +41,6 @@ public class ImportExportController {
     @Autowired
     private FicheTraService ficheTraService;
 
-    @Autowired
-    private FicheCarriereService ficheCarriereService;
-
     @RequestMapping(value = "/importexport", method = RequestMethod.GET)
     public String importexport(Model model) {
         List<FicheAba> ficheAbaList = ficheAbaService.findAllFicheAba();
@@ -53,7 +48,6 @@ public class ImportExportController {
         List<FicheIa> ficheIaList = ficheIaService.findAllFicheIa();
         List<FicheOpu> ficheOpuList = ficheOpuService.findAllFicheOpu();
         List<FicheTra> ficheTraList = ficheTraService.findAllFicheTra();
-        List<FicheCarriere> ficheCarriereList = ficheCarriereService.findAllFicheCarriere();
 
         List<Fiche> ficheList = new ArrayList<>();
         ficheList.addAll(ficheAbaList);
@@ -61,7 +55,6 @@ public class ImportExportController {
         ficheList.addAll(ficheIaList);
         ficheList.addAll(ficheOpuList);
         ficheList.addAll(ficheTraList);
-        ficheList.addAll(ficheCarriereList);
         model.addAttribute("ficheList", ficheList);
         return "importexport";
     }

@@ -1,13 +1,13 @@
 package phenotypage.model.fiche.ficheCol;
 
 import phenotypage.model.cryoconservation.Cryoconservation;
+import phenotypage.model.cryoconservation.TableauDetail;
+import phenotypage.model.donneesExistantes.operateur.Operateur;
 import phenotypage.model.fiche.Fiche;
-import phenotypage.model.fiches.traitement.header.Header;
-import phenotypage.model.insemination.Insemination;
 import phenotypage.model.invitro.collecte.resultat.Resultat;
+import phenotypage.model.tableauTraitement.TableauTraitement;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
 import phenotypage.model.vache.Vache;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -17,101 +17,113 @@ import java.util.List;
 
 @Entity
 public class FicheCol extends Fiche {
+	@Column
+	private String numeroAgrement;
 
-    @Column
-    private boolean snig;
+	@Column
+	private String lieu;
 
-    @OneToOne
-    private Header header;
+	@ManyToOne
+	private Operateur operateur;
 
-    @ManyToOne
-    @JoinColumn(name = "id_Vache", referencedColumnName = "id")
-    private Vache vache;
+	@ManyToOne
+	private Vache vache;
 
-    @OneToOne
-    private Traitement_Donneuse traitement_donneuse;
+	@OneToOne
+	private Traitement_Donneuse traitement_donneuse;
 
-    @OneToOne
-    private Resultat resultat_collecte;
+	@OneToOne
+	private Resultat resultat_collecte;
 
-    @OneToOne
-    private Cryoconservation cryoconservation;
+	@OneToOne
+	private Cryoconservation cryoconservation;
 
-    @OneToMany(mappedBy = "ficheCol")
-    private List<Insemination> inseminationList;
+	@OneToMany
+	private List<TableauTraitement> tableauTraitements;
 
-    public FicheCol() {
-    }
+	@OneToMany
+	private List<TableauDetail> tableauDetails;
 
-    public FicheCol(String nom) {
-        super(nom);
-    }
+	public FicheCol() { super(); }
 
-    public FicheCol(String nom, Header header, Vache vache, Traitement_Donneuse traitement_donneuse,
-                    Resultat resultat_collecte, Cryoconservation cryoconservation) {
-        super(nom);
-        this.header = header;
-        this.vache = vache;
-        this.traitement_donneuse = traitement_donneuse;
-        this.resultat_collecte = resultat_collecte;
-        this.cryoconservation = cryoconservation;
-    }
+	public String getNumeroAgrement() {
+		return numeroAgrement;
+	}
 
-    public Header getHeader() {
-        return header;
-    }
+	public void setNumeroAgrement(String numeroAgrement) {
+		this.numeroAgrement = numeroAgrement;
+	}
 
-    public void setHeader(Header header) {
-        this.header = header;
-    }
+	public String getLieu() {
+		return lieu;
+	}
 
-    public Vache getVache() {
-        return vache;
-    }
+	public void setLieu(String lieu) {
+		this.lieu = lieu;
+	}
 
-    public void setVache(Vache vache) {
-        this.vache = vache;
-    }
+	public Operateur getOperateur() {
+		return operateur;
+	}
 
-    public Traitement_Donneuse getTraitement_donneuse() {
-        return traitement_donneuse;
-    }
+	public void setOperateur(Operateur operateur) {
+		this.operateur = operateur;
+	}
 
-    public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse) {
-        this.traitement_donneuse = traitement_donneuse;
-    }
+	public Vache getVache()
+	{
+		return vache;
+	}
 
-    public Resultat getResultat_collecte() {
-        return resultat_collecte;
-    }
+	public void setVache(Vache vache)
+	{
+		this.vache = vache;
+	}
 
-    public void setResultat_collecte(Resultat resultat_collecte) {
-        this.resultat_collecte = resultat_collecte;
-    }
+	public Traitement_Donneuse getTraitement_donneuse()
+	{
+		return traitement_donneuse;
+	}
 
-    public Cryoconservation getCryoconservation() {
-        return cryoconservation;
-    }
+	public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse) {
+		this.traitement_donneuse = traitement_donneuse;
+	}
 
-    public void setCryoconservation(Cryoconservation cryoconservation) {
-        this.cryoconservation = cryoconservation;
-    }
+	public Resultat getResultat_collecte()
+	{
+		return resultat_collecte;
+	}
 
-    public List<Insemination> getInseminationList() {
-        return inseminationList;
-    }
+	public void setResultat_collecte(Resultat resultat_collecte)
+	{
+		this.resultat_collecte = resultat_collecte;
+	}
 
-    public void setInseminationList(List<Insemination> inseminationList) {
-        this.inseminationList = inseminationList;
-    }
+	public Cryoconservation getCryoconservation()
+	{
+		return cryoconservation;
+	}
 
-    public boolean isSnig() {
-        return snig;
-    }
+	public void setCryoconservation(Cryoconservation cryoconservation)
+	{
+		this.cryoconservation = cryoconservation;
+	}
 
-    public void setSnig(boolean snig) {
-        this.snig = snig;
-    }
+	public List<TableauTraitement> getTableauTraitements() {
+		return tableauTraitements;
+	}
+
+	public void setTableauTraitements(List<TableauTraitement> tableauTraitements) {
+		this.tableauTraitements = tableauTraitements;
+	}
+
+	public List<TableauDetail> getTableauDetails() {
+		return tableauDetails;
+	}
+
+	public void setTableauDetails(List<TableauDetail> tableauDetails) {
+		this.tableauDetails = tableauDetails;
+	}
 }
 
 

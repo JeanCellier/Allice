@@ -1,9 +1,9 @@
 package phenotypage.model.fiche.ficheTra;
 
 import phenotypage.model.corpsJaune.CorpsJaune;
+import phenotypage.model.donneesExistantes.operateur.Operateur;
 import phenotypage.model.embryonsTransferes.EmbryonsTransferes;
 import phenotypage.model.fiche.Fiche;
-import phenotypage.model.fiches.traitement.header.Header;
 import phenotypage.model.gestation.Gestation;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
 import phenotypage.model.vache.Vache;
@@ -15,102 +15,106 @@ import javax.persistence.*;
  */
 
 @Entity
-public class FicheTra extends Fiche {
-    @Column
-    private boolean snig;
+public class FicheTra extends Fiche
+{
+	@Column
+	private String numeroAgrement;
 
-    @OneToOne
-    private Header header;
+	@Column
+	private String lieu;
 
-    @ManyToOne
-    @JoinColumn(name = "id_Vache", referencedColumnName = "id")
-    private Vache vache;
+	@ManyToOne
+	private Operateur operateur;
 
-    @OneToOne
-    private Traitement_Donneuse traitement_donneuse;
+	@ManyToOne
+	private Vache vache;
+	
+	@OneToOne
+	private Traitement_Donneuse traitement_donneuse;
+	
+	@OneToOne
+	private CorpsJaune corpsJaune;
+	
+	@OneToOne
+	private EmbryonsTransferes embryonsTransferes;
 
-    @OneToOne
-    private CorpsJaune corpsJaune;
+	@OneToOne
+	private Gestation gestation;
 
-    @OneToOne
-    private EmbryonsTransferes embryonsTransferes;
+	public FicheTra() { super(); }
 
-    @OneToOne
-    private Gestation gestation;
+	public String getNumeroAgrement() {
+		return numeroAgrement;
+	}
 
-    public FicheTra() {
-    }
+	public void setNumeroAgrement(String numeroAgrement) {
+		this.numeroAgrement = numeroAgrement;
+	}
 
-    public FicheTra(String nom) {
-        super(nom);
-    }
+	public String getLieu() {
+		return lieu;
+	}
 
-    public FicheTra(String nom, Header header, Vache vache, Traitement_Donneuse traitement_donneuse,
-                    CorpsJaune corpsJaune, EmbryonsTransferes embryonsTransferes, Gestation gestation) {
-        super(nom);
-        this.header = header;
-        this.vache = vache;
-        this.traitement_donneuse = traitement_donneuse;
-        this.corpsJaune = corpsJaune;
-        this.embryonsTransferes = embryonsTransferes;
-        this.gestation = gestation;
-    }
+	public void setLieu(String lieu) {
+		this.lieu = lieu;
+	}
 
-    public Header getHeader() {
-        return header;
-    }
+	public Operateur getOperateur() {
+		return operateur;
+	}
 
-    public void setHeader(Header header) {
-        this.header = header;
-    }
+	public void setOperateur(Operateur operateur) {
+		this.operateur = operateur;
+	}
 
-    public Vache getVache() {
-        return vache;
-    }
+	public Vache getVache()
+	{
+		return vache;
+	}
 
-    public void setVache(Vache vache) {
-        this.vache = vache;
-    }
+	public void setVache(Vache vache)
+	{
+		this.vache = vache;
+	}
 
-    public Traitement_Donneuse getTraitement_donneuse() {
-        return traitement_donneuse;
-    }
+	public Traitement_Donneuse getTraitement_donneuse()
+	{
+		return traitement_donneuse;
+	}
 
-    public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse) {
-        this.traitement_donneuse = traitement_donneuse;
-    }
+	public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse) {
+		this.traitement_donneuse = traitement_donneuse;
+	}
 
-    public CorpsJaune getCorpsJaune() {
-        return corpsJaune;
-    }
+	public CorpsJaune getCorpsJaune()
+	{
+		return corpsJaune;
+	}
 
-    public void setCorpsJaune(CorpsJaune corpsJaune) {
-        this.corpsJaune = corpsJaune;
-    }
+	public void setCorpsJaune(CorpsJaune corpsJaune)
+	{
+		this.corpsJaune = corpsJaune;
+	}
 
-    public EmbryonsTransferes getEmbryonsTransferes() {
-        return embryonsTransferes;
-    }
+	public EmbryonsTransferes getEmbryonsTransferes()
+	{
+		return embryonsTransferes;
+	}
 
-    public void setEmbryonsTransferes(EmbryonsTransferes embryonsTransferes) {
-        this.embryonsTransferes = embryonsTransferes;
-    }
+	public void setEmbryonsTransferes(EmbryonsTransferes embryonsTransferes) {
+		this.embryonsTransferes = embryonsTransferes;
+	}
 
-    public Gestation getGestation() {
-        return gestation;
-    }
+	public Gestation getGestation()
+	{
+		return gestation;
+	}
 
-    public void setGestation(Gestation gestation) {
-        this.gestation = gestation;
-    }
+	public void setGestation(Gestation gestation)
+	{
+		this.gestation = gestation;
+	}
 
-    public boolean isSnig() {
-        return snig;
-    }
-
-    public void setSnig(boolean snig) {
-        this.snig = snig;
-    }
 }
 
 
