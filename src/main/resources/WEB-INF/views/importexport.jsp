@@ -105,9 +105,23 @@
         openFileDialog("text/plain", function (e) {
             $(this).each(function () {
                 fileName = $(this).val();
+
             });
         });
     });
+
+    //function to
+    function post(url, data) {
+        return $.ajax({
+            type: 'POST',
+            url: url,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            data: JSON.stringify(data)
+        })
+    }
 
     // open a dialog function
     function openFileDialog(accept, callback) {

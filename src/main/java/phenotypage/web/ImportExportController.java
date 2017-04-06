@@ -65,5 +65,4 @@ public class ImportExportController {
         model.addAttribute("ficheList", ficheList);
         return "importexport";
     }
-
 }
