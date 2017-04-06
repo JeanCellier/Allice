@@ -35,7 +35,8 @@ public class PharmacieController
 	public JsonResponse add(@RequestParam("nom") String nom, @RequestParam("dateDelivrance") String dateDeliv,
 					 @RequestParam("fournisseur") String fournisseur, @RequestParam("projet") String projet,
 					 @RequestParam("responsable") String respo, @RequestParam("qteEntrante") String qteEntrante,
-					 @RequestParam("numLot") String numLot, @RequestParam("datePeremption") String datePeremp){
+					 @RequestParam("numLot") String numLot, @RequestParam("datePeremption") String datePeremp,
+					 @RequestParam("indication") String indication){
 
 		JsonResponse response = new JsonResponse();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -54,7 +55,7 @@ public class PharmacieController
 					response.setSucces(false);
 					response.setMessage("La quantité entrante ne peut être inférieure ou égale à 0");
 				}else{
-					Produit produit = produitService.createProduit(nom, dateDel, fournisseur, projet, respo, qteEntr, numLot, datePer);
+					Produit produit = produitService.createProduit(nom, dateDel, fournisseur, projet, respo, qteEntr, numLot, datePer, indication);
 
 					response.setSucces(true);
 					response.setMessage("Ajout effectué");
@@ -97,7 +98,8 @@ public class PharmacieController
 							 @RequestParam("dateDelivrance") String dateDeliv, @RequestParam("fournisseur") String fournisseur,
 							 @RequestParam("projet") String projet, @RequestParam("responsable") String respo,
 							 @RequestParam("qteEntrante") String qteEntrante, @RequestParam("qteRestante") String qteRestante,
-							 @RequestParam("numLot") String numLot, @RequestParam("datePeremption") String datePeremp){
+							 @RequestParam("numLot") String numLot, @RequestParam("datePeremption") String datePeremp,
+							 @RequestParam("indication") String indication){
 		JsonResponse response = new JsonResponse();
 
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -117,7 +119,7 @@ public class PharmacieController
 					response.setSucces(false);
 					response.setMessage("La quantité entrante ne peut être inférieure ou égale à 0");
 				}else{
-					produitService.update(produit, nom, dateDel, fournisseur, projet, respo, qteEntr, qteRest, numLot, datePer);
+					produitService.update(produit, nom, dateDel, fournisseur, projet, respo, qteEntr, qteRest, numLot, datePer, indication);
 					response.setSucces(true);
 					response.setMessage("Produit modifié");
 					response.setObjet(produit);

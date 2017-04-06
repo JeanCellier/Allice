@@ -1,13 +1,13 @@
 package phenotypage.model.fiche.ficheCol;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import phenotypage.model.cryoconservation.Cryoconservation;
-import phenotypage.model.fiches.traitement.header.Header;
-import phenotypage.model.insemination.Insemination;
+import phenotypage.model.cryoconservation.TableauDetail;
+import phenotypage.model.donneesExistantes.operateur.Operateur;
+import phenotypage.model.fiche.Fiche;
 import phenotypage.model.invitro.collecte.resultat.Resultat;
+import phenotypage.model.tableauTraitement.TableauTraitement;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
 import phenotypage.model.vache.Vache;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,24 +16,17 @@ import java.util.List;
  */
 
 @Entity
-public class FicheCol
-{
-	@Id
-	@GeneratedValue
-	private Long id;
-
-	@Column(unique = true)
-	@NotEmpty
-	private String nom;
+public class FicheCol extends Fiche {
+	@Column
+	private String numeroAgrement;
 
 	@Column
-	private boolean snig;
-
-	@OneToOne
-	private Header header;
+	private String lieu;
 
 	@ManyToOne
-	@JoinColumn(name = "id_Vache", referencedColumnName = "id")
+	private Operateur operateur;
+
+	@ManyToOne
 	private Vache vache;
 
 	@OneToOne
@@ -45,58 +38,36 @@ public class FicheCol
 	@OneToOne
 	private Cryoconservation cryoconservation;
 
-	@OneToMany(mappedBy = "ficheCol")
-	private List<Insemination> inseminationList;
+	@OneToMany
+	private List<TableauTraitement> tableauTraitements;
 
-	public FicheCol()
-	{
+	@OneToMany
+	private List<TableauDetail> tableauDetails;
+
+	public FicheCol() { super(); }
+
+	public String getNumeroAgrement() {
+		return numeroAgrement;
 	}
 
-	public FicheCol(String nom)
-	{
-		this.nom = nom;
+	public void setNumeroAgrement(String numeroAgrement) {
+		this.numeroAgrement = numeroAgrement;
 	}
 
-	public FicheCol(String nom, Header header, Vache vache, Traitement_Donneuse traitement_donneuse,
-	                Resultat resultat_collecte, Cryoconservation cryoconservation)
-	{
-		super();
-		this.nom = nom;
-		this.header = header;
-		this.vache = vache;
-		this.traitement_donneuse = traitement_donneuse;
-		this.resultat_collecte = resultat_collecte;
-		this.cryoconservation = cryoconservation;
+	public String getLieu() {
+		return lieu;
 	}
 
-	public Long getId()
-	{
-		return id;
+	public void setLieu(String lieu) {
+		this.lieu = lieu;
 	}
 
-	public void setId(Long id)
-	{
-		this.id = id;
+	public Operateur getOperateur() {
+		return operateur;
 	}
 
-	public String getNom()
-	{
-		return nom;
-	}
-
-	public void setNom(String nom)
-	{
-		this.nom = nom;
-	}
-
-	public Header getHeader()
-	{
-		return header;
-	}
-
-	public void setHeader(Header header)
-	{
-		this.header = header;
+	public void setOperateur(Operateur operateur) {
+		this.operateur = operateur;
 	}
 
 	public Vache getVache()
@@ -114,8 +85,7 @@ public class FicheCol
 		return traitement_donneuse;
 	}
 
-	public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse)
-	{
+	public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse) {
 		this.traitement_donneuse = traitement_donneuse;
 	}
 
@@ -139,24 +109,20 @@ public class FicheCol
 		this.cryoconservation = cryoconservation;
 	}
 
-	public List<Insemination> getInseminationList()
-	{
-		return inseminationList;
+	public List<TableauTraitement> getTableauTraitements() {
+		return tableauTraitements;
 	}
 
-	public void setInseminationList(List<Insemination> inseminationList)
-	{
-		this.inseminationList = inseminationList;
+	public void setTableauTraitements(List<TableauTraitement> tableauTraitements) {
+		this.tableauTraitements = tableauTraitements;
 	}
 
-	public boolean isSnig()
-	{
-		return snig;
+	public List<TableauDetail> getTableauDetails() {
+		return tableauDetails;
 	}
 
-	public void setSnig(boolean snig)
-	{
-		this.snig = snig;
+	public void setTableauDetails(List<TableauDetail> tableauDetails) {
+		this.tableauDetails = tableauDetails;
 	}
 }
 

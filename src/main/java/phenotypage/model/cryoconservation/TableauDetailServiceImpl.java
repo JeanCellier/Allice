@@ -2,7 +2,7 @@ package phenotypage.model.cryoconservation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import phenotypage.model.donneExistante.stade.Stade;
+import phenotypage.model.donneesExistantes.stade.Stade;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class TableauDetailServiceImpl implements TableauDetailService
 	@Override
 	public TableauDetail createTableauDetail(int numeroEnbryon, int groupe, Stade stade, String referecneTransfert, String remarque)
 	{
-		return tableauDetailRepository.save(new TableauDetail(numeroEnbryon, groupe, stade, referecneTransfert, remarque));
+		return tableauDetailRepository.save(new TableauDetail());
 	}
 
 	@Override

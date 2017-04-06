@@ -25,7 +25,7 @@ FicheCarriereServiceImpl implements FicheCarriereService
 	@Override
 	public FicheCarriere createFichieAba(String nom)
 	{
-		return ficheCarriereRepository.save(new FicheCarriere(nom));
+		return ficheCarriereRepository.save(new FicheCarriere());
 	}
 
 	@Override

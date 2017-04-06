@@ -18,7 +18,7 @@ public class ProduitServiceImpl implements ProduitService
 	private ProduitRepository produitRepository;
 
 	@Override
-	public Produit createProduit(String nom, Date dateDel, String fournisseur, String projet, String respo, float qteEntr, String numLot, Date datePer)
+	public Produit createProduit(String nom, Date dateDel, String fournisseur, String projet, String respo, float qteEntr, String numLot, Date datePer, String indication)
 	{
 		Produit produit = new Produit();
 		produit.setNom(nom);
@@ -30,6 +30,7 @@ public class ProduitServiceImpl implements ProduitService
 		produit.setQteRestante(qteEntr);
 		produit.setNumLot(numLot);
 		produit.setDatePeremption(datePer);
+		produit.setIndication(indication);
 
 		save(produit);
 
@@ -37,7 +38,7 @@ public class ProduitServiceImpl implements ProduitService
 	}
 
 	@Override
-	public void update(Produit produit, String nom, Date dateDeliv, String fournisseur, String projet, String respo, float qteEntrante, float qteRestante, String numLot, Date datePeremp) {
+	public void update(Produit produit, String nom, Date dateDeliv, String fournisseur, String projet, String respo, float qteEntrante, float qteRestante, String numLot, Date datePeremp, String indication) {
 		produit.setNom(nom);
 		produit.setDateDelivrance(dateDeliv);
 		produit.setFournisseur(fournisseur);
@@ -47,14 +48,9 @@ public class ProduitServiceImpl implements ProduitService
 		produit.setQteRestante(qteRestante);
 		produit.setNumLot(numLot);
 		produit.setDatePeremption(datePeremp);
+		produit.setIndication(indication);
 
 		save(produit);
-	}
-
-	@Override
-	public void updateProduit(Produit produit)
-	{
-		produitRepository.saveAndFlush(produit);
 	}
 
 	public Produit save(Produit produit) {

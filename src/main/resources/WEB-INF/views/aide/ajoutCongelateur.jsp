@@ -1,4 +1,4 @@
-<%@ include file="../header.jsp" %>
+<%@ include file="../fiche.jsp" %>
 
 <div id="partieCentrale">
 

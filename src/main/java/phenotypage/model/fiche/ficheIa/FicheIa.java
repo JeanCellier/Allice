@@ -1,8 +1,7 @@
 package phenotypage.model.fiche.ficheIa;
 
-import org.hibernate.validator.constraints.NotEmpty;
-import phenotypage.model.fiche.ficheCol.FicheCol;
-import phenotypage.model.fiches.traitement.header.Header;
+import phenotypage.model.donneesExistantes.operateur.Operateur;
+import phenotypage.model.fiche.Fiche;
 import phenotypage.model.gestation.Gestation;
 import phenotypage.model.insemination.Insemination;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
@@ -15,26 +14,22 @@ import javax.persistence.*;
  */
 
 @Entity
-public class FicheIa
-{
-	@Id
-	@GeneratedValue
-	private Long id;
-
-	@Column(unique = true)
-	@NotEmpty
-	private String nom;
-
+public class FicheIa extends Fiche {
 	@Column
-	private boolean snig;
-
-	@OneToOne
-	private Header header;
+	private String lieu;
 
 	@ManyToOne
-	@JoinColumn(name = "id_Vache", referencedColumnName = "id")
+	private Operateur operateur;
+
+	@ManyToOne
 	private Vache vache;
-	
+
+	@Column
+	private String numIpe;
+
+	@Column
+	private String numDepotSemence;
+
 	@OneToOne
 	private Insemination insemination;
 	
@@ -47,55 +42,22 @@ public class FicheIa
 	@Column
 	private String remarque;
 
-	public FicheIa()
-	{
+	public FicheIa() { super(); }
+
+	public String getLieu() {
+		return lieu;
 	}
 
-	public FicheIa(String nom, Header header, Vache vache, Insemination insemination,
-	               Traitement_Donneuse traitement_donneuse, Gestation gestation)
-	{
-		super();
-		this.nom = nom;
-		this.header = header;
-		this.vache = vache;
-		this.insemination = insemination;
-		this.traitement_donneuse = traitement_donneuse;
-		this.gestation = gestation;
+	public void setLieu(String lieu) {
+		this.lieu = lieu;
 	}
 
-	public FicheIa(String nom)
-	{
-		this.nom = nom;
+	public Operateur getOperateur() {
+		return operateur;
 	}
 
-	public Long getId()
-	{
-		return id;
-	}
-
-	public void setId(Long id)
-	{
-		this.id = id;
-	}
-
-	public String getNom()
-	{
-		return nom;
-	}
-
-	public void setNom(String nom)
-	{
-		this.nom = nom;
-	}
-
-	public Header getHeader()
-	{
-		return header;
-	}
-
-	public void setHeader(Header header)
-	{
-		this.header = header;
+	public void setOperateur(Operateur operateur) {
+		this.operateur = operateur;
 	}
 
 	public Vache getVache()
@@ -123,10 +85,7 @@ public class FicheIa
 		return traitement_donneuse;
 	}
 
-	public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse)
-	{
-		this.traitement_donneuse = traitement_donneuse;
-	}
+	public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse) {this.traitement_donneuse = traitement_donneuse;}
 
 	public Gestation getGestation()
 	{
@@ -148,14 +107,20 @@ public class FicheIa
 		this.remarque = remarque;
 	}
 
-	public boolean isSnig()
-	{
-		return snig;
+	public String getNumIpe() {
+		return numIpe;
 	}
 
-	public void setSnig(boolean snig)
-	{
-		this.snig = snig;
+	public void setNumIpe(String numIpe) {
+		this.numIpe = numIpe;
+	}
+
+	public String getNumDepotSemence() {
+		return numDepotSemence;
+	}
+
+	public void setNumDepotSemence(String numDepotSemence) {
+		this.numDepotSemence = numDepotSemence;
 	}
 }
 

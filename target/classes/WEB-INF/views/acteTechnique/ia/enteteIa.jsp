@@ -3,7 +3,7 @@
 <h1>Fiche IA : ${nom} </h1>
 
 <div id="partieCentrale">
-	<sf:form method="post" modelAttribute="header" action="${nom}">
+	<sf:form method="post" modelAttribute="fiche" action="${nom}">
 		<fieldset>
 			<legend>En-t&#234te</legend>
 

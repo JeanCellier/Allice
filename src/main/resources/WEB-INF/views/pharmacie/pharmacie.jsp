@@ -25,6 +25,7 @@
 						<td>Qte restante</td>
 						<td>N&deg; de lot</td>
 						<td>Date de p&eacuteremption</td>
+						<td>Indication</td>
 						<td></td>
                         <td></td>
 					</tr>
@@ -33,14 +34,15 @@
 				<c:forEach items="${produitList}" var="produit">
 					<tr>
 						<td>${produit.nom}</td>
-						<td><fmt:formatDate pattern="dd/MM/yyyy" value="${produit.dateDelivrance}" /><br></td>
-						<td>${produit.fournisseur}<br></td>
-						<td>${produit.projet}<br></td>
-						<td>${produit.responsable}<br></td>
-						<td>${produit.qteEntrante}<br></td>
-						<td>${produit.qteRestante}<br></td>
-						<td>${produit.numLot}<br></td>
+						<td><fmt:formatDate pattern="dd/MM/yyyy" value="${produit.dateDelivrance}" /></td>
+						<td>${produit.fournisseur}</td>
+						<td>${produit.projet}</td>
+						<td>${produit.responsable}</td>
+						<td>${produit.qteEntrante}</td>
+						<td>${produit.qteRestante}</td>
+						<td>${produit.numLot}</td>
 						<td><fmt:formatDate pattern="dd/MM/yyyy" value="${produit.datePeremption}" /></td>
+						<td>${produit.indication}</td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="<c:out value='${produit.id}' />" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/<c:out value='${produit.id}'/>" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
 					</tr>
@@ -84,6 +86,9 @@
 							</div>
 							<div class="form-group">
 								<input class="form-control datepicker" name="datePeremption" type="text" placeholder="Date de p&#233remption">
+							</div>
+							<div class="form-group">
+								<input class="form-control" name="indication" type="text" placeholder="Indication">
 							</div>
 				</div>
 
@@ -135,7 +140,9 @@
 						<div class="form-group">
 							<input class="form-control datepicker" name="datePeremption" type="text" placeholder="Date de p&#233remption">
 						</div>
-
+						<div class="form-group">
+							<input class="form-control" name="indication" type="text" placeholder="Indication">
+						</div>
 				<div class="modal-footer ">
 					<button type="submit" class="btn btn-success btn-lg" style="width: 100%;"><span class="fa fa-check"></span> Modifier</button>
 				</div>
@@ -214,6 +221,7 @@
             "<td>" + result.objet.qteRestante + "</td>",
             "<td>" + result.objet.numLot + "</td>",
             "<td>" + convertDate(datePeremption) + "</td>",
+            "<td>" + result.objet.indication + "</td>",
 
             '<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="'+ result.objet.id +'" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>',
             '<td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/'+ result.objet.id + '" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>'
@@ -225,8 +233,8 @@
 	$('#tableProduit').DataTable( {
 		"pagingType": "full_numbers",
 		"columnDefs": [
-			{ "orderable": false, "targets": 9},
-			{ "orderable": false, "targets": 10 }
+			{ "orderable": false, "targets": 10},
+			{ "orderable": false, "targets": 11 }
 		],"language": {
 			"url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json"
 		},
@@ -280,7 +288,8 @@
 						.find('[name="qteEntrante"]').val(result.objet.qteEntrante).end()
 						.find('[name="qteRestante"]').val(result.objet.qteRestante).end()
 						.find('[name="numLot"]').val(result.objet.numLot).end()
-						.find('[name="datePeremption"]').val(convertDate(result.objet.datePeremption)).end();
+						.find('[name="datePeremption"]').val(convertDate(result.objet.datePeremption)).end()
+                        .find('[name="indication"]').val(result.objet.indication).end()
 
 					$('#editForm').attr('action', "./edit/"+id);
 				}else{

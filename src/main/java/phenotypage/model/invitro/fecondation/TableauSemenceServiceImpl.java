@@ -25,7 +25,7 @@ public class TableauSemenceServiceImpl implements TableauSemenceService
 	@Override
 	public TableauSemence createTableauSemence(Vache nomTaureau, String semence)
 	{
-		return tableauSemenceRepository.save(new TableauSemence(nomTaureau, semence));
+		return tableauSemenceRepository.save(new TableauSemence());
 	}
 
 	@Override

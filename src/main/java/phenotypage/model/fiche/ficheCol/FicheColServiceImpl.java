@@ -25,7 +25,7 @@ FicheColServiceImpl implements FicheColService
 	@Override
 	public FicheCol createFicheCol(String nom)
 	{
-		return ficheColRepository.save(new FicheCol(nom));
+		return ficheColRepository.save(new FicheCol());
 	}
 
 	@Override
@@ -50,11 +50,5 @@ FicheColServiceImpl implements FicheColService
 	public long countFicheCol()
 	{
 		return ficheColRepository.count();
-	}
-
-	@Override
-	public List<FicheCol> findFicheColSNIG()
-	{
-		return ficheColRepository.findFicheColSNIG();
 	}
 }

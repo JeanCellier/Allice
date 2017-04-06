@@ -18,6 +18,4 @@ public interface FicheColService
 	FicheCol findByNom(String nom);
 
 	long countFicheCol();
-
-	List<FicheCol> findFicheColSNIG();
 }

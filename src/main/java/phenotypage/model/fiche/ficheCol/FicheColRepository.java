@@ -12,7 +12,4 @@ import java.util.List;
 public interface FicheColRepository extends JpaRepository<FicheCol, Long>
 {
 	FicheCol findByNom(String nom);
-
-	@Query("select f from FicheCol f where f.snig = true")
-	List<FicheCol> findFicheColSNIG();
 }

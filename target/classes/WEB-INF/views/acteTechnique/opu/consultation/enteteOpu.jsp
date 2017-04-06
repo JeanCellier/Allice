@@ -1,4 +1,4 @@
-<sf:form method="post" modelAttribute="header" action="${nom}">
+<sf:form method="post" modelAttribute="fiche" action="${nom}">
 	<fieldset>
 		<legend>En-t&#234te</legend>
 

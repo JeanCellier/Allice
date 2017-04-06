@@ -11,9 +11,6 @@ import java.util.List;
 
 public interface VacheRepository extends JpaRepository<Vache, Long>
 {
-	@Query("select t from Vache t where t.male = true")
-	List<Vache> findAllTaureau();
-
 	@Query("select t from Vache t where t.num_identification = ?1")
 	Vache findBynum_identification(String num_identification);
 }

@@ -1,13 +1,10 @@
 package phenotypage.model.invitro.collecte.resultat;
 
-import phenotypage.model.fiche.ficheCol.FicheCol;
-import phenotypage.model.donneExistante.sanitaire.Sanitaire;
-
+import phenotypage.model.donneesExistantes.sanitaire.Sanitaire;
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
-public class Resultat implements Serializable
+public class Resultat
 {
 	@Id
 	@GeneratedValue
@@ -35,39 +32,12 @@ public class Resultat implements Serializable
 	private float taux_de_collecte;
 
 	@ManyToOne
-	@JoinColumn(name = "idSanitaire", referencedColumnName = "id")
 	private Sanitaire sanitaire;
 
 	@Column
 	private String remarques;
 
-
-	@OneToOne
-	@JoinColumn(name = "idFicheCol", referencedColumnName = "id", unique = true)
-	private FicheCol ficheCol;
-
-
-	public Resultat()
-	{
-	}
-
-	public Resultat(int nombre_Embryons_Viables, int nombre_Embryons_Degeneres, int nombre_Embryons_NonFecondes,
-	                int nombre_CorpsJ_droite, int nombre_CorpsJ_gauche, Sanitaire sanitaire, String remarques,
-	                FicheCol ficheCol)
-	{
-		super();
-		this.nombre_Embryons_Viables = nombre_Embryons_Viables;
-		this.nombre_Embryons_Degeneres = nombre_Embryons_Degeneres;
-		this.nombre_Embryons_NonFecondes = nombre_Embryons_NonFecondes;
-		this.nombre_CorpsJ_droite = nombre_CorpsJ_droite;
-		this.nombre_CorpsJ_gauche = nombre_CorpsJ_gauche;
-		this.sanitaire = sanitaire;
-		this.remarques = remarques;
-		this.ficheCol = ficheCol;
-
-		this.nombre_Embryons_Total = this.nombre_Embryons_Degeneres + this.nombre_Embryons_NonFecondes + this.nombre_Embryons_Viables;
-	}
-
+	public Resultat() {}
 
 	public Long getId()
 	{
@@ -167,15 +137,5 @@ public class Resultat implements Serializable
 	public void setRemarques(String remarques)
 	{
 		this.remarques = remarques;
-	}
-
-	public FicheCol getFicheCol()
-	{
-		return ficheCol;
-	}
-
-	public void setFicheCol(FicheCol ficheCol)
-	{
-		this.ficheCol = ficheCol;
 	}
 }

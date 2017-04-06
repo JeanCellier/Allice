@@ -12,7 +12,4 @@ import java.util.List;
 public interface FicheIaRepository extends JpaRepository<FicheIa, Long>
 {
 	FicheIa findByNom(String nom);
-
-	@Query("select f from FicheIa f where f.snig = true")
-	List<FicheIa> findFicheIaSNIG();
 }

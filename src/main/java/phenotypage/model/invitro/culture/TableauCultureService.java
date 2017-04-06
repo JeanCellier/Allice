@@ -16,6 +16,4 @@ public interface TableauCultureService
 	TableauCulture newTableauCulture();
 
 	TableauCulture addTableauCulture(TableauCulture tableauCulture);
-
-	List<TableauCulture> findByCulture(Culture culture);
 }

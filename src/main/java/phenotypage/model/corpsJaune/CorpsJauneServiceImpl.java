@@ -2,7 +2,7 @@ package phenotypage.model.corpsJaune;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import phenotypage.model.donneExistante.qualite.Qualite;
+import phenotypage.model.donneesExistantes.qualite.Qualite;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class CorpsJauneServiceImpl implements CorpsJauneService
 	@Override
 	public CorpsJaune createCorpsJaune(boolean palpation, String mode_evaluation, boolean imageEcho, boolean coteCorpsJaune, Qualite qualite)
 	{
-		return corpsJauneRepository.save(new CorpsJaune(palpation, mode_evaluation, imageEcho, coteCorpsJaune, qualite));
+		return corpsJauneRepository.save(new CorpsJaune());
 	}
 
 	@Override
