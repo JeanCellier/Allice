@@ -7,11 +7,30 @@
 
 @media (min-width: 768px) {
   /* line 863, ../bootstrap/sass/_bootstrap-variables.scss */
+  .modal-large {
+    width: 700px !important;
+  }
+}
+@media (min-width: 992px) {
+  /* line 863, ../bootstrap/sass/_bootstrap-variables.scss */
+  .modal-large {
+    width: 850px !important;
+  }
+}
+@media (min-width: 1200px) {
+  /* line 863, ../bootstrap/sass/_bootstrap-variables.scss */
+  .modal-large {
+    width: 1100px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  /* line 877, ../bootstrap/sass/_bootstrap-variables.scss */
   .sidebar {
     height: 100vh;
   }
 
-  /* line 866, ../bootstrap/sass/_bootstrap-variables.scss */
+  /* line 880, ../bootstrap/sass/_bootstrap-variables.scss */
   .sidebar-container {
     box-shadow: 12px 0 15px -4px rgba(164, 168, 171, 0.2);
   }

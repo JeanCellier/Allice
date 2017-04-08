@@ -25,8 +25,8 @@ public class CorpsJaune
 	private char coteCorpsJaune;
 	//G = gauche; D = droit
 
-	@OneToOne
-	private Qualite qualite;
+	@Column
+	private int qualite;
 
 	public CorpsJaune() {}
 
@@ -64,12 +64,12 @@ public class CorpsJaune
 
 	public void setCoteCorpsJaune(char coteCorpsJaune) { this.coteCorpsJaune = coteCorpsJaune;	}
 
-	public Qualite getQualite()
+	public int getQualite()
 	{
 		return qualite;
 	}
 
-	public void setQualite(Qualite qualite)
+	public void setQualite(int qualite)
 	{
 		this.qualite = qualite;
 	}
