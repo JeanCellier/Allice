@@ -19,7 +19,11 @@ public class OperateurServiceImpl implements OperateurService
 	@Override
 	public Operateur createOperateur(String nom, String prenom)
 	{
-		return operateurRepository.save(new Operateur());
+		Operateur operateur = new Operateur();
+		operateur.setNom(nom);
+		operateur.setPrenom(prenom);
+
+		return operateurRepository.save(operateur);
 	}
 
 	@Override

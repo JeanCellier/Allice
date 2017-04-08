@@ -1,4 +1,4 @@
-<%@ include file="../../fiche.jsp" %>
+<%@ include file="../../header.jsp" %>
 
 <main class="col-sm-9 col-md-10">
     <h1 class="page-fiche">Fiches TRA</h1>
@@ -15,38 +15,32 @@
         <div class="col-sm-12 col-md-12" id="contentActesTra" style="padding:30px;">
             <table id="tableActes" class="table table-hover">
                 <thead>
-                <tr>
-                    <td>Nom</td>
-                    <td>Programme</td>
-                    <td>N° d'agrément</td>
-                    <td>Lieu</td>
-                    <td>Date</td>
-                    <td>N° d'élevage</td>
-                    <td>N° identification</td>
-                    <td>N° travail</td>
-                    <td>Race</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                    <tr>
+                        <td>Nom</td>
+                        <td>Programme</td>
+                        <td>Date</td>
+                        <td>Num&eacutero d'agr&eacutement</td>
+                        <td>lieu</td>
+                        <td>Op&eacuterateur</td>
+                        <td>Vache</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${fichesTraList}" var="fichesTra">
                     <tr>
                         <td>${fichesTra.nom}</td>
-                        <td>${fichesTra.fiche.programme}</td>
-                        <td>${fichesTra.fiche.numeroAgrement}</td>
-                        <td>${fichesTra.fiche.lieu}</td>
-                        <td>${fichesTra.fiche.date}</td>
-                        <td>${fichesTra.vache.num_elevage}</td>
+                        <td>${fichesTra.programme.nom}</td>
+                        <td><fmt:formatDate pattern="dd/MM/yyyy" value="${fichesTra.dateHeureMinute}" /></td>
+                        <td>${fichesTra.numeroAgrement}</td>
+                        <td>${fichesTra.lieu}</td>
+                        <td>${fichesTra.operateur.nom} ${fichesTra.operateur.prenom}</td>
                         <td>${fichesTra.vache.num_identification}</td>
-                        <td>${fichesTra.vache.num_travail}</td>
-                        <td>${fichesTra.vache.race}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <%--<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="<c:out value='${produit.id}' />" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>--%>
-                        <%--<td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/<c:out value='${produit.id}'/>" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>--%>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Details"><button class="btn btn-primary btn-md btnEdit" data-title="details" data-id="<c:out value='${produit.id}' />" data-toggle="modal" data-target="#detail" ><span class="glyphicon glyphicon-search"></span></button></p></td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="<c:out value='${produit.id}' />" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/<c:out value='${produit.id}'/>" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -150,45 +144,46 @@
     <%--<!-- /.modal-dialog -->--%>
 <%--</div>--%>
 
-<%--<!-- Modal delete product -->--%>
-<%--<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">--%>
-    <%--<div class="modal-dialog">--%>
-        <%--<div class="modal-content">--%>
-            <%--<div class="modal-fiche">--%>
-                <%--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>--%>
-                <%--<h4 class="modal-title custom_align" id="Heading">Supprimer cette entr&#233e</h4>--%>
-            <%--</div>--%>
+<!-- Modal delete ficheTra -->
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="Heading">Supprimer cette entr&#233e</h4>
+            </div>
 
-            <%--<div class="modal-body">--%>
-                <%--<div class="alert alert-danger"><span class="fa fa-warning-sign"></span> Voulez vous vraiment supprimer cette entr&#233e ?</div>--%>
-            <%--</div>--%>
+            <div class="modal-body">
+                <div class="alert alert-danger"><span class="fa fa-warning-sign"></span> Voulez vous vraiment supprimer cette entr&#233e ?</div>
+            </div>
 
-            <%--<div class="modal-footer ">--%>
-                <%--<button type="button" id="confirmDelete" class="btn btn-danger" ><span class="fa fa-check"></span> Oui</button>--%>
-                <%--<button type="button" class="btn btn-default" data-dismiss="modal"><span class="fa fa-remove"></span> Non</button>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <%--<!-- /.modal-content -->--%>
-    <%--</div>--%>
-    <%--<!-- /.modal-dialog -->--%>
-<%--</div>--%>
+            <div class="modal-footer ">
+                <button type="button" id="confirmDelete" class="btn btn-danger" ><span class="fa fa-check"></span> Oui</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="fa fa-remove"></span> Non</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 
+<%@ include file="./tra_ajouter.jsp" %>
 <%@ include file="../../footer.jsp" %>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript" src="../static/js/datepicker-fr.js"></script>
 <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" media="all" href="../../static/css/datables.bootstrap.css"/>
 
 <script>
     /** init la table */
-    $('#tableProduit').DataTable( {
+    $('#tableActes').DataTable( {
         "pagingType": "full_numbers",
         "columnDefs": [
-            { "orderable": false, "targets": 9},
-            { "orderable": false, "targets": 10 }
+            { "orderable": false, "targets": 7},
+            { "orderable": false, "targets": 8},
+            { "orderable": false, "targets": 9}
         ],"language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json"
         },

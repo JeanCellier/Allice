@@ -6,6 +6,7 @@ import phenotypage.model.donneesExistantes.operateur.Operateur;
 import phenotypage.model.fiche.Fiche;
 import phenotypage.model.invitro.collecte.resultat.Resultat;
 import phenotypage.model.tableauTraitement.TableauTraitement;
+import phenotypage.model.traitementDonneuse.InfoTraitementDonneuse;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
 import phenotypage.model.vache.Vache;
 import javax.persistence.*;
@@ -40,6 +41,9 @@ public class FicheCol extends Fiche {
 
 	@OneToMany
 	private List<TableauTraitement> tableauTraitements;
+
+	@OneToOne
+	private InfoTraitementDonneuse infoTraitementDonneuse;
 
 	@OneToMany
 	private List<TableauDetail> tableauDetails;
@@ -115,6 +119,14 @@ public class FicheCol extends Fiche {
 
 	public void setTableauTraitements(List<TableauTraitement> tableauTraitements) {
 		this.tableauTraitements = tableauTraitements;
+	}
+
+	public InfoTraitementDonneuse getInfoTraitementDonneuse() {
+		return infoTraitementDonneuse;
+	}
+
+	public void setInfoTraitementDonneuse(InfoTraitementDonneuse infoTraitementDonneuse) {
+		this.infoTraitementDonneuse = infoTraitementDonneuse;
 	}
 
 	public List<TableauDetail> getTableauDetails() {

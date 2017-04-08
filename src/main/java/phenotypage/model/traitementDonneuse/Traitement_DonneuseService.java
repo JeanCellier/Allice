@@ -1,5 +1,6 @@
 package phenotypage.model.traitementDonneuse;
 
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -7,7 +8,9 @@ import java.util.List;
  */
 public interface Traitement_DonneuseService
 {
-	Traitement_Donneuse createTraitement_Donneuse();
+	Traitement_Donneuse createTraitement_Donneuse(Date dateRef, List<Tableau_Donneuse> tableau_donneuses, boolean naturel,
+												  boolean ponctionFollicule, int nbFollicules, int nbDroite, int nbGauche,
+												  boolean imageEcho, boolean superovulation, String typeFsh, float pourcDose);
 
 	Traitement_Donneuse addTraitement_Donneuse(Traitement_Donneuse traitement_donneuse);
 
@@ -18,4 +21,6 @@ public interface Traitement_DonneuseService
 	Traitement_Donneuse newTraitementDonneuse();
 
 	void delete(Traitement_Donneuse traitement_donneuse);
+
+	Traitement_Donneuse save(Traitement_Donneuse traitement_donneuse);
 }

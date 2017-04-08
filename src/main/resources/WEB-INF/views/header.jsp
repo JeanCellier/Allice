@@ -10,6 +10,7 @@
 		<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" type="text/css" media="all" href="../../static/css/styles.css"/>
 		<link rel="stylesheet" type="text/css" media="all" href="../../static/css/styleCustom.css"/>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	</head>
 
 	<body>

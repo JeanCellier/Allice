@@ -11,6 +11,7 @@ import phenotypage.model.invitro.fecondation.Fecondation;
 import phenotypage.model.maturationInVitro.MaturationInVitro;
 import phenotypage.model.ovocytesCollecte.OvocytesCollectes;
 import phenotypage.model.tableauTraitement.TableauTraitement;
+import phenotypage.model.traitementDonneuse.InfoTraitementDonneuse;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
 import phenotypage.model.typeOpu.TypeOpu;
 import phenotypage.model.vache.Vache;
@@ -41,7 +42,10 @@ public class FicheOpu extends Fiche
 	
 	@OneToOne
 	private Traitement_Donneuse traitement_donneuse;
-	
+
+	@OneToOne
+	private InfoTraitementDonneuse infoTraitementDonneuse;
+
 	@OneToOne
 	private Echo imageEcho;
 	
@@ -198,6 +202,14 @@ public class FicheOpu extends Fiche
 
 	public void setTableauTraitements(List<TableauTraitement> tableauTraitements) {
 		this.tableauTraitements = tableauTraitements;
+	}
+
+	public InfoTraitementDonneuse getInfoTraitementDonneuse() {
+		return infoTraitementDonneuse;
+	}
+
+	public void setInfoTraitementDonneuse(InfoTraitementDonneuse infoTraitementDonneuse) {
+		this.infoTraitementDonneuse = infoTraitementDonneuse;
 	}
 
 	public List<TableauDetail> getTableauDetails() {

@@ -24,7 +24,9 @@ public class ProgrammeServiceImpl implements ProgrammeService
 	@Override
 	public Programme createProgramme(String nom)
 	{
-		return programmeRepository.save(new Programme());
+		Programme programme = new Programme();
+		programme.setNom(nom);
+		return programmeRepository.save(programme);
 	}
 
 	@Override

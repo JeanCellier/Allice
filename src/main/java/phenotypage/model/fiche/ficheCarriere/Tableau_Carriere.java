@@ -24,7 +24,7 @@ public class Tableau_Carriere
 	@Column
 	private String num_ordonnance;
 	
-	@Column
+	@ManyToOne
 	private Produit produit;
 	
 	@Column
