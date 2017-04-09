@@ -10,25 +10,25 @@
 //import org.springframework.web.bind.annotation.RequestMethod;
 //import phenotypage.model.cryoconservation.Cryoconservation;
 //import phenotypage.model.cryoconservation.CryoconservationService;
-//import phenotypage.model.cryoconservation.TableauDetailService;
-//import phenotypage.model.donneesExistantes.abattoir.AbattoirService;
-//import phenotypage.model.donneesExistantes.congelateur.CongelateurService;
-//import phenotypage.model.donneesExistantes.cuve.CuveService;
-//import phenotypage.model.donneesExistantes.cuve.canister.CanisterService;
-//import phenotypage.model.donneesExistantes.cuve.visoTube.VisoTubeService;
-//import phenotypage.model.donneesExistantes.operateur.OperateurService;
-//import phenotypage.model.donneesExistantes.programme.ProgrammeService;
-//import phenotypage.model.donneesExistantes.qualite.QualiteService;
-//import phenotypage.model.donneesExistantes.sanitaire.SanitaireService;
-//import phenotypage.model.donneesExistantes.stade.StadeService;
+//import phenotypage.model.cryoconservation.tableauDetail.TableauDetailService;
+//import phenotypage.model.fiche.ficheAba.abattoir.AbattoirService;
+//import phenotypage.model.cryoconservation.congelateur.CongelateurService;
+//import phenotypage.model.cuve.CuveService;
+//import phenotypage.model.cuve.canister.CanisterService;
+//import phenotypage.model.cuve.visoTube.VisoTubeService;
+//import phenotypage.model.operateur.OperateurService;
+//import phenotypage.model.programme.ProgrammeService;
+//import phenotypage.model.qualite.QualiteService;
+//import phenotypage.model.sanitaire.SanitaireService;
+//import phenotypage.model.cryoconservation.stade.StadeService;
 //import phenotypage.model.fiche.Fiche;
 //import phenotypage.model.fiche.ficheCol.FicheCol;
 //import phenotypage.model.fiche.ficheCol.FicheColService;
 //import phenotypage.model.invitro.collecte.resultat.Resultat;
 //import phenotypage.model.invitro.collecte.resultat.ResultatService;
-//import phenotypage.model.methodeCongelation.MethodeCongelationService;
+//import phenotypage.model.cryoconservation.methodeCongelation.MethodeCongelationService;
 //import phenotypage.model.pharmacie.produit.ProduitService;
-//import phenotypage.model.traitementDonneuse.Traitement_DonneuseService;
+//import phenotypage.model.traitementDonneuse.traitement_donneuse.Tableau_DonneuseService;
 //import phenotypage.model.vache.Vache;
 //import phenotypage.model.vache.VacheService;
 //
@@ -45,7 +45,7 @@
 //public class ColController
 //{
 //	@Autowired
-//	private Traitement_DonneuseService traitement_donneuseService;
+//	private Tableau_DonneuseService traitement_donneuseService;
 //
 //	@Autowired
 //	private VacheService vacheService;
@@ -232,7 +232,7 @@
 ////		}
 ////
 ////		model.addAttribute("operateurList", operateurService.findAllOperateur());
-////		model.addAttribute("produitList", produitService.findAllProduit());
+////		model.addAttribute("produitList", produitService.findAll());
 ////		model.addAttribute("nom", nom);
 ////
 ////		return "acteTechnique/col/traitementDonneuseCol";
@@ -244,7 +244,7 @@
 ////		if (errors.hasErrors())
 ////		{
 ////			model.addAttribute("operateurList", operateurService.findAllOperateur());
-////			model.addAttribute("produitList", produitService.findAllProduit());
+////			model.addAttribute("produitList", produitService.findAll());
 ////			model.addAttribute("nom", nom);
 ////			return "/acteTechnique/col/traitementDonneuse";
 ////		}

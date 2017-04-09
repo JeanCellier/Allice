@@ -58,7 +58,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
-					<h4 class="modal-title custom_align" id="Heading">Ajouter un nouveau produit</h4>
+					<h4 class="modal-title custom_align" id="HeadingAdd">Ajouter un nouveau produit</h4>
 				</div>
 
 				<form id="addForm" action="./add" method="POST">
@@ -108,7 +108,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
-                    <h4 class="modal-title custom_align" id="Heading">Modifier le produit</h4>
+                    <h4 class="modal-title custom_align" id="HeadingEdit">Modifier le produit</h4>
                 </div>
 
 				<form id="editForm" action="./edit" method="POST">
@@ -160,7 +160,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
-					<h4 class="modal-title custom_align" id="Heading">Supprimer cette entr&#233e</h4>
+					<h4 class="modal-title custom_align" id="HeadingDelete">Supprimer cette entr&#233e</h4>
 				</div>
 
 				<div class="modal-body">
@@ -238,7 +238,7 @@
 
 
 	/** init la table */
-	$('#tableProduit').DataTable( {
+	$('#tableProduit').DataTable({
 		"pagingType": "full_numbers",
 		"columnDefs": [
 			{ "orderable": false, "targets": 10},
@@ -358,7 +358,6 @@
 				}else{
 					$('#delete').modal('toggle'); //ferme modal
 					$('#tableProduit').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>'); //afficher alert
-
 				}
                 autoclose();
 			}

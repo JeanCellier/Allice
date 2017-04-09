@@ -1,34 +1,31 @@
 package phenotypage.model.fiche.ficheTra;
 
-import phenotypage.model.corpsJaune.CorpsJaune;
-import phenotypage.model.donneesExistantes.operateur.Operateur;
-import phenotypage.model.donneesExistantes.programme.Programme;
-import phenotypage.model.embryonsTransferes.EmbryonsTransferes;
+import phenotypage.model.fiche.ficheTra.corpsJaune.CorpsJaune;
+import phenotypage.model.operateur.Operateur;
+import phenotypage.model.programme.Programme;
+import phenotypage.model.fiche.ficheTra.embryonsTransferes.EmbryonsTransferes;
 import phenotypage.model.gestation.Gestation;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
 import phenotypage.model.vache.Vache;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author fabien
  */
 public interface FicheTraService
 {
-	List<FicheTra> findAllFicheTra();
+	List<FicheTra> findAll();
 
-	void createFicheTra(String nom, Programme programme, Date date, String numAgrement, String lieu,
+	FicheTra createFicheTra(String nom, Programme programme, Date date, String numAgrement, String lieu,
 						Operateur operateur, Vache vache, Traitement_Donneuse traitementDonneuse,
 						CorpsJaune corpsJaune, EmbryonsTransferes embryonsTransferes, Gestation gestation);
 
-	FicheTra addFicheTra(FicheTra fichieTra);
+	void delete(FicheTra ficheTra);
 
-	FicheTra newFicheTra();
+	Optional<FicheTra> findOne(long id);
 
-	FicheTra findByNom(String nom);
-
-	long countFicheTra();
-
-	void save(FicheTra ficheTra);
+	FicheTra save(FicheTra ficheTra);
 }

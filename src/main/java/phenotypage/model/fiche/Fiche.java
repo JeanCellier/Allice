@@ -1,7 +1,7 @@
 package phenotypage.model.fiche;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import phenotypage.model.donneesExistantes.programme.Programme;
+import phenotypage.model.programme.Programme;
 import javax.persistence.*;
 import java.util.Date;
 

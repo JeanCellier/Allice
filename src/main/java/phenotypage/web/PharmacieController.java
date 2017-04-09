@@ -25,7 +25,7 @@ public class PharmacieController
 	@RequestMapping(value = "/pharmacie", method = RequestMethod.GET)
 	public String pharmacie(Model model)
 	{
-		model.addAttribute("produitList", produitService.findAllProduit());
+		model.addAttribute("produitList", produitService.findAll());
 		return "pharmacie/pharmacie";
 	}
 

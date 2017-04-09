@@ -1,6 +1,8 @@
 package phenotypage.model.invitro.culture;
 
-import phenotypage.model.donneesExistantes.sanitaire.Sanitaire;
+import phenotypage.model.sanitaire.Sanitaire;
+import phenotypage.model.invitro.culture.tableauCulture.TableauCulture;
+
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;

@@ -62,7 +62,7 @@ public class ProduitServiceImpl implements ProduitService
 		produitRepository.delete(produit);
 	}
 
-	public List<Produit> findAllProduit()
+	public List<Produit> findAll()
 	{
 		return produitRepository.findAll();
 	}

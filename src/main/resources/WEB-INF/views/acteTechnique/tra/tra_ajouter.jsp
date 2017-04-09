@@ -6,7 +6,7 @@
                 <h4 class="modal-title custom_align" id="Heading">Renseigner une nouvelle fiche TRA</h4>
             </div>
 
-            <div class="modal-body">
+            <div id="modal-body" class="modal-body">
                 <ul class="nav nav-tabs" role="tablist" style="margin-bottom: 20px;">
                     <li class="active tab"><a href="#fiche_01" data-toggle="tab">Nouvelle fiche</a><span>x</span></li>
                     <li><a href="#" class="add-fiche">+ Nouvelle fiche</a></li>
@@ -14,19 +14,22 @@
 
                 <div class="tab-content" style="margin-top: 20px;">
                     <div class="tab-pane active" id="fiche_01">
-                        <form name="add" id="addForm" novalidate method="post" action="./add">
+                        <form name="add" class="addForm" id="addForm" method="post" action="./add">
                             <div class="step1 frm">
                                 <fieldset name="identification">
                                     <legend>&Eacute;tape 1/5  -  IDENTIFICATION FICHE</legend>
                                     <div class="form-group">
-                                        <input class="form-control nom" name="nom" required type="text" placeholder="Nom de la fiche">
+                                        <input class="form-control nom" name="nom" type="text" placeholder="Nom de la fiche">
                                     </div>
-                                    <div class="form-group col-sm-11">
-                                        <select class="form-control" name="programme">
+                                    <div class="form-group col-sm-11 col-xs-11" style="padding-left:0">
+                                        <select class="form-control programmeSelect" name="programme">
                                             <option value="" selected disabled>Programme</option>
+                                            <c:forEach items="${programmesList}" var="programme">
+                                                <option value="${programme.id}">${programme.nom}</option>
+                                            </c:forEach>
                                         </select>
                                     </div>
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-1 col-xs-1">
                                         <button type="button" class="btn btn-primary btn-md addProgramme" data-title="addProgramme" data-toggle="modal" data-target="#addProgramme" >
                                             <span class="fa fa-plus"></span>
                                         </button>
@@ -40,12 +43,15 @@
                                     <div class="form-group">
                                         <input class="form-control datepickerTime" name="date" type="text" placeholder="Date">
                                     </div>
-                                    <div class="form-group col-sm-11">
-                                        <select class="form-control" id="operateur" name="operateur">
+                                    <div class="form-group col-sm-11 col-xs-11" style="padding-left:0">
+                                        <select class="form-control operateurSelect" id="operateur" name="operateur">
                                             <option value="" selected disabled>Op&#233rateur</option>
+                                            <c:forEach items="${operateursList}" var="operateur">
+                                                <option value="${operateur.id}">${operateur.nom} ${operateur.prenom}</option>
+                                            </c:forEach>
                                         </select>
                                     </div>
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-1 col-xs-1">
                                         <button type="button" class="btn btn-primary btn-md addOperateur" data-title="addOperateur" data-toggle="modal" data-target="#addOperateur" >
                                             <span class="fa fa-plus"></span>
                                         </button>
@@ -53,6 +59,9 @@
                                     <div class="form-group">
                                         <select class="form-control" id="vache" name="vache">
                                             <option value="" selected disabled>Vache</option>
+                                            <c:forEach items="${vachesList}" var="vache">
+                                                <option value="${vache.id}">${vache.num_identification}</option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                     <button class="btn btn-primary open1" type="button">Suivant <span class="fa fa-arrow-right"></span></button>
@@ -64,18 +73,21 @@
                                     <legend>&Eacute;tape 2/5  -  TRAITEMENT RECEVEUSE</legend>
 
                                     <div class="form-group">
-                                        <input class="form-control datepicker"  name="dateChaleur" required type="text" placeholder="Date chaleur de r&#233f&#233rence">
+                                        <input class="form-control datepicker"  name="dateChaleur" type="text" placeholder="Date chaleur de r&#233f&#233rence">
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" name="typeChaleur" type="text" placeholder="Type chaleur de r&#233f&#233rence">
                                     </div>
                                     <div id="tabTraitement" class="tabTraitement">
-                                        <div class="form-group col-sm-3">
+                                        <div class="form-group col-sm-3" style="padding-left:0">
                                             <input class="form-control datepicker" name="dateTraitement[]" type="text" placeholder="Date">
                                         </div>
                                         <div class="form-group col-sm-3">
                                             <select class="form-control" name="produit[]">
                                                 <option value="" selected disabled>Produit</option>
+                                                <c:forEach items="${produitsList}" var="produit">
+                                                    <option value="${produit.id}">${produit.nom}</option>
+                                                </c:forEach>
                                             </select>
                                         </div>
                                         <div class="form-group col-sm-2">
@@ -90,7 +102,7 @@
                                         <button class="btn btn-primary addTabTraitement" type="button"><span class="fa fa-plus"></span></button>
                                     </div>
 
-                                    <button class="btn btn-warning back2" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
+                                    <button class="btn btn-primary back2" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
                                     <button class="btn btn-primary open2" type="button">Suivant <span class="fa fa-arrow-right"></span></button>
                                 </fieldset>
                             </div>
@@ -99,17 +111,17 @@
                                 <fieldset name="corpsJaune">
                                     <legend>&Eacute;tape 3/5  -  &Eacute;VALUATION DU CORPS JAUNE</legend>
                                     <div class="form-group">
-                                        <input class="form-control" name="methodeEvaluation" required type="text" placeholder="M&#233thode d'&#233valuation">
+                                        <input class="form-control" name="methodeEvaluation" type="text" placeholder="M&#233thode d'&#233valuation">
                                     </div>
                                     <div class="form-group">
                                         <label>Image(s) &#233chographie : </label>
-                                        <label class="radio-inline"><input type="radio" name="optradioEcho">Oui</label>
-                                        <label class="radio-inline"><input type="radio" name="optradioEcho">Non</label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="oui" name="optradioEcho">Oui</label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="non" name="optradioEcho">Non</label>
                                     </div>
                                     <div class="form-group">
                                         <label>Cot&#233 du corps jaune : </label>
-                                        <label class="radio-inline"><input type="radio" name="optradioCote">Droit</label>
-                                        <label class="radio-inline"><input type="radio" name="optradioCote">Gauche</label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="gauche" name="optradioCote">Gauche</label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="droit" name="optradioCote">Droit</label>
                                     </div>
                                     <div class="form-group">
                                         <select class="form-control" id="qualite" name="qualite">
@@ -120,7 +132,7 @@
                                             <option value="4">4</option>
                                         </select>
                                     </div>
-                                    <button class="btn btn-warning back3" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
+                                    <button class="btn btn-primary back3" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
                                     <button class="btn btn-primary open3" type="button">Suivant <span class="fa fa-arrow-right"></span></button>
                                 </fieldset>
                             </div>
@@ -133,8 +145,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Semence sex&#233e : </label>
-                                        <label class="radio-inline"><input type="radio" name="optradioSexee">Oui</label>
-                                        <label class="radio-inline"><input type="radio" name="optradioSexee">Non</label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="oui" name="optradioSexee">Oui</label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="non" name="optradioSexee">Non</label>
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" name="numEmbryon" type="text" placeholder="Num&#233ro d'embryon">
@@ -142,12 +154,15 @@
                                     <div class="form-group">
                                         <select class="form-control" id="vacheEmbryon" name="vacheEmbryon">
                                             <option value="" selected disabled>Taureau</option>
+                                            <c:forEach items="${vachesList}" var="vache">
+                                                <option value="${vache.id}">${vache.num_identification}</option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Cot&#233 transfert : </label>
-                                        <label class="radio-inline"><input type="radio" name="optradioCoteTransf">Oui</label>
-                                        <label class="radio-inline"><input type="radio" name="optradioCoteTransf">Non</label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="gauche" name="optradioCoteTransf">Gauche</label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="droit" name="optradioCoteTransf">Droit</label>
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" name="emplacementCorne" type="text" placeholder="Emplacement dans la corne ut&#233rine">
@@ -155,7 +170,7 @@
                                     <div class="form-group">
                                         <input class="form-control" name="faciliteProgression" type="text" placeholder="Facilit&#233 de progression">
                                     </div>
-                                    <button class="btn btn-warning back4" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
+                                    <button class="btn btn-primary back4" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
                                     <button class="btn btn-primary open4" type="button">Suivant <span class="fa fa-arrow-right"></span></button>
                                 </fieldset>
                             </div>
@@ -164,12 +179,15 @@
                                 <fieldset name="gestation">
                                     <legend>&Eacute;tape 5/5  -  SUIVI DE GESTATION</legend>
                                     <div id="tabGestation" class="tabGestation">
-                                        <div class="form-group col-sm-3">
+                                        <div class="form-group col-sm-3" style="padding-left:0">
                                             <input class="form-control datepicker" name="dateMethode[]" type="text" placeholder="Date">
                                         </div>
                                         <div class="form-group col-sm-4">
                                             <select class="form-control" name="methode[]">
                                                 <option value="" selected disabled>M&#233thode</option>
+                                                <option value="echo">&Eacute;cho</option>
+                                                <option value="Palpation">Palpation</option>
+                                                <option value="PSPB">PSPB</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-sm-4">
@@ -184,7 +202,7 @@
                                         <textarea class="form-control" name="remarques" rows="5" placeholder="Remarques"></textarea>
                                     </div>
 
-                                    <button class="btn btn-warning back5" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
+                                    <button class="btn btn-primary back5" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
                                     <button type="submit" class="btn btn-success"><span class="fa fa-check"></span> Ajouter</button>
                                 </fieldset>
                             </div>
@@ -198,6 +216,7 @@
     <!-- /.modal-dialog -->
 </div>
 
+<!-- Modal add programme -->
 <div class="modal fade" id="addProgramme" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -206,7 +225,7 @@
                 <h4 class="modal-title custom_align" id="HeadingProgramme">Ajouter un nouveau programme</h4>
             </div>
 
-            <form id="addProgrammeForm" action="./addProgramme" method="POST">
+            <form id="addProgrammeForm" action="../../programme/add" method="POST">
                 <div class="modal-body">
                     <div class="form-group">
                         <input class="form-control" name="nomProgramme" required type="text" placeholder="Nom du programme">
@@ -223,7 +242,7 @@
     <!-- /.modal-dialog -->
 </div>
 
-
+<!-- Modal add operateur -->
 <div class="modal fade" id="addOperateur" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -232,7 +251,7 @@
                 <h4 class="modal-title custom_align" id="HeadingOperateur">Ajouter un nouvel op&#233rateur</h4>
             </div>
 
-            <form id="addOperateurForm" action="./addOperateur" method="POST">
+            <form id="addOperateurForm" action="../../operateur/add" method="POST">
                 <div class="modal-body">
                     <div class="form-group">
                         <input class="form-control" name="nomOperateur" required type="text" placeholder="Nom de l'op&#233rateur">
@@ -274,6 +293,11 @@
             format: 'DD/MM/YYYY',
             toolbarPlacement:'top',
             showClose:true
+        });
+
+        /****** Change le nom de l'onglet ******/
+        $(document).on( 'keyup', ".nom", function(){
+            $("li.active.tab").children('a').text($(this).closest(".nom").val());
         });
 
         /****** Navigation d'étape ******/
@@ -341,13 +365,21 @@
         $clone = $template.clone().removeAttr('id'); //remove l'id
         $clone.find('.tabTraitement').not(':first').remove(); //garde juste une ligne dans le tableau de traitement
         $clone.find('.tabGestation').not(':first').remove();
-        $clone.find('input').val(""); //reinit values input
-        $clone.find('.frm').hide(); //cache les form ouvert
-        $clone.find('.step1').show(); //affiche l'étape 1 par defaut
+
+        // reinit formulaire
+        $clone.find('input').val("");
+        $clone.find('textarea').val('');
+        $clone.find('.radio').prop('checked', false);
+        $clone.find("select").val(0);
+
+
         // ajoute les divs a l'arbre html
         $('.tab-content').append('<div class="tab-pane" id="' + tabId + '"></div>');
         $('#'+tabId).append($clone);
         $('.nav-tabs li:nth-child(' + id + ') a').click();
+
+        $clone.find(".frm").hide("fast");
+        $clone.find(".step1").show("slow");
 
         $('.datepickerTime').datetimepicker({
             sideBySide : true,
@@ -361,6 +393,96 @@
             format: 'DD/MM/YYYY',
             toolbarPlacement:'top',
             showClose:true
+        });
+    });
+
+    /************************ AJOUT *************************/
+
+    /****** Ajoute une nouvelle fiche ******/
+    $(document).on( 'submit', ".addForm", function(e){
+        e.preventDefault();
+
+        var $this = $(this);
+
+        $.ajax({
+            url: $this.attr('action'),
+            type: $this.attr('method'),
+            data: $this.serialize(),
+            success: function(result) {
+                if(result.succes == true){
+                    /** clear modal **/
+                    $this.find('input').val('');
+                    $this.find('textarea').val('');
+                    $this.find('.radio').prop('checked', false);
+                    $this.find("select").val(0);
+                    $("li.active.tab").children('a').text("+ Nouvelle fiche");
+
+                    $this.find(".step5").hide("fast");
+                    $this.find(".step1").show("slow");
+
+                    $('#modal-body').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>'); //afficher alert
+                    addRow(result);
+                }else{
+                    $('#modal-body').before('<div class="alert alert-danger flash" role="alert">'+result.message+'</div>');
+                }
+                autoclose();
+            },
+            error: function(xhr, status, error) {
+                $('#modal-body').before('<div class="alert alert-danger flash" role="alert">Une erreur s\'est produite</div>');
+                autoclose();
+            }
+        });
+    });
+
+    /******* Ajoute un nouveau programme ******/
+    $('#addProgrammeForm').on('submit', function(e) {
+        e.preventDefault();
+
+        var $this = $(this);
+
+        $.ajax({
+            url: $this.attr('action'),
+            type: $this.attr('method'),
+            data: $this.serialize(),
+            success: function(result) {
+                if(result.succes == true){
+                    $('input').val(''); //clear modal
+                    $('#addProgramme').modal('toggle'); //ferme modal
+
+                    $('.programmeSelect').append($('<option>', {
+                        value: result.objet.id,
+                        text: result.objet.nom
+                    }));
+
+                    $(".tab-pane.active").find('.programmeSelect').val(result.objet.id);
+                }
+            }
+        });
+    });
+
+    /******* Ajoute un nouvel opérateur ******/
+    $('#addOperateurForm').on('submit', function(e) {
+        e.preventDefault();
+
+        var $this = $(this);
+
+        $.ajax({
+            url: $this.attr('action'),
+            type: $this.attr('method'),
+            data: $this.serialize(),
+            success: function(result) {
+                if(result.succes == true){
+                    $('input').val(''); //clear modal
+                    $('#addOperateur').modal('toggle'); //ferme modal
+
+                    $('.operateurSelect').append($('<option>', {
+                        value: result.objet.id,
+                        text: result.objet.nom+" "+result.objet.prenom
+                    }));
+
+                    $(".tab-pane.active").find('.operateurSelect').val(result.objet.id);
+                }
+            }
         });
     });
 
@@ -390,10 +512,5 @@
             toolbarPlacement:'top',
             showClose:true
         });
-    });
-
-    /****** Change le nom de l'onglet ******/
-    $(document).on( 'keyup', ".nom", function(){
-        $("li.active.tab").children('a').text($(this).closest(".nom").val());
     });
 </script>

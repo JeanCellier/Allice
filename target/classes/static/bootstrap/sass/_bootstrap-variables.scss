@@ -881,3 +881,17 @@ $pagination-active-border:             darken($grey-body, 40%);
   box-shadow: 12px 0 15px -4px rgba(164, 168, 171, 0.2);
  }
 }
+
+.details{
+ h4{
+  padding-left: 60px;
+  margin-bottom:30px;
+  color: darken($green-primary, 8%);
+  font-weight: bold;
+ }
+ .tableDetails{
+  margin-bottom: 20px;
+  margin-top: 20px;
+ }
+ margin-bottom: 40px;
+}

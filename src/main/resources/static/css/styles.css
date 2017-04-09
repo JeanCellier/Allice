@@ -35,6 +35,23 @@
     box-shadow: 12px 0 15px -4px rgba(164, 168, 171, 0.2);
   }
 }
+/* line 885, ../bootstrap/sass/_bootstrap-variables.scss */
+.details {
+  margin-bottom: 40px;
+}
+/* line 886, ../bootstrap/sass/_bootstrap-variables.scss */
+.details h4 {
+  padding-left: 60px;
+  margin-bottom: 30px;
+  color: #046450;
+  font-weight: bold;
+}
+/* line 892, ../bootstrap/sass/_bootstrap-variables.scss */
+.details .tableDetails {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.

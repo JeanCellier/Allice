@@ -1,10 +1,9 @@
 package phenotypage.model.fiche.ficheAba;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import phenotypage.model.cryoconservation.Cryoconservation;
-import phenotypage.model.cryoconservation.TableauDetail;
-import phenotypage.model.donneesExistantes.abattoir.Abattoir;
-import phenotypage.model.donneesExistantes.operateur.Operateur;
+import phenotypage.model.cryoconservation.tableauDetail.TableauDetail;
+import phenotypage.model.fiche.ficheAba.abattoir.Abattoir;
+import phenotypage.model.operateur.Operateur;
 import phenotypage.model.fiche.Fiche;
 import phenotypage.model.informationsPIV.Informations_PIV;
 import phenotypage.model.invitro.collecte.Collecte;

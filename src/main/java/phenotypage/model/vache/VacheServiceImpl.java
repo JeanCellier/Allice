@@ -17,7 +17,7 @@ public class VacheServiceImpl implements VacheService
 	private VacheRepository vacheRepository;
 
 	@Override
-	public List<Vache> findAllVache()
+	public List<Vache> findAll()
 	{
 		return vacheRepository.findAll();
 	}
