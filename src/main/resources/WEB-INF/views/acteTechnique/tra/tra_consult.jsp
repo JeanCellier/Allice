@@ -92,6 +92,14 @@
         return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('/');
     }
 
+    function convertDateWithTime(inputFormat){
+        function pad(s) { return (s < 10) ? '0' + s : s; }
+        var d = new Date(inputFormat);
+        var dateFormat = [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('/');
+
+        return dateFormat+' '+d.getHours()+'h'+d.getMinutes();
+    }
+
     /** supprimer alert après 5s */
     function autoclose(){
         window.setTimeout(function() {
