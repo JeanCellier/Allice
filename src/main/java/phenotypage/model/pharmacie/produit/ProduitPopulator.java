@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * @author fabien
@@ -18,16 +19,6 @@ public class ProduitPopulator
 	@PostConstruct
 	void init()
 	{
-		/*Produit produit = new Produit();
-		produit.setNom("lol");
-		produit.setDateDelivrance(Calendar.getInstance().getTime());
-		produit.setFournisseur("xd");
-		produit.setProjet("peoeo");
-		produit.setResponsable("eeree");
-		produit.setQteEntrante(5);
-		produit.setNumLot("erere");
-		produit.setDatePeremption(Calendar.getInstance().getTime());
-
-		produitService.createProduit(produit);*/
+//		produitService.createProduit("lol", new Date(), "xd", "projet", "respo", 5, "numlot", new Date(), "indic");
 	}
 }

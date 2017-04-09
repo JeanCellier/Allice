@@ -2,16 +2,21 @@ package phenotypage.model.fiche.ficheTra;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import phenotypage.model.corpsJaune.CorpsJaune;
-import phenotypage.model.donneesExistantes.operateur.Operateur;
-import phenotypage.model.donneesExistantes.programme.Programme;
-import phenotypage.model.embryonsTransferes.EmbryonsTransferes;
+import phenotypage.model.fiche.ficheTra.corpsJaune.CorpsJaune;
+import phenotypage.model.fiche.ficheTra.corpsJaune.CorpsJauneService;
+import phenotypage.model.operateur.Operateur;
+import phenotypage.model.programme.Programme;
+import phenotypage.model.fiche.ficheTra.embryonsTransferes.EmbryonsTransferes;
+import phenotypage.model.fiche.ficheTra.embryonsTransferes.EmbryonsTransferesService;
 import phenotypage.model.gestation.Gestation;
+import phenotypage.model.gestation.GestationService;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
+import phenotypage.model.traitementDonneuse.Traitement_DonneuseService;
 import phenotypage.model.vache.Vache;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author fabien
@@ -28,18 +33,35 @@ FicheTraServiceImpl implements FicheTraService
 	@Autowired
 	private FicheTraRepository ficheTraRepository;
 
+	@Autowired
+	private Traitement_DonneuseService traitement_donneuseService;
+
+	@Autowired
+	private CorpsJauneService corpsJauneService;
+
+	@Autowired
+	private EmbryonsTransferesService embryonsTransferesService;
+
+	@Autowired
+	private GestationService gestationService;
+
 	@Override
-	public List<FicheTra> findAllFicheTra()
+	public List<FicheTra> findAll()
 	{
 		return ficheTraRepository.findAll();
 	}
 
 	@Override
-	public void createFicheTra(String nom, Programme programme, Date date, String numAgrement, String lieu,
+	public FicheTra createFicheTra(String nom, Programme programme, Date date, String numAgrement, String lieu,
 							   Operateur operateur, Vache vache, Traitement_Donneuse traitementDonneuse,
 							   CorpsJaune corpsJaune, EmbryonsTransferes embryonsTransferes, Gestation gestation) {
 
-		FicheTra ficheTra = newFicheTra();
+		Traitement_Donneuse traitement = traitement_donneuseService.createTraitement_Donneuse(traitementDonneuse);
+		CorpsJaune corpsJauneSave = corpsJauneService.createCorpsJaune(corpsJaune);
+		EmbryonsTransferes embryonSave = embryonsTransferesService.createEmbryonsTransferes(embryonsTransferes);
+		Gestation gestationSave = gestationService.createGestation(gestation);
+
+		FicheTra ficheTra = new FicheTra();
 		ficheTra.setNom(nom);
 		ficheTra.setProgramme(programme);
 		ficheTra.setDateHeureMinute(date);
@@ -47,41 +69,26 @@ FicheTraServiceImpl implements FicheTraService
 		ficheTra.setLieu(lieu);
 		ficheTra.setOperateur(operateur);
 		ficheTra.setVache(vache);
-		ficheTra.setTraitement_donneuse(traitementDonneuse);
-		ficheTra.setCorpsJaune(corpsJaune);
-		ficheTra.setEmbryonsTransferes(embryonsTransferes);
-		ficheTra.setGestation(gestation);
+		ficheTra.setTraitement_donneuse(traitement);
+		ficheTra.setCorpsJaune(corpsJauneSave);
+		ficheTra.setEmbryonsTransferes(embryonSave);
+		ficheTra.setGestation(gestationSave);
 
-		save(ficheTra);
-	}
-
-
-	@Override
-	public FicheTra addFicheTra(FicheTra fichieTra)
-	{
-		return ficheTraRepository.save(fichieTra);
+		return save(ficheTra);
 	}
 
 	@Override
-	public FicheTra newFicheTra()
-	{
-		return new FicheTra();
+	public void delete(FicheTra ficheTra) {
+		repository.delete(ficheTra);
 	}
 
 	@Override
-	public FicheTra findByNom(String nom)
-	{
-		return ficheTraRepository.findByNom(nom);
+	public Optional<FicheTra> findOne(long id) {
+		return Optional.ofNullable(repository.findOne(id));
 	}
 
 	@Override
-	public long countFicheTra()
-	{
-		return ficheTraRepository.count();
-	}
-
-	@Override
-	public void save(FicheTra ficheTra) {
-		repository.save(ficheTra);
+	public FicheTra save(FicheTra ficheTra) {
+		return repository.save(ficheTra);
 	}
 }

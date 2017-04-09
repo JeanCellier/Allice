@@ -1,6 +1,6 @@
 package phenotypage.model.invitro.collecte.resultat;
 
-import phenotypage.model.donneesExistantes.sanitaire.Sanitaire;
+import phenotypage.model.sanitaire.Sanitaire;
 import javax.persistence.*;
 
 @Entity

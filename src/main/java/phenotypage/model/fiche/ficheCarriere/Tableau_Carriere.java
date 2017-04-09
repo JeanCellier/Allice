@@ -1,7 +1,7 @@
 package phenotypage.model.fiche.ficheCarriere;
 
 import javax.persistence.*;
-import phenotypage.model.donneesExistantes.operateur.Operateur;
+import phenotypage.model.operateur.Operateur;
 import phenotypage.model.pharmacie.produit.Produit;
 import java.util.Date;
 

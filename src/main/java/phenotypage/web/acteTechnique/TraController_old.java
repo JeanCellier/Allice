@@ -8,25 +8,25 @@
 //import org.springframework.web.bind.annotation.PathVariable;
 //import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RequestMethod;
-//import phenotypage.model.corpsJaune.CorpsJaune;
-//import phenotypage.model.corpsJaune.CorpsJauneService;
-//import phenotypage.model.donneesExistantes.abattoir.AbattoirService;
-//import phenotypage.model.donneesExistantes.operateur.OperateurService;
-//import phenotypage.model.donneesExistantes.programme.ProgrammeService;
-//import phenotypage.model.donneesExistantes.qualite.QualiteService;
-//import phenotypage.model.embryonsTransferes.EmbryonsTransferes;
-//import phenotypage.model.embryonsTransferes.EmbryonsTransferesService;
+//import phenotypage.model.fiche.ficheTra.corpsJaune.CorpsJaune;
+//import phenotypage.model.fiche.ficheTra.corpsJaune.CorpsJauneService;
+//import phenotypage.model.fiche.ficheAba.abattoir.AbattoirService;
+//import phenotypage.model.operateur.OperateurService;
+//import phenotypage.model.programme.ProgrammeService;
+//import phenotypage.model.qualite.QualiteService;
+//import phenotypage.model.fiche.ficheTra.embryonsTransferes.EmbryonsTransferes;
+//import phenotypage.model.fiche.ficheTra.embryonsTransferes.EmbryonsTransferesService;
 //import phenotypage.model.fiche.ficheTra.FicheTra;
 //import phenotypage.model.fiche.ficheTra.FicheTraService;
 //import phenotypage.model.fiche.Fiche;
 //import phenotypage.model.fiche.fiche.HeaderService;
 //import phenotypage.model.gestation.Gestation;
 //import phenotypage.model.gestation.GestationService;
-//import phenotypage.model.gestation.Tableau_Gestation;
-//import phenotypage.model.gestation.Tableau_GestationService;
+//import phenotypage.model.gestation.tableau_gestation.Tableau_Gestation;
+//import phenotypage.model.gestation.tableau_gestation.Tableau_GestationService;
 //import phenotypage.model.pharmacie.produit.ProduitService;
 //import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
-//import phenotypage.model.traitementDonneuse.Traitement_DonneuseService;
+//import phenotypage.model.traitementDonneuse.Tableau_DonneuseService;
 //import phenotypage.model.vache.Vache;
 //import phenotypage.model.vache.VacheService;
 //
@@ -76,7 +76,7 @@
 //	private VacheService vacheService;
 //
 //	@Autowired
-//	private Traitement_DonneuseService traitement_donneuseService;
+//	private Tableau_DonneuseService traitement_donneuseService;
 //
 //	@Autowired
 //	private ProduitService produitService;
@@ -209,7 +209,7 @@
 //		}
 //
 //		model.addAttribute("operateurList", operateurService.findAllOperateur());
-//		model.addAttribute("produitList", produitService.findAllProduit());
+//		model.addAttribute("produitList", produitService.findAll());
 //		model.addAttribute("nom", nom);
 //
 //		return "acteTechnique/tra/traitementReceveuseTra";
@@ -221,7 +221,7 @@
 //		if (errors.hasErrors())
 //		{
 //			model.addAttribute("operateurList", operateurService.findAllOperateur());
-//			model.addAttribute("produitList", produitService.findAllProduit());
+//			model.addAttribute("produitList", produitService.findAll());
 //			model.addAttribute("nom", nom);
 //			return "/acteTechnique/tra/traitementReceveuseTra";
 //		}
@@ -395,7 +395,7 @@
 //	public String consultation(Model model)
 //	{
 //		model.addAttribute("ficheTra", ficheTraService.newFicheTra());
-//		model.addAttribute("ficheTraList", ficheTraService.findAllFicheTra());
+//		model.addAttribute("ficheTraList", ficheTraService.findAll());
 //		return "acteTechnique/tra/consultation/consultation";
 //	}
 //
@@ -527,7 +527,7 @@
 //	public String modification(Model model)
 //	{
 //		model.addAttribute("ficheTra", ficheTraService.newFicheTra());
-//		model.addAttribute("ficheTraList", ficheTraService.findAllFicheTra());
+//		model.addAttribute("ficheTraList", ficheTraService.findAll());
 //		return "acteTechnique/tra/modification";
 //	}
 //

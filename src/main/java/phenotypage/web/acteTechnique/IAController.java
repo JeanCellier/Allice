@@ -8,21 +8,21 @@
 //import org.springframework.web.bind.annotation.PathVariable;
 //import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RequestMethod;
-//import phenotypage.model.donneesExistantes.abattoir.AbattoirService;
-//import phenotypage.model.donneesExistantes.operateur.OperateurService;
-//import phenotypage.model.donneesExistantes.programme.ProgrammeService;
+//import phenotypage.model.fiche.ficheAba.abattoir.AbattoirService;
+//import phenotypage.model.operateur.OperateurService;
+//import phenotypage.model.programme.ProgrammeService;
 //import phenotypage.model.fiche.Fiche;
 //import phenotypage.model.fiche.ficheCol.FicheColService;
 //import phenotypage.model.fiche.ficheIa.FicheIa;
 //import phenotypage.model.fiche.ficheIa.FicheIaService;
 //import phenotypage.model.gestation.Gestation;
 //import phenotypage.model.gestation.GestationService;
-//import phenotypage.model.gestation.Tableau_Gestation;
-//import phenotypage.model.gestation.Tableau_GestationService;
-//import phenotypage.model.insemination.Insemination;
-//import phenotypage.model.insemination.InseminationService;
+//import phenotypage.model.gestation.tableau_gestation.Tableau_Gestation;
+//import phenotypage.model.gestation.tableau_gestation.Tableau_GestationService;
+//import phenotypage.model.fiche.ficheIa.insemination.Insemination;
+//import phenotypage.model.fiche.ficheIa.insemination.InseminationService;
 //import phenotypage.model.pharmacie.produit.ProduitService;
-//import phenotypage.model.traitementDonneuse.Traitement_DonneuseService;
+//import phenotypage.model.traitementDonneuse.traitement_donneuse.Tableau_DonneuseService;
 //import phenotypage.model.vache.Vache;
 //import phenotypage.model.vache.VacheService;
 //
@@ -57,7 +57,7 @@
 //	private InseminationService inseminationService;
 //
 //	@Autowired
-//	private Traitement_DonneuseService traitement_donneuseService;
+//	private Tableau_DonneuseService traitement_donneuseService;
 //
 //	@Autowired
 //	private GestationService gestationService;
@@ -254,7 +254,7 @@
 ////		}
 ////
 ////		model.addAttribute("operateurList", operateurService.findAllOperateur());
-////		model.addAttribute("produitList", produitService.findAllProduit());
+////		model.addAttribute("produitList", produitService.findAll());
 ////		model.addAttribute("nom", nom);
 ////
 ////		return "acteTechnique/ia/traitementDonneuseIa";
@@ -266,7 +266,7 @@
 ////		if (errors.hasErrors())
 ////		{
 ////			model.addAttribute("operateurList", operateurService.findAllOperateur());
-////			model.addAttribute("produitList", produitService.findAllProduit());
+////			model.addAttribute("produitList", produitService.findAll());
 ////			model.addAttribute("nom", nom);
 ////			model.addAttribute("traitementDonneuse", traitementDonneuse);
 ////

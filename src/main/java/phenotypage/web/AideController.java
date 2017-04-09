@@ -6,34 +6,34 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import phenotypage.model.donneesExistantes.destionationCulture.DestinationCulture;
-import phenotypage.model.donneesExistantes.destionationCulture.DestinationCultureService;
-import phenotypage.model.donneesExistantes.abattoir.Abattoir;
-import phenotypage.model.donneesExistantes.abattoir.AbattoirService;
-import phenotypage.model.donneesExistantes.congelateur.Congelateur;
-import phenotypage.model.donneesExistantes.congelateur.CongelateurService;
-import phenotypage.model.donneesExistantes.cuve.Cuve;
-import phenotypage.model.donneesExistantes.cuve.CuveService;
-import phenotypage.model.donneesExistantes.cuve.canister.Canister;
-import phenotypage.model.donneesExistantes.cuve.canister.CanisterService;
-import phenotypage.model.donneesExistantes.cuve.visoTube.VisoTube;
-import phenotypage.model.donneesExistantes.cuve.visoTube.VisoTubeService;
-import phenotypage.model.donneesExistantes.fiv.FIV;
-import phenotypage.model.donneesExistantes.fiv.FIVService;
-import phenotypage.model.milieuMaturation.MilieuMaturation;
-import phenotypage.model.milieuMaturation.MilieuMaturationService;
-import phenotypage.model.donneesExistantes.operateur.Operateur;
-import phenotypage.model.donneesExistantes.operateur.OperateurService;
-import phenotypage.model.donneesExistantes.programme.Programme;
-import phenotypage.model.donneesExistantes.programme.ProgrammeService;
-import phenotypage.model.donneesExistantes.qualite.Qualite;
-import phenotypage.model.donneesExistantes.qualite.QualiteService;
-import phenotypage.model.donneesExistantes.sanitaire.Sanitaire;
-import phenotypage.model.donneesExistantes.sanitaire.SanitaireService;
-import phenotypage.model.donneesExistantes.stade.Stade;
-import phenotypage.model.donneesExistantes.stade.StadeService;
-import phenotypage.model.donneesExistantes.typeCulture.TypeCulture;
-import phenotypage.model.donneesExistantes.typeCulture.TypeCultureService;
+import phenotypage.model.destionationCulture.DestinationCulture;
+import phenotypage.model.destionationCulture.DestinationCultureService;
+import phenotypage.model.fiche.ficheAba.abattoir.Abattoir;
+import phenotypage.model.fiche.ficheAba.abattoir.AbattoirService;
+import phenotypage.model.cryoconservation.congelateur.Congelateur;
+import phenotypage.model.cryoconservation.congelateur.CongelateurService;
+import phenotypage.model.cuve.Cuve;
+import phenotypage.model.cuve.CuveService;
+import phenotypage.model.cuve.canister.Canister;
+import phenotypage.model.cuve.canister.CanisterService;
+import phenotypage.model.cuve.visoTube.VisoTube;
+import phenotypage.model.cuve.visoTube.VisoTubeService;
+import phenotypage.model.informationsPIV.fiv.FIV;
+import phenotypage.model.informationsPIV.fiv.FIVService;
+import phenotypage.model.informationsPIV.milieuMaturation.MilieuMaturation;
+import phenotypage.model.informationsPIV.milieuMaturation.MilieuMaturationService;
+import phenotypage.model.operateur.Operateur;
+import phenotypage.model.operateur.OperateurService;
+import phenotypage.model.programme.Programme;
+import phenotypage.model.programme.ProgrammeService;
+import phenotypage.model.qualite.Qualite;
+import phenotypage.model.qualite.QualiteService;
+import phenotypage.model.sanitaire.Sanitaire;
+import phenotypage.model.sanitaire.SanitaireService;
+import phenotypage.model.cryoconservation.stade.Stade;
+import phenotypage.model.cryoconservation.stade.StadeService;
+import phenotypage.model.informationsPIV.typeCulture.TypeCulture;
+import phenotypage.model.informationsPIV.typeCulture.TypeCultureService;
 
 import javax.validation.Valid;
 
@@ -112,7 +112,7 @@ public class AideController
 	@RequestMapping(value = "/ajoutProgramme", method = RequestMethod.GET)
 	public String ajoutProgramme(Model model)
 	{
-		model.addAttribute("programmeList", programmeService.findAllProgramme());
+		model.addAttribute("programmeList", programmeService.findAll());
 		model.addAttribute("programme", programmeService.newProgramme());
 		return "aide/ajoutProgramme";
 	}
@@ -152,7 +152,7 @@ public class AideController
 	@RequestMapping(value = "/ajoutOperateur", method = RequestMethod.GET)
 	public String ajoutOperateur(Model model)
 	{
-		model.addAttribute("operateurList", operateurService.findAllOperateur());
+		model.addAttribute("operateurList", operateurService.findAll());
 		model.addAttribute("operateur", operateurService.newOperateur());
 		return "aide/ajoutOperateur";
 	}

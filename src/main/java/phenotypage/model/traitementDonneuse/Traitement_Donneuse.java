@@ -1,5 +1,7 @@
 package phenotypage.model.traitementDonneuse;
 
+import phenotypage.model.traitementDonneuse.tableau_donneuse.Tableau_Donneuse;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;

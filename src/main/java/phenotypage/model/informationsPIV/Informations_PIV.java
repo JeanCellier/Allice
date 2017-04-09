@@ -1,10 +1,10 @@
 package phenotypage.model.informationsPIV;
 
-import phenotypage.model.donneesExistantes.fiv.FIV;
-import phenotypage.model.milieuMaturation.MilieuMaturation;
-import phenotypage.model.donneesExistantes.operateur.Operateur;
-import phenotypage.model.donneesExistantes.typeCulture.TypeCulture;
-import java.util.List;
+import phenotypage.model.informationsPIV.fiv.FIV;
+import phenotypage.model.informationsPIV.milieuMaturation.MilieuMaturation;
+import phenotypage.model.operateur.Operateur;
+import phenotypage.model.informationsPIV.typeCulture.TypeCulture;
+
 import javax.persistence.*;
 
 @Entity

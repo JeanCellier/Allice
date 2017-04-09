@@ -8,7 +8,7 @@ import java.util.List;
  */
 public interface VacheService
 {
-	List<Vache> findAllVache();
+	List<Vache> findAll();
 
 	Vache createVache(boolean present, String proprietaire, String nom, String num_elevage, String num_identitifaction, int race, char sexe, Date dateNaissance, String parite, float ageMois, String numPere, String numMere);
 

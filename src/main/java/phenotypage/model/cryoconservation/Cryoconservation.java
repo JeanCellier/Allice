@@ -1,8 +1,8 @@
 package phenotypage.model.cryoconservation;
 
-import phenotypage.model.donneesExistantes.congelateur.Congelateur;
-import phenotypage.model.donneesExistantes.operateur.Operateur;
-import phenotypage.model.methodeCongelation.MethodeCongelation;
+import phenotypage.model.cryoconservation.congelateur.Congelateur;
+import phenotypage.model.operateur.Operateur;
+import phenotypage.model.cryoconservation.methodeCongelation.MethodeCongelation;
 import javax.persistence.*;
 import java.sql.Time;
 

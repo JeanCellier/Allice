@@ -1,6 +1,7 @@
 package phenotypage.model.gestation;
 
-import java.util.Date;
+import phenotypage.model.gestation.tableau_gestation.Tableau_Gestation;
+
 import java.util.List;
 import javax.persistence.*;
 
@@ -10,9 +11,6 @@ public class Gestation
 	@Id
 	@GeneratedValue
 	private Long id;
-
-	@Column
-	private Date date;
 
 	@OneToMany
 	private List<Tableau_Gestation> tableauGestationList;
@@ -30,14 +28,6 @@ public class Gestation
 	public void setId(Long id)
 	{
 		this.id = id;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
 	}
 
 	public List<Tableau_Gestation> getTableauGestationList()

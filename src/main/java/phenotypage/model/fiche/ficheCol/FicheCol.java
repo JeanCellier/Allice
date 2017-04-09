@@ -1,12 +1,12 @@
 package phenotypage.model.fiche.ficheCol;
 
 import phenotypage.model.cryoconservation.Cryoconservation;
-import phenotypage.model.cryoconservation.TableauDetail;
-import phenotypage.model.donneesExistantes.operateur.Operateur;
+import phenotypage.model.cryoconservation.tableauDetail.TableauDetail;
+import phenotypage.model.operateur.Operateur;
 import phenotypage.model.fiche.Fiche;
 import phenotypage.model.invitro.collecte.resultat.Resultat;
-import phenotypage.model.tableauTraitement.TableauTraitement;
-import phenotypage.model.traitementDonneuse.InfoTraitementDonneuse;
+import phenotypage.model.fiche.ficheCol.tableauTraitement.TableauTraitement;
+import phenotypage.model.infoTraitementDonneuse.InfoTraitementDonneuse;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
 import phenotypage.model.vache.Vache;
 import javax.persistence.*;

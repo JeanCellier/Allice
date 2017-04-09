@@ -1,5 +1,7 @@
 package phenotypage.model.invitro.collecte;
 
+import phenotypage.model.invitro.collecte.tableau_collecte.Tableau_Collecte;
+
 import java.sql.Time;
 import java.util.Date;
 import java.util.List;
