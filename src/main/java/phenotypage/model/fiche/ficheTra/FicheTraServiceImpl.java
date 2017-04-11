@@ -13,7 +13,6 @@ import phenotypage.model.gestation.GestationService;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
 import phenotypage.model.traitementDonneuse.Traitement_DonneuseService;
 import phenotypage.model.vache.Vache;
-
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -31,9 +30,6 @@ FicheTraServiceImpl implements FicheTraService
 	private FicheTraRepository repository;
 
 	@Autowired
-	private FicheTraRepository ficheTraRepository;
-
-	@Autowired
 	private Traitement_DonneuseService traitement_donneuseService;
 
 	@Autowired
@@ -48,7 +44,7 @@ FicheTraServiceImpl implements FicheTraService
 	@Override
 	public List<FicheTra> findAll()
 	{
-		return ficheTraRepository.findAll();
+		return repository.findAll();
 	}
 
 	@Override

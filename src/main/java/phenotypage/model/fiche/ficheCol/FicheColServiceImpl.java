@@ -2,8 +2,8 @@ package phenotypage.model.fiche.ficheCol;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author fabien
@@ -14,41 +14,25 @@ public class
 FicheColServiceImpl implements FicheColService
 {
 	@Autowired
-	private FicheColRepository ficheColRepository;
+	private FicheColRepository repository;
 
 	@Override
-	public List<FicheCol> findAllFicheCol()
-	{
-		return ficheColRepository.findAll();
+	public List<FicheCol> findAll() {
+		return repository.findAll();
 	}
 
 	@Override
-	public FicheCol createFicheCol(String nom)
-	{
-		return ficheColRepository.save(new FicheCol());
+	public void delete(FicheCol ficheCol) {
+		repository.delete(ficheCol);
 	}
 
 	@Override
-	public FicheCol addFicheCol(FicheCol FicheCol)
-	{
-		return ficheColRepository.save(FicheCol);
+	public Optional<FicheCol> findOne(long id) {
+		return Optional.ofNullable(repository.findOne(id));
 	}
 
 	@Override
-	public FicheCol newFicheCol()
-	{
-		return new FicheCol();
-	}
-
-	@Override
-	public FicheCol findByNom(String nom)
-	{
-		return ficheColRepository.findByNom(nom);
-	}
-
-	@Override
-	public long countFicheCol()
-	{
-		return ficheColRepository.count();
+	public FicheCol save(FicheCol ficheCol) {
+		return repository.save(ficheCol);
 	}
 }

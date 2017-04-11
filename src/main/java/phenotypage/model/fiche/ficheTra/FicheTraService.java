@@ -34,5 +34,4 @@ public interface FicheTraService
 
 	FicheTra save(FicheTra ficheTra);
 
-
 }

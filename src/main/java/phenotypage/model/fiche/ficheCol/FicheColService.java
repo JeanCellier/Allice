@@ -1,21 +1,18 @@
 package phenotypage.model.fiche.ficheCol;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author fabien
  */
 public interface FicheColService
 {
-	List<FicheCol> findAllFicheCol();
+	List<FicheCol> findAll();
 
-	FicheCol createFicheCol(String nom);
+	void delete(FicheCol ficheCol);
 
-	FicheCol addFicheCol(FicheCol FicheCol);
+	Optional<FicheCol> findOne(long id);
 
-	FicheCol newFicheCol();
-
-	FicheCol findByNom(String nom);
-
-	long countFicheCol();
+	FicheCol save(FicheCol ficheCol);
 }
