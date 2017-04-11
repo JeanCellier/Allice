@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
-                <h4 class="modal-title custom_align" id="Heading">Renseigner une nouvelle fiche TRA</h4>
+                <h4 class="modal-title custom_align" id="HeadingAdd">Renseigner ou modifier une fiche TRA</h4>
             </div>
 
             <div id="modal-body" class="modal-body">
@@ -14,7 +14,7 @@
 
                 <div class="tab-content" style="margin-top: 20px;">
                     <div class="tab-pane active" id="fiche_01">
-                        <form name="add" class="addForm" id="addForm" method="post" action="./add">
+                        <form name="add" class="addForm" id="addForm" method="post" action="./addOrUpdate">
                             <div class="step1 frm">
                                 <fieldset name="identification">
                                     <legend>&Eacute;tape 1/5  -  IDENTIFICATION FICHE</legend>
@@ -185,7 +185,7 @@
                                         <div class="form-group col-sm-4">
                                             <select class="form-control" name="methode[]">
                                                 <option value="" selected disabled>M&#233thode</option>
-                                                <option value="echo">&Eacute;cho</option>
+                                                <option value="&Eacute;cho">&Eacute;cho</option>
                                                 <option value="Palpation">Palpation</option>
                                                 <option value="PSPB">PSPB</option>
                                             </select>
@@ -203,7 +203,7 @@
                                     </div>
 
                                     <button class="btn btn-primary back5" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
-                                    <button type="submit" class="btn btn-success"><span class="fa fa-check"></span> Ajouter</button>
+                                    <button type="submit" class="btn btn-success validButton"><span class="fa fa-check"></span> Enregistrer</button>
                                 </fieldset>
                             </div>
                         </form>
@@ -278,122 +278,139 @@
 <link rel="stylesheet" href="/static/js/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
 
 <script>
-    $(document).ready(function() {
-        /****** function init calendrier avec heure ******/
+    /****** function init calendrier avec heure ******/
+    function createDateTimePicker() {
         $('.datepickerTime').datetimepicker({
-            sideBySide : true,
+            sideBySide: true,
             locale: 'fr',
-            toolbarPlacement:'top',
-            showClose:true
+            toolbarPlacement: 'top',
+            showClose: true
         });
+    }
 
-        /****** function init calendrier sans heure ******/
+    /****** function init calendrier sans heure ******/
+    function createDatePicker() {
         $('.datepicker').datetimepicker({
             locale: 'fr',
             format: 'DD/MM/YYYY',
-            toolbarPlacement:'top',
-            showClose:true
+            toolbarPlacement: 'top',
+            showClose: true
         });
+    }
 
-        /****** Change le nom de l'onglet ******/
-        $(document).on( 'keyup', ".nom", function(){
-            $("li.active.tab").children('a').text($(this).closest(".nom").val());
-        });
+    /****** function reinit fiche ******/
+    function reinitForm(form){
+        form.find('.tabTraitement').not(':first').remove(); //garde juste une ligne dans le tableau de traitement
+        form.find('.tabGestation').not(':first').remove();
 
-        /****** Navigation d'étape ******/
-        $(document).on( 'click', ".open1", function(){
-            $(event.target).closest('form').find(".frm").hide("fast");
-            $(event.target).closest('form').find(".step2").show("slow");
-        });
+        // reinit formulaire
+        form.find('input').not(':radio').val("");
+        form.find('textarea').val('');
+        form.find('.radio').prop('checked', false);
+        form.find("select").val("");
 
-        $(document).on( 'click', ".open2", function(){
-            $(event.target).closest('form').find(".frm").hide("fast");
-            $(event.target).closest('form').find(".step3").show("slow");
-        });
+        if(form.find('.validButton').removeAttr('data-id')){
+            form.find('.validButton').removeAttr('data-id'); //remove l'id
+        }
+    }
 
-        $(document).on( 'click', ".back2", function(){
-            $(event.target).closest('form').find(".frm").hide("fast");
-            $(event.target).closest('form').find(".step1").show("slow");
-        });
+    /****** function nouvel onglet ******/
+    function newTab(){
+        var id = $(".nav-tabs").children().length; //init id = num de fiche +1
 
-        $(document).on( 'click', ".open3", function(){
-            $(event.target).closest('form').find(".frm").hide("fast");
-            $(event.target).closest('form').find(".step4").show("slow");
-        });
+        while($('#fiche_'+id).length){ //tant qu'une fiche ayant le même id
+            id += 1;
+        }
 
-        $(document).on( 'click', ".back3", function(){
-            $(event.target).closest('form').find(".frm").hide("fast");
-            $(event.target).closest('form').find(".step2").show("slow");
-        });
+        var tabId = 'fiche_' + id;
 
-        $(document).on( 'click', ".open4", function(){
-            $(event.target).closest('form').find(".frm").hide("fast");
-            $(event.target).closest('form').find(".step5").show("slow");
-        });
+        $('li.tab').last().after('<li class="tab"><a href="#fiche_' + id + '">Nouvelle fiche</a><span> x </span></li>');
 
-        $(document).on( 'click', ".back4", function(){
-            $(event.target).closest('form').find(".frm").hide("fast");
-            $(event.target).closest('form').find(".step3").show("slow");
-        });
+        $clone = $('#addForm').clone().removeAttr('id'); //clone et remove l'id
 
-        $(document).on( 'click', ".back5", function(){
-            $(event.target).closest('form').find(".frm").hide("fast");
-            $(event.target).closest('form').find(".step4").show("slow");
-        });
+        reinitForm($clone); //reinitialise le clone
+
+        // ajoute les divs a l'arbre html
+        $('.tab-content').append('<div class="tab-pane" id="' + tabId + '"></div>');
+        $('#'+tabId).append($clone);
+//        $('#fiche_'+id+' a').click();
+        $('.nav-tabs li').find('a[href="#'+tabId+'"]').click();
+
+        $clone.find(".frm").hide("fast");
+        $clone.find(".step1").show("slow");
+
+        createDateTimePicker();
+        createDatePicker();
+    }
+
+    createDateTimePicker(); //init les calendriers avec heure
+    createDatePicker(); //init les calendriers sans heure
+
+    /****** Change le nom de l'onglet ******/
+    $(document).on( 'keyup', ".nom", function(){
+        $("li.active.tab").children('a').text($(this).closest(".nom").val());
     });
 
+    /****** Navigation d'étape ******/
+    $(document).on( 'click', ".open1", function(){
+        $(event.target).closest('form').find(".frm").hide("fast");
+        $(event.target).closest('form').find(".step2").show("slow");
+    });
+
+    $(document).on( 'click', ".open2", function(){
+        $(event.target).closest('form').find(".frm").hide("fast");
+        $(event.target).closest('form').find(".step3").show("slow");
+    });
+
+    $(document).on( 'click', ".back2", function(){
+        $(event.target).closest('form').find(".frm").hide("fast");
+        $(event.target).closest('form').find(".step1").show("slow");
+    });
+
+    $(document).on( 'click', ".open3", function(){
+        $(event.target).closest('form').find(".frm").hide("fast");
+        $(event.target).closest('form').find(".step4").show("slow");
+    });
+
+    $(document).on( 'click', ".back3", function(){
+        $(event.target).closest('form').find(".frm").hide("fast");
+        $(event.target).closest('form').find(".step2").show("slow");
+    });
+
+    $(document).on( 'click', ".open4", function(){
+        $(event.target).closest('form').find(".frm").hide("fast");
+        $(event.target).closest('form').find(".step5").show("slow");
+    });
+
+    $(document).on( 'click', ".back4", function(){
+        $(event.target).closest('form').find(".frm").hide("fast");
+        $(event.target).closest('form').find(".step3").show("slow");
+    });
+
+    $(document).on( 'click', ".back5", function(){
+        $(event.target).closest('form').find(".frm").hide("fast");
+        $(event.target).closest('form').find(".step4").show("slow");
+    });
+
+
     /****** Système d'onglet ******/
-    $(".nav-tabs").on("click", "a", function (e) {
+    $(".nav-tabs").on("click", "a", function (e) { //met au premier plan un contenu d'onglet
         e.preventDefault();
-        if (!$(this).hasClass('add-fiche')) {
+        if (!$(this).hasClass('add-fiche')) { //si c'est l'onglet d'ajout d'onglet
             $(this).tab('show');
         }
     })
-        .on("click", "span", function () {
+        .on("click", "span", function () { //close un onglet
             var anchor = $(this).siblings('a');
             $(anchor.attr('href')).remove();
             $(this).parent().remove();
             $(".nav-tabs li").children('a').first().click();
         });
 
-    $('.add-fiche').click(function (e) {
+    /****** evenement creer un onglet ******/
+    $(document).on('click', '.add-fiche', function (e) {
         e.preventDefault();
-        var id = $(".nav-tabs").children().length;
-        var tabId = 'fiche_' + id;
-        $(this).closest('li').before('<li class="tab"><a href="#fiche_' + id + '">Nouvelle fiche</a><span> x </span></li>');
-        $template = $('#addForm');
-        $clone = $template.clone().removeAttr('id'); //remove l'id
-        $clone.find('.tabTraitement').not(':first').remove(); //garde juste une ligne dans le tableau de traitement
-        $clone.find('.tabGestation').not(':first').remove();
-
-        // reinit formulaire
-        $clone.find('input').val("");
-        $clone.find('textarea').val('');
-        $clone.find('.radio').prop('checked', false);
-        $clone.find("select").val(0);
-
-
-        // ajoute les divs a l'arbre html
-        $('.tab-content').append('<div class="tab-pane" id="' + tabId + '"></div>');
-        $('#'+tabId).append($clone);
-        $('.nav-tabs li:nth-child(' + id + ') a').click();
-
-        $clone.find(".frm").hide("fast");
-        $clone.find(".step1").show("slow");
-
-        $('.datepickerTime').datetimepicker({
-            sideBySide : true,
-            locale: 'fr',
-            toolbarPlacement:'top',
-            showClose:true
-        });
-
-        $('.datepicker').datetimepicker({
-            locale: 'fr',
-            format: 'DD/MM/YYYY',
-            toolbarPlacement:'top',
-            showClose:true
-        });
+        newTab();
     });
 
     /************************ AJOUT *************************/
@@ -403,31 +420,40 @@
         e.preventDefault();
 
         var $this = $(this);
+        var data = $this.serialize();
+        var id = $this.find('.validButton').attr('data-id');
+
+        /** Si c'est une modif **/
+        if(id != null) {
+            data = data+'&id='+id
+        }
 
         $.ajax({
             url: $this.attr('action'),
             type: $this.attr('method'),
-            data: $this.serialize(),
-            success: function(result) {
-                if(result.succes == true){
+            data: data,
+            success: function (result) {
+                if (result.succes == true) {
                     /** clear modal **/
-                    $this.find('input').val('');
-                    $this.find('textarea').val('');
-                    $this.find('.radio').prop('checked', false);
-                    $this.find("select").val(0);
+                    reinitForm($this);
                     $("li.active.tab").children('a').text("+ Nouvelle fiche");
 
                     $this.find(".step5").hide("fast");
                     $this.find(".step1").show("slow");
 
-                    $('#modal-body').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>'); //afficher alert
+                    $('#modal-body').before('<div class="alert alert-success flash" role="alert">' + result.message + '</div>'); //afficher alert
+
+                    if(id != null){ //Si c'est une modification
+                        $('#tableActes').DataTable().row(currentrow).remove().draw();
+                    }
+
                     addRow(result);
-                }else{
-                    $('#modal-body').before('<div class="alert alert-danger flash" role="alert">'+result.message+'</div>');
+                } else {
+                    $('#modal-body').before('<div class="alert alert-danger flash" role="alert">' + result.message + '</div>');
                 }
                 autoclose();
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 $('#modal-body').before('<div class="alert alert-danger flash" role="alert">Une erreur s\'est produite</div>');
                 autoclose();
             }
@@ -492,12 +518,7 @@
         $clone = $template.clone().removeAttr('id');
         $clone.find('input').val("");
         $clone.insertAfter($("div.tabTraitement").last());
-        $('.datepicker').datetimepicker({
-            locale: 'fr',
-            format: 'DD/MM/YYYY',
-            toolbarPlacement:'top',
-            showClose:true
-        });
+        createDatePicker();
     });
 
     /******* Ajoute une ligne tableau gestation ******/
@@ -506,11 +527,120 @@
         $clone = $template.clone().removeAttr('id'); //supprime l'id sur la copie
         $clone.find('input').val(""); //reinit les values
         $clone.insertAfter($("div.tabGestation").last()); //insert après le dernier object de class tabGestation
-        $('.datepicker').datetimepicker({
-            locale: 'fr',
-            format: 'DD/MM/YYYY',
-            toolbarPlacement:'top',
-            showClose:true
+        createDatePicker();
+    });
+
+    /************************ MODIF *************************/
+    $(document).on( 'click', ".btnEdit", function() {
+        id = $(this).attr('data-id');
+
+        currentrow = $(this).closest('tr'); //get la row parent
+
+        $.ajax({
+            url: "./get/"+id,
+            method: 'GET',
+            success: function (result) {
+                if(result.succes == true) {
+                    newTab();
+                    $activeTab = $('div.tab-pane.active');
+
+                    $activeTab.find('.validButton').attr('data-id',id); //attribue l'id au modal
+
+                    //change le nom de l'onglet
+                    $("li.active.tab").children('a').text(result.objet.nom);
+
+                    //remplit le modal
+                    $activeTab.find("input[name='nom']" ).val(result.objet.nom);
+                    $activeTab.find( "select[name='programme']" ).val(result.objet.programme.id);
+                    $activeTab.find( "input[name='numAgrement']" ).val(result.objet.numeroAgrement);
+                    $activeTab.find( "input[name='lieu']" ).val(result.objet.lieu);
+                    $activeTab.find( "select[name='operateur']" ).val(result.objet.operateur.id);
+                    $activeTab.find( "select[name='vache']" ).val(result.objet.vache.id);
+                    $activeTab.find( "input[name='typeChaleur']" ).val(result.objet.traitement_donneuse.typeChaleur);
+                    $activeTab.find( "input[name='methodeEvaluation']" ).val(result.objet.corpsJaune.mode_evaluation);
+                    $activeTab.find( "select[name='qualite']" ).val(result.objet.corpsJaune.qualite);
+                    $activeTab.find( "input[name='referenceExperience']" ).val(result.objet.embryonsTransferes.refExperience);
+                    $activeTab.find( "input[name='numEmbryon']" ).val(result.objet.embryonsTransferes.refEmbryons);
+                    $activeTab.find( "select[name='vacheEmbryon']" ).val(result.objet.embryonsTransferes.taureau.id);
+                    $activeTab.find( "input[name='emplacementCorne']" ).val(result.objet.embryonsTransferes.emplacementColUterine);
+                    $activeTab.find( "input[name='faciliteProgression']" ).val(result.objet.embryonsTransferes.faciliteprogression);
+                    $activeTab.find( "textarea[name='remarques']" ).val(result.objet.gestation.remarques);
+                    $activeTab.find("input[name='date']").data("DateTimePicker").date(new Date(result.objet.dateHeureMinute));
+                    $activeTab.find("input[name='dateChaleur']").data("DateTimePicker").date(new Date(result.objet.traitement_donneuse.date_ref_chaleur));
+
+                    //remplit les radiobuttons
+                    if(result.objet.corpsJaune.imageEcho == true) {
+                        $activeTab.find("input[name='optradioEcho'][value='oui']").prop('checked', true);
+                    }else{
+                        $activeTab.find("input[name='optradioEcho'][value='non']").prop('checked', true);
+                    }
+                    if(result.objet.corpsJaune.coteCorpsJaune == 'G') {
+                        $activeTab.find("input[name='optradioCote'][value='gauche']").prop('checked', true);
+                    }else{
+                        $activeTab.find("input[name='optradioCote'][value='droit']").prop('checked', true);
+                    }
+                    if(result.objet.embryonsTransferes.semenceSexee == true) {
+                        $activeTab.find("input[name='optradioSexee'][value='oui']").prop('checked', true);
+                    }else{
+                        $activeTab.find("input[name='optradioSexee'][value='non']").prop('checked', true);
+                    }
+                    if(result.objet.embryonsTransferes.cote == 'G') {
+                        $activeTab.find("input[name='optradioCoteTransf'][value='gauche']").prop('checked', true);
+                    }else{
+                        $activeTab.find("input[name='optradioCoteTransf'][value='droit']").prop('checked', true);
+                    }
+
+                    //remplit tableau traitement donneuse
+                    for(iLigne = 0; iLigne < result.objet.traitement_donneuse.tableauDonneuse.length; iLigne++)
+                    {
+                        if(iLigne == 0){
+                            $target = $activeTab.find('.tabTraitement');
+                        }else{
+                            $target = $activeTab.find('.tabTraitement').clone().removeAttr('id');
+                            $target.insertAfter($activeTab.find("div.tabTraitement").last());
+                        }
+
+                        $target.find("input[name='dateTraitement[]']").datetimepicker({
+                            locale: 'fr',
+                            format: 'DD/MM/YYYY',
+                            toolbarPlacement: 'top',
+                            showClose: true
+                        });
+
+                        $target.find("input[name='dateTraitement[]']").data("DateTimePicker").date(new Date(result.objet.traitement_donneuse.tableauDonneuse[iLigne].date));
+                        $target.find("select[name='produit[]']" ).val(result.objet.traitement_donneuse.tableauDonneuse[iLigne].produit.id );
+                        $target.find("input[name='quantite[]']").val(result.objet.traitement_donneuse.tableauDonneuse[iLigne].quantite);
+                        $target.find("input[name='modeTraitement[]']").val(result.objet.traitement_donneuse.tableauDonneuse[iLigne].mode_traitement);
+                    }
+
+                    //remplit tableau gestation
+                    for(iLigne = 0; iLigne < result.objet.gestation.tableauGestationList.length; iLigne++)
+                    {
+                        if(iLigne == 0){
+                            $target = $activeTab.find('.tabGestation');
+                        }else{
+                            $target = $activeTab.find('.tabGestation').clone().removeAttr('id');
+                            $target.insertAfter($activeTab.find("div.tabGestation").last());
+                        }
+
+                        $target.find("input[name='dateMethode[]']").datetimepicker({
+                            locale: 'fr',
+                            format: 'DD/MM/YYYY',
+                            toolbarPlacement: 'top',
+                            showClose: true
+                        });
+
+                        $target.find("input[name='dateMethode[]']").data("DateTimePicker").date(new Date(result.objet.gestation.tableauGestationList[iLigne].date));
+                        $target.find( "select[name='methode[]']" ).val(result.objet.gestation.tableauGestationList[iLigne].methode );
+                        $target.find("input[name='resultat[]']").val(result.objet.gestation.tableauGestationList[iLigne].resultat);
+                    }
+                }else{
+                    $('#add').modal('toggle'); //ferme modal
+                    $('#tableActes').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>'); //afficher alert
+                    autoclose();
+                }
+            }
         });
     });
+
 </script>

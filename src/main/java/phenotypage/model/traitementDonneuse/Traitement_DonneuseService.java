@@ -14,4 +14,6 @@ public interface Traitement_DonneuseService
 	Traitement_Donneuse createTraitement_Donneuse(Traitement_Donneuse traitement_donneuse);
 
 	Traitement_Donneuse save(Traitement_Donneuse traitement_donneuse);
+
+	void delete(Traitement_Donneuse traitementDonneuseToDelete);
 }

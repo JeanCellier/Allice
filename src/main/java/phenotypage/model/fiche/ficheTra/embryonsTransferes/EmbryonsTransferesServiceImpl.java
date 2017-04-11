@@ -44,4 +44,17 @@ public class EmbryonsTransferesServiceImpl implements EmbryonsTransferesService
 	public EmbryonsTransferes save(EmbryonsTransferes embryonsTransferes) {
 		return repository.save(embryonsTransferes);
 	}
+
+	@Override
+	public EmbryonsTransferes update(EmbryonsTransferes embryonsTransferes, boolean semenceSexee, String refExperience, String refEmbryons, Vache taureau, char cote, String emplacementColUterine, String faciliteprogression) {
+		embryonsTransferes.setSemenceSexee(semenceSexee);
+		embryonsTransferes.setRefExperience(refExperience);
+		embryonsTransferes.setRefEmbryons(refEmbryons);
+		embryonsTransferes.setTaureau(taureau);
+		embryonsTransferes.setCote(cote);
+		embryonsTransferes.setEmplacementColUterine(emplacementColUterine);
+		embryonsTransferes.setFaciliteprogression(faciliteprogression);
+
+		return save(embryonsTransferes);
+	}
 }

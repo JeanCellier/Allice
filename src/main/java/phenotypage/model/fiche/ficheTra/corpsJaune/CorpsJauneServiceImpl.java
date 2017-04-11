@@ -40,4 +40,13 @@ public class CorpsJauneServiceImpl implements CorpsJauneService
 	public CorpsJaune save(CorpsJaune corpsJaune) {
 		return repository.save(corpsJaune);
 	}
+
+	@Override
+	public CorpsJaune update(CorpsJaune corpsJaune, String mode_evaluation, int qualite, char coteCorpsJaune) {
+		corpsJaune.setMode_evaluation(mode_evaluation);
+		corpsJaune.setQualite(qualite);
+		corpsJaune.setCoteCorpsJaune(coteCorpsJaune);
+
+		return save(corpsJaune);
+	}
 }

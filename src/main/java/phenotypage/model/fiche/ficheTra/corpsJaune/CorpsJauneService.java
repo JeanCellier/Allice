@@ -13,4 +13,6 @@ public interface CorpsJauneService
 	void delete(CorpsJaune corpsJauneToDelete);
 
 	CorpsJaune save(CorpsJaune corpsJaune);
+
+	CorpsJaune update(CorpsJaune corpsJaune, String mode_evaluation, int qualite, char coteCorpsJaune);
 }

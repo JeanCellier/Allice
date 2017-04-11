@@ -314,7 +314,7 @@
         e.preventDefault();
 
         $.ajax({
-            url: $(this).attr('action'),//+"/"+id,
+            url: $(this).attr('action'),
             type: $(this).attr('method'),
             data: $(this).serialize(),
             success: function (result) {
@@ -391,6 +391,7 @@
         source: '${pageContext. request. contextPath}/pharmacie/get/responsables'
     });
 
+    /** resize le menu si le tableau depasse la hauteur **/
     $.when($('#tableProduit').on( 'change')).done(function() {
         if($(window).width() > 768) {
             $('.sidebar').height($(document).height());
