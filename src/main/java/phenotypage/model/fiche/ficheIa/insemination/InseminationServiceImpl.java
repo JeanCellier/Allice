@@ -3,8 +3,6 @@ package phenotypage.model.fiche.ficheIa.insemination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 /**
  * @author fabien
  */
@@ -13,35 +11,26 @@ import java.util.List;
 public class InseminationServiceImpl implements InseminationService
 {
 	@Autowired
-	private InseminationRepository inseminationRepository;
+	private InseminationRepository repository;
 
 	@Override
-	public List<Insemination> findAllInsemination()
-	{
-		return inseminationRepository.findAll();
-	}
-
-	@Override
-	public Insemination createInsemination()
-	{
-		return inseminationRepository.save(new Insemination());
-	}
-
-	@Override
-	public Insemination addInsemination(Insemination insemination)
-	{
-		return inseminationRepository.save(insemination);
-	}
-
-	@Override
-	public Insemination newInsemination()
-	{
-		return new Insemination();
+	public Insemination createInsemination(Insemination insemination) {
+		return save(insemination);
 	}
 
 	@Override
 	public void delete(Insemination inseminationToDelete)
 	{
-		inseminationRepository.delete(inseminationToDelete);
+		repository.delete(inseminationToDelete);
+	}
+
+	@Override
+	public Insemination save(Insemination insemination) {
+		return repository.save(insemination);
+	}
+
+	@Override
+	public Insemination updateInsemination(Insemination insemination) {
+		return save(insemination);
 	}
 }

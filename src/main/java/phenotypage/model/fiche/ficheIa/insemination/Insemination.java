@@ -1,6 +1,8 @@
 package phenotypage.model.fiche.ficheIa.insemination;
 
 import javax.persistence.*;
+
+import phenotypage.model.fiche.ficheCol.FicheCol;
 import phenotypage.model.operateur.Operateur;
 import phenotypage.model.vache.Vache;
 
@@ -24,8 +26,8 @@ public class Insemination
 	@ManyToOne
 	private Vache taureau;
 	
-	@Column
-	private boolean collecte;
+	@OneToOne
+	private FicheCol collecte;
 	//true si cadre collecte
 
 	@Column
@@ -64,14 +66,12 @@ public class Insemination
 		this.taureau = taureau;
 	}
 
-	public boolean isCollecte()
-	{
+	public FicheCol getCollecte() {
 		return collecte;
 	}
 
-	public void setCollecte(boolean collecte)
-	{
-		this.collecte = collecte;
+	public void setCollecte(FicheCol ficheCol) {
+		this.collecte = ficheCol;
 	}
 
 	public boolean isSemenceSexee() {

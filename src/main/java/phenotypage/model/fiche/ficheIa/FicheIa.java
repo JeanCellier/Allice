@@ -39,9 +39,6 @@ public class FicheIa extends Fiche {
 	@OneToOne
 	private Gestation gestation;
 
-	@Column
-	private String remarque;
-
 	public FicheIa() { super(); }
 
 	public String getLieu() {
@@ -95,16 +92,6 @@ public class FicheIa extends Fiche {
 	public void setGestation(Gestation gestation)
 	{
 		this.gestation = gestation;
-	}
-
-	public String getRemarque()
-	{
-		return remarque;
-	}
-
-	public void setRemarque(String remarque)
-	{
-		this.remarque = remarque;
 	}
 
 	public String getNumIpe() {
