@@ -58,10 +58,10 @@ public class TraController {
         return "acteTechnique/tra/tra_consult";
     }
 
-    /******************** ADD FICHE ********************/
+    /******************** ADD OR UPDATE FICHE ********************/
     @ResponseBody
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public JsonResponse add(@RequestParam("nom") String nom, @RequestParam("programme") Programme programme,
+    @RequestMapping(value = "/addOrUpdate", method = RequestMethod.POST)
+    public JsonResponse addOrUpdate(@RequestParam(value="id", required = false) FicheTra ficheTraForUpdate, @RequestParam("nom") String nom, @RequestParam("programme") Programme programme,
                             @RequestParam("numAgrement") String numAgrement, @RequestParam("lieu") String lieu, @RequestParam("date") String date,
                             @RequestParam("operateur") Operateur operateur, @RequestParam("vache") Vache vache,
                             @RequestParam("dateChaleur") String dateChaleur, @RequestParam("typeChaleur") String typeChaleur,
@@ -138,8 +138,6 @@ public class TraController {
 
 
         /****** CREATION GESTATION ******/
-
-
         Gestation gestation = new Gestation();
 
         List<Tableau_Gestation> tableauGestationList = new ArrayList<>();
@@ -173,11 +171,18 @@ public class TraController {
             traitement_donneuse.setTypeChaleur(typeChaleur);
             traitement_donneuse.setDate_ref_chaleur(dateChaleurParse);
 
-            FicheTra ficheTra = ficheTraService.createFicheTra(nom, programme, dateFiche, numAgrement, lieu, operateur, vache, traitement_donneuse, corpsJaune, embryonsTransferes, gestation);
-
+            if(ficheTraForUpdate == null) {
+                FicheTra ficheTra = ficheTraService.createFicheTra(nom, programme, dateFiche, numAgrement, lieu, operateur, vache, traitement_donneuse, corpsJaune, embryonsTransferes, gestation);
+                response.setMessage("Ajout effectué");
+                response.setObjet(ficheTra);
+            }else{
+                FicheTra ficheTra = ficheTraService.updateFicheTra(ficheTraForUpdate, nom, programme, dateFiche, numAgrement, lieu, operateur, vache, traitement_donneuse, corpsJaune, embryonsTransferes, gestation);
+                response.setMessage("Modification(s) effectuée(s)");
+                response.setObjet(ficheTra);
+            }
             response.setSucces(true);
-            response.setObjet(ficheTra);
-            response.setMessage("Ajout effectué");
+
+
         }catch (ParseException e) {
             response.setSucces(false);
             response.setMessage("Une ou plusieurs dates sont invalides");
@@ -200,7 +205,7 @@ public class TraController {
     /******************** GET ONE  ********************/
     @ResponseBody
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-    public JsonResponse delete(@PathVariable("id") long id){
+    public JsonResponse getOne(@PathVariable("id") long id){
         JsonResponse response = new JsonResponse();
         Optional<FicheTra> ficheTra = ficheTraService.findOne(id);
 

@@ -23,9 +23,16 @@ public interface FicheTraService
 						Operateur operateur, Vache vache, Traitement_Donneuse traitementDonneuse,
 						CorpsJaune corpsJaune, EmbryonsTransferes embryonsTransferes, Gestation gestation);
 
+	FicheTra updateFicheTra(FicheTra ficheTraForUpdate, String nom, Programme programme, Date dateFiche,
+							String numAgrement, String lieu, Operateur operateur, Vache vache,
+							Traitement_Donneuse traitement_donneuse, CorpsJaune corpsJaune,
+							EmbryonsTransferes embryonsTransferes, Gestation gestation);
+
 	void delete(FicheTra ficheTra);
 
 	Optional<FicheTra> findOne(long id);
 
 	FicheTra save(FicheTra ficheTra);
+
+
 }

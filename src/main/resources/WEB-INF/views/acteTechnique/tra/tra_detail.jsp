@@ -133,7 +133,7 @@
                                 <thead>
                                 <tr>
                                     <th>Nom</th>
-                                    <th>Date de d&eacutelivrance</th>
+                                    <th>M&eacutethode</th>
                                     <th>Fournisseur</th>
                                 </tr>
                                 </thead>
@@ -150,7 +150,7 @@
             </div>
 
             <div class="modal-footer">
-                <button class="btn btn-primary btn-lg btnEdit" data-title="Modifier" data-id="" data-toggle="modal" data-target="#edit" >Modifier</button>
+                <button class="btn btn-primary btn-md btnEdit btnEditDetails" data-title="Modifier" data-toggle="modal" data-target="#add" >Modifier</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -235,11 +235,16 @@
 
                         $('#details').find('.btnEdit').attr('data-id', result.objet.id);
                 }else{
-                    $('#edit').modal('toggle'); //ferme modal
+                    $('#details').modal('toggle'); //ferme modal
                     $('#tableActes').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>'); //afficher alert
                     autoclose();
                 }
             }
+        });
+
+        /******* ferme le modal details si clic sur modifier ******/
+        $(document).on( 'click', ".btnEditDetails", function() {
+            $('#details').modal('toggle');
         });
     });
 </script>

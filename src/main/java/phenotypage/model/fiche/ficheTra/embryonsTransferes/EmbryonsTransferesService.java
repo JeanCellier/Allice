@@ -14,4 +14,6 @@ public interface EmbryonsTransferesService
 	void delete(EmbryonsTransferes embryonsTransferesToDelete);
 
 	EmbryonsTransferes save(EmbryonsTransferes embryonsTransferes);
+
+	EmbryonsTransferes update(EmbryonsTransferes embryonsTransferes, boolean semenceSexee, String refExperience, String refEmbryons, Vache taureau, char cote, String emplacementColUterine, String faciliteprogression);
 }

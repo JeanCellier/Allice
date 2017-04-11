@@ -56,4 +56,9 @@ public class Traitement_DonneuseServiceImpl implements Traitement_DonneuseServic
 	public Traitement_Donneuse save(Traitement_Donneuse traitement_donneuse) {
 		return repository.save(traitement_donneuse);
 	}
+
+	@Override
+	public void delete(Traitement_Donneuse traitementDonneuseToDelete) {
+		repository.delete(traitementDonneuseToDelete);
+	}
 }

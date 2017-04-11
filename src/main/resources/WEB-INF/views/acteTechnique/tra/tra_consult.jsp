@@ -39,7 +39,7 @@
                         <td>${fichesTra.operateur.nom} ${fichesTra.operateur.prenom}</td>
                         <td>${fichesTra.vache.num_identification}</td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Details"><button class="btn btn-primary btn-md btnDetails" data-title="details" data-id="<c:out value='${fichesTra.id}' />" data-toggle="modal" data-target="#details" ><span class="glyphicon glyphicon-search"></span></button></p></td>
-                        <td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="<c:out value='${fichesTra.id}' />" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="<c:out value='${fichesTra.id}' />" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/<c:out value='${fichesTra.id}'/>" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                     </tr>
                 </c:forEach>
@@ -72,7 +72,7 @@
     <!-- /.modal-dialog -->
 </div>
 
-<%@ include file="./tra_ajouter.jsp" %>
+<%@ include file="./tra_ajouterModifier.jsp" %>
 <%@ include file="./tra_detail.jsp" %>
 <%@ include file="../../footer.jsp" %>
 
@@ -125,7 +125,7 @@
             "<td>" + result.objet.vache.num_identification + "</td>",
 
             '<td><p data-placement="top" data-toggle="tooltip" title="Details"><button class="btn btn-primary btn-md btnDetails" data-title="details" data-id="' + result.objet.id + '" data-toggle="modal" data-target="#details" ><span class="glyphicon glyphicon-search"></span></button></p></td>',
-            '<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="' + result.objet.id + '" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>',
+            '<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="' + result.objet.id + '" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>',
             '<td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/' + result.objet.id + '" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>'
         ]).draw(false);
     }

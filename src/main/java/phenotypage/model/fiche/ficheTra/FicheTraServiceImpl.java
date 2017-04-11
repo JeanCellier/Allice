@@ -78,6 +78,29 @@ FicheTraServiceImpl implements FicheTraService
 	}
 
 	@Override
+	public FicheTra updateFicheTra(FicheTra ficheTraForUpdate, String nom, Programme programme, Date dateFiche, String numAgrement, String lieu, Operateur operateur, Vache vache, Traitement_Donneuse traitement_donneuse, CorpsJaune corpsJaune, EmbryonsTransferes embryonsTransferes, Gestation gestation) {
+		Traitement_Donneuse traitementDonneuseToDelete = ficheTraForUpdate.getTraitement_donneuse();
+		Gestation gestationToDelete = ficheTraForUpdate.getGestation();
+		ficheTraForUpdate.setNom(nom);
+		ficheTraForUpdate.setProgramme(programme);
+		ficheTraForUpdate.setDateHeureMinute(dateFiche);
+		ficheTraForUpdate.setNumeroAgrement(numAgrement);
+		ficheTraForUpdate.setLieu(lieu);
+		ficheTraForUpdate.setOperateur(operateur);
+		ficheTraForUpdate.setVache(vache);
+		ficheTraForUpdate.setTraitement_donneuse(traitement_donneuseService.createTraitement_Donneuse(traitement_donneuse));
+		ficheTraForUpdate.setGestation(gestationService.createGestation(gestation));
+
+		ficheTraForUpdate.setEmbryonsTransferes(embryonsTransferesService.update(ficheTraForUpdate.getEmbryonsTransferes(), embryonsTransferes.isSemenceSexee(), embryonsTransferes.getRefExperience(), embryonsTransferes.getRefEmbryons(), embryonsTransferes.getTaureau(), embryonsTransferes.getCote(), embryonsTransferes.getEmplacementColUterine(), embryonsTransferes.getFaciliteprogression()));
+		ficheTraForUpdate.setCorpsJaune(corpsJauneService.update(ficheTraForUpdate.getCorpsJaune(), corpsJaune.getMode_evaluation(), corpsJaune.getQualite(), corpsJaune.getCoteCorpsJaune()));
+
+		gestationService.delete(gestationToDelete);
+		traitement_donneuseService.delete(traitementDonneuseToDelete);
+
+		return save(ficheTraForUpdate);
+	}
+
+	@Override
 	public void delete(FicheTra ficheTra) {
 		repository.delete(ficheTra);
 	}
@@ -91,4 +114,6 @@ FicheTraServiceImpl implements FicheTraService
 	public FicheTra save(FicheTra ficheTra) {
 		return repository.save(ficheTra);
 	}
+
+
 }
