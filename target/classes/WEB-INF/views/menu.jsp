@@ -30,7 +30,7 @@
                     </ul>
                 </li>
                 <li><a href="#">CUVES</a></li>
-                <li><a href="#">IMPORT/EXPORT</a></li>
+                <li><a href="<s:url value="/importexport"/>">IMPORT/EXPORT</a></li>
                 <li><a href="#">PLANNING</a></li>
             </ul>
         </div>

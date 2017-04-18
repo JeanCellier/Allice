@@ -5,6 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import phenotypage.importation.ImportService;
 import phenotypage.model.fiche.Fiche;
 import phenotypage.model.fiche.ficheAba.FicheAba;
 import phenotypage.model.fiche.ficheAba.FicheAbaService;
@@ -17,6 +20,7 @@ import phenotypage.model.fiche.ficheOpu.FicheOpuService;
 import phenotypage.model.fiche.ficheTra.FicheTra;
 import phenotypage.model.fiche.ficheTra.FicheTraService;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +29,9 @@ import java.util.List;
  */
 @Controller
 public class ImportExportController {
+
+    @Autowired
+    private ImportService importService;
 
     @Autowired
     private FicheAbaService ficheAbaService;
@@ -57,5 +64,17 @@ public class ImportExportController {
         ficheList.addAll(ficheTraList);
         model.addAttribute("ficheList", ficheList);
         return "importexport";
+    }
+
+    @RequestMapping(value = "/importexport/import", method = RequestMethod.POST)
+    public String importFiche(@RequestParam("file") MultipartFile file, @RequestParam("type") String type) {
+        //Stores the file
+        importService.store(file);
+        //Loads the stored file
+        File ficheFile = importService.load(file.getOriginalFilename());
+        //Parses the file
+        importService.parse(ficheFile, type);
+
+        return "redirect:/importexport";
     }
 }

@@ -8,8 +8,8 @@
 <html>
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/styles.css"/>
-    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/styleCustom.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../../static/css/styles.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../../static/css/styleCustom.css"/>
 </head>
 
 <body>

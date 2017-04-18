@@ -1,21 +1,13 @@
 <%@ include file="header.jsp" %>
 
-<main class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+<main class="col-sm-9 col-md-10">
     <h1 class="page-header">Import &amp; Export</h1>
-    <div class="row placeholders">
 
+    <div class="row placeholders">
         <div class="col-sm-1 col-md-1">
-            <div class="dropdown">
-                <a class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Importer
-                    <span class="caret"></span></a>
-                <ul class="dropdown-menu dropdown-menu-left">
-                    <li value="ABA" class="fiche-file"><a href="#">ABA</a></li>
-                    <li value="COL" class="fiche-file"><a href="#">COL</a></li>
-                    <li value="IA" class="fiche-file"><a href="#">IA</a></li>
-                    <li value="OPU" class="fiche-file"><a href="#">OPU</a></li>
-                    <li value="TRA" class="fiche-file"><a href="#">TRA</a></li>
-                    <li value="Carriere" class="fiche-file"><a href="#">Carriere</a></li>
-                </ul>
+            <div>
+                <a class="btn btn-primary dropdown-toggle" type="button" data-title="Add" data-toggle="modal"
+                   data-target="#import">Importer</a>
             </div>
         </div>
         <div class="col-sm-12 col-md-12" id="list-fiche-cards" style="margin-top: 10px;">
@@ -48,7 +40,7 @@
                 <div class="col-sm-3">
                     <p data-placement="top" data-toggle="tooltip" title="Supprimer">
                         <button class="btnSearch btn btn-search btn-md"
-                                data-href="./search/<c:out value='${produit.id}'/>" data-title="Chercher"
+                                data-href="./search/" data-title="Chercher"
                                 data-toggle="modal" data-target="#search"><span
                                 class="glyphicon glyphicon-search"></span></button>
                     </p>
@@ -82,6 +74,54 @@
     </div>
 </main>
 
+<div class="modal fade" id="import" tabindex="-1" role="dialog" aria-labelledby="import" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <span class="fa fa-remove" aria-hidden="true"></span>
+                </button>
+                <h4 class="modal-title custom_align" id="Heading">Importer une nouvelle fiche</h4>
+            </div>
+
+            <div class="modal-body">
+                <form id="importForm" enctype="multipart/form-data"
+                      action="${pageContext.request.contextPath}/importexport/import" method="POST">
+                    <div class="form-group">
+                        <input class="form-control" name="file" required type="file"
+                               accept=".xls,.xlsx,
+                               application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel">
+                    </div>
+                    Type de fiche :
+                    <div class="form-group">
+                        <label class="radio-inline">
+                            <input name="type" id="ABA" type="radio" value="ABA" checked> ABA
+                        </label>
+                        <label class="radio-inline">
+                            <input name="type" id="COL" type="radio" value="COL"> COL
+                        </label>
+                        <label class="radio-inline">
+                            <input name="type" id="IA" type="radio" value="IA"> IA
+                        </label>
+                        <label class="radio-inline">
+                            <input name="type" id="OPU" type="radio" value="OPU"> OPU
+                        </label>
+                        <label class="radio-inline">
+                            <input name="type" ID="TRA" type="radio" value="TRA"> TRA
+                        </label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success btn-lg" style="width: 50%;"><span
+                                class="fa fa-check"></span> Importer
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <%@ include file="footer.jsp" %>
 
 <link rel="stylesheet" href="<c:url value="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>">
@@ -101,19 +141,19 @@
 
     $(".fiche-file").click(function () {
         var typeFiche = $(this).attr('value');
-        var fileName;
-        openFileDialog("text/plain", function (e) {
+        openFileDialog(".xlsx", function (e) {
             $(this).each(function () {
-                fileName = $(this).val();
-
+                var fileName = $(this).val();
+                var messageJson = {type: typeFiche, filename: fileName};
+                sendJson('POST', '/importexport/import', messageJson);
             });
         });
     });
 
     //function to
-    function post(url, data) {
+    function sendJson(method, url, data) {
         return $.ajax({
-            type: 'POST',
+            type: method,
             url: url,
             headers: {
                 'Accept': 'application/json',
@@ -127,6 +167,7 @@
     function openFileDialog(accept, callback) {
         var inputElement = document.createElement("input");
         inputElement.type = "file";
+        inputElement.name = "file";
         inputElement.accept = accept;
         if (typeof callback === "function") {
             inputElement.addEventListener("change", callback);
