@@ -6,6 +6,8 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
+import phenotypage.importation.parser.ParserFicheService;
+import phenotypage.model.fiche.Fiche;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,6 +15,7 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 /**
  * Created with magic
@@ -25,9 +28,12 @@ public class ImportServiceImpl implements ImportService {
 
     private final Path directoryPath;
 
+    private final ParserFicheService parserFicheService;
+
     @Autowired
-    public ImportServiceImpl(ImportProperties properties) {
+    public ImportServiceImpl(ImportProperties properties, ParserFicheService parserFicheService) {
         directoryPath = Paths.get(properties.getDirectory());
+        this.parserFicheService = parserFicheService;
     }
 
     @Override
@@ -35,7 +41,7 @@ public class ImportServiceImpl implements ImportService {
         try {
             Files.createDirectory(directoryPath);
         } catch (IOException e) {
-            throw new ImportException("Could not initialize storage", e);
+            throw new ImportException("Impossible d'initialiser le répertoire des fiches.", e);
         }
     }
 
@@ -43,33 +49,17 @@ public class ImportServiceImpl implements ImportService {
     public void store(MultipartFile file) {
         try {
             if (file.isEmpty()) {
-                throw new ImportException("Failed to store empty file " + file.getOriginalFilename());
+                throw new ImportException("Impossible de stocker le fichier vide " + file.getOriginalFilename());
             }
             Files.copy(file.getInputStream(), this.directoryPath.resolve(file.getOriginalFilename()));
         } catch (IOException e) {
-            throw new ImportException("Failed to store file " + file.getOriginalFilename(), e);
+            throw new ImportException("Impossible de stocker le fichier " + file.getOriginalFilename(), e);
         }
     }
 
     @Override
-    public void parse(File file, String type) {
-        switch (type) {
-            case "ABA":
-                //TODO: parse the ABA.xlsx
-                break;
-            case "COL":
-                //TODO: parse the COL.xlsx
-                break;
-            case "IA":
-                //TODO: parse the IA.xlsx
-                break;
-            case "OPU":
-                //TODO: parse the OPU.xlsx
-                break;
-            case "TRA":
-                //TODO: parse the TRA.xlsx
-                break;
-        }
+    public List<Fiche> parse(File file, String type) {
+        return parserFicheService.parse(file, type);
     }
 
     @Override
@@ -80,10 +70,10 @@ public class ImportServiceImpl implements ImportService {
             if (resource.exists() || resource.isReadable()) {
                 return resource.getFile();
             } else {
-                throw new ImportException("Could not read file: " + filename);
+                throw new ImportException("Impossible de lire le fichier: " + filename);
             }
         } catch (MalformedURLException e) {
-            throw new ImportException("Could not read file: " + filename, e);
+            throw new ImportException("Impossible de lire le fichier: " + filename, e);
         } catch (IOException e) {
             e.printStackTrace();
         }

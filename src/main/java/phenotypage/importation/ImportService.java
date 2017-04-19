@@ -1,8 +1,10 @@
 package phenotypage.importation;
 
 import org.springframework.web.multipart.MultipartFile;
+import phenotypage.model.fiche.Fiche;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * Created with magic
@@ -29,8 +31,9 @@ public interface ImportService {
      *
      * @param file file
      * @param type type of fiche
+     * @return fiche
      */
-    void parse(File file, String type);
+    List<Fiche> parse(File file, String type);
 
     /**
      * Loads the file

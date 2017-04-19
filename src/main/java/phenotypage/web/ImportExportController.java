@@ -3,10 +3,12 @@ package phenotypage.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import phenotypage.importation.ImportService;
 import phenotypage.model.fiche.Fiche;
 import phenotypage.model.fiche.ficheAba.FicheAba;
@@ -20,6 +22,7 @@ import phenotypage.model.fiche.ficheOpu.FicheOpuService;
 import phenotypage.model.fiche.ficheTra.FicheTra;
 import phenotypage.model.fiche.ficheTra.FicheTraService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,7 +77,7 @@ public class ImportExportController {
         File ficheFile = importService.load(file.getOriginalFilename());
         //Parses the file
         importService.parse(ficheFile, type);
-
         return "redirect:/importexport";
     }
+
 }

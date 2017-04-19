@@ -140,7 +140,7 @@
 //	@RequestMapping(value = "/abaNew", method = RequestMethod.GET)
 //	public String abaNew()
 //	{
-//		FicheAba ficheAba = ficheAbaService.createFichieAba(Calendar.getInstance().get(Calendar.YEAR) + "ABA-" + ficheAbaService.countFicheAba());
+//		FicheAba ficheAba = ficheAbaService.createFicheAba(Calendar.getInstance().get(Calendar.YEAR) + "ABA-" + ficheAbaService.countFicheAba());
 //		return "redirect:/acteTechnique/aba/enteteAba/" + ficheAba.getNom();
 //	}
 //
