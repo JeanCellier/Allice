@@ -1,14 +1,18 @@
 package phenotypage.model.invitro.culture;
 
+import phenotypage.model.donneesExistantes.sanitaire.Sanitaire;
+
+import java.util.Date;
 import java.util.List;
 
-public interface CultureService
-{
-	List<Culture> findAll();
+public interface CultureService {
+    List<Culture> findAll();
 
-	Culture newCulture();
+    Culture newCulture();
 
-	Culture addCulture(Culture culture);
+    Culture createCulture(Date date, String remarques, List<Sanitaire> sanitaireList, List<TableauCulture> tableauCultureList);
 
-	void delete(Culture culture);
+    Culture addCulture(Culture culture);
+
+    void delete(Culture culture);
 }

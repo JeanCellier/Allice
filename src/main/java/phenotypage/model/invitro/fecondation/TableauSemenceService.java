@@ -7,11 +7,10 @@ import java.util.List;
 /**
  * @author fabien
  */
-public interface TableauSemenceService
-{
-	List<TableauSemence> findAllTableauSemence();
+public interface TableauSemenceService {
+    List<TableauSemence> findAllTableauSemence();
 
-	TableauSemence createTableauSemence(Vache nomTaureau, String semence);
+    TableauSemence createTableauSemence(Vache nomTaureau, String numeroEjaculation, float volume, int etatFrais);
 
-	TableauSemence addTableauSemence(TableauSemence tableauSemence);
+    TableauSemence addTableauSemence(TableauSemence tableauSemence);
 }

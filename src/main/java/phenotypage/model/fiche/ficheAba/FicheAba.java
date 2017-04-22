@@ -41,13 +41,13 @@ public class FicheAba extends Fiche {
     @OneToOne
     private Fecondation fecondation;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Culture culture;
 
     @OneToOne
     private Cryoconservation cryoconservation;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<TableauDetail> tableauDetails;
 
     public FicheAba() {

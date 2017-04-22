@@ -1,7 +1,11 @@
 package phenotypage.importation.parser;
 
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.ss.usermodel.FormulaEvaluator;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  * Created with magic
@@ -9,9 +13,9 @@ import org.apache.poi.ss.usermodel.Sheet;
  * Date: 19/04/2017 14:01
  * Project: appPhenotypage
  */
-public class PoiHelper {
+class PoiHelper {
 
-    static DataFormatter formatter = new DataFormatter();
+    private static DataFormatter formatter = new DataFormatter();
 
     /**
      * Reads the content of a cell in a sheet
@@ -21,10 +25,12 @@ public class PoiHelper {
      * @param column column starting from 0
      * @return content
      */
-    public static String readCell(Sheet sheet, int row, int column) {
+    static String readCell(Sheet sheet, int row, int column) {
         if (row < 0 || column < 0) {
             return null;
         }
-        return formatter.formatCellValue(sheet.getRow(4).getCell(1));
+        Cell cell = sheet.getRow(row).getCell(column);
+        FormulaEvaluator evaluator = new XSSFFormulaEvaluator((XSSFWorkbook) sheet.getWorkbook());
+        return formatter.formatCellValue(cell, evaluator);
     }
 }

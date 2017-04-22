@@ -11,26 +11,28 @@ import java.util.List;
  */
 
 @Component
-public class TableauSemenceServiceImpl implements TableauSemenceService
-{
-	@Autowired
-	private TableauSemenceRepository tableauSemenceRepository;
+public class TableauSemenceServiceImpl implements TableauSemenceService {
+    @Autowired
+    private TableauSemenceRepository tableauSemenceRepository;
 
-	@Override
-	public List<TableauSemence> findAllTableauSemence()
-	{
-		return tableauSemenceRepository.findAll();
-	}
+    @Override
+    public List<TableauSemence> findAllTableauSemence() {
+        return tableauSemenceRepository.findAll();
+    }
 
-	@Override
-	public TableauSemence createTableauSemence(Vache nomTaureau, String semence)
-	{
-		return tableauSemenceRepository.save(new TableauSemence());
-	}
+    @Override
+    public TableauSemence createTableauSemence(Vache nomTaureau, String numeroEjaculation, float volume, int etatFrais) {
+        TableauSemence tableauSemence = new TableauSemence();
+        tableauSemence.setTaureau(nomTaureau);
+        tableauSemence.setNumeroEjaculation(numeroEjaculation);
+        tableauSemence.setVolume(volume);
+        tableauSemence.setEtatFrais(etatFrais);
+        return tableauSemenceRepository.save(tableauSemence);
+    }
 
-	@Override
-	public TableauSemence addTableauSemence(TableauSemence tableauSemence)
-	{
-		return tableauSemenceRepository.save(tableauSemence);
-	}
+
+    @Override
+    public TableauSemence addTableauSemence(TableauSemence tableauSemence) {
+        return tableauSemenceRepository.save(tableauSemence);
+    }
 }
