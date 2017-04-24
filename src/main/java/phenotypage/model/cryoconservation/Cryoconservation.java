@@ -1,66 +1,37 @@
 package phenotypage.model.cryoconservation;
 
-import phenotypage.model.donneExistante.congelateur.Congelateur;
-import phenotypage.model.donneExistante.operateur.Operateur;
-import phenotypage.model.fiche.ficheAba.FicheAba;
-import phenotypage.model.fiche.ficheCol.FicheCol;
-import phenotypage.model.fiche.ficheOpu.FicheOpu;
+import phenotypage.model.donneesExistantes.congelateur.Congelateur;
+import phenotypage.model.donneesExistantes.operateur.Operateur;
 import phenotypage.model.methodeCongelation.MethodeCongelation;
-
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.List;
+import java.sql.Time;
 
 @Entity
-public class Cryoconservation implements Serializable
+public class Cryoconservation
 {
 	@Id
 	@GeneratedValue
 	private Long id;
 
 	@Column
-	private String type;
+	private String ref;
 
 	@Column
-	private int heure;
-
-	@Column
-	private int minute;
+	private Time heureMinute;
 
 	@Column
 	private String descMethode;
 
 	@ManyToOne
-	@JoinColumn(name = "idCongelateur", referencedColumnName = "id")
 	private Congelateur congelateur;
 
 	@ManyToOne
-	@JoinColumn(name = "idOperateur", referencedColumnName = "id")
 	private Operateur operateur;
 
 	@ManyToOne
-	@JoinColumn(name = "idMethodeCongelation", referencedColumnName = "id")
 	private MethodeCongelation methodeCongelation;
 
-	@OneToMany(mappedBy = "cryoconservation", cascade = CascadeType.REMOVE)
-	private List<TableauDetail> tableauDetailList;
-
-	@OneToOne
-	@JoinColumn(name = "idFicheAba", referencedColumnName = "id", unique = true)
-	private FicheAba ficheAba;
-
-	@OneToOne
-	@JoinColumn(name = "idFicheOpu", referencedColumnName = "id", unique = true)
-	private FicheOpu ficheOpu;
-
-	@OneToOne
-	@JoinColumn(name = "idFicheCol", referencedColumnName = "id", unique = true)
-	private FicheCol ficheCol;
-
-	public Cryoconservation()
-	{
-
-	}
+	public Cryoconservation() {}
 
 	public Long getId()
 	{
@@ -74,12 +45,12 @@ public class Cryoconservation implements Serializable
 
 	public String getType()
 	{
-		return type;
+		return ref;
 	}
 
-	public void setType(String type)
+	public void setType(String ref)
 	{
-		this.type = type;
+		this.ref = ref;
 	}
 
 	public Congelateur getCongelateur()
@@ -112,73 +83,26 @@ public class Cryoconservation implements Serializable
 		this.descMethode = descMethode;
 	}
 
-	public List<TableauDetail> getTableauDetailList()
-	{
-		return tableauDetailList;
-	}
-
-	public void setTableauDetailList(List<TableauDetail> tableauDetailList)
-	{
-		this.tableauDetailList = tableauDetailList;
-	}
-
-	public FicheAba getFicheAba()
-	{
-		return ficheAba;
-	}
-
-	public void setFicheAba(FicheAba ficheAba)
-	{
-		this.ficheAba = ficheAba;
-	}
-
-	public FicheOpu getFicheOpu()
-	{
-		return ficheOpu;
-	}
-
-	public void setFicheOpu(FicheOpu ficheOpu)
-	{
-		this.ficheOpu = ficheOpu;
-	}
-
-	public FicheCol getFicheCol()
-	{
-		return ficheCol;
-	}
-
-	public void setFicheCol(FicheCol ficheCol)
-	{
-		this.ficheCol = ficheCol;
-	}
-
 	public MethodeCongelation getMethodeCongelation()
 	{
 		return methodeCongelation;
 	}
 
-	public void setMethodeCongelation(MethodeCongelation methodeCongelation)
-	{
-		this.methodeCongelation = methodeCongelation;
+	public void setMethodeCongelation(MethodeCongelation methodeCongelation) { this.methodeCongelation = methodeCongelation; }
+
+	public String getRef() {
+		return ref;
 	}
 
-	public int getHeure()
-	{
-		return heure;
+	public void setRef(String ref) {
+		this.ref = ref;
 	}
 
-	public void setHeure(int heure)
-	{
-		this.heure = heure;
+	public Time getHeureMinute() {
+		return heureMinute;
 	}
 
-	public int getMinute()
-	{
-		return minute;
-	}
-
-	public void setMinute(int minute)
-	{
-		this.minute = minute;
+	public void setHeureMinute(Time heureMinute) {
+		this.heureMinute = heureMinute;
 	}
 }

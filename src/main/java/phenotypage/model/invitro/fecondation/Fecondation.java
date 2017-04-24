@@ -1,64 +1,30 @@
 package phenotypage.model.invitro.fecondation;
 
-import org.springframework.format.annotation.DateTimeFormat;
-import phenotypage.model.fiche.ficheAba.FicheAba;
-import phenotypage.model.fiche.ficheOpu.FicheOpu;
-import phenotypage.model.donneExistante.sanitaire.Sanitaire;
-
-import java.io.Serializable;
+import phenotypage.model.donneesExistantes.sanitaire.Sanitaire;
 import java.util.Date;
-import java.util.Calendar;
 import java.util.List;
-
 import javax.persistence.*;
 
 @Entity
-public class Fecondation implements Serializable
+public class Fecondation
 {
 	@Id
 	@GeneratedValue
 	private Long id;
 
 	@Column
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private Date date;
-
-	@Column
-	private int heure;
-
-	@Column
-	private int minute;
-
 
 	@Column
 	private String remarque;
 
-	@ManyToMany(mappedBy = "fecondationList")
+	@ManyToMany
 	private List<Sanitaire> sanitaireList;
 
-	@OneToMany(mappedBy = "fecondation", cascade = CascadeType.REMOVE)
+	@OneToMany
 	private List<TableauSemence> tableau_semences;
 
-	@OneToOne
-	@JoinColumn(name = "idFicheAba", referencedColumnName = "id", unique = true)
-	private FicheAba ficheAba;
-
-	@OneToOne
-	@JoinColumn(name = "idFicheOpu", referencedColumnName = "id", unique = true)
-	private FicheOpu ficheOpu;
-
-	public Fecondation()
-	{
-		date = Calendar.getInstance().getTime();
-	}
-
-	public Fecondation(Date date, String remarque, List<Sanitaire> sanitaireList)
-	{
-		super();
-		this.date = date;
-		this.remarque = remarque;
-		this.sanitaireList = sanitaireList;
-	}
+	public Fecondation() {	}
 
 	public Long getId()
 	{
@@ -110,43 +76,4 @@ public class Fecondation implements Serializable
 		this.tableau_semences = tableau_semences;
 	}
 
-	public FicheAba getFicheAba()
-	{
-		return ficheAba;
-	}
-
-	public void setFicheAba(FicheAba ficheAba)
-	{
-		this.ficheAba = ficheAba;
-	}
-
-	public FicheOpu getFicheOpu()
-	{
-		return ficheOpu;
-	}
-
-	public void setFicheOpu(FicheOpu ficheOpu)
-	{
-		this.ficheOpu = ficheOpu;
-	}
-
-	public int getHeure()
-	{
-		return heure;
-	}
-
-	public void setHeure(int heure)
-	{
-		this.heure = heure;
-	}
-
-	public int getMinute()
-	{
-		return minute;
-	}
-
-	public void setMinute(int minute)
-	{
-		this.minute = minute;
-	}
 }

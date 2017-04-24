@@ -1,10 +1,6 @@
 package phenotypage.model.pharmacie.produit;
 
-import phenotypage.model.pharmacie.Pharmacie;
-import phenotypage.model.traitementDonneuse.tableauPharmacie.Tableau_Pharmacie;
-
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -12,7 +8,7 @@ import java.util.Date;
  */
 
 @Entity
-public class Produit implements Serializable
+public class Produit
 {
 	@Id
 	@GeneratedValue
@@ -44,14 +40,6 @@ public class Produit implements Serializable
 	
 	@Column
 	private Date datePeremption;
-	
-	@ManyToOne
-    @JoinColumn(name = "idPharmacie", referencedColumnName = "id")
-    private Pharmacie pharmacie;
-	
-	@OneToOne
-	@JoinColumn(name = "idTabPharmacie", referencedColumnName = "id")
-	private Tableau_Pharmacie tableauPharmacie;
 
 	@Column
 	private String indication;
@@ -181,7 +169,6 @@ public class Produit implements Serializable
 		this.indication = indication;
 	}
 
-
 	public Long getId()
 	{
 		return id;
@@ -190,25 +177,5 @@ public class Produit implements Serializable
 	public void setId(Long id)
 	{
 		this.id = id;
-	}
-
-	public Pharmacie getPharmacie()
-	{
-		return pharmacie;
-	}
-
-	public void setPharmacie(Pharmacie pharmacie)
-	{
-		this.pharmacie = pharmacie;
-	}
-
-	public Tableau_Pharmacie getTableauPharmacie()
-	{
-		return tableauPharmacie;
-	}
-
-	public void setTableauPharmacie(Tableau_Pharmacie tableauPharmacie)
-	{
-		this.tableauPharmacie = tableauPharmacie;
 	}
 }

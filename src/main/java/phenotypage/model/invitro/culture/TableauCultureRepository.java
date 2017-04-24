@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface TableauCultureRepository extends JpaRepository<TableauCulture, Long>
 {
-	List<TableauCulture> findByCulture(Culture culture);
+
 }

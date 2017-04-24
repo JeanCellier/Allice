@@ -3,7 +3,7 @@
 <h1>Fiche Tra : ${nom} </h1>
 
 <div id="partieCentrale">
-	<sf:form method="post" modelAttribute="header" action="${nom}">
+	<sf:form method="post" modelAttribute="fiche" action="${nom}">
 		<fieldset>
 			<legend>En-t&#234te</legend>
 
@@ -18,7 +18,7 @@
 
 			<!--Rajouter ajout nouveau programme  -->
 
-			<!--N° Agrément  -->
+			<!--Nï¿½ Agrï¿½ment  -->
 			<label for="numeroAgrement">N&#176Agr&#233ment :</label>
 			<sf:errors path="numeroAgrement"/>
 			<sf:input path="numeroAgrement" type="text"/>

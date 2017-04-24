@@ -18,6 +18,4 @@ public interface FicheTraService
 	FicheTra findByNom(String nom);
 
 	long countFicheTra();
-
-	List<FicheTra> findFicheTraSNIG();
 }

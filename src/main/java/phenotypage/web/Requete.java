@@ -43,42 +43,42 @@ public class Requete
 		return "requete/accueil";
 	}
 
-	@RequestMapping(value = "/aba", method = RequestMethod.GET)
-	String aba(Model model)
-	{
-		model.addAttribute("ficheList", ficheAbaService.findFicheAbaSNIG());
-		return "requete/requeteResultatAba";
-	}
-
-	@RequestMapping(value = "/col", method = RequestMethod.GET)
-	String col(Model model)
-	{
-		model.addAttribute("ficheList", ficheColService.findFicheColSNIG());
-		return "requete/requeteResultatCol";
-	}
-
-	@RequestMapping(value = "/ia", method = RequestMethod.GET)
-	String ia(Model model)
-	{
-		model.addAttribute("ficheList", ficheIaService.findFicheIaSNIG());
-		return "requete/requeteResultatIa";
-	}
-
-	@RequestMapping(value = "/opu", method = RequestMethod.GET)
-	String opu(Model model)
-	{
-		model.addAttribute("ficheList", ficheOpuService.findFicheOpuSNIG());
-		return "requete/requeteResultatOpu";
-	}
-
-	@RequestMapping(value = "/tra", method = RequestMethod.GET)
-	String tra(Model model) throws IOException
-	{
-		model.addAttribute("ficheList", ficheTraService.findFicheTraSNIG());
-		/*String path = new File(".").getCanonicalPath();
-		File file = new File(path+"/src/main/resources/static/pdf/file.txt");
-		file.renameTo(new File("."));
-		model.addAttribute("file",file);*/
-		return "requete/requeteResultatTra";
-	}
+//	@RequestMapping(value = "/aba", method = RequestMethod.GET)
+//	String aba(Model model)
+//	{
+//		model.addAttribute("ficheList", ficheAbaService.findFicheAbaSNIG());
+//		return "requete/requeteResultatAba";
+//	}
+//
+//	@RequestMapping(value = "/col", method = RequestMethod.GET)
+//	String col(Model model)
+//	{
+//		model.addAttribute("ficheList", ficheColService.findFicheColSNIG());
+//		return "requete/requeteResultatCol";
+//	}
+//
+//	@RequestMapping(value = "/ia", method = RequestMethod.GET)
+//	String ia(Model model)
+//	{
+//		model.addAttribute("ficheList", ficheIaService.findFicheIaSNIG());
+//		return "requete/requeteResultatIa";
+//	}
+//
+//	@RequestMapping(value = "/opu", method = RequestMethod.GET)
+//	String opu(Model model)
+//	{
+//		model.addAttribute("ficheList", ficheOpuService.findFicheOpuSNIG());
+//		return "requete/requeteResultatOpu";
+//	}
+//
+//	@RequestMapping(value = "/tra", method = RequestMethod.GET)
+//	String tra(Model model) throws IOException
+//	{
+//		model.addAttribute("ficheList", ficheTraService.findFicheTraSNIG());
+//		/*String path = new File(".").getCanonicalPath();
+//		File file = new File(path+"/src/main/resources/static/pdf/file.txt");
+//		file.renameTo(new File("."));
+//		model.addAttribute("file",file);*/
+//		return "requete/requeteResultatTra";
+//	}
 }

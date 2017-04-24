@@ -11,7 +11,4 @@ import java.util.List;
 public interface FicheAbaRepository extends JpaRepository<FicheAba, Long>
 {
 	FicheAba findByNom(String nom);
-
-	@Query("select f from FicheAba f where f.snig = true")
-	List<FicheAba> findFicheAbaSNIG();
 }

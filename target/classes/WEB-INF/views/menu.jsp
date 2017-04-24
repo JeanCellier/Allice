@@ -1,6 +1,6 @@
 <div class="container-fluid" style="padding-left:0;padding-right:0">
     <nav class="sidebar sidebar-container navbar-default col-xs-12 col-sm-3 col-md-2"  role="navigation" style="margin-bottom: 0; padding-right:0; padding-left:0;">
-        <div class="navbar-header">
+        <div class="navbar-fiche">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -17,17 +17,15 @@
             </div>
 
             <ul class="nav nav-stacked">
-                <li><a href="<s:url value='/animaux/animaux'/>">ANIMAUX</a></li>
+                <li><a href="#">ANIMAUX</a></li>
                 <li><a href="<s:url value='/pharmacie/pharmacie'/>">PHARMACIE</a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">ACTES TECHNIQUES
-                        <span class="caret"></span></a>
-                    <ul class="dropdown-menu dropdown-menu-right">
+                <li><a href="#listFiche" data-toggle="collapse">ACTES TECHNIQUES</a>
+                    <ul id="listFiche" class="collapse nav" style="padding-left:40px;">
                         <li><a href="#">OPA</a></li>
                         <li><a href="#">OPU</a></li>
                         <li><a href="#">OVU</a></li>
                         <li><a href="#">OPA</a></li>
-                        <li><a href="#">OPU</a></li>
+                        <li><a href="<s:url value='/acteTechnique/tra/tra'/>">TRA</a></li>
                         <li><a href="#">OVU</a></li>
                     </ul>
                 </li>

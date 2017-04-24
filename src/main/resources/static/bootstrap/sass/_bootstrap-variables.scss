@@ -260,7 +260,7 @@ $dropdown-link-hover-bg:         darken(white, 5%);
 // $dropdown-link-disabled-color:   $gray-light
 
 //** Text color for headers within dropdown menus.
-// $dropdown-header-color:          $gray-light
+// $dropdown-fiche-color:          $gray-light
 
 //** Deprecated `$dropdown-caret-color` as of v3.1.0
 // $dropdown-caret-color:           #000
@@ -604,10 +604,10 @@ $pagination-active-border:             darken($grey-body, 40%);
 // $modal-backdrop-bg:           #000
 //** Modal backdrop opacity
 // $modal-backdrop-opacity:      .5
-//** Modal header border color
-// $modal-header-border-color:   #e5e5e5
+//** Modal fiche border color
+// $modal-fiche-border-color:   #e5e5e5
 //** Modal footer border color
-// $modal-footer-border-color:   $modal-header-border-color
+// $modal-footer-border-color:   $modal-fiche-border-color
 
 // $modal-lg:                    900px
 // $modal-md:                    600px
@@ -845,8 +845,8 @@ $pagination-active-border:             darken($grey-body, 40%);
 // $blockquote-font-size:        ($font-size-base * 1.25)
 //** Blockquote border color
 // $blockquote-border-color:     $gray-lighter
-//** Page header border color
-// $page-header-border-color:    $gray-lighter
+//** Page fiche border color
+// $page-fiche-border-color:    $gray-lighter
 //** Width of horizontal description list titles
 // $dl-horizontal-offset:        $component-offset-horizontal
 //** Point at which .dl-horizontal becomes horizontal

@@ -1,27 +1,24 @@
 package phenotypage.model.vache;
 
-import phenotypage.model.embryonsTransferes.EmbryonsTransferes;
 import phenotypage.model.fiche.ficheCarriere.FicheCarriere;
 import phenotypage.model.fiche.ficheCol.FicheCol;
 import phenotypage.model.fiche.ficheIa.FicheIa;
 import phenotypage.model.fiche.ficheOpu.FicheOpu;
 import phenotypage.model.fiche.ficheTra.FicheTra;
-import phenotypage.model.insemination.Insemination;
-import phenotypage.model.invitro.fecondation.TableauSemence;
-import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
-
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 
 @Entity
-public class Vache implements Serializable
+public class Vache
 {
 	@Id
 	@GeneratedValue
 	private Long id;
+
+	@Column
+	private boolean present;
 
 	@Column
 	private String proprietaire;
@@ -30,71 +27,36 @@ public class Vache implements Serializable
 	private String nom;
 
 	@Column
-	private String num_elevage;
+	private String num_elevage; // == provenance
 
 	@Column(unique = true)
-	private String num_identification;
-
-	@Column
-	private long num_travail;
-
-	@Temporal(TemporalType.DATE)
-	@Column
-	private Date date_arrivee;
+	private String num_identification; // == num national
 
 	@Column
 	private int race;
 
 	@Column
-	private boolean male = false;
+	private char sexe; //F = femelle M = male
+
+	@Column
+	private Date dateNaissance;
 
 	@Column
 	private String parite;
 
-	@OneToMany(mappedBy = "taureau")
-	private List<TableauSemence> tableau_semences;
+	@Column
+	private float ageMois;
 
-	@OneToMany(mappedBy = "taureau")
-	private List<Traitement_Donneuse> traitementDonneuseList;
+	@Column
+	private String numPere;
 
-	@OneToMany(mappedBy = "taureau")
-	private List<Insemination> inseminationList;
-
-	@OneToMany(mappedBy = "taureau")
-	private List<EmbryonsTransferes> embryonsTransferesList;
-
-	@OneToMany(mappedBy = "vache")
-	private List<FicheOpu> ficheOpuList;
-
-	@OneToMany(mappedBy = "vache")
-	private List<FicheCol> ficheColList;
-
-	@OneToMany(mappedBy = "vache")
-	private List<FicheIa> ficheIaList;
-
-	@OneToMany(mappedBy = "vache")
-	private List<FicheTra> ficheTraList;
+	@Column
+	private String numMere;
 
 	@OneToOne
 	private FicheCarriere ficheCarriere;
 
-	public Vache()
-	{
-	}
-
-
-	public Vache(String proprietaire, String num_elevage, String num_identification, long num_travail, int race, Date date_arrivee)
-	{
-		super();
-		this.proprietaire = proprietaire;
-		this.num_elevage = num_elevage;
-		this.num_identification = num_identification;
-		this.num_travail = num_travail;
-		this.race = race;
-		this.date_arrivee = date_arrivee;
-
-	}
-
+	public Vache() {}
 
 	public Long getId()
 	{
@@ -136,16 +98,6 @@ public class Vache implements Serializable
 		this.num_identification = num_identification;
 	}
 
-	public long getNum_travail()
-	{
-		return num_travail;
-	}
-
-	public void setNum_travail(long num_travail)
-	{
-		this.num_travail = num_travail;
-	}
-
 	public int getRace()
 	{
 		return race;
@@ -156,24 +108,52 @@ public class Vache implements Serializable
 		this.race = race;
 	}
 
-	public List<FicheOpu> getFicheOpuList()
-	{
-		return ficheOpuList;
+	public boolean isPresent() {
+		return present;
 	}
 
-	public void setFicheOpuList(List<FicheOpu> ficheOpuList)
-	{
-		this.ficheOpuList = ficheOpuList;
+	public void setPresent(boolean present) {
+		this.present = present;
 	}
 
-	public List<FicheCol> getFicheColList()
-	{
-		return ficheColList;
+	public char getSexe() {
+		return sexe;
 	}
 
-	public void setFicheColList(List<FicheCol> ficheColList)
-	{
-		this.ficheColList = ficheColList;
+	public void setSexe(char sexe) {
+		this.sexe = sexe;
+	}
+
+	public Date getDateNaissance() {
+		return dateNaissance;
+	}
+
+	public void setDateNaissance(Date dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+
+	public float getAgeMois() {
+		return ageMois;
+	}
+
+	public void setAgeMois(float ageMois) {
+		this.ageMois = ageMois;
+	}
+
+	public String getNumPere() {
+		return numPere;
+	}
+
+	public void setNumPere(String numPere) {
+		this.numPere = numPere;
+	}
+
+	public String getNumMere() {
+		return numMere;
+	}
+
+	public void setNumMere(String numMere) {
+		this.numMere = numMere;
 	}
 
 	public String getNom()
@@ -184,66 +164,6 @@ public class Vache implements Serializable
 	public void setNom(String nom)
 	{
 		this.nom = nom;
-	}
-
-	public boolean isMale()
-	{
-		return male;
-	}
-
-	public void setMale(boolean male)
-	{
-		this.male = male;
-	}
-
-	public List<FicheIa> getFicheIaList()
-	{
-		return ficheIaList;
-	}
-
-	public void setFicheIaList(List<FicheIa> ficheIaList)
-	{
-		this.ficheIaList = ficheIaList;
-	}
-
-	public List<FicheTra> getFicheTraList()
-	{
-		return ficheTraList;
-	}
-
-	public void setFicheTraList(List<FicheTra> ficheTraList)
-	{
-		this.ficheTraList = ficheTraList;
-	}
-
-	public List<TableauSemence> getTableau_semences()
-	{
-		return tableau_semences;
-	}
-
-	public void setTableau_semences(List<TableauSemence> tableau_semences)
-	{
-		this.tableau_semences = tableau_semences;
-	}
-
-	public List<Traitement_Donneuse> getTraitementDonneuseList()
-	{
-		return traitementDonneuseList;
-	}
-
-	public void setTraitementDonneuseList(List<Traitement_Donneuse> traitementDonneuseList)
-	{
-		this.traitementDonneuseList = traitementDonneuseList;
-	}
-
-	public List<Insemination> getInseminationList()
-	{
-		return inseminationList;
-	}
-
-	public void setInseminationList(List<Insemination> inseminationList)
-	{
-		this.inseminationList = inseminationList;
 	}
 
 	public String getParite()
@@ -264,23 +184,5 @@ public class Vache implements Serializable
 	public void setFicheCarriere(FicheCarriere ficheCarriere)
 	{
 		this.ficheCarriere = ficheCarriere;
-	}
-
-	public List<EmbryonsTransferes> getEmbryonsTransferesList()
-	{
-		return embryonsTransferesList;
-	}
-
-	public void setEmbryonsTransferesList(List<EmbryonsTransferes> embryonsTransferesList)
-	{
-		this.embryonsTransferesList = embryonsTransferesList;
-	}
-
-	public Date getDate_arrivee() {
-		return date_arrivee;
-	}
-
-	public void setDate_arrivee(Date date_arrivee) {
-		this.date_arrivee = date_arrivee;
 	}
 }

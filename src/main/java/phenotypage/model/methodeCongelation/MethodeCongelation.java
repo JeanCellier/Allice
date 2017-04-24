@@ -1,18 +1,13 @@
 package phenotypage.model.methodeCongelation;
 
-import phenotypage.model.cryoconservation.Cryoconservation;
-import phenotypage.model.fiches.traitement.header.Header;
-
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.List;
 
 /**
  * @author fabien
  */
 
 @Entity
-public class MethodeCongelation implements Serializable
+public class MethodeCongelation
 {
 	@Id
 	@GeneratedValue
@@ -21,17 +16,7 @@ public class MethodeCongelation implements Serializable
 	@Column
 	private String nom;
 
-	@OneToMany(mappedBy = "methodeCongelation")
-	private List<Cryoconservation> cryoconservationList;
-
-	public MethodeCongelation()
-	{
-	}
-
-	public MethodeCongelation(String nom)
-	{
-		this.nom = nom;
-	}
+	public MethodeCongelation() {}
 
 	public Long getId()
 	{
@@ -51,15 +36,5 @@ public class MethodeCongelation implements Serializable
 	public void setNom(String nom)
 	{
 		this.nom = nom;
-	}
-
-	public List<Cryoconservation> getHeaderList()
-	{
-		return cryoconservationList;
-	}
-
-	public void setHeaderList(List<Cryoconservation> cryoconservationList)
-	{
-		this.cryoconservationList = cryoconservationList;
 	}
 }
