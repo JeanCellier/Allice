@@ -157,7 +157,7 @@
                         .find('#proprietaire').text(' '+result.objet.vache.proprietaire).end()
                         .find('#numElevage').text(' '+result.objet.vache.num_elevage).end()
                         .find('#numIdentification').text(' '+result.objet.vache.num_identification).end()
-                        .find('#numTravail').text(' '+result.objet.vache.nom.substr(result.objet.vache.nom.length - 4)).end()
+                        .find('#numTravail').text(' '+result.objet.vache.num_identification.substr(result.objet.vache.num_identification.length - 4)).end()
                         .find('#race').text(' '+result.objet.vache.race).end()
                         .find('#parite').text(' '+result.objet.vache.parite).end()
                         .find('#operateur').text(' '+result.objet.insemination.operateur.nom+' '+result.objet.insemination.operateur.prenom).end()
