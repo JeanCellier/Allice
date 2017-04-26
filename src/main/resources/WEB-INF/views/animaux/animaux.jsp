@@ -30,11 +30,13 @@
                 <c:forEach items="${vacheList}" var="vache">
                     <tr>
                         <td>${vache.proprietaire}</td>
-                        <td>${vache.num_elevage}<br></td>
-                        <td>${vache.num_identification}<br></td>
-                        <td>${vache.num_travail}<br></td>
-                        <td>${vache.race}<br></td>
-                        <td><fmt:formatDate pattern="dd/MM/yyyy" value="${vache.date_arrivee}" /><br></td>
+                        <td>${vache.num_elevage}</td>
+                        <td>${vache.num_identification}</td>
+                        <%--<td>${substring(vache.num_identification, 5, 15)}</td>--%>
+                        <td></td>
+                        <td>${vache.race}</td>
+                        <%--<td><fmt:formatDate pattern="dd/MM/yyyy" value="${vache.date_arrivee}" /><br></td>--%>
+                        <td></td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="<c:out value='${vache.id}' />" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/<c:out value='${vache.id}'/>" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                     </tr>
@@ -176,16 +178,17 @@
     /** function addRow */
     function addRow(result) {
         //converti date bon format
-        var date_arrivee = new Date(result.objet.date_arrivee);
+        //var date_arrivee = new Date(result.objet.date_arrivee);
 
         /** ajoute une ligne à la table */
         $('#tableAnimaux').DataTable().row.add([
             "<td>" + result.objet.proprietaire + "</td>",
             "<td>" + result.objet.num_elevage + "</td>",
             "<td>" + result.objet.num_identification + "</td>",
-            "<td>" + result.objet.num_travail + "</td>",
+            "<td>" + result.objet.num_identification.substr(result.objet.vache.num_identification.length - 4) + "</td>",
             "<td>" + result.objet.race + "</td>",
-            "<td>" + convertDate(date_arrivee) + "</td>",
+//            "<td>" + convertDate(date_arrivee) + "</td>",
+            "<td>" + "</td>",
 
             '<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="'+ result.objet.id +'" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>',
             '<td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/'+ result.objet.id + '" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>'
@@ -247,7 +250,7 @@
                         .find('[name="proprietaire"]').val(result.objet.proprietaire).end()
                         .find('[name="num_elevage"]').val(result.objet.num_elevage).end()
                         .find('[name="num_identification"]').val(result.objet.num_identification).end()
-                        .find('[name="num_travail"]').val(result.objet.num_travail).end()
+                        .find('[name="num_travail"]').val(result.objet.num_identification.substr(result.objet.vache.num_identification.length - 4)).end()
                         .find('[name="race"]').val(result.objet.race).end()
                         .find('[name="date_arrivee"]').val(convertDate(result.objet.date_arrivee)).end();
 

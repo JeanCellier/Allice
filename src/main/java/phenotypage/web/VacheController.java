@@ -4,16 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import phenotypage.model.JsonResponse.JsonResponse;
-import phenotypage.model.pharmacie.produit.Produit;
-import phenotypage.model.pharmacie.produit.ProduitService;
+import phenotypage.model.jsonResponse.JsonResponse;
 import phenotypage.model.vache.Vache;
 import phenotypage.model.vache.VacheService;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
 
@@ -28,7 +24,7 @@ public class VacheController
     @RequestMapping(value = "/animaux", method = RequestMethod.GET)
     public String vache(Model model)
     {
-        model.addAttribute("vacheList", vacheService.findAllVache());
+        model.addAttribute("vacheList", vacheService.findAll());
         return "animaux/animaux";
     }
 
@@ -48,11 +44,11 @@ public class VacheController
             int raceInt = Integer.parseInt(race);
 
             try {
-                    Vache vache = vacheService.createVache(proprietaire, num_elevage, num_identification, numeroTravail, raceInt, dateArrivee);
+//                    Vache vache = vacheService.createVache(proprietaire, num_elevage, num_identification, numeroTravail, raceInt, dateArrivee);
 
                     response.setSucces(true);
                     response.setMessage("Ajout effectué");
-                    response.setObjet(vache);
+//                    response.setObjet(vache);
 
             }catch (NumberFormatException e){
             }
@@ -67,15 +63,15 @@ public class VacheController
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     public JsonResponse delete(@PathVariable("id") long id){
         JsonResponse response = new JsonResponse();
-        Optional<Vache> vache = vacheService.findOne(id);
-
-        if(vache.isPresent()){
-            response.setSucces(true);
-            response.setObjet(vache.get());
-        }else{
-            response.setSucces(false);
-            response.setMessage("Une erreur s\'est produite");
-        }
+//        Optional<Vache> vache = vacheService.findOne(id);
+//
+//        if(vache.isPresent()){
+//            response.setSucces(true);
+//            response.setObjet(vache.get());
+//        }else{
+//            response.setSucces(false);
+//            response.setMessage("Une erreur s\'est produite");
+//        }
 
         return response;
     }
@@ -96,10 +92,10 @@ public class VacheController
             Long numeroTravail = Long.parseLong(num_travail);
             int raceInt = Integer.parseInt(race);
 
-                    vacheService.update(vache, proprietaire, num_elevage, num_identification, numeroTravail, raceInt, dateArrivee);
-                    response.setSucces(true);
-                    response.setMessage("Animal modifié");
-                    response.setObjet(vache);
+//                    vacheService.update(vache, proprietaire, num_elevage, num_identification, numeroTravail, raceInt, dateArrivee);
+//                    response.setSucces(true);
+//                    response.setMessage("Animal modifié");
+//                    response.setObjet(vache);
 
             }catch (NumberFormatException e){
             }
@@ -114,7 +110,7 @@ public class VacheController
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public JsonResponse delete(@PathVariable("id")  Vache vache){
         JsonResponse response = new JsonResponse();
-        vacheService.delete(vache);
+//        vacheService.delete(vache);
         response.setSucces(true);
         response.setMessage("Animal supprimé");
         return response;
