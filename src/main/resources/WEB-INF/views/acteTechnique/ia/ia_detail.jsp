@@ -164,7 +164,7 @@
                         .find('#nomTaureau').text(' '+result.objet.insemination.taureau.nom).end()
                         .find('#raceTaureau').text(' '+result.objet.insemination.taureau.race).end()
                         .find('#numTaureau').text(' '+result.objet.insemination.taureau.num_identification).end()
-                        .find('#collecte').text(' '+result.objet.insemination.collecte).end()
+                        .find('#collecte').text(' '+result.objet.insemination.collecte.nom).end()
                         .find('#lieuSemence').text(' '+result.objet.insemination.lieuDepot).end()
                         .find('#facilite').text(' '+result.objet.insemination.progression).end()
                         .find('#typeChaleur').text(' '+result.objet.traitement_donneuse.typeChaleur).end()
