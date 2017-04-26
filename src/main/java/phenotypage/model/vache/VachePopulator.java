@@ -19,7 +19,7 @@ public class VachePopulator
 	@PostConstruct
 	void init()
 	{
-//		vacheService.createVache(true, "proprio", "nom", "numElevage", "numIdent", 62, 'F', new Date(), "parite", 20.3F, "numPere", "numMere");
-//		vacheService.createVache(true, "proprio", "nom", "numElevage", "numIdent2", 62, 'F', new Date(), "parite", 20.3F, "numPere", "numMere");
+//		vacheService.createVache(true, "proprétaireTest", "vache1", "FR37134303", "FR4482231256", 66, 'F', new Date(), "parite", 49.5F, "US000068656236", "FR4482232911");
+//		vacheService.createVache(true, "proprétaireTest", "vache2", "FR37134303", "FR2247872784", 66, 'F', new Date(), "parite", 49.2F, "US000140175899", "FR2247872601");
 	}
 }
