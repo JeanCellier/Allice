@@ -1,4 +1,4 @@
-package phenotypage.model.JsonResponse;
+package phenotypage.model.jsonResponse;
 
 /**
  * Created by nicolas on 16/03/17.

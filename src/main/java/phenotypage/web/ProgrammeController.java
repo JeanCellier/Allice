@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import phenotypage.model.JsonResponse.JsonResponse;
+import phenotypage.model.jsonResponse.JsonResponse;
 import phenotypage.model.programme.Programme;
 import phenotypage.model.programme.ProgrammeService;
 
