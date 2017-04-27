@@ -8,7 +8,7 @@
 
             <div id="modal-body" class="modal-body">
                 <ul class="nav nav-tabs" role="tablist" style="margin-bottom: 20px;">
-                    <li class="active tab"><a href="#fiche_01" data-toggle="tab">Nouvelle fiche</a><span>x</span></li>
+                    <li class="active tab"><a href="#fiche_01" data-toggle="tab">Nouvelle fiche</a></li>
                     <li><a href="#" class="add-fiche">+ Nouvelle fiche</a></li>
                 </ul>
 
