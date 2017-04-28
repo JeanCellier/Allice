@@ -29,7 +29,7 @@
                         <li><a href="#">OVU</a></li>
                     </ul>
                 </li>
-                <li><a href="#">CUVES</a></li>
+                <li><a href="<s:url value='/cuves/cuves'/>">CUVES</a></li>
                 <li><a href="#">IMPORT/EXPORT</a></li>
                 <li><a href="#">PLANNING</a></li>
             </ul>
