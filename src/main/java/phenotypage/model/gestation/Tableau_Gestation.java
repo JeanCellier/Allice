@@ -1,36 +1,26 @@
 package phenotypage.model.gestation;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
+import phenotypage.model.typeMethode.TypeMethode;
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
 
 @Entity
-public class Tableau_Gestation implements Serializable
+public class Tableau_Gestation
 {
 	@Id
 	@GeneratedValue
 	private Long id;
 
 	@Column
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	private Calendar date;
-	
-	@Column
-	private String methode;
+	private Date date;
+
+	@ManyToOne
+	private TypeMethode methode;
 	
 	@Column
 	private String resultat;
 
-	@ManyToOne
-	@JoinColumn(name = "id_Gestation", referencedColumnName = "id")
-	private Gestation gestation;
-
-	public Tableau_Gestation()
-	{
-	}
+	public Tableau_Gestation() {}
 
 	public Long getId()
 	{
@@ -42,22 +32,20 @@ public class Tableau_Gestation implements Serializable
 		this.id = id;
 	}
 
-	public Calendar getDate()
-	{
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(Calendar date)
-	{
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
-	public String getMethode()
+	public TypeMethode getMethode()
 	{
 		return methode;
 	}
 
-	public void setMethode(String methode)
+	public void setMethode(TypeMethode methode)
 	{
 		this.methode = methode;
 	}
@@ -70,23 +58,5 @@ public class Tableau_Gestation implements Serializable
 	public void setResultat(String resultat)
 	{
 		this.resultat = resultat;
-	}
-
-	public Tableau_Gestation(Calendar date, String methode, String resultat)
-	{
-		super();
-		this.date = date;
-		this.methode = methode;
-		this.resultat = resultat;
-	}
-
-	public Gestation getGestation()
-	{
-		return gestation;
-	}
-
-	public void setGestation(Gestation gestation)
-	{
-		this.gestation = gestation;
 	}
 }

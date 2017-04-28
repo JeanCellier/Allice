@@ -2,35 +2,35 @@ package phenotypage.model.fiche.ficheAba;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import phenotypage.model.cryoconservation.Cryoconservation;
-import phenotypage.model.fiches.traitement.header.Header;
+import phenotypage.model.cryoconservation.TableauDetail;
+import phenotypage.model.donneesExistantes.abattoir.Abattoir;
+import phenotypage.model.donneesExistantes.operateur.Operateur;
+import phenotypage.model.fiche.Fiche;
 import phenotypage.model.informationsPIV.Informations_PIV;
 import phenotypage.model.invitro.collecte.Collecte;
 import phenotypage.model.invitro.culture.Culture;
 import phenotypage.model.invitro.fecondation.Fecondation;
-
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * @author fabien
  */
 
 @Entity
-public class
-FicheAba
-{
-	@Id
-	@GeneratedValue
-	private Long id;
+public class FicheAba extends Fiche{
+	@Column
+	private String numeroAgrement;
 
-	@Column(unique = true)
-	@NotEmpty
-	private String nom;
+	@ManyToOne
+	private Abattoir abattoir;
+
+	@ManyToOne
+	@JoinColumn
+	private Operateur operateur;
 
 	@Column
-	private boolean snig;
-
-	@OneToOne
-	private Header header;
+	private float temperatureArrivee;
 
 	@OneToOne
 	private Informations_PIV informations_piv;
@@ -47,54 +47,41 @@ FicheAba
 	@OneToOne
 	private Cryoconservation cryoconservation;
 
-	public FicheAba()
-	{
+	@OneToMany
+	private List<TableauDetail> tableauDetails;
+
+	public FicheAba() { super(); }
+
+	public String getNumeroAgrement() {
+		return numeroAgrement;
 	}
 
-	public FicheAba(String nom)
-	{
-		this.nom = nom;
+	public void setNumeroAgrement(String numeroAgrement) {
+		this.numeroAgrement = numeroAgrement;
 	}
 
-	public FicheAba(Header header, Informations_PIV informations_piv, Collecte collecte, Fecondation fecondation, Culture culture, Cryoconservation cryoconservation)
-	{
-		this.header = header;
-		this.informations_piv = informations_piv;
-		this.collecte = collecte;
-		this.fecondation = fecondation;
-		this.culture = culture;
-		this.cryoconservation = cryoconservation;
+	public Abattoir getAbattoir() {
+		return abattoir;
 	}
 
-
-	public Long getId()
-	{
-		return id;
+	public void setAbattoir(Abattoir abattoir) {
+		this.abattoir = abattoir;
 	}
 
-	public void setId(Long id)
-	{
-		this.id = id;
+	public Operateur getOperateur() {
+		return operateur;
 	}
 
-	public String getNom()
-	{
-		return nom;
+	public void setOperateur(Operateur operateur) {
+		this.operateur = operateur;
 	}
 
-	public void setNom(String nom)
-	{
-		this.nom = nom;
+	public float getTemperatureArrivee() {
+		return temperatureArrivee;
 	}
 
-	public Header getHeader()
-	{
-		return header;
-	}
-
-	public void setHeader(Header header)
-	{
-		this.header = header;
+	public void setTemperatureArrivee(float temperatureArrivee) {
+		this.temperatureArrivee = temperatureArrivee;
 	}
 
 	public Informations_PIV getInformations_piv()
@@ -147,14 +134,12 @@ FicheAba
 		this.cryoconservation = cryoconservation;
 	}
 
-	public boolean isSnig()
-	{
-		return snig;
+	public List<TableauDetail> getTableauDetails() {
+		return tableauDetails;
 	}
 
-	public void setSnig(boolean snig)
-	{
-		this.snig = snig;
+	public void setTableauDetails(List<TableauDetail> tableauDetails) {
+		this.tableauDetails = tableauDetails;
 	}
 }
 

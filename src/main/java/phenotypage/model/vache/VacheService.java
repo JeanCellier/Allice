@@ -15,9 +15,5 @@ public interface VacheService
 
 	Vache newVache();
 
-	List<Vache> findAllTaureau();
-
 	Vache findByNum_identification(String num_identification);
-
-	Vache addTaureau(Vache taureau);
 }

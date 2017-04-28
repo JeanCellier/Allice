@@ -25,7 +25,7 @@ FicheOpuServiceImpl implements FicheOpuService
 	@Override
 	public FicheOpu createFichieOpu(String nom)
 	{
-		return ficheOpuRepository.save(new FicheOpu(nom));
+		return ficheOpuRepository.save(new FicheOpu());
 	}
 
 	@Override
@@ -50,11 +50,5 @@ FicheOpuServiceImpl implements FicheOpuService
 	public long countFicheOpu()
 	{
 		return ficheOpuRepository.count();
-	}
-
-	@Override
-	public List<FicheOpu> findFicheOpuSNIG()
-	{
-		return ficheOpuRepository.findFicheOpuSNIG();
 	}
 }

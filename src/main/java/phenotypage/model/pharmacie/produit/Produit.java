@@ -1,10 +1,6 @@
 package phenotypage.model.pharmacie.produit;
 
-import phenotypage.model.pharmacie.Pharmacie;
-import phenotypage.model.traitementDonneuse.tableauPharmacie.Tableau_Pharmacie;
-
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -12,7 +8,7 @@ import java.util.Date;
  */
 
 @Entity
-public class Produit implements Serializable
+public class Produit
 {
 	@Id
 	@GeneratedValue
@@ -22,7 +18,7 @@ public class Produit implements Serializable
 	private String nom;
 	
 	@Column
-	private Date date_delivrance;
+	private Date dateDelivrance;
 	
 	@Column
 	private String fournisseur;
@@ -34,24 +30,16 @@ public class Produit implements Serializable
 	private String responsable;
 	
 	@Column
-	private float qte_entrante;
+	private float qteEntrante;
 	
 	@Column
-	private float qte_restante;
+	private float qteRestante;
 	
 	@Column
-	private String num_lot;
+	private String numLot;
 	
 	@Column
-	private Date date_peremption;
-	
-	@ManyToOne
-    @JoinColumn(name = "idPharmacie", referencedColumnName = "id")
-    private Pharmacie pharmacie;
-	
-	@OneToOne
-	@JoinColumn(name = "idTabPharmacie", referencedColumnName = "id")
-	private Tableau_Pharmacie tableau_pharmacie;
+	private Date datePeremption;
 
 	@Column
 	private String indication;
@@ -60,25 +48,25 @@ public class Produit implements Serializable
 	{
 	}
 
-	public Produit(String nom, Date date_delivrance, String fournisseur, String projet, String responsable,
-			float qte_entrante, float qte_restante, String num_lot, Date date_peremption, String indication)
+	public Produit(String nom, Date dateDelivrance, String fournisseur, String projet, String responsable,
+				   float qteEntrante, float qteRestante, String numLot, Date datePeremption, String indication)
 	{
 		super();
 		this.nom = nom;
-		this.date_delivrance = date_delivrance;
+		this.dateDelivrance = dateDelivrance;
 		this.fournisseur = fournisseur;
 		this.projet = projet;
 		this.responsable = responsable;
-		this.qte_entrante = qte_entrante;
-		this.qte_restante = qte_restante;
-		this.num_lot = num_lot;
-		this.date_peremption = date_peremption;
+		this.qteEntrante = qteEntrante;
+		this.qteRestante = qteRestante;
+		this.numLot = numLot;
+		this.datePeremption = datePeremption;
 		this.indication = indication;
 	}
 
 	public Produit(int i)
 	{
-		qte_restante = i;
+		qteRestante = i;
 	}
 
 	public String getNom()
@@ -91,14 +79,14 @@ public class Produit implements Serializable
 		this.nom = nom;
 	}
 
-	public Date getDate_delivrance()
+	public Date getDateDelivrance()
 	{
-		return date_delivrance;
+		return dateDelivrance;
 	}
 
-	public void setDate_delivrance(Date date_delivrance)
+	public void setDateDelivrance(Date dateDelivrance)
 	{
-		this.date_delivrance = date_delivrance;
+		this.dateDelivrance = dateDelivrance;
 	}
 
 	public String getFournisseur()
@@ -131,44 +119,44 @@ public class Produit implements Serializable
 		this.responsable = responsable;
 	}
 
-	public float getQte_entrante()
+	public float getQteEntrante()
 	{
-		return qte_entrante;
+		return qteEntrante;
 	}
 
-	public void setQte_entrante(float qte_entrante)
+	public void setQteEntrante(float qteEntrante)
 	{
-		this.qte_entrante = qte_entrante;
+		this.qteEntrante = qteEntrante;
 	}
 
-	public float getQte_restante()
+	public float getQteRestante()
 	{
-		return qte_restante;
+		return qteRestante;
 	}
 
-	public void setQte_restante(float qte_restante)
+	public void setQteRestante(float qteRestante)
 	{
-		this.qte_restante = qte_restante;
+		this.qteRestante = qteRestante;
 	}
 
-	public String getNum_lot()
+	public String getNumLot()
 	{
-		return num_lot;
+		return numLot;
 	}
 
-	public void setNum_lot(String num_lot)
+	public void setNumLot(String numLot)
 	{
-		this.num_lot = num_lot;
+		this.numLot = numLot;
 	}
 
-	public Date getDate_peremption()
+	public Date getDatePeremption()
 	{
-		return date_peremption;
+		return datePeremption;
 	}
 
-	public void setDate_peremption(Date date_peremption)
+	public void setDatePeremption(Date datePeremption)
 	{
-		this.date_peremption = date_peremption;
+		this.datePeremption = datePeremption;
 	}
 
 	public String getIndication()
@@ -181,7 +169,6 @@ public class Produit implements Serializable
 		this.indication = indication;
 	}
 
-
 	public Long getId()
 	{
 		return id;
@@ -190,25 +177,5 @@ public class Produit implements Serializable
 	public void setId(Long id)
 	{
 		this.id = id;
-	}
-
-	public Pharmacie getPharmacie()
-	{
-		return pharmacie;
-	}
-
-	public void setPharmacie(Pharmacie pharmacie)
-	{
-		this.pharmacie = pharmacie;
-	}
-
-	public Tableau_Pharmacie getTableau_pharmacie()
-	{
-		return tableau_pharmacie;
-	}
-
-	public void setTableau_pharmacie(Tableau_Pharmacie tableau_pharmacie)
-	{
-		this.tableau_pharmacie = tableau_pharmacie;
 	}
 }

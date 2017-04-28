@@ -1,26 +1,21 @@
 package phenotypage.model.embryonsTransferes;
 
 import javax.persistence.*;
-
-import phenotypage.model.fiche.ficheTra.FicheTra;
 import phenotypage.model.vache.Vache;
-
-import java.io.Serializable;
 
 /**
  * @author fabien
  */
 
 @Entity
-public class EmbryonsTransferes implements Serializable
+public class EmbryonsTransferes
 {
 	@Id
 	@GeneratedValue
 	private Long id;
 
 	@Column
-	private boolean sexe;
-	//true X, false Y, 
+	private boolean semenceSexee;
 
 	@Column
 	private String refExperience;
@@ -29,94 +24,73 @@ public class EmbryonsTransferes implements Serializable
 	private String refEmbryons;
 
 	@ManyToOne
-	@JoinColumn(name = "id_Taureau", referencedColumnName = "id")
 	private Vache taureau;
 	
 	@Column
-	private boolean cote;
-	//true cote droit//false cote gauche
+	private char cote;
+	//G = gauche D = droit
 
 	@Column
-	private int tiers;
-	//1 : 1/3 ...jusqua 3
+	private String emplacementColUterine;
 
 	@Column
 	private String faciliteprogression;
 
-	@OneToOne
-	@JoinColumn(name = "idFicheTra", referencedColumnName = "id", unique = true)
-	private FicheTra ficheTra;
 
+	public EmbryonsTransferes() {}
 
 	public Long getId()
 	{
 		return id;
 	}
 
-
 	public void setId(Long id)
 	{
 		this.id = id;
 	}
-
-
-	public boolean isSexe()
-	{
-		return sexe;
-	}
-
-
-	public void setSexe(boolean sexe)
-	{
-		this.sexe = sexe;
-	}
-
 
 	public String getRefExperience()
 	{
 		return refExperience;
 	}
 
-
 	public void setRefExperience(String refExperience)
 	{
 		this.refExperience = refExperience;
 	}
-
 
 	public Vache getTaureau()
 	{
 		return taureau;
 	}
 
-
 	public void setTaureau(Vache taureau)
 	{
 		this.taureau = taureau;
 	}
 
+	public boolean isSemenceSexee() {
+		return semenceSexee;
+	}
 
-	public boolean isCote()
-	{
+	public void setSemenceSexee(boolean semenceSexee) {
+		this.semenceSexee = semenceSexee;
+	}
+
+	public char getCote() {
 		return cote;
 	}
 
-
-	public void setCote(boolean cote)
-	{
+	public void setCote(char cote) {
 		this.cote = cote;
 	}
 
-
-	public int getTiers()
-	{
-		return tiers;
+	public String getEmplacementColUterine() {
+		return emplacementColUterine;
 	}
 
-
-	public void setTiers(int tiers)
-	{
-		this.tiers = tiers;
+	public void setEmplacementColUterine(String emplacementColUterine) {
+		this.emplacementColUterine = emplacementColUterine;
 	}
 
 	public String getFaciliteprogression()
@@ -129,21 +103,6 @@ public class EmbryonsTransferes implements Serializable
 		this.faciliteprogression = faciliteprogression;
 	}
 
-	public EmbryonsTransferes()
-	{
-		super();
-	}
-
-	public FicheTra getFicheTra()
-	{
-		return ficheTra;
-	}
-
-	public void setFicheTra(FicheTra ficheTra)
-	{
-		this.ficheTra = ficheTra;
-	}
-
 	public String getRefEmbryons()
 	{
 		return refEmbryons;
@@ -153,17 +112,4 @@ public class EmbryonsTransferes implements Serializable
 	{
 		this.refEmbryons = refEmbryons;
 	}
-
-	public EmbryonsTransferes(boolean sexe, String refEmbryons, Vache taureau, boolean cote, int tiers, String faciliteprogression)
-	{
-		super();
-		this.sexe = sexe;
-		this.refExperience = refEmbryons;
-		this.taureau = taureau;
-		this.cote = cote;
-		this.tiers = tiers;
-		this.faciliteprogression = faciliteprogression;
-	}
-
-
 }

@@ -18,6 +18,4 @@ public interface FicheIaService
 	FicheIa findByNom(String nom);
 
 	long countFicheIa();
-
-	List<FicheIa> findFicheIaSNIG();
 }

@@ -1,42 +1,42 @@
 package phenotypage.model.fiche.ficheOpu;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import phenotypage.model.cryoconservation.Cryoconservation;
-import phenotypage.model.fiches.traitement.header.Header;
+import phenotypage.model.cryoconservation.TableauDetail;
+import phenotypage.model.donneesExistantes.operateur.Operateur;
+import phenotypage.model.fiche.Fiche;
 import phenotypage.model.imageEcho.Echo;
 import phenotypage.model.informationsPIV.Informations_PIV;
-import phenotypage.model.invitro.collecte.Collecte;
 import phenotypage.model.invitro.culture.Culture;
 import phenotypage.model.invitro.fecondation.Fecondation;
+import phenotypage.model.maturationInVitro.MaturationInVitro;
 import phenotypage.model.ovocytesCollecte.OvocytesCollectes;
+import phenotypage.model.tableauTraitement.TableauTraitement;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
+import phenotypage.model.typeOpu.TypeOpu;
 import phenotypage.model.vache.Vache;
-
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * @author fabien
  */
 
 @Entity
-public class FicheOpu
+public class FicheOpu extends Fiche
 {
-	@Id
-	@GeneratedValue
-	private Long id;
-
-	@Column(unique = true)
-	@NotEmpty
-	private String nom;
+	@Column
+	private String numeroAgrement;
 
 	@Column
-	private boolean snig;
-
-	@OneToOne
-	private Header header;
+	private String lieu;
 
 	@ManyToOne
-	@JoinColumn(name = "id_Vache", referencedColumnName = "id")
+	private Operateur operateur;
+
+	@ManyToOne
+	private TypeOpu typeOpu;
+
+	@ManyToOne
 	private Vache vache;
 	
 	@OneToOne
@@ -52,7 +52,7 @@ public class FicheOpu
 	private Informations_PIV informations_piv;
 
 	@OneToOne
-	private Collecte collecte;
+	private MaturationInVitro maturationInVitro;
 
 	@OneToOne
 	private Fecondation fecondation;
@@ -63,61 +63,40 @@ public class FicheOpu
 	@OneToOne
 	private Cryoconservation cryoconservation;
 
-	public FicheOpu()
-	{
+	@OneToMany
+	private List<TableauTraitement> tableauTraitements;
+
+	@OneToMany
+	private List<TableauDetail> tableauDetails;
+
+	public FicheOpu() { super(); }
+
+	public String getNumeroAgrement() {
+		return numeroAgrement;
 	}
 
-	public FicheOpu(String nom)
-	{
-		this.nom = nom;
+	public void setNumeroAgrement(String numeroAgrement) {
+		this.numeroAgrement = numeroAgrement;
 	}
 
-	public FicheOpu(String nom, Header header, Vache vache, Traitement_Donneuse traitement_donneuse, Echo imageEcho,
-	                OvocytesCollectes ovocytesCollectes, Informations_PIV informations_piv, Collecte collecte,
-	                Fecondation fecondation, Culture culture, Cryoconservation cryoconservation)
-	{
-		super();
-		this.nom = nom;
-		this.header = header;
-		this.vache = vache;
-		this.traitement_donneuse = traitement_donneuse;
-		this.imageEcho = imageEcho;
-		this.ovocytesCollectes = ovocytesCollectes;
-		this.informations_piv = informations_piv;
-		this.collecte = collecte;
-		this.fecondation = fecondation;
-		this.culture = culture;
-		this.cryoconservation = cryoconservation;
+	public String getLieu() {
+		return lieu;
 	}
 
-	public Long getId()
-	{
-		return id;
+	public void setLieu(String lieu) {
+		this.lieu = lieu;
 	}
 
-	public void setId(Long id)
-	{
-		this.id = id;
+	public Operateur getOperateur() {
+		return operateur;
 	}
 
-	public String getNom()
-	{
-		return nom;
+	public void setOperateur(Operateur operateur) {
+		this.operateur = operateur;
 	}
 
-	public void setNom(String nom)
-	{
-		this.nom = nom;
-	}
-
-	public Header getHeader()
-	{
-		return header;
-	}
-
-	public void setHeader(Header header)
-	{
-		this.header = header;
+	public void setTypeOpu(TypeOpu typeOpu) {
+		this.typeOpu = typeOpu;
 	}
 
 	public Informations_PIV getInformations_piv()
@@ -130,14 +109,12 @@ public class FicheOpu
 		this.informations_piv = informations_piv;
 	}
 
-	public Collecte getCollecte()
-	{
-		return collecte;
+	public MaturationInVitro getMaturationInVitro() {
+		return maturationInVitro;
 	}
 
-	public void setCollecte(Collecte collecte)
-	{
-		this.collecte = collecte;
+	public void setMaturationInVitro(MaturationInVitro maturationInVitro) {
+		this.maturationInVitro = maturationInVitro;
 	}
 
 	public Fecondation getFecondation()
@@ -195,10 +172,7 @@ public class FicheOpu
 		return traitement_donneuse;
 	}
 
-	public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse)
-	{
-		this.traitement_donneuse = traitement_donneuse;
-	}
+	public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse) { this.traitement_donneuse = traitement_donneuse; }
 
 	public Echo getImageEcho()
 	{
@@ -210,14 +184,28 @@ public class FicheOpu
 		this.imageEcho = imageEcho;
 	}
 
-	public boolean isSnig()
-	{
-		return snig;
+	public TypeOpu getTypeOpu() {
+		return typeOpu;
 	}
 
-	public void setSnig(boolean snig)
-	{
-		this.snig = snig;
+	public void setTypeOpuList(TypeOpu typeOpu) {
+		this.typeOpu = typeOpu;
+	}
+
+	public List<TableauTraitement> getTableauTraitements() {
+		return tableauTraitements;
+	}
+
+	public void setTableauTraitements(List<TableauTraitement> tableauTraitements) {
+		this.tableauTraitements = tableauTraitements;
+	}
+
+	public List<TableauDetail> getTableauDetails() {
+		return tableauDetails;
+	}
+
+	public void setTableauDetails(List<TableauDetail> tableauDetails) {
+		this.tableauDetails = tableauDetails;
 	}
 }
 

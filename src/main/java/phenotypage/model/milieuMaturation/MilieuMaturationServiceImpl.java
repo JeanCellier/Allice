@@ -24,7 +24,7 @@ public class MilieuMaturationServiceImpl implements MilieuMaturationService
 	@Override
 	public MilieuMaturation createMilieuMaturation(String nom, String numeroLot)
 	{
-		return milieuMaturationRepository.save(new MilieuMaturation(nom, numeroLot));
+		return milieuMaturationRepository.save(new MilieuMaturation());
 	}
 
 	@Override

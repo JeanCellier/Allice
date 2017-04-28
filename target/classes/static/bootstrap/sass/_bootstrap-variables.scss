@@ -15,8 +15,9 @@
 // $gray-light:             lighten($gray-base, 46.7%) // #777
 // $gray-lighter:           lighten($gray-base, 93.5%) // #eee
 
- $brand-primary:            #f9f9f9;
+$grey-body:            #f9f9f9;
 $green-primary:             #068b70;
+$grey-font-menu:           #8c9399;
 // $brand-primary:         darken(#428bca, 6.5%) // #337ab7
 // $brand-success:         #5cb85c
 // $brand-info:            #5bc0de
@@ -28,11 +29,12 @@ $green-primary:             #068b70;
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
- $body-bg:               $brand-primary;
+ $body-bg:               $grey-body;
 //** Global text color on `<body>`.
 // $text-color:            $gray-dark
 
 //** Global textual link color.
+$link-color:            $grey-font-menu;
 // $link-color:            $brand-primary
 //** Link hover color set via `darken()` function.
 // $link-hover-color:      darken($link-color, 15%)
@@ -108,10 +110,9 @@ $green-primary:             #068b70;
 // $border-radius-small:       3px
 
 //** Global color for active items (e.g., navs or dropdowns).
- $component-active-color:    $brand-primary;
 // $component-active-color:    #fff
 //** Global background color for active items (e.g., navs or dropdowns).
-// $component-active-bg:       $brand-primary;
+ $component-active-bg:       $green-primary;
 
 //** Width of the `border` for generating carets that indicate dropdowns.
 // $caret-width-base:          4px
@@ -231,6 +232,7 @@ $green-primary:             #068b70;
 
 //** Background for the dropdown menu.
 // $dropdown-bg:                    #fff
+$dropdown-bg:  lighten(white, 5%);
 //** Dropdown menu `border-color`.
 // $dropdown-border:                rgba(0,0,0,.15)
 //** Dropdown menu `border-color` **for IE8**.
@@ -240,13 +242,17 @@ $green-primary:             #068b70;
 
 //** Dropdown link text color.
 // $dropdown-link-color:            $gray-dark
+$dropdown-link-color:            darken($grey-font-menu, 10%);
 //** Hover color for dropdown links.
+
+$dropdown-link-hover-color:      darken($grey-font-menu, 5%);
 // $dropdown-link-hover-color:      darken($gray-dark, 5%)
+$dropdown-link-hover-bg:         darken(white, 5%);
 //** Hover background for dropdown links.
 // $dropdown-link-hover-bg:         #f5f5f5
 
 //** Active dropdown menu item text color.
-// $dropdown-link-active-color:     $component-active-color
+// $dropdown-link-active-color:     $component-active-color.
 //** Active dropdown menu item background color.
 // $dropdown-link-active-bg:        $component-active-bg
 
@@ -254,7 +260,7 @@ $green-primary:             #068b70;
 // $dropdown-link-disabled-color:   $gray-light
 
 //** Text color for headers within dropdown menus.
-// $dropdown-header-color:          $gray-light
+// $dropdown-fiche-color:          $gray-light
 
 //** Deprecated `$dropdown-caret-color` as of v3.1.0
 // $dropdown-caret-color:           #000
@@ -358,7 +364,7 @@ $green-primary:             #068b70;
 // $navbar-collapse-max-height:       340px
 
 // $navbar-default-color:             #777
-// $navbar-default-bg:                #068b70
+ $navbar-default-bg:                white;
 // $navbar-default-border:            darken($navbar-default-bg, 6.5%);
 
 // Navbar links
@@ -376,6 +382,9 @@ $green-primary:             #068b70;
 // $navbar-default-brand-hover-bg:            transparent
 
 // Navbar toggle
+$navbar-default-toggle-hover-bg:           darken(white, 10%);
+$navbar-default-toggle-icon-bar-bg:        $grey-font-menu;
+$navbar-default-toggle-border-color:       darken(white, 5%);
 // $navbar-default-toggle-hover-bg:           #ddd
 // $navbar-default-toggle-icon-bar-bg:        #888
 // $navbar-default-toggle-border-color:       #ddd
@@ -411,7 +420,7 @@ $green-primary:             #068b70;
 
 //=== Shared nav styles
 // $nav-link-padding:                          10px 15px
- $nav-link-hover-bg:                         #046E58;
+ $nav-link-hover-bg:                         darken(white, 5%);//#046E58;
 // $nav-link-hover-bg:                         $gray-lighter
 
 // $nav-disabled-link-color:                   $gray-light
@@ -443,9 +452,14 @@ $pagination-color:                     $green-primary;
 // $pagination-border:                    #ddd
 
 // $pagination-hover-color:               $link-hover-color
+$pagination-hover-color:               $grey-body;
+$pagination-hover-bg:                  $green-primary;
 // $pagination-hover-bg:                  $gray-lighter
 // $pagination-hover-border:              #ddd
 
+$pagination-active-color:              $green-primary;
+$pagination-active-bg:                 darken($grey-body, 10%);
+$pagination-active-border:             darken($grey-body, 40%);
 // $pagination-active-color:              #fff
 // $pagination-active-bg:                 $brand-primary
 // $pagination-active-border:             $brand-primary
@@ -590,10 +604,10 @@ $pagination-color:                     $green-primary;
 // $modal-backdrop-bg:           #000
 //** Modal backdrop opacity
 // $modal-backdrop-opacity:      .5
-//** Modal header border color
-// $modal-header-border-color:   #e5e5e5
+//** Modal fiche border color
+// $modal-fiche-border-color:   #e5e5e5
 //** Modal footer border color
-// $modal-footer-border-color:   $modal-header-border-color
+// $modal-footer-border-color:   $modal-fiche-border-color
 
 // $modal-lg:                    900px
 // $modal-md:                    600px
@@ -831,11 +845,25 @@ $pagination-color:                     $green-primary;
 // $blockquote-font-size:        ($font-size-base * 1.25)
 //** Blockquote border color
 // $blockquote-border-color:     $gray-lighter
-//** Page header border color
-// $page-header-border-color:    $gray-lighter
+//** Page fiche border color
+// $page-fiche-border-color:    $gray-lighter
 //** Width of horizontal description list titles
 // $dl-horizontal-offset:        $component-offset-horizontal
 //** Point at which .dl-horizontal becomes horizontal
 // $dl-horizontal-breakpoint:    $grid-float-breakpoint
 //** Horizontal line color.
 // $hr-border:                   $gray-lighter
+
+/** Custom Sass */
+.sidebar {
+ font-weight: bold;
+}
+
+@media (min-width: 768px){
+ .sidebar {
+  height: 100vh;
+ }
+ .sidebar-container{
+  box-shadow: 12px 0 15px -4px rgba(164, 168, 171, 0.2);
+ }
+}

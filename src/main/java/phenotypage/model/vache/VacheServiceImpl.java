@@ -24,7 +24,7 @@ public class VacheServiceImpl implements VacheService
 	@Override
 	public Vache createVache(String proprietaire, String num_elevage, String num_identification, long num_travail, int race)
 	{
-		return vacheRepository.save(new Vache(proprietaire, num_elevage, num_identification, num_travail, race));
+		return vacheRepository.save(new Vache());
 	}
 
 	@Override
@@ -40,21 +40,8 @@ public class VacheServiceImpl implements VacheService
 	}
 
 	@Override
-	public List<Vache> findAllTaureau()
-	{
-		return vacheRepository.findAllTaureau();
-	}
-
-	@Override
 	public Vache findByNum_identification(String num_identification)
 	{
 		return vacheRepository.findBynum_identification(num_identification);
-	}
-
-	@Override
-	public Vache addTaureau(Vache taureau)
-	{
-		taureau.setMale(true);
-		return addVache(taureau);
 	}
 }

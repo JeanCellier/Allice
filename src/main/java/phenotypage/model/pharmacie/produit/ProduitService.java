@@ -2,24 +2,30 @@ package phenotypage.model.pharmacie.produit;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author fabien
  */
 public interface ProduitService
 {
-	Produit createProduit(String nom, Date date_delivrance, String fournisseur, String projet, String responsable,
-	                      float qte_entrante, float qte_restante, String num_lot, Date date_peremption, String indication);
+	Produit createProduit(String nom, Date dateDel, String fournisseur, String projet, String respo, float qteEntr, String numLot, Date datePer, String indication);
 
-	Produit addProduit(Produit produit);
+	void update(Produit produit, String nom, Date dateDeliv, String fournisseur, String projet, String respo, float qteEntrante, float qteRestante, String numLot, Date datePeremp, String indication);
+
+	Produit save(Produit produit);
+
+	void delete(Produit produit);
 
 	List<Produit> findAllProduit();
 
-	Produit findProduitByNom(String nom);
+	Optional<Produit> findOne(long id);
 
-	void updateProduit(Produit produit);
+	List<String> findDistinctNames(String tag);
 
-	Produit newProduit();
+	List<String> findDistinctFournisseurs(String tag);
 
-	Produit findProduitById(Long id);
+	List<String> findDistinctProjets(String tag);
+
+	List<String> findDistinctResponsables(String tag);
 }

@@ -1,23 +1,20 @@
 package phenotypage.model.invitro.fecondation;
 
 import phenotypage.model.vache.Vache;
-
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
  * @author fabien
  */
 
 @Entity
-public class TableauSemence implements Serializable
+public class TableauSemence
 {
 	@Id
 	@GeneratedValue
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "id_Taureau", referencedColumnName = "id")
 	private Vache taureau;
 
 	@Column
@@ -27,21 +24,9 @@ public class TableauSemence implements Serializable
 	private float volume;
 
 	@Column
-	private String etatFrais;
+	private int etatFrais;
 
-	@ManyToOne
-	@JoinColumn(name = "id_Collecte", referencedColumnName = "id")
-	private Fecondation fecondation;
-
-	public TableauSemence()
-	{
-	}
-
-	public TableauSemence(Vache taureau, String numeroEjaculation)
-	{
-		this.taureau = taureau;
-		this.numeroEjaculation = numeroEjaculation;
-	}
+	public TableauSemence() {}
 
 	public Long getId()
 	{
@@ -73,16 +58,6 @@ public class TableauSemence implements Serializable
 		this.numeroEjaculation = semence;
 	}
 
-	public Fecondation getFecondation()
-	{
-		return fecondation;
-	}
-
-	public void setFecondation(Fecondation fecondation)
-	{
-		this.fecondation = fecondation;
-	}
-
 	public String getNumeroEjaculation()
 	{
 		return numeroEjaculation;
@@ -103,12 +78,12 @@ public class TableauSemence implements Serializable
 		this.volume = volume;
 	}
 
-	public String getEtatFrais()
+	public int getEtatFrais()
 	{
 		return etatFrais;
 	}
 
-	public void setEtatFrais(String etatFrais)
+	public void setEtatFrais(int etatFrais)
 	{
 		this.etatFrais = etatFrais;
 	}

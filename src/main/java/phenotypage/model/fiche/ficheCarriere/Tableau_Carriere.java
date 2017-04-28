@@ -1,15 +1,12 @@
 package phenotypage.model.fiche.ficheCarriere;
 
 import javax.persistence.*;
-
-import phenotypage.model.donneExistante.operateur.Operateur;
+import phenotypage.model.donneesExistantes.operateur.Operateur;
 import phenotypage.model.pharmacie.produit.Produit;
-
-import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class Tableau_Carriere implements Serializable
+public class Tableau_Carriere
 {
 	@Id
 	@GeneratedValue

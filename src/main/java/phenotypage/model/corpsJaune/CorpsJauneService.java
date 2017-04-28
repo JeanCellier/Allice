@@ -1,6 +1,6 @@
 package phenotypage.model.corpsJaune;
 
-import phenotypage.model.donneExistante.qualite.Qualite;
+import phenotypage.model.donneesExistantes.qualite.Qualite;
 
 import java.util.List;
 

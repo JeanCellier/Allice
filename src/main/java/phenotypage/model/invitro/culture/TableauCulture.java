@@ -35,6 +35,12 @@ public class TableauCulture
 	private int j5JM;
 
 	@Column
+	private int j6;
+
+	@Column
+	private int JB;
+
+	@Column
 	private int mo;
 
 	@Column
@@ -42,9 +48,6 @@ public class TableauCulture
 
 	@Column
 	private int be;
-
-	@Column
-	private int bec;
 
 	@Column
 	private int q1;
@@ -70,36 +73,9 @@ public class TableauCulture
 	@Column
 	private boolean siCryo;
 
-	@ManyToOne
-	@JoinColumn(name = "idCulture", referencedColumnName = "id")
-	private Culture culture;
+	private String destination;
 
-
-	public TableauCulture()
-	{
-	}
-
-	public TableauCulture(String groupe, int nbInsemine, int heureCulture, int nbSegmente, float segment, int j5JM, int mo, int bl, int be, int bec, int q1, int nbTotal, float pourJ7, float pourBEJ7, float pourQ1J7, int j8parNb, float pourJ8, boolean siCryo)
-	{
-		this.groupe = groupe;
-		this.nbInsemine = nbInsemine;
-		this.heureCulture = heureCulture;
-		this.nbSegmente = nbSegmente;
-		this.segment = segment;
-		this.j5JM = j5JM;
-		this.mo = mo;
-		this.bl = bl;
-		this.be = be;
-		this.bec = bec;
-		this.q1 = q1;
-		this.nbTotal = nbTotal;
-		this.pourJ7 = pourJ7;
-		this.pourBEJ7 = pourBEJ7;
-		this.pourQ1J7 = pourQ1J7;
-		this.J8parNb = j8parNb;
-		this.pourJ8 = pourJ8;
-		this.siCryo = siCryo;
-	}
+	public TableauCulture() {}
 
 	public Long getId()
 	{
@@ -201,16 +177,6 @@ public class TableauCulture
 		this.be = be;
 	}
 
-	public int getBec()
-	{
-		return bec;
-	}
-
-	public void setBec(int bec)
-	{
-		this.bec = bec;
-	}
-
 	public int getQ1()
 	{
 		return q1;
@@ -281,16 +247,6 @@ public class TableauCulture
 		this.minuteCulture = minuteCulture;
 	}
 
-	public Culture getCulture()
-	{
-		return culture;
-	}
-
-	public void setCulture(Culture culture)
-	{
-		this.culture = culture;
-	}
-
 	public boolean isSiCryo()
 	{
 		return siCryo;
@@ -309,5 +265,29 @@ public class TableauCulture
 	public void setPourJ8(float pourJ8)
 	{
 		this.pourJ8 = pourJ8;
+	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+
+	public int getJ6() {
+		return j6;
+	}
+
+	public void setJ6(int j6) {
+		this.j6 = j6;
+	}
+
+	public int getJB() {
+		return JB;
+	}
+
+	public void setJB(int JB) {
+		this.JB = JB;
 	}
 }

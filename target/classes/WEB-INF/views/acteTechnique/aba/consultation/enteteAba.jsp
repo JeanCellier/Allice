@@ -1,4 +1,4 @@
-	<sf:form method="post" modelAttribute="header" action="${nom}">
+	<sf:form method="post" modelAttribute="fiche" action="${nom}">
 		<fieldset>
 			<legend>En-t&#234te</legend>
 
@@ -23,7 +23,7 @@
 
 			<label for="operateur">Op&#233rateur :</label>
 			<sf:input path="operateur.prenom" name="operateur" disabled="true"
-			          value="${header.operateur.prenom} ${header.operateur.nom}"/>
+			          value="${fiche.operateur.prenom} ${fiche.operateur.nom}"/>
 
 			<label for="temperatureArrivee">T&#176 Arriv&#233e :</label>
 			<sf:input disabled="true" path="temperatureArrivee" type="number" size="2" maxlength="2"/>

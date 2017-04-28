@@ -25,7 +25,7 @@ FicheAbaServiceImpl implements FicheAbaService
 	@Override
 	public FicheAba createFichieAba(String nom)
 	{
-		return ficheAbaRepository.save(new FicheAba(nom));
+		return ficheAbaRepository.save(new FicheAba());
 	}
 
 	@Override
@@ -50,11 +50,5 @@ FicheAbaServiceImpl implements FicheAbaService
 	public long countFicheAba()
 	{
 		return ficheAbaRepository.count();
-	}
-
-	@Override
-	public List<FicheAba> findFicheAbaSNIG()
-	{
-		return ficheAbaRepository.findFicheAbaSNIG();
 	}
 }

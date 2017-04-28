@@ -1,20 +1,19 @@
 package phenotypage.model.cryoconservation;
 
-import phenotypage.model.donneExistante.cuve.Cuve;
-import phenotypage.model.donneExistante.cuve.canister.Canister;
-import phenotypage.model.donneExistante.cuve.visoTube.VisoTube;
-import phenotypage.model.donneExistante.qualite.Qualite;
-import phenotypage.model.donneExistante.stade.Stade;
+import phenotypage.model.donneesExistantes.cuve.Cuve;
+import phenotypage.model.donneesExistantes.cuve.canister.Canister;
+import phenotypage.model.donneesExistantes.cuve.visoTube.VisoTube;
+import phenotypage.model.donneesExistantes.qualite.Qualite;
+import phenotypage.model.donneesExistantes.stade.Stade;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
  * @author fabien
  */
 
 @Entity
-public class TableauDetail implements Serializable
+public class TableauDetail
 {
 	@Id
 	@GeneratedValue
@@ -23,27 +22,22 @@ public class TableauDetail implements Serializable
 	@Column
 	private int numeroEmbryon;
 
-	@Column
-	private int groupe;
-
 	@ManyToOne
-	@JoinColumn(name = "idStade", referencedColumnName = "id")
 	private Stade stade;
 
 	@ManyToOne
-	@JoinColumn(name = "idQualite", referencedColumnName = "id")
 	private Qualite qualite;
 
+	@Column
+	private boolean cryoconserve;
+
 	@ManyToOne
-	@JoinColumn(name = "idCuve", referencedColumnName = "id")
 	private Cuve cuve;
 
 	@ManyToOne
-	@JoinColumn(name = "idCanister", referencedColumnName = "id")
 	private Canister canister;
 
 	@ManyToOne
-	@JoinColumn(name = "idVisoTube", referencedColumnName = "id")
 	private VisoTube visoTube;
 
 	@Column
@@ -53,27 +47,18 @@ public class TableauDetail implements Serializable
 	private String numeroReceveuse;
 
 	@Column
+	private boolean frais;
+
+	@Column
+	private boolean detruit;
+
+	@Column
 	private String referenceTransfert;
 
 	@Column
 	private String remarque;
 
-	@ManyToOne
-	@JoinColumn(name = "idCryoconservation", referencedColumnName = "id")
-	private Cryoconservation cryoconservation;
-
-	public TableauDetail()
-	{
-	}
-
-	public TableauDetail(int numeroEmbryon, int groupe, Stade stade, String referenceTransfert, String remarque)
-	{
-		this.numeroEmbryon = numeroEmbryon;
-		this.groupe = groupe;
-		this.stade = stade;
-		this.referenceTransfert = referenceTransfert;
-		this.remarque = remarque;
-	}
+	public TableauDetail() {}
 
 	public Long getId()
 	{
@@ -93,16 +78,6 @@ public class TableauDetail implements Serializable
 	public void setNumeroEmbryon(int numeroEmbryon)
 	{
 		this.numeroEmbryon = numeroEmbryon;
-	}
-
-	public int getGroupe()
-	{
-		return groupe;
-	}
-
-	public void setGroupe(int groupe)
-	{
-		this.groupe = groupe;
 	}
 
 	public Stade getStade()
@@ -135,16 +110,6 @@ public class TableauDetail implements Serializable
 		this.remarque = remarque;
 	}
 
-	public Cryoconservation getCryoconservation()
-	{
-		return cryoconservation;
-	}
-
-	public void setCryoconservation(Cryoconservation cryoconservation)
-	{
-		this.cryoconservation = cryoconservation;
-	}
-
 	public Qualite getQualite()
 	{
 		return qualite;
@@ -153,6 +118,14 @@ public class TableauDetail implements Serializable
 	public void setQualite(Qualite qualite)
 	{
 		this.qualite = qualite;
+	}
+
+	public boolean isCryoconserve() {
+		return cryoconserve;
+	}
+
+	public void setCryoconserve(boolean cryoconserve) {
+		this.cryoconserve = cryoconserve;
 	}
 
 	public Cuve getCuve()
@@ -203,5 +176,21 @@ public class TableauDetail implements Serializable
 	public void setNumeroReceveuse(String numeroReceveuse)
 	{
 		this.numeroReceveuse = numeroReceveuse;
+	}
+
+	public boolean isFrais() {
+		return frais;
+	}
+
+	public void setFrais(boolean frais) {
+		this.frais = frais;
+	}
+
+	public boolean isDetruit() {
+		return detruit;
+	}
+
+	public void setDetruit(boolean detruit) {
+		this.detruit = detruit;
 	}
 }

@@ -1,9 +1,7 @@
 package phenotypage.model.milieuMaturation;
 
-import phenotypage.model.informationsPIV.Informations_PIV;
-
 import javax.persistence.*;
-import java.util.List;
+
 
 /**
  * @author fabien
@@ -22,18 +20,7 @@ public class MilieuMaturation
 	@Column
 	private String numeroLot;
 
-	@OneToMany(mappedBy = "milieuMaturation")
-	private List<Informations_PIV> informations_pivList;
-
-	public MilieuMaturation()
-	{
-	}
-
-	public MilieuMaturation(String nom, String numeroLot)
-	{
-		this.nom = nom;
-		this.numeroLot = numeroLot;
-	}
+	public MilieuMaturation(){}
 
 	public Long getId()
 	{
@@ -63,15 +50,5 @@ public class MilieuMaturation
 	public void setNumeroLot(String numeroLot)
 	{
 		this.numeroLot = numeroLot;
-	}
-
-	public List<Informations_PIV> getInformations_pivList()
-	{
-		return informations_pivList;
-	}
-
-	public void setInformations_pivList(List<Informations_PIV> informations_pivList)
-	{
-		this.informations_pivList = informations_pivList;
 	}
 }
