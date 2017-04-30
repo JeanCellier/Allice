@@ -18,13 +18,9 @@ public class EmbryonsTransferesServiceImpl implements EmbryonsTransferesService
 	@Override
 	public EmbryonsTransferes createEmbryonsTransferes(boolean semenceSexee, String refExperience, String refEmbryons, Vache taureau, char cote, String emplacementColUterine, String faciliteProgression) {
 		EmbryonsTransferes embryonsTransferes = new EmbryonsTransferes();
-		embryonsTransferes.setSemenceSexee(semenceSexee);
-		embryonsTransferes.setRefExperience(refExperience);
 		embryonsTransferes.setRefEmbryons(refEmbryons);
-		embryonsTransferes.setTaureau(taureau);
 		embryonsTransferes.setCote(cote);
 		embryonsTransferes.setEmplacementColUterine(emplacementColUterine);
-		embryonsTransferes.setFaciliteprogression(faciliteProgression);
 
 		return save(embryonsTransferes);
 	}
@@ -47,13 +43,9 @@ public class EmbryonsTransferesServiceImpl implements EmbryonsTransferesService
 
 	@Override
 	public EmbryonsTransferes update(EmbryonsTransferes embryonsTransferes, boolean semenceSexee, String refExperience, String refEmbryons, Vache taureau, char cote, String emplacementColUterine, String faciliteprogression) {
-		embryonsTransferes.setSemenceSexee(semenceSexee);
-		embryonsTransferes.setRefExperience(refExperience);
 		embryonsTransferes.setRefEmbryons(refEmbryons);
-		embryonsTransferes.setTaureau(taureau);
 		embryonsTransferes.setCote(cote);
 		embryonsTransferes.setEmplacementColUterine(emplacementColUterine);
-		embryonsTransferes.setFaciliteprogression(faciliteprogression);
 
 		return save(embryonsTransferes);
 	}

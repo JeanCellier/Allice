@@ -60,7 +60,7 @@
                             </div>
 
                             <div class="step2 frm" style="display: none;">
-                                <fieldset name="traitement">
+                                <fieldset name="traitementActe">
                                     <legend>&Eacute;tape 2/4  -  INSEMINATION</legend>
 
                                     <div class="form-group col-sm-11 col-xs-11" style="padding-left:0">
@@ -111,7 +111,7 @@
                             </div>
 
                             <div class="step3 frm" style="display: none;">
-                                <fieldset name="traitement">
+                                <fieldset name="traitementActe">
                                     <legend>&Eacute;tape 3/4  -  TRAITEMENT FEMELLE</legend>
 
                                     <div class="form-group">
@@ -137,7 +137,7 @@
                                             <input class="form-control" name="quantite[]" type="number" placeholder="Quantite">
                                         </div>
                                         <div class="form-group col-sm-3">
-                                            <input class="form-control" name="modeTraitement[]" type="text" placeholder="Mode de traitement">
+                                            <input class="form-control" name="modeTraitement[]" type="text" placeholder="Mode de traitementActe">
                                         </div>
                                     </div>
 
@@ -275,7 +275,7 @@
 
     /****** function reinit fiche ******/
     function reinitForm(form){
-        form.find('.tabTraitement').not(':first').remove(); //garde juste une ligne dans le tableau de traitement
+        form.find('.tabTraitement').not(':first').remove(); //garde juste une ligne dans le tableau de traitement_acte
         form.find('.tabGestation').not(':first').remove();
 
         // reinit formulaire
@@ -476,7 +476,7 @@
         });
     });
 
-    /******* Ajoute une ligne tableau traitement donneuse ******/
+    /******* Ajoute une ligne tableau traitement_acte donneuse ******/
     $(document).on( 'click', ".addTabTraitement", function(){
         $template = $('#tabTraitement');
         $clone = $template.clone().removeAttr('id');
@@ -537,7 +537,7 @@
                         $activeTab.find("input[name='optradioSexee'][value='non']").prop('checked', true);
                     }
 
-                    //remplit tableau traitement donneuse
+                    //remplit tableau traitement_acte donneuse
                     for(iLigne = 0; iLigne < result.objet.traitement_donneuse.tableauDonneuse.length; iLigne++)
                     {
                         if(iLigne == 0){

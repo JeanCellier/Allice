@@ -87,7 +87,7 @@ FicheTraServiceImpl implements FicheTraService
 		ficheTraForUpdate.setTraitement_donneuse(traitement_donneuseService.createTraitement_Donneuse(traitement_donneuse));
 		ficheTraForUpdate.setGestation(gestationService.createGestation(gestation));
 
-		ficheTraForUpdate.setEmbryonsTransferes(embryonsTransferesService.update(ficheTraForUpdate.getEmbryonsTransferes(), embryonsTransferes.isSemenceSexee(), embryonsTransferes.getRefExperience(), embryonsTransferes.getRefEmbryons(), embryonsTransferes.getTaureau(), embryonsTransferes.getCote(), embryonsTransferes.getEmplacementColUterine(), embryonsTransferes.getFaciliteprogression()));
+//		ficheTraForUpdate.setEmbryonsTransferes(embryonsTransferesService.update(ficheTraForUpdate.getEmbryonsTransferes(), embryonsTransferes.isSemenceSexee(), embryonsTransferes.getRefExperience(), embryonsTransferes.getRefEmbryons(), embryonsTransferes.getTaureau(), embryonsTransferes.getCote(), embryonsTransferes.getEmplacementColUterine(), embryonsTransferes.getFaciliteprogression()));
 		ficheTraForUpdate.setCorpsJaune(corpsJauneService.update(ficheTraForUpdate.getCorpsJaune(), corpsJaune.getMode_evaluation(), corpsJaune.getQualite(), corpsJaune.getCoteCorpsJaune()));
 
 		gestationService.delete(gestationToDelete);

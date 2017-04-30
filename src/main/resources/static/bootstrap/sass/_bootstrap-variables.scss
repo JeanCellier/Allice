@@ -895,3 +895,13 @@ $pagination-active-border:             darken($grey-body, 40%);
  }
  margin-bottom: 40px;
 }
+
+.traitementLink{
+ text-decoration:none !important;
+ font-size: 18px;
+ color: $green-primary !important;
+ font-weight: bold;
+ &:hover{
+  color: darken($green-primary, 8%) !important;
+ }
+}

@@ -58,6 +58,22 @@ public class TraController {
     }
 
     /******************** ADD OR UPDATE FICHE ********************/
+    @RequestMapping(value = "/addOrUpdatePart1", method = RequestMethod.POST)
+    public void addOrUpdatePart1(@RequestParam("nom") String nom, @RequestParam(value="programme", required = false) Programme programme,
+                                 @RequestParam("numAgrement") String numAgrement, @RequestParam("lieu") String lieu, @RequestParam(value="date", required = false) String date,
+                                 @RequestParam(value="operateur", required = false) Operateur operateur, @RequestParam("vache") Vache vache){
+
+        SimpleDateFormat formatterDateTime = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+
+        try {
+            Date dateFiche = formatterDateTime.parse(date);
+            ficheTraService.createFicheTra(nom, programme, dateFiche, numAgrement, lieu, operateur, vache, null, null, null, null);
+        }catch (ParseException e) {
+            ficheTraService.createFicheTra(nom, programme, null, numAgrement, lieu, operateur, vache, null, null, null, null);
+        }
+    }
+
+
     @ResponseBody
     @RequestMapping(value = "/addOrUpdate", method = RequestMethod.POST)
     public JsonResponse addOrUpdate(@RequestParam(value="id", required = false) FicheTra ficheTraForUpdate, @RequestParam("nom") String nom, @RequestParam("programme") Programme programme,
@@ -90,7 +106,7 @@ public class TraController {
                 tableauDonneuse.setDate(dateTraitementParsee);
             }catch (ParseException e) {
                 response.setSucces(false);
-                response.setMessage("Une ou plusieurs dates concernant le traitement sont invalides");
+                response.setMessage("Une ou plusieurs dates concernant le traitement_acte sont invalides");
             }
 
             tableauDonneuse.setProduit(produit[iLigneTraitement]);
@@ -119,21 +135,21 @@ public class TraController {
 
         /****** CREATION EMBRYONS TRANSFERES ******/
         EmbryonsTransferes embryonsTransferes = new EmbryonsTransferes();
-        embryonsTransferes.setRefExperience(referenceExperience);
-        if(Objects.equals(optradioSexee, "oui")){
-            embryonsTransferes.setSemenceSexee(true);
-        }else{
-            embryonsTransferes.setSemenceSexee(false);
-        }
-        embryonsTransferes.setRefEmbryons(numEmbryon);
-        embryonsTransferes.setTaureau(vacheEmbryon);
+//        embryonsTransferes.setRefExperience(referenceExperience);
+//        if(Objects.equals(optradioSexee, "oui")){
+//            embryonsTransferes.setSemenceSexee(true);
+//        }else{
+//            embryonsTransferes.setSemenceSexee(false);
+//        }
+//        embryonsTransferes.setRefEmbryons(numEmbryon);
+//        embryonsTransferes.setTaureau(vacheEmbryon);
         if(Objects.equals(optradioCoteTransf, "droit")){
             embryonsTransferes.setCote('D');
         }else{
             embryonsTransferes.setCote('G');
         }
         embryonsTransferes.setEmplacementColUterine(emplacementCorne);
-        embryonsTransferes.setFaciliteprogression(faciliteProgression);
+//        embryonsTransferes.setFaciliteprogression(faciliteProgression);
 
 
         /****** CREATION GESTATION ******/

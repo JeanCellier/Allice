@@ -94,7 +94,7 @@ public class IaController {
                 tableauDonneuse.setDate(dateTraitementParsee);
             }catch (ParseException e) {
                 response.setSucces(false);
-                response.setMessage("Une ou plusieurs dates concernant le traitement sont invalides");
+                response.setMessage("Une ou plusieurs dates concernant le traitement_acte sont invalides");
             }
 
             tableauDonneuse.setProduit(produit[iLigneTraitement]);

@@ -1,3 +1,4 @@
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="../../header.jsp" %>
 
 <main class="col-sm-9 col-md-10">
@@ -21,8 +22,8 @@
                         <td>Date</td>
                         <td>Num&eacutero d'agr&eacutement</td>
                         <td>lieu</td>
-                        <td>Op&eacuterateur</td>
                         <td>Vache</td>
+                        <td>Num&eacutero de travail</td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -36,8 +37,8 @@
                         <td><fmt:formatDate pattern="dd/MM/yyyy" value="${fichesTra.dateHeureMinute}" /></td>
                         <td>${fichesTra.numeroAgrement}</td>
                         <td>${fichesTra.lieu}</td>
-                        <td>${fichesTra.operateur.nom} ${fichesTra.operateur.prenom}</td>
                         <td>${fichesTra.vache.num_identification}</td>
+                        <td>${fn:substring(fichesTra.vache.num_identification, 8, 12)}</td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Details"><button class="btn btn-primary btn-md btnDetails" data-title="details" data-id="<c:out value='${fichesTra.id}' />" data-toggle="modal" data-target="#details" ><span class="glyphicon glyphicon-search"></span></button></p></td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="<c:out value='${fichesTra.id}' />" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/<c:out value='${fichesTra.id}'/>" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
@@ -121,8 +122,8 @@
             "<td>" + convertDate(dateFiche) + "</td>",
             "<td>" + result.objet.numeroAgrement + "</td>",
             "<td>" + result.objet.lieu + "</td>",
-            "<td>" + result.objet.operateur.nom +" "+ result.objet.operateur.prenom + "</td>",
             "<td>" + result.objet.vache.num_identification + "</td>",
+            "<td>" + result.objet.vache.num_identification.substr(result.objet.vache.num_identification.length - 4) + "</td>",
 
             '<td><p data-placement="top" data-toggle="tooltip" title="Details"><button class="btn btn-primary btn-md btnDetails" data-title="details" data-id="' + result.objet.id + '" data-toggle="modal" data-target="#details" ><span class="glyphicon glyphicon-search"></span></button></p></td>',
             '<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="' + result.objet.id + '" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>',
