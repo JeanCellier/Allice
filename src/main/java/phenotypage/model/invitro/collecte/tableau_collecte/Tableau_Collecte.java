@@ -1,6 +1,7 @@
 package phenotypage.model.invitro.collecte.tableau_collecte;
 
 import phenotypage.model.vache.Vache;
+
 import javax.persistence.*;
 import java.sql.Time;
 

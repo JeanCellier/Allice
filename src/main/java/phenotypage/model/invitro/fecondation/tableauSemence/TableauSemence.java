@@ -1,6 +1,7 @@
 package phenotypage.model.invitro.fecondation.tableauSemence;
 
 import phenotypage.model.vache.Vache;
+
 import javax.persistence.*;
 
 /**

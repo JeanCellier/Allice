@@ -1,6 +1,7 @@
 package phenotypage.model.fiche.ficheCarriere;
 
 import phenotypage.model.vache.Vache;
+
 import java.util.List;
 import javax.persistence.*;
 

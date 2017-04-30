@@ -9,6 +9,7 @@ import phenotypage.model.fiche.ficheCol.tableauTraitement.TableauTraitement;
 import phenotypage.model.infoTraitementDonneuse.InfoTraitementDonneuse;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
 import phenotypage.model.vache.Vache;
+
 import javax.persistence.*;
 import java.util.List;
 

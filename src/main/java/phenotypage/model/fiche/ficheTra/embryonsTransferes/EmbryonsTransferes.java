@@ -1,7 +1,8 @@
 package phenotypage.model.fiche.ficheTra.embryonsTransferes;
 
-import javax.persistence.*;
 import phenotypage.model.vache.Vache;
+
+import javax.persistence.*;
 
 /**
  * @author fabien

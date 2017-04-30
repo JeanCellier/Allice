@@ -351,42 +351,42 @@
     });
 
     /****** Navigation d'étape ******/
-    $(document).on( 'click', ".open1", function(){
+    $(document).on( 'click', ".open1", function(event){
         $(event.target).closest('form').find(".frm").hide("fast");
         $(event.target).closest('form').find(".step2").show("slow");
     });
 
-    $(document).on( 'click', ".open2", function(){
+    $(document).on( 'click', ".open2", function(event){
         $(event.target).closest('form').find(".frm").hide("fast");
         $(event.target).closest('form').find(".step3").show("slow");
     });
 
-    $(document).on( 'click', ".back2", function(){
+    $(document).on( 'click', ".back2", function(event){
         $(event.target).closest('form').find(".frm").hide("fast");
         $(event.target).closest('form').find(".step1").show("slow");
     });
 
-    $(document).on( 'click', ".open3", function(){
+    $(document).on( 'click', ".open3", function(event){
         $(event.target).closest('form').find(".frm").hide("fast");
         $(event.target).closest('form').find(".step4").show("slow");
     });
 
-    $(document).on( 'click', ".back3", function(){
+    $(document).on( 'click', ".back3", function(event){
         $(event.target).closest('form').find(".frm").hide("fast");
         $(event.target).closest('form').find(".step2").show("slow");
     });
 
-    $(document).on( 'click', ".open4", function(){
+    $(document).on( 'click', ".open4", function(event){
         $(event.target).closest('form').find(".frm").hide("fast");
         $(event.target).closest('form').find(".step5").show("slow");
     });
 
-    $(document).on( 'click', ".back4", function(){
+    $(document).on( 'click', ".back4", function(event){
         $(event.target).closest('form').find(".frm").hide("fast");
         $(event.target).closest('form').find(".step3").show("slow");
     });
 
-    $(document).on( 'click', ".back5", function(){
+    $(document).on( 'click', ".back5", function(event){
         $(event.target).closest('form').find(".frm").hide("fast");
         $(event.target).closest('form').find(".step4").show("slow");
     });

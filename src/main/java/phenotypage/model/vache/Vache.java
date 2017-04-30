@@ -11,7 +11,7 @@ public class Vache
 	private Long id;
 
 	@Column
-	private boolean present;
+	private Boolean present;
 
 	@Column
 	private String proprietaire;
@@ -26,10 +26,10 @@ public class Vache
 	private String num_identification; // == num national
 
 	@Column
-	private int race;
+	private Integer race;
 
 	@Column
-	private char sexe; //F = femelle M = male
+	private Character sexe; //F = femelle M = male
 
 	@Column
 	private Date dateNaissance;
@@ -38,7 +38,7 @@ public class Vache
 	private String parite;
 
 	@Column
-	private float ageMois;
+	private Float ageMois;
 
 	@Column
 	private String numPere;
