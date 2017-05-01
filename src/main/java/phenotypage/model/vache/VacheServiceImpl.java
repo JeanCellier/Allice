@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author fabien
@@ -60,8 +61,13 @@ public class VacheServiceImpl implements VacheService
 	}
 
 	@Override
-	public Vache findByNum_identification(String num_identification)
+	public Optional<Vache> findByNum_identification(String num_identification)
 	{
-		return vacheRepository.findBynum_identification(num_identification);
+		return Optional.ofNullable(vacheRepository.findBynum_identification(num_identification));
+	}
+
+	@Override
+	public List<String> findNumIdByNumTravail(String tag) {
+		return vacheRepository.findNumIdByNumTravail(tag);
 	}
 }

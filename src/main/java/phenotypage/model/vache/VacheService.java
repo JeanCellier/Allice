@@ -2,6 +2,7 @@ package phenotypage.model.vache;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author fabien
@@ -18,5 +19,7 @@ public interface VacheService
 
 	Vache newVache();
 
-	Vache findByNum_identification(String num_identification);
+	Optional<Vache> findByNum_identification(String num_identification);
+
+    List<String> findNumIdByNumTravail(String tag);
 }

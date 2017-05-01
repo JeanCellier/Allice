@@ -526,7 +526,7 @@
                     $activeTab.find( "input[name='lieuSemence']" ).val(result.objet.insemination.lieuDepot);
                     $activeTab.find( "input[name='facilite']" ).val(result.objet.insemination.progression);
                     $activeTab.find( "input[name='typeChaleur']" ).val(result.objet.traitement_donneuse.typeChaleur);
-//                    $activeTab.find( "input[name='chaleurDetection']" ).val(result.objet.traitement_donneuse.typeChaleur);
+                    $activeTab.find( "input[name='chaleurDetection']" ).val(result.objet.traitement_donneuse.typeChaleur);
                     $activeTab.find( "textarea[name='remarques']" ).val(result.objet.gestation.remarques);
                     $activeTab.find("input[name='date']").data("DateTimePicker").date(new Date(result.objet.dateHeureMinute));
 

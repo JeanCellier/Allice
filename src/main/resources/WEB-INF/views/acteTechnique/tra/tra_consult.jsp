@@ -7,7 +7,7 @@
     <div class="row placeholders">
         <div class="col-sm-1 col-md-1">
             <p data-placement="top" data-toggle="tooltip" title="add"  style="padding-left:15px;padding-top:10px">
-                <button class="btn btn-primary btn-md" data-title="Add" data-toggle="modal" data-target="#add" >
+                <button class="btn btn-primary btn-md" id="addFiche" data-title="Add" data-toggle="modal" data-target="#add" >
                     <span class="fa fa-plus"> Ajouter</span>
                 </button>
             </p>
@@ -86,6 +86,52 @@
 <script>
     var currentrow; //la row courante à edit ou delete
 
+    /** function change nom fiche **/
+    function changeNom(tab){
+        var date = new Date().getFullYear();
+        var num;
+        if(tab.attr('id') == 'fiche_01') {  //si c'est la 1ère fiche
+            $.ajax({
+                url: "./get/lastName",
+                type: 'GET',
+                success: function (result) {
+                    if(result != "") {
+                        num = parseInt(result.substr(5)) + 1;
+                        if (num < 10) {
+                            numString = '000' + num;
+                        } else if (num >= 10 && num < 100) {
+                            numString = '00' + num;
+                        } else {
+                            numString = '0' + num;
+                        }
+                        nom = date.toString().substr(2, 4) + 'TRA' + numString;
+                        tab.find("input[name='nom']").val(nom);
+                        $("li.active.tab").children('a').text(nom);
+                    }
+                },
+            });
+        }else{ //si le nom doit être récupéré sur les fiches précédentes
+            num = parseInt(($('.tab-pane.add').last().find("input[name='nom']").val()).substr(5)) + 1;
+            if (num < 10) {
+                numString = '000' + num;
+            } else if (num >= 10 && num < 100) {
+                numString = '00' + num;
+            } else {
+                numString = '0' + num;
+            }
+            nom = date.toString().substr(2, 4) + 'TRA' + numString;
+            tab.find("input[name='nom']").val(nom);
+
+            $('a[href="#'+tab.attr("id")+'"]').text(nom);
+        }
+    }
+
+    $(document).on('click', '#addFiche', function(e) { //au clic sur le bouton supprimer
+        if($('#fiche_01').find("input[name='nom']").val() ==''){
+            changeNom($('#fiche_01'));
+        }
+    });
+
     /** function convertion des dates */
     function convertDate(inputFormat) {
         function pad(s) { return (s < 10) ? '0' + s : s; }
@@ -113,13 +159,23 @@
     /** function addRow */
     function addRow(result) {
         //converti date bon format
-        var dateFiche = new Date(result.objet.dateHeureMinute);
+        if(result.objet.dateHeureMinute != null) {
+            var dateFiche = convertDate(new Date(result.objet.dateHeureMinute));
+        }else{
+            var dateFiche = "";
+        }
+
+        if(result.objet.programme != null){
+            var nomProgramme = result.objet.programme.nom;
+        }else{
+            var nomProgramme = "";
+        }
 
         /** ajoute une ligne à la table */
         $('#tableActes').DataTable().row.add([
             "<td>" + result.objet.nom + "</td>",
-            "<td>" + result.objet.programme.nom + "</td>",
-            "<td>" + convertDate(dateFiche) + "</td>",
+            "<td>" + nomProgramme + "</td>",
+            "<td>" + dateFiche + "</td>",
             "<td>" + result.objet.numeroAgrement + "</td>",
             "<td>" + result.objet.lieu + "</td>",
             "<td>" + result.objet.vache.num_identification + "</td>",

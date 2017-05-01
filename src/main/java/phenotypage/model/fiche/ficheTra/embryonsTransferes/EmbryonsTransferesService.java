@@ -7,7 +7,7 @@ import phenotypage.model.vache.Vache;
  */
 public interface EmbryonsTransferesService
 {
-	EmbryonsTransferes createEmbryonsTransferes(boolean semenSexee, String refExperience, String refEmbryons, Vache taureau, char cote, String emplacementColUterine, String faciliteProgression);
+	EmbryonsTransferes createEmbryonsTransferes(String refEmbryons, char cote, String emplacementColUterine, int faciliteProgression);
 
 	EmbryonsTransferes createEmbryonsTransferes(EmbryonsTransferes embryonsTransferes);
 
@@ -15,5 +15,5 @@ public interface EmbryonsTransferesService
 
 	EmbryonsTransferes save(EmbryonsTransferes embryonsTransferes);
 
-	EmbryonsTransferes update(EmbryonsTransferes embryonsTransferes, boolean semenceSexee, String refExperience, String refEmbryons, Vache taureau, char cote, String emplacementColUterine, String faciliteprogression);
+	EmbryonsTransferes update(EmbryonsTransferes embryonsTransferes, String refEmbryons, char cote, String emplacementColUterine, int faciliteprogression);
 }

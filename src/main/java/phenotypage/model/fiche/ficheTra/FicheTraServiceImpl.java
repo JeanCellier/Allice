@@ -15,6 +15,7 @@ import phenotypage.model.traitementDonneuse.Traitement_DonneuseService;
 import phenotypage.model.vache.Vache;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -50,14 +51,28 @@ FicheTraServiceImpl implements FicheTraService
 	@Override
 	public FicheTra createFicheTra(String nom, Programme programme, Date date, String numAgrement, String lieu,
 							   Operateur operateur, Vache vache, Traitement_Donneuse traitementDonneuse,
-							   CorpsJaune corpsJaune, EmbryonsTransferes embryonsTransferes, Gestation gestation) {
-
-		Traitement_Donneuse traitement = traitement_donneuseService.createTraitement_Donneuse(traitementDonneuse);
-		CorpsJaune corpsJauneSave = corpsJauneService.createCorpsJaune(corpsJaune);
-		EmbryonsTransferes embryonSave = embryonsTransferesService.createEmbryonsTransferes(embryonsTransferes);
-		Gestation gestationSave = gestationService.createGestation(gestation);
+							   CorpsJaune corpsJaune, EmbryonsTransferes embryonsTransferes, Gestation gestation, int statut) {
 
 		FicheTra ficheTra = new FicheTra();
+
+		ficheTra.setStatut(statut);
+		if(traitementDonneuse != null) {
+			Traitement_Donneuse traitement = traitement_donneuseService.createTraitement_Donneuse(traitementDonneuse);
+			ficheTra.setTraitement_donneuse(traitement);
+		}
+		if(traitementDonneuse != null) {
+			CorpsJaune corpsJauneSave = corpsJauneService.createCorpsJaune(corpsJaune);
+			ficheTra.setCorpsJaune(corpsJauneSave);
+		}
+		if(traitementDonneuse != null) {
+			EmbryonsTransferes embryonSave = embryonsTransferesService.createEmbryonsTransferes(embryonsTransferes);
+			ficheTra.setEmbryonsTransferes(embryonSave);
+		}
+		if(traitementDonneuse != null) {
+			Gestation gestationSave = gestationService.createGestation(gestation);
+			ficheTra.setGestation(gestationSave);
+		}
+
 		ficheTra.setNom(nom);
 		ficheTra.setProgramme(programme);
 		ficheTra.setDateHeureMinute(date);
@@ -65,18 +80,41 @@ FicheTraServiceImpl implements FicheTraService
 		ficheTra.setLieu(lieu);
 		ficheTra.setOperateur(operateur);
 		ficheTra.setVache(vache);
-		ficheTra.setTraitement_donneuse(traitement);
-		ficheTra.setCorpsJaune(corpsJauneSave);
-		ficheTra.setEmbryonsTransferes(embryonSave);
-		ficheTra.setGestation(gestationSave);
 
 		return save(ficheTra);
 	}
 
 	@Override
-	public FicheTra updateFicheTra(FicheTra ficheTraForUpdate, String nom, Programme programme, Date dateFiche, String numAgrement, String lieu, Operateur operateur, Vache vache, Traitement_Donneuse traitement_donneuse, CorpsJaune corpsJaune, EmbryonsTransferes embryonsTransferes, Gestation gestation) {
-		Traitement_Donneuse traitementDonneuseToDelete = ficheTraForUpdate.getTraitement_donneuse();
-		Gestation gestationToDelete = ficheTraForUpdate.getGestation();
+	public FicheTra updateFicheTra(FicheTra ficheTraForUpdate, String nom, Programme programme, Date dateFiche,
+								   String numAgrement, String lieu, Operateur operateur, Vache vache,
+								   Traitement_Donneuse traitement_donneuse, CorpsJaune corpsJaune,
+								   EmbryonsTransferes embryonsTransferes, Gestation gestation, int statut) {
+
+		if(traitement_donneuse != null){
+			if(ficheTraForUpdate.getTraitement_donneuse() != null) {
+				if (!Objects.equals(traitement_donneuse.getId(), ficheTraForUpdate.getTraitement_donneuse().getId())) {
+					Traitement_Donneuse traitementDonneuseToDelete = ficheTraForUpdate.getTraitement_donneuse();
+					ficheTraForUpdate.setTraitement_donneuse(traitement_donneuseService.createTraitement_Donneuse(traitement_donneuse));
+					traitement_donneuseService.delete(traitementDonneuseToDelete);
+				}
+			}else{
+				ficheTraForUpdate.setTraitement_donneuse(traitement_donneuseService.createTraitement_Donneuse(traitement_donneuse));
+			}
+		}
+
+		if(gestation != null){
+			if(ficheTraForUpdate.getGestation() != null) {
+				if (!Objects.equals(gestation.getId(), ficheTraForUpdate.getGestation().getId())) {
+					Gestation gestationToDelete = ficheTraForUpdate.getGestation();
+					ficheTraForUpdate.setGestation(gestationService.createGestation(gestation));
+					gestationService.delete(gestationToDelete);
+				}
+			}else{
+				ficheTraForUpdate.setGestation(gestationService.createGestation(gestation));
+			}
+		}
+
+		ficheTraForUpdate.setStatut(statut);
 		ficheTraForUpdate.setNom(nom);
 		ficheTraForUpdate.setProgramme(programme);
 		ficheTraForUpdate.setDateHeureMinute(dateFiche);
@@ -84,14 +122,22 @@ FicheTraServiceImpl implements FicheTraService
 		ficheTraForUpdate.setLieu(lieu);
 		ficheTraForUpdate.setOperateur(operateur);
 		ficheTraForUpdate.setVache(vache);
-		ficheTraForUpdate.setTraitement_donneuse(traitement_donneuseService.createTraitement_Donneuse(traitement_donneuse));
-		ficheTraForUpdate.setGestation(gestationService.createGestation(gestation));
 
-//		ficheTraForUpdate.setEmbryonsTransferes(embryonsTransferesService.update(ficheTraForUpdate.getEmbryonsTransferes(), embryonsTransferes.isSemenceSexee(), embryonsTransferes.getRefExperience(), embryonsTransferes.getRefEmbryons(), embryonsTransferes.getTaureau(), embryonsTransferes.getCote(), embryonsTransferes.getEmplacementColUterine(), embryonsTransferes.getFaciliteprogression()));
-		ficheTraForUpdate.setCorpsJaune(corpsJauneService.update(ficheTraForUpdate.getCorpsJaune(), corpsJaune.getMode_evaluation(), corpsJaune.getQualite(), corpsJaune.getCoteCorpsJaune()));
+		if(embryonsTransferes != null) {
+			if (ficheTraForUpdate.getEmbryonsTransferes() != null) {
+				ficheTraForUpdate.setEmbryonsTransferes(embryonsTransferesService.update(ficheTraForUpdate.getEmbryonsTransferes(), embryonsTransferes.getRefEmbryons(), embryonsTransferes.getCote(), embryonsTransferes.getEmplacementColUterine(), embryonsTransferes.getFaciliteprogression()));
+			} else {
+				ficheTraForUpdate.setEmbryonsTransferes(embryonsTransferesService.createEmbryonsTransferes(embryonsTransferes));
+			}
+		}
 
-		gestationService.delete(gestationToDelete);
-		traitement_donneuseService.delete(traitementDonneuseToDelete);
+		if(corpsJaune != null) {
+			if (ficheTraForUpdate.getCorpsJaune() != null) {
+				ficheTraForUpdate.setCorpsJaune(corpsJauneService.update(ficheTraForUpdate.getCorpsJaune(), corpsJaune.getMode_evaluation(), corpsJaune.getQualite(), corpsJaune.getCoteCorpsJaune()));
+			} else {
+				ficheTraForUpdate.setCorpsJaune(corpsJauneService.createCorpsJaune(corpsJaune));
+			}
+		}
 
 		return save(ficheTraForUpdate);
 	}
@@ -109,6 +155,11 @@ FicheTraServiceImpl implements FicheTraService
 	@Override
 	public FicheTra save(FicheTra ficheTra) {
 		return repository.save(ficheTra);
+	}
+
+	@Override
+	public FicheTra findTopByOrderByNomDesc() {
+		return repository.findTopByOrderByNomDesc();
 	}
 
 

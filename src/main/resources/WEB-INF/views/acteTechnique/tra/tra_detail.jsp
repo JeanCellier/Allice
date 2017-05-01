@@ -97,20 +97,8 @@
                 <div class="row details">
                     <fieldset>
                         <legend>Embryon(s) transf&eacute;r&eacute;(s)</legend>
-                        <div class="col-sm-6">
-                            <label>R&eacute;f&eacute;rence exp&eacute;rience production d'embryon(s) : </label><span id="refExperience"></span>
-                        </div>
-                        <div class="col-sm-2">
-                            <label>Semence sex&eacute;e : </label><span id="semenceSexee"></span>
-                        </div>
                         <div class="col-sm-4">
                             <label>&#8470; embryon : </label><span id="numEmbryon"></span>
-                        </div>
-                        <div class="col-sm-3">
-                            <label>Race taureau : </label><span id="raceTaureau"></span>
-                        </div>
-                        <div class="col-sm-4">
-                            <label>&#8470; taureau : </label><span id="numTaureau"></span>
                         </div>
                         <div class="col-sm-3">
                             <label>Cot&eacute; transfert : </label><span id="coteTransfert"></span>
@@ -131,11 +119,11 @@
                         <div class="col-sm-10 col-sm-offset-1 tableDetails">
                             <table id="tableGestation" class="table table-hover table-striped">
                                 <thead>
-                                <tr>
-                                    <th>Nom</th>
-                                    <th>M&eacutethode</th>
-                                    <th>Fournisseur</th>
-                                </tr>
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>M&eacutethode</th>
+                                        <th>R&eacutesultat</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                 </tbody>
@@ -168,31 +156,52 @@
             method: 'GET',
             success: function (result) {
                 if(result.succes == true) {
+                    if(result.objet.programme != null){
+                        var nomProgramme = result.objet.programme.nom;
+                    }else{
+                        var nomProgramme = "";
+                    }
+                    if(result.objet.operateur != null){
+                        var nomOperateur = result.objet.operateur.nom+' '+result.objet.operateur.prenom;
+                    }else{
+                        var nomOperateur = "";
+                    }
+
                     $('#details')
                         .find('#HeadingDetails').text(' D\u00e9tails de la fiche '+result.objet.nom).end()
-                        .find('#programme').text(' '+result.objet.programme.nom).end()
+                        .find('#programme').text(' '+nomProgramme).end()
                         .find('#numAgrement').text(' '+result.objet.numeroAgrement).end()
                         .find('#lieu').text(' '+result.objet.lieu).end()
                         .find('#date').text(' '+convertDateWithTime(result.objet.dateHeureMinute)).end()
-                        .find('#operateur').text(' '+result.objet.operateur.nom+' '+result.objet.operateur.prenom).end()
+                        .find('#operateur').text(' '+nomOperateur).end()
                         .find('#proprietaire').text(' '+result.objet.vache.proprietaire).end()
                         .find('#numElevage').text(' '+result.objet.vache.num_elevage).end()
                         .find('#numIdentification').text(' '+result.objet.vache.num_identification).end()
                         .find('#numTravail').text(' '+result.objet.vache.num_identification.substr(result.objet.vache.num_identification.length - 4)).end()
                         .find('#race').text(' '+result.objet.vache.race).end()
-                        .find('#parite').text(' '+result.objet.vache.parite).end()
-                        .find('#dateChaleur').text(' '+convertDate(result.objet.traitement_donneuse.date_ref_chaleur)).end()
-                        .find('#typeChaleur').text(' '+result.objet.traitement_donneuse.typeChaleur).end()
-                        .find('#methodeEvaluation').text(' '+result.objet.corpsJaune.mode_evaluation).end()
-                        .find('#qualite').text(' '+result.objet.corpsJaune.qualite).end()
-                        .find('#refExperience').text(' '+result.objet.embryonsTransferes.refExperience).end()
-                        .find('#numEmbryon').text(' '+result.objet.embryonsTransferes.refEmbryons).end()
-                        .find('#raceTaureau').text(' '+result.objet.embryonsTransferes.taureau.race).end()
-                        .find('#numTaureau').text(' '+result.objet.embryonsTransferes.taureau.num_identification).end()
-                        .find('#emplacementCorne').text(' '+result.objet.embryonsTransferes.emplacementColUterine).end()
-                        .find('#faciliteProgression').text(' '+result.objet.embryonsTransferes.faciliteprogression).end()
-                        .find('#remarques').text(' '+result.objet.gestation.remarques).end();
+                        .find('#parite').text(' '+result.objet.vache.parite).end();
 
+                    if(result.objet.traitement_donneuse != null) {
+                        $('#details')
+                            .find('#dateChaleur').text(' ' + convertDate(result.objet.traitement_donneuse.date_ref_chaleur)).end()
+                            .find('#typeChaleur').text(' ' + result.objet.traitement_donneuse.typeChaleur).end();
+
+                        $("#tableTraitement > tbody").empty();
+                        for (iLigne = 0; iLigne < result.objet.traitement_donneuse.tableauDonneuse.length; iLigne++) {
+                            $('#tableTraitement > tbody:last-child').append('<tr>' +
+                                '<td>' + convertDate(result.objet.traitement_donneuse.tableauDonneuse[iLigne].date) + '</td>' +
+                                '<td>' + result.objet.traitement_donneuse.tableauDonneuse[iLigne].produit.nom + '</td>' +
+                                '<td>' + result.objet.traitement_donneuse.tableauDonneuse[iLigne].quantite + '</td>' +
+                                '<td>' + result.objet.traitement_donneuse.tableauDonneuse[iLigne].mode_traitement + '</td></tr>');
+                        }
+                    }else{
+                        console.log("xd");
+                    }
+
+                    if(result.objet.corpsJaune != null) {
+                        $('#details')
+                            .find('#methodeEvaluation').text(' ' + result.objet.corpsJaune.mode_evaluation).end()
+                            .find('#qualite').text(' ' + result.objet.corpsJaune.qualite).end();
                         if(result.objet.corpsJaune.imageEcho == false) {
                             $('#details').find('#imageEcho').text(' Non');
                         }else{
@@ -203,37 +212,40 @@
                         }else{
                             $('#details').find('#coteCorpsJaune').text(' Gauche');
                         }
-                        if(result.objet.embryonsTransferes.semenceSexee == false) {
+                    }
+
+                    if(result.objet.embryonsTransferes != null) {
+                        $('#details')
+                            .find('#numEmbryon').text(' ' + result.objet.embryonsTransferes.refEmbryons).end()
+                            .find('#emplacementCorne').text(' ' + result.objet.embryonsTransferes.emplacementColUterine).end()
+                            .find('#faciliteProgression').text(' ' + result.objet.embryonsTransferes.faciliteprogression).end();
+
+                        if (result.objet.embryonsTransferes.semenceSexee == false) {
                             $('#details').find('#semenceSexee').text(' Non');
-                        }else{
+                        } else {
                             $('#details').find('#semenceSexee').text(' Oui');
                         }
-                        if(result.objet.embryonsTransferes.cote == 'D') {
+                        if (result.objet.embryonsTransferes.cote == 'D') {
                             $('#details').find('#coteTransfert').text(' Droit');
-                        }else{
+                        } else {
                             $('#details').find('#coteTransfert').text(' Gauche');
                         }
 
-                        $("#tableTraitement > tbody").empty();
-                        for(iLigne = 0; iLigne < result.objet.traitement_donneuse.tableauDonneuse.length; iLigne++)
-                        {
-                            $('#tableTraitement > tbody:last-child').append('<tr>' +
-                                '<td>' + convertDate(result.objet.traitement_donneuse.tableauDonneuse[iLigne].date) + '</td>' +
-                                '<td>' + result.objet.traitement_donneuse.tableauDonneuse[iLigne].produit.nom + '</td>' +
-                                '<td>' + result.objet.traitement_donneuse.tableauDonneuse[iLigne].quantite + '</td>' +
-                                '<td>' + result.objet.traitement_donneuse.tableauDonneuse[iLigne].mode_traitement + '</td></tr>');
-                        }
+                    }
 
+                    if(result.objet.gestation != null) {
                         $("#tableGestation > tbody").empty();
-                        for(iLigne = 0; iLigne < result.objet.gestation.tableauGestationList.length; iLigne++)
-                        {
+                        for (iLigne = 0; iLigne < result.objet.gestation.tableauGestationList.length; iLigne++) {
                             $('#tableGestation > tbody:last-child').append('<tr>' +
                                 '<td>' + convertDate(result.objet.gestation.tableauGestationList[iLigne].date) + '</td>' +
                                 '<td>' + result.objet.gestation.tableauGestationList[iLigne].methode + '</td>' +
                                 '<td>' + result.objet.gestation.tableauGestationList[iLigne].resultat + '</td></tr>');
                         }
 
-                        $('#details').find('.btnEdit').attr('data-id', result.objet.id);
+                        $('#details').find('#remarques').text(' ' + result.objet.gestation.remarques).end();
+                    }
+
+                    $('#details').find('.btnEdit').attr('data-id', result.objet.id);
                 }else{
                     $('#details').modal('toggle'); //ferme modal
                     $('#tableActes').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>'); //afficher alert
