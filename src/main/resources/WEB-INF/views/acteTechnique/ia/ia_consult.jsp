@@ -116,17 +116,17 @@
 
         /** ajoute une ligne à la table */
         $('#tableActes').DataTable().row.add([
-            "<td>" + result.objet.nom + "</td>",
-            "<td>" + result.objet.programme.nom + "</td>",
-            "<td>" + convertDate(dateFiche) + "</td>",
-            "<td>" + result.objet.lieu + "</td>",
-            "<td>" + result.objet.numIpe + "</td>",
-            "<td>" + result.objet.numDepotSemence + "</td>",
-            "<td>" + result.objet.vache.num_identification + "</td>",
+            result.objet.nom ,
+            result.objet.programme.nom,
+            convertDate(dateFiche),
+            result.objet.lieu,
+            result.objet.numIpe,
+            result.objet.numDepotSemence,
+            result.objet.vache.num_identification,
 
-            '<td><p data-placement="top" data-toggle="tooltip" title="Details"><button class="btn btn-primary btn-md btnDetails" data-title="details" data-id="' + result.objet.id + '" data-toggle="modal" data-target="#details" ><span class="glyphicon glyphicon-search"></span></button></p></td>',
-            '<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="' + result.objet.id + '" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>',
-            '<td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/' + result.objet.id + '" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>'
+            '<p data-placement="top" data-toggle="tooltip" title="Details"><button class="btn btn-primary btn-md btnDetails" data-title="details" data-id="' + result.objet.id + '" data-toggle="modal" data-target="#details" ><span class="glyphicon glyphicon-search"></span></button></p></>',
+            '<p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="' + result.objet.id + '" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-pencil"></span></button></p></>',
+            '<p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/' + result.objet.id + '" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></>'
         ]).draw(false);
     }
 
@@ -165,7 +165,7 @@
                 if(result.succes == true){
                     $('#delete').modal('toggle'); //ferme modal
                     $('#tableActes').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>'); //afficher alert
-                    $('#tableActes').DataTable().row(currentrow).remove().draw();
+                    $('#tableActes').DataTable().row(currentrow).remove().draw(false);
                 }else{
                     $('#delete').modal('toggle'); //ferme modal
                     $('#tableActes').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>'); //afficher alert
