@@ -45,9 +45,9 @@
                                     </div>
                                     <div class="form-group col-sm-11 col-xs-11" style="padding-left:0">
                                         <select class="form-control operateurSelect" id="operateur" name="operateur">
-                                            <option value="" selected disabled>Op&#233rateur</option>
+                                            <option value="">Op&#233rateur</option>
                                             <c:forEach items="${operateursList}" var="operateur">
-                                                <option value="${operateur.id}">${operateur.nom} ${operateur.prenom}</option>
+                                                <option value="${operateur.id}" ${(operateur.nom == 'Desnoes') && (operateur.prenom=='Olivier') ? 'selected' : ''}>${operateur.nom} ${operateur.prenom}</option>
                                             </c:forEach>
                                         </select>
                                     </div>
@@ -272,10 +272,10 @@
             <form id="addOperateurForm" action="../../operateur/add" method="POST">
                 <div class="modal-body">
                     <div class="form-group">
-                        <input class="form-control" name="nomOperateur" type="text" placeholder="Nom de l'op&#233rateur">
+                        <input class="form-control" name="prenomOperateur" type="text" placeholder="Pr&#233nom de l'op&#233rateur">
                     </div>
                     <div class="form-group">
-                        <input class="form-control" name="prenomOperateur" type="text" placeholder="Pr&#233nom de l'op&#233rateur">
+                        <input class="form-control" name="nomOperateur" type="text" placeholder="Nom de l'op&#233rateur">
                     </div>
                 </div>
 

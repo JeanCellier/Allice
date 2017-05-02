@@ -21,12 +21,12 @@ public interface FicheTraService
 
 	FicheTra createFicheTra(String nom, Programme programme, Date date, String numAgrement, String lieu,
 						Operateur operateur, Vache vache, Traitement_Donneuse traitementDonneuse,
-						CorpsJaune corpsJaune, EmbryonsTransferes embryonsTransferes, Gestation gestation, int statut);
+						CorpsJaune corpsJaune, EmbryonsTransferes embryonsTransferes, Gestation gestation);
 
 	FicheTra updateFicheTra(FicheTra ficheTraForUpdate, String nom, Programme programme, Date dateFiche,
 							String numAgrement, String lieu, Operateur operateur, Vache vache,
 							Traitement_Donneuse traitement_donneuse, CorpsJaune corpsJaune,
-							EmbryonsTransferes embryonsTransferes, Gestation gestation, int statut);
+							EmbryonsTransferes embryonsTransferes, Gestation gestation);
 
 	void delete(FicheTra ficheTra);
 
@@ -35,4 +35,6 @@ public interface FicheTraService
 	FicheTra save(FicheTra ficheTra);
 
 	FicheTra findTopByOrderByNomDesc();
+
+	int determineStatut(FicheTra ficheTra);
 }

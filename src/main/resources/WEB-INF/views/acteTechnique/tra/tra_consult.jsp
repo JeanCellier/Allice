@@ -31,7 +31,7 @@
                 </thead>
                 <tbody>
                 <c:forEach items="${fichesTraList}" var="fichesTra">
-                    <tr>
+                    <tr ${(fichesTra.statut == 1 ? 'style="background-color:#DE7E00;"':'')} ${(fichesTra.statut == 2 ? 'style="background-color:#CC3333;"':'')}>
                         <td>${fichesTra.nom}</td>
                         <td>${fichesTra.programme.nom}</td>
                         <td><fmt:formatDate pattern="dd/MM/yyyy" value="${fichesTra.dateHeureMinute}" /></td>
@@ -198,6 +198,12 @@
             "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json"
         },
         "pageLength": 25
+//        "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+//            if ( aData[0] == "" || aData[2] == "" || aData[6] == "")
+//            {
+//                $('td', nRow).css('background-color', '#CC3333');
+//            }
+//        }
     });
 
     /************************ SUPPRIMER *************************/

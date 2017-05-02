@@ -66,7 +66,8 @@ public class TraController {
     @ResponseBody
     @RequestMapping(value = "/addOrUpdatePart1", method = RequestMethod.POST)
     public JsonResponse addPart1(@RequestParam("nom") String nom, @RequestParam(value="programme", required = false) Programme programme,
-                                 @RequestParam("numAgrement") String numAgrement, @RequestParam("lieu") String lieu, @RequestParam(value="date", required = false) String date,
+                                 @RequestParam("numAgrement") String numAgrement, @RequestParam(value="lieu", required = false) String lieu,
+                                 @RequestParam(value="date", required = false) String date,
                                  @RequestParam(value="operateur", required = false) Operateur operateur, @RequestParam("vache") String numIdvache){
 
         JsonResponse jsonResponse = new JsonResponse();
@@ -78,15 +79,18 @@ public class TraController {
         if(vache.isPresent()) {
             try {
                 Date dateFiche = formatterDateTime.parse(date);
-                FicheTra ficheTra = ficheTraService.createFicheTra(nom, programme, dateFiche, numAgrement, lieu, operateur, vache.get(), null, null, null, null, 0);
+
+                FicheTra ficheTra = ficheTraService.createFicheTra(nom, programme, dateFiche, numAgrement, lieu, operateur, vache.get(), null, null, null, null);
                 jsonResponse.setObjet(ficheTra);
+                jsonResponse.setMessage("1ère étape enregistrée");
             } catch (ParseException e) {
-                FicheTra ficheTra = ficheTraService.createFicheTra(nom, programme, null, numAgrement, lieu, operateur, vache.get(), null, null, null, null, 0);
+                FicheTra ficheTra = ficheTraService.createFicheTra(nom, programme, null, numAgrement, lieu, operateur, vache.get(), null, null, null, null);
                 jsonResponse.setObjet(ficheTra);
+                jsonResponse.setMessage("1ère étape enregistrée - erreur dans la date");
             }
 
             jsonResponse.setSucces(true);
-            jsonResponse.setMessage("1ère étape enregistrée");
+
         }else{
             jsonResponse.setSucces(false);
             jsonResponse.setMessage("Le numéro d'identification de ne correspond à aucune vache");
@@ -97,7 +101,7 @@ public class TraController {
     @ResponseBody
     @RequestMapping(value = "/addOrUpdatePart1/{id}", method = RequestMethod.POST)
     public JsonResponse updatePart1(@PathVariable("id") FicheTra ficheTraToUpdate, @RequestParam("nom") String nom, @RequestParam(value="programme", required = false) Programme programme,
-                                         @RequestParam("numAgrement") String numAgrement, @RequestParam("lieu") String lieu, @RequestParam(value="date", required = false) String date,
+                                         @RequestParam(value="numAgrement", required=false) String numAgrement, @RequestParam(value="lieu", required=false) String lieu, @RequestParam(value="date", required = false) String date,
                                          @RequestParam(value="operateur", required = false) Operateur operateur, @RequestParam("vache") String numIdvache){
 
         JsonResponse jsonResponse = new JsonResponse();
@@ -113,13 +117,13 @@ public class TraController {
                 FicheTra ficheTra = ficheTraService.updateFicheTra(ficheTraToUpdate, nom, programme,
                         dateFiche, numAgrement, lieu, operateur, vache.get(), ficheTraToUpdate.getTraitement_donneuse(),
                         ficheTraToUpdate.getCorpsJaune(), ficheTraToUpdate.getEmbryonsTransferes(),
-                        ficheTraToUpdate.getGestation(), ficheTraToUpdate.getStatut());
+                        ficheTraToUpdate.getGestation());
                 jsonResponse.setObjet(ficheTra);
             } catch (ParseException e) {
                 FicheTra ficheTra = ficheTraService.updateFicheTra(ficheTraToUpdate, nom, programme,
                         null, numAgrement, lieu, operateur, vache.get(), ficheTraToUpdate.getTraitement_donneuse(),
                         ficheTraToUpdate.getCorpsJaune(), ficheTraToUpdate.getEmbryonsTransferes(),
-                        ficheTraToUpdate.getGestation(), ficheTraToUpdate.getStatut());
+                        ficheTraToUpdate.getGestation());
                 jsonResponse.setObjet(ficheTra);
             }
 
@@ -184,7 +188,7 @@ public class TraController {
             FicheTra ficheTraUpdate = ficheTraService.updateFicheTra(ficheTra, ficheTra.getNom(), ficheTra.getProgramme(),
                     ficheTra.getDateHeureMinute(), ficheTra.getNumeroAgrement(), ficheTra.getLieu(), ficheTra.getOperateur(),
                     ficheTra.getVache(), traitement_donneuse, ficheTra.getCorpsJaune(), ficheTra.getEmbryonsTransferes(),
-                    ficheTra.getGestation(), 0);
+                    ficheTra.getGestation());
 
             jsonResponse.setMessage("2ème étape validée");
             jsonResponse.setObjet(ficheTraUpdate);
@@ -231,7 +235,7 @@ public class TraController {
         FicheTra ficheTraUpdate = ficheTraService.updateFicheTra(ficheTra, ficheTra.getNom(), ficheTra.getProgramme(),
                 ficheTra.getDateHeureMinute(), ficheTra.getNumeroAgrement(), ficheTra.getLieu(), ficheTra.getOperateur(),
                 ficheTra.getVache(), ficheTra.getTraitement_donneuse(), corpsJaune, ficheTra.getEmbryonsTransferes(),
-                ficheTra.getGestation(), 0);
+                ficheTra.getGestation());
 
         jsonResponse.setMessage("3ème étape validée");
         jsonResponse.setObjet(ficheTraUpdate);
@@ -270,7 +274,7 @@ public class TraController {
         FicheTra ficheTraUpdate = ficheTraService.updateFicheTra(ficheTra, ficheTra.getNom(), ficheTra.getProgramme(),
                 ficheTra.getDateHeureMinute(), ficheTra.getNumeroAgrement(), ficheTra.getLieu(), ficheTra.getOperateur(),
                 ficheTra.getVache(), ficheTra.getTraitement_donneuse(), ficheTra.getCorpsJaune(), embryonsTransferes,
-                ficheTra.getGestation(), 0);
+                ficheTra.getGestation());
 
         jsonResponse.setMessage("4ème étape validée");
         jsonResponse.setObjet(ficheTraUpdate);
@@ -316,7 +320,7 @@ public class TraController {
         FicheTra ficheTraUpdate = ficheTraService.updateFicheTra(ficheTra, ficheTra.getNom(), ficheTra.getProgramme(),
                 ficheTra.getDateHeureMinute(), ficheTra.getNumeroAgrement(), ficheTra.getLieu(), ficheTra.getOperateur(),
                 ficheTra.getVache(), ficheTra.getTraitement_donneuse(), ficheTra.getCorpsJaune(), ficheTra.getEmbryonsTransferes(),
-                gestation, 0);
+                gestation);
 
         jsonResponse.setMessage("Fiche enregistrée");
         jsonResponse.setObjet(ficheTraUpdate);

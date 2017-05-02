@@ -51,11 +51,10 @@ FicheTraServiceImpl implements FicheTraService
 	@Override
 	public FicheTra createFicheTra(String nom, Programme programme, Date date, String numAgrement, String lieu,
 							   Operateur operateur, Vache vache, Traitement_Donneuse traitementDonneuse,
-							   CorpsJaune corpsJaune, EmbryonsTransferes embryonsTransferes, Gestation gestation, int statut) {
+							   CorpsJaune corpsJaune, EmbryonsTransferes embryonsTransferes, Gestation gestation) {
 
 		FicheTra ficheTra = new FicheTra();
 
-		ficheTra.setStatut(statut);
 		if(traitementDonneuse != null) {
 			Traitement_Donneuse traitement = traitement_donneuseService.createTraitement_Donneuse(traitementDonneuse);
 			ficheTra.setTraitement_donneuse(traitement);
@@ -81,6 +80,8 @@ FicheTraServiceImpl implements FicheTraService
 		ficheTra.setOperateur(operateur);
 		ficheTra.setVache(vache);
 
+		ficheTra.setStatut(determineStatut(ficheTra));
+
 		return save(ficheTra);
 	}
 
@@ -88,7 +89,7 @@ FicheTraServiceImpl implements FicheTraService
 	public FicheTra updateFicheTra(FicheTra ficheTraForUpdate, String nom, Programme programme, Date dateFiche,
 								   String numAgrement, String lieu, Operateur operateur, Vache vache,
 								   Traitement_Donneuse traitement_donneuse, CorpsJaune corpsJaune,
-								   EmbryonsTransferes embryonsTransferes, Gestation gestation, int statut) {
+								   EmbryonsTransferes embryonsTransferes, Gestation gestation) {
 
 		if(traitement_donneuse != null){
 			if(ficheTraForUpdate.getTraitement_donneuse() != null) {
@@ -114,7 +115,7 @@ FicheTraServiceImpl implements FicheTraService
 			}
 		}
 
-		ficheTraForUpdate.setStatut(statut);
+
 		ficheTraForUpdate.setNom(nom);
 		ficheTraForUpdate.setProgramme(programme);
 		ficheTraForUpdate.setDateHeureMinute(dateFiche);
@@ -139,6 +140,8 @@ FicheTraServiceImpl implements FicheTraService
 			}
 		}
 
+		ficheTraForUpdate.setStatut(determineStatut(ficheTraForUpdate));
+
 		return save(ficheTraForUpdate);
 	}
 
@@ -160,6 +163,34 @@ FicheTraServiceImpl implements FicheTraService
 	@Override
 	public FicheTra findTopByOrderByNomDesc() {
 		return repository.findTopByOrderByNomDesc();
+	}
+
+	@Override
+	public int determineStatut(FicheTra ficheTra) {
+		if(Objects.equals(ficheTra.getNom(), "") || ficheTra.getDateHeureMinute() == null || ficheTra.getVache() == null){
+			return 2;
+		}else if(ficheTra.getProgramme() == null || Objects.equals(ficheTra.getNumeroAgrement(), "") || Objects.equals(ficheTra.getLieu(), "")
+				|| ficheTra.getOperateur() == null || ficheTra.getTraitement_donneuse() == null || ficheTra.getCorpsJaune() == null
+				|| ficheTra.getEmbryonsTransferes() == null || ficheTra.getGestation() == null){
+			return 1;
+		}else{
+			if(ficheTra.getTraitement_donneuse().getDate_ref_chaleur() == null || Objects.equals(ficheTra.getTraitement_donneuse().getTypeChaleur(), "")
+					|| ficheTra.getTraitement_donneuse().getTableauDonneuse().size() ==0){
+				return 1;
+			}
+			if(ficheTra.getCorpsJaune().getCoteCorpsJaune() == ' ' || ficheTra.getCorpsJaune().getQualite() == 0 ||
+					ficheTra.getCorpsJaune().getMode_evaluation() == null){
+				return 1;
+			}
+			if(Objects.equals(ficheTra.getEmbryonsTransferes().getEmplacementColUterine(), "") || ficheTra.getEmbryonsTransferes().getCote() == ' '
+					|| ficheTra.getEmbryonsTransferes().getFaciliteprogression() == 0 || ficheTra.getEmbryonsTransferes().getRefEmbryons() == null){
+				return 1;
+			}
+			if(ficheTra.getGestation().getRemarques() == null || ficheTra.getGestation().getTableauGestationList().size() == 0){
+				return 1;
+			}
+		}
+		return 0;
 	}
 
 
