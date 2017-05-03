@@ -289,10 +289,6 @@
     <!-- /.modal-dialog -->
 </div>
 
-<!------------------------------ Script Jquery UI--------------------------->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 <%--<!------------------------------ Script Calendrier--------------------------->--%>
 <script type="text/javascript" src="/static/js/bower_components/moment/min/moment.min.js"></script>
 <script type="text/javascript" src="/static/js/bower_components/moment/locale/fr.js"></script>
@@ -323,6 +319,7 @@
     /****** function reinit fiche ******/
     function reinitForm(form){
         form.find('form[name="addPart1"]').attr('action', './addOrUpdatePart1');
+        form.find('form').removeClass('EditForm');
         form.find('.tabTraitement').not(':first').remove(); //garde juste une ligne dans le tableau de traitement_acte
         form.find('.tabGestation').not(':first').remove();
 
@@ -586,6 +583,9 @@
                         $this.closest('div.tab-pane.active').find('.step4').show("slow");
                     }
                 }else{
+                    var table = $('#tableActes').DataTable(); //init pour changer value .cell.data
+                    var rowId = $('#tableActes').dataTable().fnFindCellRowIndexes(result.objet.nom, 0); // cherche fiche modifiée
+
                     if($this.closest('div.frm').hasClass('step1')) { //si étape 1
                         //si c'est un nouvel ajout -> ajoute row a datatable
                         if(!$this.hasClass('EditForm')){
@@ -598,7 +598,22 @@
                                 $(this).addClass('EditForm');
                             }
                         });
+
+                        if(rowId.length == 1) { //si le nom de la fiche est présent
+                            /** Modifie la ligne correspondant à la fiche modifiée **/
+                            if (result.objet.programme != null) {
+                                table.cell(rowId, 1).data(result.objet.programme.nom).draw(false);
+                            }
+                            if (result.objet.dateHeureMinute != null) {
+                                table.cell(rowId, 2).data(convertDateWithTime(result.objet.dateHeureMinute)).draw(false);
+                            }
+                            table.cell(rowId, 3).data(result.objet.numeroAgrement).draw(false);
+                            table.cell(rowId, 4).data(result.objet.lieu).draw(false);
+                            table.cell(rowId, 5).data(result.objet.vache.num_identification).draw(false);
+                            table.cell(rowId, 6).data(result.objet.vache.num_identification.substr(result.objet.vache.num_identification.length - 4)).draw(false);
+                        }
                     }
+
                     if($this.closest('div.frm').hasClass('step5')) { //si étape 5
                         /** clear modal **/
                         reinitForm($this.closest('.tab-pane'));
@@ -607,6 +622,11 @@
 
                         $this.closest('div.tab-pane.active').find(".step5").hide("fast");
                         $this.closest('div.tab-pane.active').find(".step1").show("slow");
+                    }
+
+                    if(rowId.length == 1) { //si le nom de la fiche est présent
+                        //Modifie le statut
+                        table.cell(rowId, 7).data(result.objet.statut).draw(false);
                     }
                     $('#modal-body').before('<div class="alert alert-success flash" role="alert">' + result.message + '</div>'); //afficher alert
                 }

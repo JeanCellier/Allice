@@ -24,6 +24,7 @@
                         <td>lieu</td>
                         <td>Vache</td>
                         <td>Num&eacutero de travail</td>
+                        <td>Statut</td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -31,7 +32,8 @@
                 </thead>
                 <tbody>
                 <c:forEach items="${fichesTraList}" var="fichesTra">
-                    <tr ${(fichesTra.statut == 1 ? 'style="background-color:#DE7E00;"':'')} ${(fichesTra.statut == 2 ? 'style="background-color:#CC3333;"':'')}>
+                    <%--<tr ${(fichesTra.statut == 1 ? 'style="background-color:#DE7E00;"':'')} ${(fichesTra.statut == 2 ? 'style="background-color:#CC3333;"':'')}>--%>
+                    <tr>
                         <td>${fichesTra.nom}</td>
                         <td>${fichesTra.programme.nom}</td>
                         <td><fmt:formatDate pattern="dd/MM/yyyy" value="${fichesTra.dateHeureMinute}" /></td>
@@ -39,6 +41,7 @@
                         <td>${fichesTra.lieu}</td>
                         <td>${fichesTra.vache.num_identification}</td>
                         <td>${fn:substring(fichesTra.vache.num_identification, 8, 12)}</td>
+                        <td>${fichesTra.statut}</td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Details"><button class="btn btn-primary btn-md btnDetails" data-title="details" data-id="<c:out value='${fichesTra.id}' />" data-toggle="modal" data-target="#details" ><span class="glyphicon glyphicon-search"></span></button></p></td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="<c:out value='${fichesTra.id}' />" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/<c:out value='${fichesTra.id}'/>" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
@@ -73,18 +76,21 @@
     <!-- /.modal-dialog -->
 </div>
 
+<!------------------------------ Script Jquery UI--------------------------->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!------------------------------ Script Datatable--------------------------->
+<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.10.15/api/fnFindCellRowIndexes.js"></script>s
+<link rel="stylesheet" type="text/css" media="all" href="../../static/css/datables.bootstrap.css"/>
+
 <%@ include file="./tra_ajouterModifier.jsp" %>
 <%@ include file="./tra_detail.jsp" %>
 <%@ include file="../../footer.jsp" %>
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" media="all" href="../../static/css/datables.bootstrap.css"/>
-
 <script>
-    var currentrow; //la row courante à edit ou delete
+    var currentrow; //la row courante à delete
 
     /** function change nom fiche **/
     function changeNom(tab){
@@ -180,6 +186,7 @@
             result.objet.lieu,
             result.objet.vache.num_identification,
             result.objet.vache.num_identification.substr(result.objet.vache.num_identification.length - 4),
+            result.objet.statut,
 
             '<p data-placement="top" data-toggle="tooltip" title="Details"><button class="btn btn-primary btn-md btnDetails" data-title="details" data-id="' + result.objet.id + '" data-toggle="modal" data-target="#details" ><span class="glyphicon glyphicon-search"></span></button></p>',
             '<p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="' + result.objet.id + '" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-pencil"></span></button></p>',
@@ -188,22 +195,24 @@
     }
 
     /** init la table */
-    $('#tableActes').DataTable( {
+    $('#tableActes').DataTable({
         "pagingType": "full_numbers",
         "columnDefs": [
-            { "orderable": false, "targets": 7},
-            { "orderable": false, "targets": 8},
-            { "orderable": false, "targets": 9}
-        ],"language": {
+            {"orderable": false, "targets": 8},
+            {"orderable": false, "targets": 9},
+            {"orderable": false, "targets": 10},
+            {"targets": [7], "visible": false, "searchable": false},
+        ], "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json"
         },
-        "pageLength": 25
-//        "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
-//            if ( aData[0] == "" || aData[2] == "" || aData[6] == "")
-//            {
-//                $('td', nRow).css('background-color', '#CC3333');
-//            }
-//        }
+        "pageLength": 25,
+        "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+            if (aData[7] == "1") {
+                $('td', nRow).css('background-color', '#DE7E00');
+            } else if (aData[7] == "2") {
+                $('td', nRow).css('background-color', '#CC3333');
+            }
+        }
     });
 
     /************************ SUPPRIMER *************************/
