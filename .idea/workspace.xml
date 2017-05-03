@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1b2266e-e014-46c0-a873-aa645bb17deb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/pharmacie/produit/ProduitRepository.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/pharmacie/produit/ProduitRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/pharmacie/produit/ProduitService.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/pharmacie/produit/ProduitService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/pharmacie/produit/ProduitServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/pharmacie/produit/ProduitServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/web/PharmacieController.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/web/PharmacieController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_ajouterModifier.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_ajouterModifier.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_consult.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_consult.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/footer.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/footer.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/WEB-INF/views/pharmacie/pharmacie.jsp" afterPath="$PROJECT_DIR$/target/classes/WEB-INF/views/pharmacie/pharmacie.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,51 +19,51 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="tra_ajouterModifier.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_ajouterModifier.jsp">
+      <file leaf-file-name="TraController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/TraController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="318" column="40" lean-forward="false" selection-start-line="318" selection-start-column="40" selection-end-line="318" selection-end-column="40" />
+            <state relative-caret-position="71">
+              <caret line="78" column="31" lean-forward="true" selection-start-line="78" selection-start-column="31" selection-end-line="78" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tra_detail.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_detail.jsp">
+      <file leaf-file-name="FicheTraServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/FicheTraServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="179" column="149" lean-forward="true" selection-start-line="179" selection-start-column="149" selection-end-line="179" selection-end-column="149" />
+            <state relative-caret-position="436">
+              <caret line="191" column="9" lean-forward="true" selection-start-line="191" selection-start-column="9" selection-end-line="191" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FicheTra.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/FicheTra.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="29" column="23" lean-forward="false" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tra_consult.jsp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="tra_consult.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_consult.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="223" column="32" lean-forward="false" selection-start-line="223" selection-start-column="32" selection-end-line="223" selection-end-column="32" />
+            <state relative-caret-position="173">
+              <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Fiche.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/Fiche.java">
+      <file leaf-file-name="footer.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/footer.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2">
-              <caret line="22" column="32" lean-forward="false" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="32" />
+            <state relative-caret-position="40">
+              <caret line="2" column="88" lean-forward="false" selection-start-line="2" selection-start-column="88" selection-end-line="2" selection-end-column="88" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pharmacie.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/pharmacie/pharmacie.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="197" column="0" lean-forward="false" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="89" />
               <folding />
             </state>
           </provider>
@@ -113,12 +106,12 @@
       <find>end</find>
       <find>dateHeureMinute</find>
       <find>addR</find>
-      <find>num_identification</find>
-      <find>clone</find>
       <find>newTab</find>
       <find>reinitForm</find>
       <find>modif</find>
       <find>Edi</find>
+      <find>num_identification</find>
+      <find>clone</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -188,10 +181,10 @@
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/pharmacie/produit/ProduitRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/pharmacie/produit/ProduitServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/web/PharmacieController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/pharmacie/pharmacie.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/footer.jsp" />
-        <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_consult.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_ajouterModifier.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/pharmacie/pharmacie.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_consult.jsp" />
       </list>
     </option>
   </component>
@@ -1466,7 +1459,7 @@
       <workItem from="1493425725193" duration="20086000" />
       <workItem from="1493505556661" duration="63971000" />
       <workItem from="1493747998526" duration="14488000" />
-      <workItem from="1493814750610" duration="8786000" />
+      <workItem from="1493814750610" duration="9491000" />
     </task>
     <task id="LOCAL-00001" summary="interface pharmacie">
       <created>1489611137333</created>
@@ -1699,11 +1692,18 @@
       <option name="project" value="LOCAL" />
       <updated>1493819060769</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Correction bug dans fiche tra -&gt; nouvelle fiche avait toujours class edit form&#10;Modifications datatable fiche -&gt; ajout statut&#10;Modifications fonction datatable -&gt; coloration en fonction du statut&#10;Modifications Modif fiche -&gt; actualise les données et la couleur">
+      <created>1493824013806</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1493824013806</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="411856000" />
+    <option name="totallyTimeSpent" value="412561000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="0" width="1920" height="1080" extended-state="6" />
@@ -1750,7 +1750,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="interface pharmacie" />
     <MESSAGE value="add font awesome 2" />
     <MESSAGE value="add font awesome" />
     <MESSAGE value="new menu + dropdown" />
@@ -1775,7 +1774,8 @@
     <MESSAGE value="Implementation des statuts et coloration des lignes&#10;reste mise à jour des couleur dans les datatable de consult" />
     <MESSAGE value="Pharmacie corrigée =&gt; affichage ou non des produits avec qte &gt; 0&#10;&#10;Correction d'un bug dans l'ajout dynamique des datatable pharmacie, fiche ia, fiche tra" />
     <MESSAGE value="optimisation pharmacie chargement des produits épuisés" />
-    <option name="LAST_COMMIT_MESSAGE" value="optimisation pharmacie chargement des produits épuisés" />
+    <MESSAGE value="Correction bug dans fiche tra -&gt; nouvelle fiche avait toujours class edit form&#10;Modifications datatable fiche -&gt; ajout statut&#10;Modifications fonction datatable -&gt; coloration en fonction du statut&#10;Modifications Modif fiche -&gt; actualise les données et la couleur" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correction bug dans fiche tra -&gt; nouvelle fiche avait toujours class edit form&#10;Modifications datatable fiche -&gt; ajout statut&#10;Modifications fonction datatable -&gt; coloration en fonction du statut&#10;Modifications Modif fiche -&gt; actualise les données et la couleur" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2005,6 +2005,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="16" column="34" lean-forward="false" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2049,14 +2050,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/FicheTraServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2880">
-          <caret line="171" column="40" lean-forward="false" selection-start-line="171" selection-start-column="40" selection-end-line="171" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_ajouterModifier.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8200">
@@ -2069,14 +2062,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="15" column="36" lean-forward="false" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/TraController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="59" column="80" lean-forward="false" selection-start-line="59" selection-start-column="80" selection-end-line="59" selection-end-column="80" />
           <folding />
         </state>
       </provider>
@@ -2132,22 +2117,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/footer.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="11" lean-forward="true" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/pharmacie/pharmacie.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="197" column="68" lean-forward="true" selection-start-line="197" selection-start-column="68" selection-end-line="197" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/Fiche.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2">
@@ -2164,6 +2133,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_ajouterModifier.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10658">
+          <caret line="318" column="40" lean-forward="false" selection-start-line="318" selection-start-column="40" selection-end-line="318" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_detail.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
@@ -2172,18 +2149,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_consult.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/TraController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="223" column="32" lean-forward="false" selection-start-line="223" selection-start-column="32" selection-end-line="223" selection-end-column="32" />
+        <state relative-caret-position="71">
+          <caret line="78" column="31" lean-forward="true" selection-start-line="78" selection-start-column="31" selection-end-line="78" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_ajouterModifier.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/FicheTraServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="318" column="40" lean-forward="false" selection-start-line="318" selection-start-column="40" selection-end-line="318" selection-end-column="40" />
+        <state relative-caret-position="436">
+          <caret line="191" column="9" lean-forward="true" selection-start-line="191" selection-start-column="9" selection-end-line="191" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/footer.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="88" lean-forward="false" selection-start-line="2" selection-start-column="88" selection-end-line="2" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/pharmacie/pharmacie.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="197" column="0" lean-forward="false" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_consult.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
           <folding />
         </state>
       </provider>

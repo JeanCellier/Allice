@@ -82,8 +82,9 @@
 
 <!------------------------------ Script Datatable--------------------------->
 <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/plug-ins/1.10.15/api/fnFindCellRowIndexes.js"></script>s
+<script src="https://cdn.datatables.net/plug-ins/1.10.15/api/fnFindCellRowIndexes.js"></script>
 <link rel="stylesheet" type="text/css" media="all" href="../../static/css/datables.bootstrap.css"/>
+<script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
 
 <%@ include file="./tra_ajouterModifier.jsp" %>
 <%@ include file="./tra_detail.jsp" %>
@@ -211,6 +212,8 @@
                 $('td', nRow).css('background-color', '#DE7E00');
             } else if (aData[7] == "2") {
                 $('td', nRow).css('background-color', '#CC3333');
+            }else{
+                $('td', nRow).css('background-color', '#f9f9f9');
             }
         }
     });
