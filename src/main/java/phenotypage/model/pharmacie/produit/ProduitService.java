@@ -21,6 +21,10 @@ public interface ProduitService
 
 	Optional<Produit> findOne(long id);
 
+	List<Produit> findAvalaibleProduct();
+
+	List<Produit> findOutOfStockProduct();
+
 	List<String> findDistinctNames(String tag);
 
 	List<String> findDistinctFournisseurs(String tag);

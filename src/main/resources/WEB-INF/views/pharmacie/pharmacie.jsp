@@ -217,26 +217,26 @@
     });
 
     /** function addRow */
-    function addRow(result) {
+    function addRow(objet) {
         //converti date bon format
-        var datedelivrance = new Date(result.objet.dateDelivrance);
-        var datePeremption = new Date(result.objet.datePeremption);
+        var datedelivrance = new Date(objet.dateDelivrance);
+        var datePeremption = new Date(objet.datePeremption);
 
         /** ajoute une ligne à la table */
         row = $('#tableProduit').DataTable().row.add([
-            result.objet.nom,
+            objet.nom,
            convertDate(datedelivrance),
-            result.objet.fournisseur,
-            result.objet.projet,
-            result.objet.responsable,
-            result.objet.qteEntrante,
-            result.objet.qteRestante,
-            result.objet.numLot,
+            objet.fournisseur,
+            objet.projet,
+            objet.responsable,
+            objet.qteEntrante,
+            objet.qteRestante,
+            objet.numLot,
             convertDate(datePeremption),
-            result.objet.indication,
+            objet.indication,
 
-            '<p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="'+ result.objet.id +'" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p>',
-            '<p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/'+ result.objet.id + '" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p>'
+            '<p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="'+ objet.id +'" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p>',
+            '<p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/'+ objet.id + '" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p>'
         ]).draw(false);
     }
 
@@ -250,20 +250,32 @@
 			"url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json"
 		},
         "pageLength": 25,
-        "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+        "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) { //function executer à chaque draw
             if(aData[6] == "0.0" || aData[6] == "0"){
                 $(nRow).addClass("epuise");
-                if($("#cboxProd:not(:checked)")){
-                    $(nRow).hide();
-				}
+                $(nRow).toggle($("#cboxProd").is(':checked'));
 			}else{
                 $(nRow).removeClass("epuise");
 			}
         }
 	});
 
+	/** load produit out of stock dans datatable on check **/
     $("#cboxProd").change(function(){
         var self = this;
+        if(this.checked && !$("#cboxProd").hasClass('OutOfStockLoaded')){
+            $.ajax({
+                url: '${pageContext. request. contextPath}/pharmacie/get/OutOfStock',
+                type: 'GET',
+                success: function(result) {
+                    for(iElmnt = 0; iElmnt < result.length; iElmnt++){
+                        addRow(result[iElmnt]);
+					}
+
+                    $("#cboxProd").addClass('OutOfStockLoaded');
+                }
+            });
+		}
         $("#tableProduit tr.epuise").toggle(self.checked);
     }).change();
 
@@ -284,7 +296,7 @@
 					$('input').val(''); //clear modal
 					$('#add').modal('toggle'); //ferme modal
 					$('#tableProduit').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>'); //afficher alert
-					addRow(result);
+					addRow(result.objet);
 				}else{
 					$('#addForm').before('<div class="alert alert-danger flash" role="alert">'+result.message+'</div>');
 				}
@@ -341,8 +353,7 @@
                     $('#edit').modal('toggle');
                     $('#tableProduit').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>');
                     $('#tableProduit').DataTable().row(currentrow).remove();
-                    addRow(result);
-                    $('#cboxProd').prop( "checked", false);
+                    addRow(result.objet);
                 }else{
                     $('#editForm').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>');
                 }

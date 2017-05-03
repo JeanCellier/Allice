@@ -57,7 +57,7 @@ public class TraController {
         model.addAttribute("operateursList", operateurService.findAll());
         model.addAttribute("traitementsList", traitementService.findAll());
         model.addAttribute("vachesList", vacheService.findAll());
-        model.addAttribute("produitsList", produitService.findAll());
+        model.addAttribute("produitsList", produitService.findAvalaibleProduct());
         model.addAttribute("fichesTraList", ficheTraService.findAll());
         return "acteTechnique/tra/tra_consult";
     }
