@@ -154,7 +154,7 @@ public class ParserABAFiche implements ParserFiche {
                 }
 
                 String temp = PoiHelper.readCell(sheet, 4, 6);
-                float temperatureArrivee = Float.parseFloat(temp != null ? temp : "-1");
+                float temperatureArrivee = Float.parseFloat((temp != null && !temp.isEmpty()) ? temp : "0");
 
                 String date = PoiHelper.readCell(sheet, 3, 7);
                 Date dateFiche;
@@ -250,15 +250,15 @@ public class ParserABAFiche implements ParserFiche {
 
             //Nb ovaires
             String nbOva = PoiHelper.readCell(sheet, collecteRow, 2);
-            int nombre_Ovaires = Integer.parseInt((nbOva != null && !nbOva.isEmpty()) ? nbOva : "-1");
+            int nombre_Ovaires = Integer.parseInt((nbOva != null && !nbOva.isEmpty()) ? nbOva : "0");
 
             //Nb ovocytes
             String nbOvo = PoiHelper.readCell(sheet, collecteRow, 3);
-            int nombre_Ovocytes = Integer.parseInt((nbOvo != null && !nbOvo.isEmpty()) ? nbOvo : "-1");
+            int nombre_Ovocytes = Integer.parseInt((nbOvo != null && !nbOvo.isEmpty()) ? nbOvo : "0");
 
             //Taux collecte
             String taux = PoiHelper.readCell(sheet, collecteRow, 4);
-            float taux_Collecte = Float.parseFloat((taux != null && !taux.isEmpty()) ? taux : "-1");
+            float taux_Collecte = Float.parseFloat((taux != null && !taux.isEmpty()) ? taux : "0");
 
             //Heure début maturation
             String heure = PoiHelper.readCell(sheet, collecteRow, 5);
@@ -297,7 +297,7 @@ public class ParserABAFiche implements ParserFiche {
 
             //Nb d'ovocytes
             String nbO = PoiHelper.readCell(sheet, maturationRow, 1);
-            int nbOvocyte = Integer.parseInt(nbO != null ? nbO : "-1");
+            int nbOvocyte = Integer.parseInt((nbO != null && !nbO.isEmpty()) ? nbO : "0");
 
             tableauMaturations.add(tableauMaturationService.createTableau_Mturation(groupeExperimentauxMIV, nbOvocyte));
             maturationRow++;
@@ -329,11 +329,11 @@ public class ParserABAFiche implements ParserFiche {
 
             //etat frais
             String etatFr = PoiHelper.readCell(sheet, semenceRow, 4);
-            int etatFrais = Integer.parseInt(etatFr != null ? etatFr.substring(0, 2) : "-1");
+            int etatFrais = Integer.parseInt(etatFr != null ? etatFr.substring(0, 2) : "0");
 
             //volume
             String vol = PoiHelper.readCell(sheet, semenceRow, 5);
-            float volume = Float.parseFloat(vol != null ? vol : "-1");
+            float volume = Float.parseFloat(vol != null ? vol : "0");
 
             tableauSemenceList.add(tableauSemenceService.createTableauSemence(taureau, numeroEjaculation, volume, etatFrais));
             semenceRow++;
@@ -362,7 +362,7 @@ public class ParserABAFiche implements ParserFiche {
             }
             //Nb d'ovo inséminés
             String nbInse = PoiHelper.readCell(sheet, cultureRow, 2);
-            int nbInsemine = Integer.parseInt((nbInse != null && !nbInse.isEmpty()) ? nbInse : "-1");
+            int nbInsemine = Integer.parseInt((nbInse != null && !nbInse.isEmpty()) ? nbInse : "0");
             //Heure de mise en culture
             String HMCulture = PoiHelper.readCell(sheet, cultureRow, 3);
             int heureCulture = 0;
@@ -373,43 +373,44 @@ public class ParserABAFiche implements ParserFiche {
             }
             //Nb segmentés
             String nbSeg = PoiHelper.readCell(sheet, cultureRow, 4);
-            int nbSegmente = Integer.parseInt((nbSeg != null && !nbSeg.isEmpty()) ? nbSeg : "-1");
+            int nbSegmente = Integer.parseInt((nbSeg != null && !nbSeg.isEmpty()) ? nbSeg : "0");
             //% seg
             String seg = PoiHelper.readCell(sheet, cultureRow, 5);
-            float segment = Float.parseFloat((seg != null && !seg.isEmpty()) ? seg.substring(0, 4) : "-1");
+            float segment = Float.parseFloat((seg != null && !seg.isEmpty()) ? seg.substring(0, 4) : "0");
             //J5 - Morula
             String j5 = PoiHelper.readCell(sheet, cultureRow, 6);
-            int j5JM = Integer.parseInt((j5 != null && !j5.isEmpty()) ? j5 : "-1");
+            int j5JM = Integer.parseInt((j5 != null && !j5.isEmpty()) ? j5 : "0");
             //mo
-            String moCol = PoiHelper.readCell(sheet, cultureRow + 12, 2);
-            int mo = Integer.parseInt((moCol != null && !moCol.isEmpty()) ? moCol : "-1");
+            String moCol = PoiHelper.readCell(sheet, cultureRow + 9, 2);
+            System.out.println("culture row : " + (cultureRow + 12) + " col : " + moCol);
+            int mo = Integer.parseInt((moCol != null && !moCol.isEmpty()) ? moCol : "0");
             //BL
-            String blCol = PoiHelper.readCell(sheet, cultureRow + 12, 3);
-            int bl = Integer.parseInt((blCol != null && !blCol.isEmpty()) ? blCol : "-1");
+            String blCol = PoiHelper.readCell(sheet, cultureRow + 9, 3);
+            int bl = Integer.parseInt((blCol != null && !blCol.isEmpty()) ? blCol : "0");
             //BE
-            String beCol = PoiHelper.readCell(sheet, cultureRow + 12, 4);
-            int be = Integer.parseInt((beCol != null && !beCol.isEmpty()) ? beCol : "-1");
+            String beCol = PoiHelper.readCell(sheet, cultureRow + 9, 4);
+            int be = Integer.parseInt((beCol != null && !beCol.isEmpty()) ? beCol : "0");
             //Q1
-            String q1Col = PoiHelper.readCell(sheet, cultureRow + 12, 5);
-            int q1 = Integer.parseInt((q1Col != null && !q1Col.isEmpty()) ? q1Col : "-1");
+            String q1Col = PoiHelper.readCell(sheet, cultureRow + 9, 5);
+            int q1 = Integer.parseInt((q1Col != null && !q1Col.isEmpty()) ? q1Col : "0");
             //Nb Total
-            String nbTotalCol = PoiHelper.readCell(sheet, cultureRow + 12, 6);
-            int nbTotal = Integer.parseInt((nbTotalCol != null && !nbTotalCol.isEmpty()) ? nbTotalCol : "-1");
+            String nbTotalCol = PoiHelper.readCell(sheet, cultureRow + 9, 6);
+            int nbTotal = Integer.parseInt((nbTotalCol != null && !nbTotalCol.isEmpty()) ? nbTotalCol : "0");
             //%J7
             String pourJ7Col = PoiHelper.readCell(sheet, cultureRow + 18, 2);
-            float pourJ7 = Float.parseFloat((pourJ7Col != null && !pourJ7Col.isEmpty()) ? pourJ7Col.substring(0, pourJ7Col.length() - 1) : "-1");
+            float pourJ7 = Float.parseFloat((pourJ7Col != null && !pourJ7Col.isEmpty()) ? pourJ7Col.substring(0, pourJ7Col.length() - 1) : "0");
             //%BEJ7
             String pourBEJ7Col = PoiHelper.readCell(sheet, cultureRow + 18, 3);
-            float pourBEJ7 = Float.parseFloat((pourBEJ7Col != null && !pourBEJ7Col.isEmpty()) ? pourBEJ7Col.substring(0, pourBEJ7Col.length() - 1) : "-1");
+            float pourBEJ7 = Float.parseFloat((pourBEJ7Col != null && !pourBEJ7Col.isEmpty()) ? pourBEJ7Col.substring(0, pourBEJ7Col.length() - 1) : "0");
             //%Q1J7
             String pourQ1J7Col = PoiHelper.readCell(sheet, cultureRow + 18, 4);
-            float pourQ1J7 = Float.parseFloat((pourQ1J7Col != null && !pourQ1J7Col.isEmpty()) ? pourQ1J7Col.substring(0, pourQ1J7Col.length() - 1) : "-1");
+            float pourQ1J7 = Float.parseFloat((pourQ1J7Col != null && !pourQ1J7Col.isEmpty()) ? pourQ1J7Col.substring(0, pourQ1J7Col.length() - 1) : "0");
             //J8 Nb
             String J8parNbCol = PoiHelper.readCell(sheet, cultureRow + 18, 5);
-            int J8parNb = Integer.parseInt((J8parNbCol != null && !J8parNbCol.isEmpty()) ? J8parNbCol : "-1");
+            int J8parNb = Integer.parseInt((J8parNbCol != null && !J8parNbCol.isEmpty()) ? J8parNbCol : "0");
             //%J8
             String pourJ8Col = PoiHelper.readCell(sheet, cultureRow + 18, 6);
-            float pourJ8 = Float.parseFloat((pourJ8Col != null && !pourJ8Col.isEmpty()) ? pourJ8Col.substring(0, pourJ8Col.length() - 1) : "-1");
+            float pourJ8 = Float.parseFloat((pourJ8Col != null && !pourJ8Col.isEmpty()) ? pourJ8Col.substring(0, pourJ8Col.length() - 1) : "0");
             //Destination
             String destination = PoiHelper.readCell(sheet, cultureRow + 18, 7);
 
@@ -422,6 +423,7 @@ public class ParserABAFiche implements ParserFiche {
     }
 
     private Cryoconservation extractCryoconservation(Sheet sheet) {
+
         return null;
     }
 
