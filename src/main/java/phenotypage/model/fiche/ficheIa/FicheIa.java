@@ -7,7 +7,10 @@ import phenotypage.model.insemination.Insemination;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
 import phenotypage.model.vache.Vache;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  * @author fabien
@@ -15,113 +18,108 @@ import javax.persistence.*;
 
 @Entity
 public class FicheIa extends Fiche {
-	@Column
-	private String lieu;
+    @Column
+    private String lieu;
 
-	@ManyToOne
-	private Operateur operateur;
+    @ManyToOne
+    private Operateur operateur;
 
-	@ManyToOne
-	private Vache vache;
+    @ManyToOne
+    private Vache vache;
 
-	@Column
-	private String numIpe;
+    @Column
+    private String numIpe;
 
-	@Column
-	private String numDepotSemence;
+    @Column
+    private String numDepotSemence;
 
-	@OneToOne
-	private Insemination insemination;
-	
-	@OneToOne
-	private Traitement_Donneuse traitement_donneuse;
-	
-	@OneToOne
-	private Gestation gestation;
+    @OneToOne
+    private Insemination insemination;
 
-	@Column
-	private String remarque;
+    @OneToOne
+    private Traitement_Donneuse traitement_donneuse;
 
-	public FicheIa() { super(); }
+    @OneToOne
+    private Gestation gestation;
 
-	public String getLieu() {
-		return lieu;
-	}
+    @Column
+    private String remarque;
 
-	public void setLieu(String lieu) {
-		this.lieu = lieu;
-	}
+    public FicheIa() {
+        super("Ia");
+    }
 
-	public Operateur getOperateur() {
-		return operateur;
-	}
+    public String getLieu() {
+        return lieu;
+    }
 
-	public void setOperateur(Operateur operateur) {
-		this.operateur = operateur;
-	}
+    public void setLieu(String lieu) {
+        this.lieu = lieu;
+    }
 
-	public Vache getVache()
-	{
-		return vache;
-	}
+    public Operateur getOperateur() {
+        return operateur;
+    }
 
-	public void setVache(Vache vache)
-	{
-		this.vache = vache;
-	}
+    public void setOperateur(Operateur operateur) {
+        this.operateur = operateur;
+    }
 
-	public Insemination getInsemination()
-	{
-		return insemination;
-	}
+    public Vache getVache() {
+        return vache;
+    }
 
-	public void setInsemination(Insemination insemination)
-	{
-		this.insemination = insemination;
-	}
+    public void setVache(Vache vache) {
+        this.vache = vache;
+    }
 
-	public Traitement_Donneuse getTraitement_donneuse()
-	{
-		return traitement_donneuse;
-	}
+    public Insemination getInsemination() {
+        return insemination;
+    }
 
-	public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse) {this.traitement_donneuse = traitement_donneuse;}
+    public void setInsemination(Insemination insemination) {
+        this.insemination = insemination;
+    }
 
-	public Gestation getGestation()
-	{
-		return gestation;
-	}
+    public Traitement_Donneuse getTraitement_donneuse() {
+        return traitement_donneuse;
+    }
 
-	public void setGestation(Gestation gestation)
-	{
-		this.gestation = gestation;
-	}
+    public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse) {
+        this.traitement_donneuse = traitement_donneuse;
+    }
 
-	public String getRemarque()
-	{
-		return remarque;
-	}
+    public Gestation getGestation() {
+        return gestation;
+    }
 
-	public void setRemarque(String remarque)
-	{
-		this.remarque = remarque;
-	}
+    public void setGestation(Gestation gestation) {
+        this.gestation = gestation;
+    }
 
-	public String getNumIpe() {
-		return numIpe;
-	}
+    public String getRemarque() {
+        return remarque;
+    }
 
-	public void setNumIpe(String numIpe) {
-		this.numIpe = numIpe;
-	}
+    public void setRemarque(String remarque) {
+        this.remarque = remarque;
+    }
 
-	public String getNumDepotSemence() {
-		return numDepotSemence;
-	}
+    public String getNumIpe() {
+        return numIpe;
+    }
 
-	public void setNumDepotSemence(String numDepotSemence) {
-		this.numDepotSemence = numDepotSemence;
-	}
+    public void setNumIpe(String numIpe) {
+        this.numIpe = numIpe;
+    }
+
+    public String getNumDepotSemence() {
+        return numDepotSemence;
+    }
+
+    public void setNumDepotSemence(String numDepotSemence) {
+        this.numDepotSemence = numDepotSemence;
+    }
 }
 
 

@@ -8,6 +8,7 @@ import phenotypage.model.invitro.collecte.resultat.Resultat;
 import phenotypage.model.tableauTraitement.TableauTraitement;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
 import phenotypage.model.vache.Vache;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -17,113 +18,108 @@ import java.util.List;
 
 @Entity
 public class FicheCol extends Fiche {
-	@Column
-	private String numeroAgrement;
+    @Column
+    private String numeroAgrement;
 
-	@Column
-	private String lieu;
+    @Column
+    private String lieu;
 
-	@ManyToOne
-	private Operateur operateur;
+    @ManyToOne
+    private Operateur operateur;
 
-	@ManyToOne
-	private Vache vache;
+    @ManyToOne
+    private Vache vache;
 
-	@OneToOne
-	private Traitement_Donneuse traitement_donneuse;
+    @OneToOne
+    private Traitement_Donneuse traitement_donneuse;
 
-	@OneToOne
-	private Resultat resultat_collecte;
+    @OneToOne
+    private Resultat resultat_collecte;
 
-	@OneToOne
-	private Cryoconservation cryoconservation;
+    @OneToOne
+    private Cryoconservation cryoconservation;
 
-	@OneToMany
-	private List<TableauTraitement> tableauTraitements;
+    @OneToMany
+    private List<TableauTraitement> tableauTraitements;
 
-	@OneToMany
-	private List<TableauDetail> tableauDetails;
+    @OneToMany
+    private List<TableauDetail> tableauDetails;
 
-	public FicheCol() { super(); }
+    public FicheCol() {
+        super("Col");
+    }
 
-	public String getNumeroAgrement() {
-		return numeroAgrement;
-	}
+    public String getNumeroAgrement() {
+        return numeroAgrement;
+    }
 
-	public void setNumeroAgrement(String numeroAgrement) {
-		this.numeroAgrement = numeroAgrement;
-	}
+    public void setNumeroAgrement(String numeroAgrement) {
+        this.numeroAgrement = numeroAgrement;
+    }
 
-	public String getLieu() {
-		return lieu;
-	}
+    public String getLieu() {
+        return lieu;
+    }
 
-	public void setLieu(String lieu) {
-		this.lieu = lieu;
-	}
+    public void setLieu(String lieu) {
+        this.lieu = lieu;
+    }
 
-	public Operateur getOperateur() {
-		return operateur;
-	}
+    public Operateur getOperateur() {
+        return operateur;
+    }
 
-	public void setOperateur(Operateur operateur) {
-		this.operateur = operateur;
-	}
+    public void setOperateur(Operateur operateur) {
+        this.operateur = operateur;
+    }
 
-	public Vache getVache()
-	{
-		return vache;
-	}
+    public Vache getVache() {
+        return vache;
+    }
 
-	public void setVache(Vache vache)
-	{
-		this.vache = vache;
-	}
+    public void setVache(Vache vache) {
+        this.vache = vache;
+    }
 
-	public Traitement_Donneuse getTraitement_donneuse()
-	{
-		return traitement_donneuse;
-	}
+    public Traitement_Donneuse getTraitement_donneuse() {
+        return traitement_donneuse;
+    }
 
-	public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse) {
-		this.traitement_donneuse = traitement_donneuse;
-	}
+    public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse) {
+        this.traitement_donneuse = traitement_donneuse;
+    }
 
-	public Resultat getResultat_collecte()
-	{
-		return resultat_collecte;
-	}
+    public Resultat getResultat_collecte() {
+        return resultat_collecte;
+    }
 
-	public void setResultat_collecte(Resultat resultat_collecte)
-	{
-		this.resultat_collecte = resultat_collecte;
-	}
+    public void setResultat_collecte(Resultat resultat_collecte) {
+        this.resultat_collecte = resultat_collecte;
+    }
 
-	public Cryoconservation getCryoconservation()
-	{
-		return cryoconservation;
-	}
+    public Cryoconservation getCryoconservation() {
+        return cryoconservation;
+    }
 
-	public void setCryoconservation(Cryoconservation cryoconservation)
-	{
-		this.cryoconservation = cryoconservation;
-	}
+    public void setCryoconservation(Cryoconservation cryoconservation) {
+        this.cryoconservation = cryoconservation;
+    }
 
-	public List<TableauTraitement> getTableauTraitements() {
-		return tableauTraitements;
-	}
+    public List<TableauTraitement> getTableauTraitements() {
+        return tableauTraitements;
+    }
 
-	public void setTableauTraitements(List<TableauTraitement> tableauTraitements) {
-		this.tableauTraitements = tableauTraitements;
-	}
+    public void setTableauTraitements(List<TableauTraitement> tableauTraitements) {
+        this.tableauTraitements = tableauTraitements;
+    }
 
-	public List<TableauDetail> getTableauDetails() {
-		return tableauDetails;
-	}
+    public List<TableauDetail> getTableauDetails() {
+        return tableauDetails;
+    }
 
-	public void setTableauDetails(List<TableauDetail> tableauDetails) {
-		this.tableauDetails = tableauDetails;
-	}
+    public void setTableauDetails(List<TableauDetail> tableauDetails) {
+        this.tableauDetails = tableauDetails;
+    }
 }
 
 

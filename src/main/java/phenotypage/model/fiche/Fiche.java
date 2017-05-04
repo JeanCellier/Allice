@@ -2,61 +2,70 @@ package phenotypage.model.fiche;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import phenotypage.model.donneesExistantes.programme.Programme;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @MappedSuperclass
-public abstract class Fiche
-{
-	@Id
-	@GeneratedValue
-	private Long id;
+public abstract class Fiche {
+    @Id
+    @GeneratedValue
+    private Long id;
 
-	@Column(unique = true)
-	@NotEmpty
-	private String nom;
+    @Column(unique = true)
+    @NotEmpty
+    private String nom;
 
-	@ManyToOne
-	private Programme programme;
+    @ManyToOne
+    private Programme programme;
 
-	@Column
-	private Date dateHeureMinute;
+    @Column
+    private Date dateHeureMinute;
 
-	public Fiche() {}
+    @Column
+    private String type;
 
-	public Long getId()
-	{
-		return id;
-	}
+    public Fiche(String type) {
+        this.type = type;
+    }
 
-	public void setId(Long id)
-	{
-		this.id = id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getNom() {
-		return nom;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
+    public String getNom() {
+        return nom;
+    }
 
-	public Date getDateHeureMinute() {
-		return dateHeureMinute;
-	}
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 
-	public void setDateHeureMinute(Date dateHeureMinute) {
-		this.dateHeureMinute = dateHeureMinute;
-	}
+    public Date getDateHeureMinute() {
+        return dateHeureMinute;
+    }
 
-	public Programme getProgramme()
-	{
-		return programme;
-	}
+    public void setDateHeureMinute(Date dateHeureMinute) {
+        this.dateHeureMinute = dateHeureMinute;
+    }
 
-	public void setProgramme(Programme programme)
-	{
-		this.programme = programme;
-	}
+    public Programme getProgramme() {
+        return programme;
+    }
+
+    public void setProgramme(Programme programme) {
+        this.programme = programme;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

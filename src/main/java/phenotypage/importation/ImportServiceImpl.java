@@ -6,7 +6,7 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
-import phenotypage.importation.parser.ParserFicheService;
+import phenotypage.importation.parsers.ParserFicheService;
 import phenotypage.model.fiche.Fiche;
 
 import java.io.File;

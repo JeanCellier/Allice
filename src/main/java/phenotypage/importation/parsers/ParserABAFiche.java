@@ -1,4 +1,4 @@
-package phenotypage.importation.parser;
+package phenotypage.importation.parsers;
 
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -171,7 +171,7 @@ public class ParserABAFiche implements ParserFiche {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            throw new ParserException("N'a pas pu parser ce fichier.", e);
+            throw new ParserException("N'a pas pu parsers ce fichier.", e);
         }
 
         return fiches;

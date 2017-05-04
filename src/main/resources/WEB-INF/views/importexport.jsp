@@ -55,17 +55,22 @@
                 <c:otherwise>
                     <ul class="list-group">
                         <c:forEach items="${ficheList}" var="fiche">
-                            <div class="list-group-item list-group-item-linkable" data-link="#">
-                                <div class="row">
-                                    <div class="col-sm-11 col-md-11 col-lg-11">
-                                        <h4 class="list-group-item-heading">${fiche.nom}</h4>
-                                        <p class="list-group-item-text">${fiche.nom}</p>
-                                    </div>
-                                    <div class="col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
-                                        <a href="#" target="_blank" class="btn btn-default bottom-right">Exporter</a>
+                            <form method="post" action="/importexport/export">
+                                <input hidden type="text" name="ficheNom" value="${fiche.nom}"/>
+                                <input hidden type="text" name="ficheType" value="${fiche.type}"/>
+                                <div class="list-group-item list-group-item-linkable" data-link="#">
+                                    <div class="row">
+                                        <div class="col-sm-11 col-md-11 col-lg-11">
+                                            <h4 class="list-group-item-heading">${fiche.nom}</h4>
+                                            <p class="list-group-item-text">${fiche.dateHeureMinute}</p>
+                                        </div>
+                                        <div class="col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+                                            <input type="submit" value="Exporter"
+                                                   class="btn btn-default bottom-right">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </c:forEach>
                     </ul>
                 </c:otherwise>

@@ -51,7 +51,7 @@ public class FicheAba extends Fiche {
     private List<TableauDetail> tableauDetails;
 
     public FicheAba() {
-        super();
+        super("Aba");
     }
 
     public String getNumeroAgrement() {

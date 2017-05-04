@@ -1,4 +1,4 @@
-package phenotypage.importation.parser;
+package phenotypage.importation.parsers;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;

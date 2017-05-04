@@ -1,4 +1,4 @@
-package phenotypage.importation.parser;
+package phenotypage.importation.parsers;
 
 import org.springframework.stereotype.Component;
 import phenotypage.model.fiche.Fiche;

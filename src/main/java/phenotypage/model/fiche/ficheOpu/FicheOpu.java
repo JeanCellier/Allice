@@ -14,6 +14,7 @@ import phenotypage.model.tableauTraitement.TableauTraitement;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
 import phenotypage.model.typeOpu.TypeOpu;
 import phenotypage.model.vache.Vache;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -22,191 +23,179 @@ import java.util.List;
  */
 
 @Entity
-public class FicheOpu extends Fiche
-{
-	@Column
-	private String numeroAgrement;
+public class FicheOpu extends Fiche {
+    @Column
+    private String numeroAgrement;
 
-	@Column
-	private String lieu;
+    @Column
+    private String lieu;
 
-	@ManyToOne
-	private Operateur operateur;
+    @ManyToOne
+    private Operateur operateur;
 
-	@ManyToOne
-	private TypeOpu typeOpu;
+    @ManyToOne
+    private TypeOpu typeOpu;
 
-	@ManyToOne
-	private Vache vache;
-	
-	@OneToOne
-	private Traitement_Donneuse traitement_donneuse;
-	
-	@OneToOne
-	private Echo imageEcho;
-	
-	@OneToOne
-	private OvocytesCollectes ovocytesCollectes;
+    @ManyToOne
+    private Vache vache;
 
-	@OneToOne
-	private Informations_PIV informations_piv;
+    @OneToOne
+    private Traitement_Donneuse traitement_donneuse;
 
-	@OneToOne
-	private MaturationInVitro maturationInVitro;
+    @OneToOne
+    private Echo imageEcho;
 
-	@OneToOne
-	private Fecondation fecondation;
+    @OneToOne
+    private OvocytesCollectes ovocytesCollectes;
 
-	@OneToOne
-	private Culture culture;
+    @OneToOne
+    private Informations_PIV informations_piv;
 
-	@OneToOne
-	private Cryoconservation cryoconservation;
+    @OneToOne
+    private MaturationInVitro maturationInVitro;
 
-	@OneToMany
-	private List<TableauTraitement> tableauTraitements;
+    @OneToOne
+    private Fecondation fecondation;
 
-	@OneToMany
-	private List<TableauDetail> tableauDetails;
+    @OneToOne
+    private Culture culture;
 
-	public FicheOpu() { super(); }
+    @OneToOne
+    private Cryoconservation cryoconservation;
 
-	public String getNumeroAgrement() {
-		return numeroAgrement;
-	}
+    @OneToMany
+    private List<TableauTraitement> tableauTraitements;
 
-	public void setNumeroAgrement(String numeroAgrement) {
-		this.numeroAgrement = numeroAgrement;
-	}
+    @OneToMany
+    private List<TableauDetail> tableauDetails;
 
-	public String getLieu() {
-		return lieu;
-	}
+    public FicheOpu() {
+        super("Opu");
+    }
 
-	public void setLieu(String lieu) {
-		this.lieu = lieu;
-	}
+    public String getNumeroAgrement() {
+        return numeroAgrement;
+    }
 
-	public Operateur getOperateur() {
-		return operateur;
-	}
+    public void setNumeroAgrement(String numeroAgrement) {
+        this.numeroAgrement = numeroAgrement;
+    }
 
-	public void setOperateur(Operateur operateur) {
-		this.operateur = operateur;
-	}
+    public String getLieu() {
+        return lieu;
+    }
 
-	public void setTypeOpu(TypeOpu typeOpu) {
-		this.typeOpu = typeOpu;
-	}
+    public void setLieu(String lieu) {
+        this.lieu = lieu;
+    }
 
-	public Informations_PIV getInformations_piv()
-	{
-		return informations_piv;
-	}
+    public Operateur getOperateur() {
+        return operateur;
+    }
 
-	public void setInformations_piv(Informations_PIV informations_piv)
-	{
-		this.informations_piv = informations_piv;
-	}
+    public void setOperateur(Operateur operateur) {
+        this.operateur = operateur;
+    }
 
-	public MaturationInVitro getMaturationInVitro() {
-		return maturationInVitro;
-	}
+    public void setTypeOpu(TypeOpu typeOpu) {
+        this.typeOpu = typeOpu;
+    }
 
-	public void setMaturationInVitro(MaturationInVitro maturationInVitro) {
-		this.maturationInVitro = maturationInVitro;
-	}
+    public Informations_PIV getInformations_piv() {
+        return informations_piv;
+    }
 
-	public Fecondation getFecondation()
-	{
-		return fecondation;
-	}
+    public void setInformations_piv(Informations_PIV informations_piv) {
+        this.informations_piv = informations_piv;
+    }
 
-	public void setFecondation(Fecondation fecondation)
-	{
-		this.fecondation = fecondation;
-	}
+    public MaturationInVitro getMaturationInVitro() {
+        return maturationInVitro;
+    }
 
-	public Culture getCulture()
-	{
-		return culture;
-	}
+    public void setMaturationInVitro(MaturationInVitro maturationInVitro) {
+        this.maturationInVitro = maturationInVitro;
+    }
 
-	public void setCulture(Culture culture)
-	{
-		this.culture = culture;
-	}
+    public Fecondation getFecondation() {
+        return fecondation;
+    }
 
-	public Cryoconservation getCryoconservation()
-	{
-		return cryoconservation;
-	}
+    public void setFecondation(Fecondation fecondation) {
+        this.fecondation = fecondation;
+    }
 
-	public void setCryoconservation(Cryoconservation cryoconservation)
-	{
-		this.cryoconservation = cryoconservation;
-	}
+    public Culture getCulture() {
+        return culture;
+    }
 
-	public OvocytesCollectes getOvocytesCollectes()
-	{
-		return ovocytesCollectes;
-	}
+    public void setCulture(Culture culture) {
+        this.culture = culture;
+    }
 
-	public void setOvocytesCollectes(OvocytesCollectes ovocytesCollectes)
-	{
-		this.ovocytesCollectes = ovocytesCollectes;
-	}
+    public Cryoconservation getCryoconservation() {
+        return cryoconservation;
+    }
 
-	public Vache getVache()
-	{
-		return vache;
-	}
+    public void setCryoconservation(Cryoconservation cryoconservation) {
+        this.cryoconservation = cryoconservation;
+    }
 
-	public void setVache(Vache vache)
-	{
-		this.vache = vache;
-	}
+    public OvocytesCollectes getOvocytesCollectes() {
+        return ovocytesCollectes;
+    }
 
-	public Traitement_Donneuse getTraitement_donneuse()
-	{
-		return traitement_donneuse;
-	}
+    public void setOvocytesCollectes(OvocytesCollectes ovocytesCollectes) {
+        this.ovocytesCollectes = ovocytesCollectes;
+    }
 
-	public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse) { this.traitement_donneuse = traitement_donneuse; }
+    public Vache getVache() {
+        return vache;
+    }
 
-	public Echo getImageEcho()
-	{
-		return imageEcho;
-	}
+    public void setVache(Vache vache) {
+        this.vache = vache;
+    }
 
-	public void setImageEcho(Echo imageEcho)
-	{
-		this.imageEcho = imageEcho;
-	}
+    public Traitement_Donneuse getTraitement_donneuse() {
+        return traitement_donneuse;
+    }
 
-	public TypeOpu getTypeOpu() {
-		return typeOpu;
-	}
+    public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse) {
+        this.traitement_donneuse = traitement_donneuse;
+    }
 
-	public void setTypeOpuList(TypeOpu typeOpu) {
-		this.typeOpu = typeOpu;
-	}
+    public Echo getImageEcho() {
+        return imageEcho;
+    }
 
-	public List<TableauTraitement> getTableauTraitements() {
-		return tableauTraitements;
-	}
+    public void setImageEcho(Echo imageEcho) {
+        this.imageEcho = imageEcho;
+    }
 
-	public void setTableauTraitements(List<TableauTraitement> tableauTraitements) {
-		this.tableauTraitements = tableauTraitements;
-	}
+    public TypeOpu getTypeOpu() {
+        return typeOpu;
+    }
 
-	public List<TableauDetail> getTableauDetails() {
-		return tableauDetails;
-	}
+    public void setTypeOpuList(TypeOpu typeOpu) {
+        this.typeOpu = typeOpu;
+    }
 
-	public void setTableauDetails(List<TableauDetail> tableauDetails) {
-		this.tableauDetails = tableauDetails;
-	}
+    public List<TableauTraitement> getTableauTraitements() {
+        return tableauTraitements;
+    }
+
+    public void setTableauTraitements(List<TableauTraitement> tableauTraitements) {
+        this.tableauTraitements = tableauTraitements;
+    }
+
+    public List<TableauDetail> getTableauDetails() {
+        return tableauDetails;
+    }
+
+    public void setTableauDetails(List<TableauDetail> tableauDetails) {
+        this.tableauDetails = tableauDetails;
+    }
 }
 
 

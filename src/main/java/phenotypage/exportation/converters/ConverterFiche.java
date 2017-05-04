@@ -1,8 +1,6 @@
-package phenotypage.exportation;
+package phenotypage.exportation.converters;
 
-import phenotypage.model.fiche.Fiche;
-
-import java.io.File;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  * Created with magic
@@ -15,8 +13,8 @@ public interface ConverterFiche {
     /**
      * Converts a fiche to a file
      *
-     * @param fiche fiche
-     * @return file
+     * @param ficheNom Nom de fiche
+     * @return workbook
      */
-    File toFile(Fiche fiche);
+    XSSFWorkbook toWorkbook(String ficheNom);
 }

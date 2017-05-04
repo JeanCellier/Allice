@@ -1,14 +1,14 @@
 package phenotypage.web;
 
+import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
+import phenotypage.exportation.ExportService;
 import phenotypage.importation.ImportService;
 import phenotypage.model.fiche.Fiche;
 import phenotypage.model.fiche.ficheAba.FicheAba;
@@ -22,8 +22,9 @@ import phenotypage.model.fiche.ficheOpu.FicheOpuService;
 import phenotypage.model.fiche.ficheTra.FicheTra;
 import phenotypage.model.fiche.ficheTra.FicheTraService;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +36,9 @@ public class ImportExportController {
 
     @Autowired
     private ImportService importService;
+
+    @Autowired
+    private ExportService exportService;
 
     @Autowired
     private FicheAbaService ficheAbaService;
@@ -50,6 +54,7 @@ public class ImportExportController {
 
     @Autowired
     private FicheTraService ficheTraService;
+
 
     @RequestMapping(value = "/importexport", method = RequestMethod.GET)
     public String importexport(Model model) {
@@ -78,6 +83,20 @@ public class ImportExportController {
         //Parses the file
         importService.parse(ficheFile, type);
         return "redirect:/importexport";
+    }
+
+
+    @RequestMapping(value = "/importexport/export", method = RequestMethod.POST)
+    public void exportFiche(@RequestParam("ficheNom") String ficheNom, @RequestParam("ficheType") String ficheType, HttpServletResponse response) {
+        Workbook file = exportService.export(ficheNom, ficheType);
+        try {
+            response.setContentType("application/vnd.ms-excel");
+            response.setHeader("Content-disposition", "attachment; filename=" + ficheNom + ".xlsx");
+            file.write(response.getOutputStream());
+            response.flushBuffer();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

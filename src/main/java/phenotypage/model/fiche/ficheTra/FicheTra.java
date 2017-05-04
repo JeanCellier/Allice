@@ -8,112 +8,108 @@ import phenotypage.model.gestation.Gestation;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
 import phenotypage.model.vache.Vache;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  * @author fabien
  */
 
 @Entity
-public class FicheTra extends Fiche
-{
-	@Column
-	private String numeroAgrement;
+public class FicheTra extends Fiche {
+    @Column
+    private String numeroAgrement;
 
-	@Column
-	private String lieu;
+    @Column
+    private String lieu;
 
-	@ManyToOne
-	private Operateur operateur;
+    @ManyToOne
+    private Operateur operateur;
 
-	@ManyToOne
-	private Vache vache;
-	
-	@OneToOne
-	private Traitement_Donneuse traitement_donneuse;
-	
-	@OneToOne
-	private CorpsJaune corpsJaune;
-	
-	@OneToOne
-	private EmbryonsTransferes embryonsTransferes;
+    @ManyToOne
+    private Vache vache;
 
-	@OneToOne
-	private Gestation gestation;
+    @OneToOne
+    private Traitement_Donneuse traitement_donneuse;
 
-	public FicheTra() { super(); }
+    @OneToOne
+    private CorpsJaune corpsJaune;
 
-	public String getNumeroAgrement() {
-		return numeroAgrement;
-	}
+    @OneToOne
+    private EmbryonsTransferes embryonsTransferes;
 
-	public void setNumeroAgrement(String numeroAgrement) {
-		this.numeroAgrement = numeroAgrement;
-	}
+    @OneToOne
+    private Gestation gestation;
 
-	public String getLieu() {
-		return lieu;
-	}
+    public FicheTra() {
+        super("Tra");
+    }
 
-	public void setLieu(String lieu) {
-		this.lieu = lieu;
-	}
+    public String getNumeroAgrement() {
+        return numeroAgrement;
+    }
 
-	public Operateur getOperateur() {
-		return operateur;
-	}
+    public void setNumeroAgrement(String numeroAgrement) {
+        this.numeroAgrement = numeroAgrement;
+    }
 
-	public void setOperateur(Operateur operateur) {
-		this.operateur = operateur;
-	}
+    public String getLieu() {
+        return lieu;
+    }
 
-	public Vache getVache()
-	{
-		return vache;
-	}
+    public void setLieu(String lieu) {
+        this.lieu = lieu;
+    }
 
-	public void setVache(Vache vache)
-	{
-		this.vache = vache;
-	}
+    public Operateur getOperateur() {
+        return operateur;
+    }
 
-	public Traitement_Donneuse getTraitement_donneuse()
-	{
-		return traitement_donneuse;
-	}
+    public void setOperateur(Operateur operateur) {
+        this.operateur = operateur;
+    }
 
-	public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse) {
-		this.traitement_donneuse = traitement_donneuse;
-	}
+    public Vache getVache() {
+        return vache;
+    }
 
-	public CorpsJaune getCorpsJaune()
-	{
-		return corpsJaune;
-	}
+    public void setVache(Vache vache) {
+        this.vache = vache;
+    }
 
-	public void setCorpsJaune(CorpsJaune corpsJaune)
-	{
-		this.corpsJaune = corpsJaune;
-	}
+    public Traitement_Donneuse getTraitement_donneuse() {
+        return traitement_donneuse;
+    }
 
-	public EmbryonsTransferes getEmbryonsTransferes()
-	{
-		return embryonsTransferes;
-	}
+    public void setTraitement_donneuse(Traitement_Donneuse traitement_donneuse) {
+        this.traitement_donneuse = traitement_donneuse;
+    }
 
-	public void setEmbryonsTransferes(EmbryonsTransferes embryonsTransferes) {
-		this.embryonsTransferes = embryonsTransferes;
-	}
+    public CorpsJaune getCorpsJaune() {
+        return corpsJaune;
+    }
 
-	public Gestation getGestation()
-	{
-		return gestation;
-	}
+    public void setCorpsJaune(CorpsJaune corpsJaune) {
+        this.corpsJaune = corpsJaune;
+    }
 
-	public void setGestation(Gestation gestation)
-	{
-		this.gestation = gestation;
-	}
+    public EmbryonsTransferes getEmbryonsTransferes() {
+        return embryonsTransferes;
+    }
+
+    public void setEmbryonsTransferes(EmbryonsTransferes embryonsTransferes) {
+        this.embryonsTransferes = embryonsTransferes;
+    }
+
+    public Gestation getGestation() {
+        return gestation;
+    }
+
+    public void setGestation(Gestation gestation) {
+        this.gestation = gestation;
+    }
 
 }
 
