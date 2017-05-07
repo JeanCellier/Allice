@@ -10,7 +10,7 @@ public interface VacheService
 {
 	List<Vache> findAll();
 
-	Vache createVache(boolean present, String proprietaire, String nom, String num_elevage, String num_identitifaction, int race, char sexe, Date dateNaissance, String parite, float ageMois, String numPere, String numMere);
+	Vache createVache(boolean present, String proprietaire, String nom, String num_elevage, String num_identitifaction, int race, char sexe, Date dateNaissance, String parite, String numPere, String numMere);
 
 	Vache save(Vache vache);
 

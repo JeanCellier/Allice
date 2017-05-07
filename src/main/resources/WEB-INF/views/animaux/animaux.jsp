@@ -16,12 +16,11 @@
             <table id="tableAnimaux" class="table table-hover">
                 <thead>
                 <tr>
-                    <td>Propri&#233taire</td>
-                    <td>Num&#233ro d'&#233levage</td>
                     <td>Num&#233ro d'identification</td>
                     <td>Num&#233ro de travail</td>
                     <td>Race</td>
-                    <td>Date d'arriv&#233e</td>
+                    <td>Age(mois)</td>
+                    <td>Projet concern&#233</td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -29,14 +28,12 @@
                 <tbody>
                 <c:forEach items="${vacheList}" var="vache">
                     <tr>
-                        <td>${vache.proprietaire}</td>
-                        <td>${vache.num_elevage}</td>
                         <td>${vache.num_identification}</td>
-                        <%--<td>${substring(vache.num_identification, 5, 15)}</td>--%>
-                        <td></td>
+                        <td>${vache.num_travail}</td>
                         <td>${vache.race}</td>
-                        <%--<td><fmt:formatDate pattern="dd/MM/yyyy" value="${vache.date_arrivee}" /><br></td>--%>
-                        <td></td>
+                        <td>${vache.ageMois}</td>
+                        <td>${vache.programme.nom}</td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Details"><button class="btn btn-primary btn-md btnDetails" data-title="details" data-id="<c:out value='${vache.id}' />" data-toggle="modal" data-target="#details" ><span class="glyphicon glyphicon-search"></span></button></p></td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="<c:out value='${vache.id}' />" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/<c:out value='${vache.id}'/>" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                     </tr>

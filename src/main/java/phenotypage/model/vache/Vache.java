@@ -1,5 +1,7 @@
 package phenotypage.model.vache;
 
+import phenotypage.model.programme.Programme;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -26,6 +28,9 @@ public class Vache
 	private String num_identification; // == num national
 
 	@Column
+	private String num_travail;
+
+	@Column
 	private Integer race;
 
 	@Column
@@ -45,6 +50,9 @@ public class Vache
 
 	@Column
 	private String numMere;
+
+	@OneToOne
+	private Programme programme;
 
 	public Vache() {}
 
@@ -122,7 +130,7 @@ public class Vache
 		this.dateNaissance = dateNaissance;
 	}
 
-	public float getAgeMois() {
+	public Float getAgeMois() {
 		return ageMois;
 	}
 
@@ -164,5 +172,41 @@ public class Vache
 	public void setParite(String parite)
 	{
 		this.parite = parite;
+	}
+
+	public Boolean getPresent() {
+		return present;
+	}
+
+	public void setPresent(Boolean present) {
+		this.present = present;
+	}
+
+	public void setRace(Integer race) {
+		this.race = race;
+	}
+
+	public void setSexe(Character sexe) {
+		this.sexe = sexe;
+	}
+
+	public void setAgeMois(Float ageMois) {
+		this.ageMois = ageMois;
+	}
+
+	public Programme getProgramme() {
+		return programme;
+	}
+
+	public void setProgramme(Programme programme) {
+		this.programme = programme;
+	}
+
+	public String getNum_travail() {
+		return num_travail;
+	}
+
+	public void setNum_travail(String num_travail) {
+		this.num_travail = num_travail;
 	}
 }
