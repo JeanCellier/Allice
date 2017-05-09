@@ -1,11 +1,11 @@
-package phenotypage.importation.parsers;
+package phenotypage.utils;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.FormulaEvaluator;
-import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
 
 /**
  * Created with magic
@@ -13,7 +13,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * Date: 19/04/2017 14:01
  * Project: appPhenotypage
  */
-class PoiHelper {
+public class PoiHelper {
 
     private static DataFormatter formatter = new DataFormatter();
 
@@ -25,12 +25,29 @@ class PoiHelper {
      * @param column column starting from 0
      * @return content
      */
-    static String readCell(Sheet sheet, int row, int column) {
+    public static String readCell(XSSFSheet sheet, int row, int column) {
         if (row < 0 || column < 0) {
             return null;
         }
         Cell cell = sheet.getRow(row).getCell(column);
-        FormulaEvaluator evaluator = new XSSFFormulaEvaluator((XSSFWorkbook) sheet.getWorkbook());
+        FormulaEvaluator evaluator = new XSSFFormulaEvaluator(sheet.getWorkbook());
         return formatter.formatCellValue(cell, evaluator);
+    }
+
+    /**
+     * Writes a value into a sheet cell
+     *
+     * @param sheet  sheet
+     * @param row    row index
+     * @param column column index
+     * @param value  value
+     */
+    public static void writeCell(XSSFSheet sheet, int row, int column, String value) {
+        XSSFRow xssfRow = sheet.getRow(row);
+        if (xssfRow == null) {
+            xssfRow = sheet.createRow(row);
+        }
+
+        xssfRow.createCell(column).setCellValue(value);
     }
 }

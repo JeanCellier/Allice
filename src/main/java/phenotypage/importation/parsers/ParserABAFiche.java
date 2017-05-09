@@ -2,6 +2,7 @@ package phenotypage.importation.parsers;
 
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -35,6 +36,7 @@ import phenotypage.model.milieuMaturation.MilieuMaturation;
 import phenotypage.model.milieuMaturation.MilieuMaturationService;
 import phenotypage.model.vache.Vache;
 import phenotypage.model.vache.VacheService;
+import phenotypage.utils.PoiHelper;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -114,10 +116,10 @@ public class ParserABAFiche implements ParserFiche {
         try {
             excelFile = new FileInputStream(file);
             Workbook workbook = new XSSFWorkbook(excelFile);
-            Sheet sheet;
+            XSSFSheet sheet;
             Iterator<Sheet> sheetIterator = workbook.sheetIterator();
             while (sheetIterator.hasNext()) {
-                sheet = sheetIterator.next();
+                sheet = (XSSFSheet) sheetIterator.next();
                 //Handle nom
                 String nomFiche = sheet.getSheetName();
                 System.out.println("Parsing : " + nomFiche);
@@ -177,7 +179,7 @@ public class ParserABAFiche implements ParserFiche {
         return fiches;
     }
 
-    private Informations_PIV extractPIV(Sheet sheet) {
+    private Informations_PIV extractPIV(XSSFSheet sheet) {
         //Handle operateur
         int opRow = 7, opCol = 1;
         String nomOperateur = PoiHelper.readCell(sheet, opRow, opCol);
@@ -216,7 +218,7 @@ public class ParserABAFiche implements ParserFiche {
         return informations_pivService.createInformation_PIV(operateur, maturation, fiv, typeCulture);
     }
 
-    private Collecte extractCollecte(Sheet sheet) {
+    private Collecte extractCollecte(XSSFSheet sheet) {
         //Handle date and heure
         String date = PoiHelper.readCell(sheet, 15, 1);
         String time = PoiHelper.readCell(sheet, 15, 3);
@@ -305,7 +307,7 @@ public class ParserABAFiche implements ParserFiche {
         return collecteService.createCollecte(collecteTime, collecteDate, tableauCollectes, tableauMaturations);
     }
 
-    private Fecondation extractFecondation(Sheet sheet) {
+    private Fecondation extractFecondation(XSSFSheet sheet) {
         String dateFec = PoiHelper.readCell(sheet, 32, 1);
         Date date;
         try {
@@ -341,7 +343,7 @@ public class ParserABAFiche implements ParserFiche {
         return fecondationService.createFecondation(date, null, null, tableauSemenceList);
     }
 
-    private Culture extractCulture(Sheet sheet) {
+    private Culture extractCulture(XSSFSheet sheet) {
         String dateCult = PoiHelper.readCell(sheet, 48, 1);
         Date date;
         try {
@@ -422,12 +424,12 @@ public class ParserABAFiche implements ParserFiche {
         return cultureService.createCulture(date, null, null, tableauCultureList);
     }
 
-    private Cryoconservation extractCryoconservation(Sheet sheet) {
+    private Cryoconservation extractCryoconservation(XSSFSheet sheet) {
 
         return null;
     }
 
-    private List<TableauDetail> extractTableauDetails(Sheet sheet) {
+    private List<TableauDetail> extractTableauDetails(XSSFSheet sheet) {
         return null;
     }
 

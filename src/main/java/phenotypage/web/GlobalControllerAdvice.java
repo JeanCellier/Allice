@@ -3,6 +3,7 @@ package phenotypage.web;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
+import phenotypage.importation.parsers.ParserException;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,13 +19,13 @@ public class GlobalControllerAdvice {
 
 
     /**
-     * Handles exception and prints them in the error page
+     * Handles parser exception and prints them in the error page
      *
      * @param req servlet request to get the failed URL
      * @param e   exception
      * @return model and view
      */
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(ParserException.class)
     public ModelAndView handleException(HttpServletRequest req, Exception e) {
         ModelAndView mav = new ModelAndView();
         mav.addObject("exception", e);
