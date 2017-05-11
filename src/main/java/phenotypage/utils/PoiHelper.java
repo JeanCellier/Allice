@@ -1,8 +1,10 @@
 package phenotypage.utils;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.FormulaEvaluator;
+import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -43,11 +45,73 @@ public class PoiHelper {
      * @param value  value
      */
     public static void writeCell(XSSFSheet sheet, int row, int column, String value) {
+        writeCell(sheet, row, column, value, CellType.STRING);
+    }
+
+    /**
+     * Writes a value into a sheet cell
+     *
+     * @param sheet  sheet
+     * @param row    row index
+     * @param column column index
+     * @param value  value
+     */
+    public static void writeCell(XSSFSheet sheet, int row, int column, Double value) {
+        writeCell(sheet, row, column, value, CellType.NUMERIC);
+    }
+
+
+    /**
+     * Writes a value into a sheet cell
+     *
+     * @param sheet  sheet
+     * @param row    row index
+     * @param column column index
+     * @param value  value
+     */
+    public static void writeCell(XSSFSheet sheet, int row, int column, Boolean value) {
+        writeCell(sheet, row, column, value, CellType.BOOLEAN);
+    }
+
+
+    /**
+     * Writes a value into a sheet cell
+     *
+     * @param sheet  sheet
+     * @param row    row index
+     * @param column column index
+     * @param value  value
+     */
+    public static void writeFormula(XSSFSheet sheet, int row, int column, String value) {
+        writeCell(sheet, row, column, value, CellType.FORMULA);
+    }
+
+    /**
+     * Writes a value into a sheet cell
+     *
+     * @param sheet  sheet
+     * @param row    row index
+     * @param column column index
+     * @param value  value
+     */
+    public static void writeCell(XSSFSheet sheet, int row, int column, Object value, CellType type) {
         XSSFRow xssfRow = sheet.getRow(row);
         if (xssfRow == null) {
             xssfRow = sheet.createRow(row);
         }
-
-        xssfRow.createCell(column).setCellValue(value);
+        XSSFCell cell = xssfRow.createCell(column, type);
+        switch (type) {
+            case STRING:
+                cell.setCellValue((String) value);
+                break;
+            case BOOLEAN:
+                cell.setCellValue((Boolean) value);
+                break;
+            case NUMERIC:
+                cell.setCellValue((Double) value);
+                break;
+            case FORMULA:
+                cell.setCellFormula((String) value);
+        }
     }
 }
