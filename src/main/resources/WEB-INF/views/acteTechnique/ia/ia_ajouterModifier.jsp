@@ -13,9 +13,9 @@
                 </ul>
 
                 <div class="tab-content" style="margin-top: 20px;">
-                    <div class="tab-pane active" id="fiche_01">
-                        <form name="add" class="addForm" id="addForm" method="post" action="./addOrUpdate">
-                            <div class="step1 frm">
+                    <div class="tab-pane active add" id="fiche_01">
+                        <div class="step1 frm">
+                            <form name="addPart1" class="addOrUpdatePart" method="post" action="./addOrUpdatePart1">
                                 <fieldset name="identification">
                                     <legend>&Eacute;tape 1/4  -  IDENTIFICATION FICHE</legend>
                                     <div class="form-group">
@@ -41,25 +41,22 @@
                                         </button>
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" name="numIPE" type="text" placeholder="Num&#233ro IPE">
+                                        <input class="form-control" name="numIPE" value="3715002" type="text" placeholder="Num&#233ro IPE">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" name="numSemence" type="text" placeholder="Num&#233ro de d&#233pot semence">
+                                        <input class="form-control" name="numSemence" value="37175336B" type="text" placeholder="Num&#233ro de d&#233pot semence">
                                     </div>
                                     <div class="form-group">
-                                        <select class="form-control" id="vache" name="vache">
-                                            <option value="" selected disabled>Vache</option>
-                                            <c:forEach items="${vachesList}" var="vache">
-                                                <option value="${vache.id}">${vache.num_identification}</option>
-                                            </c:forEach>
-                                        </select>
+                                        <input class="form-control required vache" required name="vache" type="text" placeholder="vache">
                                     </div>
 
-                                    <button class="btn btn-primary open1" type="button">Suivant <span class="fa fa-arrow-right"></span></button>
+                                    <button class="btn btn-primary open1" type="button">Enregistrer <span class="fa fa-arrow-right"></span></button>
                                 </fieldset>
-                            </div>
+                            </form>
+                        </div>
 
-                            <div class="step2 frm" style="display: none;">
+                        <div class="step2 frm" style="display: none;">
+                            <form name="addPart2" class="addOrUpdatePart" method="post" action="./addOrUpdatePart2">
                                 <fieldset name="traitementActe">
                                     <legend>&Eacute;tape 2/4  -  INSEMINATION</legend>
 
@@ -80,16 +77,12 @@
                                     <div class="form-group">
                                         <label>Semence sex&#233e : </label>
                                         <label class="radio-inline"><input type="radio" class="radio" value="oui" name="optradioSexee">Oui</label>
-                                        <label class="radio-inline"><input type="radio" class="radio" value="non" name="optradioSexee">Non</label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="non" checked name="optradioSexee">Non</label>
                                     </div>
                                     <div class="form-group">
-                                        <select class="form-control" id="taureau" name="taureau">
-                                            <option value="" selected disabled>Taureau</option>
-                                            <c:forEach items="${vachesList}" var="vache">
-                                                <option value="${vache.id}">${vache.num_identification}</option>
-                                            </c:forEach>
-                                        </select>
+                                        <input class="form-control" name="taureau" type="text" placeholder="Taureau">
                                     </div>
+
                                     <div class="form-group">
                                         <select class="form-control collecteSelect" id="collecte" name="collecte">
                                             <option value="" selected disabled>Collecte</option>
@@ -99,28 +92,51 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" name="lieuSemence" type="text" placeholder="Lieu de d&#233pot de la semence">
+                                        <select class="form-control" name="lieuSemence">
+                                            <option value="" selected disabled>Lieu de d&eacute;p&ocirc;t de la semaine</option>
+                                            <option value="1erTiers">1er tiers</option>
+                                            <option value="2emeTiers">2&egrave;me tiers</option>
+                                            <option value="3emeTiers">3&egrave;me tiers</option>
+                                            <option value="apresCol">Juste apr&egrave;s col</option>
+                                        </select>
                                     </div>
+
                                     <div class="form-group">
-                                        <input class="form-control" name="facilite" type="text" placeholder="Facilit&#233 de progression">
+                                        <select class="form-control" name="facilite">
+                                            <option value="" selected disabled>Facilit&#233 de progression</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
                                     </div>
 
                                     <button class="btn btn-primary back2" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
-                                    <button class="btn btn-primary open2" type="button">Suivant <span class="fa fa-arrow-right"></span></button>
+                                    <button class="btn btn-primary open2" type="button">Enregistrer <span class="fa fa-arrow-right"></span></button>
                                 </fieldset>
-                            </div>
+                            </form>
+                        </div>
 
-                            <div class="step3 frm" style="display: none;">
+                        <div class="step3 frm" style="display: none;">
+                            <form name="addPart3" class="addOrUpdatePart" method="post" action="./addOrUpdatePart3">
                                 <fieldset name="traitementActe">
                                     <legend>&Eacute;tape 3/4  -  TRAITEMENT FEMELLE</legend>
 
                                     <div class="form-group">
-                                        <input class="form-control" name="typeChaleur" type="text" placeholder="Type chaleur de r&#233f&#233rence">
+                                        <input class="form-control datepicker"  name="dateChaleur" type="text" placeholder="Date chaleur de r&#233f&#233rence">
                                     </div>
-                                    <%--<div class="form-group">--%>
-                                        <%--<input class="form-control" name="chaleurDetection" type="text" placeholder="D&#233tections des chaleurs">--%>
-                                    <%--</div>--%>
-
+                                    <div class="form-group">
+                                        <label>Type chaleur de r&#233f&#233rence: </label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="naturelle" name="typeChaleur">Naturelle</label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="induite" name="typeChaleur">Induite</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control" name="traitementActe">
+                                            <option value="" selected>Traitement type - Aucun</option>
+                                            <c:forEach items="${traitementsList}" var="traitement_acte">
+                                                <option value="${traitement_acte.id}">${traitement_acte.nom}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
                                     <div id="tabTraitement" class="tabTraitement">
                                         <div class="form-group col-sm-3" style="padding-left:0">
                                             <input class="form-control datepicker" name="dateTraitement[]" type="text" placeholder="Date">
@@ -134,23 +150,30 @@
                                             </select>
                                         </div>
                                         <div class="form-group col-sm-2">
-                                            <input class="form-control" name="quantite[]" type="number" placeholder="Quantite">
+                                            <input class="form-control" name="quantite[]" step="0.01" type="number" placeholder="Quantite">
                                         </div>
                                         <div class="form-group col-sm-3">
-                                            <input class="form-control" name="modeTraitement[]" type="text" placeholder="Mode de traitementActe">
+                                            <select class="form-control" name="modeTraitement[]">
+                                                <option value="" selected disabled>Mode de traitementActe</option>
+                                                <option value="IM">IM</option>
+                                                <option value="IV">IV</option>
+                                                <option value="IVA">IVA</option>
+                                                <option value="SC">SC</option>
+                                            </select>
                                         </div>
                                     </div>
-
                                     <div class="form-group col-sm-1">
                                         <button class="btn btn-primary addTabTraitement" type="button"><span class="fa fa-plus"></span></button>
                                     </div>
 
                                     <button class="btn btn-primary back3" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
-                                    <button class="btn btn-primary open3" type="button">Suivant <span class="fa fa-arrow-right"></span></button>
+                                    <button class="btn btn-primary open3" type="button">Enregistrer <span class="fa fa-arrow-right"></span></button>
                                 </fieldset>
-                            </div>
+                            </form>
+                        </div>
 
-                            <div class="step4 frm" style="display: none;">
+                        <div class="step4 frm" style="display: none;">
+                            <form name="addPart4" class="addOrUpdatePart" method="post" action="./addOrUpdatePart4">
                                 <fieldset name="gestation">
                                     <legend>&Eacute;tape 4/4  -  SUIVI DE GESTATION</legend>
                                     <div id="tabGestation" class="tabGestation">
@@ -166,7 +189,12 @@
                                             </select>
                                         </div>
                                         <div class="form-group col-sm-4">
-                                            <input class="form-control" name="resultat[]" type="text" placeholder="R&#233sultat">
+                                            <select class="form-control" name="resultat[]">
+                                                <option value="" selected disabled>R&#233sultat</option>
+                                                <option value="douteux">Douteux</option>
+                                                <option value="gestante">Gestante</option>
+                                                <option value="nonGestante">Non gestante</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group col-sm-1">
@@ -180,8 +208,8 @@
                                     <button class="btn btn-primary back4" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
                                     <button type="submit" class="btn btn-success validButton"><span class="fa fa-check"></span> Enregistrer</button>
                                 </fieldset>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -275,6 +303,8 @@
 
     /****** function reinit fiche ******/
     function reinitForm(form){
+        form.find('form[name="addPart1"]').attr('action', './addOrUpdatePart1');
+        form.find('form').removeClass('EditForm');
         form.find('.tabTraitement').not(':first').remove(); //garde juste une ligne dans le tableau de traitement_acte
         form.find('.tabGestation').not(':first').remove();
 
@@ -284,9 +314,7 @@
         form.find('.radio').prop('checked', false);
         form.find("select").val("");
 
-        if(form.find('.validButton').removeAttr('data-id')){
-            form.find('.validButton').removeAttr('data-id'); //remove l'id
-        }
+        form.find('input[name="lieu"]').val("Allice Nouzilly");
     }
 
     /****** function nouvel onglet ******/
@@ -301,13 +329,21 @@
 
         $('li.tab').last().after('<li class="tab"><a href="#fiche_' + id + '">Nouvelle fiche</a><span> x </span></li>');
 
-        $clone = $('#addForm').clone().removeAttr('id'); //clone et remove l'id
+        $clone = $('#fiche_01').clone().removeAttr('id'); //clone et remove l'id
 
         reinitForm($clone); //reinitialise le clone
 
         // ajoute les divs a l'arbre html
-        $('.tab-content').append('<div class="tab-pane" id="' + tabId + '"></div>');
-        $('#'+tabId).append($clone);
+        $clone.attr('id', tabId);
+
+        changeNom($clone); //change le nom de l'onglet
+
+        $clone.find('input.vache').autocomplete({ //active l'autompletion sur "vache"
+            minLength: 4,
+            source: '${pageContext. request. contextPath}/animaux/get/vache'
+        });
+
+        $('.tab-content').append($clone);
         $('.nav-tabs li').find('a[href="#'+tabId+'"]').click();
 
         $clone.find(".frm").hide("fast");
@@ -325,35 +361,51 @@
         $("li.active.tab").children('a').text($(this).closest(".nom").val());
     });
 
+    /****** Check champs required ******/
+    function checkRequired(form){
+        var required = true;
+
+        form.find('.required').each(function(){
+            if($(this).val() === '' ){
+                required = false;
+            }
+        });
+
+        return required;
+    }
+
     /****** Navigation d'étape ******/
-    $(document).on( 'click', ".open1", function(){
-        $(event.target).closest('form').find(".frm").hide("fast");
-        $(event.target).closest('form').find(".step2").show("slow");
+    $(document).on( 'click', ".open1", function(event){
+
+        if(checkRequired($(this).closest('form'))) {
+            $(event.target).closest('div.tab-pane.active').find('.step1').hide("fast");
+            $(event.target).closest('div.tab-pane.active').find('.step2').show("slow");
+        }
     });
 
-    $(document).on( 'click', ".open2", function(){
-        $(event.target).closest('form').find(".frm").hide("fast");
-        $(event.target).closest('form').find(".step3").show("slow");
+    $(document).on( 'click', ".open2", function(event){
+        $(event.target).closest('div.tab-pane.active').find('.step2').hide("fast");
+        $(event.target).closest('div.tab-pane.active').find('.step3').show("slow");
     });
 
-    $(document).on( 'click', ".back2", function(){
-        $(event.target).closest('form').find(".frm").hide("fast");
-        $(event.target).closest('form').find(".step1").show("slow");
+    $(document).on( 'click', ".back2", function(event){
+        $(event.target).closest('div.tab-pane.active').find('.step2').hide("fast");
+        $(event.target).closest('div.tab-pane.active').find('.step1').show("slow");
     });
 
-    $(document).on( 'click', ".open3", function(){
-        $(event.target).closest('form').find(".frm").hide("fast");
-        $(event.target).closest('form').find(".step4").show("slow");
+    $(document).on( 'click', ".open3", function(event){
+        $(event.target).closest('div.tab-pane.active').find('.step3').hide("fast");
+        $(event.target).closest('div.tab-pane.active').find('.step4').show("slow");
     });
 
-    $(document).on( 'click', ".back3", function(){
-        $(event.target).closest('form').find(".frm").hide("fast");
-        $(event.target).closest('form').find(".step2").show("slow");
+    $(document).on( 'click', ".back3", function(event){
+        $(event.target).closest('div.tab-pane.active').find('.step3').hide("fast");
+        $(event.target).closest('div.tab-pane.active').find('.step2').show("slow");
     });
 
-    $(document).on( 'click', ".back4", function(){
-        $(event.target).closest('form').find(".frm").hide("fast");
-        $(event.target).closest('form').find(".step3").show("slow");
+    $(document).on( 'click', ".back4", function(event){
+        $(event.target).closest('div.tab-pane.active').find('.step4').hide("fast");
+        $(event.target).closest('div.tab-pane.active').find('.step3').show("slow");
     });
 
 
@@ -375,6 +427,73 @@
     $(document).on('click', '.add-fiche', function (e) {
         e.preventDefault();
         newTab();
+    });
+
+    $(document).on( 'change', 'select[name="traitementActe"]', function(event){
+        if($('select[name="traitementActe"] option:selected').val() != ""){
+            $.ajax({
+                url: '${pageContext. request. contextPath}/traitement/get/'+this.value,
+                type: 'GET',
+                success: function (result) {
+                    if (result.succes == true) {
+                        $('div.tab-pane.active').find('.tabTraitement').not(':first').remove(); //garde juste une ligne dans le tableau de traitement_acte
+                        for(iLigne = 0; iLigne < result.objet.tableauTraitement.length; iLigne++)
+                        {
+                            if(iLigne == 0){
+                                $target = $('div.tab-pane.active').find('.tabTraitement');
+                                $target.find('input').val("");
+                                $target.find("select").val("");
+                            }else{
+                                $target = $('div.tab-pane.active').find('#tabTraitement').clone().removeAttr('id');
+                                $target.find('input').val("");
+                                $target.find("select").val("");
+                                $target.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabTraitement" type="button"><span class="fa fa-minus"></span></button></div>');
+                                $target.insertAfter($('div.tab-pane.active').find("div.tabTraitement").last());
+                            }
+
+                            $target.find("input[name='dateTraitement[]']").datetimepicker({
+                                locale: 'fr',
+                                format: 'DD/MM/YYYY',
+                                toolbarPlacement: 'top',
+                                showClose: true
+                            });
+
+                            $target.find("select[name='produit[]']" ).val(result.objet.tableauTraitement[iLigne].produit.id );
+                            $target.find("input[name='quantite[]']").val(result.objet.tableauTraitement[iLigne].quantite);
+                            $target.find("select[name='modeTraitement[]']").val(result.objet.tableauTraitement[iLigne].mode_traitement);
+                        }
+                    }
+                }
+            });
+        }
+    });
+
+    $(document).on( 'blur', "input[name='dateTraitement[]']:first", function() {
+        Date.prototype.addDays = function(days) { //ajoute des jours
+            var dat = new Date(this.valueOf());
+            dat.setDate(dat.getDate() + days);
+            return dat;
+        }
+        function parseDate(input) { // fr to en
+            var parts = input.split('/');
+            return new Date(parts[2]+"/"+parts[1]+"/"+parts[0]); // Note: months are 0-based
+        }
+
+        if($('select[name="traitementActe"] option:selected').val() != ""){
+            $.ajax({
+                url: '${pageContext. request. contextPath}/traitement/get/'+$('select[name="traitementActe"]').val(),
+                type: 'GET',
+                success: function (result) {
+                    if (result.succes == true) {
+                        for(iLigne = 1; iLigne < result.objet.tableauTraitement.length; iLigne++) {
+                            var date = new Date(parseDate($("input[name='dateTraitement[]']:first").val())).addDays(result.objet.tableauTraitement[iLigne].decalage);
+                            $("input[name='dateTraitement[]']:eq("+iLigne+")").data("DateTimePicker").date(date);
+                        }
+
+                    }
+                }
+            });
+        }
     });
 
     /************************ AJOUT *************************/
@@ -481,6 +600,7 @@
         $template = $('#tabTraitement');
         $clone = $template.clone().removeAttr('id');
         $clone.find('input').val("");
+        $clone.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabTraitement" type="button"><span class="fa fa-minus"></span></button></div>');
         $clone.insertAfter($("div.tabTraitement").last());
         createDatePicker();
     });
@@ -490,8 +610,19 @@
         $template = $('#tabGestation'); //tableau a copier
         $clone = $template.clone().removeAttr('id'); //supprime l'id sur la copie
         $clone.find('input').val(""); //reinit les values
+        $clone.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabGestation" type="button"><span class="fa fa-minus"></span></button></div>');
         $clone.insertAfter($("div.tabGestation").last()); //insert après le dernier object de class tabGestation
         createDatePicker();
+    });
+
+    /******* Supprime une ligne modal traitement ******/
+    $(document).on( 'click', ".delTabTraitement", function(){
+        $(this).closest('.tabTraitement').remove();
+    });
+
+    /******* Supprime une ligne modal gestation ******/
+    $(document).on( 'click', ".delTabGestation", function(){
+        $(this).closest('.tabGestation').remove();
     });
 
     /************************ MODIF *************************/
@@ -590,4 +721,9 @@
         });
     });
 
+    /******************************* AUTOCOMPLETE ****************************/
+    $( ".vache" ).autocomplete({
+        minLength: 4,
+        source: '${pageContext. request. contextPath}/animaux/get/vache'
+    });
 </script>

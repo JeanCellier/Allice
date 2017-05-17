@@ -23,8 +23,8 @@ public class Insemination
 	@ManyToOne
 	private Operateur operateur;
 
-	@ManyToOne
-	private Vache taureau;
+	@Column
+	private String taureau;
 	
 	@OneToOne
 	private FicheCol collecte;
@@ -56,12 +56,12 @@ public class Insemination
 		this.operateur = operateur;
 	}
 
-	public Vache getTaureau()
+	public String getTaureau()
 	{
 		return taureau;
 	}
 
-	public void setTaureau(Vache taureau)
+	public void setTaureau(String taureau)
 	{
 		this.taureau = taureau;
 	}

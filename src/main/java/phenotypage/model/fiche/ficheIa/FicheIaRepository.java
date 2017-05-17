@@ -12,4 +12,6 @@ import java.util.List;
 public interface FicheIaRepository extends JpaRepository<FicheIa, Long>
 {
 	FicheIa findByNom(String nom);
+
+    FicheIa findTopByOrderByNomDesc();
 }

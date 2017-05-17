@@ -20,6 +20,7 @@ import phenotypage.model.pharmacie.produit.Produit;
 import phenotypage.model.pharmacie.produit.ProduitService;
 import phenotypage.model.traitementDonneuse.tableau_donneuse.Tableau_Donneuse;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
+import phenotypage.model.traitement_acte.TraitementActeService;
 import phenotypage.model.vache.Vache;
 import phenotypage.model.vache.VacheService;
 import java.text.ParseException;
@@ -50,12 +51,15 @@ public class IaController {
     @Autowired
     private FicheColService ficheColService;
 
+    @Autowired
+    private TraitementActeService traitementService;
+
     @RequestMapping(value = "/ia", method = RequestMethod.GET)
     public String fichesIa(Model model)
     {
         model.addAttribute("programmesList", programmeService.findAll());
         model.addAttribute("operateursList", operateurService.findAll());
-        model.addAttribute("vachesList", vacheService.findAll());
+        model.addAttribute("traitementsList", traitementService.findAll());
         model.addAttribute("produitsList", produitService.findAll());
         model.addAttribute("fichesColList", ficheColService.findAll());
         model.addAttribute("fichesIaList", ficheIaService.findAll());
@@ -70,7 +74,7 @@ public class IaController {
                                     @RequestParam("programme") Programme programme, @RequestParam("numIPE") String numIpe,
                                     @RequestParam("numSemence") String numSemence, @RequestParam("vache") Vache vache,
                                     @RequestParam("operateur") Operateur operateur, @RequestParam("optradioSexee") String optradioSexee,
-                                    @RequestParam("taureau") Vache taureau, @RequestParam("collecte") FicheCol collecte,
+                                    @RequestParam("taureau") String taureau, @RequestParam("collecte") FicheCol collecte,
                                     @RequestParam("lieuSemence") String lieuSemence, @RequestParam("facilite") String faciliteProgression,
                                     @RequestParam("typeChaleur") String typeChaleur, @RequestParam(value="dateTraitement[]")  String[] dateTraitement,
                                     @RequestParam(value="produit[]")  Produit[] produit, @RequestParam(value="quantite[]")  String[] quantite,
@@ -197,5 +201,17 @@ public class IaController {
         }
 
         return response;
+    }
+
+    /** AUTOCOMPLETE **/
+    @ResponseBody
+    @RequestMapping(value="/get/lastName", method = RequestMethod.GET)
+    public String getLastId(){
+        String nom = ficheIaService.findTopByOrderByNomDesc().getNom();
+        if(nom != ""){
+            return nom;
+        }else{
+            return "";
+        }
     }
 }

@@ -98,7 +98,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group col-sm-2">
-                                            <input class="form-control" name="quantite[]" type="number" placeholder="Quantite">
+                                            <input class="form-control" name="quantite[]" step="0.01" type="number" placeholder="Quantite">
                                         </div>
                                         <div class="form-group col-sm-3">
                                             <select class="form-control" name="modeTraitement[]">
