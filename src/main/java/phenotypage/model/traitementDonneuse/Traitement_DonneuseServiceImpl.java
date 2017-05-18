@@ -8,6 +8,7 @@ import phenotypage.model.traitementDonneuse.tableau_donneuse.Tableau_DonneuseSer
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author fabien
@@ -60,5 +61,15 @@ public class Traitement_DonneuseServiceImpl implements Traitement_DonneuseServic
 	@Override
 	public void delete(Traitement_Donneuse traitementDonneuseToDelete) {
 		repository.delete(traitementDonneuseToDelete);
+	}
+
+	@Override
+	public int determineStatut(Traitement_Donneuse traitement_donneuse) {
+		if(traitement_donneuse.getDate_ref_chaleur() == null || Objects.equals(traitement_donneuse.getTypeChaleur(), "")
+				|| traitement_donneuse.getTableauDonneuse().size() ==0){
+			return 1;
+		}
+
+		return 0;
 	}
 }

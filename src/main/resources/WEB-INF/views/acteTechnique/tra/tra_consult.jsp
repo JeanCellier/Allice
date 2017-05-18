@@ -17,6 +17,7 @@
             <table id="tableActes" class="table table-hover">
                 <thead>
                     <tr>
+                        <td></td>
                         <td>Nom</td>
                         <td>Programme</td>
                         <td>Date</td>
@@ -32,8 +33,8 @@
                 </thead>
                 <tbody>
                 <c:forEach items="${fichesTraList}" var="fichesTra">
-                    <%--<tr ${(fichesTra.statut == 1 ? 'style="background-color:#DE7E00;"':'')} ${(fichesTra.statut == 2 ? 'style="background-color:#CC3333;"':'')}>--%>
                     <tr>
+                        <td></td>
                         <td>${fichesTra.nom}</td>
                         <td>${fichesTra.programme.nom}</td>
                         <td><fmt:formatDate pattern="dd/MM/yyyy" value="${fichesTra.dateHeureMinute}" /></td>
@@ -98,6 +99,7 @@
         var date = new Date().getFullYear();
         var num;
         if(tab.attr('id') == 'fiche_01') {  //si c'est la 1ère fiche
+            console.log("lol");
             $.ajax({
                 url: "./get/lastName",
                 type: 'GET',
@@ -133,7 +135,7 @@
         }
     }
 
-    $(document).on('click', '#addFiche', function(e) { //au clic sur le bouton supprimer
+    $(document).on('click', '#addFiche', function(e) { //au clic sur le bouton add
         if($('#fiche_01').find("input[name='nom']").val() ==''){
             changeNom($('#fiche_01'));
         }
@@ -180,6 +182,7 @@
 
         /** ajoute une ligne à la table */
         $('#tableActes').DataTable().row.add([
+            '               ',
             result.objet.nom,
             nomProgramme,
             dateFiche,
@@ -199,21 +202,22 @@
     $('#tableActes').DataTable({
         "pagingType": "full_numbers",
         "columnDefs": [
-            {"orderable": false, "targets": 8},
+            {"orderable": false, "targets": 0},
             {"orderable": false, "targets": 9},
             {"orderable": false, "targets": 10},
-            {"targets": [7], "visible": false, "searchable": false},
+            {"orderable": false, "targets": 11},
+            {"targets": [8], "visible": false, "searchable": false},
         ], "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json"
         },
         "pageLength": 25,
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            if (aData[7] == "1") {
-                $('td', nRow).css('background-color', '#DE7E00');
-            } else if (aData[7] == "2") {
-                $('td', nRow).css('background-color', '#CC3333');
+            if (aData[8] == "1") {
+                $("td:eq(0)", nRow).css('background-color', '#DE7E00');
+            } else if (aData[8] == "2") {
+                $("td:eq(0)", nRow).css('background-color', '#CC3333');
             }else{
-                $('td', nRow).css('background-color', '#f9f9f9');
+                $("td:eq(0)", nRow).css('background-color', '#068b70');
             }
         }
     });

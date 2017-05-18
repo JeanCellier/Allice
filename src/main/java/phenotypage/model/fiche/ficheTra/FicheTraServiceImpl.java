@@ -59,15 +59,15 @@ FicheTraServiceImpl implements FicheTraService
 			Traitement_Donneuse traitement = traitement_donneuseService.createTraitement_Donneuse(traitementDonneuse);
 			ficheTra.setTraitement_donneuse(traitement);
 		}
-		if(traitementDonneuse != null) {
+		if(corpsJaune != null) {
 			CorpsJaune corpsJauneSave = corpsJauneService.createCorpsJaune(corpsJaune);
 			ficheTra.setCorpsJaune(corpsJauneSave);
 		}
-		if(traitementDonneuse != null) {
+		if(embryonsTransferes != null) {
 			EmbryonsTransferes embryonSave = embryonsTransferesService.createEmbryonsTransferes(embryonsTransferes);
 			ficheTra.setEmbryonsTransferes(embryonSave);
 		}
-		if(traitementDonneuse != null) {
+		if(gestation != null) {
 			Gestation gestationSave = gestationService.createGestation(gestation);
 			ficheTra.setGestation(gestationSave);
 		}

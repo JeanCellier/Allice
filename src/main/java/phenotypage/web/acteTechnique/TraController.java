@@ -363,7 +363,7 @@ public class TraController {
     @RequestMapping(value="/get/lastName", method = RequestMethod.GET)
     public String getLastId(){
         String nom = ficheTraService.findTopByOrderByNomDesc().getNom();
-        if(nom != ""){
+        if(!Objects.equals(nom, "")){
             return nom;
         }else{
             return "";

@@ -2,6 +2,8 @@ package phenotypage.model.fiche.ficheCol;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import phenotypage.model.vache.Vache;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +21,11 @@ FicheColServiceImpl implements FicheColService
 	@Override
 	public List<FicheCol> findAll() {
 		return repository.findAll();
+	}
+
+	@Override
+	public List<FicheCol> findByVache(Vache vache) {
+		return repository.findByVache(vache);
 	}
 
 	@Override

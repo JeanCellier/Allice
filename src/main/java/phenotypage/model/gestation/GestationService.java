@@ -13,4 +13,6 @@ public interface GestationService
 	void delete(Gestation gestationToDelete);
 
 	Gestation save(Gestation gestation);
+
+    int determineStatut(Gestation gestation);
 }

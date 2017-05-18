@@ -584,7 +584,7 @@
                     }
                 }else{
                     var table = $('#tableActes').DataTable(); //init pour changer value .cell.data
-                    var rowId = $('#tableActes').dataTable().fnFindCellRowIndexes(result.objet.nom, 0); // cherche fiche modifiée
+                    var rowId = $('#tableActes').dataTable().fnFindCellRowIndexes(result.objet.nom, 1); // cherche fiche modifiée
 
                     if($this.closest('div.frm').hasClass('step1')) { //si étape 1
                         //si c'est un nouvel ajout -> ajoute row a datatable
@@ -626,7 +626,7 @@
 
                     if(rowId.length == 1) { //si le nom de la fiche est présent
                         //Modifie le statut
-                        table.cell(rowId, 7).data(result.objet.statut).draw(false);
+                        table.cell(rowId, 8).data(result.objet.statut).draw(false);
                     }
                     $('#modal-body').before('<div class="alert alert-success flash" role="alert">' + result.message + '</div>'); //afficher alert
                 }

@@ -2,6 +2,8 @@ package phenotypage.model.gestation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import phenotypage.model.gestation.tableau_gestation.Tableau_Gestation;
@@ -53,6 +55,15 @@ public class GestationServiceImpl implements GestationService
 	@Override
 	public Gestation save(Gestation gestation) {
 		return repository.save(gestation);
+	}
+
+	@Override
+	public int determineStatut(Gestation gestation) {
+		if(gestation.getTableauGestationList().size() == 0 || Objects.equals(gestation.getRemarques(), "")){
+			return 1;
+		}
+
+		return 0;
 	}
 
 }

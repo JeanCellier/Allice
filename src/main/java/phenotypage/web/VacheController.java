@@ -122,9 +122,8 @@ public class VacheController
     @ResponseBody
     @RequestMapping(value="/get/vache", method = RequestMethod.GET)
     public List<String> getNumIdByNumTravail(@RequestParam("term") String tag){
-        List<String> lol = vacheService.findNumIdByNumTravail(tag);
-        System.out.println(lol.size());
-        return lol;
+        List<String> listNumTravail = vacheService.findNumIdByNumTravail(tag);
+        return listNumTravail;
     }
 //
 //    /** AUTOCOMPLETE **/

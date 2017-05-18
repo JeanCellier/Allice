@@ -1,5 +1,7 @@
 package phenotypage.model.fiche.ficheIa.insemination;
 
+import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
+
 /**
  * @author fabien
  */
@@ -12,4 +14,6 @@ public interface InseminationService
 	Insemination save(Insemination insemination);
 
     Insemination updateInsemination(Insemination insemination);
+
+	int determineStatut(Insemination insemination);
 }

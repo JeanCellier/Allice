@@ -7,27 +7,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1b2266e-e014-46c0-a873-aa645bb17deb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheIa/FicheIaRepository.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheIa/FicheIaRepository.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColPopulator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheCol/FicheColRepository.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheCol/FicheColRepository.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheCol/FicheColService.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheCol/FicheColService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheCol/FicheColServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheCol/FicheColServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheIa/FicheIaService.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheIa/FicheIaService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheIa/FicheIaServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheIa/FicheIaServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheTra/FicheTraServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheTra/FicheTraServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/gestation/GestationService.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/gestation/GestationService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/gestation/GestationServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/gestation/GestationServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/traitementDonneuse/Traitement_DonneuseService.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/traitementDonneuse/Traitement_DonneuseService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/traitementDonneuse/Traitement_DonneuseServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/traitementDonneuse/Traitement_DonneuseServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appPhenotypage.iml" afterPath="$PROJECT_DIR$/appPhenotypage.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaRepository.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaRepository.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColRepository.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColRepository.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColService.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaService.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/insemination/Insemination.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/insemination/Insemination.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/insemination/InseminationService.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/insemination/InseminationService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/insemination/InseminationServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/insemination/InseminationServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/FicheTraServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/FicheTraServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/gestation/GestationService.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/gestation/GestationService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/gestation/GestationServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/gestation/GestationServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/Traitement_DonneuseService.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/Traitement_DonneuseService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/Traitement_DonneuseServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/Traitement_DonneuseServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/web/VacheController.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/web/VacheController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/ColController.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/ColController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/IaController.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/IaController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/TraController.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/TraController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_ajouterModifier.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_ajouterModifier.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_consult.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_consult.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_ajouterModifier.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_ajouterModifier.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/traitement/traitement.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/traitement/traitement.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/WEB-INF/views/footer.jsp" afterPath="$PROJECT_DIR$/target/classes/WEB-INF/views/footer.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/WEB-INF/views/pharmacie/pharmacie.jsp" afterPath="$PROJECT_DIR$/target/classes/WEB-INF/views/pharmacie/pharmacie.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application.properties" afterPath="$PROJECT_DIR$/target/classes/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_consult.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_consult.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,47 +53,42 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="tra_ajouterModifier.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_ajouterModifier.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-6440">
-              <caret line="14" column="48" lean-forward="true" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ia_ajouterModifier.jsp" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ia_ajouterModifier.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_ajouterModifier.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="22" column="29" lean-forward="false" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
-              <folding>
-                <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TraController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/TraController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5874">
-              <caret line="57" column="75" lean-forward="false" selection-start-line="57" selection-start-column="75" selection-end-line="57" selection-end-column="75" />
+            <state relative-caret-position="192">
+              <caret line="682" column="43" lean-forward="false" selection-start-line="682" selection-start-column="43" selection-end-line="682" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IaController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/IaController.java">
+      <file leaf-file-name="ia_consult.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_consult.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="686">
-              <caret line="209" column="59" lean-forward="false" selection-start-line="209" selection-start-column="36" selection-end-line="209" selection-end-column="59" />
+            <state relative-caret-position="332">
+              <caret line="229" column="0" lean-forward="false" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="71" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tra_consult.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_consult.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="218" column="18" lean-forward="true" selection-start-line="218" selection-start-column="18" selection-end-line="218" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tra_ajouterModifier.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_ajouterModifier.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="632" column="28" lean-forward="true" selection-start-line="632" selection-start-column="28" selection-end-line="632" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -101,36 +107,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>find</find>
-      <find>addRow</find>
-      <find>cellrow</find>
-      <find>cellro</find>
-      <find>vache</find>
-      <find>end</find>
-      <find>dateHeureMinute</find>
-      <find>addR</find>
-      <find>newTab</find>
-      <find>reinitForm</find>
-      <find>modif</find>
-      <find>Edi</find>
-      <find>num_identification</find>
-      <find>clone</find>
-      <find>packa</find>
-      <find>servlet</find>
-      <find>taureau</find>
-      <find>2</find>
-      <find>5</find>
-      <find>Suivan</find>
-      <find>delTab</find>
-      <find>delT</find>
-      <find>taurea</find>
-      <find>lieu</find>
-      <find>facil</find>
-      <find>é</find>
-      <find>checked</find>
-      <find>radio</find>
       <find>creer</find>
-      <find>traitementAc</find>
+      <find>vacheService</find>
+      <find>vache</find>
+      <find>lieu</find>
+      <find>modal</find>
+      <find>modal-body</find>
+      <find>change</find>
+      <find>TRA</find>
+      <find>&quot;TRA</find>
+      <find>modal-</find>
+      <find>fiche_01</find>
+      <find>addRow</find>
+      <find>addFiche</find>
+      <find>select</find>
+      <find>.vache</find>
+      <find>addOpe</find>
+      <find>console</find>
+      <find>ajax</find>
+      <find>css</find>
+      <find>cell</find>
+      <find>load</find>
+      <find>datatab</find>
+      <find>data</find>
+      <find>table.cell(rowId, 5).data(result.objet.vache.num_identification).draw(false);</find>
+      <find>0</find>
+      <find>find</find>
+      <find>statut</find>
+      <find>statu</find>
+      <find>stat</find>
+      <find>datata</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -153,16 +159,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/traitement/tableau_traitement/Tableau_Traitement.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/traitement/Traitement.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/traitement/TraitementRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/traitement/TraitementService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/traitement/TraitementServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/traitement/tableau_traitement/Tableau_TraitementServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/traitement/tableau_traitement/Tableau_TraitementRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/menu.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/traitement_acte/TraitementActe.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/css/styles.css" />
         <option value="$PROJECT_DIR$/src/main/resources/static/bootstrap/sass/_bootstrap-variables.scss" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/web/TraitementController.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/traitement_acte/TraitementActeService.java" />
@@ -172,38 +168,48 @@
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/vache/VacheRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/vache/VacheService.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/vache/VacheServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/web/VacheController.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/FicheTraRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/tableau_donneuse/Tableau_DonneuseServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/tableau_donneuse/Tableau_DonneuseService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/Traitement_DonneuseServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/embryonsTransferes/EmbryonsTransferesServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/embryonsTransferes/EmbryonsTransferesService.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/corpsJaune/CorpsJauneServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/FicheTraService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/FicheTraServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/pharmacie/produit/ProduitService.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/pharmacie/produit/ProduitRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/pharmacie/produit/ProduitServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/web/PharmacieController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/footer.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/pharmacie/pharmacie.jsp" />
-        <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_consult.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_detail.jsp" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIa.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/insemination/Insemination.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_consult.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaRepository.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/traitement/traitement.jsp" />
-        <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_ajouterModifier.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/IaController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/TraController.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/vache/VachePopulator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/FicheTraServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/gestation/GestationService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/Traitement_DonneuseService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/Traitement_DonneuseServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/gestation/GestationServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/insemination/InseminationService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/insemination/InseminationServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/TraController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/IaController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColPopulator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/web/VacheController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/ColController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_ajouterModifier.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_ajouterModifier.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_consult.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_consult.jsp" />
       </list>
     </option>
   </component>
@@ -339,6 +345,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -850,6 +857,112 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="informationsPIV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appPhenotypage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Allice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phenotypage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gestation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appPhenotypage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Allice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phenotypage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gestation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tableau_gestation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appPhenotypage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Allice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phenotypage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="fiche" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -930,10 +1043,47 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appPhenotypage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Allice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phenotypage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fiche" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ficheCol" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1487,7 +1637,9 @@
       <workItem from="1493882141315" duration="11410000" />
       <workItem from="1494512218189" duration="17000" />
       <workItem from="1494666627438" duration="834000" />
-      <workItem from="1495050104531" duration="4380000" />
+      <workItem from="1495050104531" duration="4577000" />
+      <workItem from="1495093580977" duration="8279000" />
+      <workItem from="1495105204694" duration="10496000" />
     </task>
     <task id="LOCAL-00001" summary="interface pharmacie">
       <created>1489611137333</created>
@@ -1734,11 +1886,18 @@
       <option name="project" value="LOCAL" />
       <updated>1493824684744</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Interface fiche IA&#10;    reste controller + ajax add / modif&#10;    &#10;produit -&gt; fiche tra/ia &amp; traitement step 0.01">
+      <created>1495054577361</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1495054577361</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="430142000" />
+    <option name="totallyTimeSpent" value="449114000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="0" width="1920" height="1080" extended-state="6" />
@@ -1757,13 +1916,13 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32848233" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279743" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35758835" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37110186" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29947916" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
@@ -1787,7 +1946,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add font awesome" />
     <MESSAGE value="new menu + dropdown" />
     <MESSAGE value="Clean projet&#10;Maj api spring / dépendance &#10;Cohabitation font-awesome &amp; glyphicon&#10;Module pharmacie 100 %&#10;Modification produitservice/impl&#10;Maj menu" />
     <MESSAGE value="Ajout auto completion" />
@@ -1812,7 +1970,8 @@
     <MESSAGE value="optimisation pharmacie chargement des produits épuisés" />
     <MESSAGE value="Correction bug dans fiche tra -&gt; nouvelle fiche avait toujours class edit form&#10;Modifications datatable fiche -&gt; ajout statut&#10;Modifications fonction datatable -&gt; coloration en fonction du statut&#10;Modifications Modif fiche -&gt; actualise les données et la couleur" />
     <MESSAGE value="Modification fonction datatable fiche tra -&gt; prise en compte statut = 0&#10;Rajout script datatable.bootstrap.min.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modification fonction datatable fiche tra -&gt; prise en compte statut = 0&#10;Rajout script datatable.bootstrap.min.js" />
+    <MESSAGE value="Interface fiche IA&#10;    reste controller + ajax add / modif&#10;    &#10;produit -&gt; fiche tra/ia &amp; traitement step 0.01" />
+    <option name="LAST_COMMIT_MESSAGE" value="Interface fiche IA&#10;    reste controller + ajax add / modif&#10;    &#10;produit -&gt; fiche tra/ia &amp; traitement step 0.01" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1833,132 +1992,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/vache/VacheServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="65" column="44" lean-forward="true" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/tableau_donneuse/Tableau_DonneuseRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/gestation/GestationServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/Traitement_DonneuseService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/tableau_donneuse/Tableau_DonneuseServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/tableau_donneuse/Tableau_DonneuseService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="11" column="42" lean-forward="false" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/embryonsTransferes/EmbryonsTransferes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/embryonsTransferes/EmbryonsTransferesServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="45" column="140" lean-forward="false" selection-start-line="45" selection-start-column="140" selection-end-line="45" selection-end-column="140" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/embryonsTransferes/EmbryonsTransferesService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="133" lean-forward="false" selection-start-line="17" selection-start-column="133" selection-end-line="17" selection-end-column="133" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/Traitement_DonneuseServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/corpsJaune/CorpsJauneServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/tableau_donneuse/Tableau_Donneuse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="26" column="34" lean-forward="false" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/corpsJaune/CorpsJaune.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="16" column="34" lean-forward="false" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/web/TraitementController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1400">
-          <caret line="84" column="68" lean-forward="false" selection-start-line="84" selection-start-column="68" selection-end-line="84" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/traitement_acte/TraitementActe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/pharmacie/produit/ProduitRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="25" column="52" lean-forward="false" selection-start-line="25" selection-start-column="52" selection-end-line="25" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/pharmacie/produit/ProduitService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/pharmacie/produit/ProduitServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="78" column="49" lean-forward="true" selection-start-line="78" selection-start-column="49" selection-end-line="78" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/web/PharmacieController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
@@ -1984,13 +2017,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="29" column="23" lean-forward="false" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/FicheTraServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3280">
-          <caret line="191" column="9" lean-forward="false" selection-start-line="191" selection-start-column="9" selection-end-line="191" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -2026,7 +2052,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2045,70 +2070,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/Traitement_Donneuse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="32" column="22" lean-forward="false" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIa.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="33" column="37" lean-forward="false" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/insemination/Insemination.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="25" column="11" lean-forward="false" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_consult.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_consult.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1640">
-          <caret line="82" column="48" lean-forward="true" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/FicheTraService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
           <caret line="36" column="12" lean-forward="false" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="12" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="104" column="40" lean-forward="false" selection-start-line="104" selection-start-column="40" selection-end-line="104" selection-end-column="40" />
-          <folding>
-            <element signature="e#3616#3617#0" expanded="false" />
-            <element signature="e#3666#3667#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2120,35 +2086,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" column="31" lean-forward="true" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/vache/Vache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="25" column="37" lean-forward="false" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/Traitement_DonneusePopulator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="19" column="34" lean-forward="true" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2172,7 +2113,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="22" column="11" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="22" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2180,46 +2120,264 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="16" column="68" lean-forward="false" selection-start-line="16" selection-start-column="68" selection-end-line="16" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheCol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="16" column="22" lean-forward="false" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="27" column="32" lean-forward="false" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/gestation/GestationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/Traitement_DonneuseService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/Traitement_DonneusePopulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="19" column="34" lean-forward="true" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/Traitement_Donneuse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="32" column="22" lean-forward="false" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/Traitement_DonneuseServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="72" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/gestation/Gestation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/gestation/tableau_gestation/Tableau_Gestation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/vache/Vache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="25" column="37" lean-forward="false" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/gestation/GestationServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="65" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/insemination/Insemination.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-180">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/insemination/InseminationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="17" column="8" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="31" column="41" lean-forward="false" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/insemination/InseminationServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
-            <marker date="1493568892546" expanded="true" signature="415:491" ph="select num_i... vache" />
+            <element signature="e#718#719#0" expanded="false" />
+            <element signature="e#761#762#0" expanded="false" />
+            <element signature="e#874#875#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/FicheTraServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1480">
+          <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="144" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-190">
+          <caret line="122" column="33" lean-forward="true" selection-start-line="122" selection-start-column="33" selection-end-line="122" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/TraController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5874">
-          <caret line="57" column="75" lean-forward="false" selection-start-line="57" selection-start-column="75" selection-end-line="57" selection-end-column="75" />
+        <state relative-caret-position="4563">
+          <caret line="321" column="20" lean-forward="true" selection-start-line="321" selection-start-column="20" selection-end-line="321" selection-end-column="20" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/FicheTraPopulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="34" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColPopulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="2" selection-end-line="38" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/vache/VacheServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-420">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/web/VacheController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/ColController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="30" column="60" lean-forward="false" selection-start-line="30" selection-start-column="60" selection-end-line="30" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/IaController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="686">
-          <caret line="209" column="59" lean-forward="false" selection-start-line="209" selection-start-column="36" selection-end-line="209" selection-end-column="59" />
+        <state relative-caret-position="-53">
+          <caret line="397" column="0" lean-forward="false" selection-start-line="397" selection-start-column="0" selection-end-line="397" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/web/TraitementController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="103" column="58" lean-forward="false" selection-start-line="103" selection-start-column="31" selection-end-line="103" selection-end-column="58" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_ajouterModifier.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6440">
-          <caret line="14" column="48" lean-forward="true" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="272">
+          <caret line="632" column="28" lean-forward="true" selection-start-line="632" selection-start-column="28" selection-end-line="632" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_ajouterModifier.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="22" column="29" lean-forward="false" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
-          <folding>
-            <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="192">
+          <caret line="682" column="43" lean-forward="false" selection-start-line="682" selection-start-column="43" selection-end-line="682" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_consult.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="229" column="0" lean-forward="false" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_consult.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="218" column="18" lean-forward="true" selection-start-line="218" selection-start-column="18" selection-end-line="218" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>

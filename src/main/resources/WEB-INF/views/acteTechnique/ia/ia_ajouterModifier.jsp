@@ -19,17 +19,17 @@
                                 <fieldset name="identification">
                                     <legend>&Eacute;tape 1/4  -  IDENTIFICATION FICHE</legend>
                                     <div class="form-group">
-                                        <input class="form-control nom" name="nom" type="text" placeholder="Nom de la fiche">
+                                        <input class="form-control nom" name="nom" required type="text" placeholder="Nom de la fiche">
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control datepickerTime" name="date" type="text" placeholder="Date">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" name="lieu" type="text" placeholder="Lieu">
+                                        <input class="form-control" name="lieu" type="text" value="Allice Nouzilly" placeholder="Lieu">
                                     </div>
                                     <div class="form-group col-sm-11 col-xs-11" style="padding-left:0">
                                         <select class="form-control programmeSelect" name="programme">
-                                            <option value="" selected disabled>Programme</option>
+                                            <option selected disabled>Programme</option>
                                             <c:forEach items="${programmesList}" var="programme">
                                                 <option value="${programme.id}">${programme.nom}</option>
                                             </c:forEach>
@@ -50,7 +50,7 @@
                                         <input class="form-control required vache" required name="vache" type="text" placeholder="vache">
                                     </div>
 
-                                    <button class="btn btn-primary open1" type="button">Enregistrer <span class="fa fa-arrow-right"></span></button>
+                                    <button class="btn btn-primary open1" type="submit">Enregistrer <span class="fa fa-arrow-right"></span></button>
                                 </fieldset>
                             </form>
                         </div>
@@ -61,8 +61,8 @@
                                     <legend>&Eacute;tape 2/4  -  INSEMINATION</legend>
 
                                     <div class="form-group col-sm-11 col-xs-11" style="padding-left:0">
-                                        <select class="form-control operateurSelect" id="operateur" name="operateur">
-                                            <option value="" selected disabled>Op&#233rateur</option>
+                                        <select required class="form-control operateurSelect" id="operateur" name="operateur">
+                                            <option selected disabled>Op&#233rateur</option>
                                             <c:forEach items="${operateursList}" var="operateur">
                                                 <option value="${operateur.id}">${operateur.nom} ${operateur.prenom}</option>
                                             </c:forEach>
@@ -85,10 +85,7 @@
 
                                     <div class="form-group">
                                         <select class="form-control collecteSelect" id="collecte" name="collecte">
-                                            <option value="" selected disabled>Collecte</option>
-                                            <c:forEach items="${fichesColList}" var="ficheCol">
-                                                <option value="${ficheCol.id}">${ficheCol.nom}</option>
-                                            </c:forEach>
+                                            <option value="" required selected disabled>Collecte</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -111,7 +108,7 @@
                                     </div>
 
                                     <button class="btn btn-primary back2" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
-                                    <button class="btn btn-primary open2" type="button">Enregistrer <span class="fa fa-arrow-right"></span></button>
+                                    <button class="btn btn-primary open2" type="submit">Enregistrer <span class="fa fa-arrow-right"></span></button>
                                 </fieldset>
                             </form>
                         </div>
@@ -376,7 +373,6 @@
 
     /****** Navigation d'étape ******/
     $(document).on( 'click', ".open1", function(event){
-
         if(checkRequired($(this).closest('form'))) {
             $(event.target).closest('div.tab-pane.active').find('.step1').hide("fast");
             $(event.target).closest('div.tab-pane.active').find('.step2').show("slow");
@@ -384,8 +380,10 @@
     });
 
     $(document).on( 'click', ".open2", function(event){
-        $(event.target).closest('div.tab-pane.active').find('.step2').hide("fast");
-        $(event.target).closest('div.tab-pane.active').find('.step3').show("slow");
+        if(checkRequired($(this).closest('form'))) {
+            $(event.target).closest('div.tab-pane.active').find('.step2').hide("fast");
+            $(event.target).closest('div.tab-pane.active').find('.step3').show("slow");
+        }
     });
 
     $(document).on( 'click', ".back2", function(event){
@@ -496,53 +494,6 @@
         }
     });
 
-    /************************ AJOUT *************************/
-
-    /****** Ajoute une nouvelle fiche ******/
-    $(document).on( 'submit', ".addForm", function(e){
-        e.preventDefault();
-
-        var $this = $(this);
-        var data = $this.serialize();
-        var id = $this.find('.validButton').attr('data-id');
-
-        /** Si c'est une modif **/
-        if(id != null) {
-            data = data+'&id='+id
-        }
-
-        $.ajax({
-            url: $this.attr('action'),
-            type: $this.attr('method'),
-            data: data,
-            success: function (result) {
-                if (result.succes == true) {
-                    /** clear modal **/
-                    reinitForm($this);
-                    $("li.active.tab").children('a').text(" Nouvelle fiche");
-
-                    $this.find(".step4").hide("fast");
-                    $this.find(".step1").show("slow");
-
-                    $('#modal-body').before('<div class="alert alert-success flash" role="alert">' + result.message + '</div>'); //afficher alert
-
-                    if(id != null){ //Si c'est une modification
-                        $('#tableActes').DataTable().row(currentrow).remove().draw();
-                    }
-
-                    addRow(result);
-                } else {
-                    $('#modal-body').before('<div class="alert alert-danger flash" role="alert">' + result.message + '</div>');
-                }
-                autoclose();
-            },
-            error: function (xhr, status, error) {
-                $('#modal-body').before('<div class="alert alert-danger flash" role="alert">Une erreur s\'est produite</div>');
-                autoclose();
-            }
-        });
-    });
-
     /******* Ajoute un nouveau programme ******/
     $('#addProgrammeForm').on('submit', function(e) {
         e.preventDefault();
@@ -555,7 +506,7 @@
             data: $this.serialize(),
             success: function(result) {
                 if(result.succes == true){
-                    $('input').val(''); //clear modal
+                    $('#addProgramme').find('input').val(''); //clear modal
                     $('#addProgramme').modal('toggle'); //ferme modal
 
                     $('.programmeSelect').append($('<option>', {
@@ -581,7 +532,7 @@
             data: $this.serialize(),
             success: function(result) {
                 if(result.succes == true){
-                    $('input').val(''); //clear modal
+                    $('#addOperateur').find('input').val(''); //clear modal
                     $('#addOperateur').modal('toggle'); //ferme modal
 
                     $('.operateurSelect').append($('<option>', {
@@ -624,6 +575,137 @@
     $(document).on( 'click', ".delTabGestation", function(){
         $(this).closest('.tabGestation').remove();
     });
+
+    /******************************* AUTOCOMPLETE ****************************/
+    $( ".vache" ).autocomplete({
+        minLength: 4,
+        source: '${pageContext. request. contextPath}/animaux/get/vache'
+    });
+
+    /******************************* LOAD FICHE COLLECTE DANS SELECT ****************************/
+    function loadCollecte(){
+        var numIdVache = $(".tab-pane.active").find('.vache').val();
+
+        $.ajax({
+            type : 'GET',
+            url: '${pageContext. request. contextPath}/acteTechnique/col/get/vache/'+numIdVache,
+            success: function (result) {
+                if (result.succes == true) {
+                    $('.collecteSelect').append($('<option>', {
+                        value: result.objet.id,
+                        text: result.nom
+                    }));
+                } else {
+                    $('#modal-body').before('<div class="alert alert-danger flash" role="alert">'+result.message+'</div>');
+                }
+            }
+        });
+    }
+
+    /************************ AJOUT *************************/
+
+    /****** Ajoute une nouvelle fiche ******/
+    $(document).on( 'submit', ".addOrUpdatePart", function(e){
+        e.preventDefault();
+
+        var $this = $(this);
+        var data = $this.serialize();
+
+        $.ajax({
+            url: $this.attr('action'),
+            type: $this.attr('method'),
+            data: data,
+            success: function (result) {
+                if (result.succes != true) {
+                    $('#modal-body').before('<div class="alert alert-danger flash" role="alert">' + result.message + '</div>'); //afficher alert
+                    //empêche le passage à une autre étape si erreur
+                    if($this.closest('div.frm').hasClass('step1')) {
+                        $this.closest('div.tab-pane.active').find('.step2').hide("fast");
+                        $this.closest('div.tab-pane.active').find('.step1').show("slow");
+                    }
+                    if($this.closest('div.frm').hasClass('step2')) {
+                        $this.closest('div.tab-pane.active').find('.step3').hide("fast");
+                        $this.closest('div.tab-pane.active').find('.step2').show("slow");
+                    }
+                    if($this.closest('div.frm').hasClass('step3')) {
+                        $this.closest('div.tab-pane.active').find('.step4').hide("fast");
+                        $this.closest('div.tab-pane.active').find('.step3').show("slow");
+                    }
+                }else{
+                    var table = $('#tableActes').DataTable(); //init pour changer value .cell.data
+                    var rowId = $('#tableActes').dataTable().fnFindCellRowIndexes(result.objet.nom, 1); // cherche fiche modifiée
+
+                    if($this.closest('div.frm').hasClass('step1')) { //si étape 1
+                        //si c'est un nouvel ajout -> ajoute row a datatable
+                        if(!$this.hasClass('EditForm')){
+                            addRow(result);
+                        }
+                        //change les actions des forms pour éditer les fiches
+                        $this.closest('div.tab-pane.active').find('form').each(function() {
+                            if(!$(this).hasClass('EditForm')) {
+                                $(this).attr('action', $(this).attr('action') + "/" + result.objet.id);
+                                $(this).addClass('EditForm');
+                            }
+                        });
+
+                        if(rowId.length == 1) { //si le nom de la fiche est présent
+                            /** Modifie la ligne correspondant à la fiche modifiée **/
+                            if (result.objet.programme != null) {
+                                table.cell(rowId, 1).data(result.objet.programme.nom).draw(false);
+                            }
+                            if (result.objet.dateHeureMinute != null) {
+                                table.cell(rowId, 2).data(convertDateWithTime(result.objet.dateHeureMinute)).draw(false);
+                            }
+                            table.cell(rowId, 3).data(result.objet.lieu).draw(false);
+                            if (result.objet.operateur != null) {
+                                table.cell(rowId, 4).data(result.objet.operateur.nom+" "+result.objet.operateur.prenom).draw(false);
+                            }
+
+                            table.cell(rowId, 5).data(result.objet.vache.num_identification).draw(false);
+                            table.cell(rowId, 6).data(result.objet.taureau).draw(false);
+                        }
+
+                        loadCollecte();
+                    }
+
+                    if($this.closest('div.frm').hasClass('step4')) { //si étape 4
+                        /** clear modal **/
+                        reinitForm($this.closest('.tab-pane'));
+
+                        $("li.active.tab").children('a').text(" Nouvelle fiche");
+
+                        $this.closest('div.tab-pane.active').find(".step4").hide("fast");
+                        $this.closest('div.tab-pane.active').find(".step1").show("slow");
+                    }
+
+                    if(rowId.length == 1) { //si le nom de la fiche est présent
+                        //Modifie le statut
+                        table.cell(rowId, 8).data(result.objet.statut).draw(false);
+                    }
+                    $('#modal-body').before('<div class="alert alert-success flash" role="alert">' + result.message + '</div>'); //afficher alert
+                }
+                autoclose();
+            },
+            error: function (xhr, status, error) {
+                $('#modal-body').before('<div class="alert alert-danger flash" role="alert">Une erreur s\'est produite</div>');
+                autoclose();
+                //empêche le passage à une autre étape si erreur
+                if($this.closest('div.frm').hasClass('step1')) {
+                    $this.closest('div.tab-pane.active').find('.step2').hide("fast");
+                    $this.closest('div.tab-pane.active').find('.step1').show("slow");
+                }
+                if($this.closest('div.frm').hasClass('step2')) {
+                    $this.closest('div.tab-pane.active').find('.step3').hide("fast");
+                    $this.closest('div.tab-pane.active').find('.step2').show("slow");
+                }
+                if($this.closest('div.frm').hasClass('step3')) {
+                    $this.closest('div.tab-pane.active').find('.step4').hide("fast");
+                    $this.closest('div.tab-pane.active').find('.step3').show("slow");
+                }
+            }
+        });
+    });
+
 
     /************************ MODIF *************************/
     $(document).on( 'click', ".btnEdit", function() {
@@ -721,9 +803,5 @@
         });
     });
 
-    /******************************* AUTOCOMPLETE ****************************/
-    $( ".vache" ).autocomplete({
-        minLength: 4,
-        source: '${pageContext. request. contextPath}/animaux/get/vache'
-    });
+
 </script>
