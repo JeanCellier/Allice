@@ -1,4 +1,4 @@
-package phenotypage.model.fiche.ficheCol.tableauTraitement;
+package phenotypage.model.tableauTraitement;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

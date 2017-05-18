@@ -10,7 +10,7 @@ import phenotypage.model.invitro.culture.Culture;
 import phenotypage.model.invitro.fecondation.Fecondation;
 import phenotypage.model.fiche.ficheOpu.maturationInVitro.MaturationInVitro;
 import phenotypage.model.fiche.ficheOpu.ovocytesCollecte.OvocytesCollectes;
-import phenotypage.model.fiche.ficheCol.tableauTraitement.TableauTraitement;
+import phenotypage.model.tableauTraitement.TableauTraitement;
 import phenotypage.model.infoTraitementDonneuse.InfoTraitementDonneuse;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
 import phenotypage.model.fiche.ficheOpu.typeOpu.TypeOpu;
