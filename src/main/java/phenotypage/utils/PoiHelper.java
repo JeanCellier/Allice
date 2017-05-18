@@ -4,6 +4,7 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.FormulaEvaluator;
+import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -44,8 +45,8 @@ public class PoiHelper {
      * @param column column index
      * @param value  value
      */
-    public static void writeCell(XSSFSheet sheet, int row, int column, String value) {
-        writeCell(sheet, row, column, value, CellType.STRING);
+    public static XSSFCell writeCell(XSSFSheet sheet, int row, int column, String value) {
+        return writeCell(sheet, row, column, value, CellType.STRING);
     }
 
     /**
@@ -56,21 +57,8 @@ public class PoiHelper {
      * @param column column index
      * @param value  value
      */
-    public static void writeCell(XSSFSheet sheet, int row, int column, Double value) {
-        writeCell(sheet, row, column, value, CellType.NUMERIC);
-    }
-
-
-    /**
-     * Writes a value into a sheet cell
-     *
-     * @param sheet  sheet
-     * @param row    row index
-     * @param column column index
-     * @param value  value
-     */
-    public static void writeCell(XSSFSheet sheet, int row, int column, Boolean value) {
-        writeCell(sheet, row, column, value, CellType.BOOLEAN);
+    public static XSSFCell writeCell(XSSFSheet sheet, int row, int column, Double value) {
+        return writeCell(sheet, row, column, value, CellType.NUMERIC);
     }
 
 
@@ -82,8 +70,21 @@ public class PoiHelper {
      * @param column column index
      * @param value  value
      */
-    public static void writeFormula(XSSFSheet sheet, int row, int column, String value) {
-        writeCell(sheet, row, column, value, CellType.FORMULA);
+    public static XSSFCell writeCell(XSSFSheet sheet, int row, int column, Boolean value) {
+        return writeCell(sheet, row, column, value, CellType.BOOLEAN);
+    }
+
+
+    /**
+     * Writes a value into a sheet cell
+     *
+     * @param sheet  sheet
+     * @param row    row index
+     * @param column column index
+     * @param value  value
+     */
+    public static XSSFCell writeFormula(XSSFSheet sheet, int row, int column, String value) {
+        return writeCell(sheet, row, column, value, CellType.FORMULA);
     }
 
     /**
@@ -94,12 +95,13 @@ public class PoiHelper {
      * @param column column index
      * @param value  value
      */
-    public static void writeCell(XSSFSheet sheet, int row, int column, Object value, CellType type) {
+    public static XSSFCell writeCell(XSSFSheet sheet, int row, int column, Object value, CellType type) {
         XSSFRow xssfRow = sheet.getRow(row);
         if (xssfRow == null) {
             xssfRow = sheet.createRow(row);
         }
         XSSFCell cell = xssfRow.createCell(column, type);
+
         switch (type) {
             case STRING:
                 cell.setCellValue((String) value);
@@ -113,5 +115,14 @@ public class PoiHelper {
             case FORMULA:
                 cell.setCellFormula((String) value);
         }
+        return cell;
+    }
+
+    public static void mergeColumn(XSSFSheet sheet, int row, int col1, int col2) {
+        sheet.addMergedRegion(new CellRangeAddress(row, row, col1, col2));
+    }
+
+    public static void mergeRowAndColumn(XSSFSheet sheet, int row1, int row2, int col1, int col2) {
+        sheet.addMergedRegion(new CellRangeAddress(row1, row2, col1, col2));
     }
 }
