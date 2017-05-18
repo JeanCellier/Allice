@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
-                <h4 class="modal-title custom_align" id="HeadingAdd">Renseigner ou modifier une fiche TRA</h4>
+                <h4 class="modal-title custom_align" id="HeadingAdd">Renseigner ou modifier une fiche COL</h4>
             </div>
 
             <div id="modal-body" class="modal-body">
@@ -59,7 +59,7 @@
                                     <div class="form-group">
                                         <input class="form-control required vache" required name="vache" type="text" placeholder="vache">
                                     </div>
-                                    <button class="btn btn-primary open1" type="submit">Suivant <span class="fa fa-arrow-right"></span></button>
+                                    <button class="btn btn-primary open1" type="button">Enregistrer <span class="fa fa-arrow-right"></span></button>
                                 </fieldset>
                             </form>
                         </div>
@@ -113,9 +113,41 @@
                                     <div class="form-group col-sm-1">
                                         <button class="btn btn-primary addTabTraitement" type="button"><span class="fa fa-plus"></span></button>
                                     </div>
+                                    <div class="form-group">
+                                        <label>Ponction du ou des follicules dominants (>8mm) </label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="oui" name="ponctionFollicule">Oui</label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="non" name="ponctionFollicule">Non</label>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <input class="form-control" name="nbFolliculeAspi" type="number" placeholder="Nombre de follicules aspir&#233s">
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <input class="form-control" name="nbFolDroite" type="number" placeholder="Droite">
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <input class="form-control" name="nbFolGauche" type="number" placeholder="Gauche">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Image(s) &#233chographie: </label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="oui" name="imageEcho">Oui</label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="non" name="imageEcho">Non</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Traitement superovulation: </label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="oui" name="traitementSuperov">Oui</label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="non" name="traitementSuperov">Non</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Type FSH: </label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="naturelle" name="typeFSH">Naturelle</label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="induite" name="typeFSH">Induite</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" name="pourDoseFSH" type="number" placeholder="Pourcentage de la dose totale FSH">
+                                    </div>
 
                                     <button class="btn btn-primary back2" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
-                                    <button class="btn btn-primary open2" type="submit">Enregistrer <span class="fa fa-arrow-right"></span></button>
+                                    <button class="btn btn-primary open2" type="button">Enregistrer <span class="fa fa-arrow-right"></span></button>
                                 </fieldset>
                             </form>
                         </div>
@@ -123,32 +155,41 @@
                         <div class="step3 frm" style="display: none;">
                             <form name="addPart3" class="addOrUpdatePart" method="post" action="./addOrUpdatePart3">
                                 <fieldset name="corpsJaune">
-                                    <legend>&Eacute;tape 3/5  -  &Eacute;VALUATION DU CORPS JAUNE</legend>
-                                    <div class="form-group">
-                                        <label>M&#233thode d'&#233valuation: </label>
-                                        <label class="radio-inline"><input type="radio" class="radio" value="palpation" name="methodeEvaluation">Palpation</label>
-                                        <label class="radio-inline"><input type="radio" class="radio" value="echographie" name="methodeEvaluation">&Eacute;chographie</label>
+                                    <legend>&Eacute;tape 3/5  -  R&Eacute;SULTATS COLLECTE</legend>
+
+                                    <div class="form-group col-sm-3">
+                                        <input class="form-control" name="nbEmbryonViables" type="number" placeholder="Nb d'embryons viables">
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        <input class="form-control" name="nbEmbryonDegeneres" type="number" placeholder="Nb d'embryons d&eacute;g&eacute;n&eacute;r&eacute;s">
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        <input class="form-control" name="nbEmbryonNonFecondes" type="number" placeholder="Nb d'embryons non f&eacute;cond&eacute;s">
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        <input class="form-control" name="nbEmbryonTotal" type="number" placeholder="Nb d'embryons total collect&eacute;s">
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <input class="form-control" name="nbCorpsJaune" type="text" placeholder="Nb de corps jaunes d&eacute;nombr&eacute;s">
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <input class="form-control" name="nbCorpsJauneDroite" type="text" placeholder="Droite">
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <input class="form-control" name="nbCorpsJauneGauche" type="text" placeholder="Gauche">
                                     </div>
                                     <div class="form-group">
-                                        <label>Image(s) &#233chographie : </label>
-                                        <label class="radio-inline"><input type="radio" class="radio" value="oui" name="optradioEcho">Oui</label>
-                                        <label class="radio-inline"><input type="radio" class="radio" value="non" name="optradioEcho">Non</label>
+                                        <input class="form-control" name="TauxCollecte" type="text" placeholder="Taux de collecte estim&eacute;">
                                     </div>
                                     <div class="form-group">
-                                        <label>Cot&#233 du corps jaune : </label>
-                                        <label class="radio-inline"><input type="radio" class="radio" value="gauche" name="optradioCote">Gauche</label>
-                                        <label class="radio-inline"><input type="radio" class="radio" value="droit" name="optradioCote">Droit</label>
+                                        <input class="form-control" name="sanitaires" type="text" placeholder="Sanitaires">
                                     </div>
                                     <div class="form-group">
-                                        <select class="form-control" id="qualite" name="qualite">
-                                            <option value="" selected disabled>Qualit&#233</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                        </select>
+                                        <textarea class="form-control" name="remarques" type="text" placeholder="Remarques"></textarea>
                                     </div>
+
                                     <button class="btn btn-primary back3" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
-                                    <button class="btn btn-primary open3" type="submit">Enregistrer <span class="fa fa-arrow-right"></span></button>
+                                    <button class="btn btn-primary open3" type="button">Enregistrer <span class="fa fa-arrow-right"></span></button>
                                 </fieldset>
                             </form>
                         </div>
@@ -156,33 +197,65 @@
                         <div class="step4 frm" style="display: none;">
                             <form name="addPart4" class="addOrUpdatePart" method="post" action="./addOrUpdatePart4">
                                 <fieldset name="embryon">
-                                    <legend>&Eacute;tape 4/5  -  EMBRYON(S) TRANSF&Eacute;R&Eacute;S</legend>
-                                    <div class="form-group">
-                                        <input class="form-control" name="numEmbryon" type="text" placeholder="Num&#233ro d'embryon">
+                                    <legend>&Eacute;tape 4/5  -  D&Eacute;TAILS EMBRYONS VIABLES</legend>
+                                    <div id="tabEmbryonsViables" class="tabEmbryonsViables">
+                                        <div class="form-group col-sm-3">
+                                            <select class="form-control" name="stade[]">
+                                                <option value="" selected disabled>Stade</option>
+                                                <c:forEach begin="1" end="9" var="val">
+                                                    <option value="<c:out value="${val}"/>"><c:out value="${val}"/></option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-sm-3">
+                                            <select class="form-control" name="qualite[]">
+                                                <option value="" selected disabled>Qualit&#233</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-sm-3">
+                                            <select class="form-control" name="produit[]">
+                                                <option value="" selected disabled>Produit</option>
+                                                <c:forEach items="${produitsList}" var="produit">
+                                                    <option value="${produit.id}">${produit.nom}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" name="refCong" type="text" placeholder="R&#233f&#233rence cong&#233lation">
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" name="refCong" type="text" placeholder="R&#233f&#233rence cong&#233lation">
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" name="refCong" type="text" placeholder="R&#233f&#233rence cong&#233lation">
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" name="refCong" type="text" placeholder="R&#233f&#233rence cong&#233lation">
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" name="refCong" type="text" placeholder="R&#233f&#233rence cong&#233lation">
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" name="refCong" type="text" placeholder="R&#233f&#233rence cong&#233lation">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Type FSH: </label>
+                                            <label class="radio-inline"><input type="radio" class="radio" value="naturelle" name="typeFSH">Naturelle</label>
+                                            <label class="radio-inline"><input type="radio" class="radio" value="induite" name="typeFSH">Induite</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" name="refCong" type="text" placeholder="R&#233f&#233rence cong&#233lation">
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Cot&#233 transfert : </label>
-                                        <label class="radio-inline"><input type="radio" class="radio" value="gauche" name="optradioCoteTransf">Gauche</label>
-                                        <label class="radio-inline"><input type="radio" class="radio" value="droit" name="optradioCoteTransf">Droit</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <select class="form-control" name="emplacementCorne">
-                                            <option value="" selected disabled>Emplacement dans la corne ut&#233rine</option>
-                                            <option value="1erTiers">1er tiers</option>
-                                            <option value="2emeTiers">2&egrave;me tiers</option>
-                                            <option value="3emeTiers">3&egrave;me tiers</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <select class="form-control" name="faciliteProgression">
-                                            <option value="" selected disabled>Facilit&#233 de progression</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                        </select>
+                                    <div class="form-group col-sm-1">
+                                        <button class="btn btn-primary addTabTraitement" type="button"><span class="fa fa-plus"></span></button>
                                     </div>
                                     <button class="btn btn-primary back4" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
-                                    <button class="btn btn-primary open4" type="submit">Enregistrer <span class="fa fa-arrow-right"></span></button>
+                                    <button class="btn btn-primary open4" type="button">Enregistrer <span class="fa fa-arrow-right"></span></button>
                                 </fieldset>
                             </form>
                         </div>
@@ -190,38 +263,27 @@
                         <div class="step5 frm" style="display: none;">
                             <form name="addPart5" class="addOrUpdatePart" method="post" action="./addOrUpdatePart5">
                                 <fieldset name="gestation">
-                                    <legend>&Eacute;tape 5/5  -  SUIVI DE GESTATION</legend>
-                                    <div id="tabGestation" class="tabGestation">
-                                        <div class="form-group col-sm-3" style="padding-left:0">
-                                            <input class="form-control datepicker" name="dateMethode[]" type="text" placeholder="Date">
-                                        </div>
-                                        <div class="form-group col-sm-4">
-                                            <select class="form-control" name="methode[]">
-                                                <option value="" selected disabled>M&#233thode</option>
-                                                <option value="&Eacute;cho">&Eacute;cho</option>
-                                                <option value="Palpation">Palpation</option>
-                                                <option value="PSPB">PSPB</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-sm-4">
-                                            <select class="form-control" name="resultat[]">
-                                                <option value="" selected disabled>R&#233sultat</option>
-                                                <option value="douteux">Douteux</option>
-                                                <option value="gestante">Gestante</option>
-                                                <option value="nonGestante">Non gestante</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-1">
-                                        <button class="btn btn-primary addTabGestation" type="button"><span class="fa fa-plus"></span></button>
-                                    </div>
-
+                                    <legend>&Eacute;tape 5/5  -  INFORMATIONS CRYOCONSERVATION</legend>
                                     <div class="form-group">
-                                        <textarea class="form-control" name="remarques" rows="5" placeholder="Remarques"></textarea>
+                                        <input class="form-control" name="refCong" type="text" placeholder="R&#233f&#233rence cong&#233lation">
                                     </div>
-
+                                    <div class="form-group">
+                                        <input class="form-control" name="heureCong" type="text" placeholder="Heure de cong&#233lation">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" name="methodCong" type="text" placeholder="M&#233thode de cong&#233lation">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" name="congelateur" type="text" placeholder="Cong&#233lateur utilis&#233">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" name="operateurCong" type="text" placeholder="Op&#233rateur cong&#233lation">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" name="description" type="text" placeholder="Description m&#233thode">
+                                    </div>
                                     <button class="btn btn-primary back5" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
-                                    <button type="submit" class="btn btn-success validButton"><span class="fa fa-check"></span> Enregistrer</button>
+                                    <button type="button" class="btn btn-success validButton"><span class="fa fa-check"></span> Enregistrer</button>
                                 </fieldset>
                             </form>
                         </div>

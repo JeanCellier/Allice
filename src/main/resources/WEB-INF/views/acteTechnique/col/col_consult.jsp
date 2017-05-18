@@ -2,7 +2,7 @@
 <%@ include file="../../header.jsp" %>
 
 <main class="col-sm-9 col-md-10">
-    <h1 class="page-fiche">Fiches TRA</h1>
+    <h1 class="page-fiche">Fiches COL</h1>
 
     <div class="row placeholders">
         <div class="col-sm-1 col-md-1">
@@ -12,7 +12,7 @@
                 </button>
             </p>
         </div>
-        <div class="col-sm-12 col-md-12" id="contentActesTra" style="padding:30px;">
+        <div class="col-sm-12 col-md-12" id="contentActesCol" style="padding:30px;">
             <table id="tableActes" class="table table-hover">
                 <thead>
                     <tr>
@@ -31,20 +31,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${fichesTraList}" var="fichesTra">
+                <c:forEach items="${fichesColList}" var="fichesCol">
                     <tr>
                         <td></td>
-                        <td>${fichesTra.nom}</td>
-                        <td>${fichesTra.programme.nom}</td>
-                        <td><fmt:formatDate pattern="dd/MM/yyyy" value="${fichesTra.dateHeureMinute}" /></td>
-                        <td>${fichesTra.numeroAgrement}</td>
-                        <td>${fichesTra.lieu}</td>
-                        <td>${fichesTra.vache.num_identification}</td>
-                        <td>${fn:substring(fichesTra.vache.num_identification, 8, 12)}</td>
-                        <td>${fichesTra.statut}</td>
-                        <td><p data-placement="top" data-toggle="tooltip" title="Details"><button class="btn btn-primary btn-md btnDetails" data-title="details" data-id="<c:out value='${fichesTra.id}' />" data-toggle="modal" data-target="#details" ><span class="glyphicon glyphicon-search"></span></button></p></td>
-                        <td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="<c:out value='${fichesTra.id}' />" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                        <td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/<c:out value='${fichesTra.id}'/>" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                        <td>${fichesCol.nom}</td>
+                        <td>${fichesCol.programme.nom}</td>
+                        <td><fmt:formatDate pattern="dd/MM/yyyy" value="${fichesCol.dateHeureMinute}" /></td>
+                        <td>${fichesCol.numeroAgrement}</td>
+                        <td>${fichesCol.lieu}</td>
+                        <td>${fichesCol.vache.num_identification}</td>
+                        <td>${fn:substring(fichesCol.vache.num_identification, 8, 12)}</td>
+                        <td>${fichesCol.statut}</td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Details"><button class="btn btn-primary btn-md btnDetails" data-title="details" data-id="<c:out value='${fichesCol.id}' />" data-toggle="modal" data-target="#details" ><span class="glyphicon glyphicon-search"></span></button></p></td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="<c:out value='${fichesCol.id}' />" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/<c:out value='${fichesCol.id}'/>" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -53,7 +53,7 @@
     </div>
 </main>
 
-<!-- Modal delete ficheTra -->
+<!-- Modal delete ficheCol -->
 <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -112,7 +112,7 @@
                         } else {
                             numString = '0' + num;
                         }
-                        nom = date.toString().substr(2, 4) + 'TRA' + numString;
+                        nom = date.toString().substr(2, 4) + 'COL' + numString;
                         tab.find("input[name='nom']").val(nom);
                         $("li.active.tab").children('a').text(nom);
                     }
@@ -127,7 +127,7 @@
             } else {
                 numString = '0' + num;
             }
-            nom = date.toString().substr(2, 4) + 'TRA' + numString;
+            nom = date.toString().substr(2, 4) + 'COL' + numString;
             tab.find("input[name='nom']").val(nom);
 
             $('a[href="#'+tab.attr("id")+'"]').text(nom);
@@ -181,7 +181,7 @@
 
         /** ajoute une ligne à la table */
         $('#tableActes').DataTable().row.add([
-            '               ',
+            ' ',
             result.objet.nom,
             nomProgramme,
             dateFiche,

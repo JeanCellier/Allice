@@ -2,10 +2,15 @@ package phenotypage.web.acteTechnique;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import phenotypage.model.fiche.ficheCol.FicheCol;
 import phenotypage.model.fiche.ficheCol.FicheColService;
 import phenotypage.model.jsonResponse.JsonResponse;
+import phenotypage.model.operateur.OperateurService;
+import phenotypage.model.pharmacie.produit.ProduitService;
+import phenotypage.model.programme.ProgrammeService;
+import phenotypage.model.traitement_acte.TraitementActeService;
 import phenotypage.model.vache.Vache;
 import phenotypage.model.vache.VacheService;
 
@@ -20,10 +25,33 @@ import java.util.Optional;
 @RequestMapping("/acteTechnique/col")
 public class ColController {
     @Autowired
+    private ProgrammeService programmeService;
+
+    @Autowired
+    private OperateurService operateurService;
+
+    @Autowired
+    private ProduitService produitService;
+
+    @Autowired
+    private TraitementActeService traitementService;
+
+    @Autowired
     FicheColService ficheColService;
 
     @Autowired
     VacheService vacheService;
+
+    @RequestMapping(value = "/col", method = RequestMethod.GET)
+    public String fichesCol(Model model)
+    {
+        model.addAttribute("programmesList", programmeService.findAll());
+        model.addAttribute("operateursList", operateurService.findAll());
+        model.addAttribute("traitementsList", traitementService.findAll());
+        model.addAttribute("produitsList", produitService.findAvalaibleProduct());
+        model.addAttribute("fichesColList", ficheColService.findAll());
+        return "acteTechnique/col/col_consult";
+    }
 
     /** Get One by numId vache **/
     @ResponseBody
