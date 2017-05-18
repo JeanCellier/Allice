@@ -29,6 +29,7 @@
 									<thead>
 									<tr>
 										<td>Jour</td>
+										<td>Heure</td>
 										<td>Produit</td>
 										<td>Quantit&#233</td>
 										<td>Mode</td>
@@ -37,7 +38,8 @@
 									<tbody>
 									<c:forEach items="${traitement.tableauTraitement}" var="ligne">
 										<tr>
-											<td>${ligne.decalage}</td>
+											<td>${ligne.decalageJour}</td>
+											<td>${ligne.decalageHeure}</td>
 											<td>${ligne.produit.nom}</td>
 											<td>${ligne.quantite}</td>
 											<td>${ligne.mode_traitement}</td>
@@ -70,8 +72,12 @@
 					</div>
 
 					<div class="tabTraitement" id="tabTraitement">
-						<div class="form-group col-sm-3" style="padding-left:0">
+						<div class="form-group col-sm-2" style="padding-left:0">
 							<input class="form-control" required name="jour[]" type="number" value="0" placeholder="Jour">
+						</div>
+
+						<div class="form-group col-sm-2" style="padding-left:0">
+							<input class="form-control" required name="heure[]" type="number" value="0" placeholder="Heure">
 						</div>
 
 						<div class="form-group col-sm-3">
@@ -87,7 +93,7 @@
 							<input class="form-control" required name="quantite[]" step="0.01" type="number" placeholder="Quantite">
 						</div>
 
-						<div class="form-group col-sm-3">
+						<div class="form-group col-sm-2">
 							<select class="form-control" required name="modeTraitement[]">
 								<option value="" selected disabled>Mode de traitementActe</option>
 								<option value="IM">IM</option>
@@ -170,6 +176,8 @@
         $('#add').find("select").val("");
         $('#add').find("input[name='jour[]']").val(0);
         $('#add').find("input[name!='jour[]']").val("");
+        $('#add').find("input[name='heure[]']").val(0);
+        $('#add').find("input[name!='heure[]']").val("");
 	}
 
     /****** supprimer alert après 5s ******/
@@ -205,7 +213,8 @@
                             $target.insertAfter($('#add').find("div.tabTraitement").last());
                         }
 
-                        $target.find("input[name='jour[]']").val(result.objet.tableauTraitement[iLigne].decalage);
+                        $target.find("input[name='jour[]']").val(result.objet.tableauTraitement[iLigne].decalageJour);
+                        $target.find("input[name='heure[]']").val(result.objet.tableauTraitement[iLigne].decalageHeure);
                         $target.find("select[name='produit[]']" ).val(result.objet.tableauTraitement[iLigne].produit.id );
                         $target.find("input[name='quantite[]']").val(result.objet.tableauTraitement[iLigne].quantite);
                         $target.find("select[name='modeTraitement[]']").val(result.objet.tableauTraitement[iLigne].mode_traitement);

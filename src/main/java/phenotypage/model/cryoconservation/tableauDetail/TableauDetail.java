@@ -22,11 +22,11 @@ public class TableauDetail
 	@Column
 	private int numeroEmbryon;
 
-	@ManyToOne
-	private Stade stade;
+	@Column
+	private int stade;
 
-	@ManyToOne
-	private Qualite qualite;
+	@Column
+	private int qualite;
 
 	@Column
 	private boolean cryoconserve;
@@ -80,12 +80,12 @@ public class TableauDetail
 		this.numeroEmbryon = numeroEmbryon;
 	}
 
-	public Stade getStade()
+	public int getStade()
 	{
 		return stade;
 	}
 
-	public void setStade(Stade stade)
+	public void setStade(int stade)
 	{
 		this.stade = stade;
 	}
@@ -110,12 +110,12 @@ public class TableauDetail
 		this.remarque = remarque;
 	}
 
-	public Qualite getQualite()
+	public int getQualite()
 	{
 		return qualite;
 	}
 
-	public void setQualite(Qualite qualite)
+	public void setQualite(int qualite)
 	{
 		this.qualite = qualite;
 	}
