@@ -16,7 +16,7 @@ public class CuvePopulator
 	private CuveService cuveService;
 
 	@PostConstruct
-	void inti()
+	void init()
 	{
 		// Populator s'execute a chaque reboot ce qui fait des doublons
 		// il faut donc l'executer avec populator une fois puis sans après

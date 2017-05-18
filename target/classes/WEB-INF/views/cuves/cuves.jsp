@@ -72,6 +72,31 @@
     <!-- /.modal-dialog -->
 </div>
 
+<%--<!-- Modal Canister -->--%>
+<%--<div class="modal fade" id="canister" tabindex="-1" role="dialog" aria-labelledby="canister" aria-hidden="true">--%>
+    <%--<div class="modal-dialog">--%>
+        <%--<div class="modal-content">--%>
+            <%--<div class="modal-header">--%>
+                <%--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>--%>
+                <%--<h4 class="modal-title custom_align" id="Heading">Canisters</h4>--%>
+            <%--</div>--%>
+
+            <%--<div class="modal-body">--%>
+                <%--<div id="chartdiv"></div>--%>
+
+
+            <%--</div>--%>
+
+            <%--<div class="modal-footer ">--%>
+                <%--<button type="submit" class="btn btn-success btn-lg" style="width: 100%;"><span class="fa fa-check"></span> Ajouter</button>--%>
+            <%--</div>--%>
+            <%--</form>--%>
+        <%--</div>--%>
+        <%--<!-- /.modal-content -->--%>
+    <%--</div>--%>
+    <%--<!-- /.modal-dialog -->--%>
+<%--</div>--%>
+
 <!-- Modal edit product -->
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
     <div class="modal-dialog">
@@ -88,7 +113,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input class="form-control designation" name="desigation" type="text" placeholder="D&#233signation">
+                        <input class="form-control designation" name="designation" type="text" placeholder="D&#233signation">
                     </div>
 
                     <div class="modal-footer ">
@@ -224,7 +249,7 @@
             type: $(this).attr('method'),
             data: $(this).serialize(),
             success: function (result) {
-                if(result.success() == true){
+                if(result.succes == true){
                     $('input').val('');
                     $('#edit').modal('toggle');
                     $('#tableCuve').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>');
