@@ -1,4 +1,4 @@
-<%@ include file="../../fiche.jsp" %>
+<%@ include file="../../header.jsp" %>
 
 <main class="col-sm-9 col-md-10">
     <h1 class="page-fiche">Fiches TRA</h1>
@@ -15,38 +15,32 @@
         <div class="col-sm-12 col-md-12" id="contentActesTra" style="padding:30px;">
             <table id="tableActes" class="table table-hover">
                 <thead>
-                <tr>
-                    <td>Nom</td>
-                    <td>Programme</td>
-                    <td>N° d'agrément</td>
-                    <td>Lieu</td>
-                    <td>Date</td>
-                    <td>N° d'élevage</td>
-                    <td>N° identification</td>
-                    <td>N° travail</td>
-                    <td>Race</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                    <tr>
+                        <td>Nom</td>
+                        <td>Programme</td>
+                        <td>Date</td>
+                        <td>Num&eacutero d'agr&eacutement</td>
+                        <td>lieu</td>
+                        <td>Op&eacuterateur</td>
+                        <td>Vache</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${fichesTraList}" var="fichesTra">
                     <tr>
                         <td>${fichesTra.nom}</td>
-                        <td>${fichesTra.fiche.programme}</td>
-                        <td>${fichesTra.fiche.numeroAgrement}</td>
-                        <td>${fichesTra.fiche.lieu}</td>
-                        <td>${fichesTra.fiche.date}</td>
-                        <td>${fichesTra.vache.num_elevage}</td>
+                        <td>${fichesTra.programme.nom}</td>
+                        <td><fmt:formatDate pattern="dd/MM/yyyy" value="${fichesTra.dateHeureMinute}" /></td>
+                        <td>${fichesTra.numeroAgrement}</td>
+                        <td>${fichesTra.lieu}</td>
+                        <td>${fichesTra.operateur.nom} ${fichesTra.operateur.prenom}</td>
                         <td>${fichesTra.vache.num_identification}</td>
-                        <td>${fichesTra.vache.num_travail}</td>
-                        <td>${fichesTra.vache.race}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <%--<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="<c:out value='${produit.id}' />" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>--%>
-                        <%--<td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/<c:out value='${produit.id}'/>" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>--%>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Details"><button class="btn btn-primary btn-md btnDetails" data-title="details" data-id="<c:out value='${fichesTra.id}' />" data-toggle="modal" data-target="#details" ><span class="glyphicon glyphicon-search"></span></button></p></td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="<c:out value='${fichesTra.id}' />" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/<c:out value='${fichesTra.id}'/>" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -54,144 +48,130 @@
         </div>
     </div>
 </main>
-<!-- Modal add new product -->
-<%--<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">--%>
-    <%--<div class="modal-dialog">--%>
-        <%--<div class="modal-content">--%>
-            <%--<div class="modal-fiche">--%>
-                <%--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>--%>
-                <%--<h4 class="modal-title custom_align" id="Heading">Ajouter un nouveau produit</h4>--%>
-            <%--</div>--%>
 
-            <%--<div class="modal-body">--%>
-                <%--<form id="addForm" action="./add" method="POST">--%>
-                    <%--<div class="form-group">--%>
-                        <%--<input class="form-control nom" name="nom" required type="text" placeholder="Nom du produit">--%>
-                    <%--</div>--%>
-                    <%--<div class="form-group">--%>
-                        <%--<input class="form-control datepicker" name="dateDelivrance" type="text" placeholder="Date de d&#233livrance">--%>
-                    <%--</div>--%>
-                    <%--<div class="form-group">--%>
-                        <%--<input class="form-control fournisseur" name="fournisseur" type="text" placeholder="Fournisseur">--%>
-                    <%--</div>--%>
-                    <%--<div class="form-group">--%>
-                        <%--<input class="form-control projet" name="projet" type="text" placeholder="Projet">--%>
-                    <%--</div>--%>
-                    <%--<div class="form-group">--%>
-                        <%--<input class="form-control responsable" name="responsable" type="text" placeholder="Responsable">--%>
-                    <%--</div>--%>
-                    <%--<div class="form-group">--%>
-                        <%--<input class="form-control " name="qteEntrante" type="text" placeholder="Quantit&#233 entrante">--%>
-                    <%--</div>--%>
-                    <%--<div class="form-group">--%>
-                        <%--<input class="form-control " name="numLot" type="text" placeholder="Num&#233ro du lot">--%>
-                    <%--</div>--%>
-                    <%--<div class="form-group">--%>
-                        <%--<input class="form-control datepicker" name="datePeremption" type="text" placeholder="Date de p&#233remption">--%>
-                    <%--</div>--%>
-            <%--</div>--%>
+<!-- Modal delete ficheTra -->
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="Heading">Supprimer cette entr&#233e</h4>
+            </div>
 
-            <%--<div class="modal-footer ">--%>
-                <%--<button type="submit" class="btn btn-success btn-lg" style="width: 100%;"><span class="fa fa-check"></span> Ajouter</button>--%>
-            <%--</div>--%>
-            <%--</form>--%>
-        <%--</div>--%>
+            <div class="modal-body">
+                <div class="alert alert-danger"><span class="fa fa-warning-sign"></span> Voulez vous vraiment supprimer cette entr&#233e ?</div>
+            </div>
+
+            <div class="modal-footer ">
+                <button type="button" id="confirmDelete" class="btn btn-danger" ><span class="fa fa-check"></span> Oui</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="fa fa-remove"></span> Non</button>
+            </div>
+        </div>
         <!-- /.modal-content -->
-    <%--</div>--%>
+    </div>
     <!-- /.modal-dialog -->
-<%--</div>--%>
+</div>
 
-<!-- Modal edit product -->
-<%--<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">--%>
-    <%--<div class="modal-dialog">--%>
-        <%--<div class="modal-content">--%>
-            <%--<div class="modal-fiche">--%>
-                <%--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>--%>
-                <%--<h4 class="modal-title custom_align" id="Heading">Modifier le produit</h4>--%>
-            <%--</div>--%>
-
-            <%--<div class="modal-body">--%>
-                <%--<form id="editForm" action="./edit" method="POST">--%>
-                    <%--<div class="form-group">--%>
-                        <%--<input class="form-control nom" id="nom" name="nom" required type="text" placeholder="Nom du produit">--%>
-                    <%--</div>--%>
-                    <%--<div class="form-group">--%>
-                        <%--<input class="form-control datepicker" name="dateDelivrance" type="text" placeholder="Date de d&#233livrance">--%>
-                    <%--</div>--%>
-                    <%--<div class="form-group">--%>
-                        <%--<input class="form-control fournisseur" name="fournisseur" type="text" placeholder="Fournisseur">--%>
-                    <%--</div>--%>
-                    <%--<div class="form-group">--%>
-                        <%--<input class="form-control projet" name="projet" type="text" placeholder="Projet">--%>
-                    <%--</div>--%>
-                    <%--<div class="form-group">--%>
-                        <%--<input class="form-control responsable" name="responsable" type="text" placeholder="Responsable">--%>
-                    <%--</div>--%>
-                    <%--<div class="form-group">--%>
-                        <%--<input class="form-control " name="qteEntrante" type="text" placeholder="Quantit&#233 entrante">--%>
-                    <%--</div>--%>
-                    <%--<div class="form-group">--%>
-                        <%--<input class="form-control " name="qteRestante" type="text" placeholder="Quantit&#233 restante">--%>
-                    <%--</div>--%>
-                    <%--<div class="form-group">--%>
-                        <%--<input class="form-control " name="numLot" type="text" placeholder="Num&#233ro du lot">--%>
-                    <%--</div>--%>
-                    <%--<div class="form-group">--%>
-                        <%--<input class="form-control datepicker" name="datePeremption" type="text" placeholder="Date de p&#233remption">--%>
-                    <%--</div>--%>
-
-                    <%--<div class="modal-footer ">--%>
-                        <%--<button type="submit" class="btn btn-success btn-lg" style="width: 100%;"><span class="fa fa-check"></span> Modifier</button>--%>
-                    <%--</div>--%>
-                <%--</form>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-    <%--<!-- /.modal-dialog -->--%>
-<%--</div>--%>
-
-<%--<!-- Modal delete product -->--%>
-<%--<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">--%>
-    <%--<div class="modal-dialog">--%>
-        <%--<div class="modal-content">--%>
-            <%--<div class="modal-fiche">--%>
-                <%--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>--%>
-                <%--<h4 class="modal-title custom_align" id="Heading">Supprimer cette entr&#233e</h4>--%>
-            <%--</div>--%>
-
-            <%--<div class="modal-body">--%>
-                <%--<div class="alert alert-danger"><span class="fa fa-warning-sign"></span> Voulez vous vraiment supprimer cette entr&#233e ?</div>--%>
-            <%--</div>--%>
-
-            <%--<div class="modal-footer ">--%>
-                <%--<button type="button" id="confirmDelete" class="btn btn-danger" ><span class="fa fa-check"></span> Oui</button>--%>
-                <%--<button type="button" class="btn btn-default" data-dismiss="modal"><span class="fa fa-remove"></span> Non</button>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <%--<!-- /.modal-content -->--%>
-    <%--</div>--%>
-    <%--<!-- /.modal-dialog -->--%>
-<%--</div>--%>
-
+<%@ include file="./tra_ajouterModifier.jsp" %>
+<%@ include file="./tra_detail.jsp" %>
 <%@ include file="../../footer.jsp" %>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript" src="../static/js/datepicker-fr.js"></script>
 <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" media="all" href="../../static/css/datables.bootstrap.css"/>
 
 <script>
+    var currentrow; //la row courante à edit ou delete
+
+    /** function convertion des dates */
+    function convertDate(inputFormat) {
+        function pad(s) { return (s < 10) ? '0' + s : s; }
+        var d = new Date(inputFormat);
+        return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('/');
+    }
+
+    function convertDateWithTime(inputFormat){
+        function pad(s) { return (s < 10) ? '0' + s : s; }
+        var d = new Date(inputFormat);
+        var dateFormat = [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('/');
+
+        return dateFormat+' '+d.getHours()+'h'+d.getMinutes();
+    }
+
+    /** supprimer alert après 5s */
+    function autoclose(){
+        window.setTimeout(function() {
+            $(".flash").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove();
+            });
+        }, 5000);
+    }
+
+    /** function addRow */
+    function addRow(result) {
+        //converti date bon format
+        var dateFiche = new Date(result.objet.dateHeureMinute);
+
+        /** ajoute une ligne à la table */
+        $('#tableActes').DataTable().row.add([
+            "<td>" + result.objet.nom + "</td>",
+            "<td>" + result.objet.programme.nom + "</td>",
+            "<td>" + convertDate(dateFiche) + "</td>",
+            "<td>" + result.objet.numeroAgrement + "</td>",
+            "<td>" + result.objet.lieu + "</td>",
+            "<td>" + result.objet.operateur.nom +" "+ result.objet.operateur.prenom + "</td>",
+            "<td>" + result.objet.vache.num_identification + "</td>",
+
+            '<td><p data-placement="top" data-toggle="tooltip" title="Details"><button class="btn btn-primary btn-md btnDetails" data-title="details" data-id="' + result.objet.id + '" data-toggle="modal" data-target="#details" ><span class="glyphicon glyphicon-search"></span></button></p></td>',
+            '<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="' + result.objet.id + '" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>',
+            '<td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/' + result.objet.id + '" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>'
+        ]).draw(false);
+    }
+
     /** init la table */
-    $('#tableProduit').DataTable( {
+    $('#tableActes').DataTable( {
         "pagingType": "full_numbers",
         "columnDefs": [
-            { "orderable": false, "targets": 9},
-            { "orderable": false, "targets": 10 }
+            { "orderable": false, "targets": 7},
+            { "orderable": false, "targets": 8},
+            { "orderable": false, "targets": 9}
         ],"language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json"
         },
         "pageLength": 25
+    });
+
+    /************************ SUPPRIMER *************************/
+
+    /** Attribut la ligne courante et l'url de delete */
+    $(document).on('click', '.btnDelete', function(e){ //au clic sur le bouton supprimer
+        e.preventDefault();
+
+        currentrow = $(this).closest('tr'); //get la row parent
+
+        $('#delete').on('shown.bs.modal', function(e) {
+            $(this).find('#confirmDelete').attr('href', $(e.relatedTarget).data('href')); //attribut l'url de delete
+        });
+    });
+
+    /** Si click sur confirm => supprime la row et l'entrée */
+    $(document).on('click', '#confirmDelete', function(e){
+        $.ajax({
+            url: $(this).attr('href'),
+            type: $(this).attr('method'),
+            success: function (result) {
+                if(result.succes == true){
+                    $('#delete').modal('toggle'); //ferme modal
+                    $('#tableActes').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>'); //afficher alert
+                    $('#tableActes').DataTable().row(currentrow).remove().draw();
+                }else{
+                    $('#delete').modal('toggle'); //ferme modal
+                    $('#tableActes').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>'); //afficher alert
+                }
+                autoclose();
+            }
+        });
     });
 </script>

@@ -1,9 +1,9 @@
 package phenotypage.model.fiche.ficheIa;
 
-import phenotypage.model.donneesExistantes.operateur.Operateur;
+import phenotypage.model.operateur.Operateur;
 import phenotypage.model.fiche.Fiche;
 import phenotypage.model.gestation.Gestation;
-import phenotypage.model.insemination.Insemination;
+import phenotypage.model.fiche.ficheIa.insemination.Insemination;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
 import phenotypage.model.vache.Vache;
 
@@ -38,9 +38,6 @@ public class FicheIa extends Fiche {
 	
 	@OneToOne
 	private Gestation gestation;
-
-	@Column
-	private String remarque;
 
 	public FicheIa() { super(); }
 
@@ -95,16 +92,6 @@ public class FicheIa extends Fiche {
 	public void setGestation(Gestation gestation)
 	{
 		this.gestation = gestation;
-	}
-
-	public String getRemarque()
-	{
-		return remarque;
-	}
-
-	public void setRemarque(String remarque)
-	{
-		this.remarque = remarque;
 	}
 
 	public String getNumIpe() {

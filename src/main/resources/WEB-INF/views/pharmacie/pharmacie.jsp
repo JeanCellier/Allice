@@ -58,11 +58,11 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
-					<h4 class="modal-title custom_align" id="Heading">Ajouter un nouveau produit</h4>
+					<h4 class="modal-title custom_align" id="HeadingAdd">Ajouter un nouveau produit</h4>
 				</div>
 
-				<div class="modal-body">
-					<form id="addForm" action="./add" method="POST">
+				<form id="addForm" action="./add" method="POST">
+					<div class="modal-body">
 							<div class="form-group">
 								<input class="form-control nom" name="nom" required type="text" placeholder="Nom du produit">
 							</div>
@@ -79,7 +79,7 @@
 								<input class="form-control responsable" name="responsable" type="text" placeholder="Responsable">
 							</div>
 							<div class="form-group">
-								<input class="form-control " name="qteEntrante" type="text" placeholder="Quantit&#233 entrante">
+								<input class="form-control " name="qteEntrante" type="number" placeholder="Quantit&#233 entrante">
 							</div>
 							<div class="form-group">
 								<input class="form-control " name="numLot" type="text" placeholder="Num&#233ro du lot">
@@ -90,12 +90,12 @@
 							<div class="form-group">
 								<input class="form-control" name="indication" type="text" placeholder="Indication">
 							</div>
-				</div>
+					</div>
 
-						<div class="modal-footer ">
-							<button type="submit" class="btn btn-success btn-lg" style="width: 100%;"><span class="fa fa-check"></span> Ajouter</button>
-						</div>
-					</form>
+					<div class="modal-footer ">
+						<button type="submit" class="btn btn-success btn-lg" style="width: 100%;"><span class="fa fa-check"></span> Ajouter</button>
+					</div>
+				</form>
 			</div>
 			<!-- /.modal-content -->
 		</div>
@@ -108,11 +108,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
-                    <h4 class="modal-title custom_align" id="Heading">Modifier le produit</h4>
+                    <h4 class="modal-title custom_align" id="HeadingEdit">Modifier le produit</h4>
                 </div>
 
-                <div class="modal-body">
-					<form id="editForm" action="./edit" method="POST">
+				<form id="editForm" action="./edit" method="POST">
+					<div class="modal-body">
 						<div class="form-group">
 							<input class="form-control nom" id="nom" name="nom" required type="text" placeholder="Nom du produit">
 						</div>
@@ -129,10 +129,10 @@
 							<input class="form-control responsable" name="responsable" type="text" placeholder="Responsable">
 						</div>
 						<div class="form-group">
-							<input class="form-control " name="qteEntrante" type="text" placeholder="Quantit&#233 entrante">
+							<input class="form-control " name="qteEntrante" type="number" placeholder="Quantit&#233 entrante">
 						</div>
 						<div class="form-group">
-							<input class="form-control " name="qteRestante" type="text" placeholder="Quantit&#233 restante">
+							<input class="form-control " name="qteRestante" type="number" placeholder="Quantit&#233 restante">
 						</div>
 						<div class="form-group">
 							<input class="form-control " name="numLot" type="text" placeholder="Num&#233ro du lot">
@@ -143,11 +143,12 @@
 						<div class="form-group">
 							<input class="form-control" name="indication" type="text" placeholder="Indication">
 						</div>
-				<div class="modal-footer ">
-					<button type="submit" class="btn btn-success btn-lg" style="width: 100%;"><span class="fa fa-check"></span> Modifier</button>
-				</div>
-					</form>
-				</div>
+					</div>
+
+					<div class="modal-footer ">
+						<button type="submit" class="btn btn-success btn-lg" style="width: 100%;"><span class="fa fa-check"></span> Modifier</button>
+					</div>
+				</form>
 			</div>
 		</div>
         <!-- /.modal-dialog -->
@@ -159,7 +160,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
-					<h4 class="modal-title custom_align" id="Heading">Supprimer cette entr&#233e</h4>
+					<h4 class="modal-title custom_align" id="HeadingDelete">Supprimer cette entr&#233e</h4>
 				</div>
 
 				<div class="modal-body">
@@ -178,9 +179,17 @@
 
 <%@ include file="../footer.jsp" %>
 
+<!------------------------------ Script Jquery UI--------------------------->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript" src="../static/js/datepicker-fr.js"></script>
+
+<%--<!------------------------------ Script Calendrier--------------------------->--%>
+<script type="text/javascript" src="/static/js/bower_components/moment/min/moment.min.js"></script>
+<script type="text/javascript" src="/static/js/bower_components/moment/locale/fr.js"></script>
+<script type="text/javascript" src="/static/js/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<link rel="stylesheet" href="/static/js/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+
+<!------------------------------ Script Tableau --------------------------->
 <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" media="all" href="../../static/css/datables.bootstrap.css"/>
@@ -195,14 +204,13 @@
         return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('/');
     }
 
-    /** function init calendrier */
-    $.datepicker.setDefaults( $.datepicker.regional[ "fr" ] );
-
-    $( function() {
-        $( ".datepicker" ).each(function() {
-            $( this ).datepicker();
-        });
-    } );
+    /****** function init calendrier sans heure ******/
+    $('.datepicker').datetimepicker({
+        locale: 'fr',
+        format: 'DD/MM/YYYY',
+        toolbarPlacement:'top',
+        showClose:true
+    });
 
     /** function addRow */
     function addRow(result) {
@@ -230,7 +238,7 @@
 
 
 	/** init la table */
-	$('#tableProduit').DataTable( {
+	$('#tableProduit').DataTable({
 		"pagingType": "full_numbers",
 		"columnDefs": [
 			{ "orderable": false, "targets": 10},
@@ -306,7 +314,7 @@
         e.preventDefault();
 
         $.ajax({
-            url: $(this).attr('action'),//+"/"+id,
+            url: $(this).attr('action'),
             type: $(this).attr('method'),
             data: $(this).serialize(),
             success: function (result) {
@@ -350,7 +358,6 @@
 				}else{
 					$('#delete').modal('toggle'); //ferme modal
 					$('#tableProduit').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>'); //afficher alert
-
 				}
                 autoclose();
 			}
@@ -384,6 +391,7 @@
         source: '${pageContext. request. contextPath}/pharmacie/get/responsables'
     });
 
+    /** resize le menu si le tableau depasse la hauteur **/
     $.when($('#tableProduit').on( 'change')).done(function() {
         if($(window).width() > 768) {
             $('.sidebar').height($(document).height());

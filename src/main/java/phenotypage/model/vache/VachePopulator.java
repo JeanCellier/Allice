@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.Date;
 
 /**
  * @author fabien
@@ -18,14 +19,7 @@ public class VachePopulator
 	@PostConstruct
 	void init()
 	{
-		/*Vache v = new Vache();
-		v.setRace(1);
-		v.setNum_identification("r");
-		vacheService.addVache(v);
-		Vache vv = new Vache();
-		vv.setMale(true);
-		vv.setNum_identification("t");
-		vv.setRace(2);
-		vacheService.addVache(vv);*/
+//		vacheService.createVache(true, "proprétaireTest", "vache1", "FR37134303", "FR4482231256", 66, 'F', new Date(), "parite", 49.5F, "US000068656236", "FR4482232911");
+//		vacheService.createVache(true, "proprétaireTest", "vache2", "FR37134303", "FR2247872784", 66, 'F', new Date(), "parite", 49.2F, "US000140175899", "FR2247872601");
 	}
 }

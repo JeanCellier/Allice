@@ -1,6 +1,8 @@
 package phenotypage.model.invitro.fecondation;
 
-import phenotypage.model.donneesExistantes.sanitaire.Sanitaire;
+import phenotypage.model.sanitaire.Sanitaire;
+import phenotypage.model.invitro.fecondation.tableauSemence.TableauSemence;
+
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;

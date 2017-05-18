@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import phenotypage.model.JsonResponse.JsonResponse;
+import phenotypage.model.jsonResponse.JsonResponse;
 import phenotypage.model.pharmacie.produit.Produit;
 import phenotypage.model.pharmacie.produit.ProduitService;
 import java.text.ParseException;
@@ -25,7 +25,7 @@ public class PharmacieController
 	@RequestMapping(value = "/pharmacie", method = RequestMethod.GET)
 	public String pharmacie(Model model)
 	{
-		model.addAttribute("produitList", produitService.findAllProduit());
+		model.addAttribute("produitList", produitService.findAll());
 		return "pharmacie/pharmacie";
 	}
 
