@@ -7,7 +7,7 @@ import phenotypage.model.pharmacie.produit.Produit;
  */
 public interface Tableau_Traitement_ActeService
 {
-	Tableau_Traitement_Acte createTableauTraitement(int decalageJour, int decalageHeure, Produit produit, int quantite, String mode_traitement);
+	Tableau_Traitement_Acte createTableauTraitement(int decalageJour, float decalageHeure, Produit produit, int quantite, String mode_traitement);
 
 	Tableau_Traitement_Acte save(Tableau_Traitement_Acte tableau_TraitementActe);
 

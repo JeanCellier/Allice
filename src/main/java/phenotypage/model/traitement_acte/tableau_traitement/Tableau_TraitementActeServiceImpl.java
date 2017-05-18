@@ -16,7 +16,7 @@ public class Tableau_TraitementActeServiceImpl implements Tableau_Traitement_Act
 	private Tableau_Traitement_ActeRepository repository;
 
 	@Override
-	public Tableau_Traitement_Acte createTableauTraitement(int decalageJour, int decalageHeure, Produit produit, int quantite, String mode_traitement) {
+	public Tableau_Traitement_Acte createTableauTraitement(int decalageJour, float decalageHeure, Produit produit, int quantite, String mode_traitement) {
 		Tableau_Traitement_Acte tableauTraitement = new Tableau_Traitement_Acte();
 		tableauTraitement.setDecalageJour(decalageJour);
 		tableauTraitement.setDecalageHeure(decalageHeure);

@@ -17,7 +17,7 @@ public class Tableau_Traitement_Acte {
     private int decalageJour;
 
     @Column
-    private int decalageHeure;
+    private float decalageHeure;
 
     @ManyToOne
     private Produit produit;
@@ -44,11 +44,11 @@ public class Tableau_Traitement_Acte {
         this.decalageJour = decalageJour;
     }
 
-    public int getDecalageHeure() {
+    public float getDecalageHeure() {
         return decalageHeure;
     }
 
-    public void setDecalageHeure(int decalageHeure) {
+    public void setDecalageHeure(float decalageHeure) {
         this.decalageHeure = decalageHeure;
     }
 

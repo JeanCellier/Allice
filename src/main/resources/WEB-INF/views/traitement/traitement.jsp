@@ -77,7 +77,7 @@
 						</div>
 
 						<div class="form-group col-sm-2" style="padding-left:0">
-							<input class="form-control" required name="heure[]" type="number" value="0" placeholder="Heure">
+							<input class="form-control" required name="heure[]" type="number" value="0" step="0.25" placeholder="Heure">
 						</div>
 
 						<div class="form-group col-sm-3">

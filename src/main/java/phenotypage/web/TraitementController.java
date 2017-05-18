@@ -44,7 +44,7 @@ public class TraitementController {
     /** AJOUTER TRAITEMENT **/
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String add( @RequestParam("nom") String nom, @RequestParam(value="jour[]")  int[] jour,
-                       @RequestParam(value="heure[]")  int[] heure,
+                       @RequestParam(value="heure[]")  String[] heure,
                        @RequestParam(value="produit[]")  Produit[] produit, @RequestParam(value="quantite[]")  int[] quantite,
                        @RequestParam(value="modeTraitement[]")  String[] modeTrait){
         List<Tableau_Traitement_Acte> tableau_traitement_acte = new ArrayList<>();
@@ -52,7 +52,7 @@ public class TraitementController {
             Tableau_Traitement_Acte tableauTraitement = new Tableau_Traitement_Acte();
 
             tableauTraitement.setDecalageJour(jour[iLigneTraitement]);
-            tableauTraitement.setDecalageHeure(heure[iLigneTraitement]);
+            tableauTraitement.setDecalageHeure(Float.parseFloat(heure[iLigneTraitement]));
             tableauTraitement.setProduit(produit[iLigneTraitement]);
             tableauTraitement.setQuantite(quantite[iLigneTraitement]);
             tableauTraitement.setMode_traitement(modeTrait[iLigneTraitement]);
@@ -68,7 +68,7 @@ public class TraitementController {
     /** MODIFIER TRAITEMENT **/
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public String edit( @PathVariable("id") TraitementActe traitementActe, @RequestParam("nom") String nom,
-                        @RequestParam(value="jour[]")  int[] jour, @RequestParam(value="heure[]")  int[] heure,
+                        @RequestParam(value="jour[]")  int[] jour, @RequestParam(value="heure[]")  String[] heure,
                         @RequestParam(value="produit[]")  Produit[] produit,
                         @RequestParam(value="quantite[]")  int[] quantite, @RequestParam(value="modeTraitement[]")  String[] modeTrait){
 
@@ -78,7 +78,7 @@ public class TraitementController {
             Tableau_Traitement_Acte tableauTraitement = new Tableau_Traitement_Acte();
 
             tableauTraitement.setDecalageJour(jour[iLigneTraitement]);
-            tableauTraitement.setDecalageHeure(heure[iLigneTraitement]);
+            tableauTraitement.setDecalageHeure(Float.parseFloat(heure[iLigneTraitement]));
             tableauTraitement.setProduit(produit[iLigneTraitement]);
             tableauTraitement.setQuantite(quantite[iLigneTraitement]);
             tableauTraitement.setMode_traitement(modeTrait[iLigneTraitement]);
