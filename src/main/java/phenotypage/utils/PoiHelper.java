@@ -1,14 +1,8 @@
 package phenotypage.utils;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.ss.usermodel.FormulaEvaluator;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.*;
 
 /**
  * Created with magic
@@ -124,5 +118,45 @@ public class PoiHelper {
 
     public static void mergeRowAndColumn(XSSFSheet sheet, int row1, int row2, int col1, int col2) {
         sheet.addMergedRegion(new CellRangeAddress(row1, row2, col1, col2));
+    }
+
+    public static XSSFCellStyle getTitleStyle(XSSFWorkbook workbook) {
+        XSSFFont boldUnderlinedFont = workbook.createFont();
+        boldUnderlinedFont.setBold(true);
+        boldUnderlinedFont.setUnderline(XSSFFont.U_SINGLE);
+
+        XSSFCellStyle titleStyle = workbook.createCellStyle();
+        titleStyle.setFont(boldUnderlinedFont);
+
+        return titleStyle;
+
+    }
+
+    public static XSSFCellStyle getTableHeaderStyle(XSSFWorkbook workbook) {
+        XSSFFont boldFont = workbook.createFont();
+        boldFont.setBold(true);
+
+        XSSFCellStyle headerStyle = workbook.createCellStyle();
+        headerStyle.setFont(boldFont);
+        headerStyle.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());
+        headerStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
+        headerStyle.setAlignment(CellStyle.ALIGN_CENTER);
+        headerStyle.setBorderBottom(BorderStyle.THIN);
+        headerStyle.setBorderLeft(BorderStyle.THIN);
+        headerStyle.setBorderRight(BorderStyle.THIN);
+        headerStyle.setBorderTop(BorderStyle.THIN);
+
+        return headerStyle;
+    }
+
+    public static XSSFCellStyle getTableBodyStyle(XSSFWorkbook workbook) {
+        XSSFCellStyle bodyStyle = workbook.createCellStyle();
+        bodyStyle.setAlignment(CellStyle.ALIGN_CENTER);
+        bodyStyle.setBorderBottom(BorderStyle.THIN);
+        bodyStyle.setBorderLeft(BorderStyle.THIN);
+        bodyStyle.setBorderRight(BorderStyle.THIN);
+        bodyStyle.setBorderTop(BorderStyle.THIN);
+
+        return bodyStyle;
     }
 }

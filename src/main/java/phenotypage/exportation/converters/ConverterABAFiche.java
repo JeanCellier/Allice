@@ -1,9 +1,8 @@
 package phenotypage.exportation.converters;
 
-import org.apache.poi.ss.usermodel.BorderStyle;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.IndexedColors;
-import org.apache.poi.xssf.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import phenotypage.model.cryoconservation.TableauDetail;
@@ -43,12 +42,11 @@ public class ConverterABAFiche implements ConverterFiche {
         return workBook;
     }
 
-    private void writeWorkbook(XSSFWorkbook workBook, XSSFSheet sheet, FicheAba ficheAba) {
+    @SuppressWarnings("Duplicates")
+    private void writeWorkbook(XSSFWorkbook workBook, XSSFSheet sheet, FicheAba fiche) {
         int rowNumber = 1;
-        if (ficheAba == null)
-            return;
 
-        /* Styling */
+        /* Column width adjustments */
         sheet.setColumnWidth(0, 12 * 256);
         sheet.setColumnWidth(1, 12 * 256);
         sheet.setColumnWidth(2, 12 * 256);
@@ -59,95 +57,71 @@ public class ConverterABAFiche implements ConverterFiche {
         sheet.setColumnWidth(7, 12 * 256);
 
         //Title style
-        XSSFFont boldUnderlinedFont = workBook.createFont();
-        boldUnderlinedFont.setBold(true);
-        boldUnderlinedFont.setUnderline(XSSFFont.U_SINGLE);
-
-        XSSFCellStyle titleStyle = workBook.createCellStyle();
-        titleStyle.setFont(boldUnderlinedFont);
+        XSSFCellStyle titleStyle = PoiHelper.getTitleStyle(workBook);
 
         //Table header style
-        XSSFFont boldFont = workBook.createFont();
-        boldUnderlinedFont.setBold(true);
-
-        XSSFCellStyle headerStyle = workBook.createCellStyle();
-        headerStyle.setFont(boldFont);
-        headerStyle.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());
-        headerStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
-        headerStyle.setAlignment(CellStyle.ALIGN_CENTER);
-        headerStyle.setBorderBottom(BorderStyle.THIN);
-        headerStyle.setBorderLeft(BorderStyle.THIN);
-        headerStyle.setBorderRight(BorderStyle.THIN);
-        headerStyle.setBorderTop(BorderStyle.THIN);
+        XSSFCellStyle headerStyle = PoiHelper.getTableHeaderStyle(workBook);
 
         //Table body style
-        XSSFCellStyle bodyStyle = workBook.createCellStyle();
-        bodyStyle.setAlignment(CellStyle.ALIGN_CENTER);
-        bodyStyle.setBorderBottom(BorderStyle.THIN);
-        bodyStyle.setBorderLeft(BorderStyle.THIN);
-        bodyStyle.setBorderRight(BorderStyle.THIN);
-        bodyStyle.setBorderTop(BorderStyle.THIN);
-
-        /*Styling end*/
+        XSSFCellStyle bodyStyle = PoiHelper.getTableBodyStyle(workBook);
 
         /* First row */
         //Programme label
         PoiHelper.writeCell(sheet, rowNumber, 0, "Programme:");
-        PoiHelper.writeCell(sheet, rowNumber, 1, ficheAba.getProgramme().getNom());
+        PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getProgramme().getNom());
         //N° agrément:
         PoiHelper.writeCell(sheet, rowNumber, 3, "N° agrément:");
-        PoiHelper.writeCell(sheet, rowNumber, 4, ficheAba.getNumeroAgrement());
+        PoiHelper.writeCell(sheet, rowNumber, 4, fiche.getNumeroAgrement());
         //Date abattoir:
         PoiHelper.writeCell(sheet, rowNumber, 6, "Date abattoir:");
-        PoiHelper.writeCell(sheet, rowNumber, 7, ficheAba.getDateHeureMinute().toString());
+        PoiHelper.writeCell(sheet, rowNumber, 7, fiche.getDateHeureMinute().toString());
         rowNumber++;
 
         //Abbatoir:
         PoiHelper.writeCell(sheet, rowNumber, 0, "Abbatoir:");
-        PoiHelper.writeCell(sheet, rowNumber, 1, ficheAba.getAbattoir().getNom());
+        PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getAbattoir().getNom());
         //Operateur
         PoiHelper.writeCell(sheet, rowNumber, 2, "Opérateur:");
-        if (ficheAba.getOperateur() != null) {
-            PoiHelper.writeCell(sheet, rowNumber, 3, ficheAba.getOperateur().getNom() + " " + ficheAba.getOperateur().getPrenom());
+        if (fiche.getOperateur() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 3, fiche.getOperateur().getNom() + " " + fiche.getOperateur().getPrenom());
         }
         //T° arrivée:
         PoiHelper.writeCell(sheet, rowNumber, 5, "T° arrivée:");
-        PoiHelper.writeCell(sheet, rowNumber, 6, ficheAba.getTemperatureArrivee() + "");
+        PoiHelper.writeCell(sheet, rowNumber, 6, fiche.getTemperatureArrivee() + "");
         rowNumber += 2;
 
         //INFORMATIONS GENERALES PIV
-        XSSFCell pivCell = PoiHelper.writeCell(sheet, rowNumber, 0, "INFORMATIONS GENERALES PIV");
-        pivCell.setCellStyle(titleStyle);
+        PoiHelper.writeCell(sheet, rowNumber, 0, "INFORMATIONS GENERALES PIV").setCellStyle(titleStyle);
         rowNumber++;
 
         //Operateur PIV
         PoiHelper.writeCell(sheet, rowNumber, 0, "Opérateur:");
-        if (ficheAba.getInformations_piv() != null && ficheAba.getInformations_piv().getOperateur() != null) {
-            PoiHelper.writeCell(sheet, rowNumber, 1, ficheAba.getInformations_piv().getOperateur().getNom() + " " + ficheAba.getInformations_piv().getOperateur().getPrenom());
+        if (fiche.getInformations_piv() != null && fiche.getInformations_piv().getOperateur() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getInformations_piv().getOperateur().getNom() + " " + fiche.getInformations_piv().getOperateur().getPrenom());
         }
         rowNumber += 2;
 
         //Maturation
         PoiHelper.writeCell(sheet, rowNumber, 0, "Maturation").setCellStyle(headerStyle);
-        if (ficheAba.getInformations_piv() != null && ficheAba.getInformations_piv().getMilieuMaturation() != null) {
-            PoiHelper.writeCell(sheet, rowNumber, 1, ficheAba.getInformations_piv().getMilieuMaturation().getNom()).setCellStyle(bodyStyle);
-            PoiHelper.writeCell(sheet, rowNumber, 2, ficheAba.getInformations_piv().getMilieuMaturation().getNumeroLot()).setCellStyle(bodyStyle);
+        if (fiche.getInformations_piv() != null && fiche.getInformations_piv().getMilieuMaturation() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getInformations_piv().getMilieuMaturation().getNom()).setCellStyle(bodyStyle);
+            PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInformations_piv().getMilieuMaturation().getNumeroLot()).setCellStyle(bodyStyle);
         }
         rowNumber++;
 
         //FIV
         PoiHelper.writeCell(sheet, rowNumber, 0, "FIV").setCellStyle(headerStyle);
-        if (ficheAba.getInformations_piv() != null && ficheAba.getInformations_piv().getFiv() != null) {
-            PoiHelper.writeCell(sheet, rowNumber, 1, ficheAba.getInformations_piv().getFiv().getNom()).setCellStyle(bodyStyle);
-            PoiHelper.writeCell(sheet, rowNumber, 2, ficheAba.getInformations_piv().getFiv().getNumeroLot()).setCellStyle(bodyStyle);
+        if (fiche.getInformations_piv() != null && fiche.getInformations_piv().getFiv() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getInformations_piv().getFiv().getNom()).setCellStyle(bodyStyle);
+            PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInformations_piv().getFiv().getNumeroLot()).setCellStyle(bodyStyle);
         }
         rowNumber++;
 
         //Culture
         PoiHelper.writeCell(sheet, rowNumber, 0, "Culture").setCellStyle(headerStyle);
-        if (ficheAba.getInformations_piv() != null && ficheAba.getInformations_piv().getTypeCulture() != null) {
-            PoiHelper.writeCell(sheet, rowNumber, 1, ficheAba.getInformations_piv().getTypeCulture().getNom()).setCellStyle(bodyStyle);
-            PoiHelper.writeCell(sheet, rowNumber, 2, ficheAba.getInformations_piv().getTypeCulture().getNumeroLot()).setCellStyle(bodyStyle);
+        if (fiche.getInformations_piv() != null && fiche.getInformations_piv().getTypeCulture() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getInformations_piv().getTypeCulture().getNom()).setCellStyle(bodyStyle);
+            PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInformations_piv().getTypeCulture().getNumeroLot()).setCellStyle(bodyStyle);
         }
         rowNumber += 3;
 
@@ -158,9 +132,9 @@ public class ConverterABAFiche implements ConverterFiche {
         //Date & Heure
         PoiHelper.writeCell(sheet, rowNumber, 0, "Date:");
         PoiHelper.writeCell(sheet, rowNumber, 2, "Heure:");
-        if (ficheAba.getCollecte() != null) {
-            PoiHelper.writeCell(sheet, rowNumber, 1, ficheAba.getCollecte().getDate().toString());
-            PoiHelper.writeCell(sheet, rowNumber, 3, ficheAba.getCollecte().getHeureCollecte().toString());
+        if (fiche.getCollecte() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getCollecte().getDate().toString());
+            PoiHelper.writeCell(sheet, rowNumber, 3, fiche.getCollecte().getHeureCollecte().toString());
         }
         rowNumber += 2;
 
@@ -175,8 +149,8 @@ public class ConverterABAFiche implements ConverterFiche {
         rowNumber++;
 
         //Tableau body
-        if (ficheAba.getCollecte() != null) {
-            for (Tableau_Collecte collecte : ficheAba.getCollecte().getTableauCollecteList()) {
+        if (fiche.getCollecte() != null) {
+            for (Tableau_Collecte collecte : fiche.getCollecte().getTableauCollecteList()) {
                 PoiHelper.writeCell(sheet, rowNumber, 0, collecte.getRace_Ovaires()).setCellStyle(bodyStyle);
                 if (collecte.isPool()) {
                     PoiHelper.writeCell(sheet, rowNumber, 1, "pool").setCellStyle(bodyStyle);
@@ -199,8 +173,8 @@ public class ConverterABAFiche implements ConverterFiche {
         rowNumber++;
 
         //MIV Tableau body
-        if (ficheAba.getCollecte() != null) {
-            for (Tableau_Maturation maturation : ficheAba.getCollecte().getTableauMaturationList()) {
+        if (fiche.getCollecte() != null) {
+            for (Tableau_Maturation maturation : fiche.getCollecte().getTableauMaturationList()) {
                 PoiHelper.writeCell(sheet, rowNumber, 0, maturation.getGroupeExperimentauxMIV()).setCellStyle(bodyStyle);
                 PoiHelper.writeCell(sheet, rowNumber, 1, maturation.getNbOvocyte() + "").setCellStyle(bodyStyle);
                 rowNumber++;
@@ -213,10 +187,10 @@ public class ConverterABAFiche implements ConverterFiche {
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Date:");
-        PoiHelper.writeCell(sheet, rowNumber, 1, ficheAba.getFecondation().getDate().toString());
+        PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getFecondation().getDate().toString());
         PoiHelper.writeCell(sheet, rowNumber, 4, "Sanitaires:");
         int column = 5;
-        for (Sanitaire sanitaire : ficheAba.getFecondation().getSanitaireList()) {
+        for (Sanitaire sanitaire : fiche.getFecondation().getSanitaireList()) {
             PoiHelper.writeCell(sheet, rowNumber, column, sanitaire.getNom());
             column++;
         }
@@ -232,7 +206,7 @@ public class ConverterABAFiche implements ConverterFiche {
         rowNumber++;
 
         //Tableau body
-        for (TableauSemence semence : ficheAba.getFecondation().getTableau_semences()) {
+        for (TableauSemence semence : fiche.getFecondation().getTableau_semences()) {
             if (semence.getTaureau() != null) {
                 PoiHelper.writeCell(sheet, rowNumber, 0, semence.getTaureau().getNom()).setCellStyle(bodyStyle);
                 PoiHelper.writeCell(sheet, rowNumber, 1, semence.getTaureau().getRace() + "").setCellStyle(bodyStyle);
@@ -252,13 +226,13 @@ public class ConverterABAFiche implements ConverterFiche {
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Date:");
-        if (ficheAba.getCulture() != null) {
-            PoiHelper.writeCell(sheet, rowNumber, 1, ficheAba.getCulture().getDate().toString());
+        if (fiche.getCulture() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getCulture().getDate().toString());
         }
 
         PoiHelper.writeCell(sheet, rowNumber, 4, "Sanitaires:");
         column = 5;
-        for (Sanitaire sanitaire : ficheAba.getCulture().getSanitaireList()) {
+        for (Sanitaire sanitaire : fiche.getCulture().getSanitaireList()) {
             PoiHelper.writeCell(sheet, rowNumber, column, sanitaire.getNom());
             column++;
         }
@@ -274,7 +248,7 @@ public class ConverterABAFiche implements ConverterFiche {
         rowNumber++;
 
         //Tableau body
-        for (TableauCulture culture : ficheAba.getCulture().getTableauCultureList()) {
+        for (TableauCulture culture : fiche.getCulture().getTableauCultureList()) {
             PoiHelper.writeCell(sheet, rowNumber, 0, culture.getGroupe()).setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 1, culture.getNbInsemine() + "").setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 2, culture.getHeureCulture() + "").setCellStyle(bodyStyle);
@@ -295,7 +269,7 @@ public class ConverterABAFiche implements ConverterFiche {
         rowNumber++;
 
         //Tableau body
-        for (TableauCulture culture : ficheAba.getCulture().getTableauCultureList()) {
+        for (TableauCulture culture : fiche.getCulture().getTableauCultureList()) {
             PoiHelper.writeCell(sheet, rowNumber, 0, culture.getGroupe()).setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 1, culture.getMo() + "").setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 2, culture.getBl() + "").setCellStyle(bodyStyle);
@@ -317,7 +291,7 @@ public class ConverterABAFiche implements ConverterFiche {
         rowNumber++;
 
         //Tableau body
-        for (TableauCulture culture : ficheAba.getCulture().getTableauCultureList()) {
+        for (TableauCulture culture : fiche.getCulture().getTableauCultureList()) {
             PoiHelper.writeCell(sheet, rowNumber, 0, culture.getGroupe()).setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 1, culture.getPourJ7() + "%").setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 2, culture.getPourBEJ7() + "%").setCellStyle(bodyStyle);
@@ -342,30 +316,30 @@ public class ConverterABAFiche implements ConverterFiche {
         PoiHelper.writeCell(sheet, rowNumber, 0, "Référence congélation :");
         PoiHelper.writeCell(sheet, rowNumber, 4, "Heure de congélation :");
 
-        if (ficheAba.getCryoconservation() != null) {
-            PoiHelper.writeCell(sheet, rowNumber, 1, ficheAba.getCryoconservation().getRef());
-            PoiHelper.writeCell(sheet, rowNumber, 5, ficheAba.getCryoconservation().getHeureMinute().toString());
+        if (fiche.getCryoconservation() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getCryoconservation().getRef());
+            PoiHelper.writeCell(sheet, rowNumber, 5, fiche.getCryoconservation().getHeureMinute().toString());
         }
         rowNumber++;
 
         //Méthode de congélation
         PoiHelper.writeCell(sheet, rowNumber, 0, "Méthode de congélation :");
-        if (ficheAba.getCryoconservation() != null) {
-            PoiHelper.writeCell(sheet, rowNumber, 1, ficheAba.getCryoconservation().getMethodeCongelation().getNom());
+        if (fiche.getCryoconservation() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getCryoconservation().getMethodeCongelation().getNom());
         }
         rowNumber++;
 
         //Congélateur
         PoiHelper.writeCell(sheet, rowNumber, 0, "Congélateur utilisé : ");
-        if (ficheAba.getCryoconservation() != null) {
-            PoiHelper.writeCell(sheet, rowNumber, 1, ficheAba.getCryoconservation().getCongelateur().getNom());
+        if (fiche.getCryoconservation() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getCryoconservation().getCongelateur().getNom());
         }
         rowNumber++;
 
         //Opérateur congélation
         PoiHelper.writeCell(sheet, rowNumber, 0, "Opérateur congélation : ");
-        if (ficheAba.getCryoconservation() != null) {
-            PoiHelper.writeCell(sheet, rowNumber, 1, ficheAba.getCryoconservation().getOperateur().getNom() + " " + ficheAba.getCryoconservation().getOperateur().getPrenom());
+        if (fiche.getCryoconservation() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getCryoconservation().getOperateur().getNom() + " " + fiche.getCryoconservation().getOperateur().getPrenom());
         }
         rowNumber++;
 
@@ -373,8 +347,8 @@ public class ConverterABAFiche implements ConverterFiche {
         PoiHelper.writeCell(sheet, rowNumber, 0, "Description méthode (nom programme, cinétique, seeding…) :");
         rowNumber++;
 
-        if (ficheAba.getCryoconservation() != null) {
-            PoiHelper.writeCell(sheet, rowNumber, 0, ficheAba.getCryoconservation().getDescMethode());
+        if (fiche.getCryoconservation() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 0, fiche.getCryoconservation().getDescMethode());
             PoiHelper.mergeRowAndColumn(sheet, rowNumber, rowNumber + 3, 0, 7);
         }
         rowNumber += 3;
@@ -394,7 +368,7 @@ public class ConverterABAFiche implements ConverterFiche {
         PoiHelper.writeCell(sheet, rowNumber, 7, "Jonc").setCellStyle(headerStyle);
 
         //Tableau body
-        for (TableauDetail detail : ficheAba.getTableauDetails()) {
+        for (TableauDetail detail : fiche.getTableauDetails()) {
             PoiHelper.writeCell(sheet, rowNumber, 0, detail.getNumeroEmbryon() + "").setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 1, detail.getStade().getNom()).setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 2, detail.getQualite().getNumero() + "").setCellStyle(bodyStyle);
@@ -414,7 +388,7 @@ public class ConverterABAFiche implements ConverterFiche {
         PoiHelper.writeCell(sheet, rowNumber, 5, "Remarques").setCellStyle(headerStyle);
 
         //Tableau body
-        for (TableauDetail detail : ficheAba.getTableauDetails()) {
+        for (TableauDetail detail : fiche.getTableauDetails()) {
             PoiHelper.writeCell(sheet, rowNumber, 0, detail.getNumeroEmbryon() + "").setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 1, detail.isFrais() ? "X" : "").setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 2, detail.getNumeroReceveuse()).setCellStyle(bodyStyle);
