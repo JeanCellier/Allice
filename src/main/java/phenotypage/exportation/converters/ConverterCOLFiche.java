@@ -101,7 +101,7 @@ public class ConverterCOLFiche implements ConverterFiche {
         rowNumber++;
         PoiHelper.writeCell(sheet, rowNumber, 0, "Parité:");
         PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getVache().getParite());
-        rowNumber++;
+        rowNumber+=2;
 
         //TRAITEMENT DONNEUSE
         PoiHelper.writeCell(sheet, rowNumber, 0, "TRAITEMENT DONNEUSE").setCellStyle(titleStyle);
