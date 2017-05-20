@@ -1,8 +1,6 @@
 package phenotypage.model.cryoconservation;
 
-import phenotypage.model.cryoconservation.congelateur.Congelateur;
 import phenotypage.model.operateur.Operateur;
-import phenotypage.model.cryoconservation.methodeCongelation.MethodeCongelation;
 import javax.persistence.*;
 import java.sql.Time;
 
@@ -22,14 +20,14 @@ public class Cryoconservation
 	@Column
 	private String descMethode;
 
-	@ManyToOne
-	private Congelateur congelateur;
+	@Column
+	private String congelateur;
 
 	@ManyToOne
 	private Operateur operateur;
 
-	@ManyToOne
-	private MethodeCongelation methodeCongelation;
+	@Column
+	private String methodeCongelation;
 
 	public Cryoconservation() {}
 
@@ -53,12 +51,12 @@ public class Cryoconservation
 		this.ref = ref;
 	}
 
-	public Congelateur getCongelateur()
+	public String getCongelateur()
 	{
 		return congelateur;
 	}
 
-	public void setCongelateur(Congelateur congelateur)
+	public void setCongelateur(String congelateur)
 	{
 		this.congelateur = congelateur;
 	}
@@ -83,12 +81,12 @@ public class Cryoconservation
 		this.descMethode = descMethode;
 	}
 
-	public MethodeCongelation getMethodeCongelation()
+	public String getMethodeCongelation()
 	{
 		return methodeCongelation;
 	}
 
-	public void setMethodeCongelation(MethodeCongelation methodeCongelation) { this.methodeCongelation = methodeCongelation; }
+	public void setMethodeCongelation(String methodeCongelation) { this.methodeCongelation = methodeCongelation; }
 
 	public String getRef() {
 		return ref;

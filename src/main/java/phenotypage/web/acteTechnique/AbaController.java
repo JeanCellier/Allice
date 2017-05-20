@@ -13,9 +13,9 @@
 //import phenotypage.model.cryoconservation.tableauDetail.TableauDetailService;
 //import phenotypage.model.fiche.ficheAba.abattoir.AbattoirService;
 //import phenotypage.model.cryoconservation.congelateur.CongelateurService;
-//import phenotypage.model.cuve.CuveService;
-//import phenotypage.model.cuve.canister.CanisterService;
-//import phenotypage.model.cuve.visoTube.VisoTubeService;
+//import phenotypage.model.cuve.old.CuveService;
+//import phenotypage.model.cuve.canister.old.CanisterService;
+//import phenotypage.model.cuve.canister.visoTube.old.VisoTubeService;
 //import phenotypage.model.destionationCulture.DestinationCultureService;
 //import phenotypage.model.informationsPIV.fiv.FIVService;
 //import phenotypage.model.operateur.OperateurService;

@@ -229,7 +229,7 @@ public class IaController {
 
     @ResponseBody
     @RequestMapping(value = "/addOrUpdatePart4/{id}", method = RequestMethod.POST)
-    public JsonResponse addOrUpdatePart5(@PathVariable("id") FicheIa ficheIa, @RequestParam(value="dateMethode[]", required=false) String[] dateMethode,
+    public JsonResponse addOrUpdatePart4(@PathVariable("id") FicheIa ficheIa, @RequestParam(value="dateMethode[]", required=false) String[] dateMethode,
                                          @RequestParam(value="methode[]", required=false)  String[] methode,
                                          @RequestParam(value="resultat[]", required=false)  String[] resultat,
                                          @RequestParam(value="remarques", required=false) String remarques){

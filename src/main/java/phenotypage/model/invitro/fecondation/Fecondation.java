@@ -1,6 +1,5 @@
 package phenotypage.model.invitro.fecondation;
 
-import phenotypage.model.sanitaire.Sanitaire;
 import phenotypage.model.invitro.fecondation.tableauSemence.TableauSemence;
 
 import java.util.Date;
@@ -20,8 +19,8 @@ public class Fecondation
 	@Column
 	private String remarque;
 
-	@ManyToMany
-	private List<Sanitaire> sanitaireList;
+	@Column
+	private String sanitaire;
 
 	@OneToMany
 	private List<TableauSemence> tableau_semences;
@@ -48,14 +47,14 @@ public class Fecondation
 		this.date = date;
 	}
 
-	public List<Sanitaire> getSanitaireList()
+	public String getSanitaireList()
 	{
-		return sanitaireList;
+		return sanitaire;
 	}
 
-	public void setSanitaireList(List<Sanitaire> sanitaireList)
+	public void setSanitaireList(String sanitaire)
 	{
-		this.sanitaireList = sanitaireList;
+		this.sanitaire = sanitaire;
 	}
 
 	public String getRemarque()

@@ -1,6 +1,4 @@
 package phenotypage.model.fiche.ficheOpu.ovocytesCollecte;
-
-import phenotypage.model.sanitaire.Sanitaire;
 import phenotypage.model.fiche.ficheOpu.ovocytesCollecte.tableauOvocytesCollectes.TableauOvocytesCollectes;
 
 import java.util.List;
@@ -16,8 +14,8 @@ public class OvocytesCollectes
 	@Column
 	private String remarques;
 
-	@ManyToOne
-	private Sanitaire sanitaire;
+	@Column
+	private String sanitaire;
 
 	@OneToMany
 	private List<TableauOvocytesCollectes> tableauOvocytes_collectesList;
@@ -44,12 +42,12 @@ public class OvocytesCollectes
 		this.remarques = remarques;
 	}
 
-	public Sanitaire getSanitaire()
+	public String getSanitaire()
 	{
 		return sanitaire;
 	}
 
-	public void setSanitaire(Sanitaire sanitaire)
+	public void setSanitaire(String sanitaire)
 	{
 		this.sanitaire = sanitaire;
 	}

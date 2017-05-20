@@ -22,7 +22,7 @@
                 <li><a href="#listFiche" data-toggle="collapse">ACTES TECHNIQUES</a>
                     <ul id="listFiche" class="collapse nav" style="padding-left:40px;">
                         <li><a href="#">ABA</a></li>
-                        <li><a href="#">COL</a></li>
+                        <li><a href="<s:url value='/acteTechnique/col/col'/>">COL</a></li>
                         <li><a href="<s:url value='/acteTechnique/ia/ia'/>">IA</a></li>
                         <li><a href="#">OPU</a></li>
                         <li><a href="<s:url value='/acteTechnique/tra/tra'/>">TRA</a></li>

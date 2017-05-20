@@ -1,10 +1,8 @@
 package phenotypage.model.cryoconservation.tableauDetail;
 
-import phenotypage.model.cuve.Cuve;
-import phenotypage.model.cuve.canister.Canister;
-import phenotypage.model.cuve.visoTube.VisoTube;
-import phenotypage.model.qualite.Qualite;
-import phenotypage.model.cryoconservation.stade.Stade;
+import phenotypage.model.cuve.old.Cuve;
+import phenotypage.model.cuve.canister.old.Canister;
+import phenotypage.model.cuve.canister.visoTube.old.VisoTube;
 
 import javax.persistence.*;
 

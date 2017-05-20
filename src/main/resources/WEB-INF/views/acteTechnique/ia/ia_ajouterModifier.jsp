@@ -85,7 +85,7 @@
 
                                     <div class="form-group">
                                         <select class="form-control collecteSelect" id="collecte" name="collecte">
-                                            <option value="" required selected disabled>Collecte</option>
+                                            <option value="" selected disabled>Collecte</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -108,7 +108,7 @@
                                     </div>
 
                                     <button class="btn btn-primary back2" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
-                                    <button class="btn btn-primary open2" type="submit">Enregistrer <span class="fa fa-arrow-right"></span></button>
+                                    <button class="btn btn-primary open2" type="button">Enregistrer <span class="fa fa-arrow-right"></span></button>
                                 </fieldset>
                             </form>
                         </div>
@@ -164,7 +164,7 @@
                                     </div>
 
                                     <button class="btn btn-primary back3" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
-                                    <button class="btn btn-primary open3" type="button">Enregistrer <span class="fa fa-arrow-right"></span></button>
+                                    <button class="btn btn-primary open3" type="submit">Enregistrer <span class="fa fa-arrow-right"></span></button>
                                 </fieldset>
                             </form>
                         </div>
@@ -484,7 +484,7 @@
                 success: function (result) {
                     if (result.succes == true) {
                         for(iLigne = 1; iLigne < result.objet.tableauTraitement.length; iLigne++) {
-                            var date = new Date(parseDate($("input[name='dateTraitement[]']:first").val())).addDays(result.objet.tableauTraitement[iLigne].decalage);
+                            var date = new Date(parseDate($("input[name='dateTraitement[]']:first").val())).addDays(result.objet.tableauTraitement[iLigne].decalageJour);
                             $("input[name='dateTraitement[]']:eq("+iLigne+")").data("DateTimePicker").date(date);
                         }
 
@@ -591,10 +591,13 @@
             url: '${pageContext. request. contextPath}/acteTechnique/col/get/vache/'+numIdVache,
             success: function (result) {
                 if (result.succes == true) {
-                    $('.collecteSelect').append($('<option>', {
-                        value: result.objet.id,
-                        text: result.nom
-                    }));
+                    for(iFiche = 0; iFiche < result.objet.length; iFiche++) {
+                        $('.collecteSelect').find('option').not(':first').remove();
+                        $('.collecteSelect').append($('<option>', {
+                            value: result.objet[iFiche].id,
+                            text: result.objet[iFiche].nom
+                        }));
+                    }
                 } else {
                     $('#modal-body').before('<div class="alert alert-danger flash" role="alert">'+result.message+'</div>');
                 }
@@ -651,18 +654,18 @@
                         if(rowId.length == 1) { //si le nom de la fiche est présent
                             /** Modifie la ligne correspondant à la fiche modifiée **/
                             if (result.objet.programme != null) {
-                                table.cell(rowId, 1).data(result.objet.programme.nom).draw(false);
+                                table.cell(rowId, 2).data(result.objet.programme.nom).draw(false);
                             }
                             if (result.objet.dateHeureMinute != null) {
-                                table.cell(rowId, 2).data(convertDateWithTime(result.objet.dateHeureMinute)).draw(false);
+                                table.cell(rowId, 3).data(convertDateWithTime(result.objet.dateHeureMinute)).draw(false);
                             }
-                            table.cell(rowId, 3).data(result.objet.lieu).draw(false);
+                            table.cell(rowId, 4).data(result.objet.lieu).draw(false);
                             if (result.objet.operateur != null) {
-                                table.cell(rowId, 4).data(result.objet.operateur.nom+" "+result.objet.operateur.prenom).draw(false);
+                                table.cell(rowId, 5).data(result.objet.operateur.nom+" "+result.objet.operateur.prenom).draw(false);
                             }
 
-                            table.cell(rowId, 5).data(result.objet.vache.num_identification).draw(false);
-                            table.cell(rowId, 6).data(result.objet.taureau).draw(false);
+                            table.cell(rowId, 6).data(result.objet.vache.num_identification).draw(false);
+                            table.cell(rowId, 7).data(result.objet.taureau).draw(false);
                         }
 
                         loadCollecte();

@@ -104,6 +104,7 @@
                 success: function (result) {
                     if(result != "") {
                         num = parseInt(result.substr(5)) + 1;
+                        console.log(num);
                         if (num < 10) {
                             numString = '000' + num;
                         } else if (num >= 10 && num < 100) {

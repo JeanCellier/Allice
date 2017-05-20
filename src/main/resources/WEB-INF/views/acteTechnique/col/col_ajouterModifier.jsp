@@ -113,12 +113,7 @@
                                     <div class="form-group col-sm-1">
                                         <button class="btn btn-primary addTabTraitement" type="button"><span class="fa fa-plus"></span></button>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Ponction du ou des follicules dominants (>8mm) </label>
-                                        <label class="radio-inline"><input type="radio" class="radio" value="oui" name="ponctionFollicule">Oui</label>
-                                        <label class="radio-inline"><input type="radio" class="radio" value="non" name="ponctionFollicule">Non</label>
-                                    </div>
-                                    <div class="form-group col-sm-4">
+                                    <div class="form-group col-sm-4" style="padding-left:0">
                                         <input class="form-control" name="nbFolliculeAspi" type="number" placeholder="Nombre de follicules aspir&#233s">
                                     </div>
                                     <div class="form-group col-sm-4">
@@ -133,17 +128,49 @@
                                         <label class="radio-inline"><input type="radio" class="radio" value="non" name="imageEcho">Non</label>
                                     </div>
                                     <div class="form-group">
-                                        <label>Traitement superovulation: </label>
-                                        <label class="radio-inline"><input type="radio" class="radio" value="oui" name="traitementSuperov">Oui</label>
-                                        <label class="radio-inline"><input type="radio" class="radio" value="non" name="traitementSuperov">Non</label>
-                                    </div>
-                                    <div class="form-group">
                                         <label>Type FSH: </label>
                                         <label class="radio-inline"><input type="radio" class="radio" value="naturelle" name="typeFSH">Naturelle</label>
                                         <label class="radio-inline"><input type="radio" class="radio" value="induite" name="typeFSH">Induite</label>
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" name="pourDoseFSH" type="number" placeholder="Pourcentage de la dose totale FSH">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <select class="form-control" name="traitementActe">
+                                            <option value="" selected>Traitement type - Aucun</option>
+                                            <c:forEach items="${traitementsList}" var="traitement_acte">
+                                                <option value="${traitement_acte.id}">${traitement_acte.nom}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                    <div id="tabSuperOv" class="tabTraitement">
+                                        <div class="form-group col-sm-3" style="padding-left:0">
+                                            <input class="form-control datepicker" name="dateTraitement[]" type="text" placeholder="Date">
+                                        </div>
+                                        <div class="form-group col-sm-3">
+                                            <select class="form-control" name="produit[]">
+                                                <option value="" selected disabled>Produit</option>
+                                                <c:forEach items="${produitsList}" var="produit">
+                                                    <option value="${produit.id}">${produit.nom}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-sm-2">
+                                            <input class="form-control" name="quantite[]" step="0.01" type="number" placeholder="Quantite">
+                                        </div>
+                                        <div class="form-group col-sm-3">
+                                            <select class="form-control" name="modeTraitement[]">
+                                                <option value="" selected disabled>Mode de traitementActe</option>
+                                                <option value="IM">IM</option>
+                                                <option value="IV">IV</option>
+                                                <option value="IVA">IVA</option>
+                                                <option value="SC">SC</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-1">
+                                        <button class="btn btn-primary addTabTraitement" type="button"><span class="fa fa-plus"></span></button>
                                     </div>
 
                                     <button class="btn btn-primary back2" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
@@ -157,7 +184,7 @@
                                 <fieldset name="corpsJaune">
                                     <legend>&Eacute;tape 3/5  -  R&Eacute;SULTATS COLLECTE</legend>
 
-                                    <div class="form-group col-sm-3">
+                                    <div class="form-group col-sm-3" style="padding-left:0">
                                         <input class="form-control" name="nbEmbryonViables" type="number" placeholder="Nb d'embryons viables">
                                     </div>
                                     <div class="form-group col-sm-3">
@@ -169,7 +196,7 @@
                                     <div class="form-group col-sm-3">
                                         <input class="form-control" name="nbEmbryonTotal" type="number" placeholder="Nb d'embryons total collect&eacute;s">
                                     </div>
-                                    <div class="form-group col-sm-4">
+                                    <div class="form-group col-sm-4" style="padding-left:0">
                                         <input class="form-control" name="nbCorpsJaune" type="text" placeholder="Nb de corps jaunes d&eacute;nombr&eacute;s">
                                     </div>
                                     <div class="form-group col-sm-4">
@@ -199,7 +226,7 @@
                                 <fieldset name="embryon">
                                     <legend>&Eacute;tape 4/5  -  D&Eacute;TAILS EMBRYONS VIABLES</legend>
                                     <div id="tabEmbryonsViables" class="tabEmbryonsViables">
-                                        <div class="form-group col-sm-3">
+                                        <div class="form-group col-sm-3" style="padding-left:0">
                                             <select class="form-control" name="stade[]">
                                                 <option value="" selected disabled>Stade</option>
                                                 <c:forEach begin="1" end="9" var="val">
@@ -217,35 +244,24 @@
                                             </select>
                                         </div>
                                         <div class="form-group col-sm-3">
-                                            <select class="form-control" name="produit[]">
-                                                <option value="" selected disabled>Produit</option>
-                                                <c:forEach items="${produitsList}" var="produit">
-                                                    <option value="${produit.id}">${produit.nom}</option>
-                                                </c:forEach>
+                                            <select class="form-control" name="cuve[]">
+                                                <option value="" selected disabled>Cuve</option>
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <input class="form-control" name="refCong" type="text" placeholder="R&#233f&#233rence cong&#233lation">
+                                        <div class="form-group col-sm-3">
+                                            <select class="form-control" name="canister[]">
+                                                <option value="" selected disabled>Canister</option>
+                                            </select>
                                         </div>
-                                        <div class="form-group">
-                                            <input class="form-control" name="refCong" type="text" placeholder="R&#233f&#233rence cong&#233lation">
+                                        <div class="form-group col-sm-3" style="padding-left:0">
+                                            <select class="form-control" name="visotube[]">
+                                                <option value="" selected disabled>Visotube</option>
+                                            </select>
                                         </div>
-                                        <div class="form-group">
-                                            <input class="form-control" name="refCong" type="text" placeholder="R&#233f&#233rence cong&#233lation">
-                                        </div>
-                                        <div class="form-group">
-                                            <input class="form-control" name="refCong" type="text" placeholder="R&#233f&#233rence cong&#233lation">
-                                        </div>
-                                        <div class="form-group">
-                                            <input class="form-control" name="refCong" type="text" placeholder="R&#233f&#233rence cong&#233lation">
-                                        </div>
-                                        <div class="form-group">
-                                            <input class="form-control" name="refCong" type="text" placeholder="R&#233f&#233rence cong&#233lation">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Type FSH: </label>
-                                            <label class="radio-inline"><input type="radio" class="radio" value="naturelle" name="typeFSH">Naturelle</label>
-                                            <label class="radio-inline"><input type="radio" class="radio" value="induite" name="typeFSH">Induite</label>
+                                        <div class="form-group col-sm-3">
+                                            <select class="form-control" name="jonc[]">
+                                                <option value="" selected disabled>Jonc</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <input class="form-control" name="refCong" type="text" placeholder="R&#233f&#233rence cong&#233lation">
@@ -270,14 +286,19 @@
                                     <div class="form-group">
                                         <input class="form-control" name="heureCong" type="text" placeholder="Heure de cong&#233lation">
                                     </div>
+
                                     <div class="form-group">
-                                        <input class="form-control" name="methodCong" type="text" placeholder="M&#233thode de cong&#233lation">
+                                        <select class="form-control" name="methodCong">
+                                            <option value="" selected disabled>M&#233thode de cong&#233lation</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" name="congelateur" type="text" placeholder="Cong&#233lateur utilis&#233">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" name="operateurCong" type="text" placeholder="Op&#233rateur cong&#233lation">
+                                        <select class="form-control" name="operateurCong">
+                                            <option value="" selected disabled>Op&#233rateur cong&#233lation</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" name="description" type="text" placeholder="Description m&#233thode">

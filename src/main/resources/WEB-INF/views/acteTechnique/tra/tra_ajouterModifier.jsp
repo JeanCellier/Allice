@@ -511,10 +511,9 @@
                 success: function (result) {
                     if (result.succes == true) {
                         for(iLigne = 1; iLigne < result.objet.tableauTraitement.length; iLigne++) {
-                            var date = new Date(parseDate($("input[name='dateTraitement[]']:first").val())).addDays(result.objet.tableauTraitement[iLigne].decalage);
+                            var date = new Date(parseDate($("input[name='dateTraitement[]']:first").val())).addDays(result.objet.tableauTraitement[iLigne].decalageJour);
                             $("input[name='dateTraitement[]']:eq("+iLigne+")").data("DateTimePicker").date(date);
                         }
-
                     }
                 }
             });
