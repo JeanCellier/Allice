@@ -28,7 +28,14 @@
                         <li><a href="<s:url value='/acteTechnique/tra/tra'/>">TRA</a></li>
                     </ul>
                 </li>
-                <li><a href="#">CUVES</a></li>
+                <li><a href="#listCuves" data-toggle="collapse">CUVES</a></li>
+                    <ul id="listCuves" class="collapse nav" style="padding-left:40px;">
+                        <li><a href="<s:url value='/cuves/cellules_somatiques'/>">Cellules Somatiques</a></li>
+                        <li><a href="<s:url value='/cuves/embryons_vitro'/>">Embryons Vitro</a></li>
+                        <li><a href="<s:url value='/cuves/embryons_vivo'/>">Embryons Vivo</a></li>
+                        <li><a href="<s:url value='/cuves/embryons_elevage'/>">Semances Elevage</a></li>
+                        <li><a href="<s:url value='/cuves/semances_fiv'/>">Semances FIV</a></li>
+                    </ul>
                 <li><a href="<s:url value='/traitement/traitement'/>">TRAITEMENTS</a></li>
                 <li><a href="#">IMPORT/EXPORT</a></li>
                 <li><a href="#">PLANNING</a></li>
