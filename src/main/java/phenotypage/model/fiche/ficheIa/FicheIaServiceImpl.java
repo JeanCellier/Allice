@@ -99,4 +99,9 @@ FicheIaServiceImpl implements FicheIaService
 
 		return save(ficheIaForUpdate);
 	}
+
+	@Override
+	public FicheIa findTopByOrderByNomDesc() {
+		return repository.findTopByOrderByNomDesc();
+	}
 }

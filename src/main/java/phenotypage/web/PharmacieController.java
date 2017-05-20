@@ -25,7 +25,7 @@ public class PharmacieController
 	@RequestMapping(value = "/pharmacie", method = RequestMethod.GET)
 	public String pharmacie(Model model)
 	{
-		model.addAttribute("produitList", produitService.findAll());
+		model.addAttribute("produitList", produitService.findAvalaibleProduct());
 		return "pharmacie/pharmacie";
 	}
 
@@ -76,7 +76,7 @@ public class PharmacieController
 	/** GET ONE */
 	@ResponseBody
 	@RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-	public JsonResponse delete(@PathVariable("id") long id){
+	public JsonResponse getOne(@PathVariable("id") long id){
 		JsonResponse response = new JsonResponse();
 		Optional<Produit> produit = produitService.findOne(id);
 
@@ -89,6 +89,15 @@ public class PharmacieController
 		}
 
 		return response;
+	}
+
+	/** GET OUT OF STOCK */
+	@ResponseBody
+	@RequestMapping(value = "/get/OutOfStock", method = RequestMethod.GET)
+	public List<Produit> getOutOfStock(){
+		List<Produit> produits = produitService.findOutOfStockProduct();
+
+		return produits;
 	}
 
 	/** EDIT **/

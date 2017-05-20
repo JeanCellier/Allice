@@ -11,8 +11,9 @@ import java.util.List;
  * @author fabien
  */
 
+//@MappedSuperclass
 @Entity
-public class Canister
+public /*abstract*/ class Canister
 {
 	@Id
 	@GeneratedValue
@@ -21,15 +22,43 @@ public class Canister
 	@Column
 	private int numero;
 
-	@OneToMany(mappedBy = "canister")
-	private List<TableauDetail> tableauDetailList;
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+//	public Cuve getCuve() {
+//		return cuve;
+//	}
+//
+//	public void setCuve(Cuve cuve) {
+//		this.cuve = cuve;
+//	}
+
+//	public List<VisoTube> getTableauVisoTubeList() {
+//		return tableauVisoTubeList;
+//	}
+//
+//	public void setTableauVisoTubeList(List<VisoTube> tableauVisoTubeList) {
+//		this.tableauVisoTubeList = tableauVisoTubeList;
+//	}
+
+	@Column
+
+	private String nom;
+
+//	@OneToMany(mappedBy = "canister")
+//	private List<TableauDetail> tableauDetailList;
 	
-	@ManyToOne
-	@JoinColumn(name = "id_Cuve", referencedColumnName = "id")
-	private Cuve cuve;
+//	@ManyToOne
+//	@JoinColumn(name = "id_Cuve", referencedColumnName = "id")
+//	private Cuve cuve;
 	
-	@OneToMany(mappedBy = "canister")
-	private List<VisoTube> tableauVisoTubeList;
+//	@OneToMany(mappedBy = "canister")
+//	private List<VisoTube> tableauVisoTubeList;
 
 	public Canister()
 	{
@@ -60,13 +89,13 @@ public class Canister
 		this.numero = numero;
 	}
 
-	public List<TableauDetail> getTableauDetailList()
-	{
-		return tableauDetailList;
-	}
-
-	public void setTableauDetailList(List<TableauDetail> tableauDetailList)
-	{
-		this.tableauDetailList = tableauDetailList;
-	}
+//	public List<TableauDetail> getTableauDetailList()
+//	{
+//		return tableauDetailList;
+//	}
+//
+//	public void setTableauDetailList(List<TableauDetail> tableauDetailList)
+//	{
+//		this.tableauDetailList = tableauDetailList;
+//	}
 }

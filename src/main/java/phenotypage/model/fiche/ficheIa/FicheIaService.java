@@ -26,4 +26,6 @@ public interface FicheIaService
     FicheIa createFicheIa(String nom, Date dateFiche, String lieu, Programme programme, String numIpe, String numSemence, Vache vache, Insemination insemination, Traitement_Donneuse traitement_donneuse, Gestation gestation);
 
 	FicheIa updateFicheIa(FicheIa ficheIaForUpdate, String nom, Date dateFiche, String lieu, Programme programme, String numIpe, String numSemence, Vache vache, Insemination insemination, Traitement_Donneuse traitement_donneuse, Gestation gestation);
+
+	FicheIa findTopByOrderByNomDesc();
 }

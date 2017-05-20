@@ -23,12 +23,12 @@ public class VisoTube
 	@Column
 	private String couleur;
 
-	@OneToMany(mappedBy = "visoTube")
-	private List<TableauDetail> tableauDetailList;
+//	@OneToMany(mappedBy = "visoTube")
+//	private List<TableauDetail> tableauDetailList;
 	
-	@ManyToOne
-	@JoinColumn(name = "id_VisoTube", referencedColumnName = "id")
-	private Canister canister;
+//	@ManyToOne
+//	@JoinColumn(name = "id_VisoTube", referencedColumnName = "id")
+//	private Canister canister;
 
 	public VisoTube()
 	{
@@ -70,13 +70,13 @@ public class VisoTube
 		this.couleur = couleur;
 	}
 
-	public List<TableauDetail> getTableauDetailList()
-	{
-		return tableauDetailList;
-	}
-
-	public void setTableauDetailList(List<TableauDetail> tableauDetailList)
-	{
-		this.tableauDetailList = tableauDetailList;
-	}
+//	public List<TableauDetail> getTableauDetailList()
+//	{
+//		return tableauDetailList;
+//	}
+//
+//	public void setTableauDetailList(List<TableauDetail> tableauDetailList)
+//	{
+//		this.tableauDetailList = tableauDetailList;
+//	}
 }

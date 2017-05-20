@@ -27,7 +27,7 @@
 //		Poi_Excel.readExcel(_url, 8, 6);
 //		Poi_Excel.readExcel(_url, 9, 1);
 //
-//		//traitement rece
+//		//traitement_acte rece
 //		Poi_Excel.readExcel(_url, 12, 1);
 //		Poi_Excel.readExcel(_url, 12, 4);
 //

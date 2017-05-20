@@ -20,9 +20,10 @@
                         <td>Programme</td>
                         <td>Date</td>
                         <td>lieu</td>
-                        <td>Num&eacutero IPE</td>
-                        <td>Num&eacutero d&eacutepot semence</td>
+                        <td>Op&eacuterateur</td>
                         <td>Vache</td>
+                        <td>Num&eacutero taureau </td>
+                        <td>Statut</td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -35,9 +36,10 @@
                         <td>${fichesIa.programme.nom}</td>
                         <td><fmt:formatDate pattern="dd/MM/yyyy" value="${fichesIa.dateHeureMinute}" /></td>
                         <td>${fichesIa.lieu}</td>
-                        <td>${fichesIa.numIpe}</td>
-                        <td>${fichesIa.numDepotSemence}</td>
+                        <td>${fichesIa.operateur}</td>
                         <td>${fichesIa.vache.num_identification}</td>
+                        <td>${fichesIa.insemination.taureau}</td>
+                        <td>${fichesIa.statut}</td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Details"><button class="btn btn-primary btn-md btnDetails" data-title="details" data-id="<c:out value='${fichesIa.id}' />" data-toggle="modal" data-target="#details" ><span class="glyphicon glyphicon-search"></span></button></p></td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="<c:out value='${fichesIa.id}' />" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/<c:out value='${fichesIa.id}'/>" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
@@ -72,18 +74,69 @@
     <!-- /.modal-dialog -->
 </div>
 
+<!------------------------------ Script Jquery UI--------------------------->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!------------------------------ Script Datatable--------------------------->
+<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.10.15/api/fnFindCellRowIndexes.js"></script>
+<link rel="stylesheet" type="text/css" media="all" href="../../static/css/datables.bootstrap.css"/>
+<script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+
 <%@ include file="ia_ajouterModifier.jsp" %>
 <%@ include file="ia_detail.jsp" %>
 <%@ include file="../../footer.jsp" %>
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" media="all" href="../../static/css/datables.bootstrap.css"/>
-
 <script>
     var currentrow; //la row courante à edit ou delete
+
+    /** function change nom fiche **/
+    function changeNom(tab){
+        var date = new Date().getFullYear();
+        var num;
+        if(tab.attr('id') == 'fiche_01') {  //si c'est la 1ère fiche
+            $.ajax({
+                url: "./get/lastName",
+                type: 'GET',
+                success: function (result) {
+                    if(result != "") {
+                        num = parseInt(result.substr(5)) + 1;
+                        if (num < 10) {
+                            numString = '000' + num;
+                        } else if (num >= 10 && num < 100) {
+                            numString = '00' + num;
+                        } else {
+                            numString = '0' + num;
+                        }
+                        nom = date.toString().substr(2, 4) + 'IA' + numString;
+                        tab.find("input[name='nom']").val(nom);
+                        $("li.active.tab").children('a').text(nom);
+                    }
+                },
+            });
+        }else{ //si le nom doit être récupéré sur les fiches précédentes
+            num = parseInt(($('.tab-pane.add').last().find("input[name='nom']").val()).substr(5)) + 1;
+            if (num < 10) {
+                numString = '000' + num;
+            } else if (num >= 10 && num < 100) {
+                numString = '00' + num;
+            } else {
+                numString = '0' + num;
+            }
+            nom = date.toString().substr(2, 4) + 'TRA' + numString;
+            tab.find("input[name='nom']").val(nom);
+
+            $('a[href="#'+tab.attr("id")+'"]').text(nom);
+        }
+    }
+
+
+    $(document).on('click', '#addFiche', function(e) { //au clic sur le bouton supprimer
+        if($('#fiche_01').find("input[name='nom']").val() ==''){
+            changeNom($('#fiche_01'));
+        }
+    });
 
     /** function convertion des dates */
     function convertDate(inputFormat) {
@@ -116,31 +169,41 @@
 
         /** ajoute une ligne à la table */
         $('#tableActes').DataTable().row.add([
-            "<td>" + result.objet.nom + "</td>",
-            "<td>" + result.objet.programme.nom + "</td>",
-            "<td>" + convertDate(dateFiche) + "</td>",
-            "<td>" + result.objet.lieu + "</td>",
-            "<td>" + result.objet.numIpe + "</td>",
-            "<td>" + result.objet.numDepotSemence + "</td>",
-            "<td>" + result.objet.vache.num_identification + "</td>",
+            result.objet.nom ,
+            result.objet.programme.nom,
+            convertDate(dateFiche),
+            result.objet.lieu,
+            result.objet.operateur,
+            result.objet.vache.num_identification,
+            result.objet.insemination.taureau,
 
-            '<td><p data-placement="top" data-toggle="tooltip" title="Details"><button class="btn btn-primary btn-md btnDetails" data-title="details" data-id="' + result.objet.id + '" data-toggle="modal" data-target="#details" ><span class="glyphicon glyphicon-search"></span></button></p></td>',
-            '<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="' + result.objet.id + '" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>',
-            '<td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/' + result.objet.id + '" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>'
+            '<p data-placement="top" data-toggle="tooltip" title="Details"><button class="btn btn-primary btn-md btnDetails" data-title="details" data-id="' + result.objet.id + '" data-toggle="modal" data-target="#details" ><span class="glyphicon glyphicon-search"></span></button></p></>',
+            '<p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="' + result.objet.id + '" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-pencil"></span></button></p></>',
+            '<p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/' + result.objet.id + '" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></>'
         ]).draw(false);
     }
 
     /** init la table */
-    $('#tableActes').DataTable( {
+    $('#tableActes').DataTable({
         "pagingType": "full_numbers",
         "columnDefs": [
-            { "orderable": false, "targets": 7},
-            { "orderable": false, "targets": 8},
-            { "orderable": false, "targets": 9}
-        ],"language": {
+            {"orderable": false, "targets": 8},
+            {"orderable": false, "targets": 9},
+            {"orderable": false, "targets": 10},
+            {"targets": [7], "visible": false, "searchable": false},
+        ], "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json"
         },
-        "pageLength": 25
+        "pageLength": 25,
+        "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+            if (aData[7] == "1") {
+                $('td', nRow).css('background-color', '#DE7E00');
+            } else if (aData[7] == "2") {
+                $('td', nRow).css('background-color', '#CC3333');
+            }else{
+                $('td', nRow).css('background-color', '#f9f9f9');
+            }
+        }
     });
 
     /************************ SUPPRIMER *************************/
@@ -165,7 +228,7 @@
                 if(result.succes == true){
                     $('#delete').modal('toggle'); //ferme modal
                     $('#tableActes').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>'); //afficher alert
-                    $('#tableActes').DataTable().row(currentrow).remove().draw();
+                    $('#tableActes').DataTable().row(currentrow).remove().draw(false);
                 }else{
                     $('#delete').modal('toggle'); //ferme modal
                     $('#tableActes').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>'); //afficher alert

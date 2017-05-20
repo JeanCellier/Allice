@@ -31,11 +31,11 @@ public class TableauDetail
 	@Column
 	private boolean cryoconserve;
 
-	@ManyToOne
-	private Cuve cuve;
-
-	@ManyToOne
-	private Canister canister;
+//	@ManyToOne
+//	private Cuve cuve;
+//
+//	@ManyToOne
+//	private Canister canister;
 
 	@ManyToOne
 	private VisoTube visoTube;
@@ -128,25 +128,25 @@ public class TableauDetail
 		this.cryoconserve = cryoconserve;
 	}
 
-	public Cuve getCuve()
-	{
-		return cuve;
-	}
-
-	public void setCuve(Cuve cuve)
-	{
-		this.cuve = cuve;
-	}
-
-	public Canister getCanister()
-	{
-		return canister;
-	}
-
-	public void setCanister(Canister canister)
-	{
-		this.canister = canister;
-	}
+//	public Cuve getCuve()
+//	{
+//		return cuve;
+//	}
+//
+//	public void setCuve(Cuve cuve)
+//	{
+//		this.cuve = cuve;
+//	}
+//
+//	public Canister getCanister()
+//	{
+//		return canister;
+//	}
+//
+//	public void setCanister(Canister canister)
+//	{
+//		this.canister = canister;
+//	}
 
 	public VisoTube getVisoTube()
 	{

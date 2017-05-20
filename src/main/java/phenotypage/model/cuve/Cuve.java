@@ -10,8 +10,9 @@ import java.util.List;
  * @author fabien
  */
 
+//@MappedSuperclass
 @Entity
-public class Cuve
+public /*abstract*/ class Cuve
 {
 	@Id
 	@GeneratedValue
@@ -23,12 +24,12 @@ public class Cuve
 	@Column
 	private String designation;
 
-	// TODO remove
-	@OneToMany(mappedBy = "cuve")
-	private List<TableauDetail> tableauDetailList;
+//	// TODO remove
+//	@OneToMany(mappedBy = "cuve")
+//	private List<TableauDetail> tableauDetailList;
 	
-	@OneToMany(mappedBy = "cuve")
-	private List<Canister> tableauCanisterList;
+//	@OneToMany(mappedBy = "cuve")
+//	private List<Canister> tableauCanisterList;
 
 	public Cuve()
 	{
@@ -70,13 +71,13 @@ public class Cuve
 		this.designation = designation;
 	}
 
-	public List<TableauDetail> getTableauDetailList()
-	{
-		return tableauDetailList;
-	}
-
-	public void setTableauDetailList(List<TableauDetail> tableauDetailList)
-	{
-		this.tableauDetailList = tableauDetailList;
-	}
+//	public List<TableauDetail> getTableauDetailList()
+//	{
+//		return tableauDetailList;
+//	}
+//
+//	public void setTableauDetailList(List<TableauDetail> tableauDetailList)
+//	{
+//		this.tableauDetailList = tableauDetailList;
+//	}
 }
