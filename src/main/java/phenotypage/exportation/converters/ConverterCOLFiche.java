@@ -166,6 +166,7 @@ public class ConverterCOLFiche implements ConverterFiche {
             rowNumber++;
         }
 
+        //
         PoiHelper.writeCell(sheet, rowNumber, 0, "Opérateur IA:");
         PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getOperateur().getNom() + " " + fiche.getOperateur().getPrenom());
         rowNumber++;
@@ -224,6 +225,7 @@ public class ConverterCOLFiche implements ConverterFiche {
         PoiHelper.writeCell(sheet, rowNumber, 5, "Canister stockage").setCellStyle(headerStyle);
         PoiHelper.writeCell(sheet, rowNumber, 6, "Visotube stockage").setCellStyle(headerStyle);
         PoiHelper.writeCell(sheet, rowNumber, 7, "Jonc").setCellStyle(headerStyle);
+        rowNumber++;
 
         //Tableau body
         for (TableauDetail detail : fiche.getTableauDetails()) {
@@ -235,7 +237,9 @@ public class ConverterCOLFiche implements ConverterFiche {
             PoiHelper.writeCell(sheet, rowNumber, 5, detail.getCanister().getNumero() + "").setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 6, detail.getVisoTube().getCouleur()).setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 7, detail.getJonc()).setCellStyle(bodyStyle);
+            rowNumber++;
         }
+        rowNumber++;
 
         //Tableau header
         PoiHelper.writeCell(sheet, rowNumber, 0, "N°embryon").setCellStyle(headerStyle);
@@ -244,6 +248,7 @@ public class ConverterCOLFiche implements ConverterFiche {
         PoiHelper.writeCell(sheet, rowNumber, 3, "Référence transfert").setCellStyle(headerStyle);
         PoiHelper.writeCell(sheet, rowNumber, 4, "Détruit (cocher)").setCellStyle(headerStyle);
         PoiHelper.writeCell(sheet, rowNumber, 5, "Remarques").setCellStyle(headerStyle);
+        rowNumber++;
 
         //Tableau body
         for (TableauDetail detail : fiche.getTableauDetails()) {
@@ -253,6 +258,7 @@ public class ConverterCOLFiche implements ConverterFiche {
             PoiHelper.writeCell(sheet, rowNumber, 3, detail.getReferenceTransfert()).setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 4, detail.isDetruit() ? "X" : "").setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 5, detail.getRemarque()).setCellStyle(bodyStyle);
+            rowNumber++;
         }
     }
 }

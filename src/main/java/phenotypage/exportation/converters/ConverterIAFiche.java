@@ -96,7 +96,6 @@ public class ConverterIAFiche implements ConverterFiche {
         PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getVache().getParite());
         rowNumber += 2;
 
-
         //INSEMINATION
         PoiHelper.writeCell(sheet, rowNumber, 0, "INSEMINATION").setCellStyle(titleStyle);
         rowNumber++;
