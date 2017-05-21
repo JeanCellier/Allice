@@ -879,5 +879,4 @@
         minLength: 4,
         source: '${pageContext. request. contextPath}/animaux/get/vache'
     });
-
 </script>

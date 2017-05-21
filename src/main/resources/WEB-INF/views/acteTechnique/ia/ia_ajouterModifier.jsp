@@ -670,7 +670,7 @@
                                 $(this).addClass('EditForm');
                             }
                         });
-
+      
                         if(rowId.length == 1) { //si le nom de la fiche est présent
                             /** Modifie la ligne correspondant à la fiche modifiée **/
                             if (result.objet.programme != null) {
@@ -743,9 +743,11 @@
 
     /************************ MODIF *************************/
     $(document).on( 'click', ".btnEdit", function() {
-        id = $(this).attr('data-id');
+        if($('#fiche_01').find("input[name='nom']").val() ==''){
+            changeNom($('#fiche_01'));
+        }
 
-        currentrow = $(this).closest('tr'); //get la row parent
+        id = $(this).attr('data-id');
 
         $.ajax({
             url: "./get/"+id,
@@ -755,78 +757,108 @@
                     newTab();
                     $activeTab = $('div.tab-pane.active');
 
-                    $activeTab.find('.validButton').attr('data-id',id); //attribue l'id au modal
+                    $activeTab.removeClass('add'); //identifie la tab comme un tab d'édition
+
+                    $activeTab.find('form[name="addPart1"]').attr('action', $activeTab.find('form[name="addPart1"]').attr('action')+"/"+id); //attribue l'id au modal
+                    $activeTab.find('form[name="addPart1"]').addClass('EditForm');
 
                     //change le nom de l'onglet
                     $("li.active.tab").children('a').text(result.objet.nom);
 
+                    /*************************** REMPLI MODAL ***************************/
+
+                    /************* STEP 1 *************/
                     //remplit le modal
                     $activeTab.find("input[name='nom']" ).val(result.objet.nom);
+                    $activeTab.find("input[name='date']").data("DateTimePicker").date(new Date(result.objet.dateHeureMinute));
                     $activeTab.find( "select[name='programme']" ).val(result.objet.programme.id);
                     $activeTab.find( "input[name='lieu']" ).val(result.objet.lieu);
                     $activeTab.find( "input[name='numIPE']" ).val(result.objet.numIpe);
                     $activeTab.find( "input[name='numSemence']" ).val(result.objet.numDepotSemence);
-                    $activeTab.find( "select[name='vache']" ).val(result.objet.vache.id);
+                    $activeTab.find( "input[name='vache']" ).val(result.objet.vache.num_identification);
+
+                    /************* STEP 2 *************/
                     $activeTab.find( "select[name='operateur']" ).val(result.objet.insemination.operateur.id);
-                    $activeTab.find( "select[name='taureau']" ).val(result.objet.insemination.taureau.id);
+                    $activeTab.find( "input[name='taureau']" ).val(result.objet.insemination.taureau.numTaureau);
                     $activeTab.find( "select[name='collecte']" ).val(result.objet.insemination.collecte.id);
-                    $activeTab.find( "input[name='lieuSemence']" ).val(result.objet.insemination.lieuDepot);
-                    $activeTab.find( "input[name='facilite']" ).val(result.objet.insemination.progression);
+                    $activeTab.find( "select[name='lieuSemence']" ).val(result.objet.insemination.lieuDepot);
+                    $activeTab.find( "select[name='facilite']" ).val(result.objet.insemination.progression);
                     $activeTab.find( "input[name='typeChaleur']" ).val(result.objet.traitement_donneuse.typeChaleur);
                     $activeTab.find( "input[name='chaleurDetection']" ).val(result.objet.traitement_donneuse.typeChaleur);
                     $activeTab.find( "textarea[name='remarques']" ).val(result.objet.gestation.remarques);
-                    $activeTab.find("input[name='date']").data("DateTimePicker").date(new Date(result.objet.dateHeureMinute));
 
                     //remplit les radiobuttons
                     if(result.objet.insemination.semenceSexee == true) {
                         $activeTab.find("input[name='optradioSexee'][value='oui']").prop('checked', true);
-                    }else{
+                    }
+                    if(result.objet.insemination.semenceSexee == false) {
                         $activeTab.find("input[name='optradioSexee'][value='non']").prop('checked', true);
                     }
 
-                    //remplit tableau traitement_acte donneuse
-                    for(iLigne = 0; iLigne < result.objet.traitement_donneuse.tableauDonneuse.length; iLigne++)
-                    {
-                        if(iLigne == 0){
-                            $target = $activeTab.find('.tabTraitement');
-                        }else{
-                            $target = $activeTab.find('.tabTraitement').clone().removeAttr('id');
-                            $target.insertAfter($activeTab.find("div.tabTraitement").last());
+                    /************* STEP 3 *************/
+                    if(result.objet.traitement_donneuse != null){
+                        if(result.objet.traitement_donneuse.date_ref_chaleur != null) {
+                            $activeTab.find("input[name='dateChaleur']").data("DateTimePicker").date(new Date(result.objet.traitement_donneuse.date_ref_chaleur));
                         }
 
-                        $target.find("input[name='dateTraitement[]']").datetimepicker({
-                            locale: 'fr',
-                            format: 'DD/MM/YYYY',
-                            toolbarPlacement: 'top',
-                            showClose: true
-                        });
+                        if(result.objet.traitement_donneuse.typeChaleur == "naturelle") {
+                            $activeTab.find("input[name='typeChaleur'][value='naturelle']").prop('checked', true);
+                        }
+                        if(result.objet.traitement_donneuse.typeChaleur == "induite") {
+                            $activeTab.find("input[name='typeChaleur'][value='induite']").prop('checked', true);
+                        }
 
-                        $target.find("input[name='dateTraitement[]']").data("DateTimePicker").date(new Date(result.objet.traitement_donneuse.tableauDonneuse[iLigne].date));
-                        $target.find("select[name='produit[]']" ).val(result.objet.traitement_donneuse.tableauDonneuse[iLigne].produit.id );
-                        $target.find("input[name='quantite[]']").val(result.objet.traitement_donneuse.tableauDonneuse[iLigne].quantite);
-                        $target.find("input[name='modeTraitement[]']").val(result.objet.traitement_donneuse.tableauDonneuse[iLigne].mode_traitement);
+                        //remplit tableau traitement_acte donneuse
+                        for(iLigne = 0; iLigne < result.objet.traitement_donneuse.tableauDonneuse.length; iLigne++)
+                        {
+                            if(iLigne == 0){
+                                $target = $activeTab.find('.tabTraitement');
+                            }else{
+                                $target = $activeTab.find('#tabTraitement').clone().removeAttr('id');
+                                $target.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabTraitement" type="button"><span class="fa fa-minus"></span></button></div>');
+                                $target.insertAfter($activeTab.find("div.tabTraitement").last());
+                            }
+
+                            $target.find("input[name='dateTraitement[]']").datetimepicker({
+                                locale: 'fr',
+                                format: 'DD/MM/YYYY',
+                                toolbarPlacement: 'top',
+                                showClose: true
+                            });
+
+                            $target.find("input[name='dateTraitement[]']").data("DateTimePicker").date(new Date(result.objet.traitement_donneuse.tableauDonneuse[iLigne].date));
+                            $target.find("select[name='produit[]']" ).val(result.objet.traitement_donneuse.tableauDonneuse[iLigne].produit.id );
+                            $target.find("input[name='quantite[]']").val(result.objet.traitement_donneuse.tableauDonneuse[iLigne].quantite);
+                            $target.find("select[name='modeTraitement[]']").val(result.objet.traitement_donneuse.tableauDonneuse[iLigne].mode_traitement);
+                        }
                     }
 
-                    //remplit tableau gestation
-                    for(iLigne = 0; iLigne < result.objet.gestation.tableauGestationList.length; iLigne++)
-                    {
-                        if(iLigne == 0){
-                            $target = $activeTab.find('.tabGestation');
-                        }else{
-                            $target = $activeTab.find('.tabGestation').clone().removeAttr('id');
-                            $target.insertAfter($activeTab.find("div.tabGestation").last());
+                    /************* STEP 4 *************/
+                    if(result.objet.gestation != null) {
+                        $activeTab.find( "textarea[name='remarques']" ).val(result.objet.gestation.remarques);
+
+                        //remplit tableau gestation
+                        for(iLigne = 0; iLigne < result.objet.gestation.tableauGestationList.length; iLigne++)
+                        {
+                            if(iLigne == 0){
+                                $target = $activeTab.find('.tabGestation');
+                            }else{
+                                $target = $activeTab.find('#tabGestation').clone().removeAttr('id');
+                                $target.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabGestation" type="button"><span class="fa fa-minus"></span></button></div>');
+                                $target.insertAfter($activeTab.find("div.tabGestation").last());
+                            }
+
+                            $target.find("input[name='dateMethode[]']").datetimepicker({
+                                locale: 'fr',
+                                format: 'DD/MM/YYYY',
+                                toolbarPlacement: 'top',
+                                showClose: true
+                            });
+
+                            $target.find("input[name='dateMethode[]']").data("DateTimePicker").date(new Date(result.objet.gestation.tableauGestationList[iLigne].date));
+                            $target.find( "select[name='methode[]']" ).val(result.objet.gestation.tableauGestationList[iLigne].methode );
+                            $target.find("select[name='resultat[]']").val(result.objet.gestation.tableauGestationList[iLigne].resultat);
                         }
-
-                        $target.find("input[name='dateMethode[]']").datetimepicker({
-                            locale: 'fr',
-                            format: 'DD/MM/YYYY',
-                            toolbarPlacement: 'top',
-                            showClose: true
-                        });
-
-                        $target.find("input[name='dateMethode[]']").data("DateTimePicker").date(new Date(result.objet.gestation.tableauGestationList[iLigne].date));
-                        $target.find( "select[name='methode[]']" ).val(result.objet.gestation.tableauGestationList[iLigne].methode );
-                        $target.find("input[name='resultat[]']").val(result.objet.gestation.tableauGestationList[iLigne].resultat);
                     }
                 }else{
                     $('#add').modal('toggle'); //ferme modal
