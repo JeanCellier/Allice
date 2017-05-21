@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="col-sm-12 col-md-12" id="list-fiche-cards" style="margin-top: 10px;">
-            <div class="row">
+            <!--div class="row">
                 <div class="col-sm-3">
                     <label style="font-weight: normal; text-align: left; white-space: nowrap;">
                         Type de fiches :
@@ -45,7 +45,7 @@
                                 class="glyphicon glyphicon-search"></span></button>
                     </p>
                 </div>
-            </div>
+            </div-->
             <c:choose>
                 <c:when test="${ficheList.size()==0}">
                     <br><br><br><br><br><br>
