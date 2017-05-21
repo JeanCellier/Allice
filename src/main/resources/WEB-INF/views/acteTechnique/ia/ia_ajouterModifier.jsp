@@ -697,7 +697,7 @@
                                 if (result.objet.insemination.operateur != null) {
                                     table.cell(rowId, 5).data(result.objet.insemination.operateur.nom + " " + result.objet.insemination.operateur.prenom).draw(false);
                                 }
-                                table.cell(rowId, 7).data(result.objet.insemination.taureau).draw(false);
+                                table.cell(rowId, 7).data(result.objet.insemination.taureau.numTaureau).draw(false);
                             }
                         }
                     }

@@ -40,7 +40,7 @@
                         <td>${fichesIa.lieu}</td>
                         <td>${fichesIa.insemination.operateur.nom} ${fichesIa.insemination.operateur.prenom}</td>
                         <td>${fichesIa.vache.num_identification}</td>
-                        <td>${fichesIa.insemination.taureau}</td>
+                        <td>${fichesIa.insemination.taureau.numTaureau}</td>
                         <td>${fichesIa.statut}</td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Details"><button class="btn btn-primary btn-md btnDetails" data-title="details" data-id="<c:out value='${fichesIa.id}' />" data-toggle="modal" data-target="#details" ><span class="glyphicon glyphicon-search"></span></button></p></td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="<c:out value='${fichesIa.id}' />" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
@@ -104,7 +104,7 @@
                 success: function (result) {
                     if(result != "") {
                         num = parseInt(result.substr(5)) + 1;
-                        console.log(num);
+
                         if (num < 10) {
                             numString = '000' + num;
                         } else if (num >= 10 && num < 100) {
@@ -189,7 +189,8 @@
         }
 
         if(result.objet.insemination != null){
-            var taureau = result.objet.insemination.taureau;
+            var taureau = result.objet.insemination.taureau.numTaureau;
+
         }else{
             var taureau = "";
         }

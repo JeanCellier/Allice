@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import phenotypage.model.cuve.cuveSemence.canisterSemence.visoTubeSemence.semence.Semence;
+import phenotypage.model.cuve.cuveSemence.canisterSemence.visoTubeSemence.semence.SemenceService;
 import phenotypage.model.jsonResponse.JsonResponse;
 import phenotypage.model.fiche.ficheCol.FicheCol;
 import phenotypage.model.fiche.ficheCol.FicheColService;
@@ -49,7 +51,7 @@ public class IaController {
     private FicheIaService ficheIaService;
 
     @Autowired
-    private FicheColService ficheColService;
+    private SemenceService semenceService;
 
     @Autowired
     private TraitementActeService traitementService;
@@ -169,19 +171,26 @@ public class IaController {
                 insemination.setSemenceSexee(false);
             }
 
-            insemination.setTaureau(taureau);
-            insemination.setCollecte(collecte.getNom());
-            insemination.setLieuDepot(lieuSemence);
-            insemination.setProgression(faciliteProgression);
+            Optional<Semence> semence = semenceService.findByNumTaureau(taureau);
 
-            ficheIaService.updateFicheIa(ficheIaToUpdate, ficheIaToUpdate.getNom(), ficheIaToUpdate.getDateHeureMinute(),
-                    ficheIaToUpdate.getLieu(), ficheIaToUpdate.getProgramme(), ficheIaToUpdate.getNumIpe(),
-                    ficheIaToUpdate.getNumDepotSemence(), ficheIaToUpdate.getVache(), insemination,
-                    ficheIaToUpdate.getTraitement_donneuse(), ficheIaToUpdate.getGestation());
+            if(semence.isPresent()) {
+                insemination.setTaureau(semence.get());
+                insemination.setCollecte(collecte.getNom());
+                insemination.setLieuDepot(lieuSemence);
+                insemination.setProgression(faciliteProgression);
 
-            jsonResponse.setMessage("2ème étape validée");
-            jsonResponse.setObjet(ficheIaToUpdate);
-            jsonResponse.setSucces(true);
+                ficheIaService.updateFicheIa(ficheIaToUpdate, ficheIaToUpdate.getNom(), ficheIaToUpdate.getDateHeureMinute(),
+                        ficheIaToUpdate.getLieu(), ficheIaToUpdate.getProgramme(), ficheIaToUpdate.getNumIpe(),
+                        ficheIaToUpdate.getNumDepotSemence(), ficheIaToUpdate.getVache(), insemination,
+                        ficheIaToUpdate.getTraitement_donneuse(), ficheIaToUpdate.getGestation());
+
+                jsonResponse.setMessage("2ème étape validée");
+                jsonResponse.setObjet(ficheIaToUpdate);
+                jsonResponse.setSucces(true);
+            }else{
+                jsonResponse.setMessage("Le numéro d'identification du taureau est invalide");
+                jsonResponse.setSucces(false);
+            }
         }else{
             jsonResponse.setSucces(false);
             jsonResponse.setMessage("Fiche collecte non valide");
@@ -299,115 +308,6 @@ public class IaController {
         jsonResponse.setSucces(true);
 
         return jsonResponse;
-    }
-
-
-    /******************** ADD OR UPDATE FICHE ********************/
-    @ResponseBody
-    @RequestMapping(value = "/addOrUpdate", method = RequestMethod.POST)
-    public JsonResponse addOrUpdate(@RequestParam(value="id", required = false) FicheIa ficheIaForUpdate, @RequestParam("nom") String nom,
-                                    @RequestParam("date") String date, @RequestParam("lieu") String lieu,
-                                    @RequestParam("programme") Programme programme, @RequestParam("numIPE") String numIpe,
-                                    @RequestParam("numSemence") String numSemence, @RequestParam("vache") Vache vache,
-                                    @RequestParam("operateur") Operateur operateur, @RequestParam("optradioSexee") String optradioSexee,
-                                    @RequestParam("taureau") String taureau, @RequestParam("collecte") FicheCol collecte,
-                                    @RequestParam("lieuSemence") String lieuSemence, @RequestParam("facilite") String faciliteProgression,
-                                    @RequestParam("typeChaleur") String typeChaleur, @RequestParam(value="dateTraitement[]")  String[] dateTraitement,
-                                    @RequestParam(value="produit[]")  Produit[] produit, @RequestParam(value="quantite[]")  String[] quantite,
-                                    @RequestParam(value="modeTraitement[]")  String[] modeTraitement, @RequestParam(value="dateMethode[]") String[] dateMethode,
-                                    @RequestParam(value="methode[]")  String[] methode, @RequestParam(value="resultat[]")  String[] resultat,
-                                    @RequestParam("remarques") String remarques){
-
-        JsonResponse response = new JsonResponse();
-
-        SimpleDateFormat formatterDateTime = new SimpleDateFormat("dd/MM/yyyy hh:mm");
-        SimpleDateFormat formatterDate = new SimpleDateFormat("dd/MM/yyyy");
-
-        /****** CREATION LIGNE TABLEAU TRAITEMENT ******/
-        List<Tableau_Donneuse> tableauTraitement = new ArrayList<>();
-        for(int iLigneTraitement = 0; iLigneTraitement < dateTraitement.length; iLigneTraitement++){
-            Tableau_Donneuse tableauDonneuse = new Tableau_Donneuse();
-
-            try {
-                Date dateTraitementParsee = formatterDate.parse(dateTraitement[iLigneTraitement]);
-
-                tableauDonneuse.setDate(dateTraitementParsee);
-            }catch (ParseException e) {
-                response.setSucces(false);
-                response.setMessage("Une ou plusieurs dates concernant le traitement_acte sont invalides");
-            }
-
-            tableauDonneuse.setProduit(produit[iLigneTraitement]);
-            tableauDonneuse.setQuantite(Integer.parseInt(quantite[iLigneTraitement]));
-            tableauDonneuse.setMode_traitement(modeTraitement[iLigneTraitement]);
-
-            tableauTraitement.add(tableauDonneuse);
-        }
-
-
-        /****** CREATION INSEMINATION ******/
-        Insemination insemination = new Insemination();
-        insemination.setOperateur(operateur);
-        if(Objects.equals(optradioSexee, "oui")){
-            insemination.setSemenceSexee(true);
-        }else{
-            insemination.setSemenceSexee(false);
-        }
-        insemination.setTaureau(taureau);
-        insemination.setCollecte(collecte.getNom());
-        insemination.setLieuDepot(lieuSemence);
-        insemination.setProgression(faciliteProgression);
-
-        /****** CREATION GESTATION ******/
-        Gestation gestation = new Gestation();
-
-        List<Tableau_Gestation> tableauGestationList = new ArrayList<>();
-        for(int iLigneGestation = 0; iLigneGestation < dateMethode.length; iLigneGestation++){
-            Tableau_Gestation tableau_Gestation = new Tableau_Gestation();
-
-            try {
-                Date dateGestationParsee = formatterDate.parse(dateMethode[iLigneGestation]);
-
-                tableau_Gestation.setDate(dateGestationParsee);
-            }catch (ParseException e) {
-                response.setSucces(false);
-                response.setMessage("Une ou plusieurs dates concernant la gestation sont invalides");
-            }
-
-            tableau_Gestation.setMethode(methode[iLigneGestation]);
-            tableau_Gestation.setResultat(resultat[iLigneGestation]);
-
-            tableauGestationList.add(tableau_Gestation);
-        }
-        gestation.setTableauGestationList(tableauGestationList);
-        gestation.setRemarques(remarques);
-
-        /****** CREATE FICHE IA ******/
-        try {
-            Date dateFiche = formatterDateTime.parse(date);
-
-            Traitement_Donneuse traitement_donneuse = new Traitement_Donneuse();
-            traitement_donneuse.setTableauDonneuse(tableauTraitement);
-            traitement_donneuse.setTypeChaleur(typeChaleur);
-
-            if(ficheIaForUpdate == null) {
-                FicheIa ficheIa = ficheIaService.createFicheIa(nom, dateFiche, lieu, programme, numIpe, numSemence, vache, insemination, traitement_donneuse, gestation);
-                response.setMessage("Ajout effectué");
-                response.setObjet(ficheIa);
-            }else{
-                FicheIa ficheIa = ficheIaService.updateFicheIa(ficheIaForUpdate, nom, dateFiche, lieu, programme, numIpe, numSemence, vache, insemination, traitement_donneuse, gestation);
-                response.setMessage("Modification(s) effectuée(s)");
-                response.setObjet(ficheIa);
-            }
-            response.setSucces(true);
-
-
-        }catch (ParseException e) {
-            response.setSucces(false);
-            response.setMessage("Une ou plusieurs dates sont invalides");
-        }
-
-        return response;
     }
 
     /******************** DELETE FICHE ********************/

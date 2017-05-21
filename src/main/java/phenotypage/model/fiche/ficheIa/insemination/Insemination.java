@@ -2,6 +2,7 @@ package phenotypage.model.fiche.ficheIa.insemination;
 
 import javax.persistence.*;
 
+import phenotypage.model.cuve.cuveSemence.canisterSemence.visoTubeSemence.semence.Semence;
 import phenotypage.model.fiche.ficheCol.FicheCol;
 import phenotypage.model.operateur.Operateur;
 import phenotypage.model.vache.Vache;
@@ -23,8 +24,8 @@ public class Insemination
 	@ManyToOne
 	private Operateur operateur;
 
-	@Column
-	private String taureau;
+	@ManyToOne
+	private Semence taureau;
 	
 	@Column
 	private String collecte;
@@ -56,12 +57,12 @@ public class Insemination
 		this.operateur = operateur;
 	}
 
-	public String getTaureau()
+	public Semence getTaureau()
 	{
 		return taureau;
 	}
 
-	public void setTaureau(String taureau)
+	public void setTaureau(Semence taureau)
 	{
 		this.taureau = taureau;
 	}

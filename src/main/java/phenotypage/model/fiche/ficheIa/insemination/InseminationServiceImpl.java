@@ -40,7 +40,7 @@ public class InseminationServiceImpl implements InseminationService
 	@Override
 	public int determineStatut(Insemination insemination) {
 		if(Objects.equals(insemination.getLieuDepot(), "") || insemination.getOperateur() == null || Objects.equals(insemination.getProgression(), "") ||
-				Objects.equals(insemination.getTaureau(), "") || Objects.equals(insemination.getLieuDepot(), "") || Objects.equals(insemination.getCollecte(), "")){
+				insemination.getTaureau() == null || Objects.equals(insemination.getLieuDepot(), "") || Objects.equals(insemination.getCollecte(), "")){
 			return 1;
 		}
 

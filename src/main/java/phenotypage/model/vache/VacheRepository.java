@@ -16,5 +16,4 @@ public interface VacheRepository extends JpaRepository<Vache, Long>
 
 	@Query(value = "select num_identification from vache where right(num_identification, 4) = ?1", nativeQuery = true)
     List<String> findNumIdByNumTravail(String tag);
-
 }

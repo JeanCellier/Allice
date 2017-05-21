@@ -161,10 +161,10 @@
                         .find('#race').text(' '+result.objet.vache.race).end()
                         .find('#parite').text(' '+result.objet.vache.parite).end()
                         .find('#operateur').text(' '+result.objet.insemination.operateur.nom+' '+result.objet.insemination.operateur.prenom).end()
-                        .find('#nomTaureau').text(' '+result.objet.insemination.taureau.nom).end()
-                        .find('#raceTaureau').text(' '+result.objet.insemination.taureau.race).end()
-                        .find('#numTaureau').text(' '+result.objet.insemination.taureau.num_identification).end()
-                        .find('#collecte').text(' '+result.objet.insemination.collecte.nom).end()
+                        .find('#nomTaureau').text(' '+result.objet.insemination.taureau.nomTaureau).end()
+                        .find('#raceTaureau').text(' '+result.objet.insemination.taureau.raceTaureau).end()
+                        .find('#numTaureau').text(' '+result.objet.insemination.taureau.numTaureau).end()
+                        .find('#collecte').text(' '+result.objet.insemination.collecte).end()
                         .find('#lieuSemence').text(' '+result.objet.insemination.lieuDepot).end()
                         .find('#facilite').text(' '+result.objet.insemination.progression).end()
                         .find('#typeChaleur').text(' '+result.objet.traitement_donneuse.typeChaleur).end()
@@ -172,7 +172,8 @@
 
                         if(result.objet.insemination.semenceSexee == false) {
                             $('#details').find('#semenceSexee').text(' Non');
-                        }else{
+                        }
+                        if(result.objet.insemination.semenceSexee == true) {
                             $('#details').find('#semenceSexee').text(' Oui');
                         }
 
