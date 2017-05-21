@@ -670,7 +670,7 @@
                                 $(this).addClass('EditForm');
                             }
                         });
-      
+
                         if(rowId.length == 1) { //si le nom de la fiche est présent
                             /** Modifie la ligne correspondant à la fiche modifiée **/
                             if (result.objet.programme != null) {

@@ -194,8 +194,6 @@
                                 '<td>' + result.objet.traitement_donneuse.tableauDonneuse[iLigne].quantite + '</td>' +
                                 '<td>' + result.objet.traitement_donneuse.tableauDonneuse[iLigne].mode_traitement + '</td></tr>');
                         }
-                    }else{
-                        console.log("xd");
                     }
 
                     if(result.objet.corpsJaune != null) {

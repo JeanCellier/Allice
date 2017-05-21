@@ -147,11 +147,18 @@
             method: 'GET',
             success: function (result) {
                 if(result.succes == true) {
+                    if(result.objet.programme != null){
+                        var nomProgramme = result.objet.programme.nom;
+                    }else{
+                        var nomProgramme = "";
+                    }
+                    var nomOperateur = "";
+
                     $('#details')
                         .find('#HeadingDetails').text(' D\u00e9tails de la fiche '+result.objet.nom).end()
                         .find('#date').text(' '+convertDateWithTime(result.objet.dateHeureMinute)).end()
                         .find('#lieu').text(' '+result.objet.lieu).end()
-                        .find('#programme').text(' '+result.objet.programme.nom).end()
+                        .find('#programme').text(' '+nomProgramme).end()
                         .find('#numIPE').text(' '+result.objet.numIpe).end()
                         .find('#numSemence').text(' '+result.objet.numDepotSemence).end()
                         .find('#proprietaire').text(' '+result.objet.vache.proprietaire).end()
@@ -160,41 +167,60 @@
                         .find('#numTravail').text(' '+result.objet.vache.num_identification.substr(result.objet.vache.num_identification.length - 4)).end()
                         .find('#race').text(' '+result.objet.vache.race).end()
                         .find('#parite').text(' '+result.objet.vache.parite).end()
-                        .find('#operateur').text(' '+result.objet.insemination.operateur.nom+' '+result.objet.insemination.operateur.prenom).end()
-                        .find('#nomTaureau').text(' '+result.objet.insemination.taureau.nomTaureau).end()
-                        .find('#raceTaureau').text(' '+result.objet.insemination.taureau.raceTaureau).end()
-                        .find('#numTaureau').text(' '+result.objet.insemination.taureau.numTaureau).end()
-                        .find('#collecte').text(' '+result.objet.insemination.collecte).end()
-                        .find('#lieuSemence').text(' '+result.objet.insemination.lieuDepot).end()
-                        .find('#facilite').text(' '+result.objet.insemination.progression).end()
-                        .find('#typeChaleur').text(' '+result.objet.traitement_donneuse.typeChaleur).end()
-                        .find('#remarques').text(' '+result.objet.gestation.remarques).end();
 
-                        if(result.objet.insemination.semenceSexee == false) {
-                            $('#details').find('#semenceSexee').text(' Non');
-                        }
-                        if(result.objet.insemination.semenceSexee == true) {
-                            $('#details').find('#semenceSexee').text(' Oui');
+                        if(result.objet.insemination != null){
+                            if(result.objet.insemination.operateur != null){
+                                nomOperateur = result.objet.insemination.operateur.nom+' '+result.objet.insemination.operateur.prenom;
+                            }
+
+                            if(result.objet.insemination.taureau != null){
+                                $('#details')
+                                    .find('#nomTaureau').text(' '+result.objet.insemination.taureau.nomTaureau).end()
+                                    .find('#raceTaureau').text(' '+result.objet.insemination.taureau.raceTaureau).end()
+                                    .find('#numTaureau').text(' '+result.objet.insemination.taureau.numTaureau).end()
+                            }
+
+                            $('#details')
+                                .find('#collecte').text(' '+result.objet.insemination.collecte).end()
+                                .find('#lieuSemence').text(' '+result.objet.insemination.lieuDepot).end()
+                                .find('#facilite').text(' '+result.objet.insemination.progression).end()
+
+                            if(result.objet.insemination.semenceSexee == false) {
+                                $('#details').find('#semenceSexee').text(' Non');
+                            }
+                            if(result.objet.insemination.semenceSexee == true) {
+                                $('#details').find('#semenceSexee').text(' Oui');
+                            }
                         }
 
-                        $("#tableTraitement > tbody").empty();
-                        for(iLigne = 0; iLigne < result.objet.traitement_donneuse.tableauDonneuse.length; iLigne++)
-                        {
-                            $('#tableTraitement > tbody:last-child').append('<tr>' +
-                                '<td>' + convertDate(result.objet.traitement_donneuse.tableauDonneuse[iLigne].date) + '</td>' +
-                                '<td>' + result.objet.traitement_donneuse.tableauDonneuse[iLigne].produit.nom + '</td>' +
-                                '<td>' + result.objet.traitement_donneuse.tableauDonneuse[iLigne].quantite + '</td>' +
-                                '<td>' + result.objet.traitement_donneuse.tableauDonneuse[iLigne].mode_traitement + '</td></tr>');
+
+
+                        if(result.objet.traitement_donneuse != null) {
+                            $('#details')
+                                .find('#dateChaleur').text(' ' + convertDate(result.objet.traitement_donneuse.date_ref_chaleur)).end()
+                                .find('#typeChaleur').text(' ' + result.objet.traitement_donneuse.typeChaleur).end();
+
+                            $("#tableTraitement > tbody").empty();
+                            for (iLigne = 0; iLigne < result.objet.traitement_donneuse.tableauDonneuse.length; iLigne++) {
+                                $('#tableTraitement > tbody:last-child').append('<tr>' +
+                                    '<td>' + convertDate(result.objet.traitement_donneuse.tableauDonneuse[iLigne].date) + '</td>' +
+                                    '<td>' + result.objet.traitement_donneuse.tableauDonneuse[iLigne].produit.nom + '</td>' +
+                                    '<td>' + result.objet.traitement_donneuse.tableauDonneuse[iLigne].quantite + '</td>' +
+                                    '<td>' + result.objet.traitement_donneuse.tableauDonneuse[iLigne].mode_traitement + '</td></tr>');
+                            }
                         }
 
+                    if(result.objet.gestation != null) {
                         $("#tableGestation > tbody").empty();
-                        for(iLigne = 0; iLigne < result.objet.gestation.tableauGestationList.length; iLigne++)
-                        {
+                        for (iLigne = 0; iLigne < result.objet.gestation.tableauGestationList.length; iLigne++) {
                             $('#tableGestation > tbody:last-child').append('<tr>' +
                                 '<td>' + convertDate(result.objet.gestation.tableauGestationList[iLigne].date) + '</td>' +
                                 '<td>' + result.objet.gestation.tableauGestationList[iLigne].methode + '</td>' +
                                 '<td>' + result.objet.gestation.tableauGestationList[iLigne].resultat + '</td></tr>');
                         }
+
+                        $('#details').find('#remarques').text(' ' + result.objet.gestation.remarques).end();
+                    }
 
                         $('#details').find('.btnEdit').attr('data-id', result.objet.id);
                 }else{

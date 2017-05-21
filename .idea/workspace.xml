@@ -9,7 +9,8 @@
     <list default="true" id="c1b2266e-e014-46c0-a873-aa645bb17deb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_ajouterModifier.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_ajouterModifier.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_ajouterModifier.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_ajouterModifier.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_detail.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_detail.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_detail.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_detail.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,51 +26,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ia_consult.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_consult.jsp">
+      <file leaf-file-name="ia_detail.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_detail.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="106" column="0" lean-forward="true" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+            <state relative-caret-position="-705">
+              <caret line="161" column="58" lean-forward="true" selection-start-line="161" selection-start-column="58" selection-end-line="161" selection-end-column="58" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ia_ajouterModifier.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_ajouterModifier.jsp">
+      <file leaf-file-name="tra_detail.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_detail.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="672" column="6" lean-forward="false" selection-start-line="672" selection-start-column="6" selection-end-line="672" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FicheIa.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIa.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="30" column="16" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tra_ajouterModifier.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_ajouterModifier.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="736" column="0" lean-forward="false" selection-start-line="736" selection-start-column="0" selection-end-line="739" selection-end-column="82" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IaController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/IaController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="332" column="43" lean-forward="false" selection-start-line="332" selection-start-column="43" selection-end-line="332" selection-end-column="43" />
+            <state relative-caret-position="128">
+              <caret line="233" column="0" lean-forward="false" selection-start-line="233" selection-start-column="0" selection-end-line="243" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -88,7 +59,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>changeN</find>
       <find>validB</find>
       <find>type=&quot;butt</find>
       <find>vache</find>
@@ -116,8 +86,9 @@
       <find>consol</find>
       <find>newt</find>
       <find>autocompl</find>
-      <find>taureau</find>
       <find>form</find>
+      <find>taureau</find>
+      <find>programme</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -140,7 +111,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/Cuve.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/CuveSomatique.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/CuveSemence.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveSomatique/canisterSomatique/visoTubeSomatique/celluleSomatique/CelluleSomatique.java" />
@@ -180,7 +150,6 @@
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveSemence/canisterSemence/visoTubeSemence/semence/SemencePopulator.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIa.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_detail.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/vache/VacheRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/IaController.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/insemination/Insemination.java" />
@@ -191,6 +160,8 @@
         <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_consult.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_ajouterModifier.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_ajouterModifier.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_detail.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_detail.jsp" />
       </list>
     </option>
   </component>
@@ -1790,7 +1761,7 @@
       <workItem from="1495271016991" duration="4245000" />
       <workItem from="1495285217335" duration="10358000" />
       <workItem from="1495382909431" duration="52000" />
-      <workItem from="1495385277597" duration="14803000" />
+      <workItem from="1495385277597" duration="15367000" />
     </task>
     <task id="LOCAL-00001" summary="interface pharmacie">
       <created>1489611137333</created>
@@ -2107,11 +2078,18 @@
       <option name="project" value="LOCAL" />
       <updated>1495400298393</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Fiche IA fini 100 %">
+      <created>1495401728711</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1495401728711</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="500284000" />
+    <option name="totallyTimeSpent" value="500848000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="0" width="1920" height="1080" extended-state="6" />
@@ -2160,7 +2138,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Restructuration package du projet&#10;Delete/Add/detail fiche tra vue + fonctionnement&#10;controller + service associé à l'ajout, l'affichage la suppression des fiches tra&#10;reste modification des fiches tra" />
     <MESSAGE value="Correction affichage détails fiche tra" />
     <MESSAGE value="Modification des fiches tra vue + fonctionnement + services associés" />
     <MESSAGE value="Fiche Ia 100 % (vues, service, controller)" />
@@ -2185,7 +2162,8 @@
     <MESSAGE value="Modifications modèle cuve, embryon, visotube, canister" />
     <MESSAGE value="Corrections bug mineur fiche tra/ia&#10;enregistrement fiche ia fini&#10;semence controller service repository commencé" />
     <MESSAGE value="changement fiche ia taureau string -&gt; semence" />
-    <option name="LAST_COMMIT_MESSAGE" value="changement fiche ia taureau string -&gt; semence" />
+    <MESSAGE value="Fiche IA fini 100 %" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fiche IA fini 100 %" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2755,22 +2733,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_detail.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2940">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_detail.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="163" column="87" lean-forward="false" selection-start-line="163" selection-start-column="80" selection-end-line="163" selection-end-column="87" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/vache/VacheService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
@@ -2875,14 +2837,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIa.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="30" column="16" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/IaController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="318">
@@ -2902,7 +2856,31 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_ajouterModifier.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="310">
-          <caret line="672" column="6" lean-forward="false" selection-start-line="672" selection-start-column="6" selection-end-line="672" selection-end-column="6" />
+          <caret line="672" column="0" lean-forward="false" selection-start-line="672" selection-start-column="0" selection-end-line="672" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="30" column="16" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_detail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="233" column="0" lean-forward="false" selection-start-line="233" selection-start-column="0" selection-end-line="243" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_detail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-705">
+          <caret line="161" column="58" lean-forward="true" selection-start-line="161" selection-start-column="58" selection-end-line="161" selection-end-column="58" />
           <folding />
         </state>
       </provider>
