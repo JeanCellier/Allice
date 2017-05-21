@@ -1,28 +1,29 @@
-package phenotypage.model.cuve.cuveSomatique;
+package phenotypage.model.cuve.cuveSemence;
 
 import phenotypage.model.cuve.Cuve;
-import phenotypage.model.cuve.cuveSomatique.canisterSomatique.CanisterSomatique;
+import phenotypage.model.cuve.cuveSemence.canisterSemence.CanisterSemence;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.List;
 
 /**
  * Created by nicolas on 19/05/17.
  */
 @Entity
-public class CuveSomatique extends Cuve {
+public class CuveSemence extends Cuve {
     @OneToMany
-    private List<CanisterSomatique> canisterList;
+    private List<CanisterSemence> canisterList;
 
-    public CuveSomatique() {
+    public CuveSemence() {
         super();
     }
 
-    public List<CanisterSomatique> getCanisterList() {
+    public List<CanisterSemence> getCanisterList() {
         return canisterList;
     }
 
-    public void setCanisterList(List<CanisterSomatique> canisterList) {
+    public void setCanisterList(List<CanisterSemence> canisterList) {
         this.canisterList = canisterList;
     }
 }

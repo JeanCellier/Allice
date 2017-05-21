@@ -1,8 +1,7 @@
-package phenotypage.model.cuve.cuveInVivo.canisterSemence.visoTubeSemence.semence;
+package phenotypage.model.cuve.cuveInVivo.canisterInVivo.visoTubeInVivo.embryonsInVivo;
 
 import phenotypage.model.cryoconservation.embryon.Embryon;
 import phenotypage.model.cuve.cuveSemence.canisterSemence.visoTubeSemence.semence.Semence;
-import phenotypage.model.fiche.ficheCol.FicheCol;
 import javax.persistence.*;
 
 /**
@@ -14,10 +13,7 @@ public class EmbryonsInVivo {
     @GeneratedValue
     private Long id;
 
-    @ManyToOne
-    private FicheCol ficheCol;
-
-    @ManyToOne
+    @OneToOne
     private Embryon embryon;
 
     @Column
@@ -40,14 +36,6 @@ public class EmbryonsInVivo {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public FicheCol getFicheCol() {
-        return ficheCol;
-    }
-
-    public void setFicheCol(FicheCol ficheCol) {
-        this.ficheCol = ficheCol;
     }
 
     public Embryon getEmbryon() {

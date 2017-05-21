@@ -5,13 +5,13 @@ import java.util.List;
 /**
  * @author fabien
  */
-public interface TableauDetailService
+public interface EmbryonService
 {
-	List<TableauDetail> findAllTableauDetail();
+	List<Embryon> findAllTableauDetail();
 
-	TableauDetail createTableauDetail(int numeroEnbryon, int groupe, int stade, String referecneTransfert, String remarque);
+	Embryon createTableauDetail(int numeroEnbryon, int groupe, int stade, String referecneTransfert, String remarque);
 
-	TableauDetail addTableauDetail(TableauDetail tableauDetail);
+	Embryon addTableauDetail(Embryon tableauDetail);
 
-	TableauDetail newTableauDetail();
+	Embryon newTableauDetail();
 }

@@ -29,7 +29,7 @@
                                     </div>
                                     <div class="form-group col-sm-11 col-xs-11" style="padding-left:0">
                                         <select class="form-control programmeSelect" name="programme">
-                                            <option selected disabled>Programme</option>
+                                            <option value="" selected disabled>Programme</option>
                                             <c:forEach items="${programmesList}" var="programme">
                                                 <option value="${programme.id}">${programme.nom}</option>
                                             </c:forEach>
@@ -62,7 +62,7 @@
 
                                     <div class="form-group col-sm-11 col-xs-11" style="padding-left:0">
                                         <select required class="form-control operateurSelect" id="operateur" name="operateur">
-                                            <option selected disabled>Op&#233rateur</option>
+                                            <option value="" selected disabled>Op&#233rateur</option>
                                             <c:forEach items="${operateursList}" var="operateur">
                                                 <option value="${operateur.id}">${operateur.nom} ${operateur.prenom}</option>
                                             </c:forEach>
@@ -80,7 +80,7 @@
                                         <label class="radio-inline"><input type="radio" class="radio" value="non" checked name="optradioSexee">Non</label>
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" name="taureau" type="text" placeholder="Taureau">
+                                        <input class="form-control taureau" name="taureau" type="text" placeholder="Taureau">
                                     </div>
 
                                     <div class="form-group">
@@ -108,7 +108,7 @@
                                     </div>
 
                                     <button class="btn btn-primary back2" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
-                                    <button class="btn btn-primary open2" type="button">Enregistrer <span class="fa fa-arrow-right"></span></button>
+                                    <button class="btn btn-primary open2" type="submit">Enregistrer <span class="fa fa-arrow-right"></span></button>
                                 </fieldset>
                             </form>
                         </div>
@@ -301,6 +301,10 @@
     /****** function reinit fiche ******/
     function reinitForm(form){
         form.find('form[name="addPart1"]').attr('action', './addOrUpdatePart1');
+        form.find('form[name="addPart2"]').attr('action', './addOrUpdatePart2');
+        form.find('form[name="addPart3"]').attr('action', './addOrUpdatePart3');
+        form.find('form[name="addPart4"]').attr('action', './addOrUpdatePart4');
+
         form.find('form').removeClass('EditForm');
         form.find('.tabTraitement').not(':first').remove(); //garde juste une ligne dans le tableau de traitement_acte
         form.find('.tabGestation').not(':first').remove();
@@ -312,6 +316,8 @@
         form.find("select").val("");
 
         form.find('input[name="lieu"]').val("Allice Nouzilly");
+        form.find('input[name="numIPE"]').val("3715002");
+        form.find('input[name="numSemence"]').val("37175336B");
     }
 
     /****** function nouvel onglet ******/
@@ -338,6 +344,11 @@
         $clone.find('input.vache').autocomplete({ //active l'autompletion sur "vache"
             minLength: 4,
             source: '${pageContext. request. contextPath}/animaux/get/vache'
+        });
+
+        $clone.find('input.taureau').autocomplete({ //active l'autompletion sur "taureau"
+            minLength: 4,
+            source: '${pageContext. request. contextPath}/semence/get/taureau'
         });
 
         $('.tab-content').append($clone);
@@ -428,7 +439,7 @@
     });
 
     $(document).on( 'change', 'select[name="traitementActe"]', function(event){
-        if($('select[name="traitementActe"] option:selected').val() != ""){
+        if($('this option:selected').val() != ""){
             $.ajax({
                 url: '${pageContext. request. contextPath}/traitement/get/'+this.value,
                 type: 'GET',
@@ -460,13 +471,14 @@
                             $target.find("input[name='quantite[]']").val(result.objet.tableauTraitement[iLigne].quantite);
                             $target.find("select[name='modeTraitement[]']").val(result.objet.tableauTraitement[iLigne].mode_traitement);
                         }
+                        $('div.tab-pane.active').find("input[name='dateTraitement[]']:first").addClass('dateTraitementFirst');
                     }
                 }
             });
         }
     });
 
-    $(document).on( 'blur', "input[name='dateTraitement[]']:first", function() {
+    $(document).on( 'blur', "input.dateTraitementFirst", function() {
         Date.prototype.addDays = function(days) { //ajoute des jours
             var dat = new Date(this.valueOf());
             dat.setDate(dat.getDate() + days);
@@ -477,15 +489,18 @@
             return new Date(parts[2]+"/"+parts[1]+"/"+parts[0]); // Note: months are 0-based
         }
 
-        if($('select[name="traitementActe"] option:selected').val() != ""){
+        var select = $('div.tab-pane.active').find('select[name="traitementActe"] option:selected');
+
+        if(select.val() != ""){
             $.ajax({
-                url: '${pageContext. request. contextPath}/traitement/get/'+$('select[name="traitementActe"]').val(),
+                url: '${pageContext. request. contextPath}/traitement/get/'+select.val(),
                 type: 'GET',
                 success: function (result) {
                     if (result.succes == true) {
                         for(iLigne = 1; iLigne < result.objet.tableauTraitement.length; iLigne++) {
+
                             var date = new Date(parseDate($("input[name='dateTraitement[]']:first").val())).addDays(result.objet.tableauTraitement[iLigne].decalageJour);
-                            $("input[name='dateTraitement[]']:eq("+iLigne+")").data("DateTimePicker").date(date);
+                            $('div.tab-pane.active').find("input[name='dateTraitement[]']:eq("+iLigne+")").data("DateTimePicker").date(date);
                         }
 
                     }
@@ -582,6 +597,11 @@
         source: '${pageContext. request. contextPath}/animaux/get/vache'
     });
 
+    $('.taureau').autocomplete({ //active l'autompletion sur "taureau"
+        minLength: 4,
+        source: '${pageContext. request. contextPath}/semence/get/taureau'
+    });
+
     /******************************* LOAD FICHE COLLECTE DANS SELECT ****************************/
     function loadCollecte(){
         var numIdVache = $(".tab-pane.active").find('.vache').val();
@@ -660,15 +680,26 @@
                                 table.cell(rowId, 3).data(convertDateWithTime(result.objet.dateHeureMinute)).draw(false);
                             }
                             table.cell(rowId, 4).data(result.objet.lieu).draw(false);
-                            if (result.objet.operateur != null) {
-                                table.cell(rowId, 5).data(result.objet.operateur.nom+" "+result.objet.operateur.prenom).draw(false);
-                            }
 
                             table.cell(rowId, 6).data(result.objet.vache.num_identification).draw(false);
-                            table.cell(rowId, 7).data(result.objet.taureau).draw(false);
                         }
 
                         loadCollecte();
+                    }else if($this.closest('div.frm').hasClass('step2')) { //si étape 2
+                        var rowId = $('#tableActes').dataTable().fnFindCellRowIndexes(result.objet.nom, 1); // cherche fiche modifiée
+
+                        var table = $('#tableActes').DataTable(); //init pour changer value .cell.data
+                        var rowId = $('#tableActes').dataTable().fnFindCellRowIndexes(result.objet.nom, 1); // cherche fiche modifiée
+
+                        if(rowId.length == 1) { //si le nom de la fiche est présent
+                            /** Modifie la ligne correspondant à la fiche modifiée **/
+                            if(result.objet.insemination != null) {
+                                if (result.objet.insemination.operateur != null) {
+                                    table.cell(rowId, 5).data(result.objet.insemination.operateur.nom + " " + result.objet.insemination.operateur.prenom).draw(false);
+                                }
+                                table.cell(rowId, 7).data(result.objet.insemination.taureau).draw(false);
+                            }
+                        }
                     }
 
                     if($this.closest('div.frm').hasClass('step4')) { //si étape 4

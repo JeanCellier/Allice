@@ -1,7 +1,7 @@
-package phenotypage.model.cuve.cuveInVivo.canisterSemence.visoTubeSemence;
+package phenotypage.model.cuve.cuveInVivo.canisterInVivo.visoTubeInVivo;
 
 import phenotypage.model.cuve.canister.visoTube.VisoTube;
-import phenotypage.model.cuve.cuveInVivo.canisterSemence.visoTubeSemence.semence.EmbryonsInVivo;
+import phenotypage.model.cuve.cuveInVivo.canisterInVivo.visoTubeInVivo.embryonsInVivo.EmbryonsInVivo;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.List;

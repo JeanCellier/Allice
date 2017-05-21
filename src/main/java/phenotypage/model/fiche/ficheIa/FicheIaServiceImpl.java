@@ -122,7 +122,7 @@ FicheIaServiceImpl implements FicheIaService
 
 		if(insemination != null){
 			if(ficheIaForUpdate.getInsemination() != null) {
-				if (!Objects.equals(insemination.getId(), ficheIaForUpdate.getGestation().getId())) {
+				if (!Objects.equals(insemination.getId(), ficheIaForUpdate.getInsemination().getId())) {
 					Insemination inseminationToDelete = ficheIaForUpdate.getInsemination();
 					ficheIaForUpdate.setInsemination(inseminationService.createInsemination(insemination));
 					inseminationService.delete(inseminationToDelete);
@@ -151,7 +151,7 @@ FicheIaServiceImpl implements FicheIaService
 		if(Objects.equals(ficheIa.getNom(), "") || ficheIa.getDateHeureMinute() == null || ficheIa.getVache() == null){
 			return 2;
 		}else if(ficheIa.getProgramme() == null || Objects.equals(ficheIa.getNumIpe(), "") || Objects.equals(ficheIa.getLieu(), "")
-				|| ficheIa.getOperateur() == null || ficheIa.getTraitement_donneuse() == null || ficheIa.getInsemination() == null
+				|| ficheIa.getTraitement_donneuse() == null || ficheIa.getInsemination() == null
 				|| Objects.equals(ficheIa.getNumDepotSemence(), "") || ficheIa.getGestation() == null){
 			return 1;
 		}else{
@@ -161,7 +161,7 @@ FicheIaServiceImpl implements FicheIaService
 			if(traitement_donneuseService.determineStatut(ficheIa.getTraitement_donneuse()) == 1){
 				return 1;
 			}
-			if(gestationService.determineStatut(ficheIa.getGestation()) == 0){
+			if(gestationService.determineStatut(ficheIa.getGestation()) == 1){
 				return 1;
 			}
 		}

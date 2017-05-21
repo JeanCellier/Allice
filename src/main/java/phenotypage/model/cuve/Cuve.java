@@ -1,18 +1,14 @@
 package phenotypage.model.cuve;
 
-import phenotypage.model.cryoconservation.tableauDetail.TableauDetail;
-import phenotypage.model.cuve.canister.Canister;
-
 import javax.persistence.*;
-import java.util.List;
+
 
 /**
  * @author fabien
  */
 
-//@MappedSuperclass
-@Entity
-public /*abstract*/ class Cuve
+@MappedSuperclass
+public abstract class Cuve
 {
 	@Id
 	@GeneratedValue
@@ -24,22 +20,7 @@ public /*abstract*/ class Cuve
 	@Column
 	private String designation;
 
-//	// TODO remove
-//	@OneToMany(mappedBy = "cuve")
-//	private List<TableauDetail> tableauDetailList;
-	
-//	@OneToMany(mappedBy = "cuve")
-//	private List<Canister> tableauCanisterList;
-
-	public Cuve()
-	{
-	}
-
-	public Cuve(String nom, String designation)
-	{
-		this.nom = nom;
-		this.designation = designation;
-	}
+	public Cuve() {}
 
 	public Long getId()
 	{
@@ -70,14 +51,4 @@ public /*abstract*/ class Cuve
 	{
 		this.designation = designation;
 	}
-
-//	public List<TableauDetail> getTableauDetailList()
-//	{
-//		return tableauDetailList;
-//	}
-//
-//	public void setTableauDetailList(List<TableauDetail> tableauDetailList)
-//	{
-//		this.tableauDetailList = tableauDetailList;
-//	}
 }

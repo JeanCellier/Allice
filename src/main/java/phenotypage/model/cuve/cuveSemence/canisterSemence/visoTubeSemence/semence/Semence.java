@@ -1,37 +1,44 @@
-package phenotypage.model.cuve.cuveSomatique.canisterSomatique.visoTubeSomatique.celluleSomatique;
+package phenotypage.model.cuve.cuveSemence.canisterSemence.visoTubeSemence.semence;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Date;
 
 /**
  * Created by nicolas on 20/05/17.
  */
 @Entity
-public class CelluleSomatique {
+public class Semence {
     @Id
     @GeneratedValue
     private Long id;
 
     @Column
-    private String typeCellulaire;
+    private String raceTaureau;
 
     @Column
-    private String couleurPaillette;
+    private String numTaureau;
+
+    @Column
+    private String nomTaureau;
 
     @Column
     private int nbPaillettes;
 
     @Column
-    private Date dateCongelation;
+    private String couleurPaillette;
+
+    @Column
+    private boolean sexee;
 
     @Column
     private String remarques;
 
-    public CelluleSomatique() {
-    }
+    @Column
+    private boolean FIV;
+
+    public Semence() {}
 
     public Long getId() {
         return id;
@@ -41,20 +48,28 @@ public class CelluleSomatique {
         this.id = id;
     }
 
-    public String getTypeCellulaire() {
-        return typeCellulaire;
+    public String getRaceTaureau() {
+        return raceTaureau;
     }
 
-    public void setTypeCellulaire(String typeCellulaire) {
-        this.typeCellulaire = typeCellulaire;
+    public void setRaceTaureau(String raceTaureau) {
+        this.raceTaureau = raceTaureau;
     }
 
-    public String getCouleurPaillette() {
-        return couleurPaillette;
+    public String getNumTaureau() {
+        return numTaureau;
     }
 
-    public void setCouleurPaillette(String couleurPaillette) {
-        this.couleurPaillette = couleurPaillette;
+    public void setNumTaureau(String numTaureau) {
+        this.numTaureau = numTaureau;
+    }
+
+    public String getNomTaureau() {
+        return nomTaureau;
+    }
+
+    public void setNomTaureau(String nomTaureau) {
+        this.nomTaureau = nomTaureau;
     }
 
     public int getNbPaillettes() {
@@ -65,12 +80,20 @@ public class CelluleSomatique {
         this.nbPaillettes = nbPaillettes;
     }
 
-    public Date getDateCongelation() {
-        return dateCongelation;
+    public String getCouleurPaillette() {
+        return couleurPaillette;
     }
 
-    public void setDateCongelation(Date dateCongelation) {
-        this.dateCongelation = dateCongelation;
+    public void setCouleurPaillette(String couleurPaillette) {
+        this.couleurPaillette = couleurPaillette;
+    }
+
+    public boolean isSexee() {
+        return sexee;
+    }
+
+    public void setSexee(boolean sexee) {
+        this.sexee = sexee;
     }
 
     public String getRemarques() {
@@ -79,5 +102,13 @@ public class CelluleSomatique {
 
     public void setRemarques(String remarques) {
         this.remarques = remarques;
+    }
+
+    public boolean isFIV() {
+        return FIV;
+    }
+
+    public void setFIV(boolean FIV) {
+        this.FIV = FIV;
     }
 }

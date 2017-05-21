@@ -319,6 +319,11 @@
     /****** function reinit fiche ******/
     function reinitForm(form){
         form.find('form[name="addPart1"]').attr('action', './addOrUpdatePart1');
+        form.find('form[name="addPart2"]').attr('action', './addOrUpdatePart2');
+        form.find('form[name="addPart3"]').attr('action', './addOrUpdatePart3');
+        form.find('form[name="addPart4"]').attr('action', './addOrUpdatePart4');
+        form.find('form[name="addPart5"]').attr('action', './addOrUpdatePart5');
+
         form.find('form').removeClass('EditForm');
         form.find('.tabTraitement').not(':first').remove(); //garde juste une ligne dans le tableau de traitement_acte
         form.find('.tabGestation').not(':first').remove();
@@ -487,13 +492,15 @@
                             $target.find("input[name='quantite[]']").val(result.objet.tableauTraitement[iLigne].quantite);
                             $target.find("select[name='modeTraitement[]']").val(result.objet.tableauTraitement[iLigne].mode_traitement);
                         }
+
+                        $('div.tab-pane.active').find("input[name='dateTraitement[]']:first").addClass('dateTraitementFirst');
                     }
                 }
             });
         }
     });
 
-    $(document).on( 'blur', "input[name='dateTraitement[]']:first", function() {
+    $(document).on( 'blur', "input.dateTraitementFirst", function() {
         Date.prototype.addDays = function(days) { //ajoute des jours
             var dat = new Date(this.valueOf());
             dat.setDate(dat.getDate() + days);
@@ -504,16 +511,20 @@
             return new Date(parts[2]+"/"+parts[1]+"/"+parts[0]); // Note: months are 0-based
         }
 
-        if($('select[name="traitementActe"] option:selected').val() != ""){
+        var select = $('div.tab-pane.active').find('select[name="traitementActe"] option:selected');
+
+        if(select.val() != ""){
             $.ajax({
-                url: '${pageContext. request. contextPath}/traitement/get/'+$('select[name="traitementActe"]').val(),
+                url: '${pageContext. request. contextPath}/traitement/get/'+select.val(),
                 type: 'GET',
                 success: function (result) {
                     if (result.succes == true) {
                         for(iLigne = 1; iLigne < result.objet.tableauTraitement.length; iLigne++) {
+
                             var date = new Date(parseDate($("input[name='dateTraitement[]']:first").val())).addDays(result.objet.tableauTraitement[iLigne].decalageJour);
-                            $("input[name='dateTraitement[]']:eq("+iLigne+")").data("DateTimePicker").date(date);
+                            $('div.tab-pane.active').find("input[name='dateTraitement[]']:eq("+iLigne+")").data("DateTimePicker").date(date);
                         }
+
                     }
                 }
             });

@@ -152,7 +152,36 @@ public class IaController {
                                          @RequestParam(value="facilite", required=false) String faciliteProgression) {
         JsonResponse jsonResponse = new JsonResponse();
         if(collecte != null){
+            Insemination insemination;
 
+            if(ficheIaToUpdate.getInsemination() == null){
+                insemination = new Insemination();
+            }else {
+                insemination = ficheIaToUpdate.getInsemination();
+            }
+
+            insemination.setOperateur(operateur);
+
+            if(optradioSexee == "oui") {
+                insemination.setSemenceSexee(true);
+            }
+            if(optradioSexee == "non") {
+                insemination.setSemenceSexee(false);
+            }
+
+            insemination.setTaureau(taureau);
+            insemination.setCollecte(collecte.getNom());
+            insemination.setLieuDepot(lieuSemence);
+            insemination.setProgression(faciliteProgression);
+
+            ficheIaService.updateFicheIa(ficheIaToUpdate, ficheIaToUpdate.getNom(), ficheIaToUpdate.getDateHeureMinute(),
+                    ficheIaToUpdate.getLieu(), ficheIaToUpdate.getProgramme(), ficheIaToUpdate.getNumIpe(),
+                    ficheIaToUpdate.getNumDepotSemence(), ficheIaToUpdate.getVache(), insemination,
+                    ficheIaToUpdate.getTraitement_donneuse(), ficheIaToUpdate.getGestation());
+
+            jsonResponse.setMessage("2ème étape validée");
+            jsonResponse.setObjet(ficheIaToUpdate);
+            jsonResponse.setSucces(true);
         }else{
             jsonResponse.setSucces(false);
             jsonResponse.setMessage("Fiche collecte non valide");
@@ -215,7 +244,7 @@ public class IaController {
             ficheIaToUpdate.getLieu(), ficheIaToUpdate.getProgramme(), ficheIaToUpdate.getNumIpe(), ficheIaToUpdate.getNumDepotSemence(),
             ficheIaToUpdate.getVache(), ficheIaToUpdate.getInsemination(), traitement_donneuse, ficheIaToUpdate.getGestation());
 
-            jsonResponse.setMessage("2ème étape validée");
+            jsonResponse.setMessage("3ème étape validée");
             jsonResponse.setObjet(ficheIaUpdate);
             jsonResponse.setSucces(true);
 
@@ -325,7 +354,7 @@ public class IaController {
             insemination.setSemenceSexee(false);
         }
         insemination.setTaureau(taureau);
-        insemination.setCollecte(collecte);
+        insemination.setCollecte(collecte.getNom());
         insemination.setLieuDepot(lieuSemence);
         insemination.setProgression(faciliteProgression);
 

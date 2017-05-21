@@ -1,4 +1,8 @@
-package phenotypage.model.cryoconservation.tableauDetail;
+package phenotypage.model.cryoconservation.embryon;
+import phenotypage.model.fiche.ficheAba.FicheAba;
+import phenotypage.model.fiche.ficheCol.FicheCol;
+import phenotypage.model.fiche.ficheOpu.FicheOpu;
+
 import javax.persistence.*;
 
 /**
@@ -11,6 +15,15 @@ public class Embryon
 	@Id
 	@GeneratedValue
 	private Long id;
+
+	@OneToOne
+	private FicheCol ficheCol;
+
+	@OneToOne
+	private FicheOpu ficheOpu;
+
+	@OneToOne
+	private FicheAba ficheAba;
 
 	@Column
 	private int numeroEmbryon;
@@ -39,7 +52,7 @@ public class Embryon
 	@Column
 	private String remarque;
 
-	public TableauDetail() {}
+	public Embryon() {}
 
 	public Long getId()
 	{
@@ -49,6 +62,30 @@ public class Embryon
 	public void setId(Long id)
 	{
 		this.id = id;
+	}
+
+	public FicheCol getFicheCol() {
+		return ficheCol;
+	}
+
+	public void setFicheCol(FicheCol ficheCol) {
+		this.ficheCol = ficheCol;
+	}
+
+	public FicheOpu getFicheOpu() {
+		return ficheOpu;
+	}
+
+	public void setFicheOpu(FicheOpu ficheOpu) {
+		this.ficheOpu = ficheOpu;
+	}
+
+	public FicheAba getFicheAba() {
+		return ficheAba;
+	}
+
+	public void setFicheAba(FicheAba ficheAba) {
+		this.ficheAba = ficheAba;
 	}
 
 	public int getNumeroEmbryon()

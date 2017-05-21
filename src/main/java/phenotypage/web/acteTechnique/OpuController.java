@@ -10,13 +10,13 @@
 //import org.springframework.web.bind.annotation.RequestMethod;
 //import phenotypage.model.cryoconservation.Cryoconservation;
 //import phenotypage.model.cryoconservation.CryoconservationService;
-//import phenotypage.model.cryoconservation.tableauDetail.TableauDetailService;
+//import phenotypage.model.cryoconservation.embryon.EmbryonService;
 //import phenotypage.model.fiche.ficheAba.abattoir.AbattoirService;
 //import phenotypage.model.cryoconservation.congelateur.CongelateurService;
 //import phenotypage.model.cuve.old.CuveService;
 //import phenotypage.model.cuve.canister.old.CanisterService;
 //import phenotypage.model.cuve.canister.visoTube.old.VisoTubeService;
-//import phenotypage.model.destionationCulture.DestinationCultureService;
+//import phenotypage.model.destinationCulture.DestinationCultureService;
 //import phenotypage.model.informationsPIV.fiv.FIVService;
 //import phenotypage.model.operateur.OperateurService;
 //import phenotypage.model.programme.ProgrammeService;
@@ -127,7 +127,7 @@
 //	private ProduitService produitService;
 //
 //	@Autowired
-//	private TableauDetailService tableauDetailService;
+//	private EmbryonService tableauDetailService;
 //
 //	@Autowired
 //	private TableauOvocytesCollectesService tableauOvocytesCollectesService;

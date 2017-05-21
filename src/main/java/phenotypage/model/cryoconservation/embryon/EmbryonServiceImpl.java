@@ -10,32 +10,32 @@ import java.util.List;
  */
 
 @Component
-public class TableauDetailServiceImpl implements TableauDetailService
+public class EmbryonServiceImpl implements EmbryonService
 {
 	@Autowired
 	private EmbryonRepository embryonRepository;
 
 	@Override
-	public List<TableauDetail> findAllTableauDetail()
+	public List<Embryon> findAllTableauDetail()
 	{
 		return embryonRepository.findAll();
 	}
 
 	@Override
-	public TableauDetail createTableauDetail(int numeroEnbryon, int groupe, int stade, String referecneTransfert, String remarque)
+	public Embryon createTableauDetail(int numeroEnbryon, int groupe, int stade, String referecneTransfert, String remarque)
 	{
-		return embryonRepository.save(new TableauDetail());
+		return embryonRepository.save(new Embryon());
 	}
 
 	@Override
-	public TableauDetail addTableauDetail(TableauDetail tableauDetail)
+	public Embryon addTableauDetail(Embryon tableauDetail)
 	{
 		return embryonRepository.save(tableauDetail);
 	}
 
 	@Override
-	public TableauDetail newTableauDetail()
+	public Embryon newTableauDetail()
 	{
-		return new TableauDetail();
+		return new Embryon();
 	}
 }

@@ -28,7 +28,7 @@
                     <tr>
                         <td>${cuve.nom}</td>
                         <td>${cuve.designation}</td>
-                        <td><p data-placement="top" data-toggle="tooltip" title="Canister"><button class="btn btn-primary btn-md btnEdit" data-title="Canister" data-id="<c:out value='${cuve.id}' />" data-toggle="modal" data-target="#edit" ><span class="fa fa-pie-chart"></span></button></p></td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Canister"><button class="btn btn-primary btn-md btnEdit" data-title="Canister" data-id="<c:out value='${cuve.id}' />"  data-toggle="modal" data-target="#canister" ><span class="fa fa-pie-chart"></span></button></p></td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="<c:out value='${cuve.id}' />" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/<c:out value='${cuve.id}'/>" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                     </tr>
@@ -72,7 +72,7 @@
     <!-- /.modal-dialog -->
 </div>
 
-<%--<!-- Modal Canister -->--%>
+<!-- Modal Canister -->
 <%--<div class="modal fade" id="canister" tabindex="-1" role="dialog" aria-labelledby="canister" aria-hidden="true">--%>
     <%--<div class="modal-dialog">--%>
         <%--<div class="modal-content">--%>
@@ -82,8 +82,7 @@
             <%--</div>--%>
 
             <%--<div class="modal-body">--%>
-                <%--<div id="chartdiv"></div>--%>
-
+                <%----%>
 
             <%--</div>--%>
 
@@ -95,7 +94,8 @@
         <%--<!-- /.modal-content -->--%>
     <%--</div>--%>
     <%--<!-- /.modal-dialog -->--%>
-<%--</div>--%>
+
+</div>
 
 <!-- Modal edit product -->
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
@@ -149,6 +149,7 @@
     <!-- /.modal-dialog -->
 </div>
 
+<%@ include file="canister_detail.jsp" %>
 <%@ include file="../footer.jsp" %>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">

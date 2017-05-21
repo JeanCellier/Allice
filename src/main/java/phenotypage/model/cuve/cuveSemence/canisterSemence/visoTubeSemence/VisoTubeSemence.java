@@ -1,8 +1,7 @@
-package phenotypage.model.cuve.cuveSomatique.canisterSomatique.visoTubeSomatique;
+package phenotypage.model.cuve.cuveSemence.canisterSemence.visoTubeSemence;
 
-import phenotypage.model.cuve.cuveSomatique.canisterSomatique.visoTubeSomatique.celluleSomatique.CelluleSomatique;
-import phenotypage.model.cuve.visoTube.VisoTube;
-
+import phenotypage.model.cuve.canister.visoTube.VisoTube;
+import phenotypage.model.cuve.cuveSemence.canisterSemence.visoTubeSemence.semence.Semence;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.List;
  * Created by nicolas on 20/05/17.
  */
 @Entity
-public class VisoTubeSomatique extends VisoTube{
+public class VisoTubeSemence extends VisoTube {
     @OneToMany
-    List<CelluleSomatique> celluleSomatiqueList;
+    List<Semence> semenceList;
 }

@@ -1,7 +1,7 @@
 package phenotypage.model.cuve.cuveInVivo;
 
 import phenotypage.model.cuve.Cuve;
-import phenotypage.model.cuve.cuveInVivo.canisterSemence.CanisterSemence;
+import phenotypage.model.cuve.cuveInVivo.canisterInVivo.CanisterInVivo;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -11,19 +11,19 @@ import java.util.List;
  * Created by nicolas on 19/05/17.
  */
 @Entity
-public class CuveSemence extends Cuve {
+public class CuveInVivo extends Cuve {
     @OneToMany
-    private List<CanisterSemence> canisterList;
+    private List<CanisterInVivo> canisterList;
 
-    public CuveSemence() {
+    public CuveInVivo() {
         super();
     }
 
-    public List<CanisterSemence> getCanisterList() {
+    public List<CanisterInVivo> getCanisterList() {
         return canisterList;
     }
 
-    public void setCanisterList(List<CanisterSemence> canisterList) {
+    public void setCanisterList(List<CanisterInVivo> canisterList) {
         this.canisterList = canisterList;
     }
 }

@@ -1,4 +1,4 @@
-package phenotypage.model.destionationCulture;
+package phenotypage.model.destinationCulture;
 
 import java.util.List;
 

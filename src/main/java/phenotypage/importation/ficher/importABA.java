@@ -225,7 +225,7 @@
 //		//A faire Sanitaire
 //		//A faire remarque
 //
-//		/*Tableau Semence*/
+//		/*Tableau EmbryonsInVitro*/
 //		start = 35;
 //		stop = true;
 //		while (stop)
@@ -354,7 +354,7 @@
 //			tableauSemence.setNumeroEjaculation(neja);
 //			//tableauSemence.setEtatFrais();
 //			//vache
-//			//Semence
+//			//EmbryonsInVitro
 //			SeList.add(tableauSemence);
 //
 //			start++;

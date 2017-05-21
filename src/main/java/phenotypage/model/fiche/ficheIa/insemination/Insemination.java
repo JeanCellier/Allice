@@ -26,8 +26,8 @@ public class Insemination
 	@Column
 	private String taureau;
 	
-	@OneToOne
-	private FicheCol collecte;
+	@Column
+	private String collecte;
 	//true si cadre collecte
 
 	@Column
@@ -66,11 +66,11 @@ public class Insemination
 		this.taureau = taureau;
 	}
 
-	public FicheCol getCollecte() {
+	public String getCollecte() {
 		return collecte;
 	}
 
-	public void setCollecte(FicheCol ficheCol) {
+	public void setCollecte(String ficheCol) {
 		this.collecte = ficheCol;
 	}
 

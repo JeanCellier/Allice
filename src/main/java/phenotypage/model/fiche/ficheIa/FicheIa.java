@@ -19,9 +19,6 @@ public class FicheIa extends Fiche {
 	private String lieu;
 
 	@ManyToOne
-	private Operateur operateur;
-
-	@ManyToOne
 	private Vache vache;
 
 	@Column
@@ -47,14 +44,6 @@ public class FicheIa extends Fiche {
 
 	public void setLieu(String lieu) {
 		this.lieu = lieu;
-	}
-
-	public Operateur getOperateur() {
-		return operateur;
-	}
-
-	public void setOperateur(Operateur operateur) {
-		this.operateur = operateur;
 	}
 
 	public Vache getVache()

@@ -1,10 +1,10 @@
-package phenotypage.model.cryoconservation.tableauDetail;
+package phenotypage.model.cryoconservation.embryon;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * @author fabien
  */
-public interface TableauDetailRepository extends JpaRepository<TableauDetail, Long>
+public interface EmbryonRepository extends JpaRepository<Embryon, Long>
 {
 }

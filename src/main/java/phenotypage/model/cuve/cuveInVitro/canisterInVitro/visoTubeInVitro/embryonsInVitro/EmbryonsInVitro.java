@@ -1,7 +1,8 @@
-package phenotypage.model.cuve.cuveInVitro.canisterInVivo.visoTubeInVivo.embryonsInVivo;
+package phenotypage.model.cuve.cuveInVitro.canisterInVitro.visoTubeInVitro.embryonsInVitro;
 
 import phenotypage.model.cryoconservation.embryon.Embryon;
 import phenotypage.model.cuve.cuveSemence.canisterSemence.visoTubeSemence.semence.Semence;
+import phenotypage.model.fiche.Fiche;
 import phenotypage.model.fiche.ficheCol.FicheCol;
 
 import javax.persistence.*;
@@ -10,13 +11,10 @@ import javax.persistence.*;
  * Created by nicolas on 20/05/17.
  */
 @Entity
-public class EmbryonsInVivo {
+public class EmbryonsInVitro {
     @Id
     @GeneratedValue
     private Long id;
-
-    @ManyToOne
-    private FicheCol ficheCol;
 
     @ManyToOne
     private Embryon embryon;
@@ -28,12 +26,12 @@ public class EmbryonsInVivo {
     private Semence semence;
 
     @Column
-    private String biopsie;
+    private int nbPaillettes;
 
     @Column
     private String remarques;
 
-    public EmbryonsInVivo() {    }
+    public EmbryonsInVitro() {    }
 
     public Long getId() {
         return id;
@@ -41,14 +39,6 @@ public class EmbryonsInVivo {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public FicheCol getFicheCol() {
-        return ficheCol;
-    }
-
-    public void setFicheCol(FicheCol ficheCol) {
-        this.ficheCol = ficheCol;
     }
 
     public Embryon getEmbryon() {
@@ -75,12 +65,12 @@ public class EmbryonsInVivo {
         this.semence = semence;
     }
 
-    public String getBiopsie() {
-        return biopsie;
+    public int getNbPaillettes() {
+        return nbPaillettes;
     }
 
-    public void setBiopsie(String biopsie) {
-        this.biopsie = biopsie;
+    public void setNbPaillettes(int nbPaillettes) {
+        this.nbPaillettes = nbPaillettes;
     }
 
     public String getRemarques() {

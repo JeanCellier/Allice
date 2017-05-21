@@ -38,7 +38,7 @@
                         <td>${fichesIa.programme.nom}</td>
                         <td><fmt:formatDate pattern="dd/MM/yyyy" value="${fichesIa.dateHeureMinute}" /></td>
                         <td>${fichesIa.lieu}</td>
-                        <td>${fichesIa.operateur}</td>
+                        <td>${fichesIa.insemination.operateur.nom} ${fichesIa.insemination.operateur.prenom}</td>
                         <td>${fichesIa.vache.num_identification}</td>
                         <td>${fichesIa.insemination.taureau}</td>
                         <td>${fichesIa.statut}</td>
@@ -180,10 +180,12 @@
             var nomProgramme = "";
         }
 
-        if(result.objet.operateur != null){
-            var operateur = result.objet.operateur.nom+" "+result.objet.operateur.prenom;
-        }else{
-            var operateur = "";
+        var operateur = "";
+
+        if(result.objet.insemination != null){
+            if(result.objet.insemination.operateur != null) {
+                operateur = result.objet.insemination.operateur.nom + " " + result.objet.insemination.operateur.prenom;
+            }
         }
 
         if(result.objet.insemination != null){
