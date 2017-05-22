@@ -21,7 +21,7 @@
                         <td>Programme</td>
                         <td>Date</td>
                         <td>Num&eacutero d'agr&eacutement</td>
-                        <td>lieu</td>
+                        <td>Lieu</td>
                         <td>Vache</td>
                         <td>Num&eacutero de travail</td>
                         <td>Statut</td>

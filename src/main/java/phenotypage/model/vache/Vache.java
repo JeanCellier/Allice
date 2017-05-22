@@ -1,5 +1,6 @@
 package phenotypage.model.vache;
 
+import phenotypage.model.Destinataire.Destinataire;
 import phenotypage.model.programme.Programme;
 
 import javax.persistence.*;
@@ -17,9 +18,6 @@ public class Vache
 
 	@Column
 	private String proprietaire;
-
-	@Column
-	private String nom;
 
 	@Column
 	private String num_elevage; // == provenance
@@ -40,7 +38,28 @@ public class Vache
 	private Date dateNaissance;
 
 	@Column
+	private Date entreeQuarantaine;
+
+	@Column
+	private Date dateDerniereMiseRepro;
+
+	@Column
+	private Date sortiePension;
+
+	@Column
+	private Date entreeStation;
+
+	@Column
+	private Date sortieStation;
+
+	@Column
 	private String parite;
+
+	@Column
+	private String EMCO;
+
+	@Column
+	private String EMVI;
 
 	@Column
 	private Float ageMois;
@@ -49,10 +68,28 @@ public class Vache
 	private String numPere;
 
 	@Column
+	private String venduA;
+
+	@Column
 	private String numMere;
+
+	@Column
+	private String modeReproduction;
+
+	@Column
+	private Character DG01;
+
+	@Column
+	private String destination;
+
+	@Column
+	private String remarques;
 
 	@OneToOne
 	private Programme programme;
+
+	@OneToOne
+	private Destinataire destinataire;
 
 	public Vache() {}
 
@@ -154,16 +191,6 @@ public class Vache
 		this.numMere = numMere;
 	}
 
-	public String getNom()
-	{
-		return nom;
-	}
-
-	public void setNom(String nom)
-	{
-		this.nom = nom;
-	}
-
 	public String getParite()
 	{
 		return parite;
@@ -208,5 +235,110 @@ public class Vache
 
 	public void setNum_travail(String num_travail) {
 		this.num_travail = num_travail;
+	}
+
+	public Date getEntreeQuarantaine() {
+		return entreeQuarantaine;
+	}
+
+	public void setEntreeQuarantaine(Date entreeQuarantaine) {
+		this.entreeQuarantaine = entreeQuarantaine;
+	}
+
+	public Date getEntreeStation() {
+		return entreeStation;
+	}
+
+	public void setEntreeStation(Date entreeStation) {
+		this.entreeStation = entreeStation;
+	}
+
+	public Date getDateDerniereMiseRepro() {
+		return dateDerniereMiseRepro;
+	}
+
+	public void setDateDerniereMiseRepro(Date dateDerniereMiseRepro) {
+		this.dateDerniereMiseRepro = dateDerniereMiseRepro;
+	}
+
+	public Date getSortiePension() {
+		return sortiePension;
+	}
+
+	public void setSortiePension(Date sortiePension) {
+		this.sortiePension = sortiePension;
+	}
+
+	public Date getSortieStation() {
+		return sortieStation;
+	}
+
+	public void setSortieStation(Date sortieStation) {
+		this.sortieStation = sortieStation;
+	}
+
+	public String getEMCO() {
+		return EMCO;
+	}
+
+	public void setEMCO(String EMCO) {
+		this.EMCO = EMCO;
+	}
+
+	public String getEMVI() {
+		return EMVI;
+	}
+
+	public void setEMVI(String EMVI) {
+		this.EMVI = EMVI;
+	}
+
+	public String getVenduA() {
+		return venduA;
+	}
+
+	public void setVenduA(String venduA) {
+		this.venduA = venduA;
+	}
+
+	public String getModeReproduction() {
+		return modeReproduction;
+	}
+
+	public void setModeReproduction(String modeReproduction) {
+		this.modeReproduction = modeReproduction;
+	}
+
+	public Character getDG01() {
+		return DG01;
+	}
+
+	public void setDG01(Character DG01) {
+		this.DG01 = DG01;
+	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+
+	public String getRemarques() {
+		return remarques;
+	}
+
+	public void setRemarques(String remarques) {
+		this.remarques = remarques;
+	}
+
+	public Destinataire getDestinataire() {
+		return destinataire;
+	}
+
+	public void setDestinataire(Destinataire destinataire) {
+		this.destinataire = destinataire;
+		setDestination(destinataire.getTypeDestination());
 	}
 }

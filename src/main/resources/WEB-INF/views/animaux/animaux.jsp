@@ -1,3 +1,4 @@
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="../header.jsp" %>
 
 <main class="col-sm-9 col-md-10">
@@ -21,8 +22,6 @@
                     <td>Race</td>
                     <td>Age(mois)</td>
                     <td>Projet concern&#233</td>
-                    <td></td>
-                    <td></td>
                 </tr>
                 </thead>
                 <tbody>
@@ -34,7 +33,7 @@
                         <td>${vache.ageMois}</td>
                         <td>${vache.programme.nom}</td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Details"><button class="btn btn-primary btn-md btnDetails" data-title="details" data-id="<c:out value='${vache.id}' />" data-toggle="modal" data-target="#details" ><span class="glyphicon glyphicon-search"></span></button></p></td>
-                        <td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="<c:out value='${vache.id}' />" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="<c:out value='${vache.id}' />" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/<c:out value='${vache.id}'/>" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                     </tr>
                 </c:forEach>
@@ -43,85 +42,6 @@
         </div>
     </div>
 </main>
-<!-- Modal add new cow -->
-<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
-                <h4 class="modal-title custom_align" id="Heading">Ajouter un nouvel animal</h4>
-            </div>
-
-            <div class="modal-body">
-                <form id="addForm" action="./add" method="POST">
-                    <div class="form-group">
-                        <input class="form-control nom" name="proprietaire" required type="text" placeholder="Propri&#233taire">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" name="num_elevage" type="text" placeholder="Num&#233ro d'&#233levage">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control fournisseur" name="num_identification" type="text" placeholder="Num&#233ro d'identification">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control projet" name="num_travail" type="text" placeholder="Num&#233ro de travail">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control responsable" name="race" type="text" placeholder="Race">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control datepicker" name="date_arrivee" type="text" placeholder="Date d'arriv&#233e">
-                    </div>
-            </div>
-
-            <div class="modal-footer ">
-                <button type="submit" class="btn btn-success btn-lg" style="width: 100%;"><span class="fa fa-check"></span> Ajouter</button>
-            </div>
-            </form>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-
-<!-- Modal edit animal -->
-<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
-                <h4 class="modal-title custom_align" id="Heading">Modifier l'animal</h4>
-            </div>
-
-            <div class="modal-body">
-                <form id="editForm" action="./edit" method="POST">
-                    <div class="form-group">
-                        <input class="form-control nom" id="nom" name="proprietaire" required type="text" placeholder="Propri&#233taire">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control " name="num_elevage" type="text" placeholder="Num&#233ro d'&#233levage">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control fournisseur" name="num_identification" type="text" placeholder="Num&#233ro d'identification">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control projet" name="num_travail" type="text" placeholder="Num&#233ro de travail">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control responsable" name="race" type="text" placeholder="Race">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control datepicker" name="date_arrivee" type="text" placeholder="Date d'arriv&#233e">
-                    </div>
-
-                    <div class="modal-footer ">
-                        <button type="submit" class="btn btn-success btn-lg" style="width: 100%;"><span class="fa fa-check"></span> Modifier</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Modal delete animal -->
 <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
@@ -144,17 +64,24 @@
     </div>
 </div>
 
-<%@ include file="../footer.jsp" %>
-
+<!------------------------------ Script Jquery UI--------------------------->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript" src="../static/js/datepicker-fr.js"></script>
+
+<!------------------------------ Script Datatable--------------------------->
 <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.10.15/api/fnFindCellRowIndexes.js"></script>
 <link rel="stylesheet" type="text/css" media="all" href="../../static/css/datables.bootstrap.css"/>
+<script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+
+<%@ include file="./animaux_ajouterModifier.jsp" %>
+<%@ include file="./animaux_detail.jsp" %>
+<%@ include file="../footer.jsp" %>
 
 <script>
-    var currentrow; //la row courante à edit ou delete
+    console.log("ALALLLLLAAL");
+
+    var currentrow; //la row courante à delete
 
     /** function convertion des dates */
     function convertDate(inputFormat) {
@@ -162,6 +89,9 @@
         var d = new Date(inputFormat);
         return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('/');
     }
+
+    console.log("ALALLLLLAAL");
+
 
     /** function init calendrier */
     $.datepicker.setDefaults( $.datepicker.regional[ "fr" ] );
@@ -171,6 +101,17 @@
             $( this ).datepicker();
         });
     } );
+    console.log("ALALLLLLAAL");
+
+    /** supprimer alert après 5s */
+    function autoclose(){
+        window.setTimeout(function() {
+            $(".flash").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove();
+            });
+        }, 5000);
+    }
+    console.log("ALALLLLLAAL");
 
     /** function addRow */
     function addRow(result) {
@@ -179,111 +120,34 @@
 
         /** ajoute une ligne à la table */
         $('#tableAnimaux').DataTable().row.add([
-            "<td>" + result.objet.proprietaire + "</td>",
-            "<td>" + result.objet.num_elevage + "</td>",
-            "<td>" + result.objet.num_identification + "</td>",
-            "<td>" + result.objet.num_identification.substr(result.objet.vache.num_identification.length - 4) + "</td>",
-            "<td>" + result.objet.race + "</td>",
-//            "<td>" + convertDate(date_arrivee) + "</td>",
-            "<td>" + "</td>",
+            result.objet.num_identification ,
+            result.objet.num_travail,
+            result.objet.race ,
+            result.objet.ageMois,
+            result.objet.programme.nom ,
 
-            '<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="'+ result.objet.id +'" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>',
-            '<td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/'+ result.objet.id + '" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>'
+            '<p data-placement="top" data-toggle="tooltip" title="Details"><button class="btn btn-primary btn-md btnDetails" data-title="details" data-id="' + result.objet.id + '" data-toggle="modal" data-target="#details" ><span class="glyphicon glyphicon-search"></span></button></p>',
+            '<p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="'+ result.objet.id +'" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p>',
+            '<p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/'+ result.objet.id + '" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p>'
         ]).draw(false);
     }
 
+    console.log("ALALLLLLAAL");
 
     /** init la table */
     $('#tableAnimaux').DataTable( {
         "pagingType": "full_numbers",
         "columnDefs": [
-            { "orderable": false, "targets": 6},
-            { "orderable": false, "targets": 7 }
+            { "orderable": false, "targets": 4},
+            { "orderable": false, "targets": 5 }
         ],"language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json"
         },
         "pageLength": 25
     });
 
-    /************************ AJOUT *************************/
+    console.log("ALALLLLLAAL");
 
-    /** Ajoute un nouvel animal */
-    $('#addForm').on('submit', function(e) {
-        e.preventDefault();
-
-        var $this = $(this);
-
-        $.ajax({
-            url: $this.attr('action'),
-            type: $this.attr('method'),
-            data: $this.serialize(),
-            success: function(result) {
-                if(result.succes == true){
-                    $('input').val(''); //clear modal
-                    $('#add').modal('toggle'); //ferme modal
-                    $('#tableAnimaux').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>'); //afficher alert
-                    addRow(result);
-                }else{
-                    $('#addForm').before('<div class="alert alert-danger flash" role="alert">'+result.message+'</div>');
-                }
-                autoclose();
-            }
-        });
-    });
-
-    /************************ Modif *************************/
-
-    /** Attribue la ligne courante et rempli le modal */
-    $(document).on( 'click', ".btnEdit", function(){
-        id = $(this).data('id');
-        currentrow = $(this).closest('tr'); //get la row parent
-
-        $.ajax({
-            url: "./get/"+id,
-            method: 'GET',
-            success: function (result) {
-                if(result.succes == true) {
-                    $('#edit')
-                        .find('[name="proprietaire"]').val(result.objet.proprietaire).end()
-                        .find('[name="num_elevage"]').val(result.objet.num_elevage).end()
-                        .find('[name="num_identification"]').val(result.objet.num_identification).end()
-                        .find('[name="num_travail"]').val(result.objet.num_identification.substr(result.objet.vache.num_identification.length - 4)).end()
-                        .find('[name="race"]').val(result.objet.race).end()
-                        .find('[name="date_arrivee"]').val(convertDate(result.objet.date_arrivee)).end();
-
-
-                    $('#editForm').attr('action', "./edit/"+id);
-                }else{
-                    $('#edit').modal('toggle'); //ferme modal
-                    $('#tableAnimaux').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>'); //afficher alert
-                    autoclose();
-                }
-            }
-        });
-    });
-
-    /** Effectue les modifs si validation */
-    $('#editForm').on('submit', function(e) {
-        e.preventDefault();
-
-        $.ajax({
-            url: $(this).attr('action'),//+"/"+id,
-            type: $(this).attr('method'),
-            data: $(this).serialize(),
-            success: function (result) {
-                if(result.succes == true){
-                    $('input').val('');
-                    $('#edit').modal('toggle');
-                    $('#tableAnimaux').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>');
-                    $('#tableAnimaux').DataTable().row(currentrow).remove().draw();
-                    addRow(result);
-                }else{
-                    $('#editForm').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>');
-                }
-                autoclose();
-            }
-        });
-    });
 
     /************************ SUPPRIMER *************************/
 
@@ -300,6 +164,7 @@
 
     /** Si click sur confirm => supprime la row et l'entrée */
     $(document).on('click', '#confirmDelete', function(e){
+        console.log("ALOOOOOOOOOOOOOOO");
         $.ajax({
             url: $(this).attr('href'),
             type: $(this).attr('method'),
@@ -316,38 +181,5 @@
                 autoclose();
             }
         });
-    });
-
-    /** supprimer alert après 5s */
-    function autoclose(){
-        window.setTimeout(function() {
-            $(".flash").fadeTo(500, 0).slideUp(500, function(){
-                $(this).remove();
-            });
-        }, 5000);
-    }
-
-
-    /******************************* AUTOCOMPLETE ****************************/
-    <%--$( ".nom" ).autocomplete({--%>
-        <%--source: '${pageContext. request. contextPath}/animaux/get/names'--%>
-    <%--});--%>
-
-    <%--$( ".fournisseur" ).autocomplete({--%>
-        <%--source: '${pageContext. request. contextPath}/animaux/get/fournisseurs'--%>
-    <%--});--%>
-
-    <%--$( ".projet" ).autocomplete({--%>
-        <%--source: '${pageContext. request. contextPath}/animaux/get/projets'--%>
-    <%--});--%>
-
-    <%--$( ".responsable" ).autocomplete({--%>
-        <%--source: '${pageContext. request. contextPath}/animaux/get/responsables'--%>
-    <%--});--%>
-
-    $.when($('#tableAnimaux').on( 'change')).done(function() {
-        if($(window).width() > 768) {
-            $('.sidebar').height($(document).height());
-        }
     });
 </script>
