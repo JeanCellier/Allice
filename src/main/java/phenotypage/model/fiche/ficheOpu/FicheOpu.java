@@ -1,18 +1,19 @@
 package phenotypage.model.fiche.ficheOpu;
 
 import phenotypage.model.cryoconservation.Cryoconservation;
-import phenotypage.model.cryoconservation.TableauDetail;
-import phenotypage.model.donneesExistantes.operateur.Operateur;
+import phenotypage.model.cryoconservation.embryon.Embryon;
 import phenotypage.model.fiche.Fiche;
-import phenotypage.model.imageEcho.Echo;
+import phenotypage.model.fiche.ficheOpu.imageEcho.Echo;
+import phenotypage.model.fiche.ficheOpu.maturationInVitro.MaturationInVitro;
+import phenotypage.model.fiche.ficheOpu.ovocytesCollecte.OvocytesCollectes;
+import phenotypage.model.fiche.ficheOpu.typeOpu.TypeOpu;
+import phenotypage.model.infoTraitementDonneuse.InfoTraitementDonneuse;
 import phenotypage.model.informationsPIV.Informations_PIV;
 import phenotypage.model.invitro.culture.Culture;
 import phenotypage.model.invitro.fecondation.Fecondation;
-import phenotypage.model.maturationInVitro.MaturationInVitro;
-import phenotypage.model.ovocytesCollecte.OvocytesCollectes;
+import phenotypage.model.operateur.Operateur;
 import phenotypage.model.tableauTraitement.TableauTraitement;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
-import phenotypage.model.typeOpu.TypeOpu;
 import phenotypage.model.vache.Vache;
 
 import javax.persistence.*;
@@ -43,6 +44,9 @@ public class FicheOpu extends Fiche {
     private Traitement_Donneuse traitement_donneuse;
 
     @OneToOne
+    private InfoTraitementDonneuse infoTraitementDonneuse;
+
+    @OneToOne
     private Echo imageEcho;
 
     @OneToOne
@@ -67,7 +71,7 @@ public class FicheOpu extends Fiche {
     private List<TableauTraitement> tableauTraitements;
 
     @OneToMany
-    private List<TableauDetail> tableauDetails;
+    private List<Embryon> embryons;
 
     public FicheOpu() {
         super("Opu");
@@ -189,12 +193,20 @@ public class FicheOpu extends Fiche {
         this.tableauTraitements = tableauTraitements;
     }
 
-    public List<TableauDetail> getTableauDetails() {
-        return tableauDetails;
+    public InfoTraitementDonneuse getInfoTraitementDonneuse() {
+        return infoTraitementDonneuse;
     }
 
-    public void setTableauDetails(List<TableauDetail> tableauDetails) {
-        this.tableauDetails = tableauDetails;
+    public void setInfoTraitementDonneuse(InfoTraitementDonneuse infoTraitementDonneuse) {
+        this.infoTraitementDonneuse = infoTraitementDonneuse;
+    }
+
+    public List<Embryon> getTableauDetails() {
+        return embryons;
+    }
+
+    public void setTableauDetails(List<Embryon> tableauDetails) {
+        this.embryons = tableauDetails;
     }
 }
 

@@ -4,14 +4,18 @@
 	<h1 class="page-header">Pharmacie</h1>
 
 	<div class="row placeholders">
-		<div class="col-sm-1 col-md-1">
+		<div class="col-sm-12 col-md-12">
 			<p data-placement="top" data-toggle="tooltip" title="add"  style="padding-left:15px;padding-top:10px">
 				<button class="btn btn-primary btn-md" data-title="Add" data-toggle="modal" data-target="#add" >
 					<span class="fa fa-plus"> Ajouter</span>
 				</button>
 			</p>
-
 		</div>
+		<div class="col-sm-12 col-md-12" style="padding-left:30px;padding-top:10px;">
+			<label for="cboxProd">Montrer les produits &eacutepuis&eacutes  </label>
+			<input type="checkbox" id="cboxProd">
+		</div>
+
 		<div class="col-sm-12 col-md-12" id="contentPharmacie" style="padding:30px;">
 			<table id="tableProduit" class="table table-hover">
 				<thead>
@@ -58,11 +62,11 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
-					<h4 class="modal-title custom_align" id="Heading">Ajouter un nouveau produit</h4>
+					<h4 class="modal-title custom_align" id="HeadingAdd">Ajouter un nouveau produit</h4>
 				</div>
 
-				<div class="modal-body">
-					<form id="addForm" action="./add" method="POST">
+				<form id="addForm" action="./add" method="POST">
+					<div class="modal-body">
 							<div class="form-group">
 								<input class="form-control nom" name="nom" required type="text" placeholder="Nom du produit">
 							</div>
@@ -79,7 +83,7 @@
 								<input class="form-control responsable" name="responsable" type="text" placeholder="Responsable">
 							</div>
 							<div class="form-group">
-								<input class="form-control " name="qteEntrante" type="text" placeholder="Quantit&#233 entrante">
+								<input class="form-control " name="qteEntrante" type="number" step="0.01" placeholder="Quantit&#233 entrante">
 							</div>
 							<div class="form-group">
 								<input class="form-control " name="numLot" type="text" placeholder="Num&#233ro du lot">
@@ -90,12 +94,12 @@
 							<div class="form-group">
 								<input class="form-control" name="indication" type="text" placeholder="Indication">
 							</div>
-				</div>
+					</div>
 
-						<div class="modal-footer ">
-							<button type="submit" class="btn btn-success btn-lg" style="width: 100%;"><span class="fa fa-check"></span> Ajouter</button>
-						</div>
-					</form>
+					<div class="modal-footer ">
+						<button type="submit" class="btn btn-success btn-lg" style="width: 100%;"><span class="fa fa-check"></span> Ajouter</button>
+					</div>
+				</form>
 			</div>
 			<!-- /.modal-content -->
 		</div>
@@ -108,11 +112,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
-                    <h4 class="modal-title custom_align" id="Heading">Modifier le produit</h4>
+                    <h4 class="modal-title custom_align" id="HeadingEdit">Modifier le produit</h4>
                 </div>
 
-                <div class="modal-body">
-					<form id="editForm" action="./edit" method="POST">
+				<form id="editForm" action="./edit" method="POST">
+					<div class="modal-body">
 						<div class="form-group">
 							<input class="form-control nom" id="nom" name="nom" required type="text" placeholder="Nom du produit">
 						</div>
@@ -129,10 +133,10 @@
 							<input class="form-control responsable" name="responsable" type="text" placeholder="Responsable">
 						</div>
 						<div class="form-group">
-							<input class="form-control " name="qteEntrante" type="text" placeholder="Quantit&#233 entrante">
+							<input class="form-control " name="qteEntrante" type="number" step="0.01" placeholder="Quantit&#233 entrante">
 						</div>
 						<div class="form-group">
-							<input class="form-control " name="qteRestante" type="text" placeholder="Quantit&#233 restante">
+							<input class="form-control " name="qteRestante" type="number" step="0.01" placeholder="Quantit&#233 restante">
 						</div>
 						<div class="form-group">
 							<input class="form-control " name="numLot" type="text" placeholder="Num&#233ro du lot">
@@ -143,11 +147,12 @@
 						<div class="form-group">
 							<input class="form-control" name="indication" type="text" placeholder="Indication">
 						</div>
-				<div class="modal-footer ">
-					<button type="submit" class="btn btn-success btn-lg" style="width: 100%;"><span class="fa fa-check"></span> Modifier</button>
-				</div>
-					</form>
-				</div>
+					</div>
+
+					<div class="modal-footer ">
+						<button type="submit" class="btn btn-success btn-lg" style="width: 100%;"><span class="fa fa-check"></span> Modifier</button>
+					</div>
+				</form>
 			</div>
 		</div>
         <!-- /.modal-dialog -->
@@ -159,7 +164,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
-					<h4 class="modal-title custom_align" id="Heading">Supprimer cette entr&#233e</h4>
+					<h4 class="modal-title custom_align" id="HeadingDelete">Supprimer cette entr&#233e</h4>
 				</div>
 
 				<div class="modal-body">
@@ -178,9 +183,17 @@
 
 <%@ include file="../footer.jsp" %>
 
+<!------------------------------ Script Jquery UI--------------------------->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript" src="../static/js/datepicker-fr.js"></script>
+
+<%--<!------------------------------ Script Calendrier--------------------------->--%>
+<script type="text/javascript" src="/static/js/bower_components/moment/min/moment.min.js"></script>
+<script type="text/javascript" src="/static/js/bower_components/moment/locale/fr.js"></script>
+<script type="text/javascript" src="/static/js/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<link rel="stylesheet" href="/static/js/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+
+<!------------------------------ Script Tableau --------------------------->
 <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" media="all" href="../../static/css/datables.bootstrap.css"/>
@@ -195,42 +208,40 @@
         return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('/');
     }
 
-    /** function init calendrier */
-    $.datepicker.setDefaults( $.datepicker.regional[ "fr" ] );
-
-    $( function() {
-        $( ".datepicker" ).each(function() {
-            $( this ).datepicker();
-        });
-    } );
+    /****** function init calendrier sans heure ******/
+    $('.datepicker').datetimepicker({
+        locale: 'fr',
+        format: 'DD/MM/YYYY',
+        toolbarPlacement:'top',
+        showClose:true
+    });
 
     /** function addRow */
-    function addRow(result) {
+    function addRow(objet) {
         //converti date bon format
-        var datedelivrance = new Date(result.objet.dateDelivrance);
-        var datePeremption = new Date(result.objet.datePeremption);
+        var datedelivrance = new Date(objet.dateDelivrance);
+        var datePeremption = new Date(objet.datePeremption);
 
         /** ajoute une ligne à la table */
-        $('#tableProduit').DataTable().row.add([
-            "<td>" + result.objet.nom + "</td>",
-            "<td>" + convertDate(datedelivrance) + "</td>",
-            "<td>" + result.objet.fournisseur + "</td>",
-            "<td>" + result.objet.projet + "</td>",
-            "<td>" + result.objet.responsable + "</td>",
-            "<td>" + result.objet.qteEntrante + "</td>",
-            "<td>" + result.objet.qteRestante + "</td>",
-            "<td>" + result.objet.numLot + "</td>",
-            "<td>" + convertDate(datePeremption) + "</td>",
-            "<td>" + result.objet.indication + "</td>",
+        row = $('#tableProduit').DataTable().row.add([
+            objet.nom,
+           convertDate(datedelivrance),
+            objet.fournisseur,
+            objet.projet,
+            objet.responsable,
+            objet.qteEntrante,
+            objet.qteRestante,
+            objet.numLot,
+            convertDate(datePeremption),
+            objet.indication,
 
-            '<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="'+ result.objet.id +'" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>',
-            '<td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/'+ result.objet.id + '" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>'
+            '<p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="'+ objet.id +'" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p>',
+            '<p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/'+ objet.id + '" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p>'
         ]).draw(false);
     }
 
-
 	/** init la table */
-	$('#tableProduit').DataTable( {
+	$('#tableProduit').DataTable({
 		"pagingType": "full_numbers",
 		"columnDefs": [
 			{ "orderable": false, "targets": 10},
@@ -238,8 +249,35 @@
 		],"language": {
 			"url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json"
 		},
-        "pageLength": 25
+        "pageLength": 25,
+        "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) { //function executer à chaque draw
+            if(aData[6] == "0.0" || aData[6] == "0"){
+                $(nRow).addClass("epuise");
+                $(nRow).toggle($("#cboxProd").is(':checked'));
+			}else{
+                $(nRow).removeClass("epuise");
+			}
+        }
 	});
+
+	/** load produit out of stock dans datatable on check **/
+    $("#cboxProd").change(function(){
+        var self = this;
+        if(this.checked && !$("#cboxProd").hasClass('OutOfStockLoaded')){
+            $.ajax({
+                url: '${pageContext. request. contextPath}/pharmacie/get/OutOfStock',
+                type: 'GET',
+                success: function(result) {
+                    for(iElmnt = 0; iElmnt < result.length; iElmnt++){
+                        addRow(result[iElmnt]);
+					}
+
+                    $("#cboxProd").addClass('OutOfStockLoaded');
+                }
+            });
+		}
+        $("#tableProduit tr.epuise").toggle(self.checked);
+    }).change();
 
 	/************************ AJOUT *************************/
 
@@ -258,7 +296,7 @@
 					$('input').val(''); //clear modal
 					$('#add').modal('toggle'); //ferme modal
 					$('#tableProduit').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>'); //afficher alert
-					addRow(result);
+					addRow(result.objet);
 				}else{
 					$('#addForm').before('<div class="alert alert-danger flash" role="alert">'+result.message+'</div>');
 				}
@@ -306,7 +344,7 @@
         e.preventDefault();
 
         $.ajax({
-            url: $(this).attr('action'),//+"/"+id,
+            url: $(this).attr('action'),
             type: $(this).attr('method'),
             data: $(this).serialize(),
             success: function (result) {
@@ -314,8 +352,8 @@
                     $('input').val('');
                     $('#edit').modal('toggle');
                     $('#tableProduit').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>');
-                    $('#tableProduit').DataTable().row(currentrow).remove().draw();
-                    addRow(result);
+                    $('#tableProduit').DataTable().row(currentrow).remove();
+                    addRow(result.objet);
                 }else{
                     $('#editForm').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>');
                 }
@@ -350,7 +388,6 @@
 				}else{
 					$('#delete').modal('toggle'); //ferme modal
 					$('#tableProduit').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>'); //afficher alert
-
 				}
                 autoclose();
 			}
@@ -384,6 +421,7 @@
         source: '${pageContext. request. contextPath}/pharmacie/get/responsables'
     });
 
+    /** resize le menu si le tableau depasse la hauteur **/
     $.when($('#tableProduit').on( 'change')).done(function() {
         if($(window).width() > 768) {
             $('.sidebar').height($(document).height());

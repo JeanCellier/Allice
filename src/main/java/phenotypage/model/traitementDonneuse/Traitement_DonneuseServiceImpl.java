@@ -2,8 +2,13 @@ package phenotypage.model.traitementDonneuse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import phenotypage.model.traitementDonneuse.tableau_donneuse.Tableau_Donneuse;
+import phenotypage.model.traitementDonneuse.tableau_donneuse.Tableau_DonneuseService;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author fabien
@@ -13,40 +18,58 @@ import java.util.List;
 public class Traitement_DonneuseServiceImpl implements Traitement_DonneuseService
 {
 	@Autowired
-	private Traitement_DonneuseRepository traitement_donneuseRepository;
+	private Traitement_DonneuseRepository repository;
+
+	@Autowired
+	private Tableau_DonneuseService tableau_DonneuseService;
 
 	@Override
-	public Traitement_Donneuse createTraitement_Donneuse()
-	{
-		return traitement_donneuseRepository.save(new Traitement_Donneuse());
+	public Traitement_Donneuse createTraitement_Donneuse(Date dateRef, String typeChaleur, List<Tableau_Donneuse> tableau_donneuses){
+		Traitement_Donneuse traitement_donneuse = new Traitement_Donneuse();
+		traitement_donneuse.setDate_ref_chaleur(dateRef);
+		traitement_donneuse.setTypeChaleur(typeChaleur);
+
+		List<Tableau_Donneuse> tableau_donneusesSave = new ArrayList<>();
+
+		for (Tableau_Donneuse tableau_donneuse:tableau_donneuses) {
+			tableau_donneusesSave.add(tableau_DonneuseService.createTableauDonneuse(tableau_donneuse.getDate(), tableau_donneuse.getProduit(), tableau_donneuse.getQuantite(), tableau_donneuse.getMode_traitement()));
+		}
+
+		traitement_donneuse.setTableauDonneuse(tableau_donneusesSave);
+
+		return save(traitement_donneuse);
 	}
 
 	@Override
-	public Traitement_Donneuse addTraitement_Donneuse(Traitement_Donneuse traitement_donneuse)
-	{
-		return traitement_donneuseRepository.save(traitement_donneuse);
-	}
+	public Traitement_Donneuse createTraitement_Donneuse(Traitement_Donneuse traitement_donneuse) {
+		List<Tableau_Donneuse> tableau_donneusesSave = new ArrayList<>();
 
-	public List<Traitement_Donneuse> findAllTraitement_Donneuse()
-	{
-		return traitement_donneuseRepository.findAll();
-	}
+		for (Tableau_Donneuse tableau_donneuse:traitement_donneuse.getTableauDonneuse()) {
+			tableau_donneusesSave.add(tableau_DonneuseService.createTableauDonneuse(tableau_donneuse.getDate(), tableau_donneuse.getProduit(), tableau_donneuse.getQuantite(), tableau_donneuse.getMode_traitement()));
+		}
 
-	@Override
-	public Traitement_Donneuse findTraitement_DonneuseById(long id)
-	{
-		return traitement_donneuseRepository.findTraitement_DonneuseById(id);
+		traitement_donneuse.setTableauDonneuse(tableau_donneusesSave);
+
+		return save(traitement_donneuse);
 	}
 
 	@Override
-	public Traitement_Donneuse newTraitementDonneuse()
-	{
-		return new Traitement_Donneuse();
+	public Traitement_Donneuse save(Traitement_Donneuse traitement_donneuse) {
+		return repository.save(traitement_donneuse);
 	}
 
 	@Override
-	public void delete(Traitement_Donneuse traitement_donneuse)
-	{
-		traitement_donneuseRepository.delete(traitement_donneuse);
+	public void delete(Traitement_Donneuse traitementDonneuseToDelete) {
+		repository.delete(traitementDonneuseToDelete);
+	}
+
+	@Override
+	public int determineStatut(Traitement_Donneuse traitement_donneuse) {
+		if(traitement_donneuse.getDate_ref_chaleur() == null || Objects.equals(traitement_donneuse.getTypeChaleur(), "")
+				|| traitement_donneuse.getTableauDonneuse().size() ==0){
+			return 1;
+		}
+
+		return 0;
 	}
 }

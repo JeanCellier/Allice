@@ -5,11 +5,11 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import phenotypage.model.cryoconservation.TableauDetail;
+import phenotypage.model.cryoconservation.embryon.Embryon;
 import phenotypage.model.fiche.ficheCol.FicheCol;
 import phenotypage.model.fiche.ficheCol.FicheColService;
 import phenotypage.model.tableauTraitement.TableauTraitement;
-import phenotypage.model.traitementDonneuse.Tableau_Donneuse;
+import phenotypage.model.traitementDonneuse.tableau_donneuse.Tableau_Donneuse;
 import phenotypage.utils.PoiHelper;
 
 /**
@@ -101,7 +101,7 @@ public class ConverterCOLFiche implements ConverterFiche {
         rowNumber++;
         PoiHelper.writeCell(sheet, rowNumber, 0, "Parité:");
         PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getVache().getParite());
-        rowNumber+=2;
+        rowNumber += 2;
 
         //TRAITEMENT DONNEUSE
         PoiHelper.writeCell(sheet, rowNumber, 0, "TRAITEMENT DONNEUSE").setCellStyle(titleStyle);
@@ -109,7 +109,7 @@ public class ConverterCOLFiche implements ConverterFiche {
         PoiHelper.writeCell(sheet, rowNumber, 0, "Date chaleur de référence:");
         PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getTraitement_donneuse().getDate_ref_chaleur().toString());
         PoiHelper.writeCell(sheet, rowNumber, 3, "Type chaleur de référence:");
-        PoiHelper.writeCell(sheet, rowNumber, 5, fiche.getTraitement_donneuse().isNaturel() ? "naturelle" : "induite");
+        PoiHelper.writeCell(sheet, rowNumber, 5, fiche.getTraitement_donneuse().getTypeChaleur());
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Date").setCellStyle(headerStyle);
@@ -127,31 +127,31 @@ public class ConverterCOLFiche implements ConverterFiche {
         }
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Ponction du ou des follicules dominants (> 8 mm):");
-        PoiHelper.writeCell(sheet, rowNumber, 4, fiche.getTraitement_donneuse().isPonctionFollicule() ? "oui" : "non");
+        PoiHelper.writeCell(sheet, rowNumber, 4, fiche.getInfoTraitementDonneuse().isPonctionFollicule() ? "oui" : "non");
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Nb de follicules aspirés:");
-        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getTraitement_donneuse().getNb_follicules() + "");
+        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInfoTraitementDonneuse().getNb_follicules() + "");
         PoiHelper.writeCell(sheet, rowNumber, 3, "Droite:");
-        PoiHelper.writeCell(sheet, rowNumber, 4, fiche.getTraitement_donneuse().getNb_droite() + "");
+        PoiHelper.writeCell(sheet, rowNumber, 4, fiche.getInfoTraitementDonneuse().getNb_droite() + "");
         PoiHelper.writeCell(sheet, rowNumber, 5, "Gauche:");
-        PoiHelper.writeCell(sheet, rowNumber, 6, fiche.getTraitement_donneuse().getNb_gauche() + "");
+        PoiHelper.writeCell(sheet, rowNumber, 6, fiche.getInfoTraitementDonneuse().getNb_gauche() + "");
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Image(s) échographe:");
-        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getTraitement_donneuse().isImage_echo() ? "oui" : "non");
+        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInfoTraitementDonneuse().isImage_echo() ? "oui" : "non");
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Traitement superovulation:");
-        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getTraitement_donneuse().isSuperovulation() ? "oui" : "non");
+        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInfoTraitementDonneuse().isSuperovulation() ? "oui" : "non");
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Type FSH:");
-        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getTraitement_donneuse().getTypeFSH());
+        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInfoTraitementDonneuse().getTypeFSH());
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "% de la dose totale FSH:");
-        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getTraitement_donneuse().getPourc_dose() + "%");
+        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInfoTraitementDonneuse().getPourc_dose() + "%");
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Date").setCellStyle(headerStyle);
@@ -205,7 +205,7 @@ public class ConverterCOLFiche implements ConverterFiche {
         PoiHelper.writeCell(sheet, rowNumber, 0, "Taux de collecte estimé:");
         PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getResultat_collecte().getTaux_de_collecte() + "");
         PoiHelper.writeCell(sheet, rowNumber, 4, "Sanitaires:");
-        PoiHelper.writeCell(sheet, rowNumber, 5, fiche.getResultat_collecte().getSanitaire().getNom());
+        PoiHelper.writeCell(sheet, rowNumber, 5, fiche.getResultat_collecte().getSanitaire());
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Remarques:");
@@ -228,15 +228,11 @@ public class ConverterCOLFiche implements ConverterFiche {
         rowNumber++;
 
         //Tableau body
-        for (TableauDetail detail : fiche.getTableauDetails()) {
+        for (Embryon detail : fiche.getDetailsEmbryonsViables()) {
             PoiHelper.writeCell(sheet, rowNumber, 0, detail.getNumeroEmbryon() + "").setCellStyle(bodyStyle);
-            PoiHelper.writeCell(sheet, rowNumber, 1, detail.getStade().getNom()).setCellStyle(bodyStyle);
-            PoiHelper.writeCell(sheet, rowNumber, 2, detail.getQualite().getNumero() + "").setCellStyle(bodyStyle);
+            PoiHelper.writeCell(sheet, rowNumber, 1, detail.getStade() + "").setCellStyle(bodyStyle);
+            PoiHelper.writeCell(sheet, rowNumber, 2, detail.getQualite() + "").setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 3, detail.isCryoconserve() ? "X" : "").setCellStyle(bodyStyle);
-            PoiHelper.writeCell(sheet, rowNumber, 4, detail.getCuve().getNom()).setCellStyle(bodyStyle);
-            PoiHelper.writeCell(sheet, rowNumber, 5, detail.getCanister().getNumero() + "").setCellStyle(bodyStyle);
-            PoiHelper.writeCell(sheet, rowNumber, 6, detail.getVisoTube().getCouleur()).setCellStyle(bodyStyle);
-            PoiHelper.writeCell(sheet, rowNumber, 7, detail.getJonc()).setCellStyle(bodyStyle);
             rowNumber++;
         }
         rowNumber++;
@@ -251,7 +247,7 @@ public class ConverterCOLFiche implements ConverterFiche {
         rowNumber++;
 
         //Tableau body
-        for (TableauDetail detail : fiche.getTableauDetails()) {
+        for (Embryon detail : fiche.getDetailsEmbryonsViables()) {
             PoiHelper.writeCell(sheet, rowNumber, 0, detail.getNumeroEmbryon() + "").setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 1, detail.isFrais() ? "X" : "").setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 2, detail.getNumeroReceveuse()).setCellStyle(bodyStyle);

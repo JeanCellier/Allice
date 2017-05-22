@@ -1,19 +1,25 @@
 package phenotypage.model.vache;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author fabien
  */
 public interface VacheService
 {
-	List<Vache> findAllVache();
+	List<Vache> findAll();
 
-	Vache createVache(String proprietaire, String num_elevage, String num_identification, long num_travail, int race);
+	Vache createVache(boolean present, String proprietaire, String nom, String num_elevage, String num_identitifaction, int race, char sexe, Date dateNaissance, String parite, float ageMois, String numPere, String numMere);
+
+	Vache save(Vache vache);
 
 	Vache addVache(Vache vache);
 
 	Vache newVache();
 
-	Vache findByNum_identification(String num_identification);
+	Optional<Vache> findByNum_identification(String num_identification);
+
+    List<String> findNumIdByNumTravail(String tag);
 }

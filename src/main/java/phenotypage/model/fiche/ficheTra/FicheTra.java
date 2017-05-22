@@ -1,8 +1,8 @@
 package phenotypage.model.fiche.ficheTra;
 
-import phenotypage.model.corpsJaune.CorpsJaune;
-import phenotypage.model.donneesExistantes.operateur.Operateur;
-import phenotypage.model.embryonsTransferes.EmbryonsTransferes;
+import phenotypage.model.fiche.ficheTra.corpsJaune.CorpsJaune;
+import phenotypage.model.operateur.Operateur;
+import phenotypage.model.fiche.ficheTra.embryonsTransferes.EmbryonsTransferes;
 import phenotypage.model.fiche.Fiche;
 import phenotypage.model.gestation.Gestation;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;

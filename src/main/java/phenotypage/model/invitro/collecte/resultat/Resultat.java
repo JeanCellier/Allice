@@ -1,6 +1,5 @@
 package phenotypage.model.invitro.collecte.resultat;
 
-import phenotypage.model.donneesExistantes.sanitaire.Sanitaire;
 import javax.persistence.*;
 
 @Entity
@@ -31,8 +30,8 @@ public class Resultat
 	@Column
 	private float taux_de_collecte;
 
-	@ManyToOne
-	private Sanitaire sanitaire;
+	@Column
+	private String sanitaire;
 
 	@Column
 	private String remarques;
@@ -119,12 +118,12 @@ public class Resultat
 		this.taux_de_collecte = taux_de_collecte;
 	}
 
-	public Sanitaire getSanitaire()
+	public String getSanitaire()
 	{
 		return sanitaire;
 	}
 
-	public void setSanitaire(Sanitaire sanitaire)
+	public void setSanitaire(String sanitaire)
 	{
 		this.sanitaire = sanitaire;
 	}

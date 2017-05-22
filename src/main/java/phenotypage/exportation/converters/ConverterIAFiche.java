@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import phenotypage.model.fiche.ficheIa.FicheIa;
 import phenotypage.model.fiche.ficheIa.FicheIaService;
-import phenotypage.model.gestation.Tableau_Gestation;
-import phenotypage.model.traitementDonneuse.Tableau_Donneuse;
+import phenotypage.model.gestation.tableau_gestation.Tableau_Gestation;
+import phenotypage.model.traitementDonneuse.tableau_donneuse.Tableau_Donneuse;
 import phenotypage.utils.PoiHelper;
 
 /**
@@ -106,15 +106,15 @@ public class ConverterIAFiche implements ConverterFiche {
 
         rowNumber++;
         PoiHelper.writeCell(sheet, rowNumber, 0, "Nom taureau:");
-        PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getInsemination().getTaureau().getNom());
+        PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getInsemination().getTaureau().getNomTaureau());
         PoiHelper.writeCell(sheet, rowNumber, 3, "Race taureau:");
-        PoiHelper.writeCell(sheet, rowNumber, 4, fiche.getInsemination().getTaureau().getRace() + "");
+        PoiHelper.writeCell(sheet, rowNumber, 4, fiche.getInsemination().getTaureau().getRaceTaureau());
         PoiHelper.writeCell(sheet, rowNumber, 5, "N° taureau:");
-        PoiHelper.writeCell(sheet, rowNumber, 6, fiche.getInsemination().getTaureau().getNum_identification());
+        PoiHelper.writeCell(sheet, rowNumber, 6, fiche.getInsemination().getTaureau().getNumTaureau());
         rowNumber += 2;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "IA réalisée dans le cadre d'une collecte:");
-        PoiHelper.writeCell(sheet, rowNumber, 3, fiche.getInsemination().isCollecte() ? "Oui" : "Non");
+        PoiHelper.writeCell(sheet, rowNumber, 3, fiche.getInsemination().getCollecte());
         rowNumber += 2;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Lieu de dépôt de la semence:");
@@ -129,7 +129,7 @@ public class ConverterIAFiche implements ConverterFiche {
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Type chaleur :");
-        PoiHelper.writeCell(sheet, rowNumber, 3, fiche.getTraitement_donneuse().isNaturel() ? "naturelle" : "induite");
+        PoiHelper.writeCell(sheet, rowNumber, 3, fiche.getTraitement_donneuse().getTypeChaleur());
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Date").setCellStyle(headerStyle);
@@ -155,7 +155,7 @@ public class ConverterIAFiche implements ConverterFiche {
         rowNumber++;
         for (Tableau_Gestation gestation : fiche.getGestation().getTableauGestationList()) {
             PoiHelper.writeCell(sheet, rowNumber, 0, gestation.getDate().toString()).setCellStyle(bodyStyle);
-            PoiHelper.writeCell(sheet, rowNumber, 1, gestation.getMethode().getNom()).setCellStyle(bodyStyle);
+            PoiHelper.writeCell(sheet, rowNumber, 1, gestation.getMethode()).setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 2, gestation.getResultat()).setCellStyle(bodyStyle);
             rowNumber++;
         }

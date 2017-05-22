@@ -1,7 +1,7 @@
 package phenotypage.model.fiche.ficheCarriere;
 
 import javax.persistence.*;
-import phenotypage.model.donneesExistantes.operateur.Operateur;
+import phenotypage.model.operateur.Operateur;
 import phenotypage.model.pharmacie.produit.Produit;
 import java.util.Date;
 
@@ -24,7 +24,7 @@ public class Tableau_Carriere
 	@Column
 	private String num_ordonnance;
 	
-	@OneToOne
+	@ManyToOne
 	private Produit produit;
 	
 	@Column

@@ -9,6 +9,8 @@ import java.util.Optional;
  */
 public interface ProduitService
 {
+	List<Produit> findAll();
+
 	Produit createProduit(String nom, Date dateDel, String fournisseur, String projet, String respo, float qteEntr, String numLot, Date datePer, String indication);
 
 	void update(Produit produit, String nom, Date dateDeliv, String fournisseur, String projet, String respo, float qteEntrante, float qteRestante, String numLot, Date datePeremp, String indication);
@@ -17,9 +19,11 @@ public interface ProduitService
 
 	void delete(Produit produit);
 
-	List<Produit> findAllProduit();
-
 	Optional<Produit> findOne(long id);
+
+	List<Produit> findAvalaibleProduct();
+
+	List<Produit> findOutOfStockProduct();
 
 	List<String> findDistinctNames(String tag);
 

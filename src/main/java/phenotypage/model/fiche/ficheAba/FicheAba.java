@@ -1,14 +1,14 @@
 package phenotypage.model.fiche.ficheAba;
 
 import phenotypage.model.cryoconservation.Cryoconservation;
-import phenotypage.model.cryoconservation.TableauDetail;
-import phenotypage.model.donneesExistantes.abattoir.Abattoir;
-import phenotypage.model.donneesExistantes.operateur.Operateur;
+import phenotypage.model.cryoconservation.embryon.Embryon;
 import phenotypage.model.fiche.Fiche;
+import phenotypage.model.fiche.ficheAba.abattoir.Abattoir;
 import phenotypage.model.informationsPIV.Informations_PIV;
 import phenotypage.model.invitro.collecte.Collecte;
 import phenotypage.model.invitro.culture.Culture;
 import phenotypage.model.invitro.fecondation.Fecondation;
+import phenotypage.model.operateur.Operateur;
 
 import javax.persistence.*;
 import java.util.List;
@@ -47,8 +47,8 @@ public class FicheAba extends Fiche {
     @OneToOne
     private Cryoconservation cryoconservation;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<TableauDetail> tableauDetails;
+    @OneToMany
+    private List<Embryon> embryons;
 
     public FicheAba() {
         super("Aba");
@@ -126,12 +126,12 @@ public class FicheAba extends Fiche {
         this.cryoconservation = cryoconservation;
     }
 
-    public List<TableauDetail> getTableauDetails() {
-        return tableauDetails;
+    public List<Embryon> getEmbryons() {
+        return embryons;
     }
 
-    public void setTableauDetails(List<TableauDetail> tableauDetails) {
-        this.tableauDetails = tableauDetails;
+    public void setEmbryons(List<Embryon> Embryons) {
+        this.embryons = Embryons;
     }
 }
 

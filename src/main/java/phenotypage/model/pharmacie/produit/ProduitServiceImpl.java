@@ -62,7 +62,7 @@ public class ProduitServiceImpl implements ProduitService
 		produitRepository.delete(produit);
 	}
 
-	public List<Produit> findAllProduit()
+	public List<Produit> findAll()
 	{
 		return produitRepository.findAll();
 	}
@@ -70,6 +70,14 @@ public class ProduitServiceImpl implements ProduitService
 	@Override
 	public Optional<Produit> findOne(long id) {
 		return Optional.ofNullable(produitRepository.findOne(id));
+	}
+
+	public List<Produit> findAvalaibleProduct(){
+		return produitRepository.findByQteRestanteGreaterThan(0.0F);
+	}
+
+	public List<Produit> findOutOfStockProduct(){
+		return produitRepository.findByQteRestanteEquals(0.0F);
 	}
 
     @Override

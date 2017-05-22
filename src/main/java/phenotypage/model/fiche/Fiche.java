@@ -1,7 +1,7 @@
 package phenotypage.model.fiche;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import phenotypage.model.donneesExistantes.programme.Programme;
+import phenotypage.model.programme.Programme;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -21,6 +21,9 @@ public abstract class Fiche {
 
     @Column
     private Date dateHeureMinute;
+
+    @Column
+    private int statut;
 
     @Column
     private String type;
@@ -67,5 +70,13 @@ public abstract class Fiche {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public int getStatut() {
+        return statut;
+    }
+
+    public void setStatut(int statut) {
+        this.statut = statut;
     }
 }

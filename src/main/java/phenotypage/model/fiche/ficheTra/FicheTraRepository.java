@@ -12,4 +12,6 @@ import java.util.List;
 public interface FicheTraRepository extends JpaRepository<FicheTra, Long>
 {
 	FicheTra findByNom(String nom);
+
+    FicheTra findTopByOrderByNomDesc();
 }

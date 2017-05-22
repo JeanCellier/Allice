@@ -10,49 +10,49 @@
 //import org.springframework.web.bind.annotation.RequestMethod;
 //import phenotypage.model.cryoconservation.Cryoconservation;
 //import phenotypage.model.cryoconservation.CryoconservationService;
-//import phenotypage.model.cryoconservation.TableauDetailService;
-//import phenotypage.model.donneesExistantes.abattoir.AbattoirService;
-//import phenotypage.model.donneesExistantes.congelateur.CongelateurService;
-//import phenotypage.model.donneesExistantes.cuve.CuveService;
-//import phenotypage.model.donneesExistantes.cuve.canister.CanisterService;
-//import phenotypage.model.donneesExistantes.cuve.visoTube.VisoTubeService;
-//import phenotypage.model.donneesExistantes.destionationCulture.DestinationCultureService;
-//import phenotypage.model.donneesExistantes.fiv.FIVService;
-//import phenotypage.model.donneesExistantes.operateur.OperateurService;
-//import phenotypage.model.donneesExistantes.programme.ProgrammeService;
-//import phenotypage.model.donneesExistantes.qualite.QualiteService;
-//import phenotypage.model.donneesExistantes.sanitaire.SanitaireService;
-//import phenotypage.model.donneesExistantes.stade.StadeService;
-//import phenotypage.model.donneesExistantes.typeCulture.TypeCultureService;
+//import phenotypage.model.cryoconservation.embryon.EmbryonService;
+//import phenotypage.model.fiche.ficheAba.abattoir.AbattoirService;
+//import phenotypage.model.cryoconservation.congelateur.CongelateurService;
+//import phenotypage.model.cuve.old.CuveService;
+//import phenotypage.model.cuve.canister.old.CanisterService;
+//import phenotypage.model.cuve.canister.visoTube.old.VisoTubeService;
+//import phenotypage.model.destinationCulture.DestinationCultureService;
+//import phenotypage.model.informationsPIV.fiv.FIVService;
+//import phenotypage.model.operateur.OperateurService;
+//import phenotypage.model.programme.ProgrammeService;
+//import phenotypage.model.qualite.QualiteService;
+//import phenotypage.model.sanitaire.SanitaireService;
+//import phenotypage.model.cryoconservation.stade.StadeService;
+//import phenotypage.model.informationsPIV.typeCulture.TypeCultureService;
 //import phenotypage.model.fiche.ficheOpu.FicheOpu;
 //import phenotypage.model.fiche.ficheOpu.FicheOpuService;
 //import phenotypage.model.fiche.Fiche;
 //import phenotypage.model.fiche.fiche.HeaderService;
-//import phenotypage.model.imageEcho.Echo;
-//import phenotypage.model.imageEcho.EchoService;
+//import phenotypage.model.fiche.ficheOpu.imageEcho.Echo;
+//import phenotypage.model.fiche.ficheOpu.imageEcho.EchoService;
 //import phenotypage.model.informationsPIV.Informations_PIV;
 //import phenotypage.model.informationsPIV.Informations_PIVService;
 //import phenotypage.model.invitro.collecte.Collecte;
 //import phenotypage.model.invitro.collecte.CollecteService;
-//import phenotypage.model.invitro.collecte.Tableau_Collecte;
-//import phenotypage.model.invitro.collecte.Tableau_CollecteService;
+//import phenotypage.model.invitro.collecte.tableau_collecte.Tableau_Collecte;
+//import phenotypage.model.invitro.collecte.tableau_collecte.Tableau_CollecteService;
 //import phenotypage.model.invitro.culture.Culture;
 //import phenotypage.model.invitro.culture.CultureService;
-//import phenotypage.model.invitro.culture.TableauCulture;
-//import phenotypage.model.invitro.culture.TableauCultureService;
+//import phenotypage.model.invitro.culture.tableauCulture.TableauCulture;
+//import phenotypage.model.invitro.culture.tableauCulture.TableauCultureService;
 //import phenotypage.model.invitro.fecondation.Fecondation;
 //import phenotypage.model.invitro.fecondation.FecondationService;
-//import phenotypage.model.invitro.fecondation.TableauSemence;
-//import phenotypage.model.invitro.fecondation.TableauSemenceService;
-//import phenotypage.model.methodeCongelation.MethodeCongelationService;
-//import phenotypage.model.milieuMaturation.MilieuMaturationService;
-//import phenotypage.model.ovocytesCollecte.OvocytesCollectes;
-//import phenotypage.model.ovocytesCollecte.OvocytesCollectesService;
-//import phenotypage.model.ovocytesCollecte.TableauOvocytesCollectes;
-//import phenotypage.model.ovocytesCollecte.TableauOvocytesCollectesService;
+//import phenotypage.model.invitro.fecondation.tableauSemence.TableauSemence;
+//import phenotypage.model.invitro.fecondation.tableauSemence.TableauSemenceService;
+//import phenotypage.model.cryoconservation.methodeCongelation.MethodeCongelationService;
+//import phenotypage.model.informationsPIV.milieuMaturation.MilieuMaturationService;
+//import phenotypage.model.fiche.ficheOpu.ovocytesCollecte.OvocytesCollectes;
+//import phenotypage.model.fiche.ficheOpu.ovocytesCollecte.OvocytesCollectesService;
+//import phenotypage.model.fiche.ficheOpu.ovocytesCollecte.tableauOvocytesCollectes.TableauOvocytesCollectes;
+//import phenotypage.model.fiche.ficheOpu.ovocytesCollecte.tableauOvocytesCollectes.TableauOvocytesCollectesService;
 //import phenotypage.model.pharmacie.produit.ProduitService;
 //import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
-//import phenotypage.model.traitementDonneuse.Traitement_DonneuseService;
+//import phenotypage.model.traitementDonneuse.Tableau_Traitement_ActeService;
 //import phenotypage.model.vache.Vache;
 //import phenotypage.model.vache.VacheService;
 //
@@ -88,7 +88,7 @@
 //	private VacheService vacheService;
 //
 //	@Autowired
-//	private Traitement_DonneuseService traitement_donneuseService;
+//	private Tableau_Traitement_ActeService traitement_donneuseService;
 //
 //	@Autowired
 //	private EchoService echoService;
@@ -127,7 +127,7 @@
 //	private ProduitService produitService;
 //
 //	@Autowired
-//	private TableauDetailService tableauDetailService;
+//	private EmbryonService tableauDetailService;
 //
 //	@Autowired
 //	private TableauOvocytesCollectesService tableauOvocytesCollectesService;
@@ -299,7 +299,7 @@
 //			model.addAttribute("traitementDonneuse", ficheOpu.getTraitement_donneuse());
 //		}
 //		model.addAttribute("operateurList", operateurService.findAllOperateur());
-//		model.addAttribute("produitList", produitService.findAllProduit());
+//		model.addAttribute("produitList", produitService.findAll());
 //		model.addAttribute("nom", nom);
 //
 //		return "acteTechnique/opu/traitementDonneuseOpu";
@@ -311,7 +311,7 @@
 //		if (errors.hasErrors())
 //		{
 //			model.addAttribute("operateurList", operateurService.findAllOperateur());
-//			model.addAttribute("produitList", produitService.findAllProduit());
+//			model.addAttribute("produitList", produitService.findAll());
 //			model.addAttribute("nom", nom);
 //			model.addAttribute("traitementDonneuse", traitement_donneuse);
 //

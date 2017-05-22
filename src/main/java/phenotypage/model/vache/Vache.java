@@ -1,14 +1,7 @@
 package phenotypage.model.vache;
 
-import phenotypage.model.fiche.ficheCarriere.FicheCarriere;
-import phenotypage.model.fiche.ficheCol.FicheCol;
-import phenotypage.model.fiche.ficheIa.FicheIa;
-import phenotypage.model.fiche.ficheOpu.FicheOpu;
-import phenotypage.model.fiche.ficheTra.FicheTra;
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
-
 
 @Entity
 public class Vache
@@ -52,9 +45,6 @@ public class Vache
 
 	@Column
 	private String numMere;
-
-	@OneToOne
-	private FicheCarriere ficheCarriere;
 
 	public Vache() {}
 
@@ -174,15 +164,5 @@ public class Vache
 	public void setParite(String parite)
 	{
 		this.parite = parite;
-	}
-
-	public FicheCarriere getFicheCarriere()
-	{
-		return ficheCarriere;
-	}
-
-	public void setFicheCarriere(FicheCarriere ficheCarriere)
-	{
-		this.ficheCarriere = ficheCarriere;
 	}
 }

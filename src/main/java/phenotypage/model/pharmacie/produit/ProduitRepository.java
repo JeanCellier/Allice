@@ -23,4 +23,7 @@ public interface ProduitRepository extends JpaRepository<Produit, Long>
 	@Query(value = "SELECT distinct responsable FROM produit where responsable like CONCAT(?1, '%')", nativeQuery = true)
 	List<String> findDistinctResponsables(String tag);
 
+	List<Produit> findByQteRestanteGreaterThan(float i);
+
+	List<Produit> findByQteRestanteEquals(float i);
 }

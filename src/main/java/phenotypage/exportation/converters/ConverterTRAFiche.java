@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import phenotypage.model.fiche.ficheTra.FicheTra;
 import phenotypage.model.fiche.ficheTra.FicheTraService;
-import phenotypage.model.gestation.Tableau_Gestation;
-import phenotypage.model.traitementDonneuse.Tableau_Donneuse;
+import phenotypage.model.gestation.tableau_gestation.Tableau_Gestation;
+import phenotypage.model.traitementDonneuse.tableau_donneuse.Tableau_Donneuse;
 import phenotypage.utils.PoiHelper;
 
 /**
@@ -119,7 +119,7 @@ public class ConverterTRAFiche implements ConverterFiche {
         PoiHelper.writeCell(sheet, rowNumber, 0, "Date chaleur de référence:");
         PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getTraitement_donneuse().getDate_ref_chaleur().toString());
         PoiHelper.writeCell(sheet, rowNumber, 3, "Type chaleur de référence:");
-        PoiHelper.writeCell(sheet, rowNumber, 5, fiche.getTraitement_donneuse().isNaturel() ? "naturelle" : "induite");
+        PoiHelper.writeCell(sheet, rowNumber, 5, fiche.getTraitement_donneuse().getTypeChaleur());
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Date").setCellStyle(headerStyle);
@@ -151,7 +151,7 @@ public class ConverterTRAFiche implements ConverterFiche {
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Qualité selon jugement opérateur:");
-        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getCorpsJaune().getQualite().getNom());
+        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getCorpsJaune().getQualite() + "");
         rowNumber++;
 
         //EMBRYON(S) TRANSFERE(S)
@@ -159,15 +159,10 @@ public class ConverterTRAFiche implements ConverterFiche {
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Référence expérience production d'embryon(s):");
-        PoiHelper.writeCell(sheet, rowNumber, 5, fiche.getEmbryonsTransferes().isSemenceSexee() ? "Oui" : "Non");
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "N° embryon:");
         PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getEmbryonsTransferes().getRefEmbryons());
-        PoiHelper.writeCell(sheet, rowNumber, 3, "Race taureau:");
-        PoiHelper.writeCell(sheet, rowNumber, 4, fiche.getEmbryonsTransferes().getTaureau().getRace() + "");
-        PoiHelper.writeCell(sheet, rowNumber, 5, "N° taureau:");
-        PoiHelper.writeCell(sheet, rowNumber, 6, fiche.getEmbryonsTransferes().getTaureau().getNum_identification());
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Côté transfert:");
@@ -179,7 +174,7 @@ public class ConverterTRAFiche implements ConverterFiche {
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Facilité de progression:");
-        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getEmbryonsTransferes().getFaciliteprogression());
+        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getEmbryonsTransferes().getFaciliteprogression() + "");
         rowNumber++;
 
         //SUIVI DE GESTATION
@@ -193,7 +188,7 @@ public class ConverterTRAFiche implements ConverterFiche {
 
         for (Tableau_Gestation gestation : fiche.getGestation().getTableauGestationList()) {
             PoiHelper.writeCell(sheet, rowNumber, 0, gestation.getDate().toString()).setCellStyle(bodyStyle);
-            PoiHelper.writeCell(sheet, rowNumber, 1, gestation.getMethode().getNom()).setCellStyle(bodyStyle);
+            PoiHelper.writeCell(sheet, rowNumber, 1, gestation.getMethode()).setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 2, gestation.getResultat()).setCellStyle(bodyStyle);
             rowNumber++;
         }

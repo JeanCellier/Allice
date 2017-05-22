@@ -612,7 +612,6 @@ $pagination-active-border:             darken($grey-body, 40%);
 // $modal-lg:                    900px
 // $modal-md:                    600px
 // $modal-sm:                    300px
-
 //== Alerts
 //
 //## Define alert colors, border radius, and padding.
@@ -855,15 +854,54 @@ $pagination-active-border:             darken($grey-body, 40%);
 // $hr-border:                   $gray-lighter
 
 /** Custom Sass */
+//font sidebar in bold
 .sidebar {
  font-weight: bold;
 }
 
+//set width modal large
+.modal-large {
+ @media (min-width: 768px) {
+  width: 700px !important;
+ }
+ @media (min-width: 992px) {
+  width: 850px !important;
+ }
+ @media (min-width: 1200px) {
+  width: 1100px !important;
+ }
+}
+
+//sidebar 100% height + shadow right
 @media (min-width: 768px){
  .sidebar {
   height: 100vh;
  }
  .sidebar-container{
   box-shadow: 12px 0 15px -4px rgba(164, 168, 171, 0.2);
+ }
+}
+
+.details{
+ legend{
+  padding-left: 60px;
+  margin-bottom:30px;
+  color: darken($green-primary, 8%);
+  font-weight: bold;
+ }
+ .tableDetails{
+  margin-bottom: 20px;
+  margin-top: 20px;
+ }
+ margin-bottom: 40px;
+}
+
+.traitementLink{
+ text-decoration:none !important;
+ font-size: 18px;
+ color: $green-primary !important;
+ font-weight: bold;
+ &:hover{
+  color: darken($green-primary, 8%) !important;
  }
 }

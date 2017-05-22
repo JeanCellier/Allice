@@ -1,69 +1,75 @@
 package phenotypage.model.invitro.culture;
 
-import phenotypage.model.donneesExistantes.sanitaire.Sanitaire;
 
-import javax.persistence.*;
+import phenotypage.model.invitro.culture.tableauCulture.TableauCulture;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.*;
 
 @Entity
-public class Culture {
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Culture{
+	@Id
+	@GeneratedValue
+	private Long id;
 
-    @Column
-    private Date date;
+	@Column
+	private Date date;
 
-    @Column
-    private String remarques;
+	@Column
+	private String remarques;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<Sanitaire> sanitaireList;
+	@Column
+	private String sanitaires;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<TableauCulture> tableauCultureList;
+	@OneToMany
+	private List<TableauCulture> tableauCultureList;
 
-    public Culture() {
-    }
+	public Culture() {	}
 
-    public Long getId() {
-        return id;
-    }
+	public Long getId()
+	{
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id)
+	{
+		this.id = id;
+	}
 
-    public Date getDate() {
-        return date;
-    }
+	public Date getDate()
+	{
+		return date;
+	}
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
+	public void setDate(Date date)
+	{
+		this.date = date;
+	}
 
-    public String getRemarques() {
-        return remarques;
-    }
+	public String getRemarques()
+	{
+		return remarques;
+	}
 
-    public void setRemarques(String remarques) {
-        this.remarques = remarques;
-    }
+	public void setRemarques(String remarques)
+	{
+		this.remarques = remarques;
+	}
 
-    public List<Sanitaire> getSanitaireList() {
-        return sanitaireList;
-    }
+	public String getSanitaireList()
+	{
+		return sanitaires;
+	}
 
-    public void setSanitaireList(List<Sanitaire> sanitaireList) {
-        this.sanitaireList = sanitaireList;
-    }
+	public void setSanitaireList(String sanitaireList)
+	{
+		this.sanitaires = sanitaireList;
+	}
 
-    public List<TableauCulture> getTableauCultureList() {
-        return tableauCultureList;
-    }
+	public List<TableauCulture> getTableauCultureList()
+	{
+		return tableauCultureList;
+	}
 
-    public void setTableauCultureList(List<TableauCulture> tableauCultureList) {
-        this.tableauCultureList = tableauCultureList;
-    }
+	public void setTableauCultureList(List<TableauCulture> tableauCultureList) { this.tableauCultureList = tableauCultureList; }
 }
