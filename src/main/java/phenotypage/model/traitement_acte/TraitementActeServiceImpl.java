@@ -34,7 +34,7 @@ public class TraitementActeServiceImpl implements TraitementActeService {
         List<Tableau_Traitement_Acte> tableau_traitementActeSave = new ArrayList<>();
 
         for (Tableau_Traitement_Acte tableauTraitement: tableau_traitementActe) {
-            tableau_traitementActeSave.add(tableau_TraitementService.createTableauTraitement(tableauTraitement.getDecalage(), tableauTraitement.getProduit(), tableauTraitement.getQuantite(), tableauTraitement.getMode_traitement()));
+            tableau_traitementActeSave.add(tableau_TraitementService.createTableauTraitement(tableauTraitement.getDecalageJour(), tableauTraitement.getDecalageHeure(), tableauTraitement.getProduit(), tableauTraitement.getQuantite(), tableauTraitement.getMode_traitement()));
         }
 
         traitementActe.setTableauTraitement(tableau_traitementActeSave);
@@ -47,7 +47,7 @@ public class TraitementActeServiceImpl implements TraitementActeService {
         List<Tableau_Traitement_Acte> tableau_traitementActeSave = new ArrayList<>();
 
         for (Tableau_Traitement_Acte tableau_traitementActe : traitementActe.getTableauTraitement()) {
-            tableau_traitementActeSave.add(tableau_TraitementService.createTableauTraitement(tableau_traitementActe.getDecalage(), tableau_traitementActe.getProduit(), tableau_traitementActe.getQuantite(), tableau_traitementActe.getMode_traitement()));
+            tableau_traitementActeSave.add(tableau_TraitementService.createTableauTraitement(tableau_traitementActe.getDecalageJour(), tableau_traitementActe.getDecalageHeure(), tableau_traitementActe.getProduit(), tableau_traitementActe.getQuantite(), tableau_traitementActe.getMode_traitement()));
         }
 
         traitementActe.setTableauTraitement(tableau_traitementActeSave);
@@ -76,7 +76,8 @@ public class TraitementActeServiceImpl implements TraitementActeService {
         List<Tableau_Traitement_Acte> newTableauTraitement = new ArrayList<>();
 
         for(Tableau_Traitement_Acte tableau_traitement_acteToAdd: tableau_traitement_acte){
-            newTableauTraitement.add(tableau_TraitementService.createTableauTraitement(tableau_traitement_acteToAdd.getDecalage(), tableau_traitement_acteToAdd.getProduit(), tableau_traitement_acteToAdd.getQuantite(), tableau_traitement_acteToAdd.getMode_traitement()));
+            newTableauTraitement.add(tableau_TraitementService.createTableauTraitement(tableau_traitement_acteToAdd.getDecalageJour(),
+                    tableau_traitement_acteToAdd.getDecalageHeure(), tableau_traitement_acteToAdd.getProduit(), tableau_traitement_acteToAdd.getQuantite(), tableau_traitement_acteToAdd.getMode_traitement()));
         }
 
         traitementActe.setTableauTraitement(newTableauTraitement);

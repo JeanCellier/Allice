@@ -1,8 +1,7 @@
 package phenotypage.model.invitro.culture;
 
-import phenotypage.model.sanitaire.Sanitaire;
-import phenotypage.model.invitro.culture.tableauCulture.TableauCulture;
 
+import phenotypage.model.invitro.culture.tableauCulture.TableauCulture;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
@@ -19,8 +18,8 @@ public class Culture{
 	@Column
 	private String remarques;
 
-	@ManyToMany
-	private List<Sanitaire> sanitaireList;
+	@Column
+	private String sanitaires;
 
 	@OneToMany
 	private List<TableauCulture> tableauCultureList;
@@ -57,14 +56,14 @@ public class Culture{
 		this.remarques = remarques;
 	}
 
-	public List<Sanitaire> getSanitaireList()
+	public String getSanitaireList()
 	{
-		return sanitaireList;
+		return sanitaires;
 	}
 
-	public void setSanitaireList(List<Sanitaire> sanitaireList)
+	public void setSanitaireList(String sanitaireList)
 	{
-		this.sanitaireList = sanitaireList;
+		this.sanitaires = sanitaireList;
 	}
 
 	public List<TableauCulture> getTableauCultureList()

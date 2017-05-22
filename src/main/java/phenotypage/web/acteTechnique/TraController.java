@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import phenotypage.model.fiche.Fiche;
 import phenotypage.model.jsonResponse.JsonResponse;
 import phenotypage.model.fiche.ficheTra.corpsJaune.CorpsJaune;
 import phenotypage.model.operateur.Operateur;
@@ -363,7 +364,7 @@ public class TraController {
     @RequestMapping(value="/get/lastName", method = RequestMethod.GET)
     public String getLastId(){
         String nom = ficheTraService.findTopByOrderByNomDesc().getNom();
-        if(nom != ""){
+        if(!Objects.equals(nom, "")){
             return nom;
         }else{
             return "";

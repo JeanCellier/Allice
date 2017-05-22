@@ -1,7 +1,7 @@
 package phenotypage.model.fiche.ficheOpu;
 
 import phenotypage.model.cryoconservation.Cryoconservation;
-import phenotypage.model.cryoconservation.tableauDetail.TableauDetail;
+import phenotypage.model.cryoconservation.embryon.Embryon;
 import phenotypage.model.operateur.Operateur;
 import phenotypage.model.fiche.Fiche;
 import phenotypage.model.fiche.ficheOpu.imageEcho.Echo;
@@ -10,7 +10,7 @@ import phenotypage.model.invitro.culture.Culture;
 import phenotypage.model.invitro.fecondation.Fecondation;
 import phenotypage.model.fiche.ficheOpu.maturationInVitro.MaturationInVitro;
 import phenotypage.model.fiche.ficheOpu.ovocytesCollecte.OvocytesCollectes;
-import phenotypage.model.fiche.ficheCol.tableauTraitement.TableauTraitement;
+import phenotypage.model.tableauTraitement.TableauTraitement;
 import phenotypage.model.infoTraitementDonneuse.InfoTraitementDonneuse;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
 import phenotypage.model.fiche.ficheOpu.typeOpu.TypeOpu;
@@ -71,7 +71,7 @@ public class FicheOpu extends Fiche
 	private List<TableauTraitement> tableauTraitements;
 
 	@OneToMany
-	private List<TableauDetail> tableauDetails;
+	private List<Embryon> embryons;
 
 	public FicheOpu() { super(); }
 
@@ -212,12 +212,12 @@ public class FicheOpu extends Fiche
 		this.infoTraitementDonneuse = infoTraitementDonneuse;
 	}
 
-	public List<TableauDetail> getTableauDetails() {
-		return tableauDetails;
+	public List<Embryon> getTableauDetails() {
+		return embryons;
 	}
 
-	public void setTableauDetails(List<TableauDetail> tableauDetails) {
-		this.tableauDetails = tableauDetails;
+	public void setTableauDetails(List<Embryon> tableauDetails) {
+		this.embryons = tableauDetails;
 	}
 }
 

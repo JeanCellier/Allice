@@ -7,7 +7,6 @@ import phenotypage.model.fiche.ficheTra.embryonsTransferes.EmbryonsTransferes;
 import phenotypage.model.gestation.Gestation;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
 import phenotypage.model.vache.Vache;
-
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;

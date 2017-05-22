@@ -6,7 +6,7 @@
     <div class="row placeholders">
         <div class="col-sm-1 col-md-1">
             <p data-placement="top" data-toggle="tooltip" title="add"  style="padding-left:15px;padding-top:10px">
-                <button class="btn btn-primary btn-md" data-title="Add" data-toggle="modal" data-target="#add" >
+                <button class="btn btn-primary btn-md" id="addFiche" data-title="Add" data-toggle="modal" data-target="#add" >
                     <span class="fa fa-plus"> Ajouter</span>
                 </button>
             </p>
@@ -16,6 +16,7 @@
             <table id="tableActes" class="table table-hover">
                 <thead>
                     <tr>
+                        <td></td>
                         <td>Nom</td>
                         <td>Programme</td>
                         <td>Date</td>
@@ -32,13 +33,14 @@
                 <tbody>
                 <c:forEach items="${fichesIaList}" var="fichesIa">
                     <tr>
+                        <td></td>
                         <td>${fichesIa.nom}</td>
                         <td>${fichesIa.programme.nom}</td>
                         <td><fmt:formatDate pattern="dd/MM/yyyy" value="${fichesIa.dateHeureMinute}" /></td>
                         <td>${fichesIa.lieu}</td>
-                        <td>${fichesIa.operateur}</td>
+                        <td>${fichesIa.insemination.operateur.nom} ${fichesIa.insemination.operateur.prenom}</td>
                         <td>${fichesIa.vache.num_identification}</td>
-                        <td>${fichesIa.insemination.taureau}</td>
+                        <td>${fichesIa.insemination.taureau.numTaureau}</td>
                         <td>${fichesIa.statut}</td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Details"><button class="btn btn-primary btn-md btnDetails" data-title="details" data-id="<c:out value='${fichesIa.id}' />" data-toggle="modal" data-target="#details" ><span class="glyphicon glyphicon-search"></span></button></p></td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="<c:out value='${fichesIa.id}' />" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
@@ -102,6 +104,7 @@
                 success: function (result) {
                     if(result != "") {
                         num = parseInt(result.substr(5)) + 1;
+
                         if (num < 10) {
                             numString = '000' + num;
                         } else if (num >= 10 && num < 100) {
@@ -132,7 +135,7 @@
     }
 
 
-    $(document).on('click', '#addFiche', function(e) { //au clic sur le bouton supprimer
+    $(document).on('click', '#addFiche', function(e) { //au clic sur le bouton add
         if($('#fiche_01').find("input[name='nom']").val() ==''){
             changeNom($('#fiche_01'));
         }
@@ -165,18 +168,44 @@
     /** function addRow */
     function addRow(result) {
         //converti date bon format
-        var dateFiche = new Date(result.objet.dateHeureMinute);
+        if(result.objet.dateHeureMinute != null) {
+            var dateFiche = convertDate(new Date(result.objet.dateHeureMinute));
+        }else{
+            var dateFiche = "";
+        }
+
+        if(result.objet.programme != null){
+            var nomProgramme = result.objet.programme.nom;
+        }else{
+            var nomProgramme = "";
+        }
+
+        var operateur = "";
+
+        if(result.objet.insemination != null){
+            if(result.objet.insemination.operateur != null) {
+                operateur = result.objet.insemination.operateur.nom + " " + result.objet.insemination.operateur.prenom;
+            }
+        }
+
+        if(result.objet.insemination != null){
+            var taureau = result.objet.insemination.taureau.numTaureau;
+
+        }else{
+            var taureau = "";
+        }
 
         /** ajoute une ligne à la table */
         $('#tableActes').DataTable().row.add([
-            result.objet.nom ,
-            result.objet.programme.nom,
-            convertDate(dateFiche),
+            '      ',
+            result.objet.nom,
+            nomProgramme,
+            dateFiche,
             result.objet.lieu,
-            result.objet.operateur,
+            operateur,
             result.objet.vache.num_identification,
-            result.objet.insemination.taureau,
-
+            taureau,
+            result.objet.statut,
             '<p data-placement="top" data-toggle="tooltip" title="Details"><button class="btn btn-primary btn-md btnDetails" data-title="details" data-id="' + result.objet.id + '" data-toggle="modal" data-target="#details" ><span class="glyphicon glyphicon-search"></span></button></p></>',
             '<p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="' + result.objet.id + '" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-pencil"></span></button></p></>',
             '<p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/' + result.objet.id + '" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></>'
@@ -187,21 +216,22 @@
     $('#tableActes').DataTable({
         "pagingType": "full_numbers",
         "columnDefs": [
-            {"orderable": false, "targets": 8},
+            {"orderable": false, "targets": 0},
             {"orderable": false, "targets": 9},
             {"orderable": false, "targets": 10},
-            {"targets": [7], "visible": false, "searchable": false},
+            {"orderable": false, "targets": 11},
+            {"targets": [8], "visible": false, "searchable": false},
         ], "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json"
         },
         "pageLength": 25,
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            if (aData[7] == "1") {
-                $('td', nRow).css('background-color', '#DE7E00');
-            } else if (aData[7] == "2") {
-                $('td', nRow).css('background-color', '#CC3333');
+            if (aData[8] == "1") {
+                $("td:eq(0)", nRow).css('background-color', '#DE7E00');
+            } else if (aData[8] == "2") {
+                $("td:eq(0)", nRow).css('background-color', '#CC3333');
             }else{
-                $('td', nRow).css('background-color', '#f9f9f9');
+                $("td:eq(0)", nRow).css('background-color', '#068b70');
             }
         }
     });

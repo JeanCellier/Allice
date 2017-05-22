@@ -1,7 +1,7 @@
 package phenotypage.model.fiche.ficheAba;
 
 import phenotypage.model.cryoconservation.Cryoconservation;
-import phenotypage.model.cryoconservation.tableauDetail.TableauDetail;
+import phenotypage.model.cryoconservation.embryon.Embryon;
 import phenotypage.model.fiche.ficheAba.abattoir.Abattoir;
 import phenotypage.model.operateur.Operateur;
 import phenotypage.model.fiche.Fiche;
@@ -47,7 +47,7 @@ public class FicheAba extends Fiche{
 	private Cryoconservation cryoconservation;
 
 	@OneToMany
-	private List<TableauDetail> tableauDetails;
+	private List<Embryon> embryons;
 
 	public FicheAba() { super(); }
 
@@ -133,12 +133,12 @@ public class FicheAba extends Fiche{
 		this.cryoconservation = cryoconservation;
 	}
 
-	public List<TableauDetail> getTableauDetails() {
-		return tableauDetails;
+	public List<Embryon> getEmbryons() {
+		return embryons;
 	}
 
-	public void setTableauDetails(List<TableauDetail> tableauDetails) {
-		this.tableauDetails = tableauDetails;
+	public void setEmbryons(List<Embryon> Embryons) {
+		this.embryons = Embryons;
 	}
 }
 

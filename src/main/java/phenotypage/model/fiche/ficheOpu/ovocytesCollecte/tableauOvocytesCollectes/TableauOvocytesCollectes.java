@@ -1,6 +1,5 @@
 package phenotypage.model.fiche.ficheOpu.ovocytesCollecte.tableauOvocytesCollectes;
 
-import phenotypage.model.qualite.Qualite;
 import javax.persistence.*;
 
 /**
@@ -27,8 +26,8 @@ public class TableauOvocytesCollectes
 	@Column
 	private String utilisation;
 
-	@ManyToOne
-	private Qualite qualite;
+	@Column
+	private int qualite;
 
 	public TableauOvocytesCollectes() {}
 
@@ -42,12 +41,12 @@ public class TableauOvocytesCollectes
 		this.nb_cocs = nb_cocs;
 	}
 
-	public Qualite getQualite()
+	public int getQualite()
 	{
 		return qualite;
 	}
 
-	public void setQualite(Qualite qualite)
+	public void setQualite(int qualite)
 	{
 		this.qualite = qualite;
 	}

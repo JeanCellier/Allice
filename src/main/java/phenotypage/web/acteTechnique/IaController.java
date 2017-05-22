@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import phenotypage.model.cuve.cuveSemence.canisterSemence.visoTubeSemence.semence.Semence;
+import phenotypage.model.cuve.cuveSemence.canisterSemence.visoTubeSemence.semence.SemenceService;
 import phenotypage.model.jsonResponse.JsonResponse;
 import phenotypage.model.fiche.ficheCol.FicheCol;
 import phenotypage.model.fiche.ficheCol.FicheColService;
@@ -49,7 +51,7 @@ public class IaController {
     private FicheIaService ficheIaService;
 
     @Autowired
-    private FicheColService ficheColService;
+    private SemenceService semenceService;
 
     @Autowired
     private TraitementActeService traitementService;
@@ -61,81 +63,232 @@ public class IaController {
         model.addAttribute("operateursList", operateurService.findAll());
         model.addAttribute("traitementsList", traitementService.findAll());
         model.addAttribute("produitsList", produitService.findAll());
-        model.addAttribute("fichesColList", ficheColService.findAll());
         model.addAttribute("fichesIaList", ficheIaService.findAll());
         return "acteTechnique/ia/ia_consult";
     }
 
     /******************** ADD OR UPDATE FICHE ********************/
     @ResponseBody
-    @RequestMapping(value = "/addOrUpdate", method = RequestMethod.POST)
-    public JsonResponse addOrUpdate(@RequestParam(value="id", required = false) FicheIa ficheIaForUpdate, @RequestParam("nom") String nom,
-                                    @RequestParam("date") String date, @RequestParam("lieu") String lieu,
-                                    @RequestParam("programme") Programme programme, @RequestParam("numIPE") String numIpe,
-                                    @RequestParam("numSemence") String numSemence, @RequestParam("vache") Vache vache,
-                                    @RequestParam("operateur") Operateur operateur, @RequestParam("optradioSexee") String optradioSexee,
-                                    @RequestParam("taureau") String taureau, @RequestParam("collecte") FicheCol collecte,
-                                    @RequestParam("lieuSemence") String lieuSemence, @RequestParam("facilite") String faciliteProgression,
-                                    @RequestParam("typeChaleur") String typeChaleur, @RequestParam(value="dateTraitement[]")  String[] dateTraitement,
-                                    @RequestParam(value="produit[]")  Produit[] produit, @RequestParam(value="quantite[]")  String[] quantite,
-                                    @RequestParam(value="modeTraitement[]")  String[] modeTraitement, @RequestParam(value="dateMethode[]") String[] dateMethode,
-                                    @RequestParam(value="methode[]")  String[] methode, @RequestParam(value="resultat[]")  String[] resultat,
-                                    @RequestParam("remarques") String remarques){
+    @RequestMapping(value = "/addOrUpdatePart1", method = RequestMethod.POST)
+    public JsonResponse addPart1(@RequestParam("nom") String nom, @RequestParam(value="programme", required = false) Programme programme,
+                                 @RequestParam("numIPE") String numIPE, @RequestParam("numSemence") String numSemence,
+                                 @RequestParam(value="lieu", required = false) String lieu, @RequestParam(value="date", required = false) String date,
+                                 @RequestParam("vache") String numIdvache){
 
-        JsonResponse response = new JsonResponse();
+        JsonResponse jsonResponse = new JsonResponse();
 
         SimpleDateFormat formatterDateTime = new SimpleDateFormat("dd/MM/yyyy hh:mm");
-        SimpleDateFormat formatterDate = new SimpleDateFormat("dd/MM/yyyy");
 
-        /****** CREATION LIGNE TABLEAU TRAITEMENT ******/
-        List<Tableau_Donneuse> tableauTraitement = new ArrayList<>();
-        for(int iLigneTraitement = 0; iLigneTraitement < dateTraitement.length; iLigneTraitement++){
-            Tableau_Donneuse tableauDonneuse = new Tableau_Donneuse();
+        Optional<Vache> vache = vacheService.findByNum_identification(numIdvache);
 
+        if(vache.isPresent()) {
             try {
-                Date dateTraitementParsee = formatterDate.parse(dateTraitement[iLigneTraitement]);
+                Date dateFiche = formatterDateTime.parse(date);
 
-                tableauDonneuse.setDate(dateTraitementParsee);
-            }catch (ParseException e) {
-                response.setSucces(false);
-                response.setMessage("Une ou plusieurs dates concernant le traitement_acte sont invalides");
+                FicheIa ficheIa = ficheIaService.createFicheIa(nom, dateFiche, lieu, programme, numIPE, numSemence, vache.get(),null, null, null);
+                jsonResponse.setObjet(ficheIa);
+                jsonResponse.setMessage("1ère étape enregistrée");
+            } catch (ParseException e) {
+                FicheIa ficheIa = ficheIaService.createFicheIa(nom, null, lieu, programme, numIPE, numSemence, vache.get(),null, null, null);
+                jsonResponse.setObjet(ficheIa);
+                jsonResponse.setMessage("1ère étape enregistrée - erreur dans la date");
             }
 
-            tableauDonneuse.setProduit(produit[iLigneTraitement]);
-            tableauDonneuse.setQuantite(Integer.parseInt(quantite[iLigneTraitement]));
-            tableauDonneuse.setMode_traitement(modeTraitement[iLigneTraitement]);
+            jsonResponse.setSucces(true);
 
-            tableauTraitement.add(tableauDonneuse);
-        }
-
-
-        /****** CREATION INSEMINATION ******/
-        Insemination insemination = new Insemination();
-        insemination.setOperateur(operateur);
-        if(Objects.equals(optradioSexee, "oui")){
-            insemination.setSemenceSexee(true);
         }else{
-            insemination.setSemenceSexee(false);
+            jsonResponse.setSucces(false);
+            jsonResponse.setMessage("Le numéro d'identification de ne correspond à aucune vache");
         }
-        insemination.setTaureau(taureau);
-        insemination.setCollecte(collecte);
-        insemination.setLieuDepot(lieuSemence);
-        insemination.setProgression(faciliteProgression);
+        return jsonResponse;
+    }
 
-        /****** CREATION GESTATION ******/
+    @ResponseBody
+    @RequestMapping(value = "/addOrUpdatePart1/{id}", method = RequestMethod.POST)
+    public JsonResponse updatePart1(@PathVariable("id") FicheIa ficheIaToUpdate, @RequestParam("nom") String nom, @RequestParam(value="programme", required = false) Programme programme,
+                                    @RequestParam("numIPE") String numIPE, @RequestParam("numSemence") String numSemence,
+                                    @RequestParam(value="lieu", required = false) String lieu, @RequestParam(value="date", required = false) String date,
+                                    @RequestParam("vache") String numIdvache){
+
+        JsonResponse jsonResponse = new JsonResponse();
+
+        SimpleDateFormat formatterDateTime = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+
+        Optional<Vache> vache = vacheService.findByNum_identification(numIdvache);
+
+        if(vache.isPresent()) {
+            try {
+                Date dateFiche = formatterDateTime.parse(date);
+
+                FicheIa ficheIa = ficheIaService.updateFicheIa(ficheIaToUpdate, nom, dateFiche, lieu, programme, numIPE,
+                        numSemence, vache.get(), ficheIaToUpdate.getInsemination(), ficheIaToUpdate.getTraitement_donneuse(),
+                        ficheIaToUpdate.getGestation());
+
+                jsonResponse.setObjet(ficheIa);
+            } catch (ParseException e) {
+                FicheIa ficheIa = ficheIaService.updateFicheIa(ficheIaToUpdate, nom, null, lieu, programme, numIPE,
+                        numSemence, vache.get(), ficheIaToUpdate.getInsemination(), ficheIaToUpdate.getTraitement_donneuse(),
+                        ficheIaToUpdate.getGestation());
+
+                jsonResponse.setObjet(ficheIa);
+            }
+
+            jsonResponse.setSucces(true);
+            jsonResponse.setMessage("1ère étape validée");
+        }else{
+            jsonResponse.setSucces(false);
+            jsonResponse.setMessage("Le numéro d'identification de ne correspond à aucune vache");
+        }
+        return jsonResponse;
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = "/addOrUpdatePart2/{id}", method = RequestMethod.POST)
+    public JsonResponse addOrUpdatePart2(@PathVariable("id") FicheIa ficheIaToUpdate,
+                                         @RequestParam(value="operateur", required=false) Operateur operateur,
+                                         @RequestParam(value="optradioSexee", required = false) String optradioSexee,
+                                         @RequestParam(value="taureau", required=false) String taureau,
+                                         @RequestParam(value="collecte", required = false) FicheCol collecte,
+                                         @RequestParam(value="lieuSemence", required=false) String lieuSemence,
+                                         @RequestParam(value="facilite", required=false) String faciliteProgression) {
+        JsonResponse jsonResponse = new JsonResponse();
+        if(collecte != null){
+            Insemination insemination;
+
+            if(ficheIaToUpdate.getInsemination() == null){
+                insemination = new Insemination();
+            }else {
+                insemination = ficheIaToUpdate.getInsemination();
+            }
+
+            insemination.setOperateur(operateur);
+
+            if(optradioSexee == "oui") {
+                insemination.setSemenceSexee(true);
+            }
+            if(optradioSexee == "non") {
+                insemination.setSemenceSexee(false);
+            }
+
+            Optional<Semence> semence = semenceService.findByNumTaureau(taureau);
+
+            if(semence.isPresent()) {
+                insemination.setTaureau(semence.get());
+                insemination.setCollecte(collecte.getNom());
+                insemination.setLieuDepot(lieuSemence);
+                insemination.setProgression(faciliteProgression);
+
+                ficheIaService.updateFicheIa(ficheIaToUpdate, ficheIaToUpdate.getNom(), ficheIaToUpdate.getDateHeureMinute(),
+                        ficheIaToUpdate.getLieu(), ficheIaToUpdate.getProgramme(), ficheIaToUpdate.getNumIpe(),
+                        ficheIaToUpdate.getNumDepotSemence(), ficheIaToUpdate.getVache(), insemination,
+                        ficheIaToUpdate.getTraitement_donneuse(), ficheIaToUpdate.getGestation());
+
+                jsonResponse.setMessage("2ème étape validée");
+                jsonResponse.setObjet(ficheIaToUpdate);
+                jsonResponse.setSucces(true);
+            }else{
+                jsonResponse.setMessage("Le numéro d'identification du taureau est invalide");
+                jsonResponse.setSucces(false);
+            }
+        }else{
+            jsonResponse.setSucces(false);
+            jsonResponse.setMessage("Fiche collecte non valide");
+        }
+
+
+        return jsonResponse;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/addOrUpdatePart3/{id}", method = RequestMethod.POST)
+    public JsonResponse addOrUpdatePart3(@PathVariable("id") FicheIa ficheIaToUpdate, @RequestParam(value="dateChaleur", required=false) String dateChaleur,
+            @RequestParam(value="typeChaleur", required=false) String typeChaleur, @RequestParam(value="dateTraitement[]", required=false)  String[] dateTraitement,
+            @RequestParam(value="produit[]", required=false)  Produit[] produit, @RequestParam(value="quantite[]", required=false)  String[] quantite,
+            @RequestParam(value="modeTraitement[]", required=false)  String[] modeTraitement){
+
+        JsonResponse jsonResponse = new JsonResponse();
+
+        SimpleDateFormat formatterDate = new SimpleDateFormat("dd/MM/yyyy");
+
+        List<Tableau_Donneuse> tableauTraitement = new ArrayList<>();
+
+        if(produit != null) {
+            for (int iLigneTraitement = 0; iLigneTraitement < produit.length; iLigneTraitement++) {
+                Tableau_Donneuse tableauDonneuse = new Tableau_Donneuse();
+
+                try {
+                    Date dateTraitementParsee = formatterDate.parse(dateTraitement[iLigneTraitement]);
+
+                    tableauDonneuse.setDate(dateTraitementParsee);
+                } catch (ParseException e) {
+                    jsonResponse.setSucces(false);
+                    jsonResponse.setMessage("Une ou plusieurs dates concernant le traitement_acte sont invalides");
+                }
+
+                tableauDonneuse.setProduit(produit[iLigneTraitement]);
+                if (quantite[iLigneTraitement] != null) {
+                    tableauDonneuse.setQuantite(Integer.parseInt(quantite[iLigneTraitement]));
+                } else {
+                    tableauDonneuse.setQuantite(0);
+                }
+
+                tableauDonneuse.setMode_traitement(modeTraitement[iLigneTraitement]);
+
+                tableauTraitement.add(tableauDonneuse);
+            }
+        }
+
+        try {
+            Traitement_Donneuse traitement_donneuse = new Traitement_Donneuse();
+            if(!Objects.equals(dateChaleur, "")) {
+                Date dateChaleurParse = formatterDate.parse(dateChaleur);
+                traitement_donneuse.setDate_ref_chaleur(dateChaleurParse);
+            }
+
+            traitement_donneuse.setTableauDonneuse(tableauTraitement);
+            traitement_donneuse.setTypeChaleur(typeChaleur);
+
+            FicheIa ficheIaUpdate = ficheIaService.updateFicheIa(ficheIaToUpdate, ficheIaToUpdate.getNom(), ficheIaToUpdate.getDateHeureMinute(),
+            ficheIaToUpdate.getLieu(), ficheIaToUpdate.getProgramme(), ficheIaToUpdate.getNumIpe(), ficheIaToUpdate.getNumDepotSemence(),
+            ficheIaToUpdate.getVache(), ficheIaToUpdate.getInsemination(), traitement_donneuse, ficheIaToUpdate.getGestation());
+
+            jsonResponse.setMessage("3ème étape validée");
+            jsonResponse.setObjet(ficheIaUpdate);
+            jsonResponse.setSucces(true);
+
+        }catch (ParseException e) {
+            jsonResponse.setSucces(false);
+            jsonResponse.setMessage("Une ou plusieurs dates sont invalides");
+        }
+
+        return jsonResponse;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/addOrUpdatePart4/{id}", method = RequestMethod.POST)
+    public JsonResponse addOrUpdatePart4(@PathVariable("id") FicheIa ficheIa, @RequestParam(value="dateMethode[]", required=false) String[] dateMethode,
+                                         @RequestParam(value="methode[]", required=false)  String[] methode,
+                                         @RequestParam(value="resultat[]", required=false)  String[] resultat,
+                                         @RequestParam(value="remarques", required=false) String remarques){
+
+        JsonResponse jsonResponse = new JsonResponse();
+
+        SimpleDateFormat formatterDate = new SimpleDateFormat("dd/MM/yyyy");
+
         Gestation gestation = new Gestation();
 
         List<Tableau_Gestation> tableauGestationList = new ArrayList<>();
+
         for(int iLigneGestation = 0; iLigneGestation < dateMethode.length; iLigneGestation++){
             Tableau_Gestation tableau_Gestation = new Tableau_Gestation();
-
             try {
                 Date dateGestationParsee = formatterDate.parse(dateMethode[iLigneGestation]);
 
                 tableau_Gestation.setDate(dateGestationParsee);
             }catch (ParseException e) {
-                response.setSucces(false);
-                response.setMessage("Une ou plusieurs dates concernant la gestation sont invalides");
+                jsonResponse.setSucces(false);
+                jsonResponse.setMessage("Une ou plusieurs dates concernant la gestation sont invalides");
             }
 
             tableau_Gestation.setMethode(methode[iLigneGestation]);
@@ -146,32 +299,15 @@ public class IaController {
         gestation.setTableauGestationList(tableauGestationList);
         gestation.setRemarques(remarques);
 
-        /****** CREATE FICHE IA ******/
-        try {
-            Date dateFiche = formatterDateTime.parse(date);
+        FicheIa ficheIaUpdate = ficheIaService.updateFicheIa(ficheIa, ficheIa.getNom(), ficheIa.getDateHeureMinute(),
+                ficheIa.getLieu(), ficheIa.getProgramme(), ficheIa.getNumIpe(), ficheIa.getNumDepotSemence(),
+                ficheIa.getVache(), ficheIa.getInsemination(), ficheIa.getTraitement_donneuse(), gestation);
 
-            Traitement_Donneuse traitement_donneuse = new Traitement_Donneuse();
-            traitement_donneuse.setTableauDonneuse(tableauTraitement);
-            traitement_donneuse.setTypeChaleur(typeChaleur);
+        jsonResponse.setMessage("Fiche enregistrée");
+        jsonResponse.setObjet(ficheIaUpdate);
+        jsonResponse.setSucces(true);
 
-            if(ficheIaForUpdate == null) {
-                FicheIa ficheIa = ficheIaService.createFicheIa(nom, dateFiche, lieu, programme, numIpe, numSemence, vache, insemination, traitement_donneuse, gestation);
-                response.setMessage("Ajout effectué");
-                response.setObjet(ficheIa);
-            }else{
-                FicheIa ficheIa = ficheIaService.updateFicheIa(ficheIaForUpdate, nom, dateFiche, lieu, programme, numIpe, numSemence, vache, insemination, traitement_donneuse, gestation);
-                response.setMessage("Modification(s) effectuée(s)");
-                response.setObjet(ficheIa);
-            }
-            response.setSucces(true);
-
-
-        }catch (ParseException e) {
-            response.setSucces(false);
-            response.setMessage("Une ou plusieurs dates sont invalides");
-        }
-
-        return response;
+        return jsonResponse;
     }
 
     /******************** DELETE FICHE ********************/
@@ -208,7 +344,7 @@ public class IaController {
     @RequestMapping(value="/get/lastName", method = RequestMethod.GET)
     public String getLastId(){
         String nom = ficheIaService.findTopByOrderByNomDesc().getNom();
-        if(nom != ""){
+        if(!Objects.equals(nom, "")){
             return nom;
         }else{
             return "";

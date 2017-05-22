@@ -1,13 +1,14 @@
 package phenotypage.model.fiche.ficheCol;
 
 import phenotypage.model.cryoconservation.Cryoconservation;
-import phenotypage.model.cryoconservation.tableauDetail.TableauDetail;
+import phenotypage.model.cryoconservation.embryon.Embryon;
 import phenotypage.model.operateur.Operateur;
 import phenotypage.model.fiche.Fiche;
 import phenotypage.model.invitro.collecte.resultat.Resultat;
-import phenotypage.model.fiche.ficheCol.tableauTraitement.TableauTraitement;
+import phenotypage.model.tableauTraitement.TableauTraitement;
 import phenotypage.model.infoTraitementDonneuse.InfoTraitementDonneuse;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
+import phenotypage.model.traitementDonneuse.tableau_donneuse.Tableau_Donneuse;
 import phenotypage.model.vache.Vache;
 import javax.persistence.*;
 import java.util.List;
@@ -34,19 +35,23 @@ public class FicheCol extends Fiche {
 	private Traitement_Donneuse traitement_donneuse;
 
 	@OneToOne
-	private Resultat resultat_collecte;
+	private InfoTraitementDonneuse infoTraitementDonneuse;
 
-	@OneToOne
-	private Cryoconservation cryoconservation;
+	@OneToMany
+	private List<Tableau_Donneuse> tableauSuperOv;
 
 	@OneToMany
 	private List<TableauTraitement> tableauTraitements;
 
 	@OneToOne
-	private InfoTraitementDonneuse infoTraitementDonneuse;
+	private Resultat resultat_collecte;
 
 	@OneToMany
-	private List<TableauDetail> tableauDetails;
+	private List<Embryon> detailsEmbryonsViables;
+
+	@OneToOne
+	private Cryoconservation cryoconservation;
+
 
 	public FicheCol() { super(); }
 
@@ -129,12 +134,20 @@ public class FicheCol extends Fiche {
 		this.infoTraitementDonneuse = infoTraitementDonneuse;
 	}
 
-	public List<TableauDetail> getTableauDetails() {
-		return tableauDetails;
+	public List<Tableau_Donneuse> getTableauSuperOv() {
+		return tableauSuperOv;
 	}
 
-	public void setTableauDetails(List<TableauDetail> tableauDetails) {
-		this.tableauDetails = tableauDetails;
+	public void setTableauSuperOv(List<Tableau_Donneuse> tableauSuperOv) {
+		this.tableauSuperOv = tableauSuperOv;
+	}
+
+	public List<Embryon> getDetailsEmbryonsViables() {
+		return detailsEmbryonsViables;
+	}
+
+	public void setDetailsEmbryonsViables(List<Embryon> detailsEmbryonsViables) {
+		this.detailsEmbryonsViables = detailsEmbryonsViables;
 	}
 }
 
