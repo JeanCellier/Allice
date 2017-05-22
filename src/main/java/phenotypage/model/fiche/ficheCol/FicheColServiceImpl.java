@@ -77,4 +77,9 @@ FicheColServiceImpl implements FicheColService {
     public FicheCol save(FicheCol ficheCol) {
         return repository.save(ficheCol);
     }
+
+    @Override
+    public List<FicheCol> findAllFicheCol() {
+        return repository.findAll();
+    }
 }

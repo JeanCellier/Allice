@@ -32,4 +32,6 @@ public interface FicheIaService
 	FicheIa findByNom(String nom);
 
 	int determineStatut(FicheIa ficheIa);
+
+    List<FicheIa> findAllFicheIa();
 }

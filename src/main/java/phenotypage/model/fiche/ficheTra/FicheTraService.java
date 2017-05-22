@@ -38,4 +38,6 @@ public interface FicheTraService
 	FicheTra findByNom(String nom);
 
 	int determineStatut(FicheTra ficheTra);
+
+    List<FicheTra> findAllFicheTra();
 }

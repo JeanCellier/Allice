@@ -35,4 +35,6 @@ public interface FicheColService
 	Optional<FicheCol> findOne(long id);
 
 	FicheCol save(FicheCol ficheCol);
+
+    List<FicheCol> findAllFicheCol();
 }

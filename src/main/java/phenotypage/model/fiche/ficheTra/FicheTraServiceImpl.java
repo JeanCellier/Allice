@@ -199,5 +199,10 @@ FicheTraServiceImpl implements FicheTraService {
         return 0;
     }
 
+    @Override
+    public List<FicheTra> findAllFicheTra() {
+        return repository.findAll();
+    }
+
 
 }

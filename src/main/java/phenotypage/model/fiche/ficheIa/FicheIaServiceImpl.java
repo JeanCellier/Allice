@@ -167,6 +167,11 @@ FicheIaServiceImpl implements FicheIaService {
     }
 
     @Override
+    public List<FicheIa> findAllFicheIa() {
+        return repository.findAll();
+    }
+
+    @Override
     public FicheIa findByNom(String nom) {
         return repository.findByNom(nom);
     }
