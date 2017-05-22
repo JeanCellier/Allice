@@ -19,6 +19,11 @@ public class CuveInVitro extends Cuve {
         super();
     }
 
+    public CuveInVitro(List<CanisterInVitro> canisterList) {
+
+        this.canisterList = canisterList;
+    }
+
     public List<CanisterInVitro> getCanisterList() {
         return canisterList;
     }

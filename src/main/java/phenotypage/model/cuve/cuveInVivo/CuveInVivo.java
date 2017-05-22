@@ -19,6 +19,10 @@ public class CuveInVivo extends Cuve {
         super();
     }
 
+    public CuveInVivo(List<CanisterInVivo> canisterList) {
+        this.canisterList = canisterList;
+    }
+
     public List<CanisterInVivo> getCanisterList() {
         return canisterList;
     }

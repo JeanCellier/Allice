@@ -7,186 +7,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1b2266e-e014-46c0-a873-aa645bb17deb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/embryon/EmbryonRepository.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/embryon/EmbryonService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/embryon/EmbryonServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/canister/visoTube/VisoTube.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/CuveInVitro.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/CanisterInVitro.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/VisoTubeInVitro.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/embryonsInVitro/EmbryonsInVitro.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/CuveInVivo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/CanisterInVivo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/VisoTubeInVivo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/embryonsInVivo/EmbryonsInVivo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveSemence/CuveSemence.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveSemence/canisterSemence/CanisterSemence.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveSemence/canisterSemence/visoTubeSemence/VisoTubeSemence.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveSemence/canisterSemence/visoTubeSemence/semence/SemencePopulator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveSemence/canisterSemence/visoTubeSemence/semence/SemenceRepository.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveSemence/canisterSemence/visoTubeSemence/semence/SemenceService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveSemence/canisterSemence/visoTubeSemence/semence/SemenceServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveSomatique/CuveSomatique.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveSomatique/canisterSomatique/CanisterSomatique.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveSomatique/canisterSomatique/visoTubeSomatique/VisoTubeSomatique.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColPopulator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/web/CuveController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/web/SemenceController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/col/col_ajouterModifier.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/col/col_consult.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/col/col_detail.jsp" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/congelateur/Congelateur.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/congelateur/CongelateurPopulator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/congelateur/CongelateurRepository.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/congelateur/CongelateurService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/congelateur/CongelateurServiceImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/methodeCongelation/MethodeCongelation.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/methodeCongelation/MethodeCongelationRepository.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/methodeCongelation/MethodeCongelationService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/methodeCongelation/MethodeCongelationServiceImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/stade/StadeRepository.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/stade/StadeService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/stade/StadeServiceImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/tableauDetail/TableauDetailRepository.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/tableauDetail/TableauDetailService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/tableauDetail/TableauDetailServiceImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/CuvePopulator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/CuveRepository.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/CuveService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/CuveServiceImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/canister/CanisterPopulator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/canister/CanisterRepository.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/canister/CanisterService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/canister/CanisterServiceImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cellulesSomatiques/Cuve/CellulesSomatiquesCuve.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/embryonsVitro/Canister/EmbryonsVitroCanister.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/embryonsVitro/Cuve/EmbryonsVitroCuve.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/embryonsVivo/Canister/EmbryonsVivoCanister.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/embryonsVivo/Cuve/EmbryonsVivoCuve.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/semancesElevage/Canister/SemancesElevageCanister.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/semancesElevage/Cuve/SemancesElevageCuve.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/semancesFIV/Cuve/SemancesFIVCuve.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/visoTube/VisoTube.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/visoTube/VisoTubePopulator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/visoTube/VisoTubeRepository.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/visoTube/VisoTubeService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/visoTube/VisoTubeServiceImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/qualite/QualiteRepository.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/qualite/QualiteService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/qualite/QualiteServiceImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/sanitaire/Sanitaire.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/sanitaire/SanitaireRepository.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/sanitaire/SanitaireService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/sanitaire/SanitaireServiceImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/web/AideController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/col/colaccueil.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/col/consultation/consultation.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/col/consultation/consultationCol.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/col/consultation/enteteCol.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/col/consultation/infoSiCryoCol.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/col/consultation/resultatCollecteCol.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/col/consultation/traitementDonneuseCol.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/col/consultation/vacheCol.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/col/enteteCol.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/col/infoSiCryoCol.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/col/modification.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/col/resultatCollecteCol.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/col/traitementDonneuseCol.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/col/vacheCol.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/WEB-INF/views/acteTechnique/col/colaccueil.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/WEB-INF/views/acteTechnique/col/consultation/consultation.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/WEB-INF/views/acteTechnique/col/consultation/consultationCol.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/WEB-INF/views/acteTechnique/col/consultation/enteteCol.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/WEB-INF/views/acteTechnique/col/consultation/infoSiCryoCol.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/WEB-INF/views/acteTechnique/col/consultation/resultatCollecteCol.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/WEB-INF/views/acteTechnique/col/consultation/traitementDonneuseCol.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/WEB-INF/views/acteTechnique/col/consultation/vacheCol.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/WEB-INF/views/acteTechnique/col/enteteCol.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/WEB-INF/views/acteTechnique/col/infoSiCryoCol.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/WEB-INF/views/acteTechnique/col/modification.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/WEB-INF/views/acteTechnique/col/resultatCollecteCol.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/WEB-INF/views/acteTechnique/col/traitementDonneuseCol.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/WEB-INF/views/acteTechnique/col/vacheCol.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/phenotypage/web/AideController.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/stade/Stade.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/canister/Canister.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/tableauDetail/TableauDetail.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/embryon/Embryon.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cellulesSomatiques/Canister/CellulesSomatiquesCanister.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveSomatique/canisterSomatique/visoTubeSomatique/celluleSomatique/CelluleSomatique.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/semancesFIV/Canister/SemancesFIVCanister.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveSemence/canisterSemence/visoTubeSemence/semence/Semence.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/destionationCulture/DestinationCulture.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/destinationCulture/DestinationCulture.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/destionationCulture/DestinationCulturePopulator.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/destinationCulture/DestinationCulturePopulator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/destionationCulture/DestinationCultureRepository.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/destinationCulture/DestinationCultureRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/destionationCulture/DestinationCultureService.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/destinationCulture/DestinationCultureService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/destionationCulture/DestinationCultureServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/destinationCulture/DestinationCultureServiceImpl.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/tableauTraitement/TableauTraitement.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/tableauTraitement/TableauTraitement.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/qualite/Qualite.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/Cuve.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/cryoconservation/Cryoconservation.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/cryoconservation/Cryoconservation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheAba/FicheAba.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheAba/FicheAba.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheCol/FicheCol.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheCol/FicheCol.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheCol/FicheColRepository.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheCol/FicheColRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheCol/FicheColService.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheCol/FicheColService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheCol/FicheColServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheCol/FicheColServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheIa/FicheIa.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheIa/FicheIa.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheIa/FicheIaService.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheIa/FicheIaService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheIa/FicheIaServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheIa/FicheIaServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheOpu/FicheOpu.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheOpu/FicheOpu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheTra/FicheTraServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/fiche/ficheTra/FicheTraServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/gestation/GestationService.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/gestation/GestationService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/gestation/GestationServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/gestation/GestationServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/invitro/collecte/resultat/Resultat.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/invitro/collecte/resultat/Resultat.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/invitro/culture/Culture.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/invitro/culture/Culture.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/invitro/fecondation/Fecondation.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/invitro/fecondation/Fecondation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/traitementDonneuse/Traitement_DonneuseService.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/traitementDonneuse/Traitement_DonneuseService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/traitementDonneuse/Traitement_DonneuseServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/model/traitementDonneuse/Traitement_DonneuseServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/web/CuveController.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/web/CuveController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/importation/ficher/importABA.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/importation/ficher/importABA.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/Cryoconservation.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/Cryoconservation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheAba/FicheAba.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheAba/FicheAba.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheCol.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheCol.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColRepository.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColService.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIa.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIa.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaService.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/insemination/Insemination.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/insemination/Insemination.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/insemination/InseminationService.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/insemination/InseminationService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/insemination/InseminationServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/insemination/InseminationServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheOpu/FicheOpu.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheOpu/FicheOpu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheOpu/ovocytesCollecte/OvocytesCollectes.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheOpu/ovocytesCollecte/OvocytesCollectes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheOpu/ovocytesCollecte/tableauOvocytesCollectes/TableauOvocytesCollectes.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheOpu/ovocytesCollecte/tableauOvocytesCollectes/TableauOvocytesCollectes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/FicheTraService.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/FicheTraService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/FicheTraServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/FicheTraServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/gestation/GestationService.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/gestation/GestationService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/gestation/GestationServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/gestation/GestationServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/invitro/collecte/resultat/Resultat.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/invitro/collecte/resultat/Resultat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/invitro/culture/Culture.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/invitro/culture/Culture.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/invitro/fecondation/Fecondation.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/invitro/fecondation/Fecondation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/Traitement_DonneuseService.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/Traitement_DonneuseService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/Traitement_DonneuseServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/Traitement_DonneuseServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/traitement_acte/TraitementActeServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/traitement_acte/TraitementActeServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/traitement_acte/tableau_traitement/Tableau_TraitementActeServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/traitement_acte/tableau_traitement/Tableau_TraitementActeServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/traitement_acte/tableau_traitement/Tableau_Traitement_Acte.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/traitement_acte/tableau_traitement/Tableau_Traitement_Acte.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/traitement_acte/tableau_traitement/Tableau_Traitement_ActeService.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/traitement_acte/tableau_traitement/Tableau_Traitement_ActeService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/vache/VacheRepository.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/vache/VacheRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/web/CanisterController.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/web/CanisterController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/web/TraitementController.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/web/TraitementController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/web/VacheController.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/web/VacheController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/AbaController.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/AbaController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/ColController.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/ColController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/IaController.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/IaController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/OpuController.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/OpuController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/TraController.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/TraController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_ajouterModifier.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_ajouterModifier.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_consult.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_consult.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_detail.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_detail.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_ajouterModifier.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_ajouterModifier.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_consult.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_consult.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_detail.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_detail.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/menu.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/menu.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/traitement/traitement.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/traitement/traitement.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/WEB-INF/views/menu.jsp" afterPath="$PROJECT_DIR$/target/classes/WEB-INF/views/menu.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application.properties" afterPath="$PROJECT_DIR$/target/classes/application.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/CuveInVitroService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/CuveInVitroServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/CuveInVtroRepository.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/CanisterInVitroRepository.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/CanisterInVitroService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/CanisterInVitroServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/VisoTubeInVitroRepository.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/VisoTubeInVitroService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/VisoTubeInVitroServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/embryonsInVitro/EmbryonsInVitroRepository.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/embryonsInVitro/EmbryonsInVitroService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/embryonsInVitro/EmbryonsInVitroServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/CuveInVivoRepository.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/CuveInVivoService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/CuveInVivoServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/CanisterInVivoRepository.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/CanisterInVivoService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/CanisterInVivoServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/VisoTubeInVivoRepository.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/VisoTubeInVivoService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/VisoTubeInVivoServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/embryonsInVivo/EmbryonsInVivoRepository.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/embryonsInVivo/EmbryonsInVivoService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/embryonsInVivo/EmbryonsInVivoServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/CuveInVitro.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/CuveInVitro.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/CanisterInVitro.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/CanisterInVitro.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/VisoTubeInVitro.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/VisoTubeInVitro.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/embryonsInVitro/EmbryonsInVitro.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/embryonsInVitro/EmbryonsInVitro.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/CuveInVivo.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/CuveInVivo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/CanisterInVivo.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/CanisterInVivo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/VisoTubeInVivo.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/VisoTubeInVivo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/embryonsInVivo/EmbryonsInVivo.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/embryonsInVivo/EmbryonsInVivo.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -201,34 +54,14 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Canister.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/canister/Canister.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Cuve.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/Cuve.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -287,40 +120,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIa.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/insemination/Insemination.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_consult.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/traitement/traitement.jsp" />
-        <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_ajouterModifier.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/IaController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/TraController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/vache/VachePopulator.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_ajouterModifier.jsp" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/cuves/cuves.jsp" />
-        <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/cuves/canister_detail.jsp" />
-        <option value="$PROJECT_DIR$/src/main/resources/WEB-INF/views/menu.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/CellulesSomatiques.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/CellulesSomatiques/CellulesSomatiques.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/semancesFIV/SemancesFIV.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/semancesElevage/SemancesElevage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/embryonsVivo/EmbryonsVivo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/embryonsVitro/EmbryonsVitro.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cellulesSomatiques/CellulesSomatiques.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cellulesSomatiques/CellulesSomatiquesCanister.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/embryonsVitro/EmbryonsVitroCanister.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/embryonsVivo/EmbryonsVivoCanister.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/semancesElevage/SemancesElevageCanister.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/semancesFIV/SemancesFIVCanister.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/semancesFIV/SemancesFIVCuve.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/semancesElevage/SemancesElevageCuve.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/embryonsVivo/EmbryonsVivoCuve.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/embryonsVitro/EmbryonsVitroCuve.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cellulesSomatiques/CellulesSomatiquesCuve.java" />
-        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/semancesFIV/Canister/SemancesFIVCanister.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/semancesElevage/Canister/SemancesElevageCanister.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/embryonsVivo/Canister/EmbryonsVivoCanister.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/embryonsVitro/Canister/EmbryonsVitroCanister.java" />
@@ -338,6 +137,40 @@
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/semancesFIV/Cuve/SemancesFIVCuve.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/canister/Canister.java" />
         <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/Cuve.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/embryonsInVitro/EmbryonsInVitroRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/embryon/EmbryonService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/embryonsInVitro/EmbryonsInVitroService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/embryonsInVitro/EmbryonsInVitroServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/embryonsInVitro/EmbryonsInVitro.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/embryon/EmbryonServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/VisoTubeInVitroRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/VisoTubeInVitroService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/VisoTubeInVitroServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/VisoTubeInVitro.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/CanisterInVitroRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/CanisterInVitro.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/CuveInVitro.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/CuveInVtroRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/CuveInVitroServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/CanisterInVitroService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/CanisterInVitroServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/embryonsInVivo/EmbryonsInVivoRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/embryonsInVivo/EmbryonsInVivoService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/embryonsInVivo/EmbryonsInVivo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/embryonsInVivo/EmbryonsInVivoServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/VisoTubeInVivoRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/VisoTubeInVivoService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/VisoTubeInVivo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/VisoTubeInVivoServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/CanisterInVivoRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/CanisterInVivoService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/CanisterInVivo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/CanisterInVivoServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/CuveInVivoRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/CuveInVivo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/CuveInVitroService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/CuveInVivoService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/CuveInVivoServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -923,7 +756,309 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="canister" />
+              <option name="myItemId" value="cuveSomatique" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Allice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Allice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phenotypage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cuve" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cuveSomatique" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="canisterSomatique" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Allice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Allice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phenotypage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cuve" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cuveSomatique" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="canisterSomatique" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="visoTubeSomatique" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Allice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Allice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phenotypage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cuve" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cuveSomatique" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="canisterSomatique" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="visoTubeSomatique" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="celluleSomatique" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Allice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Allice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phenotypage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cuve" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cuveSemence" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Allice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Allice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phenotypage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cuve" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cuveSemence" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="canisterSemence" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Allice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Allice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phenotypage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cuve" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cuveSemence" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="canisterSemence" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="visoTubeSemence" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Allice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Allice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phenotypage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cuve" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cuveInVitro" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -958,6 +1093,44 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="cryoconservation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Allice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Allice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phenotypage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cryoconservation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="embryon" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1519,7 +1692,7 @@
       <workItem from="1495238985163" duration="4211000" />
       <workItem from="1495274811467" duration="1177000" />
       <workItem from="1495362151355" duration="210000" />
-      <workItem from="1495472008162" duration="55000" />
+      <workItem from="1495472008162" duration="10468000" />
     </task>
     <task id="LOCAL-00001" summary="interface pharmacie">
       <created>1489611137333</created>
@@ -1773,11 +1946,18 @@
       <option name="project" value="LOCAL" />
       <updated>1495275923595</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Merge branch 'fonctionnalites_fiche_tra_et_fiche_ia' of https://github.com/JeanCellier/Allice into cuves&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;">
+      <created>1495472145583</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1495472145583</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="446085000" />
+    <option name="totallyTimeSpent" value="456498000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1804,7 +1984,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20895523" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21428572" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1826,7 +2006,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="new menu + dropdown" />
     <MESSAGE value="Clean projet&#10;Maj api spring / dépendance &#10;Cohabitation font-awesome &amp; glyphicon&#10;Module pharmacie 100 %&#10;Modification produitservice/impl&#10;Maj menu" />
     <MESSAGE value="Ajout auto completion" />
     <MESSAGE value="refonte menu = &gt; compatible smartphone&#10;bug auto close des alertes réglé" />
@@ -1851,7 +2030,8 @@
     <MESSAGE value="Correction bug dans fiche tra -&gt; nouvelle fiche avait toujours class edit form&#10;Modifications datatable fiche -&gt; ajout statut&#10;Modifications fonction datatable -&gt; coloration en fonction du statut&#10;Modifications Modif fiche -&gt; actualise les données et la couleur" />
     <MESSAGE value="Modification fonction datatable fiche tra -&gt; prise en compte statut = 0&#10;Rajout script datatable.bootstrap.min.js" />
     <MESSAGE value="Merge branches 'cuves' and 'fonctionnalites_fiche_tra_et_fiche_ia' of https://github.com/JeanCellier/Allice into cuves&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/resources/WEB-INF/views/menu.jsp&#10;#&#9;target/classes/WEB-INF/views/menu.jsp&#10;#&#9;target/classes/application.properties&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branches 'cuves' and 'fonctionnalites_fiche_tra_et_fiche_ia' of https://github.com/JeanCellier/Allice into cuves&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/resources/WEB-INF/views/menu.jsp&#10;#&#9;target/classes/WEB-INF/views/menu.jsp&#10;#&#9;target/classes/application.properties&#10;" />
+    <MESSAGE value="Merge branch 'fonctionnalites_fiche_tra_et_fiche_ia' of https://github.com/JeanCellier/Allice into cuves&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'fonctionnalites_fiche_tra_et_fiche_ia' of https://github.com/JeanCellier/Allice into cuves&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1872,237 +2052,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheTra/FicheTraRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="15" column="36" lean-forward="false" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/vache/Vache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="25" column="37" lean-forward="false" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/traitementDonneuse/Traitement_DonneusePopulator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="19" column="34" lean-forward="true" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/pharmacie/pharmacie.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="85" column="94" lean-forward="false" selection-start-line="85" selection-start-column="94" selection-end-line="85" selection-end-column="105" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/traitement/traitement.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-731">
-          <caret line="86" column="95" lean-forward="false" selection-start-line="86" selection-start-column="95" selection-end-line="86" selection-end-column="95" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/vache/VachePopulator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="22" column="11" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="22" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/vache/VacheRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="16" column="68" lean-forward="false" selection-start-line="16" selection-start-column="68" selection-end-line="16" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/TraController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="57" column="75" lean-forward="false" selection-start-line="57" selection-start-column="75" selection-end-line="57" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/web/acteTechnique/IaController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3128">
-          <caret line="209" column="59" lean-forward="false" selection-start-line="209" selection-start-column="36" selection-end-line="209" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/tra/tra_ajouterModifier.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="48" lean-forward="false" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_ajouterModifier.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="22" column="29" lean-forward="false" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="50" column="21" lean-forward="false" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/web/HomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="27" lean-forward="false" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/web/TraitementController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="84" column="68" lean-forward="false" selection-start-line="84" selection-start-column="68" selection-end-line="84" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_detail.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="20" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="211" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_consult.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/cuves/cuves.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="150" column="0" lean-forward="true" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/cuves/canister_detail.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/cuves/cellules_somatiques.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/cuves/embryons_vitro.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/cuves/embryons_vivo.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/cuves/semences_fiv.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/cuves/semences_elevage.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/menu.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="36" column="70" lean-forward="false" selection-start-line="36" selection-start-column="70" selection-end-line="36" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/pharmacie/produit/Produit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="20" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIaServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1348">
-          <caret line="104" column="40" lean-forward="false" selection-start-line="104" selection-start-column="40" selection-end-line="104" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheIa/FicheIa.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="17" column="4" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="18" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/Fiche.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/semancesFIV/Canister/SemancesFIVCanister.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/semancesElevage/Canister/SemancesElevageCanister.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/embryonsVivo/Canister/EmbryonsVivoCanister.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cellulesSomatiques/Canister/CellulesSomatiquesCanister.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/web/AideController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/CuveService.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/CuveServiceImpl.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/canister/CanisterService.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/canister/CanisterServiceImpl.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/embryonsVitro/Canister/EmbryonsVitroCanister.java" />
@@ -2113,6 +2062,14 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/embryonsVivo/Cuve/EmbryonsVivoCuve.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/semancesElevage/Cuve/SemancesElevageCuve.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/semancesFIV/Cuve/SemancesFIVCuve.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/Cuve.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/canister/Canister.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -2121,11 +2078,384 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/Cuve.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/CryoconservationServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+        <state relative-caret-position="85">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/CryoconservationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/CryoconservationRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="44" lean-forward="false" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/embryon/EmbryonService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="32" lean-forward="true" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="116" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/embryon/EmbryonRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/embryonsInVitro/EmbryonsInVitro.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="33" column="114" lean-forward="false" selection-start-line="33" selection-start-column="114" selection-end-line="33" selection-end-column="114" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/embryon/Embryon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cryoconservation/embryon/EmbryonServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/embryonsInVitro/EmbryonsInVitroService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="3" lean-forward="true" selection-start-line="13" selection-start-column="3" selection-end-line="19" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/embryonsInVitro/EmbryonsInVitroRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="43" lean-forward="false" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/embryonsInVitro/EmbryonsInVitroServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/VisoTubeInVitro.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="22" column="8" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/VisoTubeInVitroServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="35" lean-forward="false" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#467#468#0" expanded="false" />
+            <element signature="e#525#526#0" expanded="false" />
+            <element signature="e#960#961#0" expanded="false" />
+            <element signature="e#1004#1005#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/VisoTubeInVitroRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="43" lean-forward="false" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/visoTubeInVitro/VisoTubeInVitroService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="4" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="17" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/CanisterInVitro.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="25" column="30" lean-forward="false" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+          <folding>
+            <element signature="e#609#610#0" expanded="true" />
+            <element signature="e#657#658#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/CanisterInVitroRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="43" lean-forward="true" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/CuveInVitroServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="37" lean-forward="false" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#368#369#0" expanded="false" />
+            <element signature="e#421#422#0" expanded="false" />
+            <element signature="e#674#675#0" expanded="false" />
+            <element signature="e#735#736#0" expanded="false" />
+            <element signature="e#792#793#0" expanded="false" />
+            <element signature="e#832#833#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/CanisterInVitroService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="20" lean-forward="true" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/canisterInVitro/CanisterInVitroServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="19" column="48" lean-forward="false" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/CuveInVitro.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="15" column="12" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/embryonsInVivo/EmbryonsInVivoRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="78" lean-forward="false" selection-start-line="7" selection-start-column="78" selection-end-line="7" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/embryonsInVivo/EmbryonsInVivo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/embryonsInVivo/EmbryonsInVivoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/embryonsInVivo/EmbryonsInVivoServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="34" lean-forward="false" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#512#513#0" expanded="false" />
+            <element signature="e#569#570#0" expanded="false" />
+            <element signature="e#1050#1051#0" expanded="false" />
+            <element signature="e#1093#1094#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/VisoTubeInVivoRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="58" lean-forward="false" selection-start-line="7" selection-start-column="58" selection-end-line="7" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/VisoTubeInVivo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="16" column="68" lean-forward="false" selection-start-line="16" selection-start-column="68" selection-end-line="16" selection-end-column="68" />
+          <folding>
+            <element signature="e#613#614#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/VisoTubeInVivoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/visoTubeInVivo/VisoTubeInVivoServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="47" lean-forward="true" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#445#446#0" expanded="false" />
+            <element signature="e#502#503#0" expanded="false" />
+            <element signature="e#965#966#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/CanisterInVivoRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="78" lean-forward="false" selection-start-line="7" selection-start-column="78" selection-end-line="7" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/CanisterInVivo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="21" column="62" lean-forward="false" selection-start-line="21" selection-start-column="62" selection-end-line="21" selection-end-column="62" />
+          <folding>
+            <element signature="e#646#647#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/CanisterInVivoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/canisterInVivo/CanisterInVivoServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="34" lean-forward="false" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#423#424#0" expanded="false" />
+            <element signature="e#480#481#0" expanded="false" />
+            <element signature="e#888#889#0" expanded="false" />
+            <element signature="e#931#932#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/CuveInVivoRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="34" lean-forward="true" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/CuveInVtroRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="38" lean-forward="false" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVitro/CuveInVitroService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/CuveInVivo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="21" column="22" lean-forward="false" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="55" />
+          <folding>
+            <element signature="e#506#507#0" expanded="true" />
+            <element signature="e#554#555#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/CuveInVivoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="65" lean-forward="false" selection-start-line="13" selection-start-column="65" selection-end-line="13" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/phenotypage/model/cuve/cuveInVivo/CuveInVivoServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="32" lean-forward="true" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#369#370#0" expanded="true" />
+            <element signature="e#422#423#0" expanded="true" />
+            <element signature="e#667#668#0" expanded="true" />
+            <element signature="e#727#728#0" expanded="true" />
+            <element signature="e#783#784#0" expanded="true" />
+            <element signature="e#822#823#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

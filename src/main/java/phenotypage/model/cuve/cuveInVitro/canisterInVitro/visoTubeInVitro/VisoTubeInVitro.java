@@ -14,4 +14,12 @@ import java.util.List;
 public class VisoTubeInVitro extends VisoTube {
     @OneToMany
     List<EmbryonsInVitro> embryonsInVitroList;
+
+    public VisoTubeInVitro(List<EmbryonsInVitro> embryonsInVitroList) {
+        this.embryonsInVitroList = embryonsInVitroList;
+    }
+
+    public VisoTubeInVitro() {
+
+    }
 }

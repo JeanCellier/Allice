@@ -19,6 +19,13 @@ public class CanisterInVitro extends Canister{
         return visoTubeList;
     }
 
+    public CanisterInVitro(List<VisoTubeInVitro> visoTubeList) {
+        this.visoTubeList = visoTubeList;
+    }
+
+    public CanisterInVitro() {
+    }
+
     public void setVisoTubeList(List<VisoTubeInVitro> visoTubeList) {
         this.visoTubeList = visoTubeList;
     }

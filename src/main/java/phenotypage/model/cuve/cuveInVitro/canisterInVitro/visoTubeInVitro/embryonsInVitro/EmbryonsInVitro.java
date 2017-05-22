@@ -31,6 +31,14 @@ public class EmbryonsInVitro {
     @Column
     private String remarques;
 
+    public EmbryonsInVitro(Embryon embryon, String couleur, Semence semence, int nbPaillettes, String remarques) {
+        this.embryon = embryon;
+        this.couleur = couleur;
+        this.semence = semence;
+        this.nbPaillettes = nbPaillettes;
+        this.remarques = remarques;
+    }
+
     public EmbryonsInVitro() {    }
 
     public Long getId() {
