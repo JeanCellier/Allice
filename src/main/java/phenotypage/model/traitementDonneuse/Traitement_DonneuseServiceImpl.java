@@ -31,7 +31,7 @@ public class Traitement_DonneuseServiceImpl implements Traitement_DonneuseServic
 		List<Tableau_Donneuse> tableau_donneusesSave = new ArrayList<>();
 
 		for (Tableau_Donneuse tableau_donneuse:tableau_donneuses) {
-			tableau_donneusesSave.add(tableau_DonneuseService.createTableauDOnneuse(tableau_donneuse.getDate(), tableau_donneuse.getProduit(), tableau_donneuse.getQuantite(), tableau_donneuse.getMode_traitement()));
+			tableau_donneusesSave.add(tableau_DonneuseService.createTableauDonneuse(tableau_donneuse.getDate(), tableau_donneuse.getProduit(), tableau_donneuse.getQuantite(), tableau_donneuse.getMode_traitement()));
 		}
 
 		traitement_donneuse.setTableauDonneuse(tableau_donneusesSave);
@@ -44,7 +44,7 @@ public class Traitement_DonneuseServiceImpl implements Traitement_DonneuseServic
 		List<Tableau_Donneuse> tableau_donneusesSave = new ArrayList<>();
 
 		for (Tableau_Donneuse tableau_donneuse:traitement_donneuse.getTableauDonneuse()) {
-			tableau_donneusesSave.add(tableau_DonneuseService.createTableauDOnneuse(tableau_donneuse.getDate(), tableau_donneuse.getProduit(), tableau_donneuse.getQuantite(), tableau_donneuse.getMode_traitement()));
+			tableau_donneusesSave.add(tableau_DonneuseService.createTableauDonneuse(tableau_donneuse.getDate(), tableau_donneuse.getProduit(), tableau_donneuse.getQuantite(), tableau_donneuse.getMode_traitement()));
 		}
 
 		traitement_donneuse.setTableauDonneuse(tableau_donneusesSave);

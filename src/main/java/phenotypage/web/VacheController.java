@@ -10,6 +10,7 @@ import phenotypage.model.vache.VacheService;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -114,6 +115,16 @@ public class VacheController
         response.setSucces(true);
         response.setMessage("Animal supprimé");
         return response;
+    }
+
+
+    /** AUTOCOMPLETE **/
+    @ResponseBody
+    @RequestMapping(value="/get/vache", method = RequestMethod.GET)
+    public List<String> getNumIdByNumTravail(@RequestParam("term") String tag){
+        List<String> lol = vacheService.findNumIdByNumTravail(tag);
+        System.out.println(lol.size());
+        return lol;
     }
 //
 //    /** AUTOCOMPLETE **/

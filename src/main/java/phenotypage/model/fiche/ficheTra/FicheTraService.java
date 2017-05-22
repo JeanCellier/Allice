@@ -34,4 +34,7 @@ public interface FicheTraService
 
 	FicheTra save(FicheTra ficheTra);
 
+	FicheTra findTopByOrderByNomDesc();
+
+	int determineStatut(FicheTra ficheTra);
 }

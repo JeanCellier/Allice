@@ -28,7 +28,7 @@
 //import phenotypage.model.invitro.collecte.resultat.ResultatService;
 //import phenotypage.model.cryoconservation.methodeCongelation.MethodeCongelationService;
 //import phenotypage.model.pharmacie.produit.ProduitService;
-//import phenotypage.model.traitementDonneuse.traitement_donneuse.Tableau_DonneuseService;
+//import phenotypage.model.traitementDonneuse.traitement_donneuse.Tableau_Traitement_ActeService;
 //import phenotypage.model.vache.Vache;
 //import phenotypage.model.vache.VacheService;
 //
@@ -45,7 +45,7 @@
 //public class ColController
 //{
 //	@Autowired
-//	private Tableau_DonneuseService traitement_donneuseService;
+//	private Tableau_Traitement_ActeService traitement_donneuseService;
 //
 //	@Autowired
 //	private VacheService vacheService;

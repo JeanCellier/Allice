@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public interface Tableau_DonneuseService
 {
-	Tableau_Donneuse createTableauDOnneuse(Date date, Produit produit, int quantite, String mode_traitement);
+	Tableau_Donneuse createTableauDonneuse(Date date, Produit produit, int quantite, String mode_traitement);
 
 	Tableau_Donneuse save(Tableau_Donneuse tableau_Donneuse);
 }

@@ -52,7 +52,7 @@
 //import phenotypage.model.fiche.ficheOpu.ovocytesCollecte.tableauOvocytesCollectes.TableauOvocytesCollectesService;
 //import phenotypage.model.pharmacie.produit.ProduitService;
 //import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
-//import phenotypage.model.traitementDonneuse.Tableau_DonneuseService;
+//import phenotypage.model.traitementDonneuse.Tableau_Traitement_ActeService;
 //import phenotypage.model.vache.Vache;
 //import phenotypage.model.vache.VacheService;
 //
@@ -88,7 +88,7 @@
 //	private VacheService vacheService;
 //
 //	@Autowired
-//	private Tableau_DonneuseService traitement_donneuseService;
+//	private Tableau_Traitement_ActeService traitement_donneuseService;
 //
 //	@Autowired
 //	private EchoService echoService;

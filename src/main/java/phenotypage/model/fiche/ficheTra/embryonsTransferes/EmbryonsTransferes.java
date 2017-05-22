@@ -16,16 +16,7 @@ public class EmbryonsTransferes
 	private Long id;
 
 	@Column
-	private boolean semenceSexee;
-
-	@Column
-	private String refExperience;
-
-	@Column
 	private String refEmbryons;
-
-	@ManyToOne
-	private Vache taureau;
 	
 	@Column
 	private char cote;
@@ -35,8 +26,7 @@ public class EmbryonsTransferes
 	private String emplacementColUterine;
 
 	@Column
-	private String faciliteprogression;
-
+	private int faciliteprogression;
 
 	public EmbryonsTransferes() {}
 
@@ -48,34 +38,6 @@ public class EmbryonsTransferes
 	public void setId(Long id)
 	{
 		this.id = id;
-	}
-
-	public String getRefExperience()
-	{
-		return refExperience;
-	}
-
-	public void setRefExperience(String refExperience)
-	{
-		this.refExperience = refExperience;
-	}
-
-	public Vache getTaureau()
-	{
-		return taureau;
-	}
-
-	public void setTaureau(Vache taureau)
-	{
-		this.taureau = taureau;
-	}
-
-	public boolean isSemenceSexee() {
-		return semenceSexee;
-	}
-
-	public void setSemenceSexee(boolean semenceSexee) {
-		this.semenceSexee = semenceSexee;
 	}
 
 	public char getCote() {
@@ -94,12 +56,12 @@ public class EmbryonsTransferes
 		this.emplacementColUterine = emplacementColUterine;
 	}
 
-	public String getFaciliteprogression()
+	public int getFaciliteprogression()
 	{
 		return faciliteprogression;
 	}
 
-	public void setFaciliteprogression(String faciliteprogression)
+	public void setFaciliteprogression(int faciliteprogression)
 	{
 		this.faciliteprogression = faciliteprogression;
 	}

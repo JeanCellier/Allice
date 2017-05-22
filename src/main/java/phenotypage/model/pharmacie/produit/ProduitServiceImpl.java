@@ -72,6 +72,14 @@ public class ProduitServiceImpl implements ProduitService
 		return Optional.ofNullable(produitRepository.findOne(id));
 	}
 
+	public List<Produit> findAvalaibleProduct(){
+		return produitRepository.findByQteRestanteGreaterThan(0.0F);
+	}
+
+	public List<Produit> findOutOfStockProduct(){
+		return produitRepository.findByQteRestanteEquals(0.0F);
+	}
+
     @Override
     public List<String> findDistinctNames(String tag) {
         return produitRepository.findDistinctNames(tag);

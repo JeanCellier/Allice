@@ -26,10 +26,10 @@
                         <li><a href="<s:url value='/acteTechnique/ia/ia'/>">IA</a></li>
                         <li><a href="#">OPU</a></li>
                         <li><a href="<s:url value='/acteTechnique/tra/tra'/>">TRA</a></li>
-                        <li><a href="#">OVU</a></li>
                     </ul>
                 </li>
                 <li><a href="#">CUVES</a></li>
+                <li><a href="<s:url value='/traitement/traitement'/>">TRAITEMENTS</a></li>
                 <li><a href="#">IMPORT/EXPORT</a></li>
                 <li><a href="#">PLANNING</a></li>
             </ul>

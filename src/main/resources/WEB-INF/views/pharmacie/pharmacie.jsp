@@ -4,14 +4,18 @@
 	<h1 class="page-header">Pharmacie</h1>
 
 	<div class="row placeholders">
-		<div class="col-sm-1 col-md-1">
+		<div class="col-sm-12 col-md-12">
 			<p data-placement="top" data-toggle="tooltip" title="add"  style="padding-left:15px;padding-top:10px">
 				<button class="btn btn-primary btn-md" data-title="Add" data-toggle="modal" data-target="#add" >
 					<span class="fa fa-plus"> Ajouter</span>
 				</button>
 			</p>
-
 		</div>
+		<div class="col-sm-12 col-md-12" style="padding-left:30px;padding-top:10px;">
+			<label for="cboxProd">Montrer les produits &eacutepuis&eacutes  </label>
+			<input type="checkbox" id="cboxProd">
+		</div>
+
 		<div class="col-sm-12 col-md-12" id="contentPharmacie" style="padding:30px;">
 			<table id="tableProduit" class="table table-hover">
 				<thead>
@@ -79,7 +83,7 @@
 								<input class="form-control responsable" name="responsable" type="text" placeholder="Responsable">
 							</div>
 							<div class="form-group">
-								<input class="form-control " name="qteEntrante" type="number" placeholder="Quantit&#233 entrante">
+								<input class="form-control " name="qteEntrante" type="number" step="0.01" placeholder="Quantit&#233 entrante">
 							</div>
 							<div class="form-group">
 								<input class="form-control " name="numLot" type="text" placeholder="Num&#233ro du lot">
@@ -129,10 +133,10 @@
 							<input class="form-control responsable" name="responsable" type="text" placeholder="Responsable">
 						</div>
 						<div class="form-group">
-							<input class="form-control " name="qteEntrante" type="number" placeholder="Quantit&#233 entrante">
+							<input class="form-control " name="qteEntrante" type="number" step="0.01" placeholder="Quantit&#233 entrante">
 						</div>
 						<div class="form-group">
-							<input class="form-control " name="qteRestante" type="number" placeholder="Quantit&#233 restante">
+							<input class="form-control " name="qteRestante" type="number" step="0.01" placeholder="Quantit&#233 restante">
 						</div>
 						<div class="form-group">
 							<input class="form-control " name="numLot" type="text" placeholder="Num&#233ro du lot">
@@ -213,29 +217,28 @@
     });
 
     /** function addRow */
-    function addRow(result) {
+    function addRow(objet) {
         //converti date bon format
-        var datedelivrance = new Date(result.objet.dateDelivrance);
-        var datePeremption = new Date(result.objet.datePeremption);
+        var datedelivrance = new Date(objet.dateDelivrance);
+        var datePeremption = new Date(objet.datePeremption);
 
         /** ajoute une ligne à la table */
-        $('#tableProduit').DataTable().row.add([
-            "<td>" + result.objet.nom + "</td>",
-            "<td>" + convertDate(datedelivrance) + "</td>",
-            "<td>" + result.objet.fournisseur + "</td>",
-            "<td>" + result.objet.projet + "</td>",
-            "<td>" + result.objet.responsable + "</td>",
-            "<td>" + result.objet.qteEntrante + "</td>",
-            "<td>" + result.objet.qteRestante + "</td>",
-            "<td>" + result.objet.numLot + "</td>",
-            "<td>" + convertDate(datePeremption) + "</td>",
-            "<td>" + result.objet.indication + "</td>",
+        row = $('#tableProduit').DataTable().row.add([
+            objet.nom,
+           convertDate(datedelivrance),
+            objet.fournisseur,
+            objet.projet,
+            objet.responsable,
+            objet.qteEntrante,
+            objet.qteRestante,
+            objet.numLot,
+            convertDate(datePeremption),
+            objet.indication,
 
-            '<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="'+ result.objet.id +'" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>',
-            '<td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/'+ result.objet.id + '" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>'
+            '<p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="'+ objet.id +'" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p>',
+            '<p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/'+ objet.id + '" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p>'
         ]).draw(false);
     }
-
 
 	/** init la table */
 	$('#tableProduit').DataTable({
@@ -246,8 +249,35 @@
 		],"language": {
 			"url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json"
 		},
-        "pageLength": 25
+        "pageLength": 25,
+        "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) { //function executer à chaque draw
+            if(aData[6] == "0.0" || aData[6] == "0"){
+                $(nRow).addClass("epuise");
+                $(nRow).toggle($("#cboxProd").is(':checked'));
+			}else{
+                $(nRow).removeClass("epuise");
+			}
+        }
 	});
+
+	/** load produit out of stock dans datatable on check **/
+    $("#cboxProd").change(function(){
+        var self = this;
+        if(this.checked && !$("#cboxProd").hasClass('OutOfStockLoaded')){
+            $.ajax({
+                url: '${pageContext. request. contextPath}/pharmacie/get/OutOfStock',
+                type: 'GET',
+                success: function(result) {
+                    for(iElmnt = 0; iElmnt < result.length; iElmnt++){
+                        addRow(result[iElmnt]);
+					}
+
+                    $("#cboxProd").addClass('OutOfStockLoaded');
+                }
+            });
+		}
+        $("#tableProduit tr.epuise").toggle(self.checked);
+    }).change();
 
 	/************************ AJOUT *************************/
 
@@ -266,7 +296,7 @@
 					$('input').val(''); //clear modal
 					$('#add').modal('toggle'); //ferme modal
 					$('#tableProduit').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>'); //afficher alert
-					addRow(result);
+					addRow(result.objet);
 				}else{
 					$('#addForm').before('<div class="alert alert-danger flash" role="alert">'+result.message+'</div>');
 				}
@@ -322,8 +352,8 @@
                     $('input').val('');
                     $('#edit').modal('toggle');
                     $('#tableProduit').before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>');
-                    $('#tableProduit').DataTable().row(currentrow).remove().draw();
-                    addRow(result);
+                    $('#tableProduit').DataTable().row(currentrow).remove();
+                    addRow(result.objet);
                 }else{
                     $('#editForm').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>');
                 }

@@ -22,6 +22,9 @@ public abstract class Fiche
 	@Column
 	private Date dateHeureMinute;
 
+	@Column
+	private int statut;
+
 	public Fiche() {}
 
 	public Long getId()
@@ -58,5 +61,13 @@ public abstract class Fiche
 	public void setProgramme(Programme programme)
 	{
 		this.programme = programme;
+	}
+
+	public int getStatut() {
+		return statut;
+	}
+
+	public void setStatut(int statut) {
+		this.statut = statut;
 	}
 }

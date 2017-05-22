@@ -93,7 +93,7 @@
                                     <th>Date</th>
                                     <th>Produit</th>
                                     <th>Quantit&eacute;</th>
-                                    <th>Mode de traitement</th>
+                                    <th>Mode de traitementActe</th>
                                 </tr>
                                 </thead>
                                 <tbody>

@@ -15,6 +15,7 @@ import phenotypage.model.traitementDonneuse.Traitement_DonneuseService;
 import phenotypage.model.vache.Vache;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -52,12 +53,25 @@ FicheTraServiceImpl implements FicheTraService
 							   Operateur operateur, Vache vache, Traitement_Donneuse traitementDonneuse,
 							   CorpsJaune corpsJaune, EmbryonsTransferes embryonsTransferes, Gestation gestation) {
 
-		Traitement_Donneuse traitement = traitement_donneuseService.createTraitement_Donneuse(traitementDonneuse);
-		CorpsJaune corpsJauneSave = corpsJauneService.createCorpsJaune(corpsJaune);
-		EmbryonsTransferes embryonSave = embryonsTransferesService.createEmbryonsTransferes(embryonsTransferes);
-		Gestation gestationSave = gestationService.createGestation(gestation);
-
 		FicheTra ficheTra = new FicheTra();
+
+		if(traitementDonneuse != null) {
+			Traitement_Donneuse traitement = traitement_donneuseService.createTraitement_Donneuse(traitementDonneuse);
+			ficheTra.setTraitement_donneuse(traitement);
+		}
+		if(traitementDonneuse != null) {
+			CorpsJaune corpsJauneSave = corpsJauneService.createCorpsJaune(corpsJaune);
+			ficheTra.setCorpsJaune(corpsJauneSave);
+		}
+		if(traitementDonneuse != null) {
+			EmbryonsTransferes embryonSave = embryonsTransferesService.createEmbryonsTransferes(embryonsTransferes);
+			ficheTra.setEmbryonsTransferes(embryonSave);
+		}
+		if(traitementDonneuse != null) {
+			Gestation gestationSave = gestationService.createGestation(gestation);
+			ficheTra.setGestation(gestationSave);
+		}
+
 		ficheTra.setNom(nom);
 		ficheTra.setProgramme(programme);
 		ficheTra.setDateHeureMinute(date);
@@ -65,18 +79,43 @@ FicheTraServiceImpl implements FicheTraService
 		ficheTra.setLieu(lieu);
 		ficheTra.setOperateur(operateur);
 		ficheTra.setVache(vache);
-		ficheTra.setTraitement_donneuse(traitement);
-		ficheTra.setCorpsJaune(corpsJauneSave);
-		ficheTra.setEmbryonsTransferes(embryonSave);
-		ficheTra.setGestation(gestationSave);
+
+		ficheTra.setStatut(determineStatut(ficheTra));
 
 		return save(ficheTra);
 	}
 
 	@Override
-	public FicheTra updateFicheTra(FicheTra ficheTraForUpdate, String nom, Programme programme, Date dateFiche, String numAgrement, String lieu, Operateur operateur, Vache vache, Traitement_Donneuse traitement_donneuse, CorpsJaune corpsJaune, EmbryonsTransferes embryonsTransferes, Gestation gestation) {
-		Traitement_Donneuse traitementDonneuseToDelete = ficheTraForUpdate.getTraitement_donneuse();
-		Gestation gestationToDelete = ficheTraForUpdate.getGestation();
+	public FicheTra updateFicheTra(FicheTra ficheTraForUpdate, String nom, Programme programme, Date dateFiche,
+								   String numAgrement, String lieu, Operateur operateur, Vache vache,
+								   Traitement_Donneuse traitement_donneuse, CorpsJaune corpsJaune,
+								   EmbryonsTransferes embryonsTransferes, Gestation gestation) {
+
+		if(traitement_donneuse != null){
+			if(ficheTraForUpdate.getTraitement_donneuse() != null) {
+				if (!Objects.equals(traitement_donneuse.getId(), ficheTraForUpdate.getTraitement_donneuse().getId())) {
+					Traitement_Donneuse traitementDonneuseToDelete = ficheTraForUpdate.getTraitement_donneuse();
+					ficheTraForUpdate.setTraitement_donneuse(traitement_donneuseService.createTraitement_Donneuse(traitement_donneuse));
+					traitement_donneuseService.delete(traitementDonneuseToDelete);
+				}
+			}else{
+				ficheTraForUpdate.setTraitement_donneuse(traitement_donneuseService.createTraitement_Donneuse(traitement_donneuse));
+			}
+		}
+
+		if(gestation != null){
+			if(ficheTraForUpdate.getGestation() != null) {
+				if (!Objects.equals(gestation.getId(), ficheTraForUpdate.getGestation().getId())) {
+					Gestation gestationToDelete = ficheTraForUpdate.getGestation();
+					ficheTraForUpdate.setGestation(gestationService.createGestation(gestation));
+					gestationService.delete(gestationToDelete);
+				}
+			}else{
+				ficheTraForUpdate.setGestation(gestationService.createGestation(gestation));
+			}
+		}
+
+
 		ficheTraForUpdate.setNom(nom);
 		ficheTraForUpdate.setProgramme(programme);
 		ficheTraForUpdate.setDateHeureMinute(dateFiche);
@@ -84,14 +123,24 @@ FicheTraServiceImpl implements FicheTraService
 		ficheTraForUpdate.setLieu(lieu);
 		ficheTraForUpdate.setOperateur(operateur);
 		ficheTraForUpdate.setVache(vache);
-		ficheTraForUpdate.setTraitement_donneuse(traitement_donneuseService.createTraitement_Donneuse(traitement_donneuse));
-		ficheTraForUpdate.setGestation(gestationService.createGestation(gestation));
 
-		ficheTraForUpdate.setEmbryonsTransferes(embryonsTransferesService.update(ficheTraForUpdate.getEmbryonsTransferes(), embryonsTransferes.isSemenceSexee(), embryonsTransferes.getRefExperience(), embryonsTransferes.getRefEmbryons(), embryonsTransferes.getTaureau(), embryonsTransferes.getCote(), embryonsTransferes.getEmplacementColUterine(), embryonsTransferes.getFaciliteprogression()));
-		ficheTraForUpdate.setCorpsJaune(corpsJauneService.update(ficheTraForUpdate.getCorpsJaune(), corpsJaune.getMode_evaluation(), corpsJaune.getQualite(), corpsJaune.getCoteCorpsJaune()));
+		if(embryonsTransferes != null) {
+			if (ficheTraForUpdate.getEmbryonsTransferes() != null) {
+				ficheTraForUpdate.setEmbryonsTransferes(embryonsTransferesService.update(ficheTraForUpdate.getEmbryonsTransferes(), embryonsTransferes.getRefEmbryons(), embryonsTransferes.getCote(), embryonsTransferes.getEmplacementColUterine(), embryonsTransferes.getFaciliteprogression()));
+			} else {
+				ficheTraForUpdate.setEmbryonsTransferes(embryonsTransferesService.createEmbryonsTransferes(embryonsTransferes));
+			}
+		}
 
-		gestationService.delete(gestationToDelete);
-		traitement_donneuseService.delete(traitementDonneuseToDelete);
+		if(corpsJaune != null) {
+			if (ficheTraForUpdate.getCorpsJaune() != null) {
+				ficheTraForUpdate.setCorpsJaune(corpsJauneService.update(ficheTraForUpdate.getCorpsJaune(), corpsJaune.getMode_evaluation(), corpsJaune.getQualite(), corpsJaune.getCoteCorpsJaune()));
+			} else {
+				ficheTraForUpdate.setCorpsJaune(corpsJauneService.createCorpsJaune(corpsJaune));
+			}
+		}
+
+		ficheTraForUpdate.setStatut(determineStatut(ficheTraForUpdate));
 
 		return save(ficheTraForUpdate);
 	}
@@ -109,6 +158,39 @@ FicheTraServiceImpl implements FicheTraService
 	@Override
 	public FicheTra save(FicheTra ficheTra) {
 		return repository.save(ficheTra);
+	}
+
+	@Override
+	public FicheTra findTopByOrderByNomDesc() {
+		return repository.findTopByOrderByNomDesc();
+	}
+
+	@Override
+	public int determineStatut(FicheTra ficheTra) {
+		if(Objects.equals(ficheTra.getNom(), "") || ficheTra.getDateHeureMinute() == null || ficheTra.getVache() == null){
+			return 2;
+		}else if(ficheTra.getProgramme() == null || Objects.equals(ficheTra.getNumeroAgrement(), "") || Objects.equals(ficheTra.getLieu(), "")
+				|| ficheTra.getOperateur() == null || ficheTra.getTraitement_donneuse() == null || ficheTra.getCorpsJaune() == null
+				|| ficheTra.getEmbryonsTransferes() == null || ficheTra.getGestation() == null){
+			return 1;
+		}else{
+			if(ficheTra.getTraitement_donneuse().getDate_ref_chaleur() == null || Objects.equals(ficheTra.getTraitement_donneuse().getTypeChaleur(), "")
+					|| ficheTra.getTraitement_donneuse().getTableauDonneuse().size() ==0){
+				return 1;
+			}
+			if(ficheTra.getCorpsJaune().getCoteCorpsJaune() == ' ' || ficheTra.getCorpsJaune().getQualite() == 0 ||
+					ficheTra.getCorpsJaune().getMode_evaluation() == null){
+				return 1;
+			}
+			if(Objects.equals(ficheTra.getEmbryonsTransferes().getEmplacementColUterine(), "") || ficheTra.getEmbryonsTransferes().getCote() == ' '
+					|| ficheTra.getEmbryonsTransferes().getFaciliteprogression() == 0 || ficheTra.getEmbryonsTransferes().getRefEmbryons() == null){
+				return 1;
+			}
+			if(ficheTra.getGestation().getRemarques() == null || ficheTra.getGestation().getTableauGestationList().size() == 0){
+				return 1;
+			}
+		}
+		return 0;
 	}
 
 
