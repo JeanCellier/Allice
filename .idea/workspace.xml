@@ -6,13 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1b2266e-e014-46c0-a873-aa645bb17deb" name="Default" comment="bug détail fiche ia oublié -&gt; affichage">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_persistence_persistence_api_unknown.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/phenotypage/model/JsonResponse/JsonResponse.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phenotypage/importation/poi/Poi_Excel.class" afterPath="$PROJECT_DIR$/target/classes/phenotypage/importation/poi/Poi_Excel.class" />
+    <list default="true" id="c1b2266e-e014-46c0-a873-aa645bb17deb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColPopulator.java" afterPath="$PROJECT_DIR$/src/main/java/phenotypage/model/fiche/ficheCol/FicheColPopulator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_ajouterModifier.jsp" afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_ajouterModifier.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,8 +46,8 @@
       <file leaf-file-name="ia_ajouterModifier.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_ajouterModifier.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
-              <caret line="621" column="45" lean-forward="true" selection-start-line="621" selection-start-column="45" selection-end-line="621" selection-end-column="45" />
+            <state relative-caret-position="264">
+              <caret line="614" column="74" lean-forward="true" selection-start-line="614" selection-start-column="74" selection-end-line="614" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -148,7 +143,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="interface_fiche_tra" />
+        <entry key="$PROJECT_DIR$" value="fonctionnalites_fiche_tra_et_fiche_ia" />
       </map>
     </option>
     <push-targets>
@@ -1247,7 +1242,7 @@
       <workItem from="1495382909431" duration="52000" />
       <workItem from="1495385277597" duration="16038000" />
       <workItem from="1495464843009" duration="29000" />
-      <workItem from="1495466775226" duration="3078000" />
+      <workItem from="1495466775226" duration="3153000" />
     </task>
     <task id="LOCAL-00001" summary="interface pharmacie">
       <created>1489611137333</created>
@@ -1578,11 +1573,18 @@
       <option name="project" value="LOCAL" />
       <updated>1495402291465</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Correction bug mineur affichage fiche ia">
+      <created>1495469885706</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1495469885706</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="504626000" />
+    <option name="totallyTimeSpent" value="504701000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="0" width="1920" height="1080" extended-state="6" />
@@ -1631,7 +1633,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Modification des fiches tra vue + fonctionnement + services associés" />
     <MESSAGE value="Fiche Ia 100 % (vues, service, controller)" />
     <MESSAGE value="commit avant merge" />
     <MESSAGE value="merge avec animaux &#10;+ page d'accueil = animaux" />
@@ -1656,7 +1657,8 @@
     <MESSAGE value="changement fiche ia taureau string -&gt; semence" />
     <MESSAGE value="Fiche IA fini 100 %" />
     <MESSAGE value="bug détail fiche ia oublié -&gt; affichage" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug détail fiche ia oublié -&gt; affichage" />
+    <MESSAGE value="Correction bug mineur affichage fiche ia" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correction bug mineur affichage fiche ia" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2333,8 +2335,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/WEB-INF/views/acteTechnique/ia/ia_ajouterModifier.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="621" column="45" lean-forward="true" selection-start-line="621" selection-start-column="45" selection-end-line="621" selection-end-column="45" />
+        <state relative-caret-position="264">
+          <caret line="614" column="74" lean-forward="true" selection-start-line="614" selection-start-column="74" selection-end-line="614" selection-end-column="74" />
           <folding />
         </state>
       </provider>
