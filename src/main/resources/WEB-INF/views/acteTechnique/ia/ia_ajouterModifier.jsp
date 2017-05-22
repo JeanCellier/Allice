@@ -603,7 +603,7 @@
     });
 
     /******************************* LOAD FICHE COLLECTE DANS SELECT ****************************/
-    function loadCollecte(){
+    function loadCollecte(insemination){
         var numIdVache = $(".tab-pane.active").find('.vache').val();
 
         $.ajax({
@@ -611,12 +611,19 @@
             url: '${pageContext. request. contextPath}/acteTechnique/col/get/vache/'+numIdVache,
             success: function (result) {
                 if (result.succes == true) {
+                    $('.collecteSelect').find('option').not(':first').remove();
                     for(iFiche = 0; iFiche < result.objet.length; iFiche++) {
-                        $('.collecteSelect').find('option').not(':first').remove();
                         $('.collecteSelect').append($('<option>', {
                             value: result.objet[iFiche].id,
                             text: result.objet[iFiche].nom
                         }));
+                    }
+
+                    if(insemination != null){
+//                        $('.collecteSelect').find('option[text="'+insemination.collecte+'"]').prop('selected', true);
+                        $('.collecteSelect').find('option:contains('+insemination.collecte+')').prop('selected', true);
+                        //$activeTab.find('select[name="collecte"] option[text="'+result.objet.insemination.collecte+'"]').prop('selected', true);
+                        //$activeTab.find("select[name='collecte']").val(result.objet.insemination.collecte.id);
                     }
                 } else {
                     $('#modal-body').before('<div class="alert alert-danger flash" role="alert">'+result.message+'</div>');
@@ -684,10 +691,9 @@
                             table.cell(rowId, 6).data(result.objet.vache.num_identification).draw(false);
                         }
 
-                        loadCollecte();
-                    }else if($this.closest('div.frm').hasClass('step2')) { //si étape 2
-                        var rowId = $('#tableActes').dataTable().fnFindCellRowIndexes(result.objet.nom, 1); // cherche fiche modifiée
+                        loadCollecte(result.objet.insemination);
 
+                    }else if($this.closest('div.frm').hasClass('step2')) { //si étape 2
                         var table = $('#tableActes').DataTable(); //init pour changer value .cell.data
                         var rowId = $('#tableActes').dataTable().fnFindCellRowIndexes(result.objet.nom, 1); // cherche fiche modifiée
 
@@ -771,32 +777,40 @@
                     //remplit le modal
                     $activeTab.find("input[name='nom']" ).val(result.objet.nom);
                     $activeTab.find("input[name='date']").data("DateTimePicker").date(new Date(result.objet.dateHeureMinute));
-                    $activeTab.find( "select[name='programme']" ).val(result.objet.programme.id);
+                    if(result.objet.programme != null) {
+                        $activeTab.find("select[name='programme']").val(result.objet.programme.id);
+                    }
                     $activeTab.find( "input[name='lieu']" ).val(result.objet.lieu);
                     $activeTab.find( "input[name='numIPE']" ).val(result.objet.numIpe);
                     $activeTab.find( "input[name='numSemence']" ).val(result.objet.numDepotSemence);
                     $activeTab.find( "input[name='vache']" ).val(result.objet.vache.num_identification);
 
                     /************* STEP 2 *************/
-                    $activeTab.find( "select[name='operateur']" ).val(result.objet.insemination.operateur.id);
-                    $activeTab.find( "input[name='taureau']" ).val(result.objet.insemination.taureau.numTaureau);
-                    $activeTab.find( "select[name='collecte']" ).val(result.objet.insemination.collecte.id);
-                    $activeTab.find( "select[name='lieuSemence']" ).val(result.objet.insemination.lieuDepot);
-                    $activeTab.find( "select[name='facilite']" ).val(result.objet.insemination.progression);
-                    $activeTab.find( "input[name='typeChaleur']" ).val(result.objet.traitement_donneuse.typeChaleur);
-                    $activeTab.find( "input[name='chaleurDetection']" ).val(result.objet.traitement_donneuse.typeChaleur);
-                    $activeTab.find( "textarea[name='remarques']" ).val(result.objet.gestation.remarques);
+                    if(result.objet.insemination != null) {
+                        if(result.objet.insemination.operateur != null) {
+                            $activeTab.find("select[name='operateur']").val(result.objet.insemination.operateur.id);
+                        }
+                        if(result.objet.insemination.taureau != null) {
+                            $activeTab.find("input[name='taureau']").val(result.objet.insemination.taureau.numTaureau);
+                        }
 
-                    //remplit les radiobuttons
-                    if(result.objet.insemination.semenceSexee == true) {
-                        $activeTab.find("input[name='optradioSexee'][value='oui']").prop('checked', true);
-                    }
-                    if(result.objet.insemination.semenceSexee == false) {
-                        $activeTab.find("input[name='optradioSexee'][value='non']").prop('checked', true);
+                        $activeTab.find("select[name='lieuSemence']").val(result.objet.insemination.lieuDepot);
+                        $activeTab.find("select[name='facilite']").val(result.objet.insemination.progression);
+
+                        //remplit les radiobuttons
+                        if (result.objet.insemination.semenceSexee == true) {
+                            $activeTab.find("input[name='optradioSexee'][value='oui']").prop('checked', true);
+                        }
+                        if (result.objet.insemination.semenceSexee == false) {
+                            $activeTab.find("input[name='optradioSexee'][value='non']").prop('checked', true);
+                        }
                     }
 
                     /************* STEP 3 *************/
                     if(result.objet.traitement_donneuse != null){
+                        $activeTab.find("input[name='typeChaleur']").val(result.objet.traitement_donneuse.typeChaleur);
+                        $activeTab.find("input[name='chaleurDetection']").val(result.objet.traitement_donneuse.typeChaleur);
+
                         if(result.objet.traitement_donneuse.date_ref_chaleur != null) {
                             $activeTab.find("input[name='dateChaleur']").data("DateTimePicker").date(new Date(result.objet.traitement_donneuse.date_ref_chaleur));
                         }
@@ -835,6 +849,8 @@
 
                     /************* STEP 4 *************/
                     if(result.objet.gestation != null) {
+                        $activeTab.find("textarea[name='remarques']").val(result.objet.gestation.remarques);
+
                         $activeTab.find( "textarea[name='remarques']" ).val(result.objet.gestation.remarques);
 
                         //remplit tableau gestation
