@@ -32,6 +32,10 @@ public abstract class Fiche {
         this.type = type;
     }
 
+    public Fiche() {
+
+    }
+
     public Long getId() {
         return id;
     }

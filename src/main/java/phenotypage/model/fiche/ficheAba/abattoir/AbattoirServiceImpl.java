@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author fabien
@@ -40,8 +41,8 @@ public class AbattoirServiceImpl implements AbattoirService
 	}
 
 	@Override
-	public Abattoir findByNom(String nomAbattoir)
+	public Optional<Abattoir> findByNom(String nomAbattoir)
 	{
-		return abattoirRepository.findByNom(nomAbattoir);
+		return Optional.ofNullable(abattoirRepository.findByNom(nomAbattoir));
 	}
 }

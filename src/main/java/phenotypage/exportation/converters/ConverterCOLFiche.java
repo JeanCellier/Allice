@@ -18,15 +18,10 @@ import phenotypage.utils.PoiHelper;
  * Date: 03/05/2017 23:55
  * Project: appPhenotypage
  */
-@Component("Col")
+@Component
 public class ConverterCOLFiche implements ConverterFiche {
-
     @Autowired
-    private final FicheColService ficheColService;
-
-    public ConverterCOLFiche(FicheColService ficheColService) {
-        this.ficheColService = ficheColService;
-    }
+    private FicheColService ficheColService;
 
     @Override
     public XSSFWorkbook toWorkbook(String ficheNom) {

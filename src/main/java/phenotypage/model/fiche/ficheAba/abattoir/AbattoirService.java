@@ -1,6 +1,7 @@
 package phenotypage.model.fiche.ficheAba.abattoir;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author fabien
@@ -15,5 +16,5 @@ public interface AbattoirService
 
 	Abattoir newAbattoir();
 
-	Abattoir findByNom(String nomAbattoir);
+	Optional<Abattoir> findByNom(String nomAbattoir);
 }

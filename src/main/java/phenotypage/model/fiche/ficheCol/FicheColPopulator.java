@@ -32,9 +32,9 @@ public class FicheColPopulator {
     @PostConstruct
     void init()
     {
-        Operateur operateur = operateurService.createOperateur("Denoes", "Oliver");
-        Programme programme = programmeService.createProgramme("Bovomega3");
+//        Operateur operateur = operateurService.createOperateur("Denoes", "Oliver");
+//        Programme programme = programmeService.createProgramme("Bovomega3");
 //        Vache vache = vacheService.createVache(true, "Allice", "vache1", "FR37175336", "fr5638962543", 66, 'F', new Date(), "parite", 20.5F, "fr5638962542", "fr5638962544");
-        ficheColService.createFicheCol("17COL0007", programme, new Date(), "FR TB 370", "Allice", operateur, vacheService.findByNum_identification("fr5638962544").get(), null, null, null, null, null, null);
+//        ficheColService.createFicheCol("17COL0007", programme, new Date(), "FR TB 370", "Allice", operateur, vacheService.findByNum_identification("fr5638962544").get(), null, null, null, null, null, null);
     }
 }
