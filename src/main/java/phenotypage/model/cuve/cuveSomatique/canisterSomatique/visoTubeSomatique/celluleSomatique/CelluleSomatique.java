@@ -15,6 +15,15 @@ public class CelluleSomatique {
     @GeneratedValue
     private Long id;
 
+    public CelluleSomatique(String typeCellulaire, String couleurPaillette, int nbPaillettes, Date dateCongelation, String remarques) {
+        this.typeCellulaire = typeCellulaire;
+        this.couleurPaillette = couleurPaillette;
+        this.nbPaillettes = nbPaillettes;
+        this.dateCongelation = dateCongelation;
+        this.remarques = remarques;
+
+    }
+
     @Column
     private String typeCellulaire;
 

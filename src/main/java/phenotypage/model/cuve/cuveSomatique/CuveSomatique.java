@@ -14,6 +14,11 @@ public class CuveSomatique extends Cuve {
     @OneToMany
     private List<CanisterSomatique> canisterList;
 
+    public CuveSomatique(List<CanisterSomatique> canisterList) {
+        this.canisterList = canisterList;
+    }
+
+
     public CuveSomatique() {
         super();
     }

@@ -19,6 +19,14 @@ public class CanisterSemence extends Canister{
         return visoTubeList;
     }
 
+    public CanisterSemence() {
+    }
+
+    public CanisterSemence(List<VisoTubeSemence> visoTubeList) {
+
+        this.visoTubeList = visoTubeList;
+    }
+
     public void setVisoTubeList(List<VisoTubeSemence> visoTubeList) {
         this.visoTubeList = visoTubeList;
     }

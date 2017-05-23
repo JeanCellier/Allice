@@ -19,6 +19,10 @@ public class CuveSemence extends Cuve {
         super();
     }
 
+    public CuveSemence(List<CanisterSemence> canisterList) {
+        this.canisterList = canisterList;
+    }
+
     public List<CanisterSemence> getCanisterList() {
         return canisterList;
     }

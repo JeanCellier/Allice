@@ -11,6 +11,15 @@ import java.util.List;
  */
 @Entity
 public class VisoTubeSemence extends VisoTube {
+    public VisoTubeSemence(List<Semence> semenceList) {
+        this.semenceList = semenceList;
+    }
+
+    public VisoTubeSemence() {
+    }
+
     @OneToMany
+
+
     List<Semence> semenceList;
 }

@@ -14,6 +14,13 @@ public class CanisterSomatique extends Canister{
     @OneToMany
     private List<VisoTubeSomatique> visoTubeList;
 
+    public CanisterSomatique(List<VisoTubeSomatique> visoTubeList) {
+        this.visoTubeList = visoTubeList;
+    }
+
+    public CanisterSomatique() {
+    }
+
     public List<VisoTubeSomatique> getVisoTubeList() {
         return visoTubeList;
     }

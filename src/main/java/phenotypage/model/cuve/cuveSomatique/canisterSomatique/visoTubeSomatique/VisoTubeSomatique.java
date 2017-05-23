@@ -11,6 +11,15 @@ import java.util.List;
  */
 @Entity
 public class VisoTubeSomatique extends VisoTube {
+    public VisoTubeSomatique(List<CelluleSomatique> celluleSomatiqueList) {
+        this.celluleSomatiqueList = celluleSomatiqueList;
+    }
+
+    public VisoTubeSomatique() {
+    }
+
     @OneToMany
+
+
     List<CelluleSomatique> celluleSomatiqueList;
 }
