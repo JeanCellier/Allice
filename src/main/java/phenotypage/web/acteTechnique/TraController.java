@@ -336,7 +336,7 @@ public class TraController {
         JsonResponse response = new JsonResponse();
         ficheTraService.delete(ficheTra);
         response.setSucces(true);
-        response.setMessage("Fiche supprimé");
+        response.setMessage("Fiche supprimée");
         return response;
     }
 

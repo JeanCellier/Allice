@@ -17,6 +17,6 @@ public class ProgrammePopulator {
     @PostConstruct
     void init()
     {
-//        programmeService.createProgramme("Bovomega3");
+        programmeService.createProgramme("Bovomega3");
     }
 }

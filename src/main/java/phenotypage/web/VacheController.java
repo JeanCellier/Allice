@@ -4,14 +4,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import phenotypage.model.Destinataire.Destinataire;
+import phenotypage.model.fiche.ficheTra.FicheTra;
+import phenotypage.model.fiche.ficheTra.FicheTraService;
+import phenotypage.model.fiche.ficheTra.corpsJaune.CorpsJaune;
+import phenotypage.model.fiche.ficheTra.embryonsTransferes.EmbryonsTransferes;
+import phenotypage.model.gestation.Gestation;
+import phenotypage.model.gestation.tableau_gestation.Tableau_Gestation;
 import phenotypage.model.jsonResponse.JsonResponse;
+import phenotypage.model.operateur.Operateur;
+import phenotypage.model.operateur.OperateurService;
+import phenotypage.model.pharmacie.produit.Produit;
+import phenotypage.model.pharmacie.produit.ProduitService;
+import phenotypage.model.programme.Programme;
+import phenotypage.model.programme.ProgrammeService;
+import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
+import phenotypage.model.traitementDonneuse.tableau_donneuse.Tableau_Donneuse;
+import phenotypage.model.traitement_acte.TraitementActeService;
 import phenotypage.model.vache.Vache;
 import phenotypage.model.vache.VacheService;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 
 @Controller
@@ -19,136 +33,270 @@ import java.util.Optional;
 public class VacheController
 {
     @Autowired
+    private ProgrammeService programmeService;
+
+    @Autowired
+    private OperateurService operateurService;
+
+    @Autowired
     private VacheService vacheService;
+
+    @Autowired
+    private ProduitService produitService;
+
+    @Autowired
+    private FicheTraService ficheTraService;
+
+    @Autowired
+    private TraitementActeService traitementService;
 
     /** ACCUEIL VACHE **/
     @RequestMapping(value = "/animaux", method = RequestMethod.GET)
-    public String vache(Model model)
+    public String animaux(Model model)
     {
+        model.addAttribute("programmesList", programmeService.findAll());
+        model.addAttribute("operateursList", operateurService.findAll());
+        model.addAttribute("traitementsList", traitementService.findAll());
         model.addAttribute("vacheList", vacheService.findAll());
-        return "animaux/animaux";
+        model.addAttribute("produitsList", produitService.findAvalaibleProduct());
+        model.addAttribute("fichesTraList", ficheTraService.findAll());        return "animaux/animaux";
     }
 
-    /** ADD **/
+    /******************** ADD OR UPDATE VACHE ********************/
     @ResponseBody
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public JsonResponse add(@RequestParam("proprietaire") String proprietaire, @RequestParam("num_elevage") String num_elevage,
-                            @RequestParam("num_identification") String num_identification, @RequestParam("num_travail") String num_travail,
-                            @RequestParam("race") String race, @RequestParam("date_arrivee") String date_arrivee){
+    @RequestMapping(value = "/addOrUpdatePart1", method = RequestMethod.POST)
+    public JsonResponse addPart1(@RequestParam("numeroIdentification") String numeroIdentification, @RequestParam(value="programme", required = false) Programme programme,
+                                 @RequestParam("race") String race, @RequestParam("dateNaissance") String dateNaissance,
+                                 @RequestParam(value="present", required = false) String present){
 
-        JsonResponse response = new JsonResponse();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        JsonResponse jsonResponse = new JsonResponse();
 
-        try {
-            Date dateArrivee = formatter.parse(date_arrivee);
-            Long numeroTravail = Long.parseLong(num_travail);
-            int raceInt = Integer.parseInt(race);
+        SimpleDateFormat formatterDateTime = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+        int intRace = Integer.parseInt(race);
+        boolean boolPresent = true;
+
+        if(present.equals("oui")){
+            boolPresent = true;
+        }else if(present.equals("non")){
+            boolPresent = false;
+        }
 
             try {
-//                    Vache vache = vacheService.createVache(proprietaire, num_elevage, num_identification, numeroTravail, raceInt, dateArrivee);
+                Date dateN = formatterDateTime.parse(dateNaissance);
 
-                    response.setSucces(true);
-                    response.setMessage("Ajout effectué");
-//                    response.setObjet(vache);
-
-            }catch (NumberFormatException e){
+                Vache vache = vacheService.createVache(boolPresent,null,null,numeroIdentification,intRace,dateN, null,null,
+                        null,null,null, null, null, null,null,null,null,'0',programme,
+                        null,null);
+                jsonResponse.setObjet(vache);
+                jsonResponse.setMessage("1ère étape enregistrée");
+            } catch (ParseException e) {
+                Vache vache = vacheService.createVache(boolPresent,null,null,numeroIdentification,intRace,null, null,null,
+                        null,null,null, null, null, null,null,null,null,'0',programme,
+                        null,null);
+                jsonResponse.setObjet(vache);
+                jsonResponse.setMessage("1ère étape enregistrée - erreur dans la date");
             }
-        } catch (ParseException e) {
+
+            jsonResponse.setSucces(true);
+
+        return jsonResponse;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/addOrUpdatePart1/{id}", method = RequestMethod.POST)
+    public JsonResponse updatePart1(@PathVariable("id") Vache vacheToUpdate, @RequestParam("numeroIdentification") String numeroIdentification, @RequestParam(value="programme", required = false) Programme programme,
+                                    @RequestParam("race") String race, @RequestParam("dateNaissance") String dateNaissance,
+                                    @RequestParam(value="present", required = false) String present){
+
+        JsonResponse jsonResponse = new JsonResponse();
+
+        SimpleDateFormat formatterDateTime = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+        int intRace = Integer.parseInt(race);
+        boolean boolPresent = true;
+
+        if(present.equals("oui")){
+            boolPresent = true;
+        }else if(present.equals("non")){
+            boolPresent = false;
         }
-
-        return response;
-    }
-
-    /** GET ONE */
-    @ResponseBody
-    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-    public JsonResponse delete(@PathVariable("id") long id){
-        JsonResponse response = new JsonResponse();
-//        Optional<Vache> vache = vacheService.findOne(id);
-//
-//        if(vache.isPresent()){
-//            response.setSucces(true);
-//            response.setObjet(vache.get());
-//        }else{
-//            response.setSucces(false);
-//            response.setMessage("Une erreur s\'est produite");
-//        }
-
-        return response;
-    }
-
-    /** EDIT **/
-    @ResponseBody
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public JsonResponse edit(@PathVariable("id")  Vache vache, @RequestParam("proprietaire") String proprietaire,
-                             @RequestParam("num_elevage") String num_elevage, @RequestParam("num_identification") String num_identification,
-                             @RequestParam("num_travail") String num_travail, @RequestParam("race") String race,
-                             @RequestParam("date_arrivee") String date_arrivee){
-        JsonResponse response = new JsonResponse();
-
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
         try {
-            Date dateArrivee = formatter.parse(date_arrivee);
-            Long numeroTravail = Long.parseLong(num_travail);
-            int raceInt = Integer.parseInt(race);
+            Date dateN = formatterDateTime.parse(dateNaissance);
 
-//                    vacheService.update(vache, proprietaire, num_elevage, num_identification, numeroTravail, raceInt, dateArrivee);
-//                    response.setSucces(true);
-//                    response.setMessage("Animal modifié");
-//                    response.setObjet(vache);
-
-            }catch (NumberFormatException e){
-            }
-        catch (ParseException e) {
+            Vache vache = vacheService.updateVache(vacheToUpdate, boolPresent,null,null,numeroIdentification,intRace,dateN, null,null,
+                    null,null,null, null, null, null,null,null,null,'0',programme,
+                    null,null);
+            jsonResponse.setObjet(vache);
+        } catch (ParseException e) {
+            Vache vache = vacheService.updateVache(vacheToUpdate, boolPresent,null,null,numeroIdentification,intRace,null, null,null,
+                    null,null,null, null, null, null,null,null,null,'0',programme,
+                    null,null);
+            jsonResponse.setObjet(vache);
         }
 
-        return response;
+            jsonResponse.setSucces(true);
+            jsonResponse.setMessage("1ère étape validée");
+
+        return jsonResponse;
     }
 
-    /** DELETE **/
+    @ResponseBody
+    @RequestMapping(value = "/addOrUpdatePart2/{id}", method = RequestMethod.POST)
+    public JsonResponse addOrUpdatePart2(@PathVariable("id") Vache vache, @RequestParam(value="num_pere", required=false) String num_pere,
+                                         @RequestParam(value="num_mere", required=false) String num_mere, @RequestParam(value="provenance", required=false)  String provenance){
+
+        JsonResponse jsonResponse = new JsonResponse();
+
+        Vache vacheToUpdate = vacheService.updateVache(vache, vache.getPresent(),vache.getProprietaire(),provenance,vache.getNum_identification(),vache.getRace(),
+                vache.getDateNaissance(), vache.getEntreeQuarantaine(),vache.getDateDerniereMiseRepro(), vache.getSortiePension(),vache.getEntreeStation(),
+                vache.getSortieStation(), vache.getEMCO(), vache.getEMVI(), num_pere, num_mere,vache.getVenduA(),vache.getModeReproduction(),vache.getDG01(),vache.getProgramme(),
+                vache.getRemarques(),vache.getDestinataire());
+
+        jsonResponse.setMessage("2ème étape validée");
+        jsonResponse.setObjet(vacheToUpdate);
+        jsonResponse.setSucces(true);
+
+        return jsonResponse;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/addOrUpdatePart3/{id}", method = RequestMethod.POST)
+    public JsonResponse addOrUpdatePart3(@PathVariable("id") Vache vache, @RequestParam(value="entreeQuarantaine", required=false) String entreeQuarantaine,
+                                         @RequestParam(value="entreeStation", required=false) String entreeStation,
+                                         @RequestParam(value="derniereMiseRepro", required=false) String derniereMiseRepro,
+                                         @RequestParam(value="modeReproduction", required=false) String modeReproduction, @RequestParam(value="dg", required=false)String dg){
+
+        JsonResponse jsonResponse = new JsonResponse();
+        SimpleDateFormat formatterDateTime = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+
+        if(dg.equals("0")){
+            vache.setDG01('0');
+        }else if(dg.equals("1")){
+            vache.setDG01('1');
+        }
+
+        try {
+
+            Date dateEntreeQ = formatterDateTime.parse(entreeQuarantaine);
+            Date dateEntreeS = formatterDateTime.parse(entreeStation);
+            Date dateDerniere = formatterDateTime.parse(derniereMiseRepro);
+
+            Vache vacheToUpdate = vacheService.updateVache(vache, vache.getPresent(),vache.getProprietaire(),vache.getNum_elevage(),vache.getNum_identification(),vache.getRace(),
+                    vache.getDateNaissance(), dateEntreeQ, dateDerniere, vache.getSortiePension(),dateEntreeS, vache.getSortieStation(), vache.getEMCO(), vache.getEMVI(),
+                    vache.getNumPere(), vache.getNumMere(),vache.getVenduA(),modeReproduction, vache.getDG01(),vache.getProgramme(), vache.getRemarques(),vache.getDestinataire());
+
+            jsonResponse.setMessage("3ème étape validée");
+            jsonResponse.setObjet(vacheToUpdate);
+            jsonResponse.setSucces(true);
+
+        }catch (ParseException e) {
+            jsonResponse.setSucces(false);
+            jsonResponse.setMessage("Une ou plusieurs dates sont invalides");
+        }
+
+        return jsonResponse;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/addOrUpdatePart4/{id}", method = RequestMethod.POST)
+    public JsonResponse addOrUpdatePart4(@PathVariable("id") Vache vache, @RequestParam("sortieStation") String sortieStation,
+                                         @RequestParam(value="destinaton",required=false) String destination,
+                                         @RequestParam(value="destinataire", required=false) Destinataire destinataire,
+                                         @RequestParam(value="sortiePension", required=false) String sortiePension,
+                                         @RequestParam(value="venduA", required=false) String venduA){
+
+        JsonResponse jsonResponse = new JsonResponse();
+        SimpleDateFormat formatterDateTime = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+
+        try {
+
+            Date dateSortieS = formatterDateTime.parse(sortieStation);
+            Date dateSortieP = formatterDateTime.parse(sortiePension);
+            if(destinataire != null){
+                destinataire.setTypeDestination(destination);
+            }
+            Vache vacheToUpdate = vacheService.updateVache(vache, vache.getPresent(),vache.getProprietaire(),vache.getNum_elevage(),vache.getNum_identification(),vache.getRace(),
+                    vache.getDateNaissance(), vache.getEntreeQuarantaine(), vache.getDateDerniereMiseRepro(), dateSortieP,vache.getEntreeStation(), dateSortieS, vache.getEMCO(), vache.getEMVI(),
+                    vache.getNumPere(), vache.getNumMere(),venduA,vache.getModeReproduction(), vache.getDG01(),vache.getProgramme(), vache.getRemarques(), vache.getDestinataire());
+
+            jsonResponse.setMessage("4ème étape validée");
+            jsonResponse.setObjet(vacheToUpdate);
+            jsonResponse.setSucces(true);
+
+        }catch (ParseException e) {
+            jsonResponse.setSucces(false);
+            jsonResponse.setMessage("Une ou plusieurs dates sont invalides");
+        }
+
+        return jsonResponse;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/addOrUpdatePart5/{id}", method = RequestMethod.POST)
+    public JsonResponse addOrUpdatePart5(@PathVariable("id") Vache vache, @RequestParam(value="remarques", required=false) String remarques,
+                                         @RequestParam(value="EMCO", required=false)  String EMCO,
+                                         @RequestParam(value="EMVI", required=false)  String EMVI){
+
+        JsonResponse jsonResponse = new JsonResponse();
+
+        /*Float emco = Float.parseFloat(EMCO);
+        Float emvi = Float.parseFloat(EMVI);*/
+
+        Vache vacheToUpdate = vacheService.updateVache(vache, vache.getPresent(),vache.getProprietaire(),vache.getNum_elevage(),vache.getNum_identification(),vache.getRace(),
+                vache.getDateNaissance(), vache.getEntreeQuarantaine(), vache.getDateDerniereMiseRepro(), vache.getSortiePension(),vache.getEntreeStation(),
+                vache.getSortieStation(), EMCO, EMVI, vache.getNumPere(), vache.getNumMere(),vache.getVenduA(),vache.getModeReproduction(),
+                vache.getDG01(),vache.getProgramme(), remarques, vache.getDestinataire());
+
+        jsonResponse.setMessage("Vache enregistrée");
+        jsonResponse.setObjet(vacheToUpdate);
+        jsonResponse.setSucces(true);
+
+        return jsonResponse;
+    }
+
+    /******************** DELETE VACHE ********************/
     @ResponseBody
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public JsonResponse delete(@PathVariable("id")  Vache vache){
+    public JsonResponse delete(@PathVariable("id") Vache vache){
         JsonResponse response = new JsonResponse();
-//        vacheService.delete(vache);
+        vacheService.delete(vache);
         response.setSucces(true);
-        response.setMessage("Animal supprimé");
+        response.setMessage("Vache supprimée");
         return response;
     }
 
-
-    /** AUTOCOMPLETE **/
+    /******************** GET ONE  ********************/
     @ResponseBody
     @RequestMapping(value="/get/vache", method = RequestMethod.GET)
     public List<String> getNumIdByNumTravail(@RequestParam("term") String tag){
         List<String> listNumTravail = vacheService.findNumIdByNumTravail(tag);
         return listNumTravail;
-    }
-//
-//    /** AUTOCOMPLETE **/
-//    @ResponseBody
-//    @RequestMapping(value="/get/names", method = RequestMethod.GET)
-//    public List<String> getNames(@RequestParam("term") String tag){
-//        return produitService.findDistinctNames(tag);
-//    }
-//
-//    @ResponseBody
-//    @RequestMapping(value="/get/fournisseurs", method = RequestMethod.GET)
-//    public List<String> getFournisseurs(@RequestParam("term") String tag){
-//        return produitService.findDistinctFournisseurs(tag);
-//    }
-//
-//    @ResponseBody
-//    @RequestMapping(value="/get/projets", method = RequestMethod.GET)
-//    public List<String> getProjets(@RequestParam("term") String tag){
-//        return produitService.findDistinctProjets(tag);
-//    }
-//
-//    @ResponseBody
-//    @RequestMapping(value="/get/responsables", method = RequestMethod.GET)
-//    public List<String> getResponsables(@RequestParam("term") String tag){
-//        return produitService.findDistinctResponsables(tag);
-//    }
+    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
+    public JsonResponse getOne(@PathVariable("id") long id){
+        JsonResponse response = new JsonResponse();
+        Optional<Vache> vache = vacheService.findOne(id);
 
+        if(vache.isPresent()){
+            response.setSucces(true);
+            response.setObjet(vache.get());
+        }else{
+            response.setSucces(false);
+            response.setMessage("Une erreur s\'est produite");
+        }
+
+        return response;
+    }
+
+
+    /** AUTOCOMPLETE **/
+//    @ResponseBody
+//    @RequestMapping(value="/get/lastName", method = RequestMethod.GET)
+//    public String getLastId(){
+//        String nom = ficheTraService.findTopByOrderByNomDesc().getNom();
+//        if(nom != ""){
+//            return nom;
+//        }else{
+//            return "";
+//        }
+//    }
 }
