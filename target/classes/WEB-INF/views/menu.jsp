@@ -30,7 +30,7 @@
                 </li>
                 <li><a href="#listCuves" data-toggle="collapse">CUVES</a></li>
                     <ul id="listCuves" class="collapse nav" style="padding-left:40px;">
-                        <li><a href="<s:url value='/cuves/cellules_somatiques'/>">Cellules Somatiques</a></li>
+                        <li><a href="<s:url value='/cuves/cellulesSomatiques'/>">Cellules Somatiques</a></li>
                         <li><a href="<s:url value='/cuves/embryons_vitro'/>">Embryons Vitro</a></li>
                         <li><a href="<s:url value='/cuves/embryons_vivo'/>">Embryons Vivo</a></li>
                         <li><a href="<s:url value='/cuves/embryons_elevage'/>">Semances Elevage</a></li>

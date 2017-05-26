@@ -1,13 +1,18 @@
 package phenotypage.model.cuve.cuveSomatique.canisterSomatique.visoTubeSomatique.celluleSomatique;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by Loick on 23/05/2017.
  */
+@Component
 public class CelluleSomatiqueServiceImpl implements CelluleSomatiqueService {
 
+    @Autowired
     private CelluleSomatiqueRepository celluleSomatiqueRepository;
 
 
@@ -29,5 +34,10 @@ public class CelluleSomatiqueServiceImpl implements CelluleSomatiqueService {
     @Override
     public CelluleSomatique newCelluleSomatique() {
         return new CelluleSomatique();
+    }
+
+    @Override
+    public void delete(CelluleSomatique celluleSomatique) {
+        celluleSomatiqueRepository.delete(celluleSomatique);
     }
 }

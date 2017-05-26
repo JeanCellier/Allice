@@ -1,5 +1,7 @@
 package phenotypage.model.cuve.cuveSomatique.canisterSomatique.visoTubeSomatique;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import phenotypage.model.cuve.cuveSomatique.canisterSomatique.visoTubeSomatique.celluleSomatique.CelluleSomatique;
 
 import java.util.List;
@@ -7,7 +9,9 @@ import java.util.List;
 /**
  * Created by Loick on 23/05/2017.
  */
+@Component
 public class VisoTubeSomatiqueServiceImpl implements  VisoTubeSomatiqueService{
+    @Autowired
     private VisoTubeSomatiqueRepository visoTubeSomatiqueRepository;
 
 

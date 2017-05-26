@@ -1,8 +1,10 @@
 package phenotypage.model.cuve.cuveSomatique.canisterSomatique;
 
 import phenotypage.model.cuve.cuveSomatique.canisterSomatique.visoTubeSomatique.VisoTubeSomatique;
+import phenotypage.model.cuve.cuveSomatique.canisterSomatique.visoTubeSomatique.celluleSomatique.CelluleSomatique;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by Loick on 23/05/2017.
@@ -16,4 +18,8 @@ public interface CanisterSomatiqueService {
     CanisterSomatique addCanisterSomatique(CanisterSomatique canisterSomatique);
 
     CanisterSomatique newCanisterSomatique();
+
+    void delete(CanisterSomatique canisterSomatique);
+
+    Optional<CelluleSomatique> findOne(long id);
 }

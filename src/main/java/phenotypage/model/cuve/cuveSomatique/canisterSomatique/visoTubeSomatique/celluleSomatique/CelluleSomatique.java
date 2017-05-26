@@ -1,9 +1,8 @@
 package phenotypage.model.cuve.cuveSomatique.canisterSomatique.visoTubeSomatique.celluleSomatique;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import phenotypage.model.cuve.cuveSomatique.canisterSomatique.visoTubeSomatique.VisoTubeSomatique;
+
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -23,6 +22,9 @@ public class CelluleSomatique {
         this.remarques = remarques;
 
     }
+
+    @ManyToOne
+    private VisoTubeSomatique visoTubeSomatique;
 
     @Column
     private String typeCellulaire;

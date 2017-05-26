@@ -1,5 +1,7 @@
 package phenotypage.model.cuve.cuveSomatique;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import phenotypage.model.cuve.cuveSomatique.canisterSomatique.CanisterSomatique;
 
 import java.util.List;
@@ -7,8 +9,9 @@ import java.util.List;
 /**
  * Created by Loick on 23/05/2017.
  */
+@Component
 public class CuveSomatiqueServiceImpl implements CuveSomatiqueService {
-
+    @Autowired
     private CuveSomatiqueRepository cuveSomatiqueRepository;
 
     @Override
@@ -22,8 +25,8 @@ public class CuveSomatiqueServiceImpl implements CuveSomatiqueService {
     }
 
     @Override
-    public CuveSomatique addCuveSomatique(CuveSomatique cuveInVitro) {
-        return cuveInVitro;
+    public CuveSomatique addCuveSomatique(CuveSomatique cuveSomatique) {
+        return cuveSomatiqueRepository.save(cuveSomatique);
     }
 
     @Override

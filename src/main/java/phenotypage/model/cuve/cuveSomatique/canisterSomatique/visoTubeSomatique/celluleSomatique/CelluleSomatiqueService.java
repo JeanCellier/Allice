@@ -15,4 +15,6 @@ public interface CelluleSomatiqueService {
     CelluleSomatique addCelluleSomatique(CelluleSomatique celluleSomatique);
 
     CelluleSomatique newCelluleSomatique();
+
+    void delete(CelluleSomatique celluleSomatique);
 }

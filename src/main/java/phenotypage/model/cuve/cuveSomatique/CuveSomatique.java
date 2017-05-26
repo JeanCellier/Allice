@@ -4,6 +4,7 @@ import phenotypage.model.cuve.Cuve;
 import phenotypage.model.cuve.cuveSomatique.canisterSomatique.CanisterSomatique;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,8 +12,9 @@ import java.util.List;
  */
 @Entity
 public class CuveSomatique extends Cuve {
-    @OneToMany
-    private List<CanisterSomatique> canisterList;
+
+    @OneToMany(mappedBy = "cuveSomatique")
+    private List<CanisterSomatique> canisterList= new ArrayList<>();
 
     public CuveSomatique(List<CanisterSomatique> canisterList) {
         this.canisterList = canisterList;
