@@ -60,7 +60,9 @@ public class ConverterCOLFiche implements ConverterFiche {
         /* First row */
         //Programme label
         PoiHelper.writeCell(sheet, rowNumber, 0, "Programme:");
-        PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getProgramme().getNom());
+        if (fiche.getProgramme() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getProgramme().getNom());
+        }
         //N° agrément:
         PoiHelper.writeCell(sheet, rowNumber, 3, "N° agrément:");
         PoiHelper.writeCell(sheet, rowNumber, 4, fiche.getNumeroAgrement());
@@ -71,7 +73,9 @@ public class ConverterCOLFiche implements ConverterFiche {
 
         //Abbatoir:
         PoiHelper.writeCell(sheet, rowNumber, 0, "Date et heure:");
-        PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getDateHeureMinute().toString());
+        if (fiche.getDateHeureMinute() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getDateHeureMinute().toString());
+        }
         //Operateur
         PoiHelper.writeCell(sheet, rowNumber, 4, "Opérateur:");
         if (fiche.getOperateur() != null) {
@@ -83,28 +87,42 @@ public class ConverterCOLFiche implements ConverterFiche {
         PoiHelper.writeCell(sheet, rowNumber, 0, "IDENTIFICATION DONNEUSE").setCellStyle(titleStyle);
         rowNumber++;
         PoiHelper.writeCell(sheet, rowNumber, 0, "Propriétaire:");
-        PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getVache().getProprietaire());
+        if (fiche.getVache() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getVache().getProprietaire());
+        }
         rowNumber++;
         PoiHelper.writeCell(sheet, rowNumber, 0, "N° d'élevage:");
-        PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getVache().getNum_elevage());
+        if (fiche.getVache() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getVache().getNum_elevage());
+        }
         rowNumber++;
         PoiHelper.writeCell(sheet, rowNumber, 0, "N° d'identification:");
-        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getVache().getNum_identification());
+        if (fiche.getVache() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getVache().getNum_identification());
+        }
         PoiHelper.writeCell(sheet, rowNumber, 3, "N° de travail:");
         PoiHelper.writeCell(sheet, rowNumber, 5, "Race:");
-        PoiHelper.writeCell(sheet, rowNumber, 6, fiche.getVache().getRace() + "");
+        if (fiche.getVache() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 6, fiche.getVache().getRace() + "");
+        }
         rowNumber++;
         PoiHelper.writeCell(sheet, rowNumber, 0, "Parité:");
-        PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getVache().getParite());
+        if (fiche.getVache() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getVache().getParite());
+        }
         rowNumber += 2;
 
         //TRAITEMENT DONNEUSE
         PoiHelper.writeCell(sheet, rowNumber, 0, "TRAITEMENT DONNEUSE").setCellStyle(titleStyle);
         rowNumber++;
         PoiHelper.writeCell(sheet, rowNumber, 0, "Date chaleur de référence:");
-        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getTraitement_donneuse().getDate_ref_chaleur().toString());
+        if (fiche.getTraitement_donneuse() != null && fiche.getTraitement_donneuse().getDate_ref_chaleur() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getTraitement_donneuse().getDate_ref_chaleur().toString());
+        }
         PoiHelper.writeCell(sheet, rowNumber, 3, "Type chaleur de référence:");
-        PoiHelper.writeCell(sheet, rowNumber, 5, fiche.getTraitement_donneuse().getTypeChaleur());
+        if (fiche.getTraitement_donneuse() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 5, fiche.getTraitement_donneuse().getTypeChaleur());
+        }
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Date").setCellStyle(headerStyle);
@@ -113,40 +131,61 @@ public class ConverterCOLFiche implements ConverterFiche {
         PoiHelper.writeCell(sheet, rowNumber, 3, "Mode").setCellStyle(headerStyle);
         rowNumber++;
 
-        for (Tableau_Donneuse donneuse : fiche.getTraitement_donneuse().getTableauDonneuse()) {
-            PoiHelper.writeCell(sheet, rowNumber, 0, donneuse.getDate().toString()).setCellStyle(bodyStyle);
-            PoiHelper.writeCell(sheet, rowNumber, 1, donneuse.getProduit().getNom()).setCellStyle(bodyStyle);
-            PoiHelper.writeCell(sheet, rowNumber, 2, donneuse.getQuantite() + "").setCellStyle(bodyStyle);
-            PoiHelper.writeCell(sheet, rowNumber, 3, donneuse.getMode_traitement()).setCellStyle(bodyStyle);
-            rowNumber++;
+        if (fiche.getTraitement_donneuse() != null) {
+            for (Tableau_Donneuse donneuse : fiche.getTraitement_donneuse().getTableauDonneuse()) {
+                if (donneuse.getDate() != null) {
+                    PoiHelper.writeCell(sheet, rowNumber, 0, donneuse.getDate().toString()).setCellStyle(bodyStyle);
+                }
+                if (donneuse.getProduit() != null) {
+                    PoiHelper.writeCell(sheet, rowNumber, 1, donneuse.getProduit().getNom()).setCellStyle(bodyStyle);
+                }
+                PoiHelper.writeCell(sheet, rowNumber, 2, donneuse.getQuantite() + "").setCellStyle(bodyStyle);
+                PoiHelper.writeCell(sheet, rowNumber, 3, donneuse.getMode_traitement()).setCellStyle(bodyStyle);
+                rowNumber++;
+            }
         }
+        rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Ponction du ou des follicules dominants (> 8 mm):");
-        PoiHelper.writeCell(sheet, rowNumber, 4, fiche.getInfoTraitementDonneuse().isPonctionFollicule() ? "oui" : "non");
+        if (fiche.getInfoTraitementDonneuse() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 4, fiche.getInfoTraitementDonneuse().isPonctionFollicule() ? "oui" : "non");
+        }
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Nb de follicules aspirés:");
-        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInfoTraitementDonneuse().getNb_follicules() + "");
         PoiHelper.writeCell(sheet, rowNumber, 3, "Droite:");
-        PoiHelper.writeCell(sheet, rowNumber, 4, fiche.getInfoTraitementDonneuse().getNb_droite() + "");
         PoiHelper.writeCell(sheet, rowNumber, 5, "Gauche:");
-        PoiHelper.writeCell(sheet, rowNumber, 6, fiche.getInfoTraitementDonneuse().getNb_gauche() + "");
+
+        if (fiche.getInfoTraitementDonneuse() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInfoTraitementDonneuse().getNb_follicules() + "");
+            PoiHelper.writeCell(sheet, rowNumber, 4, fiche.getInfoTraitementDonneuse().getNb_droite() + "");
+            PoiHelper.writeCell(sheet, rowNumber, 6, fiche.getInfoTraitementDonneuse().getNb_gauche() + "");
+        }
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Image(s) échographe:");
-        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInfoTraitementDonneuse().isImage_echo() ? "oui" : "non");
+        if (fiche.getInfoTraitementDonneuse() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInfoTraitementDonneuse().isImage_echo() ? "oui" : "non");
+        }
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Traitement superovulation:");
-        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInfoTraitementDonneuse().isSuperovulation() ? "oui" : "non");
+        if (fiche.getInfoTraitementDonneuse() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInfoTraitementDonneuse().isSuperovulation() ? "oui" : "non");
+        }
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Type FSH:");
-        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInfoTraitementDonneuse().getTypeFSH());
+
+        if (fiche.getInfoTraitementDonneuse() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInfoTraitementDonneuse().getTypeFSH());
+        }
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "% de la dose totale FSH:");
-        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInfoTraitementDonneuse().getPourc_dose() + "%");
+        if (fiche.getInfoTraitementDonneuse() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInfoTraitementDonneuse().getPourc_dose() + "%");
+        }
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Date").setCellStyle(headerStyle);
@@ -155,7 +194,9 @@ public class ConverterCOLFiche implements ConverterFiche {
         rowNumber++;
 
         for (TableauTraitement traitement : fiche.getTableauTraitements()) {
-            PoiHelper.writeCell(sheet, rowNumber, 0, traitement.getDate().toString()).setCellStyle(bodyStyle);
+            if (traitement.getDate() != null) {
+                PoiHelper.writeCell(sheet, rowNumber, 0, traitement.getDate().toString()).setCellStyle(bodyStyle);
+            }
             PoiHelper.writeCell(sheet, rowNumber, 1, traitement.getMatin()).setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 2, traitement.getApresMidi()).setCellStyle(bodyStyle);
             rowNumber++;
@@ -163,15 +204,17 @@ public class ConverterCOLFiche implements ConverterFiche {
 
         //
         PoiHelper.writeCell(sheet, rowNumber, 0, "Opérateur IA:");
-        PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getOperateur().getNom() + " " + fiche.getOperateur().getPrenom());
+        if (fiche.getOperateur() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getOperateur().getNom() + " " + fiche.getOperateur().getPrenom());
+        }
         rowNumber++;
 
-        PoiHelper.writeCell(sheet, rowNumber, 0, "Nom taureau:");
-        PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getVache().getNom());
         PoiHelper.writeCell(sheet, rowNumber, 3, "Race taureau:");
-        PoiHelper.writeCell(sheet, rowNumber, 4, fiche.getVache().getRace() + "");
         PoiHelper.writeCell(sheet, rowNumber, 6, "N° taureau:");
-        PoiHelper.writeCell(sheet, rowNumber, 7, fiche.getVache().getNum_identification());
+        if (fiche.getVache() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 4, fiche.getVache().getRace() + "");
+            PoiHelper.writeCell(sheet, rowNumber, 7, fiche.getVache().getNum_identification());
+        }
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "RESULTATS COLLECTE").setCellStyle(titleStyle);
@@ -184,27 +227,35 @@ public class ConverterCOLFiche implements ConverterFiche {
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Nb d’embryons").setCellStyle(headerStyle);
-        PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getResultat_collecte().getNombre_Embryons_Viables() + "").setCellStyle(bodyStyle);
-        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getResultat_collecte().getNombre_Embryons_Degeneres() + "").setCellStyle(bodyStyle);
-        PoiHelper.writeCell(sheet, rowNumber, 3, fiche.getResultat_collecte().getNombre_Embryons_NonFecondes() + "").setCellStyle(bodyStyle);
-        PoiHelper.writeCell(sheet, rowNumber, 4, fiche.getResultat_collecte().getNombre_Embryons_Total() + "").setCellStyle(bodyStyle);
+        if (fiche.getResultat_collecte() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getResultat_collecte().getNombre_Embryons_Viables() + "").setCellStyle(bodyStyle);
+            PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getResultat_collecte().getNombre_Embryons_Degeneres() + "").setCellStyle(bodyStyle);
+            PoiHelper.writeCell(sheet, rowNumber, 3, fiche.getResultat_collecte().getNombre_Embryons_NonFecondes() + "").setCellStyle(bodyStyle);
+            PoiHelper.writeCell(sheet, rowNumber, 4, fiche.getResultat_collecte().getNombre_Embryons_Total() + "").setCellStyle(bodyStyle);
+        }
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Nb de corps jaunes dénombrés:");
         PoiHelper.writeCell(sheet, rowNumber, 3, "Droite:");
-        PoiHelper.writeCell(sheet, rowNumber, 4, fiche.getResultat_collecte().getNombre_CorpsJ_droite() + "");
         PoiHelper.writeCell(sheet, rowNumber, 5, "Gauche:");
-        PoiHelper.writeCell(sheet, rowNumber, 6, fiche.getResultat_collecte().getNombre_CorpsJ_gauche() + "");
+        if (fiche.getResultat_collecte() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 4, fiche.getResultat_collecte().getNombre_CorpsJ_droite() + "");
+            PoiHelper.writeCell(sheet, rowNumber, 6, fiche.getResultat_collecte().getNombre_CorpsJ_gauche() + "");
+        }
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Taux de collecte estimé:");
-        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getResultat_collecte().getTaux_de_collecte() + "");
         PoiHelper.writeCell(sheet, rowNumber, 4, "Sanitaires:");
-        PoiHelper.writeCell(sheet, rowNumber, 5, fiche.getResultat_collecte().getSanitaire());
+        if (fiche.getResultat_collecte() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getResultat_collecte().getTaux_de_collecte() + "");
+            PoiHelper.writeCell(sheet, rowNumber, 5, fiche.getResultat_collecte().getSanitaire());
+        }
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Remarques:");
-        PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getResultat_collecte().getRemarques());
+        if (fiche.getResultat_collecte() != null) {
+            PoiHelper.writeCell(sheet, rowNumber, 1, fiche.getResultat_collecte().getRemarques());
+        }
         PoiHelper.mergeRowAndColumn(sheet, rowNumber, rowNumber + 3, 1, 7);
         rowNumber += 3;
 
