@@ -17,4 +17,8 @@ public interface CelluleSomatiqueService {
     CelluleSomatique newCelluleSomatique();
 
     void delete(CelluleSomatique celluleSomatique);
+
+    CelluleSomatique updatecelluleSomatique(CelluleSomatique celluleSomatique);
+
+    CelluleSomatique updatecelluleSomatique(CelluleSomatique celluleSomatique, String type, String couleurPaillette, int nbPaillettes, Date date, String remarques);
 }

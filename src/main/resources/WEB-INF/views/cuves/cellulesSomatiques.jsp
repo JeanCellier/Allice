@@ -18,9 +18,8 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <a href="#" class="canisterLink panel-title pull-left" onclick="toggler('${canister.id}');">Canister numero ${canister.numero}</a>
-                            <p data-placement="top" data-toggle="tooltip" title="Modifier" class="pull-right"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="<c:out value='${canister.id}' />" data-toggle="modal" data-target="#modify" ><span class="glyphicon glyphicon-pencil"></span></button></p>
+                            <p data-placement="top" data-toggle="tooltip" title="Modifier" class="pull-right"><button class="btn btn-primary btn-md btnEdit" data-title="Modifier" data-id="<c:out value='${canister.id}' />" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p>
                             <p data-placement="top" data-toggle="tooltip" title="Supprimer" class="pull-right" style="margin-right:20px;"><button class=" btnDelete btn btn-danger btn-md" data-href="./delete/<c:out value='${canister.id}'/>" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p>
-                            <p data-placement="top" data-toggle="tooltip" title="Add" class="pull-right" style="margin-right:20px;"><button class="btn btn-primary btn-md btn-md" data-title="Add" data-id="<c:out value='${canister.id}' />" data-toggle="modal" data-target="#addVisoTube" ><span class="fa fa-plus"> </span></button></p>
                             <div class="clearfix"></div>
                         </div>
 
@@ -35,24 +34,25 @@
                                         <td>Nombre de Pailettes</td>
                                         <td>Date de congelation </td>
                                         <td>Remarques</td>
+                                        <td></td>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <c:forEach items="${canister.visoTubeList}" var="ligne">
-                                        <c:forEach items="${ligne.cellulesSomatiqueList}" var="ligne2">
-                                            <tr>
-                                                <td>${ligne.couleur}</td>
-                                                <td>${ligne2.typeCellulaire}</td>
-                                                <td>${ligne2.couleurPaillette}</td>
-                                                <td>${ligne2.nbPaillettes}</td>
-                                                <td><fmt:formatDate pattern="dd/MM/yyyy" value="${ligne2.dateCongelation}" /></td>
-                                                <td>${ligne2.remarques}</td>
-                                            </tr>
-                                        </c:forEach>
+                                        <tr>
+                                            <td>${ligne.couleur}</td>
+                                            <td>${ligne.celluleSomatique.typeCellulaire}</td>
+                                            <td>${ligne.celluleSomatique.couleurPaillette}</td>
+                                            <td>${ligne.celluleSomatique.nbPaillettes}</td>
+                                            <td><fmt:formatDate pattern="dd/MM/yyyy" value="${ligne.celluleSomatique.dateCongelation}" /></td>
+                                            <td>${ligne.celluleSomatique.remarques}</td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Supprimer Viso Tube"><button class=" btnDeleteViso btn btn-danger btn-md" data-href="./deleteviso/<c:out value='${ligne.id}'/>" data-title="Supprimer" data-toggle="modal" data-target="#deleteviso" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                                        </tr>
                                     </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -76,6 +76,38 @@
                         <input class="form-control" required name="nom" type="text" placeholder="Nom du canister">
                         <input class="form-control" required name="numero" type="text" placeholder="Numero du canister">
                     </div>
+
+                    <div class="cellulesSomatique" id="cellulesSomatique">
+                        <div class="form-group col-sm-2" style="padding-left:0">
+                            <input class="form-control" required name="couleur[]" type="text" placeholder="Couleur du Viso Tube">
+                        </div>
+
+                        <div class="form-group col-sm-2" style="padding-left:0">
+                            <input class="form-control" required name="type[]" type="text" placeholder="Type cellulaire">
+                        </div>
+
+                        <div class="form-group col-sm-2" style="padding-left:0">
+                            <input class="form-control" required name="couleurpaillette[]" type="text" placeholder="Couleur Paillette">
+                        </div>
+
+                        <div class="form-group col-sm-2">
+                            <input class="form-control" required name="nbpaillette[]" step="1" type="number" placeholder="Nombre Paillettes">
+                        </div>
+
+                        <div class="form-group col-sm-2">
+                            <input class="form-control datepicker" required name="date[]" type="date" placeholder="Date congelation">
+                        </div>
+
+                        <div class="form-group col-sm-11">
+                            <input class="form-control" required name="remarques[]" type="text" placeholder="Remarques">
+                        </div>
+
+                    </div>
+                    <div class="form-group col-sm-1">
+                        <button class="btn btn-primary addCelluleSomatique" type="button"><span class="fa fa-plus"></span></button>
+                    </div>
+
+
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success btn-lg" id="addEditButton" style="width: 100%;"><span class="fa fa-check"></span> Valider</button>
@@ -87,7 +119,65 @@
     <!-- /.modal-dialog -->
 </div>
 
-<!-- Modal delete traitement -->
+<!-- Modal edit new canister -->
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="cellulesSomatiquesedit" aria-hidden="true">
+    <div class="modal-dialog modal-large">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="HeadingEdit">Editer un canister</h4>
+            </div>
+
+            <form id="editForm" action="./cellulesSomatiques/edit" method="POST">
+                <div class="modal-body">
+                    <div class="form-group" style="padding-left:0">
+                        <input class="form-control" required name="nom" type="text" placeholder="Nom du canister">
+                        <input class="form-control" required name="numero" type="text" placeholder="Numero du canister">
+                    </div>
+
+                    <div class="cellulesSomatique" id="cellulesSomatique">
+                        <div class="form-group col-sm-2" style="padding-left:0">
+                            <input class="form-control" required name="couleur[]" type="text" placeholder="Couleur du Viso Tube">
+                        </div>
+
+                        <div class="form-group col-sm-2" style="padding-left:0">
+                            <input class="form-control" required name="type[]" type="text" placeholder="Type cellulaire">
+                        </div>
+
+                        <div class="form-group col-sm-2" style="padding-left:0">
+                            <input class="form-control" required name="couleurpaillette[]" type="text" placeholder="Couleur Paillette">
+                        </div>
+
+                        <div class="form-group col-sm-2">
+                            <input class="form-control" required name="nbpaillette[]" step="1" type="number" placeholder="Nombre Paillettes">
+                        </div>
+
+                        <div class="form-group col-sm-2">
+                            <input class="form-control datepicker" required name="date[]" type="date" placeholder="Date congelation">
+                        </div>
+
+                        <div class="form-group col-sm-11">
+                            <input class="form-control" required name="remarques[]" type="text" placeholder="Remarques">
+                        </div>
+
+                    </div>
+                    <div class="form-group col-sm-1">
+                        <button class="btn btn-primary editCelluleSomatique" type="button"><span class="fa fa-plus"></span></button>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success btn-lg" id="EditButton" style="width: 100%;"><span class="fa fa-check"></span> Valider</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<!-- Modal delete Canister -->
 <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -110,6 +200,28 @@
     <!-- /.modal-dialog -->
 </div>
 
+<!-- Modal delete Viso Tube -->
+<div class="modal fade" id="deleteviso" tabindex="-1" role="dialog" aria-labelledby="deleteviso" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="HeadingDeleteViso">Supprimer cette entr&#233e</h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="alert alert-danger"><span class="fa fa-warning-sign"></span> Voulez vous vraiment supprimer cette entr&#233e ?</div>
+            </div>
+
+            <div class="modal-footer ">
+                <button type="button" id="confirmDeleteViso" class="btn btn-danger" ><span class="fa fa-check"></span> Oui</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="fa fa-remove"></span> Non</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 
 <%@ include file="../footer.jsp" %>
 
@@ -134,23 +246,23 @@
 
     /** function convertion des dates */
     function convertDate(inputFormat) {
-    function pad(s) { return (s < 10) ? '0' + s : s; }
-    var d = new Date(inputFormat);
-    return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('/');
+        function pad(s) { return (s < 10) ? '0' + s : s; }
+        var d = new Date(inputFormat);
+        return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('/');
     }
 
     /****** function init calendrier sans heure ******/
     $('.datepicker').datetimepicker({
-    locale: 'fr',
-    format: 'DD/MM/YYYY',
-    toolbarPlacement:'top',
-    showClose:true
+        locale: 'fr',
+        format: 'DD/MM/YYYY',
+        toolbarPlacement:'top',
+        showClose:true
     });
 
     /******* Reinit form on click add ******/
     $(document).on('click', '#addButton', function(){
         reinit();
-        $('#addForm').attr('action', './add');
+        $('#addForm').attr('action', './cellulesSomatiques/add');
     });
 
     /******* Ajoute une ligne modal cellule somatique ******/
@@ -160,6 +272,12 @@
         $clone.find('input').val("");
         $clone.append('<div class="form-group col-sm-1"><button class="btn btn-danger delCelluleSomatique" type="button"><span class="fa fa-minus"></span></button></div>');
         $clone.insertAfter($("div.cellulesSomatique").last());
+        $('.datepicker').datetimepicker({
+            locale: 'fr',
+            format: 'DD/MM/YYYY',
+            toolbarPlacement:'top',
+            showClose:true
+        });
     });
 
     /******* Supprime une ligne modal cellule somatique ******/
@@ -172,17 +290,17 @@
         $("#" + divId).toggle();
     }
 
-//    /****** reinit modal add ******/
-//    function reinit(){
-//        $('#add').find('.cellulesSomatique').not(':first').remove(); //garde juste une ligne dans le tableau de cellulesSomatique
-//        $('#add').find("select").val("");
-//        $('#add').find("input[name='jour[]']").val(0);
-//        $('#add').find("input[name!='jour[]']").val("");
-//        $('#add').find("input[name='heure[]']").val(0);
-//        $('#add').find("input[name!='heure[]']").val("");
-//    }
+    /****** reinit modal add ******/
+    function reinit(){
+        $('#add').find('.cellulesSomatique').not(':first').remove(); //garde juste une ligne dans le tableau de viso tube
+        $('#add').find("select").val("");
+        $('#add').find("input[name='jour[]']").val(0);
+        $('#add').find("input[name!='jour[]']").val("");
+        $('#add').find("input[name='heure[]']").val(0);
+        $('#add').find("input[name!='heure[]']").val("");
+    }
 
-    /****** supprimer alert après 5s ******/
+    /****** supprimer alert apr�s 5s ******/
     function autoclose(){
         window.setTimeout(function() {
             $(".flash").fadeTo(500, 0).slideUp(500, function(){
@@ -191,44 +309,44 @@
         }, 5000);
     }
 
-    <%--/************************ MODIF *************************/--%>
-    <%--$(document).on( 'click', ".btnEdit", function() {--%>
-        <%--reinit();--%>
-        <%--id = $(this).attr('data-id');--%>
+    /************************ MODIF *************************/
+    $(document).on( 'click', ".btnEdit", function() {
+        reinit();
+        id = $(this).attr('data-id');
 
-        <%--$.ajax({--%>
-            <%--url: "./get/"+id,--%>
-            <%--method: 'GET',--%>
-            <%--success: function (result) {--%>
-                <%--if(result.succes == true) {--%>
+        $.ajax({
+            url: "./get/"+id,
+            method: 'GET',
+            success: function (result) {
+                if(result.succes == true) {
 
-                    <%--$('#addForm').attr('action', './edit/'+id);--%>
-
-                    <%--$('#add').find("input[name='nom']").val(result.objet.nom);--%>
-                    <%--//remplit modal--%>
-                    <%--for(iLigne = 0; iLigne < result.objet.tableauTraitement.length; iLigne++)--%>
-                    <%--{--%>
-                        <%--if(iLigne == 0){--%>
-                            <%--$target = $('#add').find('#tabTraitement');--%>
-                        <%--}else{--%>
-                            <%--$target = $('#add').find('#tabTraitement').clone().removeAttr('id');--%>
-                            <%--$target.insertAfter($('#add').find("div.tabTraitement").last());--%>
-                        <%--}--%>
-
-                        <%--$target.find("input[name='jour[]']").val(result.objet.tableauTraitement[iLigne].decalageJour);--%>
-                        <%--$target.find("input[name='heure[]']").val(result.objet.tableauTraitement[iLigne].decalageHeure);--%>
-                        <%--$target.find("select[name='produit[]']" ).val(result.objet.tableauTraitement[iLigne].produit.id );--%>
-                        <%--$target.find("input[name='quantite[]']").val(result.objet.tableauTraitement[iLigne].quantite);--%>
-                        <%--$target.find("select[name='modeTraitement[]']").val(result.objet.tableauTraitement[iLigne].mode_traitement);--%>
-                    <%--}--%>
-                <%--}else{--%>
-                    <%--$('#add').modal('toggle'); //ferme modal--%>
-                    <%--$('.panel-group').first().before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>'); //afficher alert--%>
-                    <%--autoclose();--%>
-                <%--}--%>
-            <%--}--%>
-        <%--});--%>
-    <%--});--%>
+                    $('#editForm').attr('action', './edit/'+id);
+                    $('#edit').find("input[name='nom']").val(result.objet.nom);
+                    $('#edit').find("input[name='numero']").val(result.objet.numero);
+                    //remplit modal
+                    for(iLigne = 0; iLigne < result.objet.visoTubeList.length; iLigne++)
+                    {
+                        if(iLigne == 0){
+                            $target = $('#edit').find('#cellulesSomatique');
+                        }else{
+                            $target = $('#edit').find('#cellulesSomatique').clone().removeAttr('id');
+                            $target.insertAfter($('#edit').find("div.cellulesSomatique").last());
+                        }
+                        $target.find("input[name='couleur[]']").val(result.objet.visoTubeList[iLigne].couleur);
+                        $target.find("input[name='type[]']").val(result.objet.visoTubeList[iLigne].celluleSomatique.typeCellulaire);
+                        $target.find("input[name='couleurpaillette[]']" ).val(result.objet.visoTubeList[iLigne].celluleSomatique.couleurPaillette);
+                        $target.find("input[name='nbpaillette[]']").val(result.objet.visoTubeList[iLigne].celluleSomatique.nbPaillettes);
+                        $target.find("input[name='date[]']").val(convertDate(result.objet.visoTubeList[iLigne].celluleSomatique.dateCongelation));
+                        $target.find("input[name='remarques[]']").val(result.objet.visoTubeList[iLigne].celluleSomatique.remarques);
+                    }
+                }else{
+                    $('#edit').modal('toggle'); //ferme modal
+                    $('.panel-group').first().before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>'); //afficher alert
+                    autoclose();
+                }
+            }
+        });
+    });
 
     /************************ SUPPRIMER *************************/
 
@@ -241,7 +359,7 @@
         });
     });
 
-    /** Si click sur confirm => supprime la row et l'entrée */
+    /** Si click sur confirm => supprime la row et l'entr�e */
     $(document).on('click', '#confirmDelete', function(e){
         href = $(this).attr('href')
         $.ajax({
@@ -254,6 +372,39 @@
                     $('#'+href.substring(9)).closest('.panel-group').remove();
                 }else{
                     $('#delete').modal('toggle'); //ferme modal
+                    $('.panel-group').first().before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>'); //afficher alert
+                }
+                autoclose();
+            }
+        });
+    });
+
+    /************************ SUPPRIMER VISO TUBE*************************/
+
+    /** Attribut la ligne courante et l'url de delete */
+    $(document).on('click', '.btnDeleteViso', function(e){ //au clic sur le bouton supprimer
+        e.preventDefault();
+        currentrow = $(e.target).closest('tr');
+
+        $('#deleteviso').on('shown.bs.modal', function(e) {
+            $(this).find('#confirmDeleteViso').attr('href', $(e.relatedTarget).data('href')); //attribut l'url de delete
+        });
+    });
+
+    /** Si click sur confirm => supprime la row et l'entr�e */
+    $(document).on('click', '#confirmDeleteViso', function(e){
+        href = $(this).attr('href')
+        $.ajax({
+            url: href,
+            type: $(this).attr('method'),
+            success: function (result) {
+                if(result.succes == true){
+                    $('#deleteviso').modal('toggle'); //ferme modal
+                    $('.panel-body').first().before('<div class="alert alert-success flash" role="alert">'+result.message+'</div>'); //afficher alert
+                    currentrow.remove();
+
+                }else{
+                    $('#deleteviso').modal('toggle'); //ferme modal
                     $('.panel-group').first().before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>'); //afficher alert
                 }
                 autoclose();

@@ -40,4 +40,27 @@ public class CelluleSomatiqueServiceImpl implements CelluleSomatiqueService {
     public void delete(CelluleSomatique celluleSomatique) {
         celluleSomatiqueRepository.delete(celluleSomatique);
     }
+
+    @Override
+    public CelluleSomatique updatecelluleSomatique(CelluleSomatique celluleSomatique) {
+        return null;
+    }
+
+    @Override
+    public CelluleSomatique updatecelluleSomatique(CelluleSomatique celluleSomatique, String type, String couleurPaillette, int nbPaillettes, Date date, String remarques) {
+
+        celluleSomatiqueRepository.delete(celluleSomatique);
+
+        CelluleSomatique newCelluleSomatique = new CelluleSomatique();
+
+        newCelluleSomatique.setTypeCellulaire(type);
+        newCelluleSomatique.setCouleurPaillette(couleurPaillette);
+        newCelluleSomatique.setNbPaillettes(nbPaillettes);
+        newCelluleSomatique.setDateCongelation(date);
+        newCelluleSomatique.setRemarques(remarques);
+
+
+
+        return celluleSomatiqueRepository.save(newCelluleSomatique);
+    }
 }

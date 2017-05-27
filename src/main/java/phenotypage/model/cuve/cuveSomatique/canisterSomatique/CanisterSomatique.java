@@ -19,19 +19,19 @@ public class CanisterSomatique extends Canister{
 //    private Long id;
 
 
-    public CuveSomatique getCuveSomatique() {
-        return cuveSomatique;
-    }
+//    public CuveSomatique getCuveSomatique() {
+//        return cuveSomatique;
+//    }
+//
+//    public void setCuveSomatique(CuveSomatique cuveSomatique) {
+//        this.cuveSomatique = cuveSomatique;
+//    }
 
-    public void setCuveSomatique(CuveSomatique cuveSomatique) {
-        this.cuveSomatique = cuveSomatique;
-    }
-
-    @OneToMany(mappedBy = "canisterSomatique")
+    @OneToMany
     private List<VisoTubeSomatique> visoTubeList= new ArrayList<>();
 
-    @ManyToOne
-    private CuveSomatique cuveSomatique;
+//    @ManyToOne
+//    private CuveSomatique cuveSomatique;
 
     public CanisterSomatique(List<VisoTubeSomatique> visoTubeList) {
         this.visoTubeList = visoTubeList;

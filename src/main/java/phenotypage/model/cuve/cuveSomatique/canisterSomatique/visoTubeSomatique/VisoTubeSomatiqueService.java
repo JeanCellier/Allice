@@ -11,9 +11,15 @@ public interface VisoTubeSomatiqueService {
 
     List<VisoTubeSomatique> findAllVisoTubeSomatique();
 
-    VisoTubeSomatique createVisoTubeSomatique(List<CelluleSomatique> canisterList);
+    VisoTubeSomatique createVisoTubeSomatique(CelluleSomatique celluleSomatique);
 
     VisoTubeSomatique addVisoTubeSomatique(VisoTubeSomatique visoTubeSomatique);
 
     VisoTubeSomatique newVisoTubeSomatique();
+
+    void delete(VisoTubeSomatique visoTubeSomatique);
+
+    VisoTubeSomatique updatevisoTubeSomatique(VisoTubeSomatique visoTubeSomatique);
+
+    VisoTubeSomatique updatevisoTubeSomatique(VisoTubeSomatique visoTubeSomatique, String couleur, CelluleSomatique celluleSomatique);
 }

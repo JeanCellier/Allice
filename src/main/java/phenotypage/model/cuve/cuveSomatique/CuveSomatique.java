@@ -13,23 +13,23 @@ import java.util.List;
 @Entity
 public class CuveSomatique extends Cuve {
 
-    @OneToMany(mappedBy = "cuveSomatique")
-    private List<CanisterSomatique> canisterList= new ArrayList<>();
+//    @OneToMany(mappedBy = "cuveSomatique")
+//    private List<CanisterSomatique> canisterList= new ArrayList<>();
 
-    public CuveSomatique(List<CanisterSomatique> canisterList) {
-        this.canisterList = canisterList;
-    }
+//    public CuveSomatique(List<CanisterSomatique> canisterList) {
+//        this.canisterList = canisterList;
+//    }
 
 
-    public CuveSomatique() {
-        super();
-    }
+//    public CuveSomatique() {
+//        super();
+//    }
 
-    public List<CanisterSomatique> getCanisterList() {
-        return canisterList;
-    }
-
-    public void setCanisterList(List<CanisterSomatique> canisterList) {
-        this.canisterList = canisterList;
-    }
+//    public List<CanisterSomatique> getCanisterList() {
+//        return canisterList;
+//    }
+//
+//    public void setCanisterList(List<CanisterSomatique> canisterList) {
+//        this.canisterList = canisterList;
+//    }
 }

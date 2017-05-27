@@ -21,7 +21,8 @@ public class CuveSomatiqueServiceImpl implements CuveSomatiqueService {
 
     @Override
     public CuveSomatique createCuveSomatique(List<CanisterSomatique> canisterList) {
-        return cuveSomatiqueRepository.save(new CuveSomatique(canisterList));
+//        return cuveSomatiqueRepository.save(new CuveSomatique(canisterList));
+        return null;
     }
 
     @Override

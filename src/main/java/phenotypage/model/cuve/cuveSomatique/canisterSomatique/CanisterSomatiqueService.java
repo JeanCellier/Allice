@@ -1,7 +1,6 @@
 package phenotypage.model.cuve.cuveSomatique.canisterSomatique;
 
 import phenotypage.model.cuve.cuveSomatique.canisterSomatique.visoTubeSomatique.VisoTubeSomatique;
-import phenotypage.model.cuve.cuveSomatique.canisterSomatique.visoTubeSomatique.celluleSomatique.CelluleSomatique;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,5 +20,7 @@ public interface CanisterSomatiqueService {
 
     void delete(CanisterSomatique canisterSomatique);
 
-    Optional<CelluleSomatique> findOne(long id);
+    Optional<CanisterSomatique> findOne(long id);
+
+    CanisterSomatique updateCanisterSomatique(CanisterSomatique canisterSomatique, String nom, int numero, List<VisoTubeSomatique> visoTubeSomatiqueList);
 }

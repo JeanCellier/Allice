@@ -13,36 +13,45 @@ import java.util.List;
  */
 @Entity
 public class VisoTubeSomatique extends VisoTube {
-//    @Id
-//    @GeneratedValue
-//    private Long id;
 
-    public VisoTubeSomatique(List<CelluleSomatique> celluleSomatiqueList) {
-        this.celluleSomatiqueList = celluleSomatiqueList;
+    public VisoTubeSomatique(CelluleSomatique celluleSomatique) {
+        this.celluleSomatique = celluleSomatique;
     }
 
-    public List<CelluleSomatique> getCelluleSomatiqueList() {
-        return celluleSomatiqueList;
+//    public List<CelluleSomatique> getCelluleSomatiqueList() {
+//        return celluleSomatiqueList;
+//    }
+
+//    public void setCelluleSomatiqueList(CelluleSomatique celluleSomatique) {
+//        this.celluleSomatique = celluleSomatique;
+//    }
+
+//    public CanisterSomatique getCanisterSomatique() {
+//        return canisterSomatique;
+//    }
+//
+//    public void setCanisterSomatique(CanisterSomatique canisterSomatique) {
+//        this.canisterSomatique = canisterSomatique;
+//    }
+
+    public CelluleSomatique getCelluleSomatique() {
+        return celluleSomatique;
     }
 
-    public void setCelluleSomatiqueList(List<CelluleSomatique> celluleSomatiqueList) {
-        this.celluleSomatiqueList = celluleSomatiqueList;
-    }
-
-    public CanisterSomatique getCanisterSomatique() {
-        return canisterSomatique;
-    }
-
-    public void setCanisterSomatique(CanisterSomatique canisterSomatique) {
-        this.canisterSomatique = canisterSomatique;
+    public void setCelluleSomatique(CelluleSomatique celluleSomatique) {
+        this.celluleSomatique = celluleSomatique;
     }
 
     public VisoTubeSomatique() {
+
     }
 
-    @OneToMany(mappedBy = "visoTubeSomatique")
-    private List<CelluleSomatique> celluleSomatiqueList = new ArrayList<>();
+//    @OneToMany(mappedBy = "visoTubeSomatique")
+//    private List<CelluleSomatique> celluleSomatiqueList = new ArrayList<>();
 
-    @ManyToOne
-    private CanisterSomatique canisterSomatique;
+    @OneToOne
+    private CelluleSomatique celluleSomatique;
+
+//    @ManyToOne
+//    private CanisterSomatique canisterSomatique;
 }

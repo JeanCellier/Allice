@@ -1,5 +1,5 @@
 <div class="container-fluid" style="padding-left:0;padding-right:0">
-    <    class="sidebar sidebar-container navbar-default col-xs-12 col-sm-3 col-md-2"  role="navigation" style="margin-bottom: 0; padding-right:0; padding-left:0;">
+    <nav class="sidebar sidebar-container navbar-default col-xs-12 col-sm-3 col-md-2"  role="navigation" style="margin-bottom: 0; padding-right:0; padding-left:0;">
         <div class="navbar-fiche">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
@@ -41,5 +41,4 @@
                 <li><a href="#">PLANNING</a></li>
             </ul>
         </div>
-
     </nav>

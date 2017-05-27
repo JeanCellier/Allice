@@ -9,6 +9,7 @@ import phenotypage.model.cuve.canister.visoTube.VisoTube;
 import phenotypage.model.cuve.cuveSomatique.CuveSomatiqueService;
 import phenotypage.model.cuve.cuveSomatique.canisterSomatique.CanisterSomatique;
 import phenotypage.model.cuve.cuveSomatique.canisterSomatique.CanisterSomatiqueService;
+import phenotypage.model.cuve.cuveSomatique.canisterSomatique.visoTubeSomatique.VisoTubeSomatique;
 import phenotypage.model.cuve.cuveSomatique.canisterSomatique.visoTubeSomatique.VisoTubeSomatiqueService;
 import phenotypage.model.cuve.cuveSomatique.canisterSomatique.visoTubeSomatique.celluleSomatique.CelluleSomatique;
 import phenotypage.model.cuve.cuveSomatique.canisterSomatique.visoTubeSomatique.celluleSomatique.CelluleSomatiqueService;
@@ -17,7 +18,10 @@ import phenotypage.model.pharmacie.produit.Produit;
 import phenotypage.model.traitement_acte.TraitementActe;
 import phenotypage.model.traitement_acte.tableau_traitement.Tableau_Traitement_Acte;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,65 +46,136 @@ public class CuveSomatiquesController {
     @RequestMapping(value = "/cellulesSomatiques", method = RequestMethod.GET)
     public String cellules_comatiques(Model model)
     {
-        model.addAttribute("canisterList", cuveSomatiqueService.findAllCuveSomatique().get(0).getCanisterList());
-        //TODO gérer avec l'id
+        model.addAttribute("canisterList", canisterSomatiqueService.findAllCanisterSomatique());
         model.addAttribute("visoTubeList", visoTubeSomatiqueService.findAllVisoTubeSomatique());
-        //TODO gérer avec l'id
-        model.addAttribute("cellulesSomatiqueList", celluleSomatiqueService.findAllCelluleSomatique());
-//        model.addAttribute("cellulesSomatique", celluleSomatiqueService.findAllCelluleSomatique());
+
         return "cuves/cellulesSomatiques";
     }
 
     /** AJOUTER CANISTER **/
     @RequestMapping(value = "/cellulesSomatiques/add", method = RequestMethod.POST)
-    public String add(@RequestParam("nom") String nom, @RequestParam(value="numero")  int numero){
-        List<CanisterSomatique> canisterSomatiqueList = new ArrayList<>();
+    public String add(@RequestParam("nom") String nom, @RequestParam(value="numero")  int numero, @RequestParam("couleur[]") String[] couleur,
+                      @RequestParam(value="type[]")  String[] type, @RequestParam(value="couleurpaillette[]")  String[] couleurPaillette,
+                      @RequestParam(value="nbpaillette[]")  int[] nbPaillettes, @RequestParam(value="date[]")  Date[] date, @RequestParam(value="remarques[]")  String[] remarques){
+
+        List<VisoTubeSomatique> visoTubeSomatiqueList = new ArrayList<>();
 
         CanisterSomatique canisterSomatique = new CanisterSomatique();
 
         canisterSomatique.setNom(nom);
         canisterSomatique.setNumero(numero);
-        canisterSomatique.setCuveSomatique(cuveSomatiqueService.findAllCuveSomatique().get(0));
+
+        for(int iLigneVisoTube = 0; iLigneVisoTube < couleur.length; iLigneVisoTube++){
+            VisoTubeSomatique visoTubeSomatique = new VisoTubeSomatique();
+            CelluleSomatique celluleSomatique = new CelluleSomatique();
+
+            visoTubeSomatique.setCouleur(couleur[iLigneVisoTube]);
+            celluleSomatique.setCouleurPaillette(couleurPaillette[iLigneVisoTube]);
+            celluleSomatique.setNbPaillettes(nbPaillettes[iLigneVisoTube]);
+            celluleSomatique.setTypeCellulaire(type[iLigneVisoTube]);
+            celluleSomatique.setRemarques(remarques[iLigneVisoTube]);
+            celluleSomatique.setDateCongelation(date[iLigneVisoTube]);
+
+            visoTubeSomatique.setCelluleSomatique(celluleSomatique);
+
+            visoTubeSomatiqueList.add(visoTubeSomatique);
+
+            celluleSomatiqueService.addCelluleSomatique(celluleSomatique);
+            visoTubeSomatiqueService.addVisoTubeSomatique(visoTubeSomatique);
+
+        }
+
+        canisterSomatique.setVisoTubeList(visoTubeSomatiqueList);
 
         canisterSomatiqueService.addCanisterSomatique(canisterSomatique);
-        cuveSomatiqueService.findAllCuveSomatique().get(0).getCanisterList().add(canisterSomatique);
+
         return "redirect:/cuves/cellulesSomatiques";
     }
 
-//    /** MODIFIER TRAITEMENT **/
-//    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-//    public String edit( @PathVariable("id") TraitementActe traitementActe, @RequestParam("nom") String nom,
-//                        @RequestParam(value="jour[]")  int[] jour, @RequestParam(value="heure[]")  String[] heure,
-//                        @RequestParam(value="produit[]")  Produit[] produit,
-//                        @RequestParam(value="quantite[]")  int[] quantite, @RequestParam(value="modeTraitement[]")  String[] modeTrait){
-//
-//        List<Tableau_Traitement_Acte> tableau_traitement_acte = new ArrayList<>();
-//
-//        for(int iLigneTraitement = 0; iLigneTraitement < jour.length; iLigneTraitement++){
-//            Tableau_Traitement_Acte tableauTraitement = new Tableau_Traitement_Acte();
-//
-//            tableauTraitement.setDecalageJour(jour[iLigneTraitement]);
-//            tableauTraitement.setDecalageHeure(Float.parseFloat(heure[iLigneTraitement]));
-//            tableauTraitement.setProduit(produit[iLigneTraitement]);
-//            tableauTraitement.setQuantite(quantite[iLigneTraitement]);
-//            tableauTraitement.setMode_traitement(modeTrait[iLigneTraitement]);
-//
-//            tableau_traitement_acte.add(tableauTraitement);
-//        }
-//
-//        TraitementActe traitementActeUpdate = traitementActeService.updateTraitement(traitementActe, nom, tableau_traitement_acte);
-//
-//        return "redirect:/traitement/traitement";
-//    }
 
-    /******************** DELETE FICHE ********************/
+    /** MODIFIER CANISTER SOMATIQUE **/
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+    public String edit( @PathVariable("id") CanisterSomatique canisterSomatique, @RequestParam("nom") String nom, @RequestParam(value="numero")  int numero, @RequestParam("couleur[]") String[] couleur,
+                        @RequestParam(value="type[]")  String[] type, @RequestParam(value="couleurpaillette[]")  String[] couleurPaillette,
+                        @RequestParam(value="nbpaillette[]")  int[] nbPaillettes, @RequestParam(value="date[]")  Date[] date, @RequestParam(value="remarques[]")  String[] remarques){
+
+
+        List<VisoTubeSomatique> visoTubeSomatiqueList = new ArrayList<>();
+
+        CanisterSomatique newcanisterSomatique = new CanisterSomatique();
+
+        newcanisterSomatique.setNom(nom);
+        newcanisterSomatique.setNumero(numero);
+
+        for(int iLigneVisoTube = 0; iLigneVisoTube < couleur.length; iLigneVisoTube++){
+            VisoTubeSomatique newvisoTubeSomatique = new VisoTubeSomatique();
+            CelluleSomatique newcelluleSomatique = new CelluleSomatique();
+
+            newvisoTubeSomatique.setCouleur(couleur[iLigneVisoTube]);
+            newcelluleSomatique.setCouleurPaillette(couleurPaillette[iLigneVisoTube]);
+            newcelluleSomatique.setNbPaillettes(nbPaillettes[iLigneVisoTube]);
+            newcelluleSomatique.setTypeCellulaire(type[iLigneVisoTube]);
+            newcelluleSomatique.setRemarques(remarques[iLigneVisoTube]);
+            newcelluleSomatique.setDateCongelation(date[iLigneVisoTube]);
+
+            newvisoTubeSomatique.setCelluleSomatique(newcelluleSomatique);
+
+            visoTubeSomatiqueList.add(newvisoTubeSomatique);
+
+            celluleSomatiqueService.addCelluleSomatique(newcelluleSomatique);
+            visoTubeSomatiqueService.addVisoTubeSomatique(newvisoTubeSomatique);
+
+        }
+
+        newcanisterSomatique.setVisoTubeList(visoTubeSomatiqueList);
+
+        canisterSomatiqueService.addCanisterSomatique(newcanisterSomatique);
+
+        System.err.println("hello");
+        for (VisoTubeSomatique visoTubeSomatique : canisterSomatique.getVisoTubeList())
+        {
+            celluleSomatiqueService.delete(visoTubeSomatique.getCelluleSomatique());
+            visoTubeSomatiqueService.delete(visoTubeSomatique);
+        }
+
+        canisterSomatiqueService.delete(canisterSomatique);
+
+
+        return "redirect:/cuves/cellulesSomatiques";
+    }
+
+    /******************** DELETE CANISTER ********************/
     @ResponseBody
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public JsonResponse delete(@PathVariable("id") CelluleSomatique celluleSomatique){
+    public JsonResponse delete(@PathVariable("id") CanisterSomatique canisterSomatique){
         JsonResponse response = new JsonResponse();
-        celluleSomatiqueService.delete(celluleSomatique);
+
+        for (VisoTubeSomatique visoTubeSomatique : canisterSomatique.getVisoTubeList())
+        {
+            celluleSomatiqueService.delete(visoTubeSomatique.getCelluleSomatique());
+            visoTubeSomatiqueService.delete(visoTubeSomatique);
+        }
+
+        canisterSomatiqueService.delete(canisterSomatique);
         response.setSucces(true);
-        response.setMessage("Cellule Somatique supprimé");
+        response.setMessage("Canister Somatique supprimé");
+        return response;
+    }
+
+    /******************** DELETE VISO TUBE ********************/
+    @ResponseBody
+    @RequestMapping(value = "/deleteviso/{id}", method = RequestMethod.GET)
+    public JsonResponse deleteviso(@PathVariable("id") VisoTubeSomatique visoTubeSomatique){
+        JsonResponse response = new JsonResponse();
+
+
+            celluleSomatiqueService.delete(visoTubeSomatique.getCelluleSomatique());
+            visoTubeSomatiqueService.delete(visoTubeSomatique);
+
+
+
+        response.setSucces(true);
+        response.setMessage("Viso Tube Somatique supprimé");
         return response;
     }
 
@@ -110,11 +185,11 @@ public class CuveSomatiquesController {
     public JsonResponse getOne(@PathVariable("id") long id){
         JsonResponse response = new JsonResponse();
         //TODO Vérifier type cf appel
-        Optional<CelluleSomatique> celluleSomatique = canisterSomatiqueService.findOne(id);
-
-        if(celluleSomatique.isPresent()){
+        Optional<CanisterSomatique> canisterSomatique = canisterSomatiqueService.findOne(id);
+        if(canisterSomatique.isPresent()){
             response.setSucces(true);
-            response.setObjet(celluleSomatique.get());
+            response.setObjet(canisterSomatique.get());
+
         }else{
             response.setSucces(false);
             response.setMessage("Une erreur s\'est produite");
