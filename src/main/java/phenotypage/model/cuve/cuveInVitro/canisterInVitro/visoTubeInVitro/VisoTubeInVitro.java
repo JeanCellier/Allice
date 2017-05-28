@@ -5,6 +5,7 @@ import phenotypage.model.cuve.cuveInVitro.canisterInVitro.visoTubeInVitro.embryo
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.util.List;
 
 /**
@@ -12,11 +13,20 @@ import java.util.List;
  */
 @Entity
 public class VisoTubeInVitro extends VisoTube {
-    @OneToMany
-    List<EmbryonsInVitro> embryonsInVitroList;
+    @OneToOne
+    EmbryonsInVitro embryonsInVitro;
 
-    public VisoTubeInVitro(List<EmbryonsInVitro> embryonsInVitroList) {
-        this.embryonsInVitroList = embryonsInVitroList;
+    public EmbryonsInVitro getEmbryonsInVitro() {
+        return embryonsInVitro;
+    }
+
+    public void setEmbryonsInVitro(EmbryonsInVitro embryonsInVitro) {
+        this.embryonsInVitro = embryonsInVitro;
+    }
+
+    public VisoTubeInVitro(EmbryonsInVitro embryonsInVitro) {
+
+        this.embryonsInVitro = embryonsInVitro;
     }
 
     public VisoTubeInVitro() {

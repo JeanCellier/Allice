@@ -1,5 +1,7 @@
 package phenotypage.model.cuve.cuveInVivo.canisterInVivo.visoTubeInVivo.embryonsInVivo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import phenotypage.model.cryoconservation.embryon.Embryon;
 import phenotypage.model.cuve.cuveSemence.canisterSemence.visoTubeSemence.semence.Semence;
 
@@ -8,8 +10,10 @@ import java.util.List;
 /**
  * Created by Loick on 22/05/2017.
  */
+@Component
 public class EmbryonsInVivoServiceImpl implements EmbryonsInVivoService {
 
+    @Autowired
     private EmbryonsInVivoRepository embryonsInVivoRepository;
 
     @Override
@@ -30,5 +34,10 @@ public class EmbryonsInVivoServiceImpl implements EmbryonsInVivoService {
     @Override
     public EmbryonsInVivo newCuveInVitro() {
         return new EmbryonsInVivo();
+    }
+
+    @Override
+    public void delete(EmbryonsInVivo embryonsInVivo) {
+        embryonsInVivoRepository.delete(embryonsInVivo);
     }
 }

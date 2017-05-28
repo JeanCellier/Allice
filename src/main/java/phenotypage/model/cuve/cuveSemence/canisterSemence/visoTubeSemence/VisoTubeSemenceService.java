@@ -11,9 +11,12 @@ import phenotypage.model.cuve.cuveSemence.canisterSemence.visoTubeSemence.semenc
 public interface VisoTubeSemenceService {
     List<VisoTubeSemence> findAllVisoTubeSemence();
 
-    VisoTubeSemence createVisoTubeSemence(List<Semence> SemanceList);
+    VisoTubeSemence createVisoTubeSemence(Semence Semance);
 
     VisoTubeSemence addVisoTubeSemence(VisoTubeSemence visoTubeSemance);
 
     VisoTubeSemence newVisoTubeSemence();
+
+    void delete(VisoTubeSemence visoTubeSemence);
+
 }

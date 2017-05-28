@@ -1,4 +1,4 @@
-package phenotypage.model.cuve.cuveSemence.canisterSemence.visoTubeSemence.semence;
+package phenotypage.model.cuve.cuveSemenceFIV.canisterSemenceFIV.visoTubeSemenceFIV.semenceFIV;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -7,12 +7,13 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Created by nicolas on 21/05/17.
+ * Created by Loick on 27/05/2017.
  */
 @Component
-public class SemenceServiceImpl implements SemenceService {
+public class SemenceFIVServiceImpl implements SemenceFIVService {
+
     @Autowired
-    private SemenceRepository repository;
+    private SemenceFIVRepository repository;
 
     @Override
     public List<String> findNumTaureauByNumTaureauLastCharacters(String lastCharacters) {
@@ -20,8 +21,8 @@ public class SemenceServiceImpl implements SemenceService {
     }
 
     @Override
-    public Semence createSemence(String raceTaureau, String numTaureau, String nomTaureau, int nbPaillettes, String couleurPaillette, boolean sexee, String remarques, boolean FIV) {
-        Semence semence = new Semence();
+    public SemenceFIV createSemence(String raceTaureau, String numTaureau, String nomTaureau, int nbPaillettes, String couleurPaillette, boolean sexee, String remarques) {
+        SemenceFIV semence = new SemenceFIV();
         semence.setRaceTaureau(raceTaureau);
         semence.setNumTaureau(numTaureau);
         semence.setNomTaureau(nomTaureau);
@@ -29,27 +30,26 @@ public class SemenceServiceImpl implements SemenceService {
         semence.setCouleurPaillette(couleurPaillette);
         semence.setSexee(sexee);
         semence.setRemarques(remarques);
-        semence.setFIV(FIV);
         return save(semence);
     }
 
     @Override
-    public Semence save(Semence semence) {
+    public SemenceFIV addSemence(SemenceFIV semence) {
         return repository.save(semence);
     }
 
     @Override
-    public Semence addSemence(Semence semence) {
+    public SemenceFIV save(SemenceFIV semence) {
         return repository.save(semence);
     }
 
     @Override
-    public Optional<Semence> findByNumTaureau(String taureau) {
+    public Optional<SemenceFIV> findByNumTaureau(String taureau) {
         return repository.findByNumTaureau(taureau);
     }
 
     @Override
-    public void delete(Semence semence) {
+    public void delete(SemenceFIV semence) {
         repository.delete(semence);
     }
 }

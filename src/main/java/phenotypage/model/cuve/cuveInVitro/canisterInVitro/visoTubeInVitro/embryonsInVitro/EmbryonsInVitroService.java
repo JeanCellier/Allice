@@ -18,4 +18,6 @@ public interface EmbryonsInVitroService {
     EmbryonsInVitro addEmbryonsInVitro(EmbryonsInVitro embryonsInVitro);
 
     EmbryonsInVitro newEmbryonsInVitro();
+
+    void delete(EmbryonsInVitro embryonsInVitro);
 }

@@ -18,22 +18,6 @@ public class VisoTubeSomatique extends VisoTube {
         this.celluleSomatique = celluleSomatique;
     }
 
-//    public List<CelluleSomatique> getCelluleSomatiqueList() {
-//        return celluleSomatiqueList;
-//    }
-
-//    public void setCelluleSomatiqueList(CelluleSomatique celluleSomatique) {
-//        this.celluleSomatique = celluleSomatique;
-//    }
-
-//    public CanisterSomatique getCanisterSomatique() {
-//        return canisterSomatique;
-//    }
-//
-//    public void setCanisterSomatique(CanisterSomatique canisterSomatique) {
-//        this.canisterSomatique = canisterSomatique;
-//    }
-
     public CelluleSomatique getCelluleSomatique() {
         return celluleSomatique;
     }
@@ -46,12 +30,7 @@ public class VisoTubeSomatique extends VisoTube {
 
     }
 
-//    @OneToMany(mappedBy = "visoTubeSomatique")
-//    private List<CelluleSomatique> celluleSomatiqueList = new ArrayList<>();
-
     @OneToOne
     private CelluleSomatique celluleSomatique;
 
-//    @ManyToOne
-//    private CanisterSomatique canisterSomatique;
 }

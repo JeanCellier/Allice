@@ -1,5 +1,7 @@
 package phenotypage.model.cuve.cuveInVivo.canisterInVivo.visoTubeInVivo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import phenotypage.model.cuve.cuveInVivo.canisterInVivo.visoTubeInVivo.embryonsInVivo.EmbryonsInVivo;
 
 import java.util.List;
@@ -7,9 +9,11 @@ import java.util.List;
 /**
  * Created by Loick on 22/05/2017.
  */
+@Component
 public class VisoTubeInVivoServiceImpl implements VisoTubeInVivoService {
 
-    VisoTubeInVivoRepository visoTubeInVivoRepository;
+    @Autowired
+    private VisoTubeInVivoRepository visoTubeInVivoRepository;
 
     @Override
     public List<VisoTubeInVivo> findAllVisoTubeInVivo() {
@@ -17,8 +21,8 @@ public class VisoTubeInVivoServiceImpl implements VisoTubeInVivoService {
     }
 
     @Override
-    public VisoTubeInVivo createVisoTubeInVivo(List<EmbryonsInVivo> embryonsInVivoList) {
-        return visoTubeInVivoRepository.save(new VisoTubeInVivo(embryonsInVivoList));
+    public VisoTubeInVivo createVisoTubeInVivo(EmbryonsInVivo embryonsInVivo) {
+        return visoTubeInVivoRepository.save(new VisoTubeInVivo(embryonsInVivo));
     }
 
     @Override
@@ -29,5 +33,10 @@ public class VisoTubeInVivoServiceImpl implements VisoTubeInVivoService {
     @Override
     public VisoTubeInVivo newVisoTubeInVivo() {
         return new VisoTubeInVivo();
+    }
+
+    @Override
+    public void delete(VisoTubeInVivo visoTubeInVivo) {
+        visoTubeInVivoRepository.delete(visoTubeInVivo);
     }
 }

@@ -1,7 +1,6 @@
 package phenotypage.model.cuve.cuveInVivo.canisterInVivo.visoTubeInVivo.embryonsInVivo;
 
 import phenotypage.model.cryoconservation.embryon.Embryon;
-import phenotypage.model.cuve.cuveInVivo.CuveInVivo;
 import phenotypage.model.cuve.cuveSemence.canisterSemence.visoTubeSemence.semence.Semence;
 
 import java.util.List;
@@ -18,4 +17,6 @@ public interface EmbryonsInVivoService {
     EmbryonsInVivo addCuveInVitro(EmbryonsInVivo embryonsInVivo);
 
     EmbryonsInVivo newCuveInVitro();
+
+    void delete(EmbryonsInVivo embryonsInVivo);
 }

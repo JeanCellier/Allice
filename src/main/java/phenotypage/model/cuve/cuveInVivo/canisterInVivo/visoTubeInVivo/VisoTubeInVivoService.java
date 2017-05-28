@@ -1,7 +1,5 @@
 package phenotypage.model.cuve.cuveInVivo.canisterInVivo.visoTubeInVivo;
 
-import phenotypage.model.cuve.cuveInVitro.CuveInVitro;
-import phenotypage.model.cuve.cuveInVitro.canisterInVitro.CanisterInVitro;
 import phenotypage.model.cuve.cuveInVivo.canisterInVivo.visoTubeInVivo.embryonsInVivo.EmbryonsInVivo;
 
 import java.util.List;
@@ -13,10 +11,13 @@ public interface VisoTubeInVivoService {
 
     List<VisoTubeInVivo> findAllVisoTubeInVivo();
 
-    VisoTubeInVivo createVisoTubeInVivo(List<EmbryonsInVivo> embryonsInVivoList);
+    VisoTubeInVivo createVisoTubeInVivo(EmbryonsInVivo embryonsInVivo);
 
     VisoTubeInVivo addVisoTubeInVivo(VisoTubeInVivo visoTubeInVivo);
 
     VisoTubeInVivo newVisoTubeInVivo();
+
+    void delete(VisoTubeInVivo visoTubeInVivo);
+
 
 }

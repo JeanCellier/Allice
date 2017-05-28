@@ -1,4 +1,4 @@
-package phenotypage.model.cuve.cuveSemence.canisterSemence.visoTubeSemence.semence;
+package phenotypage.model.cuve.cuveSemenceFIV.canisterSemenceFIV.visoTubeSemenceFIV.semenceFIV;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,10 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
- * Created by nicolas on 20/05/17.
+ * Created by Loick on 27/05/2017.
  */
 @Entity
-public class Semence {
+public class SemenceFIV {
     @Id
     @GeneratedValue
     private Long id;
@@ -20,10 +20,7 @@ public class Semence {
     @Column
     private String numTaureau;
 
-    @Column
-    private String nomTaureau;
-
-    public Semence(String raceTaureau, String numTaureau, String nomTaureau, int nbPaillettes, String couleurPaillette, boolean sexee, String remarques) {
+    public SemenceFIV(String raceTaureau, String numTaureau, String nomTaureau, int nbPaillettes, String couleurPaillette, boolean sexee, String remarques) {
         this.raceTaureau = raceTaureau;
         this.numTaureau = numTaureau;
         this.nomTaureau = nomTaureau;
@@ -31,8 +28,10 @@ public class Semence {
         this.couleurPaillette = couleurPaillette;
         this.sexee = sexee;
         this.remarques = remarques;
-
     }
+
+    @Column
+    private String nomTaureau;
 
     @Column
     private int nbPaillettes;
@@ -46,10 +45,7 @@ public class Semence {
     @Column
     private String remarques;
 
-    @Column
-    private boolean FIV;
-
-    public Semence() {}
+    public SemenceFIV() {}
 
     public Long getId() {
         return id;
@@ -115,11 +111,4 @@ public class Semence {
         this.remarques = remarques;
     }
 
-    public boolean isFIV() {
-        return FIV;
-    }
-
-    public void setFIV(boolean FIV) {
-        this.FIV = FIV;
-    }
 }

@@ -4,6 +4,7 @@ import phenotypage.model.cuve.canister.visoTube.VisoTube;
 import phenotypage.model.cuve.cuveSemence.canisterSemence.visoTubeSemence.semence.Semence;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.util.List;
 
 /**
@@ -11,15 +12,21 @@ import java.util.List;
  */
 @Entity
 public class VisoTubeSemence extends VisoTube {
-    public VisoTubeSemence(List<Semence> semenceList) {
-        this.semenceList = semenceList;
+    public VisoTubeSemence(Semence semence) {
+        this.semence = semence;
     }
 
     public VisoTubeSemence() {
     }
 
-    @OneToMany
+    public Semence getSemence() {
+        return semence;
+    }
 
+    public void setSemence(Semence semence) {
+        this.semence = semence;
+    }
 
-    List<Semence> semenceList;
+    @OneToOne
+    private Semence semence;
 }

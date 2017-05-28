@@ -5,6 +5,7 @@ import phenotypage.model.cuve.cuveInVivo.canisterInVivo.visoTubeInVivo.VisoTubeI
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,8 +13,9 @@ import java.util.List;
  */
 @Entity
 public class CanisterInVivo extends Canister{
+
     @OneToMany
-    private List<VisoTubeInVivo> visoTubeList;
+    private List<VisoTubeInVivo> visoTubeList= new ArrayList<>();
 
     public List<VisoTubeInVivo> getVisoTubeList() {
         return visoTubeList;

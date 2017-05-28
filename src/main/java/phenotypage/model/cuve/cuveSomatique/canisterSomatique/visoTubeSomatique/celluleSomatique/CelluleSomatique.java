@@ -23,20 +23,6 @@ public class CelluleSomatique {
 
     }
 
-//    @ManyToOne
-//    private VisoTubeSomatique visoTubeSomatique;
-
-
-//    public VisoTubeSomatique getVisoTubeSomatique() {
-//        return visoTubeSomatique;
-//    }
-//
-//    public void setVisoTubeSomatique(VisoTubeSomatique visoTubeSomatique) {
-//        this.visoTubeSomatique = visoTubeSomatique;
-//    }
-
-
-
     @Column
     private String typeCellulaire;
 

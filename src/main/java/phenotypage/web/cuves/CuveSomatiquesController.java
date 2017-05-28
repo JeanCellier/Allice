@@ -1,4 +1,4 @@
-package phenotypage.web;
+package phenotypage.web.cuves;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import phenotypage.model.cuve.Cuve;
 import phenotypage.model.cuve.canister.visoTube.VisoTube;
-import phenotypage.model.cuve.cuveSomatique.CuveSomatiqueService;
 import phenotypage.model.cuve.cuveSomatique.canisterSomatique.CanisterSomatique;
 import phenotypage.model.cuve.cuveSomatique.canisterSomatique.CanisterSomatiqueService;
 import phenotypage.model.cuve.cuveSomatique.canisterSomatique.visoTubeSomatique.VisoTubeSomatique;
@@ -27,11 +26,9 @@ import java.util.Optional;
 
 
 @Controller
-@RequestMapping("/cuves")
+@RequestMapping("/cuves/cuveCellulesSomatiques")
 public class CuveSomatiquesController {
 
-    @Autowired
-    private CuveSomatiqueService cuveSomatiqueService;
 
     @Autowired
     private CanisterSomatiqueService canisterSomatiqueService;
@@ -49,7 +46,7 @@ public class CuveSomatiquesController {
         model.addAttribute("canisterList", canisterSomatiqueService.findAllCanisterSomatique());
         model.addAttribute("visoTubeList", visoTubeSomatiqueService.findAllVisoTubeSomatique());
 
-        return "cuves/cellulesSomatiques";
+        return "cuves/cuveCellulesSomatiques/cellulesSomatiques";
     }
 
     /** AJOUTER CANISTER **/
@@ -89,7 +86,7 @@ public class CuveSomatiquesController {
 
         canisterSomatiqueService.addCanisterSomatique(canisterSomatique);
 
-        return "redirect:/cuves/cellulesSomatiques";
+        return "redirect:/cuves/cuveCellulesSomatiques/cellulesSomatiques";
     }
 
 
@@ -131,7 +128,6 @@ public class CuveSomatiquesController {
 
         canisterSomatiqueService.addCanisterSomatique(newcanisterSomatique);
 
-        System.err.println("hello");
         for (VisoTubeSomatique visoTubeSomatique : canisterSomatique.getVisoTubeList())
         {
             celluleSomatiqueService.delete(visoTubeSomatique.getCelluleSomatique());
@@ -141,7 +137,7 @@ public class CuveSomatiquesController {
         canisterSomatiqueService.delete(canisterSomatique);
 
 
-        return "redirect:/cuves/cellulesSomatiques";
+        return "redirect:/cuves/cuveCellulesSomatiques/cellulesSomatiques";
     }
 
     /******************** DELETE CANISTER ********************/
@@ -184,7 +180,6 @@ public class CuveSomatiquesController {
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     public JsonResponse getOne(@PathVariable("id") long id){
         JsonResponse response = new JsonResponse();
-        //TODO Vérifier type cf appel
         Optional<CanisterSomatique> canisterSomatique = canisterSomatiqueService.findOne(id);
         if(canisterSomatique.isPresent()){
             response.setSucces(true);

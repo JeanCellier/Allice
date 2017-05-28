@@ -1,5 +1,7 @@
 package phenotypage.model.cuve.cuveInVitro.canisterInVitro.visoTubeInVitro;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import phenotypage.model.cuve.cuveInVitro.canisterInVitro.visoTubeInVitro.embryonsInVitro.EmbryonsInVitro;
 
 import java.util.List;
@@ -7,8 +9,10 @@ import java.util.List;
 /**
  * Created by Loick on 22/05/2017.
  */
+@Component
 public class VisoTubeInVitroServiceImpl implements VisoTubeInVitroService
 {
+    @Autowired
     private VisoTubeInVitroRepository visoTubeInVitroRepository;
 
 
@@ -18,8 +22,8 @@ public class VisoTubeInVitroServiceImpl implements VisoTubeInVitroService
     }
 
     @Override
-    public VisoTubeInVitro createVisoTubeInVitro(List<EmbryonsInVitro> embryonsInVitroList) {
-        return visoTubeInVitroRepository.save(new VisoTubeInVitro(embryonsInVitroList));
+    public VisoTubeInVitro createVisoTubeInVitro(EmbryonsInVitro embryonsInVitro) {
+        return visoTubeInVitroRepository.save(new VisoTubeInVitro(embryonsInVitro));
     }
 
     @Override
@@ -30,5 +34,10 @@ public class VisoTubeInVitroServiceImpl implements VisoTubeInVitroService
     @Override
     public VisoTubeInVitro newVisoTubeInVitro() {
         return new VisoTubeInVitro();
+    }
+
+    @Override
+    public void delete(VisoTubeInVitro visoTubeInVitro) {
+        visoTubeInVitroRepository.delete(visoTubeInVitro);
     }
 }

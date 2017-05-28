@@ -59,10 +59,6 @@ public class VisoTubeSomatiqueServiceImpl implements  VisoTubeSomatiqueService{
         newVisoTubeSomatique.setCouleur(couleur);
         newVisoTubeSomatique.setCelluleSomatique(celluleSomatique);
 
-//        celluleSomatiqueService.delete(celluleSomatique);
-
-
-
         return visoTubeSomatiqueRepository.save(newVisoTubeSomatique);
     }
 }

@@ -11,9 +11,12 @@ public interface VisoTubeInVitroService {
 
     List<VisoTubeInVitro> findAllVisoTubeInVitro();
 
-    VisoTubeInVitro createVisoTubeInVitro(List<EmbryonsInVitro> embryonsInVitroList);
+    VisoTubeInVitro createVisoTubeInVitro(EmbryonsInVitro embryonsInVitro);
 
     VisoTubeInVitro addVisoTubeInVitro(VisoTubeInVitro visoTubeInVitro);
 
     VisoTubeInVitro newVisoTubeInVitro();
+
+    void delete(VisoTubeInVitro visoTubeInVitro);
+
 }
