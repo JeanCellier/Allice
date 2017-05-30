@@ -114,10 +114,12 @@ public class VacheController
         int intRace = Integer.parseInt(race);
         boolean boolPresent = true;
 
-        if(present.equals("oui")){
-            boolPresent = true;
-        }else if(present.equals("non")){
-            boolPresent = false;
+        if(present != "") {
+            if (present.equals("oui")) {
+                boolPresent = true;
+            } else if (present.equals("non")) {
+                boolPresent = false;
+            }
         }
 
         try {
@@ -265,12 +267,9 @@ public class VacheController
         return response;
     }
 
+    
     /******************** GET ONE  ********************/
     @ResponseBody
-    @RequestMapping(value="/get/vache", method = RequestMethod.GET)
-    public List<String> getNumIdByNumTravail(@RequestParam("term") String tag){
-        List<String> listNumTravail = vacheService.findNumIdByNumTravail(tag);
-        return listNumTravail;
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     public JsonResponse getOne(@PathVariable("id") long id){
         JsonResponse response = new JsonResponse();
@@ -289,6 +288,12 @@ public class VacheController
 
 
     /** AUTOCOMPLETE **/
+    @ResponseBody
+    @RequestMapping(value="/get/vache", method = RequestMethod.GET)
+    public List<String> getNumIdByNumTravail(@RequestParam("term") String tag) {
+        List<String> listNumTravail = vacheService.findNumIdByNumTravail(tag);
+        return listNumTravail;
+    }
 //    @ResponseBody
 //    @RequestMapping(value="/get/lastName", method = RequestMethod.GET)
 //    public String getLastId(){

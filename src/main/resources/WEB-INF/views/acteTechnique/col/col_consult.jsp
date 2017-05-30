@@ -98,7 +98,6 @@
         var date = new Date().getFullYear();
         var num;
         if(tab.attr('id') == 'fiche_01') {  //si c'est la 1ère fiche
-            console.log("lol");
             $.ajax({
                 url: "./get/lastName",
                 type: 'GET',

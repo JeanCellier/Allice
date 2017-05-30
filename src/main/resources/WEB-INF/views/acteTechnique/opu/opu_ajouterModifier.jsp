@@ -935,8 +935,8 @@
         newTab();
     });
 
-    $(document).on( 'change', 'select[name="traitementActe"]', function(event){
-        if($('select[name="traitementActe"] option:selected').val() != ""){
+    $(document).on( 'change', 'select[name="acteDonneuse"]', function(event){
+        if($('select[name="acteDonneuse"] option:selected').val() != ""){
             $.ajax({
                 url: '${pageContext. request. contextPath}/traitement/get/'+this.value,
                 type: 'GET',
@@ -985,9 +985,9 @@
             return new Date(parts[2]+"/"+parts[1]+"/"+parts[0]); // Note: months are 0-based
         }
 
-        if($('select[name="traitementActe"] option:selected').val() != ""){
+        if($('select[name="acteDonneuse"] option:selected').val() != ""){
             $.ajax({
-                url: '${pageContext. request. contextPath}/traitement/get/'+$('select[name="traitementActe"]').val(),
+                url: '${pageContext. request. contextPath}/traitement/get/'+$('select[name="acteDonneuse"]').val(),
                 type: 'GET',
                 success: function (result) {
                     if (result.succes == true) {

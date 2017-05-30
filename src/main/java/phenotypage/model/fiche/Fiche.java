@@ -33,7 +33,6 @@ public abstract class Fiche {
     }
 
     public Fiche() {
-
     }
 
     public Long getId() {

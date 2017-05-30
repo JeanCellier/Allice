@@ -9,11 +9,13 @@ import phenotypage.model.pharmacie.produit.Produit;
 import phenotypage.model.pharmacie.produit.ProduitService;
 import phenotypage.model.traitement_acte.TraitementActe;
 import phenotypage.model.traitement_acte.TraitementActeService;
+import phenotypage.model.traitement_acte.acteTraitement.ActeTraitement;
 import phenotypage.model.traitement_acte.tableau_traitement.Tableau_Traitement_Acte;
 import phenotypage.model.traitement_acte.tableau_traitement.Tableau_Traitement_ActeService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -29,8 +31,6 @@ public class TraitementController {
     @Autowired
     private ProduitService produitService;
 
-    @Autowired
-    private Tableau_Traitement_ActeService tableau_traitement_acteService;
 
     /** ACCUEIL TRAITEMENT **/
     @RequestMapping(value = "/traitement", method = RequestMethod.GET)
@@ -45,22 +45,36 @@ public class TraitementController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String add( @RequestParam("nom") String nom, @RequestParam(value="jour[]")  int[] jour,
                        @RequestParam(value="heure[]")  String[] heure,
-                       @RequestParam(value="produit[]")  Produit[] produit, @RequestParam(value="quantite[]")  int[] quantite,
-                       @RequestParam(value="modeTraitement[]")  String[] modeTrait){
+                       @RequestParam(value="produit[]", required = false)  Produit[] produit, @RequestParam(value="quantite[]")  String[] quantite,
+                       @RequestParam(value="modeTraitement[]", required = false)  String[] modeTrait, @RequestParam(value="acte[]") String[] acte){
+
         List<Tableau_Traitement_Acte> tableau_traitement_acte = new ArrayList<>();
+        List<ActeTraitement> acteTraitements = new ArrayList<>();
+        int nbActe = 0;
+
         for(int iLigneTraitement = 0; iLigneTraitement < jour.length; iLigneTraitement++){
-            Tableau_Traitement_Acte tableauTraitement = new Tableau_Traitement_Acte();
+            if(quantite.length > 0 && !Objects.equals(quantite[iLigneTraitement], "")){
+                Tableau_Traitement_Acte tableauTraitement = new Tableau_Traitement_Acte();
 
-            tableauTraitement.setDecalageJour(jour[iLigneTraitement]);
-            tableauTraitement.setDecalageHeure(Float.parseFloat(heure[iLigneTraitement]));
-            tableauTraitement.setProduit(produit[iLigneTraitement]);
-            tableauTraitement.setQuantite(quantite[iLigneTraitement]);
-            tableauTraitement.setMode_traitement(modeTrait[iLigneTraitement]);
+                tableauTraitement.setDecalageJour(jour[iLigneTraitement]);
+                tableauTraitement.setDecalageHeure(Float.parseFloat(heure[iLigneTraitement]));
+                tableauTraitement.setProduit(produit[iLigneTraitement - nbActe]);
+                tableauTraitement.setQuantite(Integer.parseInt(quantite[iLigneTraitement]));
+                tableauTraitement.setMode_traitement(modeTrait[iLigneTraitement -nbActe]);
 
-            tableau_traitement_acte.add(tableauTraitement);
+                tableau_traitement_acte.add(tableauTraitement);
+            }else {
+                ActeTraitement acteTraitement = new ActeTraitement();
+                acteTraitement.setDecalageJour(jour[iLigneTraitement]);
+                acteTraitement.setDecalageHeure(Integer.parseInt(heure[iLigneTraitement]));
+                acteTraitement.setActe(acte[iLigneTraitement]);
+
+                acteTraitements.add(acteTraitement);
+                nbActe++;
+            }
         }
 
-        TraitementActe traitementActe = traitementActeService.createTraitement(nom, tableau_traitement_acte);
+        TraitementActe traitementActe = traitementActeService.createTraitement(nom, tableau_traitement_acte, acteTraitements);
 
         return "redirect:/traitement/traitement";
     }
@@ -69,24 +83,37 @@ public class TraitementController {
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public String edit( @PathVariable("id") TraitementActe traitementActe, @RequestParam("nom") String nom,
                         @RequestParam(value="jour[]")  int[] jour, @RequestParam(value="heure[]")  String[] heure,
-                        @RequestParam(value="produit[]")  Produit[] produit,
-                        @RequestParam(value="quantite[]")  int[] quantite, @RequestParam(value="modeTraitement[]")  String[] modeTrait){
+                        @RequestParam(value="produit[]", required = false)  Produit[] produit, @RequestParam(value="acte[]") String[] acte,
+                        @RequestParam(value="quantite[]")  String[] quantite, @RequestParam(value="modeTraitement[]", required = false)  String[] modeTrait){
 
         List<Tableau_Traitement_Acte> tableau_traitement_acte = new ArrayList<>();
+        List<ActeTraitement> acteTraitements = new ArrayList<>();
+
+        int nbActe = 0;
 
         for(int iLigneTraitement = 0; iLigneTraitement < jour.length; iLigneTraitement++){
-            Tableau_Traitement_Acte tableauTraitement = new Tableau_Traitement_Acte();
+            if(quantite.length > 0 && !Objects.equals(quantite[iLigneTraitement], "")){
+                Tableau_Traitement_Acte tableauTraitement = new Tableau_Traitement_Acte();
 
-            tableauTraitement.setDecalageJour(jour[iLigneTraitement]);
-            tableauTraitement.setDecalageHeure(Float.parseFloat(heure[iLigneTraitement]));
-            tableauTraitement.setProduit(produit[iLigneTraitement]);
-            tableauTraitement.setQuantite(quantite[iLigneTraitement]);
-            tableauTraitement.setMode_traitement(modeTrait[iLigneTraitement]);
+                tableauTraitement.setDecalageJour(jour[iLigneTraitement]);
+                tableauTraitement.setDecalageHeure(Float.parseFloat(heure[iLigneTraitement]));
+                tableauTraitement.setProduit(produit[iLigneTraitement - nbActe]);
+                tableauTraitement.setQuantite(Integer.parseInt(quantite[iLigneTraitement]));
+                tableauTraitement.setMode_traitement(modeTrait[iLigneTraitement -nbActe]);
 
-            tableau_traitement_acte.add(tableauTraitement);
+                tableau_traitement_acte.add(tableauTraitement);
+            }else {
+                ActeTraitement acteTraitement = new ActeTraitement();
+                acteTraitement.setDecalageJour(jour[iLigneTraitement]);
+                acteTraitement.setDecalageHeure(Integer.parseInt(heure[iLigneTraitement]));
+                acteTraitement.setActe(acte[iLigneTraitement]);
+
+                acteTraitements.add(acteTraitement);
+                nbActe++;
+            }
         }
 
-        TraitementActe traitementActeUpdate = traitementActeService.updateTraitement(traitementActe, nom, tableau_traitement_acte);
+        TraitementActe traitementActeUpdate = traitementActeService.updateTraitement(traitementActe, nom, tableau_traitement_acte, acteTraitements);
 
         return "redirect:/traitement/traitement";
     }

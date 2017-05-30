@@ -15,4 +15,6 @@ public interface FicheColRepository extends JpaRepository<FicheCol, Long>
 	FicheCol findByNom(String nom);
 
 	List<FicheCol> findByVache(Vache vache);
+
+    FicheCol findTopByOrderByNomDesc();
 }

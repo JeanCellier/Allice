@@ -18,7 +18,7 @@ public class Cryoconservation
 	private Time heureMinute;
 
 	@Column
-	private String descMethode;
+	private String methodeCongelation;
 
 	@Column
 	private String congelateur;
@@ -27,7 +27,7 @@ public class Cryoconservation
 	private Operateur operateur;
 
 	@Column
-	private String methodeCongelation;
+	private String descMethode;
 
 	public Cryoconservation() {}
 

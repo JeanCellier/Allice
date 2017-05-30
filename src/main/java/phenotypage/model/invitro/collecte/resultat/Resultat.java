@@ -28,10 +28,10 @@ public class Resultat
 	private int nombre_CorpsJ_gauche;
 
 	@Column
-	private float taux_de_collecte;
+	private int nombre_CorpsJ_total;
 
 	@Column
-	private String sanitaire;
+	private float taux_de_collecte;
 
 	@Column
 	private String remarques;
@@ -53,8 +53,7 @@ public class Resultat
 		return nombre_Embryons_Viables;
 	}
 
-	public void setNombre_Embryons_Viables(int nombre_Embryons_Viables)
-	{
+	public void setNombre_Embryons_Viables(int nombre_Embryons_Viables) {
 		this.nombre_Embryons_Viables = nombre_Embryons_Viables;
 	}
 
@@ -63,8 +62,7 @@ public class Resultat
 		return nombre_Embryons_Degeneres;
 	}
 
-	public void setNombre_Embryons_Degeneres(int nombre_Embryons_Degeneres)
-	{
+	public void setNombre_Embryons_Degeneres(int nombre_Embryons_Degeneres) {
 		this.nombre_Embryons_Degeneres = nombre_Embryons_Degeneres;
 	}
 
@@ -73,8 +71,7 @@ public class Resultat
 		return nombre_Embryons_NonFecondes;
 	}
 
-	public void setNombre_Embryons_NonFecondes(int nombre_Embryons_NonFecondes)
-	{
+	public void setNombre_Embryons_NonFecondes(int nombre_Embryons_NonFecondes) {
 		this.nombre_Embryons_NonFecondes = nombre_Embryons_NonFecondes;
 	}
 
@@ -108,6 +105,14 @@ public class Resultat
 		this.nombre_CorpsJ_gauche = nombre_CorpsJ_gauche;
 	}
 
+	public int getNombre_CorpsJ_total() {
+		return nombre_CorpsJ_total;
+	}
+
+	public void setNombre_CorpsJ_total(int nombre_CorpsJ_total) {
+		this.nombre_CorpsJ_total = nombre_CorpsJ_total;
+	}
+
 	public float getTaux_de_collecte()
 	{
 		return taux_de_collecte;
@@ -116,16 +121,6 @@ public class Resultat
 	public void setTaux_de_collecte(float taux_de_collecte)
 	{
 		this.taux_de_collecte = taux_de_collecte;
-	}
-
-	public String getSanitaire()
-	{
-		return sanitaire;
-	}
-
-	public void setSanitaire(String sanitaire)
-	{
-		this.sanitaire = sanitaire;
 	}
 
 	public String getRemarques()

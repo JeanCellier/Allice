@@ -127,7 +127,7 @@ public class ConverterOPUFiche implements ConverterFiche {
         }
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Ponction du ou des follicules dominants (> 8 mm):");
-        PoiHelper.writeCell(sheet, rowNumber, 4, fiche.getInfoTraitementDonneuse().isPonctionFollicule() ? "oui" : "non");
+        //PoiHelper.writeCell(sheet, rowNumber, 4, fiche.getInfoTraitementDonneuse().isPonctionFollicule() ? "oui" : "non");
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Nb de follicules aspirés:");
@@ -143,11 +143,11 @@ public class ConverterOPUFiche implements ConverterFiche {
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Traitement superovulation:");
-        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInfoTraitementDonneuse().isSuperovulation() ? "oui" : "non");
+        //PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInfoTraitementDonneuse().isSuperovulation() ? "oui" : "non");
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Type FSH:");
-        PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInfoTraitementDonneuse().getTypeFSH());
+        //PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInfoTraitementDonneuse().getTypeFSH());
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "% de la dose totale FSH:");
@@ -322,7 +322,7 @@ public class ConverterOPUFiche implements ConverterFiche {
 
         for (TableauSemence semence : fiche.getFecondation().getTableau_semences()) {
             if (semence.getTaureau() != null) {
-                PoiHelper.writeCell(sheet, rowNumber, 0, semence.getTaureau().getNom()).setCellStyle(bodyStyle);
+//                PoiHelper.writeCell(sheet, rowNumber, 0, semence.getTaureau().getNom()).setCellStyle(bodyStyle);
                 PoiHelper.writeCell(sheet, rowNumber, 1, semence.getTaureau().getRace() + "").setCellStyle(bodyStyle);
                 PoiHelper.writeCell(sheet, rowNumber, 5, semence.getTaureau().getNum_identification()).setCellStyle(bodyStyle);
             }
@@ -441,7 +441,7 @@ public class ConverterOPUFiche implements ConverterFiche {
         //Tableau body
         for (Embryon detail : fiche.getTableauDetails()) {
             PoiHelper.writeCell(sheet, rowNumber, 0, detail.getNumeroEmbryon() + "").setCellStyle(bodyStyle);
-            PoiHelper.writeCell(sheet, rowNumber, 1, detail.isFrais() ? "X" : "").setCellStyle(bodyStyle);
+            //PoiHelper.writeCell(sheet, rowNumber, 1, detail.isFrais() ? "X" : "").setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 2, detail.getNumeroReceveuse()).setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 3, detail.getReferenceTransfert()).setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 4, detail.isDetruit() ? "X" : "").setCellStyle(bodyStyle);

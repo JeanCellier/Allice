@@ -41,13 +41,10 @@ public class Embryon
 	private String numeroReceveuse;
 
 	@Column
-	private boolean frais;
+	private String referenceTransfert;
 
 	@Column
 	private boolean detruit;
-
-	@Column
-	private String referenceTransfert;
 
 	@Column
 	private String remarque;
@@ -154,14 +151,6 @@ public class Embryon
 	public void setNumeroReceveuse(String numeroReceveuse)
 	{
 		this.numeroReceveuse = numeroReceveuse;
-	}
-
-	public boolean isFrais() {
-		return frais;
-	}
-
-	public void setFrais(boolean frais) {
-		this.frais = frais;
 	}
 
 	public boolean isDetruit() {

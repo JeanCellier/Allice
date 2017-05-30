@@ -22,6 +22,9 @@
                     <td>Race</td>
                     <td>Age(mois)</td>
                     <td>Projet concern&#233</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 </thead>
                 <tbody>
@@ -79,8 +82,6 @@
 <%@ include file="../footer.jsp" %>
 
 <script>
-    console.log("ALALLLLLAAL");
-
     var currentrow; //la row courante à delete
 
     /** function convertion des dates */
@@ -89,8 +90,6 @@
         var d = new Date(inputFormat);
         return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('/');
     }
-
-    console.log("ALALLLLLAAL");
 
 
     /** function init calendrier */
@@ -101,7 +100,6 @@
             $( this ).datepicker();
         });
     } );
-    console.log("ALALLLLLAAL");
 
     /** supprimer alert après 5s */
     function autoclose(){
@@ -111,7 +109,6 @@
             });
         }, 5000);
     }
-    console.log("ALALLLLLAAL");
 
     /** function addRow */
     function addRow(result) {
@@ -132,8 +129,6 @@
         ]).draw(false);
     }
 
-    console.log("ALALLLLLAAL");
-
     /** init la table */
     $('#tableAnimaux').DataTable( {
         "pagingType": "full_numbers",
@@ -145,9 +140,6 @@
         },
         "pageLength": 25
     });
-
-    console.log("ALALLLLLAAL");
-
 
     /************************ SUPPRIMER *************************/
 
@@ -164,7 +156,6 @@
 
     /** Si click sur confirm => supprime la row et l'entrée */
     $(document).on('click', '#confirmDelete', function(e){
-        console.log("ALOOOOOOOOOOOOOOO");
         $.ajax({
             url: $(this).attr('href'),
             type: $(this).attr('method'),

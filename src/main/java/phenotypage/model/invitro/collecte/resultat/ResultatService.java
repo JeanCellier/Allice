@@ -4,9 +4,13 @@ import java.util.List;
 
 public interface ResultatService
 {
-	List<Resultat> findAllResultat();
+	Resultat createResultatCollecte(Resultat resultatCollecte);
 
-	Resultat newResultat();
+	Resultat update(Resultat resultatCollecte, int nbViables, int nbDegen, int nbNonFec,
+					int nbTot, int nbCorpsDroit, int nbCorpsGauche, int nbCorpsTot,
+					float tauxCollecte, String remarques);
 
-	Resultat addResultat(Resultat resultat);
+	Resultat save(Resultat resultat);
+
+	List<Resultat> findAll();
 }

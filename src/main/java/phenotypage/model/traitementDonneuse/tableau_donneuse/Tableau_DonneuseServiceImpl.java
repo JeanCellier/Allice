@@ -17,7 +17,7 @@ public class Tableau_DonneuseServiceImpl implements Tableau_DonneuseService
 	private Tableau_DonneuseRepository repository;
 
 	@Override
-	public Tableau_Donneuse createTableauDonneuse(Date date, Produit produit, int quantite, String mode_traitement) {
+	public Tableau_Donneuse createTableauDonneuse(Date date, Produit produit, float quantite, String mode_traitement) {
 		Tableau_Donneuse tableauDonneuse = new Tableau_Donneuse();
 		tableauDonneuse.setDate(date);
 		tableauDonneuse.setProduit(produit);

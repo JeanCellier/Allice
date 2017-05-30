@@ -45,6 +45,15 @@
 											<td>${ligne.mode_traitement}</td>
 										</tr>
 									</c:forEach>
+									<c:forEach items="${traitement.acteTraitements}" var="acte">
+										<tr>
+											<td>${acte.decalageJour}</td>
+											<td>${acte.decalageHeure}</td>
+											<td>${acte.acte}</td>
+											<td></td>
+											<td></td>
+										</tr>
+									</c:forEach>
 									</tbody>
 								</table>
 							</div>
@@ -81,7 +90,7 @@
 						</div>
 
 						<div class="form-group col-sm-3">
-							<select class="form-control" required name="produit[]">
+							<select class="form-control" name="produit[]">
 								<option value="" selected disabled>Produit</option>
 								<c:forEach items="${produitsList}" var="produit">
 									<option value="${produit.id}">${produit.nom}</option>
@@ -90,11 +99,11 @@
 						</div>
 
 						<div class="form-group col-sm-2">
-							<input class="form-control" required name="quantite[]" step="0.01" type="number" placeholder="Quantite">
+							<input class="form-control" name="quantite[]" step="0.01" type="number" placeholder="Quantite">
 						</div>
 
 						<div class="form-group col-sm-2">
-							<select class="form-control" required name="modeTraitement[]">
+							<select class="form-control" name="modeTraitement[]">
 								<option value="" selected disabled>Mode de traitementActe</option>
 								<option value="IM">IM</option>
 								<option value="IV">IV</option>
@@ -102,7 +111,14 @@
 								<option value="SC">SC</option>
 							</select>
 						</div>
+						<div class="form-group col-sm-2 col-sm-offset-2" style="padding-top:5px;padding-left:50px">
+							<span>OU</span>
+						</div>
+						<div class="form-group col-sm-7 ">
+							<input class="form-control" name="acte[]" type="text" placeholder="Acte">
+						</div>
 					</div>
+
 					<div class="form-group col-sm-1">
 						<button class="btn btn-primary addTabTraitement" type="button"><span class="fa fa-plus"></span></button>
 					</div>
@@ -174,10 +190,9 @@
 	function reinit(){
         $('#add').find('.tabTraitement').not(':first').remove(); //garde juste une ligne dans le tableau de traitement_acte
         $('#add').find("select").val("");
+        $('#add').find("input").val("");
         $('#add').find("input[name='jour[]']").val(0);
-        $('#add').find("input[name!='jour[]']").val("");
         $('#add').find("input[name='heure[]']").val(0);
-        $('#add').find("input[name!='heure[]']").val("");
 	}
 
     /****** supprimer alert après 5s ******/
@@ -203,7 +218,7 @@
                     $('#addForm').attr('action', './edit/'+id);
 
                     $('#add').find("input[name='nom']").val(result.objet.nom);
-                    //remplit modal
+                    //remplit modal traitement produit
                     for(iLigne = 0; iLigne < result.objet.tableauTraitement.length; iLigne++)
                     {
                         if(iLigne == 0){
@@ -218,6 +233,22 @@
                         $target.find("select[name='produit[]']" ).val(result.objet.tableauTraitement[iLigne].produit.id );
                         $target.find("input[name='quantite[]']").val(result.objet.tableauTraitement[iLigne].quantite);
                         $target.find("select[name='modeTraitement[]']").val(result.objet.tableauTraitement[iLigne].mode_traitement);
+                    }
+
+                    if(result.objet.acteTraitements != null) {
+                        for (iLigne = 0; iLigne < result.objet.acteTraitements.length; iLigne++) {
+                            if (iLigne == 0 && result.objet.tableauTraitement.length == 0) {
+                                $target = $('#add').find('#tabTraitement');
+                            } else {
+                                $target = $('#add').find('#tabTraitement').clone().removeAttr('id');
+                                $target.insertAfter($('#add').find("div.tabTraitement").last());
+                            }
+
+                            $target.find("input[name='jour[]']").val(result.objet.acteTraitements[iLigne].decalageJour);
+                            $target.find("input[name='heure[]']").val(result.objet.acteTraitements[iLigne].decalageHeure);
+                            $target.find("input[name='quantite[]']").val("");
+                            $target.find("input[name='acte[]']").val(result.objet.acteTraitements[iLigne].acte);
+                        }
                     }
                 }else{
                     $('#add').modal('toggle'); //ferme modal
@@ -256,6 +287,19 @@
                 }
                 autoclose();
             }
+        });
+    });
+
+    //si la quantite d'un produit est renseigné mais pas de produit ou de méthode traitement
+    $(document).on('submit', '#addForm', function(e){
+        $( ".tabTraitement" ).each(function() {
+            if($( this ).find("input[name='quantite[]']").val() != ""){
+                if($( this ).find("select[name='modeTraitement[]']").val() == null || $( this ).find("select[name='modeTraitement[]']") == null){
+                    $('#addForm .modal-body').before('<div class="alert alert-danger flash" role="alert"> Un ou plusieurs champs sont incorrects</div>');
+                    e.preventDefault();
+                    return false;
+				}
+			}
         });
     });
 </script>

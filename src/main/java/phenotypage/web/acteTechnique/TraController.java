@@ -18,9 +18,12 @@ import phenotypage.model.gestation.Gestation;
 import phenotypage.model.gestation.tableau_gestation.Tableau_Gestation;
 import phenotypage.model.pharmacie.produit.Produit;
 import phenotypage.model.pharmacie.produit.ProduitService;
+import phenotypage.model.traitementDonneuse.acteDonneuse.ActeDonneuse;
 import phenotypage.model.traitementDonneuse.tableau_donneuse.Tableau_Donneuse;
 import phenotypage.model.traitementDonneuse.Traitement_Donneuse;
 import phenotypage.model.traitement_acte.TraitementActeService;
+import phenotypage.model.traitement_acte.acteTraitement.ActeTraitement;
+import phenotypage.model.traitement_acte.tableau_traitement.Tableau_Traitement_Acte;
 import phenotypage.model.vache.Vache;
 import phenotypage.model.vache.VacheService;
 import java.text.ParseException;
@@ -141,16 +144,17 @@ public class TraController {
     public JsonResponse addOrUpdatePart2(@PathVariable("id") FicheTra ficheTra, @RequestParam(value="dateChaleur", required=false) String dateChaleur,
                                          @RequestParam(value="typeChaleur", required=false) String typeChaleur, @RequestParam(value="dateTraitement[]", required=false)  String[] dateTraitement,
                                          @RequestParam(value="produit[]", required=false)  Produit[] produit, @RequestParam(value="quantite[]", required=false)  String[] quantite,
-                                         @RequestParam(value="modeTraitement[]", required=false)  String[] modeTraitement){
+                                         @RequestParam(value="modeTraitement[]", required=false)  String[] modeTraitement, @RequestParam(value="acte[]", required=false) String[] acte){
 
         JsonResponse jsonResponse = new JsonResponse();
 
         SimpleDateFormat formatterDate = new SimpleDateFormat("dd/MM/yyyy");
 
         List<Tableau_Donneuse> tableauTraitement = new ArrayList<>();
+        List<ActeDonneuse> tableauActe = new ArrayList<>();
 
-        if(produit != null) {
-            for (int iLigneTraitement = 0; iLigneTraitement < produit.length; iLigneTraitement++) {
+        for (int iLigneTraitement = 0; iLigneTraitement < dateTraitement.length; iLigneTraitement++) {
+            if (quantite.length > 0 && !Objects.equals(quantite[iLigneTraitement], "")) {
                 Tableau_Donneuse tableauDonneuse = new Tableau_Donneuse();
 
                 try {
@@ -159,19 +163,29 @@ public class TraController {
                     tableauDonneuse.setDate(dateTraitementParsee);
                 } catch (ParseException e) {
                     jsonResponse.setSucces(false);
-                    jsonResponse.setMessage("Une ou plusieurs dates concernant le traitement_acte sont invalides");
+                    jsonResponse.setMessage("Une ou plusieurs dates concernant le traitement sont invalides");
                 }
 
                 tableauDonneuse.setProduit(produit[iLigneTraitement]);
-                if (quantite[iLigneTraitement] != null) {
-                    tableauDonneuse.setQuantite(Integer.parseInt(quantite[iLigneTraitement]));
-                } else {
-                    tableauDonneuse.setQuantite(0);
-                }
-
+                tableauDonneuse.setQuantite(Float.parseFloat(quantite[iLigneTraitement]));
                 tableauDonneuse.setMode_traitement(modeTraitement[iLigneTraitement]);
 
                 tableauTraitement.add(tableauDonneuse);
+            } else {
+                ActeDonneuse acteDonneuse = new ActeDonneuse();
+
+                try {
+                    Date dateTraitementParsee = formatterDate.parse(dateTraitement[iLigneTraitement]);
+
+                    acteDonneuse.setDate(dateTraitementParsee);
+                } catch (ParseException e) {
+                    jsonResponse.setSucces(false);
+                    jsonResponse.setMessage("Une ou plusieurs dates concernant le traitement sont invalides");
+                }
+
+                acteDonneuse.setActe(acte[iLigneTraitement]);
+
+                tableauActe.add(acteDonneuse);
             }
         }
 
@@ -183,6 +197,7 @@ public class TraController {
             }
 
             traitement_donneuse.setTableauDonneuse(tableauTraitement);
+            traitement_donneuse.setTableauActe(tableauActe);
             traitement_donneuse.setTypeChaleur(typeChaleur);
 
             FicheTra ficheTraUpdate = ficheTraService.updateFicheTra(ficheTra, ficheTra.getNom(), ficheTra.getProgramme(),

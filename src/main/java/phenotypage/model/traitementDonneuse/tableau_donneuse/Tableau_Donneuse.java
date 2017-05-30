@@ -21,7 +21,7 @@ public class Tableau_Donneuse {
     private Produit produit;
 
     @Column
-    private int quantite;
+    private float quantite;
 
     @Column
     private String mode_traitement;
@@ -50,11 +50,11 @@ public class Tableau_Donneuse {
         this.produit = produit;
     }
 
-    public int getQuantite() {
+    public float getQuantite() {
         return quantite;
     }
 
-    public void setQuantite(int quantite) {
+    public void setQuantite(float quantite) {
         this.quantite = quantite;
     }
 

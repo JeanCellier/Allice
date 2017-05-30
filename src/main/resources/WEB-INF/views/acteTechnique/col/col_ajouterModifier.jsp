@@ -77,50 +77,60 @@
                                         <label class="radio-inline"><input type="radio" class="radio" value="naturelle" name="typeChaleur">Naturelle</label>
                                         <label class="radio-inline"><input type="radio" class="radio" value="induite" name="typeChaleur">Induite</label>
                                     </div>
-                                    <div class="form-group">
-                                        <select class="form-control" name="traitementActe">
-                                            <option value="" selected>Traitement type - Aucun</option>
-                                            <c:forEach items="${traitementsList}" var="traitement_acte">
-                                                <option value="${traitement_acte.id}">${traitement_acte.nom}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                    <div id="tabTraitement" class="tabTraitement">
-                                        <div class="form-group col-sm-3" style="padding-left:0">
-                                            <input class="form-control datepicker" name="dateTraitement[]" type="text" placeholder="Date">
-                                        </div>
-                                        <div class="form-group col-sm-3">
-                                            <select class="form-control" name="produit[]">
-                                                <option value="" selected disabled>Produit</option>
-                                                <c:forEach items="${produitsList}" var="produit">
-                                                    <option value="${produit.id}">${produit.nom}</option>
+
+                                    <div class="traitement">
+                                        <div class="form-group">
+                                            <select class="form-control" name="traitementActe">
+                                                <option value="" selected>Traitement type - Aucun</option>
+                                                <c:forEach items="${traitementsList}" var="traitement_acte">
+                                                    <option value="${traitement_acte.id}">${traitement_acte.nom}</option>
                                                 </c:forEach>
                                             </select>
                                         </div>
-                                        <div class="form-group col-sm-2">
-                                            <input class="form-control" name="quantite[]" step="0.01" type="number" placeholder="Quantite">
+
+                                        <div id="tabTraitement" class="tabTraitement">
+                                            <div class="form-group col-sm-3" style="padding-left:0">
+                                                <input class="form-control datepicker" name="dateTraitement[]" type="text" placeholder="Date">
+                                            </div>
+                                            <div class="form-group col-sm-3">
+                                                <select class="form-control" name="produit[]">
+                                                    <option value="" selected disabled>Produit</option>
+                                                    <c:forEach items="${produitsList}" var="produit">
+                                                        <option value="${produit.id}">${produit.nom}</option>
+                                                    </c:forEach>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-sm-2">
+                                                <input class="form-control" name="quantite[]" step="0.01" type="number" placeholder="Quantite">
+                                            </div>
+                                            <div class="form-group col-sm-3">
+                                                <select class="form-control" name="modeTraitement[]">
+                                                    <option value="" selected disabled>Mode de traitementActe</option>
+                                                    <option value="IM">IM</option>
+                                                    <option value="IV">IV</option>
+                                                    <option value="IVA">IVA</option>
+                                                    <option value="SC">SC</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-sm-2 col-sm-offset-2" style="padding-top:5px;padding-left:50px">
+                                                <span>OU</span>
+                                            </div>
+                                            <div class="form-group col-sm-7 ">
+                                                <input class="form-control" name="acte[]" type="text" placeholder="Acte">
+                                            </div>
                                         </div>
-                                        <div class="form-group col-sm-3">
-                                            <select class="form-control" name="modeTraitement[]">
-                                                <option value="" selected disabled>Mode de traitementActe</option>
-                                                <option value="IM">IM</option>
-                                                <option value="IV">IV</option>
-                                                <option value="IVA">IVA</option>
-                                                <option value="SC">SC</option>
-                                            </select>
+                                        <div class="form-group col-sm-1">
+                                            <button class="btn btn-primary addTabTraitement" type="button"><span class="fa fa-plus"></span></button>
                                         </div>
                                     </div>
-                                    <div class="form-group col-sm-1">
-                                        <button class="btn btn-primary addTabTraitement" type="button"><span class="fa fa-plus"></span></button>
-                                    </div>
-                                    <div class="form-group col-sm-4" style="padding-left:0">
-                                        <input class="form-control" name="nbFolliculeAspi" type="number" placeholder="Nombre de follicules aspir&#233s">
-                                    </div>
-                                    <div class="form-group col-sm-4">
+                                    <div class="form-group col-sm-4"  style="padding-left:0;padding-top:30px">
                                         <input class="form-control" name="nbFolDroite" type="number" placeholder="Droite">
                                     </div>
-                                    <div class="form-group col-sm-4">
+                                    <div class="form-group col-sm-4"  style="padding-top:30px">
                                         <input class="form-control" name="nbFolGauche" type="number" placeholder="Gauche">
+                                    </div>
+                                    <div class="form-group col-sm-4" style="padding-top:30px">
+                                        <input class="form-control" name="nbFolliculeAspi" type="number" placeholder="Nombre de follicules aspir&#233s">
                                     </div>
                                     <div class="form-group">
                                         <label>Image(s) &#233chographie: </label>
@@ -128,51 +138,55 @@
                                         <label class="radio-inline"><input type="radio" class="radio" value="non" name="imageEcho">Non</label>
                                     </div>
                                     <div class="form-group">
-                                        <label>Type FSH: </label>
-                                        <label class="radio-inline"><input type="radio" class="radio" value="naturelle" name="typeFSH">Naturelle</label>
-                                        <label class="radio-inline"><input type="radio" class="radio" value="induite" name="typeFSH">Induite</label>
-                                    </div>
-                                    <div class="form-group">
                                         <input class="form-control" name="pourDoseFSH" type="number" placeholder="Pourcentage de la dose totale FSH">
                                     </div>
 
-                                    <div class="form-group">
-                                        <select class="form-control" name="traitementActe">
-                                            <option value="" selected>Traitement type - Aucun</option>
-                                            <c:forEach items="${traitementsList}" var="traitement_acte">
-                                                <option value="${traitement_acte.id}">${traitement_acte.nom}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                    <div id="tabSuperOv" class="tabTraitement">
-                                        <div class="form-group col-sm-3" style="padding-left:0">
-                                            <input class="form-control datepicker" name="dateTraitement[]" type="text" placeholder="Date">
-                                        </div>
-                                        <div class="form-group col-sm-3">
-                                            <select class="form-control" name="produit[]">
-                                                <option value="" selected disabled>Produit</option>
-                                                <c:forEach items="${produitsList}" var="produit">
-                                                    <option value="${produit.id}">${produit.nom}</option>
+
+                                    <div class="traitement">
+                                        <div class="form-group">
+                                            <select class="form-control" name="traitementActe">
+                                                <option value="" selected>Traitement type - Aucun</option>
+                                                <c:forEach items="${traitementsList}" var="traitement_acte">
+                                                    <option value="${traitement_acte.id}">${traitement_acte.nom}</option>
                                                 </c:forEach>
                                             </select>
                                         </div>
-                                        <div class="form-group col-sm-2">
-                                            <input class="form-control" name="quantite[]" step="0.01" type="number" placeholder="Quantite">
+                                        <div id="tabSuperOv" class="tabTraitement">
+                                            <div class="form-group col-sm-3" style="padding-left:0">
+                                                <input class="form-control datepicker" name="dateTraitement[]" type="text" placeholder="Date">
+                                            </div>
+                                            <div class="form-group col-sm-3">
+                                                <select class="form-control" name="produit[]">
+                                                    <option value="" selected disabled>Produit</option>
+                                                    <c:forEach items="${produitsList}" var="produit">
+                                                        <option value="${produit.id}">${produit.nom}</option>
+                                                    </c:forEach>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-sm-2">
+                                                <input class="form-control" name="quantite[]" step="0.01" type="number" placeholder="Quantite">
+                                            </div>
+                                            <div class="form-group col-sm-3">
+                                                <select class="form-control" name="modeTraitement[]">
+                                                    <option value="" selected disabled>Mode de traitementActe</option>
+                                                    <option value="IM">IM</option>
+                                                    <option value="IV">IV</option>
+                                                    <option value="IVA">IVA</option>
+                                                    <option value="SC">SC</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-sm-2 col-sm-offset-2" style="padding-top:5px;padding-left:50px">
+                                                <span>OU</span>
+                                            </div>
+                                            <div class="form-group col-sm-7 ">
+                                                <input class="form-control" name="acte[]" type="text" placeholder="Acte">
+                                            </div>
                                         </div>
-                                        <div class="form-group col-sm-3">
-                                            <select class="form-control" name="modeTraitement[]">
-                                                <option value="" selected disabled>Mode de traitementActe</option>
-                                                <option value="IM">IM</option>
-                                                <option value="IV">IV</option>
-                                                <option value="IVA">IVA</option>
-                                                <option value="SC">SC</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-1">
-                                        <button class="btn btn-primary addTabTraitement" type="button"><span class="fa fa-plus"></span></button>
-                                    </div>
 
+                                        <div class="form-group col-sm-1">
+                                            <button class="btn btn-primary addTabTraitement" type="button"><span class="fa fa-plus"></span></button>
+                                        </div>
+                                    </div>
                                     <button class="btn btn-primary back2" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
                                     <button class="btn btn-primary open2" type="button">Enregistrer <span class="fa fa-arrow-right"></span></button>
                                 </fieldset>
@@ -196,20 +210,17 @@
                                     <div class="form-group col-sm-3">
                                         <input class="form-control" name="nbEmbryonTotal" type="number" placeholder="Nb d'embryons total collect&eacute;s">
                                     </div>
-                                    <div class="form-group col-sm-4" style="padding-left:0">
-                                        <input class="form-control" name="nbCorpsJaune" type="text" placeholder="Nb de corps jaunes d&eacute;nombr&eacute;s">
-                                    </div>
-                                    <div class="form-group col-sm-4">
+                                    <div class="form-group col-sm-4"  style="padding-left:0">
                                         <input class="form-control" name="nbCorpsJauneDroite" type="text" placeholder="Droite">
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <input class="form-control" name="nbCorpsJauneGauche" type="text" placeholder="Gauche">
                                     </div>
-                                    <div class="form-group">
-                                        <input class="form-control" name="TauxCollecte" type="text" placeholder="Taux de collecte estim&eacute;">
+                                    <div class="form-group col-sm-4">
+                                        <input class="form-control" name="nbCorpsJaune" type="text" placeholder="Nb de corps jaunes d&eacute;nombr&eacute;s">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" name="sanitaires" type="text" placeholder="Sanitaires">
+                                        <input class="form-control" name="tauxCollecte" type="text" placeholder="Taux de collecte estim&eacute;">
                                     </div>
                                     <div class="form-group">
                                         <textarea class="form-control" name="remarques" type="text" placeholder="Remarques"></textarea>
@@ -225,51 +236,78 @@
                             <form name="addPart4" class="addOrUpdatePart" method="post" action="./addOrUpdatePart4">
                                 <fieldset name="embryon">
                                     <legend>&Eacute;tape 4/5  -  D&Eacute;TAILS EMBRYONS VIABLES</legend>
-                                    <div id="tabEmbryonsViables" class="tabEmbryonsViables">
-                                        <div class="form-group col-sm-3" style="padding-left:0">
-                                            <select class="form-control" name="stade[]">
-                                                <option value="" selected disabled>Stade</option>
-                                                <c:forEach begin="1" end="9" var="val">
-                                                    <option value="<c:out value="${val}"/>"><c:out value="${val}"/></option>
-                                                </c:forEach>
-                                            </select>
+                                    <div class="col-sm-12" style="padding-left:0px;padding-right:0px">
+                                        <div id="tabEmbryonsViables" class="tabEmbryonsViables" style="padding-bottom:10px">
+                                            <div class="col-sm-12" style="padding-left:0px;padding-right:0px">
+                                                <div class="form-group col-sm-1" style="padding-left:0; padding-right: 5px">
+                                                    <select class="form-control" name="stade[]">
+                                                        <option value="" selected disabled>Stade</option>
+                                                        <c:forEach begin="1" end="9" var="val">
+                                                            <option value="<c:out value="${val}"/>"><c:out value="${val}"/></option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-sm-1" style="padding-left: 5px; padding-right: 5px">
+                                                    <select class="form-control" name="qualite[]">
+                                                        <option value="" selected disabled>Qualit&#233</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-sm-3" style="padding-left: 5px">
+                                                    <select class="form-control" name="cuve[]">
+                                                        <option value="" selected disabled>Cuve</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-sm-3">
+                                                    <select class="form-control" name="canister[]">
+                                                        <option value="" selected disabled>Canister</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-sm-2" style="padding-left:0">
+                                                    <select class="form-control" name="visotube[]">
+                                                        <option value="" selected disabled>Visotube</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-sm-2">
+                                                    <select class="form-control" name="jonc[]">
+                                                        <option value="" selected disabled>Jonc</option>
+                                                        <option value="jaune">Jaune</option>
+                                                        <option value="rouge">Rouge</option>
+                                                        <option value="vert">Vert</option>
+                                                        <option value="bleu">Bleu</option>
+                                                        <option value="violet">Violet</option>
+                                                        <option value="rose">Rose</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-2 col-sm-offset-2" style="padding-top:5px;padding-left:50px">
+                                                <span>OU</span>
+                                            </div>
+                                            <div class="form-group col-sm-4" style="padding-left:0">
+                                                <input class="form-control" name="refVache[]" type="text" placeholder="N&#176; receveuse">
+                                            </div>
+                                            <div class="form-group col-sm-4">
+                                                <input class="form-control" name="refTransfert[]" type="text" placeholder="r&eacute;f&eacute;rence transfert">
+                                            </div>
+                                            <div class="form-group col-sm-2 col-sm-offset-2" style="padding-top:5px;padding-left:50px">
+                                                <span>OU</span>
+                                            </div>
+                                            <div class="form-group col-sm-3">
+                                                <label>D&eacute;truit : </label>
+                                                <label class="radio-inline"><input type="radio" class="radio" value="detruit" name="detruit[]"> </label>
+                                            </div>
+                                            <div class="form-group col-sm-11" style="padding-left:0">
+                                                <input class="form-control" name="remarques[]" type="text" placeholder="Remarques">
+                                            </div>
                                         </div>
-                                        <div class="form-group col-sm-3">
-                                            <select class="form-control" name="qualite[]">
-                                                <option value="" selected disabled>Qualit&#233</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-sm-3">
-                                            <select class="form-control" name="cuve[]">
-                                                <option value="" selected disabled>Cuve</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-sm-3">
-                                            <select class="form-control" name="canister[]">
-                                                <option value="" selected disabled>Canister</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-sm-3" style="padding-left:0">
-                                            <select class="form-control" name="visotube[]">
-                                                <option value="" selected disabled>Visotube</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-sm-3">
-                                            <select class="form-control" name="jonc[]">
-                                                <option value="" selected disabled>Jonc</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <input class="form-control" name="refCong" type="text" placeholder="R&#233f&#233rence cong&#233lation">
+                                        <div class="form-group col-sm-1">
+                                            <button class="btn btn-primary addTabEmbryon" type="button"><span class="fa fa-plus"></span></button>
                                         </div>
                                     </div>
-                                    <div class="form-group col-sm-1">
-                                        <button class="btn btn-primary addTabTraitement" type="button"><span class="fa fa-plus"></span></button>
-                                    </div>
+
                                     <button class="btn btn-primary back4" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
                                     <button class="btn btn-primary open4" type="button">Enregistrer <span class="fa fa-arrow-right"></span></button>
                                 </fieldset>
@@ -286,14 +324,15 @@
                                     <div class="form-group">
                                         <input class="form-control" name="heureCong" type="text" placeholder="Heure de cong&#233lation">
                                     </div>
-
                                     <div class="form-group">
-                                        <select class="form-control" name="methodCong">
-                                            <option value="" selected disabled>M&#233thode de cong&#233lation</option>
-                                        </select>
+                                        <label>M&#233thode de cong&#233lation : </label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="congelation" name="methodeCongelation">Cong&#233lation</label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="vitrification" name="methodeCongelation">Vitrification</label>
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" name="congelateur" type="text" placeholder="Cong&#233lateur utilis&#233">
+                                        <label>Cong&#233lateur utilis&#233 : </label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="ms21" name="congelateur">Naturelle</label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="cryologicccl3300" name="congelateur">CryologicCCL3300</label>
                                     </div>
                                     <div class="form-group">
                                         <select class="form-control" name="operateurCong">
@@ -302,6 +341,13 @@
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" name="description" type="text" placeholder="Description m&#233thode">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Sanitaires : </label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="lc" name="lc">LC</label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="ll" name="ll">LL</label>
+                                        <label class="radio-inline"><input type="radio" class="radio" value="ed" name="ed">ED</label>
                                     </div>
                                     <button class="btn btn-primary back5" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
                                     <button type="button" class="btn btn-success validButton"><span class="fa fa-check"></span> Enregistrer</button>
@@ -402,12 +448,26 @@
     /****** function reinit fiche ******/
     function reinitForm(form){
         form.find('form[name="addPart1"]').attr('action', './addOrUpdatePart1');
+        form.find('form[name="addPart2"]').attr('action', './addOrUpdatePart2');
+        form.find('form[name="addPart3"]').attr('action', './addOrUpdatePart3');
+        form.find('form[name="addPart4"]').attr('action', './addOrUpdatePart4');
+        form.find('form[name="addPart5"]').attr('action', './addOrUpdatePart5');
+
         form.find('form').removeClass('EditForm');
-        form.find('.tabTraitement').not(':first').remove(); //garde juste une ligne dans le tableau de traitement_acte
-        form.find('.tabGestation').not(':first').remove();
+
+        form.find('.tabTraitement').each(function() {
+            if($(this).attr('id') != "tabTraitement" && $(this).attr('id') != "tabSuperOv" ){
+                $(this).remove(); //garde juste une ligne dans le tableau de traitement_acte
+            }
+        });
+
+        form.find('.tabEmbryonsViables').not(":first").remove();
+        form.find('.tabEmbryonsViables').find('input[name="remarques[]"]').closest('.form-group').removeClass('col-sm-12');
+        form.find('.tabEmbryonsViables').find('input[name="remarques[]"]').closest('.form-group').addClass('col-sm-11');
 
         // reinit formulaire
         form.find('input').not(':radio').val("");
+        form.find('input').removeClass('dateTraitementFirst');
         form.find('textarea').val('');
         form.find('.radio').prop('checked', false);
         form.find("select").val("");
@@ -538,25 +598,32 @@
     });
 
     $(document).on( 'change', 'select[name="traitementActe"]', function(event){
-        if($('select[name="traitementActe"] option:selected').val() != ""){
+        var active = $(event.target).closest('.traitement');
+
+        if(active.find('select[name="traitementActe"] option:selected').val() != ""){
             $.ajax({
                 url: '${pageContext. request. contextPath}/traitement/get/'+this.value,
                 type: 'GET',
                 success: function (result) {
+                    var minDate = 65536;
+                    var minHour = 65536;
+                    var index = 0;
                     if (result.succes == true) {
-                        $('div.tab-pane.active').find('.tabTraitement').not(':first').remove(); //garde juste une ligne dans le tableau de traitement_acte
+                        active.find("input.dateTraitementFirst").removeClass('dateTraitementFirst');
+
+                        active.find('.tabTraitement').not(':first').remove(); //garde juste une ligne dans le tableau de traitement_acte
                         for(iLigne = 0; iLigne < result.objet.tableauTraitement.length; iLigne++)
                         {
                             if(iLigne == 0){
-                                $target = $('div.tab-pane.active').find('.tabTraitement');
+                                $target = active.find('.tabTraitement');
                                 $target.find('input').val("");
                                 $target.find("select").val("");
                             }else{
-                                $target = $('div.tab-pane.active').find('#tabTraitement').clone().removeAttr('id');
+                                $target = $('#tabTraitement').clone().removeAttr('id');
                                 $target.find('input').val("");
                                 $target.find("select").val("");
                                 $target.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabTraitement" type="button"><span class="fa fa-minus"></span></button></div>');
-                                $target.insertAfter($('div.tab-pane.active').find("div.tabTraitement").last());
+                                $target.insertAfter(active.find("div.tabTraitement").last());
                             }
 
                             $target.find("input[name='dateTraitement[]']").datetimepicker({
@@ -569,14 +636,52 @@
                             $target.find("select[name='produit[]']" ).val(result.objet.tableauTraitement[iLigne].produit.id );
                             $target.find("input[name='quantite[]']").val(result.objet.tableauTraitement[iLigne].quantite);
                             $target.find("select[name='modeTraitement[]']").val(result.objet.tableauTraitement[iLigne].mode_traitement);
+
+                            if(minDate >= result.objet.tableauTraitement[iLigne].decalageJour && minHour >= result.objet.tableauTraitement[iLigne].decalageHeure){
+                                index = iLigne;
+                                minDate = result.objet.tableauTraitement[iLigne].decalageJour;
+                                minHour = result.objet.tableauTraitement[iLigne].decalageHeure;
+                            }
                         }
+
+                        for(iLigneActe = 0; iLigneActe < result.objet.acteTraitements.length; iLigneActe++)
+                        {
+                            if(iLigneActe == 0 && result.objet.acteTraitements.length == 0){
+                                $target = active.find('.tabTraitement');
+                                $target.find('input').val("");
+                                $target.find("select").val("");
+                            }else{
+                                $target = $('#tabTraitement').clone().removeAttr('id');
+                                $target.find('input').val("");
+                                $target.find("select").val("");
+                                $target.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabTraitement" type="button"><span class="fa fa-minus"></span></button></div>');
+                                $target.insertAfter(active.find("div.tabTraitement").last());
+                            }
+
+                            $target.find("input[name='dateTraitement[]']").datetimepicker({
+                                locale: 'fr',
+                                format: 'DD/MM/YYYY',
+                                toolbarPlacement: 'top',
+                                showClose: true
+                            });
+
+                            $target.find("input[name='acte[]']").val(result.objet.acteTraitements[iLigneActe].acte);
+
+                            if(minDate >= result.objet.acteTraitements[iLigneActe].decalageJour && minHour >= result.objet.acteTraitements[iLigneActe].decalageHeure){
+                                index = iLigne + iLigneActe;
+                                minDate = result.objet.acteTraitements[iLigneActe].decalageJour;
+                                minHour = result.objet.acteTraitements[iLigneActe].decalageHeure;
+                            }
+                        }
+
+                        active.find("input[name='dateTraitement[]']:eq("+index+")").addClass('dateTraitementFirst');
                     }
                 }
             });
         }
     });
 
-    $(document).on( 'blur', "input[name='dateTraitement[]']:first", function() {
+    $(document).on( 'blur', "input.dateTraitementFirst", function(event) {
         Date.prototype.addDays = function(days) { //ajoute des jours
             var dat = new Date(this.valueOf());
             dat.setDate(dat.getDate() + days);
@@ -586,42 +691,312 @@
             var parts = input.split('/');
             return new Date(parts[2]+"/"+parts[1]+"/"+parts[0]); // Note: months are 0-based
         }
+        var active = $(event.target).closest('.traitement');
+        var select = active.find('select[name="traitementActe"] option:selected');
 
-        if($('select[name="traitementActe"] option:selected').val() != ""){
+        if(select.val() != ""){
             $.ajax({
-                url: '${pageContext. request. contextPath}/traitement/get/'+$('select[name="traitementActe"]').val(),
+                url: '${pageContext. request. contextPath}/traitement/get/'+select.val(),
                 type: 'GET',
                 success: function (result) {
                     if (result.succes == true) {
-                        for(iLigne = 1; iLigne < result.objet.tableauTraitement.length; iLigne++) {
-                            var date = new Date(parseDate($("input[name='dateTraitement[]']:first").val())).addDays(result.objet.tableauTraitement[iLigne].decalage);
-                            $("input[name='dateTraitement[]']:eq("+iLigne+")").data("DateTimePicker").date(date);
-                        }
+                        var acte = 0;
+                        var traitement = 0;
+                        iLigne = 0;
+                        active.find('input[name="dateTraitement[]"]').each(function() {
+                            if($(this).closest(".tabTraitement").find("input[name='quantite[]']").val() != ""){
+                                if(!$(this).hasClass('dateTraitementFirst')) {
+                                    var date = new Date(parseDate(active.find("input.dateTraitementFirst").val())).addDays(result.objet.tableauTraitement[traitement].decalageJour);
+                                    active.find("input[name='dateTraitement[]']:eq(" + iLigne + ")").data("DateTimePicker").date(date);
+                                }
+                                traitement++;
+                            }else{
+                                if(!$(this).hasClass('dateTraitementFirst')) {
+                                    var date = new Date(parseDate(active.find("input.dateTraitementFirst").val())).addDays(result.objet.acteTraitements[acte].decalageJour);
+                                    active.find("input[name='dateTraitement[]']:eq(" + iLigne + ")").data("DateTimePicker").date(date);
+                                }
+                                acte++;
+                            }
 
+                            iLigne++;
+                        });
                     }
                 }
             });
         }
     });
 
+    /**************** CALCUL NOMBRE CORPS JAUNE TOTAL ****************/
+     $(document).on( 'blur', "input[name='nbCorpsJauneGauche']", function(event) {
+        var corpsDroit = $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbCorpsJauneDroite']");
+        nbCorpsDroit = parseInt(corpsDroit.val());
+        nbCorpsGauche = parseInt($(event.target).val());
+
+        if(!Number.isInteger(nbCorpsDroit)){
+            nbCorpsDroit = 0;
+            $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbCorpsJauneDroite']").val(0);
+        }
+
+        if(!Number.isInteger(nbCorpsGauche)){
+            nbCorpsGauche = 0;
+            $(event.target).val(0);
+        }
+
+        $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbCorpsJaune']").val(nbCorpsDroit+nbCorpsGauche);
+
+         //actualise tauxCollecte
+         var tot = $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbEmbryonTotal']");
+         nbTot = parseInt(tot.val());
+         nbCorps = nbCorpsDroit+nbCorpsGauche;
+
+         if(!Number.isInteger(nbTot)){
+             nbTot = 0;
+             $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbEmbryonTotal']").val(0);
+         }
+
+         $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='tauxCollecte']").val(nbTot/nbCorps);
+    });
+
+    $(document).on( 'blur', "input[name='nbCorpsJauneDroite']", function(event) {
+        var corpsGauche = $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbCorpsJauneGauche']");
+        nbCorpsGauche = parseInt(corpsGauche.val());
+        nbCorpsDroit = parseInt($(event.target).val());
+
+        if(!Number.isInteger(nbCorpsGauche)){
+            nbCorpsGauche = 0;
+            $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbCorpsJauneGauche']").val(0);
+        }
+
+        if(!Number.isInteger(nbCorpsDroit)){
+            nbCorpsDroit = 0;
+            $(event.target).val(0);
+        }
+
+        $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbCorpsJaune']").val(nbCorpsDroit+nbCorpsGauche);
+
+        //actualise tauxCollecte
+        var tot = $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbEmbryonTotal']");
+        nbTot = parseInt(tot.val());
+        nbCorps = nbCorpsDroit+nbCorpsGauche;
+
+        if(!Number.isInteger(nbTot)){
+            nbTot = 0;
+            $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbEmbryonTotal']").val(0);
+        }
+
+        $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='tauxCollecte']").val(nbTot/nbCorps);
+    });
+
+    /**************** CALCUL NOMBRE FOLLICULE TOTAL ****************/
+    $(document).on( 'blur', "input[name='nbFolGauche']", function(event) {
+        var folDroit = $(event.target).closest("fieldset[name='traitementActe']").find("input[name='nbFolDroite']");
+        nbFolDroit = parseInt(folDroit.val());
+        nbFolGauche = parseInt($(event.target).val());
+
+        if(!Number.isInteger(nbFolDroit)){
+            nbFolDroit = 0;
+            $(event.target).closest("fieldset[name='traitementActe']").find("input[name='nbFolDroite']").val(0);
+        }
+
+        if(!Number.isInteger(nbFolGauche)){
+            nbFolGauche = 0;
+            $(event.target).val(0);
+        }
+
+        $(event.target).closest("fieldset[name='traitementActe']").find("input[name='nbFolliculeAspi']").val(nbFolDroit+nbFolGauche);
+    });
+
+    $(document).on( 'blur', "input[name='nbFolDroite']", function(event) {
+        var folGauche = $(event.target).closest("fieldset[name='traitementActe']").find("input[name='nbFolGauche']");
+        nbFolGauche = parseInt(folGauche.val());
+        nbFolDroit = parseInt($(event.target).val());
+
+        if(!Number.isInteger(nbFolGauche)){
+            nbFolGauche = 0;
+            $(event.target).closest("fieldset[name='traitementActe']").find("input[name='nbFolGauche']").val(0);
+        }
+
+        if(!Number.isInteger(nbFolDroit)){
+            nbFolDroit = 0;
+            $(event.target).val(0);
+        }
+
+        $(event.target).closest("fieldset[name='traitementActe']").find("input[name='nbFolliculeAspi']").val(nbFolDroit+nbFolGauche);
+    });
+
+    /**************** CALCUL COLLECTE ESTIME ****************/
+    $(document).on( 'blur', "input[name='nbCorpsJaune']", function(event) {
+        var tot = $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbEmbryonTotal']");
+        nbTot = parseInt(tot.val());
+        nbCorps = parseInt($(event.target).val());
+
+        if(!Number.isInteger(nbTot)){
+            nbTot = 0;
+            $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbEmbryonTotal']").val(0);
+        }
+
+        if(!Number.isInteger(nbCorps)){
+            nbCorps = 0;
+            $(event.target).val(0);
+        }
+
+        $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='tauxCollecte']").val(nbTot/nbCorps);
+    });
+
+    $(document).on( 'blur', "input[name='nbEmbryonTotal']", function(event) {
+        var corps = $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbCorpsJaune']");
+        nbCorps = parseInt(corps.val());
+        nbTot = parseInt($(event.target).val());
+        console.log(nbTot+" "+nbCorps);
+        if(!Number.isInteger(nbCorps)){
+            nbCorps = 0;
+            $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbCorpsJaune']").val(0);
+        }
+
+        if(!Number.isInteger(nbTot)){
+            nbTot = 0;
+            $(event.target).val(0);
+        }
+        console.log(nbTot+" "+nbCorps);
+        $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='tauxCollecte']").val(nbTot/nbCorps);
+    });
+
+    /**************** CALCUL EMBRYON TOTAL ****************/
+    $(document).on( 'blur', "input[name='nbEmbryonViables']", function(event) {
+        var degeneres = $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbEmbryonDegeneres']");
+        var nonFecondes = $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbEmbryonsNonFecondes']");
+        nbDegeneres = parseInt(degeneres.val());
+        nbViables = parseInt($(event.target).val());
+        nbNonFecondes = parseInt(nonFecondes.val());
+
+        if(!Number.isInteger(nbDegeneres)){
+            nbDegeneres = 0;
+            $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbEmbryonDegeneres']").val(0);
+        }
+
+        if(!Number.isInteger(nbViables)){
+            nbViables = 0;
+            $(event.target).val(0);
+        }
+
+        if(!Number.isInteger(nbNonFecondes)){
+            nbNonFecondes = 0;
+            $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbEmbryonNonFecondes']").val(0);
+        }
+
+        $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbEmbryonTotal']").val(nbDegeneres+nbViables+nbNonFecondes);
+
+        //actualise tauxCollecte
+        var corps = $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbCorpsJaune']");
+        nbTot = nbDegeneres+nbViables+nbNonFecondes;
+        nbCorps =  parseInt(corps.val());
+
+        if(!Number.isInteger(nbCorps)){
+            nbCorps = 0;
+            $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbCorpsJaune']").val(0);
+        }
+
+        $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='tauxCollecte']").val(nbTot/nbCorps);
+    });
+
+    $(document).on( 'blur', "input[name='nbEmbryonDegeneres']", function(event) {
+        var viables = $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbEmbryonViables']");
+        var nonFecondes = $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbEmbryonNonFecondes']");
+        nbNonFecondes = parseInt(nonFecondes.val());
+        nbDegeneres = parseInt($(event.target).val());
+        nbViables = parseInt(viables.val());
+
+        if(!Number.isInteger(nbViables)){
+            nbViables = 0;
+            $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbEmbryonViables']").val(0);
+        }
+
+        if(!Number.isInteger(nbDegeneres)){
+            nbDegeneres = 0;
+            $(event.target).val(0);
+        }
+
+        if(!Number.isInteger(nbNonFecondes)){
+            nbNonFecondes = 0;
+            $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbEmbryonNonFecondes']").val(0);
+        }
+
+        $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbEmbryonTotal']").val(nbDegeneres+nbViables+nbNonFecondes);
+
+        //actualise tauxCollecte
+        var corps = $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbCorpsJaune']");
+        nbTot = nbDegeneres+nbViables+nbNonFecondes;
+        nbCorps =  parseInt(corps.val());
+
+        if(!Number.isInteger(nbCorps)){
+            nbCorps = 0;
+            $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbCorpsJaune']").val(0);
+        }
+
+        $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='tauxCollecte']").val(nbTot/nbCorps);
+    });
+
+    $(document).on( 'blur', "input[name='nbEmbryonNonFecondes']", function(event) {
+        var degeneres = $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbEmbryonDegeneres']");
+        var viables = $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbEmbryonViables']");
+        nbDegeneres = parseInt(degeneres.val());
+        nbViables = parseInt(viables.val());
+        nbNonFecondes = parseInt($(event.target).val());
+
+        if(!Number.isInteger(nbDegeneres)){
+            nbDegeneres = 0;
+            $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbEmbryonDegeneres']").val(0);
+        }
+
+        if(!Number.isInteger(nbNonFecondes)){
+            nbNonFecondes = 0;
+            $(event.target).val(0);
+        }
+
+        if(!Number.isInteger(nbViables)){
+            nbViables = 0;
+            $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbEmbryonViables']").val(0);
+        }
+
+        $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbEmbryonTotal']").val(nbDegeneres+nbViables+nbNonFecondes);
+
+        //actualise tauxCollecte
+        var corps = $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbCorpsJaune']");
+        nbTot = nbDegeneres+nbViables+nbNonFecondes;
+        nbCorps =  parseInt(corps.val());
+
+        if(!Number.isInteger(nbCorps)){
+            nbCorps = 0;
+            $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbCorpsJaune']").val(0);
+        }
+
+        $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='tauxCollecte']").val(nbTot/nbCorps);
+    });
+
+
+
     /******* Ajoute une ligne tableau traitement_acte donneuse ******/
-    $(document).on( 'click', ".addTabTraitement", function(){
+    $(document).on( 'click', ".addTabTraitement", function(e){
         $template = $('#tabTraitement');
         $clone = $template.clone().removeAttr('id');
         $clone.find('input').val("");
         $clone.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabTraitement" type="button"><span class="fa fa-minus"></span></button></div>');
-        $clone.insertAfter($("div.tabTraitement").last());
+        $clone.insertAfter($(e.target).closest(".traitement").find("div.tabTraitement").last());
         createDatePicker();
     });
 
-    /******* Ajoute une ligne tableau gestation ******/
-    $(document).on( 'click', ".addTabGestation", function(){
-        $template = $('#tabGestation'); //tableau a copier
-        $clone = $template.clone().removeAttr('id'); //supprime l'id sur la copie
-        $clone.find('input').val(""); //reinit les values
-        $clone.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabGestation" type="button"><span class="fa fa-minus"></span></button></div>');
-        $clone.insertAfter($("div.tabGestation").last()); //insert après le dernier object de class tabGestation
-        createDatePicker();
+    $(document).on('click', ".addTabEmbryon", function(e){
+        $template = $('#tabEmbryonsViables');
+        $clone = $template.clone().removeAttr('id');
+        console.log( $template.find('input[name="remarques[]"]').closest('.form-group'));
+        $template.find('input[name="remarques[]"]').closest('.form-group').removeClass('col-sm-11');
+        $template.find('input[name="remarques[]"]').closest('.form-group').addClass('col-sm-12');
+        $clone.find('input[name="remarques[]"]').closest('.form-group').removeClass('col-sm-12');
+        $clone.find('input[name="remarques[]"]').closest('.form-group').addClass('col-sm-11');
+        $clone.find('input').val("");
+        $clone.find('select').val("");
+        $clone.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabEmbryon" type="button"><span class="fa fa-minus"></span></button></div>');
+        $clone.insertAfter($('div.tab-pane.active').find("div.tabEmbryonsViables").last());
     });
 
     /******* Supprime une ligne modal traitement ******/
@@ -629,9 +1004,9 @@
         $(this).closest('.tabTraitement').remove();
     });
 
-    /******* Supprime une ligne modal gestation ******/
-    $(document).on( 'click', ".delTabGestation", function(){
-        $(this).closest('.tabGestation').remove();
+    /******* Supprime une ligne modal embryons viable ******/
+    $(document).on( 'click', ".delTabEmbryon", function(){
+        $(this).closest('.tabEmbryonsViables').remove();
     });
 
     /************************ AJOUT *************************/
@@ -871,6 +1246,27 @@
                             $target.find("input[name='quantite[]']").val(result.objet.traitement_donneuse.tableauDonneuse[iLigne].quantite);
                             $target.find("select[name='modeTraitement[]']").val(result.objet.traitement_donneuse.tableauDonneuse[iLigne].mode_traitement);
                         }
+
+                        for(iLigne = 0; iLigne < result.objet.traitement_donneuse.tableauActe.length; iLigne++)
+                        {
+                            if(iLigne == 0 && result.objet.traitement_donneuse.tableauActe.length == 0){
+                                $target = $activeTab.find('.tabTraitement');
+                            }else{
+                                $target = $activeTab.find('#tabTraitement').clone().removeAttr('id');
+                                $target.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabTraitement" type="button"><span class="fa fa-minus"></span></button></div>');
+                                $target.insertAfter($activeTab.find("div.tabTraitement").last());
+                            }
+
+                            $target.find("input[name='dateTraitement[]']").datetimepicker({
+                                locale: 'fr',
+                                format: 'DD/MM/YYYY',
+                                toolbarPlacement: 'top',
+                                showClose: true
+                            });
+
+                            $target.find("input[name='dateTraitement[]']").data("DateTimePicker").date(new Date(result.objet.traitement_donneuse.tableauActe[iLigne].date));
+                            $target.find("input[name='acte[]']").val(result.objet.traitement_donneuse.tableauActe[iLigne].acte);
+                        }
                     }
 
                     /************* STEP 3 *************/
@@ -952,5 +1348,4 @@
         minLength: 4,
         source: '${pageContext. request. contextPath}/animaux/get/vache'
     });
-
 </script>

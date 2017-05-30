@@ -15,12 +15,6 @@ public class InfoTraitementDonneuse {
     private Long id;
 
     @Column
-    private boolean naturel;
-
-    @Column
-    private boolean ponctionFollicule;
-
-    @Column
     private int nb_follicules;
 
     @Column
@@ -33,12 +27,6 @@ public class InfoTraitementDonneuse {
     private boolean image_echo;
 
     @Column
-    private boolean superovulation;
-
-    @Column
-    private String typeFSH;
-
-    @Column
     private float pourc_dose;
 
     public Long getId() {
@@ -47,22 +35,6 @@ public class InfoTraitementDonneuse {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public boolean isNaturel() {
-        return naturel;
-    }
-
-    public void setNaturel(boolean naturel) {
-        this.naturel = naturel;
-    }
-
-    public boolean isPonctionFollicule() {
-        return ponctionFollicule;
-    }
-
-    public void setPonctionFollicule(boolean ponctionFollicule) {
-        this.ponctionFollicule = ponctionFollicule;
     }
 
     public int getNb_follicules() {
@@ -95,22 +67,6 @@ public class InfoTraitementDonneuse {
 
     public void setImage_echo(boolean image_echo) {
         this.image_echo = image_echo;
-    }
-
-    public boolean isSuperovulation() {
-        return superovulation;
-    }
-
-    public void setSuperovulation(boolean superovulation) {
-        this.superovulation = superovulation;
-    }
-
-    public String getTypeFSH() {
-        return typeFSH;
-    }
-
-    public void setTypeFSH(String typeFSH) {
-        this.typeFSH = typeFSH;
     }
 
     public float getPourc_dose() {

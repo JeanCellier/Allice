@@ -3,20 +3,21 @@ package phenotypage.model.traitementDonneuse.acteDonneuse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 /**
  * Created by nicolas on 29/04/17.
  */
 @Component
-public class ActeTraitementServiceImpl implements ActeTraitementService {
+public class ActeDonneuseServiceImpl implements ActeDonneuseService {
     @Autowired
-    private ActeTraitementRepository repository;
+    private ActeDonneuseRepository repository;
 
     @Override
-    public ActeDonneuse createTraitement(int decalageJour, float decalageHeure, String acte) {
+    public ActeDonneuse createTraitement(Date date, String acte) {
         ActeDonneuse acteDonneuse = new ActeDonneuse();
         acteDonneuse.setActe(acte);
-        acteDonneuse.setDecalageHeure(decalageHeure);
-        acteDonneuse.setDecalageJour(decalageJour);
+        acteDonneuse.setDate(date);
         return save(acteDonneuse);
     }
 
@@ -31,9 +32,8 @@ public class ActeTraitementServiceImpl implements ActeTraitementService {
     }
 
     @Override
-    public ActeDonneuse updateTraitement(ActeDonneuse acteDonneuse, int decalageJour, float decalageHeure, String acte) {
-        acteDonneuse.setDecalageJour(decalageJour);
-        acteDonneuse.setDecalageHeure(decalageHeure);
+    public ActeDonneuse updateTraitement(ActeDonneuse acteDonneuse, Date date, String acte) {
+        acteDonneuse.setDate(date);
         acteDonneuse.setActe(acte);
         return save(acteDonneuse);
     }

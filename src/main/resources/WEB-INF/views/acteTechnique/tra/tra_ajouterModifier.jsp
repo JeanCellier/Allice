@@ -91,23 +91,29 @@
                                         </div>
                                         <div class="form-group col-sm-3">
                                             <select class="form-control" name="produit[]">
-                                                <option value="" selected disabled>Produit</option>
+                                                <option value="" selected>Produit</option>
                                                 <c:forEach items="${produitsList}" var="produit">
                                                     <option value="${produit.id}">${produit.nom}</option>
                                                 </c:forEach>
                                             </select>
                                         </div>
-                                        <div class="form-group col-sm-2">
+                                        <div class="form-group col-sm-3">
                                             <input class="form-control" name="quantite[]" step="0.01" type="number" placeholder="Quantite">
                                         </div>
                                         <div class="form-group col-sm-3">
                                             <select class="form-control" name="modeTraitement[]">
-                                                <option value="" selected disabled>Mode de traitementActe</option>
+                                                <option value="" selected>Mode de traitementActe</option>
                                                 <option value="IM">IM</option>
                                                 <option value="IV">IV</option>
                                                 <option value="IVA">IVA</option>
                                                 <option value="SC">SC</option>
                                             </select>
+                                        </div>
+                                        <div class="form-group col-sm-2 col-sm-offset-2" style="padding-top:5px;padding-left:50px">
+                                            <span>OU</span>
+                                        </div>
+                                        <div class="form-group col-sm-7 ">
+                                            <input class="form-control" name="acte[]" type="text" placeholder="Acte">
                                         </div>
                                     </div>
                                     <div class="form-group col-sm-1">
@@ -330,6 +336,7 @@
 
         // reinit formulaire
         form.find('input').not(':radio').val("");
+        form.find('input').removeClass('dateTraitementFirst');
         form.find('textarea').val('');
         form.find('.radio').prop('checked', false);
         form.find("select").val("");
@@ -460,25 +467,31 @@
     });
 
     $(document).on( 'change', 'select[name="traitementActe"]', function(event){
-        if($('select[name="traitementActe"] option:selected').val() != ""){
+        var active = $('div.tab-pane.active');
+        if(active.find('select[name="traitementActe"] option:selected').val() != ""){
             $.ajax({
                 url: '${pageContext. request. contextPath}/traitement/get/'+this.value,
                 type: 'GET',
                 success: function (result) {
+                    var minDate = 65536;
+                    var minHour = 65536;
+                    var index = 0;
                     if (result.succes == true) {
-                        $('div.tab-pane.active').find('.tabTraitement').not(':first').remove(); //garde juste une ligne dans le tableau de traitement_acte
+                        active.find("input.dateTraitementFirst").removeClass('dateTraitementFirst');
+
+                        active.find('.tabTraitement').not(':first').remove(); //garde juste une ligne dans le tableau de traitement_acte
                         for(iLigne = 0; iLigne < result.objet.tableauTraitement.length; iLigne++)
                         {
                             if(iLigne == 0){
-                                $target = $('div.tab-pane.active').find('.tabTraitement');
+                                $target = active.find('.tabTraitement');
                                 $target.find('input').val("");
                                 $target.find("select").val("");
                             }else{
-                                $target = $('div.tab-pane.active').find('#tabTraitement').clone().removeAttr('id');
+                                $target = active.find('#tabTraitement').clone().removeAttr('id');
                                 $target.find('input').val("");
                                 $target.find("select").val("");
                                 $target.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabTraitement" type="button"><span class="fa fa-minus"></span></button></div>');
-                                $target.insertAfter($('div.tab-pane.active').find("div.tabTraitement").last());
+                                $target.insertAfter(active.find("div.tabTraitement").last());
                             }
 
                             $target.find("input[name='dateTraitement[]']").datetimepicker({
@@ -491,9 +504,46 @@
                             $target.find("select[name='produit[]']" ).val(result.objet.tableauTraitement[iLigne].produit.id );
                             $target.find("input[name='quantite[]']").val(result.objet.tableauTraitement[iLigne].quantite);
                             $target.find("select[name='modeTraitement[]']").val(result.objet.tableauTraitement[iLigne].mode_traitement);
+
+                            if(minDate >= result.objet.tableauTraitement[iLigne].decalageJour && minHour >= result.objet.tableauTraitement[iLigne].decalageHeure){
+                                index = iLigne;
+                                minDate = result.objet.tableauTraitement[iLigne].decalageJour;
+                                minHour = result.objet.tableauTraitement[iLigne].decalageHeure;
+                            }
                         }
 
-                        $('div.tab-pane.active').find("input[name='dateTraitement[]']:first").addClass('dateTraitementFirst');
+                        for(iLigneActe = 0; iLigneActe < result.objet.acteTraitements.length; iLigneActe++)
+                        {
+                            if(iLigneActe == 0 && result.objet.acteTraitements.length == 0){
+                                $target = active.find('.tabTraitement');
+                                $target.find('input').val("");
+                                $target.find("select").val("");
+                            }else{
+                                $target = active.find('#tabTraitement').clone().removeAttr('id');
+                                $target.find('input').val("");
+                                $target.find("select").val("");
+                                $target.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabTraitement" type="button"><span class="fa fa-minus"></span></button></div>');
+                                $target.insertAfter(active.find("div.tabTraitement").last());
+                            }
+
+                            $target.find("input[name='dateTraitement[]']").datetimepicker({
+                                locale: 'fr',
+                                format: 'DD/MM/YYYY',
+                                toolbarPlacement: 'top',
+                                showClose: true
+                            });
+
+                            $target.find("input[name='acte[]']").val(result.objet.acteTraitements[iLigneActe].acte);
+
+                            if(minDate >= result.objet.acteTraitements[iLigneActe].decalageJour && minHour >= result.objet.acteTraitements[iLigneActe].decalageHeure){
+                                index = iLigne + iLigneActe;
+                                minDate = result.objet.acteTraitements[iLigneActe].decalageJour;
+                                minHour = result.objet.acteTraitements[iLigneActe].decalageHeure;
+                            }
+
+                        }
+
+                        active.find("input[name='dateTraitement[]']:eq("+index+")").addClass('dateTraitementFirst');
                     }
                 }
             });
@@ -510,8 +560,8 @@
             var parts = input.split('/');
             return new Date(parts[2]+"/"+parts[1]+"/"+parts[0]); // Note: months are 0-based
         }
-
-        var select = $('div.tab-pane.active').find('select[name="traitementActe"] option:selected');
+        var active = $('div.tab-pane.active');
+        var select = active.find('select[name="traitementActe"] option:selected');
 
         if(select.val() != ""){
             $.ajax({
@@ -519,12 +569,26 @@
                 type: 'GET',
                 success: function (result) {
                     if (result.succes == true) {
-                        for(iLigne = 1; iLigne < result.objet.tableauTraitement.length; iLigne++) {
+                        var acte = 0;
+                        var traitement = 0;
+                        iLigne = 0;
+                        active.find('input[name="dateTraitement[]"]').each(function() {
+                            if($(this).closest(".tabTraitement").find("input[name='quantite[]']").val() != ""){
+                                if(!$(this).hasClass('dateTraitementFirst')) {
+                                    var date = new Date(parseDate(active.find("input.dateTraitementFirst").val())).addDays(result.objet.tableauTraitement[traitement].decalageJour);
+                                    active.find("input[name='dateTraitement[]']:eq(" + iLigne + ")").data("DateTimePicker").date(date);
+                                }
+                                traitement++;
+                            }else{
+                                if(!$(this).hasClass('dateTraitementFirst')) {
+                                    var date = new Date(parseDate(active.find("input.dateTraitementFirst").val())).addDays(result.objet.acteTraitements[acte].decalageJour);
+                                    active.find("input[name='dateTraitement[]']:eq(" + iLigne + ")").data("DateTimePicker").date(date);
+                                }
+                                acte++;
+                            }
 
-                            var date = new Date(parseDate($("input[name='dateTraitement[]']:first").val())).addDays(result.objet.tableauTraitement[iLigne].decalageJour);
-                            $('div.tab-pane.active').find("input[name='dateTraitement[]']:eq("+iLigne+")").data("DateTimePicker").date(date);
-                        }
-
+                            iLigne++;
+                        });
                     }
                 }
             });
@@ -797,6 +861,27 @@
                             $target.find("select[name='produit[]']" ).val(result.objet.traitement_donneuse.tableauDonneuse[iLigne].produit.id );
                             $target.find("input[name='quantite[]']").val(result.objet.traitement_donneuse.tableauDonneuse[iLigne].quantite);
                             $target.find("select[name='modeTraitement[]']").val(result.objet.traitement_donneuse.tableauDonneuse[iLigne].mode_traitement);
+                        }
+
+                        for(iLigne = 0; iLigne < result.objet.traitement_donneuse.tableauActe.length; iLigne++)
+                        {
+                            if(iLigne == 0 && result.objet.traitement_donneuse.tableauActe.length == 0){
+                                $target = $activeTab.find('.tabTraitement');
+                            }else{
+                                $target = $activeTab.find('#tabTraitement').clone().removeAttr('id');
+                                $target.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabTraitement" type="button"><span class="fa fa-minus"></span></button></div>');
+                                $target.insertAfter($activeTab.find("div.tabTraitement").last());
+                            }
+
+                            $target.find("input[name='dateTraitement[]']").datetimepicker({
+                                locale: 'fr',
+                                format: 'DD/MM/YYYY',
+                                toolbarPlacement: 'top',
+                                showClose: true
+                            });
+
+                            $target.find("input[name='dateTraitement[]']").data("DateTimePicker").date(new Date(result.objet.traitement_donneuse.tableauActe[iLigne].date));
+                            $target.find("input[name='acte[]']").val(result.objet.traitement_donneuse.tableauActe[iLigne].acte);
                         }
                     }
 

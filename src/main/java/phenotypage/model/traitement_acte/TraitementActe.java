@@ -1,5 +1,6 @@
 package phenotypage.model.traitement_acte;
 
+import phenotypage.model.traitement_acte.acteTraitement.ActeTraitement;
 import phenotypage.model.traitement_acte.tableau_traitement.Tableau_Traitement_Acte;
 
 import javax.persistence.*;
@@ -19,6 +20,9 @@ public class TraitementActe {
 
     @OneToMany
     private List<Tableau_Traitement_Acte> tableauTraitement;
+
+    @OneToMany
+    private List<ActeTraitement> acteTraitements;
 
     public Long getId() {
         return id;
@@ -42,5 +46,13 @@ public class TraitementActe {
 
     public void setTableauTraitement(List<Tableau_Traitement_Acte> tableauTraitement) {
         this.tableauTraitement = tableauTraitement;
+    }
+
+    public List<ActeTraitement> getActeTraitements() {
+        return acteTraitements;
+    }
+
+    public void setActeTraitements(List<ActeTraitement> acteTraitements) {
+        this.acteTraitements = acteTraitements;
     }
 }

@@ -170,7 +170,7 @@
 
                         if(result.objet.insemination != null){
                             if(result.objet.insemination.operateur != null){
-                                nomOperateur = result.objet.insemination.operateur.nom+' '+result.objet.insemination.operateur.prenom;
+                                $('#details').find('#operateur').text(result.objet.insemination.operateur.nom+' '+result.objet.insemination.operateur.prenom);
                             }
 
                             if(result.objet.insemination.taureau != null){
@@ -193,8 +193,6 @@
                             }
                         }
 
-
-
                         if(result.objet.traitement_donneuse != null) {
                             $('#details')
                                 .find('#dateChaleur').text(' ' + convertDate(result.objet.traitement_donneuse.date_ref_chaleur)).end()
@@ -207,6 +205,11 @@
                                     '<td>' + result.objet.traitement_donneuse.tableauDonneuse[iLigne].produit.nom + '</td>' +
                                     '<td>' + result.objet.traitement_donneuse.tableauDonneuse[iLigne].quantite + '</td>' +
                                     '<td>' + result.objet.traitement_donneuse.tableauDonneuse[iLigne].mode_traitement + '</td></tr>');
+                            }
+                            for (iLigne = 0; iLigne < result.objet.traitement_donneuse.tableauActe.length; iLigne++) {
+                                $('#tableTraitement > tbody:last-child').append('<tr>' +
+                                    '<td>' + convertDate(result.objet.traitement_donneuse.tableauActe[iLigne].date) + '</td>' +
+                                    '<td>' + result.objet.traitement_donneuse.tableauActe[iLigne].acte + '</td></tr>');
                             }
                         }
 

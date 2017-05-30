@@ -1,5 +1,6 @@
 package phenotypage.model.traitementDonneuse;
 
+import phenotypage.model.traitementDonneuse.acteDonneuse.ActeDonneuse;
 import phenotypage.model.traitementDonneuse.tableau_donneuse.Tableau_Donneuse;
 
 import javax.persistence.*;
@@ -25,6 +26,9 @@ public class Traitement_Donneuse
 
 	@OneToMany
 	private List<Tableau_Donneuse> tableauDonneuse;
+
+	@OneToMany
+	private List<ActeDonneuse> tableauActe;
 
 	public Traitement_Donneuse() {}
 
@@ -52,6 +56,14 @@ public class Traitement_Donneuse
 
 	public void setTableauDonneuse(List<Tableau_Donneuse> tableauDonneuse) {
 		this.tableauDonneuse = tableauDonneuse;
+	}
+
+	public List<ActeDonneuse> getTableauActe() {
+		return tableauActe;
+	}
+
+	public void setTableauActe(List<ActeDonneuse> tableauActe) {
+		this.tableauActe = tableauActe;
 	}
 
 	public Long getId()

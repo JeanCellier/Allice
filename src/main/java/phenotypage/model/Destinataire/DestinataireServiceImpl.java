@@ -2,9 +2,6 @@ package phenotypage.model.Destinataire;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import phenotypage.model.destionationCulture.DestinationCulture;
-import phenotypage.model.destionationCulture.DestinationCultureRepository;
-
 import java.util.List;
 
 /**

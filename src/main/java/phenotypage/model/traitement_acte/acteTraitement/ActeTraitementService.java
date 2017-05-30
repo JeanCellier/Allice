@@ -1,5 +1,6 @@
-package phenotypage.model.traitement_acte;
+package phenotypage.model.traitement_acte.acteTraitement;
 
+import phenotypage.model.traitement_acte.TraitementActe;
 import phenotypage.model.traitement_acte.tableau_traitement.Tableau_Traitement_Acte;
 
 import java.util.List;
@@ -8,18 +9,12 @@ import java.util.Optional;
 /**
  * Created by nicolas on 29/04/17.
  */
-public interface TraitementActeService {
-    List<TraitementActe> findAll();
+public interface ActeTraitementService {
+    ActeTraitement createTraitement(int decalageJour, float decalageHeure, String acte);
 
-    TraitementActe createTraitement(String nom, List<Tableau_Traitement_Acte> tableau_traitementActe);
+    ActeTraitement save(ActeTraitement acteTraitement);
 
-    TraitementActe createTraitement(TraitementActe traitementActe);
+    void delete(ActeTraitement acteTraitement);
 
-    TraitementActe save(TraitementActe traitementActe);
-
-    void delete(TraitementActe traitementActe);
-
-    Optional<TraitementActe> findOne(long id);
-
-    TraitementActe updateTraitement(TraitementActe traitementActe, String nom, List<Tableau_Traitement_Acte> tableau_traitement_acte);
+    ActeTraitement updateTraitement(ActeTraitement acteTraitement, int decalageJour, float decalageHeure, String acte);
 }

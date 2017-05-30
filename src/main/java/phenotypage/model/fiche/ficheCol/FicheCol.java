@@ -38,20 +38,26 @@ public class FicheCol extends Fiche {
     @OneToOne
     private InfoTraitementDonneuse infoTraitementDonneuse;
 
-    @OneToMany
-    private List<Tableau_Donneuse> tableauSuperOv;
-
-    @OneToMany
-    private List<TableauTraitement> tableauTraitements;
+    @OneToOne
+    private Traitement_Donneuse tableauSuperOv;
 
     @OneToOne
     private Resultat resultat_collecte;
 
-    @OneToMany
+    @OneToMany(mappedBy="ficheCol")
     private List<Embryon> detailsEmbryonsViables;
 
     @OneToOne
     private Cryoconservation cryoconservation;
+
+    @Column
+    private boolean LC;
+
+    @Column
+    private boolean LL;
+
+    @Column
+    private boolean ED;
 
     public FicheCol() {
         super("Col");
@@ -120,14 +126,6 @@ public class FicheCol extends Fiche {
         this.cryoconservation = cryoconservation;
     }
 
-    public List<TableauTraitement> getTableauTraitements() {
-        return tableauTraitements;
-    }
-
-    public void setTableauTraitements(List<TableauTraitement> tableauTraitements) {
-        this.tableauTraitements = tableauTraitements;
-    }
-
     public InfoTraitementDonneuse getInfoTraitementDonneuse() {
         return infoTraitementDonneuse;
     }
@@ -136,11 +134,11 @@ public class FicheCol extends Fiche {
         this.infoTraitementDonneuse = infoTraitementDonneuse;
     }
 
-    public List<Tableau_Donneuse> getTableauSuperOv() {
+    public Traitement_Donneuse getTableauSuperOv() {
         return tableauSuperOv;
     }
 
-    public void setTableauSuperOv(List<Tableau_Donneuse> tableauSuperOv) {
+    public void setTableauSuperOv(Traitement_Donneuse tableauSuperOv) {
         this.tableauSuperOv = tableauSuperOv;
     }
 
@@ -150,6 +148,30 @@ public class FicheCol extends Fiche {
 
     public void setDetailsEmbryonsViables(List<Embryon> detailsEmbryonsViables) {
         this.detailsEmbryonsViables = detailsEmbryonsViables;
+    }
+
+    public boolean isLC() {
+        return LC;
+    }
+
+    public void setLC(boolean LC) {
+        this.LC = LC;
+    }
+
+    public boolean isLL() {
+        return LL;
+    }
+
+    public void setLL(boolean LL) {
+        this.LL = LL;
+    }
+
+    public boolean isED() {
+        return ED;
+    }
+
+    public void setED(boolean ED) {
+        this.ED = ED;
     }
 }
 

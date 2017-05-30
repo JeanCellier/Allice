@@ -194,6 +194,11 @@
                                 '<td>' + result.objet.traitement_donneuse.tableauDonneuse[iLigne].quantite + '</td>' +
                                 '<td>' + result.objet.traitement_donneuse.tableauDonneuse[iLigne].mode_traitement + '</td></tr>');
                         }
+                        for (iLigne = 0; iLigne < result.objet.traitement_donneuse.tableauActe.length; iLigne++) {
+                            $('#tableTraitement > tbody:last-child').append('<tr>' +
+                                '<td>' + convertDate(result.objet.traitement_donneuse.tableauActe[iLigne].date) + '</td>' +
+                                '<td>' + result.objet.traitement_donneuse.tableauActe[iLigne].acte + '</td></tr>');
+                        }
                     }
 
                     if(result.objet.corpsJaune != null) {

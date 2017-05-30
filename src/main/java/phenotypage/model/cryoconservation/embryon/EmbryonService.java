@@ -7,11 +7,11 @@ import java.util.List;
  */
 public interface EmbryonService
 {
-	List<Embryon> findAllTableauDetail();
+	List<Embryon> findAll();
 
-	Embryon createTableauDetail(int numeroEnbryon, int groupe, int stade, String referecneTransfert, String remarque);
+	Embryon save (Embryon tableauDetail);
 
-	Embryon addTableauDetail(Embryon tableauDetail);
+    void delete(Embryon embryon);
 
-	Embryon newTableauDetail();
+	Embryon create(Embryon embryon);
 }

@@ -16,26 +16,36 @@ public class EmbryonServiceImpl implements EmbryonService
 	private EmbryonRepository embryonRepository;
 
 	@Override
-	public List<Embryon> findAllTableauDetail()
+	public List<Embryon> findAll()
 	{
 		return embryonRepository.findAll();
 	}
 
 	@Override
-	public Embryon createTableauDetail(int numeroEnbryon, int groupe, int stade, String referecneTransfert, String remarque)
-	{
-		return embryonRepository.save(new Embryon());
-	}
-
-	@Override
-	public Embryon addTableauDetail(Embryon tableauDetail)
+	public Embryon save(Embryon tableauDetail)
 	{
 		return embryonRepository.save(tableauDetail);
 	}
 
 	@Override
-	public Embryon newTableauDetail()
-	{
-		return new Embryon();
+	public void delete(Embryon embryon) {
+
+	}
+
+	@Override
+	public Embryon create(Embryon embryon) {
+		Embryon embryonNew = new Embryon();
+		embryonNew.setCryoconserve(embryon.isCryoconserve());
+		embryonNew.setDetruit(embryon.isDetruit());
+		embryonNew.setFicheAba(embryon.getFicheAba());
+		embryonNew.setFicheCol(embryon.getFicheCol());
+		embryonNew.setFicheOpu(embryon.getFicheOpu());
+		embryonNew.setNumeroEmbryon(embryon.getNumeroEmbryon());
+		embryonNew.setNumeroReceveuse(embryon.getNumeroReceveuse());
+		embryonNew.setQualite(embryon.getQualite());
+		embryonNew.setReferenceTransfert(embryon.getReferenceTransfert());
+		embryonNew.setRemarque(embryon.getRemarque());
+		embryonNew.setStade(embryon.getStade());
+		return save(embryonNew);
 	}
 }
