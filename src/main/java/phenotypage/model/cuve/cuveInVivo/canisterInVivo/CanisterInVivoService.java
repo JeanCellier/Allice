@@ -12,11 +12,9 @@ public interface CanisterInVivoService {
 
     List<CanisterInVivo> findAllCanisterInVivo();
 
-    CanisterInVivo createCanisterInVivo(List<VisoTubeInVivo> visoTubeList);
+    CanisterInVivo createCanisterInVivo(int numero, String nom, List<VisoTubeInVivo> visoTubeList) ;
 
-    CanisterInVivo addCanisterInVivo(CanisterInVivo canisterInVivo);
-
-    CanisterInVivo newCanisterInVivo();
+    CanisterInVivo save(CanisterInVivo canisterInVivo);
 
     void delete(CanisterInVivo canisterInVivo);
 

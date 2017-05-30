@@ -29,7 +29,7 @@ public class EmbryonServiceImpl implements EmbryonService
 
 	@Override
 	public void delete(Embryon embryon) {
-
+		embryonRepository.delete(embryon);
 	}
 
 	@Override

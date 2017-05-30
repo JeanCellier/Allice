@@ -17,27 +17,23 @@ public class CanisterInVivoServiceImpl implements CanisterInVivoService {
     @Autowired
     private CanisterInVivoRepository canisterInVivoRepository;
 
-    @Autowired
-    private VisoTubeInVivoService visoTubeInVivoService;
-
     @Override
     public List<CanisterInVivo> findAllCanisterInVivo() {
         return canisterInVivoRepository.findAll();
     }
 
     @Override
-    public CanisterInVivo createCanisterInVivo(List<VisoTubeInVivo> visoTubeList) {
-        return canisterInVivoRepository.save(new CanisterInVivo(visoTubeList));
+    public CanisterInVivo createCanisterInVivo(int numero, String nom, List<VisoTubeInVivo> visoTubeList) {
+        CanisterInVivo canisterInVivo = new CanisterInVivo();
+        canisterInVivo.setVisoTubeList(visoTubeList);
+        canisterInVivo.setNumero(numero);
+        canisterInVivo.setNom(nom);
+        return save(canisterInVivo);
     }
 
     @Override
-    public CanisterInVivo addCanisterInVivo(CanisterInVivo canisterInVivo) {
+    public CanisterInVivo save(CanisterInVivo canisterInVivo) {
         return canisterInVivoRepository.save(canisterInVivo);
-    }
-
-    @Override
-    public CanisterInVivo newCanisterInVivo() {
-        return new CanisterInVivo();
     }
 
     @Override

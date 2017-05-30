@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import phenotypage.model.operateur.Operateur;
 
 import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -29,7 +30,7 @@ public class CryoconservationServiceImpl implements CryoconservationService
 	}
 
 	@Override
-	public Cryoconservation update(Cryoconservation cryoconservation, String ref, Time heureMinute, String methodeCongelation,
+	public Cryoconservation update(Cryoconservation cryoconservation, String ref, Date heureMinute, String methodeCongelation,
 								   String congelateur, Operateur operateur, String descMethode, String type) {
 
 		cryoconservation.setCongelateur(congelateur);

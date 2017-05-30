@@ -59,7 +59,7 @@
                                     <div class="form-group">
                                         <input class="form-control required vache" required name="vache" type="text" placeholder="vache">
                                     </div>
-                                    <button class="btn btn-primary open1" type="button">Enregistrer <span class="fa fa-arrow-right"></span></button>
+                                    <button class="btn btn-primary open1" type="submit">Enregistrer <span class="fa fa-arrow-right"></span></button>
                                 </fieldset>
                             </form>
                         </div>
@@ -138,11 +138,11 @@
                                         <label class="radio-inline"><input type="radio" class="radio" value="non" name="imageEcho">Non</label>
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" name="pourDoseFSH" type="number" placeholder="Pourcentage de la dose totale FSH">
+                                        <input class="form-control" name="pourDoseFSH" type="number" step="0.01" placeholder="Pourcentage de la dose totale FSH">
                                     </div>
 
 
-                                    <div class="traitement">
+                                    <div class="traitement superOv">
                                         <div class="form-group">
                                             <select class="form-control" name="traitementActe">
                                                 <option value="" selected>Traitement type - Aucun</option>
@@ -151,12 +151,12 @@
                                                 </c:forEach>
                                             </select>
                                         </div>
-                                        <div id="tabSuperOv" class="tabTraitement">
+                                        <div id="tabSuperOv" class="tabTraitement tabSuperOv">
                                             <div class="form-group col-sm-3" style="padding-left:0">
-                                                <input class="form-control datepicker" name="dateTraitement[]" type="text" placeholder="Date">
+                                                <input class="form-control datepicker" name="dateTraitementSuperOv[]" type="text" placeholder="Date">
                                             </div>
                                             <div class="form-group col-sm-3">
-                                                <select class="form-control" name="produit[]">
+                                                <select class="form-control" name="produitSuperOv[]">
                                                     <option value="" selected disabled>Produit</option>
                                                     <c:forEach items="${produitsList}" var="produit">
                                                         <option value="${produit.id}">${produit.nom}</option>
@@ -164,10 +164,10 @@
                                                 </select>
                                             </div>
                                             <div class="form-group col-sm-2">
-                                                <input class="form-control" name="quantite[]" step="0.01" type="number" placeholder="Quantite">
+                                                <input class="form-control" name="quantiteSuperOv[]" step="0.01" type="number" placeholder="Quantite">
                                             </div>
                                             <div class="form-group col-sm-3">
-                                                <select class="form-control" name="modeTraitement[]">
+                                                <select class="form-control" name="modeTraitementSuperOv[]">
                                                     <option value="" selected disabled>Mode de traitementActe</option>
                                                     <option value="IM">IM</option>
                                                     <option value="IV">IV</option>
@@ -179,7 +179,7 @@
                                                 <span>OU</span>
                                             </div>
                                             <div class="form-group col-sm-7 ">
-                                                <input class="form-control" name="acte[]" type="text" placeholder="Acte">
+                                                <input class="form-control" name="acteSuperOv[]" type="text" placeholder="Acte">
                                             </div>
                                         </div>
 
@@ -188,7 +188,7 @@
                                         </div>
                                     </div>
                                     <button class="btn btn-primary back2" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
-                                    <button class="btn btn-primary open2" type="button">Enregistrer <span class="fa fa-arrow-right"></span></button>
+                                    <button class="btn btn-primary open2" type="submit">Enregistrer <span class="fa fa-arrow-right"></span></button>
                                 </fieldset>
                             </form>
                         </div>
@@ -227,7 +227,7 @@
                                     </div>
 
                                     <button class="btn btn-primary back3" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
-                                    <button class="btn btn-primary open3" type="button">Enregistrer <span class="fa fa-arrow-right"></span></button>
+                                    <button class="btn btn-primary open3" type="submit">Enregistrer <span class="fa fa-arrow-right"></span></button>
                                 </fieldset>
                             </form>
                         </div>
@@ -240,40 +240,41 @@
                                         <div id="tabEmbryonsViables" class="tabEmbryonsViables" style="padding-bottom:10px">
                                             <div class="col-sm-12" style="padding-left:0px;padding-right:0px">
                                                 <div class="form-group col-sm-1" style="padding-left:0; padding-right: 5px">
+                                                    <span class="number">1</span>
+                                                </div>
+                                                <div class="form-group col-sm-2" style="padding-left:0; padding-right: 5px">
                                                     <select class="form-control" name="stade[]">
-                                                        <option value="" selected disabled>Stade</option>
+                                                        <option value="" selected>Stade</option>
                                                         <c:forEach begin="1" end="9" var="val">
                                                             <option value="<c:out value="${val}"/>"><c:out value="${val}"/></option>
                                                         </c:forEach>
                                                     </select>
                                                 </div>
-                                                <div class="form-group col-sm-1" style="padding-left: 5px; padding-right: 5px">
+                                                <div class="form-group col-sm-2" style="padding-left: 5px; padding-right: 5px">
                                                     <select class="form-control" name="qualite[]">
-                                                        <option value="" selected disabled>Qualit&#233</option>
+                                                        <option value="" selected>Qualit&#233</option>
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
                                                         <option value="3">3</option>
                                                         <option value="4">4</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group col-sm-3" style="padding-left: 5px">
-                                                    <select class="form-control" name="cuve[]">
-                                                        <option value="" selected disabled>Cuve</option>
-                                                    </select>
-                                                </div>
                                                 <div class="form-group col-sm-3">
                                                     <select class="form-control" name="canister[]">
-                                                        <option value="" selected disabled>Canister</option>
+                                                        <option value="" selected>Canister</option>
+                                                        <c:forEach items="${canistersList}" var="canister">
+                                                            <option value="${canister.id}">${canister.nom}</option>
+                                                        </c:forEach>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-sm-2" style="padding-left:0">
                                                     <select class="form-control" name="visotube[]">
-                                                        <option value="" selected disabled>Visotube</option>
+                                                        <option value="" selected>Visotube</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-sm-2">
                                                     <select class="form-control" name="jonc[]">
-                                                        <option value="" selected disabled>Jonc</option>
+                                                        <option value="" selected>Jonc</option>
                                                         <option value="jaune">Jaune</option>
                                                         <option value="rouge">Rouge</option>
                                                         <option value="vert">Vert</option>
@@ -292,13 +293,6 @@
                                             <div class="form-group col-sm-4">
                                                 <input class="form-control" name="refTransfert[]" type="text" placeholder="r&eacute;f&eacute;rence transfert">
                                             </div>
-                                            <div class="form-group col-sm-2 col-sm-offset-2" style="padding-top:5px;padding-left:50px">
-                                                <span>OU</span>
-                                            </div>
-                                            <div class="form-group col-sm-3">
-                                                <label>D&eacute;truit : </label>
-                                                <label class="radio-inline"><input type="radio" class="radio" value="detruit" name="detruit[]"> </label>
-                                            </div>
                                             <div class="form-group col-sm-11" style="padding-left:0">
                                                 <input class="form-control" name="remarques[]" type="text" placeholder="Remarques">
                                             </div>
@@ -309,7 +303,7 @@
                                     </div>
 
                                     <button class="btn btn-primary back4" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
-                                    <button class="btn btn-primary open4" type="button">Enregistrer <span class="fa fa-arrow-right"></span></button>
+                                    <button class="btn btn-primary open4" type="submit">Enregistrer <span class="fa fa-arrow-right"></span></button>
                                 </fieldset>
                             </form>
                         </div>
@@ -322,7 +316,7 @@
                                         <input class="form-control" name="refCong" type="text" placeholder="R&#233f&#233rence cong&#233lation">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" name="heureCong" type="text" placeholder="Heure de cong&#233lation">
+                                        <input class="form-control time" name="heureCong" type="text" placeholder="Heure de cong&#233lation">
                                     </div>
                                     <div class="form-group">
                                         <label>M&#233thode de cong&#233lation : </label>
@@ -350,7 +344,7 @@
                                         <label class="radio-inline"><input type="radio" class="radio" value="ed" name="ed">ED</label>
                                     </div>
                                     <button class="btn btn-primary back5" type="button"><span class="fa fa-arrow-left"></span> Pr&#233c&#233dent</button>
-                                    <button type="button" class="btn btn-success validButton"><span class="fa fa-check"></span> Enregistrer</button>
+                                    <button type="submit" class="btn btn-success validButton"><span class="fa fa-check"></span> Enregistrer</button>
                                 </fieldset>
                             </form>
                         </div>
@@ -445,6 +439,12 @@
         });
     }
 
+    $('.time').datetimepicker({
+        locale: 'fr',
+        format: 'hh:mm',
+        toolbarPlacement: 'top',
+        showClose: true
+    });
     /****** function reinit fiche ******/
     function reinitForm(form){
         form.find('form[name="addPart1"]').attr('action', './addOrUpdatePart1');
@@ -977,7 +977,12 @@
 
     /******* Ajoute une ligne tableau traitement_acte donneuse ******/
     $(document).on( 'click', ".addTabTraitement", function(e){
-        $template = $('#tabTraitement');
+        if($(e.target).closest('.traitement').hasClass('superOv')){
+            $template = $('#tabSuperOv');
+        }else{
+            $template = $('#tabTraitement');
+        }
+
         $clone = $template.clone().removeAttr('id');
         $clone.find('input').val("");
         $clone.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabTraitement" type="button"><span class="fa fa-minus"></span></button></div>');
@@ -988,7 +993,8 @@
     $(document).on('click', ".addTabEmbryon", function(e){
         $template = $('#tabEmbryonsViables');
         $clone = $template.clone().removeAttr('id');
-        console.log( $template.find('input[name="remarques[]"]').closest('.form-group'));
+        number = parseInt($('.tabEmbryonsViables:last').find('.number').text()) + 1;
+        $clone.find('.number').text(number);
         $template.find('input[name="remarques[]"]').closest('.form-group').removeClass('col-sm-11');
         $template.find('input[name="remarques[]"]').closest('.form-group').addClass('col-sm-12');
         $clone.find('input[name="remarques[]"]').closest('.form-group').removeClass('col-sm-12');
@@ -1005,9 +1011,67 @@
     });
 
     /******* Supprime une ligne modal embryons viable ******/
-    $(document).on( 'click', ".delTabEmbryon", function(){
-        $(this).closest('.tabEmbryonsViables').remove();
+    $(document).on( 'click', ".delTabEmbryon", function(e){
+        numb = parseInt($(e.target).closest('.tabEmbryonsViables').find('.number').text());
+        $('div.tab-pane.active').find('.tabEmbryonsViables').each(function() {
+            number = parseInt($(this).find('.number').text());
+            if(number > numb) {
+                number--;
+                $(this).find('.number').text(number);
+            }
+        });
+
+        $(e.target).closest('.tabEmbryonsViables').remove();
+
     });
+
+    // rempli le select "visotube" à partir du canister selectionné
+    $(document).on( 'change', 'select[name="canister[]"]', function(event){
+        $.ajax({
+            url: '${pageContext. request. contextPath}/cuves/cuve_embryons_vivo/get/'+this.value,
+            type: 'GET',
+            success: function (result) {
+                if (result.succes == true) {
+                    select = $(event.target).closest('.tabEmbryonsViables').find('select[name="visotube[]"]');
+                    select.find('option').not(':first').remove();
+
+                    for(iViso = 0; iViso < result.objet.visoTubeList.length; iViso++) {
+                        select.append($('<option>', {
+                            value: result.objet.visoTubeList[iViso].id,
+                            text: result.objet.visoTubeList[iViso].couleur
+                        }));
+                    }
+                }
+            }
+        });
+    });
+
+    /******************************* LOAD FICHE COLLECTE DANS SELECT ****************************/
+    function loadCollecte(insemination){
+        var numIdVache = $(".tab-pane.active").find('.vache').val();
+
+        $.ajax({
+            type : 'GET',
+            url: '${pageContext. request. contextPath}/acteTechnique/col/get/vache/'+numIdVache,
+            success: function (result) {
+                if (result.succes == true) {
+                    $('.collecteSelect').find('option').not(':first').remove();
+                    for(iFiche = 0; iFiche < result.objet.length; iFiche++) {
+                        $('.collecteSelect').append($('<option>', {
+                            value: result.objet[iFiche].id,
+                            text: result.objet[iFiche].nom
+                        }));
+                    }
+
+                    if(insemination != null){
+                        $('.collecteSelect').find('option:contains('+insemination.collecte+')').prop('selected', true);
+                    }
+                } else {
+                    $('#modal-body').before('<div class="alert alert-danger flash" role="alert">'+result.message+'</div>');
+                }
+            }
+        });
+    }
 
     /************************ AJOUT *************************/
     $(document).on( 'submit', ".addOrUpdatePart", function(e){

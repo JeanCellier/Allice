@@ -16,14 +16,14 @@ public class Embryon
 	@GeneratedValue
 	private Long id;
 
-	@OneToOne
-	private FicheCol ficheCol;
+	@Column
+	private String ficheCol;
 
-	@OneToOne
-	private FicheOpu ficheOpu;
+	@Column
+	private String ficheOpu;
 
-	@OneToOne
-	private FicheAba ficheAba;
+	@Column
+	private String ficheAba;
 
 	@Column
 	private int numeroEmbryon;
@@ -61,27 +61,27 @@ public class Embryon
 		this.id = id;
 	}
 
-	public FicheCol getFicheCol() {
+	public String getFicheCol() {
 		return ficheCol;
 	}
 
-	public void setFicheCol(FicheCol ficheCol) {
+	public void setFicheCol(String ficheCol) {
 		this.ficheCol = ficheCol;
 	}
 
-	public FicheOpu getFicheOpu() {
+	public String getFicheOpu() {
 		return ficheOpu;
 	}
 
-	public void setFicheOpu(FicheOpu ficheOpu) {
+	public void setFicheOpu(String ficheOpu) {
 		this.ficheOpu = ficheOpu;
 	}
 
-	public FicheAba getFicheAba() {
+	public String getFicheAba() {
 		return ficheAba;
 	}
 
-	public void setFicheAba(FicheAba ficheAba) {
+	public void setFicheAba(String ficheAba) {
 		this.ficheAba = ficheAba;
 	}
 

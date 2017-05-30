@@ -82,8 +82,7 @@ public class Traitement_DonneuseServiceImpl implements Traitement_DonneuseServic
 
 	@Override
 	public int determineStatut(Traitement_Donneuse traitement_donneuse) {
-		if(traitement_donneuse.getDate_ref_chaleur() == null || Objects.equals(traitement_donneuse.getTypeChaleur(), "")
-				|| (traitement_donneuse.getTableauDonneuse().size() ==0 && traitement_donneuse.getTableauActe().size() == 0)){
+		if(traitement_donneuse.getTableauDonneuse().size() ==0 && traitement_donneuse.getTableauActe().size() == 0){
 			return 1;
 		}
 

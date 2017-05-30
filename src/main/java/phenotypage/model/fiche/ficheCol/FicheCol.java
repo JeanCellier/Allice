@@ -44,7 +44,7 @@ public class FicheCol extends Fiche {
     @OneToOne
     private Resultat resultat_collecte;
 
-    @OneToMany(mappedBy="ficheCol")
+    @OneToMany
     private List<Embryon> detailsEmbryonsViables;
 
     @OneToOne

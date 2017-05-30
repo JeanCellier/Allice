@@ -160,7 +160,7 @@ public class ConverterOPUFiche implements ConverterFiche {
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Ponction du ou des follicules dominants (> 8 mm):");
         if (fiche.getInfoTraitementDonneuse() != null) {
-            PoiHelper.writeCell(sheet, rowNumber, 4, fiche.getInfoTraitementDonneuse().isPonctionFollicule() ? "oui" : "non");
+            //PoiHelper.writeCell(sheet, rowNumber, 4, fiche.getInfoTraitementDonneuse().isPonctionFollicule() ? "oui" : "non");
         }
         rowNumber++;
 
@@ -182,13 +182,13 @@ public class ConverterOPUFiche implements ConverterFiche {
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Traitement superovulation:");
         if (fiche.getInfoTraitementDonneuse() != null) {
-            PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInfoTraitementDonneuse().isSuperovulation() ? "oui" : "non");
+           // PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInfoTraitementDonneuse().isSuperovulation() ? "oui" : "non");
         }
         rowNumber++;
 
         PoiHelper.writeCell(sheet, rowNumber, 0, "Type FSH:");
         if (fiche.getInfoTraitementDonneuse() != null) {
-            PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInfoTraitementDonneuse().getTypeFSH());
+         //   PoiHelper.writeCell(sheet, rowNumber, 2, fiche.getInfoTraitementDonneuse().getTypeFSH());
         }
         rowNumber++;
 
@@ -523,7 +523,7 @@ public class ConverterOPUFiche implements ConverterFiche {
         //Tableau body
         for (Embryon detail : fiche.getTableauDetails()) {
             PoiHelper.writeCell(sheet, rowNumber, 0, detail.getNumeroEmbryon() + "").setCellStyle(bodyStyle);
-            PoiHelper.writeCell(sheet, rowNumber, 1, detail.isFrais() ? "X" : "").setCellStyle(bodyStyle);
+            //PoiHelper.writeCell(sheet, rowNumber, 1, detail.isFrais() ? "X" : "").setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 2, detail.getNumeroReceveuse()).setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 3, detail.getReferenceTransfert()).setCellStyle(bodyStyle);
             PoiHelper.writeCell(sheet, rowNumber, 4, detail.isDetruit() ? "X" : "").setCellStyle(bodyStyle);

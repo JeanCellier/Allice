@@ -22,16 +22,7 @@ public class EmbryonsInVivo {
     @ManyToOne
     private Semence semence;
 
-    public EmbryonsInVivo(Embryon embryon, String couleur, Semence semence, String biopsie, String remarques) {
-        this.embryon = embryon;
-        this.couleur = couleur;
-        this.semence = semence;
-        this.biopsie = biopsie;
-        this.remarques = remarques;
-    }
-
     @Column
-
     private String biopsie;
 
     @Column

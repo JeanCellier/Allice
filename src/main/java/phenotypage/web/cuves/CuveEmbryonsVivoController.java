@@ -41,7 +41,7 @@ public class CuveEmbryonsVivoController {
     public String semences_elevage(Model model)
     {
         model.addAttribute("canisterList", canisterInVivoService.findAllCanisterInVivo());
-        model.addAttribute("visoTubeList", visoTubeInVivoService.findAllVisoTubeInVivo());
+        model.addAttribute("visoTubeList", visoTubeInVivoService.findAll());
 
         return "cuves/cuve_embryons_vivo/embryons_vivo";
     }
@@ -110,8 +110,8 @@ public class CuveEmbryonsVivoController {
 
         for (VisoTubeInVivo visoTubeInVivo : canisterInVivo.getVisoTubeList())
         {
-            embryonsInVivoService.delete(visoTubeInVivo.getEmbryonsInVivo());
-            visoTubeInVivoService.delete(visoTubeInVivo);
+//            embryonsInVivoService.delete(visoTubeInVivo.getEmbryonsInVivo());
+//            visoTubeInVivoService.delete(visoTubeInVivo);
         }
 
         canisterInVivoService.delete(canisterInVivo);
@@ -126,8 +126,8 @@ public class CuveEmbryonsVivoController {
     public JsonResponse deleteviso(@PathVariable("id") VisoTubeInVivo visoTubeInVivo){
         JsonResponse response = new JsonResponse();
 
-        embryonsInVivoService.delete(visoTubeInVivo.getEmbryonsInVivo());
-        visoTubeInVivoService.delete(visoTubeInVivo);
+//        embryonsInVivoService.delete(visoTubeInVivo.getEmbryonsInVivo());
+//        visoTubeInVivoService.delete(visoTubeInVivo);
 
         response.setSucces(true);
         response.setMessage("Viso Tube Somatique supprimé");

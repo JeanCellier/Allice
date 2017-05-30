@@ -76,14 +76,14 @@ FicheAbaServiceImpl implements FicheAbaService
 			ficheAba.setCulture(cultures);
 		}
 		if(cryoconservation != null) {
-			Cryoconservation cryoconservations = cryoconservationService.addCryoconservation(cryoconservation);
-			ficheAba.setCryoconservation(cryoconservations);
+		//	Cryoconservation cryoconservations = cryoconservationService.addCryoconservation(cryoconservation);
+			//ficheAba.setCryoconservation(cryoconservations);
 		}
 		if(embryons != null) {
 			List<Embryon> tableauDetailsList = new LinkedList();
 			for(int i = 0; i < embryons.size(); i++)
 			{
-				tableauDetailsList.add(embryonService.addTableauDetail(embryons.get(i)));
+			//	tableauDetailsList.add(embryonService.addTableauDetail(embryons.get(i)));
 			}
 			ficheAba.setEmbryons(tableauDetailsList);
 		}

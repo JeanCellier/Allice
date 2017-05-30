@@ -6,6 +6,10 @@ import phenotypage.model.cryoconservation.Cryoconservation;
 import phenotypage.model.cryoconservation.CryoconservationService;
 import phenotypage.model.cryoconservation.embryon.Embryon;
 import phenotypage.model.cryoconservation.embryon.EmbryonService;
+import phenotypage.model.cuve.cuveInVivo.canisterInVivo.visoTubeInVivo.VisoTubeInVivo;
+import phenotypage.model.cuve.cuveInVivo.canisterInVivo.visoTubeInVivo.VisoTubeInVivoService;
+import phenotypage.model.cuve.cuveInVivo.canisterInVivo.visoTubeInVivo.embryonsInVivo.EmbryonsInVivo;
+import phenotypage.model.cuve.cuveInVivo.canisterInVivo.visoTubeInVivo.embryonsInVivo.EmbryonsInVivoService;
 import phenotypage.model.infoTraitementDonneuse.InfoTraitementDonneuse;
 import phenotypage.model.infoTraitementDonneuse.InfoTraitementDonneuseService;
 import phenotypage.model.invitro.collecte.resultat.Resultat;
@@ -18,10 +22,7 @@ import phenotypage.model.traitementDonneuse.Traitement_DonneuseService;
 import phenotypage.model.traitementDonneuse.tableau_donneuse.Tableau_Donneuse;
 import phenotypage.model.vache.Vache;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * @author fabien
@@ -47,6 +48,12 @@ FicheColServiceImpl implements FicheColService {
 
     @Autowired
     private EmbryonService embryonService;
+
+    @Autowired
+    private EmbryonsInVivoService embryonsInVivoService;
+
+    @Autowired
+    private VisoTubeInVivoService visoTubeInVivoService;
 
     @Override
     public List<FicheCol> findAll() {
@@ -102,14 +109,14 @@ FicheColServiceImpl implements FicheColService {
         }
 
         if (tableauSuperOv != null) {
-            if (ficheColToUpdate.getTraitement_donneuse() != null) {
-                if (!Objects.equals(tableauSuperOv.getId(), ficheColToUpdate.getTraitement_donneuse().getId())) {
-                    Traitement_Donneuse traitementDonneuseToDelete = ficheColToUpdate.getTraitement_donneuse();
-                    ficheColToUpdate.setTraitement_donneuse(traitement_donneuseService.createTraitement_Donneuse(tableauSuperOv));
+            if (ficheColToUpdate.getTableauSuperOv() != null) {
+                if (!Objects.equals(tableauSuperOv.getId(), ficheColToUpdate.getTableauSuperOv().getId())) {
+                    Traitement_Donneuse traitementDonneuseToDelete = ficheColToUpdate.getTableauSuperOv();
+                    ficheColToUpdate.setTableauSuperOv(traitement_donneuseService.createTraitement_Donneuse(tableauSuperOv));
                     traitement_donneuseService.delete(traitementDonneuseToDelete);
                 }
             } else {
-                ficheColToUpdate.setTraitement_donneuse(traitement_donneuseService.createTraitement_Donneuse(tableauSuperOv));
+                ficheColToUpdate.setTableauSuperOv(traitement_donneuseService.createTraitement_Donneuse(tableauSuperOv));
             }
         }
 
@@ -147,18 +154,32 @@ FicheColServiceImpl implements FicheColService {
         }
 
         if(detailsEmbryonsViables != null){
-            if(ficheColToUpdate.getDetailsEmbryonsViables() != null){
-                for(int iEmbryons = 0; iEmbryons < ficheColToUpdate.getDetailsEmbryonsViables().size(); iEmbryons++){
-                    embryonService.delete(ficheColToUpdate.getDetailsEmbryonsViables().get(iEmbryons));
-                }
-                for(int iEmbryons = 0; iEmbryons < ficheColToUpdate.getDetailsEmbryonsViables().size(); iEmbryons++){
-                    ficheColToUpdate.getDetailsEmbryonsViables().add(embryonService.create(detailsEmbryonsViables.get(iEmbryons)));
-                }
-            }else{
-                for(int iEmbryons = 0; iEmbryons < ficheColToUpdate.getDetailsEmbryonsViables().size(); iEmbryons++){
-                    ficheColToUpdate.getDetailsEmbryonsViables().add(embryonService.create(detailsEmbryonsViables.get(iEmbryons)));
+            List<Embryon> listEmbryons = new ArrayList<>();
+            List<Embryon> listEmbryonsActuel = ficheColToUpdate.getDetailsEmbryonsViables();
+            ficheColToUpdate.setDetailsEmbryonsViables(null);
+
+            if( listEmbryonsActuel!= null){
+                for(int iEmbryons = 0; iEmbryons < listEmbryonsActuel.size(); iEmbryons++){
+                    if(listEmbryonsActuel.get(iEmbryons).isCryoconserve()){
+                        Optional<EmbryonsInVivo> embryonsInVivoToDelete = embryonsInVivoService.findByEmbryon(listEmbryonsActuel.get(iEmbryons));
+                        if(embryonsInVivoToDelete.isPresent()){
+                            Optional<VisoTubeInVivo> visoTubeInVivo = visoTubeInVivoService.findByEmbryonsInVivo(embryonsInVivoToDelete.get());
+                            if(visoTubeInVivo.isPresent()){
+                                List<EmbryonsInVivo> embryonsInVivoList = visoTubeInVivo.get().getEmbryonsInVivo();
+                                embryonsInVivoList.remove(embryonsInVivoToDelete.get());
+                                visoTubeInVivoService.update(visoTubeInVivo.get(), visoTubeInVivo.get().getCouleur(), embryonsInVivoList);
+                                embryonsInVivoService.delete(embryonsInVivoToDelete.get());
+                            }
+                        }
+                    }
+                    embryonService.delete(listEmbryonsActuel.get(iEmbryons));
                 }
             }
+
+            for(int iEmbryons = 0; iEmbryons < detailsEmbryonsViables.size(); iEmbryons++){
+                listEmbryons.add(embryonService.create(detailsEmbryonsViables.get(iEmbryons)));
+            }
+            ficheColToUpdate.setDetailsEmbryonsViables(listEmbryons);
         }
 
         ficheColToUpdate.setNom(nom);

@@ -3,6 +3,7 @@ package phenotypage.model.cryoconservation;
 import phenotypage.model.operateur.Operateur;
 import javax.persistence.*;
 import java.sql.Time;
+import java.util.Date;
 
 @Entity
 public class Cryoconservation
@@ -15,7 +16,7 @@ public class Cryoconservation
 	private String ref;
 
 	@Column
-	private Time heureMinute;
+	private Date heureMinute;
 
 	@Column
 	private String methodeCongelation;
@@ -96,11 +97,11 @@ public class Cryoconservation
 		this.ref = ref;
 	}
 
-	public Time getHeureMinute() {
+	public Date getHeureMinute() {
 		return heureMinute;
 	}
 
-	public void setHeureMinute(Time heureMinute) {
+	public void setHeureMinute(Date heureMinute) {
 		this.heureMinute = heureMinute;
 	}
 }

@@ -1,40 +1,54 @@
-package phenotypage.model.fiche.ficheCol;
+package phenotypage.model.cuve.cuveInVivo.canisterInVivo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import phenotypage.model.operateur.Operateur;
+import phenotypage.model.cuve.canister.visoTube.VisoTube;
+import phenotypage.model.cuve.cuveInVivo.canisterInVivo.visoTubeInVivo.VisoTubeInVivo;
+import phenotypage.model.cuve.cuveInVivo.canisterInVivo.visoTubeInVivo.VisoTubeInVivoService;
+import phenotypage.model.cuve.cuveInVivo.canisterInVivo.visoTubeInVivo.embryonsInVivo.EmbryonsInVivo;
+import phenotypage.model.fiche.ficheCol.FicheColService;
 import phenotypage.model.operateur.OperateurService;
-import phenotypage.model.programme.Programme;
 import phenotypage.model.programme.ProgrammeService;
-import phenotypage.model.vache.Vache;
 import phenotypage.model.vache.VacheService;
 
 import javax.annotation.PostConstruct;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by nicolas on 18/05/17.
  */
 @Component
-public class FicheColPopulator {
+public class CanisterInVivoPopulator {
     @Autowired
-    private FicheColService ficheColService;
+    private CanisterInVivoService canisterInVivoService;
 
     @Autowired
-    private VacheService vacheService;
-
-    @Autowired
-    private ProgrammeService programmeService;
-
-    @Autowired
-    private OperateurService operateurService;
+    private VisoTubeInVivoService visoTubeInVivoService;
 
     @PostConstruct
     void init()
     {
-//        Operateur operateur = operateurService.createOperateur("Denoes", "Oliver");
-//        Programme programme = programmeService.createProgramme("Bovomega3");
-//        Vache vache = vacheService.createVache(true, "Allice", "vache1", "FR37175336", "fr5638962543", 66, 'F', new Date(), "parite", 20.5F, "fr5638962542", "fr5638962544");
-//        ficheColService.createFicheCol("17COL0007", programme, new Date(), "FR TB 370", "Allice", operateur, vacheService.findByNum_identification("fr5638962544").get(), null, null, null, null, null, null);
+//        List<VisoTubeInVivo> listViso = new ArrayList<>();
+//        List<VisoTubeInVivo> listViso2 = new ArrayList<>();
+//        List<VisoTubeInVivo> listViso3 = new ArrayList<>();
+//        List<EmbryonsInVivo> listEmbryons = new ArrayList<>();
+//        listViso.add(visoTubeInVivoService.createVisoTubeInVivo("vert", listEmbryons));
+//        listViso.add(visoTubeInVivoService.createVisoTubeInVivo("rouge", listEmbryons));
+//        listViso.add(visoTubeInVivoService.createVisoTubeInVivo("bleu", listEmbryons));
+//
+//        canisterInVivoService.createCanisterInVivo(1, "canister1", listViso);
+//
+//        listViso2.add(visoTubeInVivoService.createVisoTubeInVivo("rose", listEmbryons));
+//        listViso2.add(visoTubeInVivoService.createVisoTubeInVivo("orange", listEmbryons));
+//        listViso2.add(visoTubeInVivoService.createVisoTubeInVivo("rouge", listEmbryons));
+//
+//        canisterInVivoService.createCanisterInVivo(2, "canister2", listViso2);
+//
+//        listViso3.add(visoTubeInVivoService.createVisoTubeInVivo("gris", listEmbryons));
+//        listViso3.add(visoTubeInVivoService.createVisoTubeInVivo("noir", listEmbryons));
+//        listViso3.add(visoTubeInVivoService.createVisoTubeInVivo("jaune", listEmbryons));
+//
+//        canisterInVivoService.createCanisterInVivo(3, "canister3", listViso3);
     }
 }

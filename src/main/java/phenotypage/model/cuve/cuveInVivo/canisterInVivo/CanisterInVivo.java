@@ -13,16 +13,11 @@ import java.util.List;
  */
 @Entity
 public class CanisterInVivo extends Canister{
-
     @OneToMany
-    private List<VisoTubeInVivo> visoTubeList= new ArrayList<>();
+    private List<VisoTubeInVivo> visoTubeList;
 
     public List<VisoTubeInVivo> getVisoTubeList() {
         return visoTubeList;
-    }
-
-    public CanisterInVivo(List<VisoTubeInVivo> visoTubeList) {
-        this.visoTubeList = visoTubeList;
     }
 
     public CanisterInVivo() {
