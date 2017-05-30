@@ -4,12 +4,12 @@
     <h1 class="page-header">Import &amp; Export</h1>
 
     <div class="row placeholders">
-        <div class="col-sm-1 col-md-1">
+        <!--div class="col-sm-1 col-md-1">
             <div>
                 <a class="btn btn-primary dropdown-toggle" type="button" data-title="Add" data-toggle="modal"
                    data-target="#import">Importer</a>
             </div>
-        </div>
+        </div-->
         <div class="col-sm-12 col-md-12" id="list-fiche-cards" style="margin-top: 10px;">
             <!--div class="row">
                 <div class="col-sm-3">
