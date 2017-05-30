@@ -4,6 +4,7 @@ import phenotypage.model.cuve.canister.Canister;
 import phenotypage.model.cuve.cuveSomatique.canisterSomatique.visoTubeSomatique.VisoTubeSomatique;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,8 +12,16 @@ import java.util.List;
  */
 @Entity
 public class CanisterSomatique extends Canister{
+
     @OneToMany
-    private List<VisoTubeSomatique> visoTubeList;
+    private List<VisoTubeSomatique> visoTubeList= new ArrayList<>();
+
+    public CanisterSomatique(List<VisoTubeSomatique> visoTubeList) {
+        this.visoTubeList = visoTubeList;
+    }
+
+    public CanisterSomatique() {
+    }
 
     public List<VisoTubeSomatique> getVisoTubeList() {
         return visoTubeList;

@@ -13,5 +13,9 @@ public interface SemenceService {
 
     Semence save(Semence semence);
 
+    Semence addSemence(Semence semence);
+
     Optional<Semence> findByNumTaureau(String taureau);
+
+    void delete(Semence semence);
 }

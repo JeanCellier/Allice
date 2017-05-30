@@ -39,7 +39,17 @@ public class SemenceServiceImpl implements SemenceService {
     }
 
     @Override
+    public Semence addSemence(Semence semence) {
+        return repository.save(semence);
+    }
+
+    @Override
     public Optional<Semence> findByNumTaureau(String taureau) {
         return repository.findByNumTaureau(taureau);
+    }
+
+    @Override
+    public void delete(Semence semence) {
+        repository.delete(semence);
     }
 }

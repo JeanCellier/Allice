@@ -23,6 +23,17 @@ public class Semence {
     @Column
     private String nomTaureau;
 
+    public Semence(String raceTaureau, String numTaureau, String nomTaureau, int nbPaillettes, String couleurPaillette, boolean sexee, String remarques) {
+        this.raceTaureau = raceTaureau;
+        this.numTaureau = numTaureau;
+        this.nomTaureau = nomTaureau;
+        this.nbPaillettes = nbPaillettes;
+        this.couleurPaillette = couleurPaillette;
+        this.sexee = sexee;
+        this.remarques = remarques;
+
+    }
+
     @Column
     private int nbPaillettes;
 

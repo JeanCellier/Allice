@@ -1,9 +1,8 @@
 package phenotypage.model.cuve.cuveSomatique.canisterSomatique.visoTubeSomatique.celluleSomatique;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import phenotypage.model.cuve.cuveSomatique.canisterSomatique.visoTubeSomatique.VisoTubeSomatique;
+
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -14,6 +13,15 @@ public class CelluleSomatique {
     @Id
     @GeneratedValue
     private Long id;
+
+    public CelluleSomatique(String typeCellulaire, String couleurPaillette, int nbPaillettes, Date dateCongelation, String remarques) {
+        this.typeCellulaire = typeCellulaire;
+        this.couleurPaillette = couleurPaillette;
+        this.nbPaillettes = nbPaillettes;
+        this.dateCongelation = dateCongelation;
+        this.remarques = remarques;
+
+    }
 
     @Column
     private String typeCellulaire;
