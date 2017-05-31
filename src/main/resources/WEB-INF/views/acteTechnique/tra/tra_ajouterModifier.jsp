@@ -514,7 +514,7 @@
 
                         for(iLigneActe = 0; iLigneActe < result.objet.acteTraitements.length; iLigneActe++)
                         {
-                            if(iLigneActe == 0 && result.objet.acteTraitements.length == 0){
+                            if(iLigneActe == 0 && result.objet.tableauTraitement.length == 0){
                                 $target = active.find('.tabTraitement');
                                 $target.find('input').val("");
                                 $target.find("select").val("");

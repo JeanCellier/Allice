@@ -153,7 +153,7 @@
                                         </div>
                                         <div id="tabSuperOv" class="tabTraitement tabSuperOv">
                                             <div class="form-group col-sm-3" style="padding-left:0">
-                                                <input class="form-control datepicker" name="dateTraitementSuperOv[]" type="text" placeholder="Date">
+                                                <input class="form-control datepickerTime" name="dateTraitementSuperOv[]" type="text" placeholder="Date">
                                             </div>
                                             <div class="form-group col-sm-3">
                                                 <select class="form-control" name="produitSuperOv[]">
@@ -619,23 +619,38 @@
                                 $target.find('input').val("");
                                 $target.find("select").val("");
                             }else{
-                                $target = $('#tabTraitement').clone().removeAttr('id');
+                                if(active.hasClass('superOv')){
+                                    $target = $('#tabSuperOv').clone().removeAttr('id');
+                                }else {
+                                    $target = $('#tabTraitement').clone().removeAttr('id');
+                                }
                                 $target.find('input').val("");
                                 $target.find("select").val("");
                                 $target.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabTraitement" type="button"><span class="fa fa-minus"></span></button></div>');
                                 $target.insertAfter(active.find("div.tabTraitement").last());
                             }
 
-                            $target.find("input[name='dateTraitement[]']").datetimepicker({
-                                locale: 'fr',
-                                format: 'DD/MM/YYYY',
-                                toolbarPlacement: 'top',
-                                showClose: true
-                            });
-
-                            $target.find("select[name='produit[]']" ).val(result.objet.tableauTraitement[iLigne].produit.id );
-                            $target.find("input[name='quantite[]']").val(result.objet.tableauTraitement[iLigne].quantite);
-                            $target.find("select[name='modeTraitement[]']").val(result.objet.tableauTraitement[iLigne].mode_traitement);
+                            if(active.hasClass('superOv')){
+                                $target.find("input[name='dateTraitementSuperOv[]']").datetimepicker({
+                                    sideBySide: true,
+                                    locale: 'fr',
+                                    toolbarPlacement: 'top',
+                                    showClose: true
+                                });
+                                $target.find("select[name='produitSuperOv[]']" ).val(result.objet.tableauTraitement[iLigne].produit.id );
+                                $target.find("input[name='quantiteSuperOv[]']").val(result.objet.tableauTraitement[iLigne].quantite);
+                                $target.find("select[name='modeTraitementSuperOv[]']").val(result.objet.tableauTraitement[iLigne].mode_traitement);
+                            }else {
+                                $target.find("input[name='dateTraitement[]']").datetimepicker({
+                                    locale: 'fr',
+                                    format: 'DD/MM/YYYY',
+                                    toolbarPlacement: 'top',
+                                    showClose: true
+                                });
+                                $target.find("select[name='produit[]']" ).val(result.objet.tableauTraitement[iLigne].produit.id );
+                                $target.find("input[name='quantite[]']").val(result.objet.tableauTraitement[iLigne].quantite);
+                                $target.find("select[name='modeTraitement[]']").val(result.objet.tableauTraitement[iLigne].mode_traitement);
+                            }
 
                             if(minDate >= result.objet.tableauTraitement[iLigne].decalageJour && minHour >= result.objet.tableauTraitement[iLigne].decalageHeure){
                                 index = iLigne;
@@ -646,26 +661,41 @@
 
                         for(iLigneActe = 0; iLigneActe < result.objet.acteTraitements.length; iLigneActe++)
                         {
-                            if(iLigneActe == 0 && result.objet.acteTraitements.length == 0){
+                            if(iLigneActe == 0 && result.objet.tableauTraitement.length == 0){
                                 $target = active.find('.tabTraitement');
                                 $target.find('input').val("");
                                 $target.find("select").val("");
                             }else{
-                                $target = $('#tabTraitement').clone().removeAttr('id');
+                                if(active.hasClass('superOv')){
+                                    $target = $('#tabSuperOv').clone().removeAttr('id');
+
+                                    $target.find("input[name='dateTraitementSuperOv[]']").datetimepicker({
+                                        sideBySide: true,
+                                        locale: 'fr',
+                                        toolbarPlacement: 'top',
+                                        showClose: true
+                                    });
+                                }else{
+                                    $target = $('#tabTraitement').clone().removeAttr('id');
+
+                                    $target.find("input[name='dateTraitement[]']").datetimepicker({
+                                        locale: 'fr',
+                                        format: 'DD/MM/YYYY',
+                                        toolbarPlacement: 'top',
+                                        showClose: true
+                                    });
+                                }
                                 $target.find('input').val("");
                                 $target.find("select").val("");
                                 $target.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabTraitement" type="button"><span class="fa fa-minus"></span></button></div>');
                                 $target.insertAfter(active.find("div.tabTraitement").last());
                             }
 
-                            $target.find("input[name='dateTraitement[]']").datetimepicker({
-                                locale: 'fr',
-                                format: 'DD/MM/YYYY',
-                                toolbarPlacement: 'top',
-                                showClose: true
-                            });
-
-                            $target.find("input[name='acte[]']").val(result.objet.acteTraitements[iLigneActe].acte);
+                            if(active.hasClass('superOv')){
+                                $target.find("input[name='acteSuperOv[]']").val(result.objet.acteTraitements[iLigneActe].acte);
+                            }else{
+                                $target.find("input[name='acte[]']").val(result.objet.acteTraitements[iLigneActe].acte);
+                            }
 
                             if(minDate >= result.objet.acteTraitements[iLigneActe].decalageJour && minHour >= result.objet.acteTraitements[iLigneActe].decalageHeure){
                                 index = iLigne + iLigneActe;
@@ -674,7 +704,12 @@
                             }
                         }
 
-                        active.find("input[name='dateTraitement[]']:eq("+index+")").addClass('dateTraitementFirst');
+                        if(active.hasClass('superOv')){
+                            active.find("input[name='dateTraitementSuperOv[]']:eq("+index+")").addClass('dateTraitementFirst');
+                        }else{
+                            active.find("input[name='dateTraitement[]']:eq("+index+")").addClass('dateTraitementFirst');
+                        }
+
                     }
                 }
             });
@@ -688,11 +723,21 @@
             return dat;
         }
         function parseDate(input) { // fr to en
-            var parts = input.split('/');
-            return new Date(parts[2]+"/"+parts[1]+"/"+parts[0]); // Note: months are 0-based
+            var parts = input.split(/[\/:\s]/);
+            if(parts[3] != undefined && parts[4] != undefined){
+                return new Date(parts[2],parts[1],parts[0],parts[3],parts[4]); // Note: months are 0-based
+            }else{
+                return new Date(parts[2]+"/"+parts[1]+"/"+parts[0]); // Note: months are 0-based
+            }
+
         }
         var active = $(event.target).closest('.traitement');
         var select = active.find('select[name="traitementActe"] option:selected');
+        if(active.hasClass('superOv')){
+            var dateInput = active.find('input[name="dateTraitementSuperOv[]"]');
+        }else{
+            var dateInput = active.find('input[name="dateTraitement[]"]');
+        }
 
         if(select.val() != ""){
             $.ajax({
@@ -703,17 +748,33 @@
                         var acte = 0;
                         var traitement = 0;
                         iLigne = 0;
-                        active.find('input[name="dateTraitement[]"]').each(function() {
-                            if($(this).closest(".tabTraitement").find("input[name='quantite[]']").val() != ""){
+                        dateInput.each(function() {
+                            if(active.hasClass('superOv')){
+                                var quantite = $(this).closest(".tabTraitement").find("input[name='quantiteSuperOv[]']");
+                            }else{
+                                var quantite = $(this).closest(".tabTraitement").find("input[name='quantite[]']");
+                            }
+                            if(quantite.val() != ""){
                                 if(!$(this).hasClass('dateTraitementFirst')) {
                                     var date = new Date(parseDate(active.find("input.dateTraitementFirst").val())).addDays(result.objet.tableauTraitement[traitement].decalageJour);
-                                    active.find("input[name='dateTraitement[]']:eq(" + iLigne + ")").data("DateTimePicker").date(date);
+                                    if(active.hasClass('superOv')){
+                                        date.setTime(date.getTime() + result.objet.tableauTraitement[traitement].decalageHeure * 3600000);
+                                        active.find("input[name='dateTraitementSuperOv[]']:eq(" + iLigne + ")").data("DateTimePicker").date(date);
+                                    }else {
+                                        active.find("input[name='dateTraitement[]']:eq(" + iLigne + ")").data("DateTimePicker").date(date);
+                                    }
                                 }
                                 traitement++;
                             }else{
                                 if(!$(this).hasClass('dateTraitementFirst')) {
                                     var date = new Date(parseDate(active.find("input.dateTraitementFirst").val())).addDays(result.objet.acteTraitements[acte].decalageJour);
-                                    active.find("input[name='dateTraitement[]']:eq(" + iLigne + ")").data("DateTimePicker").date(date);
+
+                                    if(active.hasClass('superOv')){
+                                        date.setTime(date.getTime() + result.objet.acteTraitements[acte].decalageHeure * 3600000);
+                                        active.find("input[name='dateTraitementSuperOv[]']:eq(" + iLigne + ")").data("DateTimePicker").date(date);
+                                    }else{
+                                        active.find("input[name='dateTraitement[]']:eq(" + iLigne + ")").data("DateTimePicker").date(date);
+                                    }
                                 }
                                 acte++;
                             }
@@ -847,7 +908,7 @@
         var corps = $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbCorpsJaune']");
         nbCorps = parseInt(corps.val());
         nbTot = parseInt($(event.target).val());
-        console.log(nbTot+" "+nbCorps);
+
         if(!Number.isInteger(nbCorps)){
             nbCorps = 0;
             $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='nbCorpsJaune']").val(0);
@@ -857,7 +918,7 @@
             nbTot = 0;
             $(event.target).val(0);
         }
-        console.log(nbTot+" "+nbCorps);
+
         $(event.target).closest("fieldset[name='corpsJaune']").find("input[name='tauxCollecte']").val(nbTot/nbCorps);
     });
 
@@ -988,6 +1049,7 @@
         $clone.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabTraitement" type="button"><span class="fa fa-minus"></span></button></div>');
         $clone.insertAfter($(e.target).closest(".traitement").find("div.tabTraitement").last());
         createDatePicker();
+        createDateTimePicker();
     });
 
     $(document).on('click', ".addTabEmbryon", function(e){
@@ -1046,33 +1108,6 @@
         });
     });
 
-    /******************************* LOAD FICHE COLLECTE DANS SELECT ****************************/
-    function loadCollecte(insemination){
-        var numIdVache = $(".tab-pane.active").find('.vache').val();
-
-        $.ajax({
-            type : 'GET',
-            url: '${pageContext. request. contextPath}/acteTechnique/col/get/vache/'+numIdVache,
-            success: function (result) {
-                if (result.succes == true) {
-                    $('.collecteSelect').find('option').not(':first').remove();
-                    for(iFiche = 0; iFiche < result.objet.length; iFiche++) {
-                        $('.collecteSelect').append($('<option>', {
-                            value: result.objet[iFiche].id,
-                            text: result.objet[iFiche].nom
-                        }));
-                    }
-
-                    if(insemination != null){
-                        $('.collecteSelect').find('option:contains('+insemination.collecte+')').prop('selected', true);
-                    }
-                } else {
-                    $('#modal-body').before('<div class="alert alert-danger flash" role="alert">'+result.message+'</div>');
-                }
-            }
-        });
-    }
-
     /************************ AJOUT *************************/
     $(document).on( 'submit', ".addOrUpdatePart", function(e){
         e.preventDefault();
@@ -1124,15 +1159,16 @@
                         if(rowId.length == 1) { //si le nom de la fiche est présent
                             /** Modifie la ligne correspondant à la fiche modifiée **/
                             if (result.objet.programme != null) {
-                                table.cell(rowId, 1).data(result.objet.programme.nom).draw(false);
+                                table.cell(rowId, 2).data(result.objet.programme.nom).draw(false);
                             }
                             if (result.objet.dateHeureMinute != null) {
-                                table.cell(rowId, 2).data(convertDateWithTime(result.objet.dateHeureMinute)).draw(false);
+                                table.cell(rowId, 3).data(convertDateWithTime(result.objet.dateHeureMinute)).draw(false);
                             }
-                            table.cell(rowId, 3).data(result.objet.numeroAgrement).draw(false);
-                            table.cell(rowId, 4).data(result.objet.lieu).draw(false);
-                            table.cell(rowId, 5).data(result.objet.vache.num_identification).draw(false);
-                            table.cell(rowId, 6).data(result.objet.vache.num_identification.substr(result.objet.vache.num_identification.length - 4)).draw(false);
+                            table.cell(rowId, 4).data(result.objet.numeroAgrement).draw(false);
+                            table.cell(rowId, 5).data(result.objet.lieu).draw(false);
+                            table.cell(rowId, 6).data(result.objet.vache.num_identification).draw(false);
+                            table.cell(rowId, 7).data(result.objet.vache.num_travail).draw(false);
+
                         }
                     }
 
