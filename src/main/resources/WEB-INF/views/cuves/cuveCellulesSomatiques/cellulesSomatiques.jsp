@@ -87,19 +87,19 @@
                         </div>
 
                         <div class="form-group col-sm-2" style="padding-left:0">
-                            <input class="form-control" required name="couleurpaillette[]" type="text" placeholder="Couleur Paillette">
+                            <input class="form-control"  name="couleurpaillette[]" type="text" placeholder="Couleur Paillette">
                         </div>
 
                         <div class="form-group col-sm-2">
-                            <input class="form-control" required name="nbpaillette[]" step="1" type="number" placeholder="Nombre Paillettes">
+                            <input class="form-control"  name="nbpaillette[]" step="1" type="number" placeholder="Nombre Paillettes">
                         </div>
 
                         <div class="form-group col-sm-2">
-                            <input class="form-control datepicker" required name="date[]" type="date" placeholder="Date congelation">
+                            <input class="form-control datepicker"  name="date[]" type="date" placeholder="Date congelation">
                         </div>
 
                         <div class="form-group col-sm-11">
-                            <input class="form-control" required name="remarques[]" type="text" placeholder="Remarques">
+                            <input class="form-control"  name="remarques[]" type="text" placeholder="Remarques">
                         </div>
 
                     </div>

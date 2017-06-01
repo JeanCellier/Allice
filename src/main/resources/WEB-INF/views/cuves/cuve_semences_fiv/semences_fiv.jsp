@@ -332,7 +332,7 @@
 
     /******* Ajoute une ligne modal semences FIV ******/
     $(document).on( 'click', ".editSemencesFIV", function(){
-        $template = $('#semencesElevage');
+        $template = $('#semencesFIV');
         $clone = $template.clone().removeAttr('id');
         $clone.find('input').val("");
         $clone.append('<div class="form-group col-sm-1"><button class="btn btn-danger delSemencesFIV" type="button"><span class="fa fa-minus"></span></button></div>');

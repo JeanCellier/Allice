@@ -17,6 +17,6 @@ public class Traitement_DonneusePopulator
 	@PostConstruct
 	void init()
 	{
-		//traitement_donneuseService.createTraitement_Donneuse();
+//		traitement_donneuseService.createTraitement_Donneuse();
 	}
 }
