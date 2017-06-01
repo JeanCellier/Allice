@@ -229,13 +229,14 @@ public class ColController {
 
             List<Tableau_Donneuse> tableauSuperOv = new ArrayList<>();
             List<ActeDonneuse> tableauActeSuperOv = new ArrayList<>();
+            SimpleDateFormat formatterDateSuperOv = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 
             for (int iLigneTraitement = 0; iLigneTraitement < dateTraitementSuperOv.length; iLigneTraitement++) {
                 if (quantiteSuperOv.length > 0 && !Objects.equals(quantiteSuperOv[iLigneTraitement], "")) {
                     Tableau_Donneuse tableauDonneuse = new Tableau_Donneuse();
 
                     try {
-                        Date dateTraitementParsee = formatterDate.parse(dateTraitementSuperOv[iLigneTraitement]);
+                        Date dateTraitementParsee = formatterDateSuperOv.parse(dateTraitementSuperOv[iLigneTraitement]);
 
                         tableauDonneuse.setDate(dateTraitementParsee);
                     } catch (ParseException e) {
@@ -252,7 +253,7 @@ public class ColController {
                     ActeDonneuse acteDonneuse = new ActeDonneuse();
 
                     try {
-                        Date dateTraitementParsee = formatterDate.parse(dateTraitementSuperOv[iLigneTraitement]);
+                        Date dateTraitementParsee = formatterDateSuperOv.parse(dateTraitementSuperOv[iLigneTraitement]);
 
                         acteDonneuse.setDate(dateTraitementParsee);
                     } catch (ParseException e) {

@@ -1327,11 +1327,11 @@
                         for(iLigne = 0; iLigne < result.objet.traitement_donneuse.tableauDonneuse.length; iLigne++)
                         {
                             if(iLigne == 0){
-                                $target = $activeTab.find('.tabTraitement');
+                                $target = $activeTab.find('.tabTraitement:first');
                             }else{
                                 $target = $activeTab.find('#tabTraitement').clone().removeAttr('id');
                                 $target.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabTraitement" type="button"><span class="fa fa-minus"></span></button></div>');
-                                $target.insertAfter($activeTab.find("div.tabTraitement").last());
+                                $target.insertAfter($activeTab.find("div.tabTraitement:not(.tabSuperOv)").last());
                             }
 
                             $target.find("input[name='dateTraitement[]']").datetimepicker({
@@ -1349,12 +1349,12 @@
 
                         for(iLigne = 0; iLigne < result.objet.traitement_donneuse.tableauActe.length; iLigne++)
                         {
-                            if(iLigne == 0 && result.objet.traitement_donneuse.tableauActe.length == 0){
-                                $target = $activeTab.find('.tabTraitement');
+                            if(iLigne == 0 && result.objet.traitement_donneuse.tableauDonneuse.length == 0){
+                                $target = $activeTab.find('.tabTraitement:first');
                             }else{
                                 $target = $activeTab.find('#tabTraitement').clone().removeAttr('id');
                                 $target.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabTraitement" type="button"><span class="fa fa-minus"></span></button></div>');
-                                $target.insertAfter($activeTab.find("div.tabTraitement").last());
+                                $target.insertAfter($activeTab.find("div.tabTraitement:not(.tabSuperOv)").last());
                             }
 
                             $target.find("input[name='dateTraitement[]']").datetimepicker({
@@ -1369,71 +1369,136 @@
                         }
                     }
 
-                    /************* STEP 3 *************/
-                    if(result.objet.corpsJaune != null) {
-                        $activeTab.find("select[name='qualite']").val(result.objet.corpsJaune.qualite);
-
-                        if(result.objet.corpsJaune.mode_evaluation === true) {
-                            $activeTab.find("input[name='methodeEvaluation'][value='palpation']").prop('checked', true);
-                        }
-                        if(result.objet.corpsJaune.mode_evaluation === false) {
-                            $activeTab.find("input[name='methodeEvaluation'][value='echographie']").prop('checked', true);
-                        }
-                        if(result.objet.corpsJaune.imageEcho === true) {
-                            $activeTab.find("input[name='optradioEcho'][value='oui']").prop('checked', true);
-                        }
-                        if(result.objet.corpsJaune.imageEcho === false) {
-                            $activeTab.find("input[name='optradioEcho'][value='non']").prop('checked', true);
-                        }
-                        if(result.objet.corpsJaune.coteCorpsJaune === 'G') {
-                            $activeTab.find("input[name='optradioCote'][value='gauche']").prop('checked', true);
-                        }
-                        if(result.objet.corpsJaune.coteCorpsJaune === 'D') {
-                            $activeTab.find("input[name='optradioCote'][value='droit']").prop('checked', true);
-                        }
-                    }
-
-                    /************* STEP 4 *************/
-                    if(result.objet.embryonsTransferes != null) {
-                        $activeTab.find( "input[name='numEmbryon']" ).val(result.objet.embryonsTransferes.refEmbryons);
-                        $activeTab.find( "select[name='emplacementCorne']" ).val(result.objet.embryonsTransferes.emplacementColUterine);
-                        $activeTab.find( "select[name='faciliteProgression']" ).val(result.objet.embryonsTransferes.faciliteprogression);
-
-                        if(result.objet.embryonsTransferes.cote === 'G') {
-                            $activeTab.find("input[name='optradioCoteTransf'][value='gauche']").prop('checked', true);
-                        }
-                        if(result.objet.embryonsTransferes.cote === 'D') {
-                            $activeTab.find("input[name='optradioCoteTransf'][value='droit']").prop('checked', true);
-                        }
-                    }
-
-                    /************* STEP 5 *************/
-                    if(result.objet.gestation != null) {
-                        $activeTab.find( "textarea[name='remarques']" ).val(result.objet.gestation.remarques);
-
-                        //remplit tableau gestation
-                        for(iLigne = 0; iLigne < result.objet.gestation.tableauGestationList.length; iLigne++)
+                    if(result.objet.tableauSuperOv != null){
+                        for(iLigne = 0; iLigne < result.objet.tableauSuperOv.tableauDonneuse.length; iLigne++)
                         {
                             if(iLigne == 0){
-                                $target = $activeTab.find('.tabGestation');
+                                $target = $activeTab.find('.tabSuperOv');
                             }else{
-                                $target = $activeTab.find('#tabGestation').clone().removeAttr('id');
-                                $target.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabGestation" type="button"><span class="fa fa-minus"></span></button></div>');
-                                $target.insertAfter($activeTab.find("div.tabGestation").last());
+                                $target = $activeTab.find('#tabSuperOv').clone().removeAttr('id');
+                                $target.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabTraitement" type="button"><span class="fa fa-minus"></span></button></div>');
+                                $target.insertAfter($activeTab.find("div.tabSuperOv").last());
                             }
 
-                            $target.find("input[name='dateMethode[]']").datetimepicker({
+                            $target.find("input[name='dateTraitementSuperOv[]']").datetimepicker({
+                                sideBySide: true,
                                 locale: 'fr',
-                                format: 'DD/MM/YYYY',
                                 toolbarPlacement: 'top',
                                 showClose: true
                             });
 
-                            $target.find("input[name='dateMethode[]']").data("DateTimePicker").date(new Date(result.objet.gestation.tableauGestationList[iLigne].date));
-                            $target.find( "select[name='methode[]']" ).val(result.objet.gestation.tableauGestationList[iLigne].methode );
-                            $target.find("select[name='resultat[]']").val(result.objet.gestation.tableauGestationList[iLigne].resultat);
+                            $target.find("input[name='dateTraitementSuperOv[]']").data("DateTimePicker").date(new Date(result.objet.tableauSuperOv.tableauDonneuse[iLigne].date));
+                            $target.find("select[name='produitSuperOv[]']" ).val(result.objet.tableauSuperOv.tableauDonneuse[iLigne].produit.id );
+                            $target.find("input[name='quantiteSuperOv[]']").val(result.objet.tableauSuperOv.tableauDonneuse[iLigne].quantite);
+                            $target.find("select[name='modeTraitementSuperOv[]']").val(result.objet.tableauSuperOv.tableauDonneuse[iLigne].mode_traitement);
+                        }
+
+                        for(iLigne = 0; iLigne < result.objet.tableauSuperOv.tableauActe.length; iLigne++)
+                        {
+                            if(iLigne == 0 && result.objet.tableauSuperOv.tableauDonneuse.length == 0){
+                                $target = $activeTab.find('.tabSuperOv');
+                            }else{
+                                $target = $activeTab.find('#tabSuperOv').clone().removeAttr('id');
+                                $target.find('input').val("");
+                                $target.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabTraitement" type="button"><span class="fa fa-minus"></span></button></div>');
+                                $target.insertAfter($activeTab.find("div.tabSuperOv").last());
+                            }
+
+                            $target.find("input[name='dateTraitementSuperOv[]']").datetimepicker({
+                                sideBySide: true,
+                                locale: 'fr',
+                                toolbarPlacement: 'top',
+                                showClose: true
+                            });
+
+                            $target.find("input[name='dateTraitementSuperOv[]']").data("DateTimePicker").date(new Date(result.objet.tableauSuperOv.tableauActe[iLigne].date));
+                            $target.find("input[name='acteSuperOv[]']").val(result.objet.tableauSuperOv.tableauActe[iLigne].acte);
                         }
                     }
+
+                    if(result.objet.infoTraitementDonneuse != null) {
+                        $activeTab.find("input[name='nbFolDroite']").val(result.objet.infoTraitementDonneuse.nb_droite);
+                        $activeTab.find("input[name='nbFolGauche']").val(result.objet.infoTraitementDonneuse.nb_gauche);
+                        $activeTab.find("input[name='nbFolliculeAspi']").val(result.objet.infoTraitementDonneuse.nb_follicules);
+                        $activeTab.find("input[name='pourDoseFSH']").val(result.objet.infoTraitementDonneuse.pourc_dose);
+
+                        if (result.objet.infoTraitementDonneuse.image_echo == true) {
+                            $activeTab.find("input[name='imageEcho'][value='oui']").prop('checked', true);
+                        }
+                        if (result.objet.infoTraitementDonneuse.image_echo == false) {
+                            $activeTab.find("input[name='imageEcho'][value='non']").prop('checked', true);
+                        }
+                    }
+
+                    /************* STEP 3 *************/
+                    if(result.objet.resultat_collecte != null) {
+                        $activeTab.find("input[name='nbEmbryonViables']").val(result.objet.resultat_collecte.nombre_Embryons_Viables);
+                        $activeTab.find("input[name='nbEmbryonDegeneres']").val(result.objet.resultat_collecte.nombre_Embryons_Degeneres);
+                        $activeTab.find("input[name='nbEmbryonNonFecondes']").val(result.objet.resultat_collecte.nombre_Embryons_NonFecondes);
+                        $activeTab.find("input[name='nbEmbryonTotal']").val(result.objet.resultat_collecte.nombre_Embryons_Total);
+                        $activeTab.find("input[name='nbCorpsJauneDroite']").val(result.objet.resultat_collecte.nombre_CorpsJ_droite);
+                        $activeTab.find("input[name='nbCorpsJauneGauche']").val(result.objet.resultat_collecte.nombre_CorpsJ_gauche);
+                        $activeTab.find("input[name='nbCorpsJaune']").val(result.objet.resultat_collecte.nombre_CorpsJ_total);
+                        $activeTab.find("input[name='tauxCollecte']").val(result.objet.resultat_collecte.taux_de_collecte);
+                        $activeTab.find("textarea[name='remarques']").val(result.objet.resultat_collecte.remarques);
+
+                    }
+
+                    /************* STEP 4 *************/
+                    if(result.objet.detailsEmbryonsViables != null) {
+                        for(iEmbryon= 0; iEmbryon < result.objet.detailsEmbryonsViables.length; iEmbryon++){
+                            if(iEmbryon == 0){
+                                $target = $activeTab.find('.tabEmbryonsViables');
+                            }else{
+                                $target = $activeTab.find('#tabEmbryonsViables').clone().removeAttr('id');
+                                $target.find('input').val("");
+                                $target.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabTraitement" type="button"><span class="fa fa-minus"></span></button></div>');
+                                $target.insertAfter($activeTab.find("div.tabEmbryonsViables").last());
+                            }
+
+                            $target.find("select[name='stade[]']").val(result.objet.detailsEmbryonsViables[iEmbryon].stade);
+                            $target.find("select[name='qualite[]']").val(result.objet.detailsEmbryonsViables[iEmbryon].qualite);
+                            $target.find("input[name='refVache[]']").val(result.objet.detailsEmbryonsViables[iEmbryon].numeroReceveuse);
+                            $target.find("input[name='refTransfert[]']").val(result.objet.detailsEmbryonsViables[iEmbryon].referenceTransfert);
+                            $target.find("input[name='remarques[]']").val(result.objet.detailsEmbryonsViables[iEmbryon].remarque);
+                        }
+                    }
+
+                    /************* STEP 5 *************/
+                    if(result.objet.cryoconservation != null) {
+                        $activeTab.find( "input[name='refCong']" ).val(result.objet.cryoconservation.ref);
+                        $activeTab.find( "input[name='heureCong']" ).val(result.objet.cryoconservation.heureMinute);
+                        $activeTab.find( "input[name='description']" ).val(result.objet.cryoconservation.descMethode);
+
+                        if(result.objet.cryoconservation.methodeCongelation == "congelation") {
+                            $activeTab.find("input[name='methodeCongelation'][value='congelation']").prop('checked', true);
+                        }
+                        if(result.objet.cryoconservation.methodeCongelation == "vitrification") {
+                            $activeTab.find("input[name='methodeCongelation'][value='vitrification']").prop('checked', true);
+                        }
+                        if(result.objet.cryoconservation.congelateur == "ms21") {
+                            $activeTab.find("input[name='congelateur'][value='ms21']").prop('checked', true);
+                        }
+                        if(result.objet.cryoconservation.congelateur == "cryologicccl3300") {
+                            $activeTab.find("input[name='congelateur'][value='cryologicccl3300']").prop('checked', true);
+                        }
+
+                        if(result.objet.cryoconservation.operateur){
+                            $activeTab.find("select[name='operateurCong']").val(result.objet.cryoconservation.operateur.id);
+                        }
+                    }
+
+                    if (result.objet.lc == true) {
+                        $activeTab.find("input[name='lc'][value='lc']").prop('checked', true);
+                    }
+                    if (result.objet.ll == true) {
+                        $activeTab.find("input[name='ll'][value='ll']").prop('checked', true);
+                    }
+                    if (result.objet.ed == true) {
+                        $activeTab.find("input[name='ed'][value='ed']").prop('checked', true);
+                    }
+
+
                 }else{
                     $('#add').modal('toggle'); //ferme modal
                     $('#tableActes').before('<div class="alert alert-warning flash" role="alert">'+result.message+'</div>'); //afficher alert

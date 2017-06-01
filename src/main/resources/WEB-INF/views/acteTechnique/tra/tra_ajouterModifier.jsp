@@ -846,6 +846,7 @@
                                 $target = $activeTab.find('.tabTraitement');
                             }else{
                                 $target = $activeTab.find('#tabTraitement').clone().removeAttr('id');
+                                $target.find('input').val("");
                                 $target.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabTraitement" type="button"><span class="fa fa-minus"></span></button></div>');
                                 $target.insertAfter($activeTab.find("div.tabTraitement").last());
                             }
@@ -869,6 +870,7 @@
                                 $target = $activeTab.find('.tabTraitement');
                             }else{
                                 $target = $activeTab.find('#tabTraitement').clone().removeAttr('id');
+                                $target.find('input').val("");
                                 $target.append('<div class="form-group col-sm-1"><button class="btn btn-danger delTabTraitement" type="button"><span class="fa fa-minus"></span></button></div>');
                                 $target.insertAfter($activeTab.find("div.tabTraitement").last());
                             }
